@@ -138,6 +138,30 @@ def coordinating_atoms(smiles_or_mol, top_k: int = 3) -> list[DonorSite]:
     return sorted(seen.values(), key=lambda d: -d.score)[:top_k]
 
 
+def boltz_atom_name(smiles: str, atom_idx: int) -> str | None:
+    """The name Boltz will give heavy atom `atom_idx` of a SMILES ligand.
+
+    Boltz names SMILES-ligand atoms as `SYMBOL + str(CanonicalRankAtoms(mol)[i] + 1)` —
+    the **canonical rank over all atoms**, not a per-element counter. So the first
+    nitrogen of a molecule is typically NOT "N1": in the ritonavir analog 1RD the
+    coordinating nitrogen is `N19`.
+
+    Getting this wrong is not a silent error, which is the one mercy here: Boltz looks
+    the name up in an atom index map and raises, so a bad name fails at parse time
+    rather than quietly constraining the wrong atom. It still costs a full round trip,
+    so compute it correctly.
+    """
+    from rdkit.Chem import AllChem
+
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None or atom_idx >= mol.GetNumAtoms():
+        return None
+    rank = list(AllChem.CanonicalRankAtoms(mol))
+    a = mol.GetAtomWithIdx(int(atom_idx))
+    name = a.GetSymbol().upper() + str(rank[atom_idx] + 1)
+    return name if len(name) <= 4 else None
+
+
 def ligand_class(smiles: str) -> str:
     """'type_II' if a competent Fe donor exists, else 'type_I_candidate'.
 

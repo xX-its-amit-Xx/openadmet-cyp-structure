@@ -25,14 +25,15 @@
   "est_gpu_hours": 0.16799999999999998,
   "started": 1789013248.2377386,
   "month": "2026-09",
-  "status": "launched",
+  "status": "killed",
   "actual_gpu_hours": null,
-  "note": "app=cyp-cofold-boltz tag=smoke1",
+  "note": "app=cyp-cofold-boltz tag=smoke1 | watchdog tick: crash-looping app stopped 04:23; ledger row orphaned",
   "meta": {
    "n_jobs": 4,
    "samples": 3,
    "app": "cyp-cofold-boltz"
-  }
+  },
+  "ended": 1789014392.4556205
  },
  {
   "run_id": "smoke1-1789013875",
@@ -60,9 +61,27 @@
   "est_gpu_hours": 0.16799999999999998,
   "started": 1789014211.194869,
   "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-boltz tag=smoke2 | 0 ok, 4 failed",
+  "meta": {
+   "n_jobs": 4,
+   "samples": 3,
+   "app": "cyp-cofold-boltz"
+  },
+  "ended": 1789015452.6761916
+ },
+ {
+  "run_id": "smoke3-1789015570",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 12,
+  "est_gpu_hours": 0.16799999999999998,
+  "started": 1789015570.334791,
+  "month": "2026-09",
   "status": "launched",
   "actual_gpu_hours": null,
-  "note": "app=cyp-cofold-boltz tag=smoke2",
+  "note": "app=cyp-cofold-boltz tag=smoke3",
   "meta": {
    "n_jobs": 4,
    "samples": 3,

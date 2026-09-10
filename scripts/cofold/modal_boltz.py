@@ -222,9 +222,14 @@ def build_yaml(sequence: str, smiles: str, *, steer: bool, donor_atom_name: str 
                      f"      contacts: [{contacts}]",
                      "      max_distance: 8.0", "      force: false"]
         if donor_atom_name:
+            # `contact` tokens take TWO elements, [CHAIN_ID, RES_IDX-or-ATOM_NAME] —
+            # unlike `bond`, whose atoms take three. Passing three here raises
+            # "too many values to unpack (expected 2)" inside the Boltz schema parser,
+            # which `boltz predict` catches per input and skips, so the process exits 0
+            # with no structures. That is why the first run reported rc=0, n=0 in 25s.
             cons += ["  - contact:",
-                     "      token1: [H, 1, FE]",
-                     f"      token2: [L, 1, {donor_atom_name}]",
+                     "      token1: [H, FE]",
+                     f"      token2: [L, {donor_atom_name}]",
                      "      max_distance: 2.4", "      force: true"]
     L += cons
     if steer and template_cif:
@@ -237,7 +242,7 @@ def plan(csv_path: str, tag: str, samples: int, seeds: list[int],
     """Build the finite job list. No job is created without a resolvable job_id."""
     import csv as _csv
 
-    from cypstruct.chem import coordinating_atoms, standardize
+    from cypstruct.chem import boltz_atom_name, coordinating_atoms, standardize
     from cypstruct.targets import CYP3A4_POCKET, fetch_sequences
 
     seq = fetch_sequences()["cyp3a4"]
@@ -253,14 +258,7 @@ def plan(csv_path: str, tag: str, samples: int, seeds: list[int],
             donors = coordinating_atoms(smi, top_k=1)
             # Boltz names ligand atoms from the CCD/SMILES parse; for a SMILES ligand the
             # atom name is the element plus a 1-based ordinal over that element.
-            donor_name = None
-            if donors:
-                idx = donors[0].atom_idx
-                from rdkit import Chem
-                m = Chem.MolFromSmiles(smi)
-                n_ord = sum(1 for a in m.GetAtoms()
-                            if a.GetIdx() <= idx and a.GetSymbol() == "N")
-                donor_name = f"N{n_ord}"
+            donor_name = boltz_atom_name(smi, donors[0].atom_idx) if donors else None
             for arm in arms:
                 if arm == "steered" and donor_name is None:
                     continue     # nothing to steer with; the unsteered arm covers it
