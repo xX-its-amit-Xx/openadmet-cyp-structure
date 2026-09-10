@@ -10,16 +10,19 @@ what to launch when nothing is in flight.
 
 ## Step 0 — the pool that scores itself  ✅ infrastructure ready
 
-We have **99 CYP3A4 ligands with deposited crystal poses**
-(`data/processed/validation_ligands.csv`, 83 iron-coordinated + 16 active-site). Every
+We have **87 CYP3A4 ligands with deposited crystal poses**
+(`data/processed/validation_ligands.csv`, 72 iron-coordinated + 15 active-site; 12
+organometallic ligands were excluded, see below). Every
 pose we generate for these can be scored immediately with `cypstruct.pose.lddt_pli` and
 `bisy_rmsd`. No waiting for the challenge release to start measuring.
 
 **Always dry-parse on CPU first.** This is a gate, not a formality:
 
 ```bash
-python scripts/cofold/preflight_parse.py --csv data/processed/validation_ligands.csv     --tag val87 --samples 20            # exits non-zero if anything fails to parse
-python scripts/cofold/modal_boltz.py submit --csv data/processed/validation_ligands.csv     --tag val87 --samples 20 --seeds 1
+python scripts/cofold/preflight_parse.py \
+    --csv data/processed/validation_ligands.csv --tag val87 --samples 20
+python scripts/cofold/modal_boltz.py submit \
+    --csv data/processed/validation_ligands.csv --tag val87 --samples 20 --seeds 1
 python scripts/structure/score_pool.py --pool <collected dir>
 ```
 
@@ -49,7 +52,7 @@ distribution in the steered arm before concluding anything about selection.
 
 ```bash
 python scripts/cofold/modal_af3.py weights          # one-time Kaggle pull into a Modal volume
-python scripts/cofold/modal_af3.py submit --csv data/processed/validation_ligands.csv --tag val99
+python scripts/cofold/modal_af3.py submit --csv data/processed/validation_ligands.csv --tag val87
 ```
 
 Then Chai-1 and Protenix on the same pattern. **Do not add a new engine as a z-hybrid pool
