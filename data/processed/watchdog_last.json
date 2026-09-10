@@ -1,8 +1,8 @@
 {
-  "checked": "2026-09-10 04:26:04",
+  "checked": "2026-09-10 07:48:24",
   "dry_run": true,
   "max_age_hours": 8.0,
-  "owned_apps_running": 4,
+  "owned_apps_running": 8,
   "runaways": [],
   "idle_ephemeral_shells": [],
   "stale_ledger_rows": [],
@@ -10,9 +10,9 @@
     "modal": {
       "month": "2026-09",
       "venue": "modal",
-      "n_runs": 4,
-      "gpu_hours": 0.336,
-      "in_flight": 2
+      "n_runs": 8,
+      "gpu_hours": 19.12,
+      "in_flight": 1
     },
     "boltz": {
       "month": "2026-09",
@@ -29,11 +29,11 @@
       "in_flight": 0
     }
   },
-  "modal_cap_fraction": 0.006,
+  "modal_cap_fraction": 0.319,
   "disk": {
-    "free_C_gb": 1.35,
-    "free_D_gb": 1.76,
-    "rclone_vfs_cache_gb": 9.47,
+    "free_C_gb": 1.81,
+    "free_D_gb": 4.48,
+    "rclone_vfs_cache_gb": 0.0,
     "warning": "rclone VFS cache is unbounded (no --vfs-cache-max-size); never write bulk data through O:\\ \u2014 use storage.push()"
   }
 }

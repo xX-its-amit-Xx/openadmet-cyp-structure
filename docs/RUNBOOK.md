@@ -117,7 +117,11 @@ the release is scoreable ground truth and part is the blind target. When the dat
   when the tool call's shell exits — this already killed one Modal launch silently.
 - **Do not pipe an unbuffered log through `grep` without `--line-buffered`.** It hides all
   output until the buffer fills, which looks exactly like a hung job.
-- **Poll for ADVANCING progress**, not liveness. A run that is alive and not advancing is a
-  runaway; kill it and record why.
+- **Poll for ADVANCING progress**, not liveness - but check the run is OLD ENOUGH for
+  "no progress" to mean anything first. Call `budget.may_judge_stalled(kind, started)`.
+  A co-folding job takes about five minutes; a 168-job batch was killed 2.5 minutes
+  after launch because it had produced no output directories yet, which is exactly
+  what a healthy run looks like at that point. A liveness check that fires faster than
+  one unit of work can complete does not detect stalls, it causes them.
 - Every launch goes through `budget.preflight_hours` and is recorded in the ledger
   **before** it starts, so the watchdog can clean up even if the launcher dies.

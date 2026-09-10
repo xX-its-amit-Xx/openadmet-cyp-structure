@@ -133,13 +133,14 @@
   "est_gpu_hours": 18.48,
   "started": 1789040788.0294952,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "app=cyp-cofold-boltz tag=val87",
+  "status": "killed",
+  "actual_gpu_hours": 0.4,
+  "note": "OPERATOR ERROR: killed by the ops tick ~2.5 min after launch. The tick read \"no output dirs yet\" as not-advancing, but each job takes ~5 min, so zero completed jobs at 2.5 min was expected. All 168 inputs then raised exceptions. Nothing was wrong with the run.",
   "meta": {
    "n_jobs": 168,
    "samples": 20,
    "app": "cyp-cofold-boltz"
-  }
+  },
+  "ended": 1789040960.5016868
  }
 ]

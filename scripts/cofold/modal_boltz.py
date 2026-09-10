@@ -442,12 +442,24 @@ def submit(csv_path: str, tag: str, samples: int = 10, seeds: tuple[int, ...] = 
                 raise SystemExit("cache warm failed; not launching the array")
 
             done = fail = 0
+            first_errors: list[str] = []
             for rec in cofold.map(jobs, order_outputs=False, return_exceptions=True):
                 if isinstance(rec, Exception):
                     fail += 1
+                    # Print the first few. An earlier version counted exceptions and
+                    # printed nothing, so a run that failed all 168 inputs reported
+                    # "0 ok, 168 failed" with no way to tell why. A failure count
+                    # without a reason is not a diagnostic.
+                    if len(first_errors) < 5:
+                        first_errors.append(f"{type(rec).__name__}: {rec}"[:300])
+                        print(f"  [exception] {first_errors[-1]}", flush=True)
                     continue
                 done += rec.get("status") in ("ok", "cached")
-                fail += rec.get("status") == "failed"
+                if rec.get("status") == "failed":
+                    fail += 1
+                    if len(first_errors) < 5:
+                        first_errors.append(rec.get("stderr_tail", "")[-300:])
+                        print(f"  [failed] {rec.get('job_id')}: {first_errors[-1]}", flush=True)
                 if (done + fail) % 20 == 0:
                     print(f"  {done} ok / {fail} failed of {len(jobs)}", flush=True)
         budget.close(run_id, "done", note=f"{done} ok, {fail} failed")

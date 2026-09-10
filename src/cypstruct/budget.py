@@ -91,6 +91,35 @@ def calibrate_from_ledger(kind: str) -> dict:
             "median_gpu_h_per_job": round(med, 4)}
 
 
+# Minimum wall-clock time before a run may be judged "not advancing", per job kind.
+# A co-folding job that diffuses 20 samples takes minutes; concluding it has stalled
+# because no output exists after two of them is how a healthy run gets killed. That
+# happened once: the ops tick stopped a 168-job batch 2.5 minutes after launch, read
+# "no output directories yet" as a stall, and destroyed a run that was fine.
+MIN_AGE_BEFORE_STALL_CALL = {
+    "boltz2_cofold": 900,      # seconds; ~5 min per job plus image pull and queueing
+    "af3_cofold": 1800,
+    "protenix_cofold": 1200,
+    "chai_cofold": 1200,
+    "_default": 900,
+}
+
+
+def may_judge_stalled(kind: str, started: float) -> tuple[bool, str]:
+    """Is this run old enough that "no progress" actually means something?
+
+    Returns (may_judge, reason_if_not). Call this BEFORE killing anything for lack of
+    output. Liveness checks that fire faster than one unit of work can complete do not
+    detect stalls, they cause them.
+    """
+    need = MIN_AGE_BEFORE_STALL_CALL.get(kind, MIN_AGE_BEFORE_STALL_CALL["_default"])
+    age = time.time() - started
+    if age < need:
+        return False, (f"only {age/60:.1f} min old; a {kind} job needs about "
+                       f"{need/60:.0f} min before absence of output means anything")
+    return True, ""
+
+
 @dataclass
 class Entry:
     run_id: str
