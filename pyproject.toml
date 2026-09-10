@@ -1,0 +1,12 @@
+[project]
+name = "cypstruct"
+version = "0.1.0"
+description = "OpenADMET CYP3A4 structure-prediction track: steered co-folding + a CYP-specific physics pose scorer"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy", "pandas", "pyarrow", "requests", "rdkit", "gemmi", "scipy",
+  "modal", "spyrmsd", "lightgbm",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,96 @@
+{
+  "generated": "2026-09-09",
+  "n_entries_queried": 122,
+  "n_entries_parsed": 116,
+  "n_failed": 6,
+  "failed": [
+    [
+      "6DAG",
+      "MemoryError: "
+    ],
+    [
+      "6DAJ",
+      "MemoryError: "
+    ],
+    [
+      "6DAL",
+      "MemoryError: "
+    ],
+    [
+      "6MA6",
+      "MemoryError: "
+    ],
+    [
+      "6MA7",
+      "MemoryError: "
+    ],
+    [
+      "6MA8",
+      "MemoryError: bad allocation"
+    ]
+  ],
+  "n_chain_ligand_rows": 151,
+  "binding_class_counts": {
+    "type_II_coordinated": 104,
+    "type_I_active_site": 23,
+    "peripheral": 16
+  },
+  "n_apo_chains": 8,
+  "fe_sg_dist": {
+    "p5": 2.121,
+    "p25": 2.285,
+    "p50": 2.365,
+    "p75": 2.401,
+    "p95": 2.511
+  },
+  "type_II": {
+    "n": 104,
+    "n_unique_ligands": 84,
+    "donor_elements": {
+      "N": 103,
+      "O": 1
+    },
+    "fe_donor_dist": {
+      "p5": 1.936,
+      "p25": 2.094,
+      "p50": 2.197,
+      "p75": 2.258,
+      "p95": 2.379
+    },
+    "s_fe_ligand_angle": {
+      "p5": 159.508,
+      "p25": 167.85,
+      "p50": 171.183,
+      "p75": 174.128,
+      "p95": 177.632
+    },
+    "fe_out_of_plane": {
+      "p5": -0.424,
+      "p25": -0.091,
+      "p50": -0.048,
+      "p75": -0.006,
+      "p95": 0.057
+    }
+  },
+  "type_I": {
+    "n": 23,
+    "n_unique_ligands": 18,
+    "min_fe_dist": {
+      "p5": 2.853,
+      "p25": 3.483,
+      "p50": 3.912,
+      "p75": 4.871,
+      "p95": 5.906
+    },
+    "s_fe_ligand_angle": {
+      "p5": 141.146,
+      "p25": 148.356,
+      "p50": 152.291,
+      "p75": 167.878,
+      "p95": 173.974
+    }
+  },
+  "n_peripheral": 16,
+  "distal_side_negative_fraction": 0.007,
+  "parquet": "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\cyp3a4_reference_geometry.parquet"
+}

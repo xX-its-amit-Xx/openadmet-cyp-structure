@@ -1,0 +1,72 @@
+[
+ {
+  "run_id": "smoke1-1789012747",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 12,
+  "est_gpu_hours": 0.16799999999999998,
+  "started": 1789012747.7102063,
+  "month": "2026-09",
+  "status": "failed",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-boltz tag=smoke1 | orphaned: launcher shell exited before Modal started",
+  "meta": {
+   "n_jobs": 4,
+   "samples": 3,
+   "app": "cyp-cofold-boltz"
+  },
+  "ended": 1789014200.2484
+ },
+ {
+  "run_id": "smoke1-1789013248",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 12,
+  "est_gpu_hours": 0.16799999999999998,
+  "started": 1789013248.2377386,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-boltz tag=smoke1",
+  "meta": {
+   "n_jobs": 4,
+   "samples": 3,
+   "app": "cyp-cofold-boltz"
+  }
+ },
+ {
+  "run_id": "smoke1-1789013875",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 12,
+  "est_gpu_hours": 0.16799999999999998,
+  "started": 1789013875.4626913,
+  "month": "2026-09",
+  "status": "failed",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-boltz tag=smoke1",
+  "meta": {
+   "n_jobs": 4,
+   "samples": 3,
+   "app": "cyp-cofold-boltz"
+  },
+  "ended": 1789014204.0382714
+ },
+ {
+  "run_id": "smoke2-1789014211",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 12,
+  "est_gpu_hours": 0.16799999999999998,
+  "started": 1789014211.194869,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-boltz tag=smoke2",
+  "meta": {
+   "n_jobs": 4,
+   "samples": 3,
+   "app": "cyp-cofold-boltz"
+  }
+ }
+]
