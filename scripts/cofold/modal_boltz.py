@@ -72,6 +72,21 @@ cache_vol = modal.Volume.from_name("cyp-boltz-cache", create_if_missing=True)
 out_vol = modal.Volume.from_name("cyp-pool", create_if_missing=True)
 
 
+def _clean_a3m(raw: bytes) -> bytes:
+    """Strip NUL bytes and normalise the tail of an a3m alignment.
+
+    The MSA server's output arrived with a single trailing NUL byte. Boltz's a3m
+    parser maps every character through `const.prot_letter_to_token`, so one stray
+    byte raises a KeyError after the schema has parsed and the GPU is already
+    allocated. A 4 MB alignment, 6,979 sequences, every one of them valid, killed
+    by its last byte.
+
+    Applied on write AND on read, so a cache written before this existed is healed
+    rather than needing to be recomputed.
+    """
+    return raw.replace(b"\x00", b"").rstrip() + b"\n"
+
+
 # ==========================================================================
 # remote
 # ==========================================================================
@@ -109,9 +124,15 @@ def warm_cache(sequence: str) -> dict:
             capture_output=True, text=True, timeout=3000)
         found = list(work.rglob("*.a3m"))
         if found:
-            tgt.write_bytes(found[0].read_bytes())
+            tgt.write_bytes(_clean_a3m(found[0].read_bytes()))
         else:
             return {"ok": False, "stderr": cp.stderr[-3000:], "stdout": cp.stdout[-2000:]}
+
+    else:
+        # heal a cache written before the sanitiser existed
+        cleaned = _clean_a3m(tgt.read_bytes())
+        if cleaned != tgt.read_bytes():
+            tgt.write_bytes(cleaned)
 
     cache_vol.commit()
     return {"ok": True, "msa_bytes": tgt.stat().st_size,
@@ -146,7 +167,8 @@ def cofold(spec: dict) -> dict:
     msa_src = Path("/cache/msa/cyp3a4.a3m")
     local_msa = work / "cyp3a4.a3m"
     if msa_src.exists():
-        local_msa.write_bytes(msa_src.read_bytes())
+        # sanitise on READ as well as on write: the cached copy predates the fix
+        local_msa.write_bytes(_clean_a3m(msa_src.read_bytes()))
     y = work / "input.yaml"
     y.write_text(spec["yaml"].replace("MSA_PATH", str(local_msa)))
 

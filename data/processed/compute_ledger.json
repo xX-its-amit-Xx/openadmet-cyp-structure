@@ -97,13 +97,32 @@
   "est_gpu_hours": 0.16799999999999998,
   "started": 1789039935.5764365,
   "month": "2026-09",
-  "status": "launched",
+  "status": "done",
   "actual_gpu_hours": null,
-  "note": "app=cyp-cofold-boltz tag=smoke4",
+  "note": "app=cyp-cofold-boltz tag=smoke4 | 0 ok, 4 failed",
   "meta": {
    "n_jobs": 4,
    "samples": 3,
    "app": "cyp-cofold-boltz"
-  }
+  },
+  "ended": 1789039969.9052846
+ },
+ {
+  "run_id": "smoke5-1789040056",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 12,
+  "est_gpu_hours": 0.16799999999999998,
+  "started": 1789040056.852364,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-boltz tag=smoke5 | 4 ok, 0 failed",
+  "meta": {
+   "n_jobs": 4,
+   "samples": 3,
+   "app": "cyp-cofold-boltz"
+  },
+  "ended": 1789040271.0122304
  }
 ]

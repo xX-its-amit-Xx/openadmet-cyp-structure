@@ -1,0 +1,13 @@
+ligand,arm,path,pdb,cls,lddt_pli,bisy_rmsd,confidence,valid,invalid_reason,fe_donor_dist,s_fe_donor_angle,is_coordinated,frac_proximal
+08J,steered,D:\cyp_stage\pool_smoke5\08J__steered__s1\input_model_0.cif,5TE8,type_I_active_site,0.4951523545706371,1.6084479620087042,-0.6678013801574707,True,,5.451400619638957,147.96166805597602,False,0.0
+08J,steered,D:\cyp_stage\pool_smoke5\08J__steered__s1\input_model_1.cif,5TE8,type_I_active_site,0.24376731301939059,3.7446428880015943,-0.8521182537078857,True,,5.74458445464944,138.56264713052602,False,0.0
+08J,steered,D:\cyp_stage\pool_smoke5\08J__steered__s1\input_model_2.cif,5TE8,type_I_active_site,0.2472299168975069,3.7131725180130584,-0.6389257907867432,True,,3.3823966199279467,173.7202494551978,False,0.0
+08J,unsteered,D:\cyp_stage\pool_smoke5\08J__unsteered__s1\input_model_0.cif,5TE8,type_I_active_site,0.2409972299168975,3.794664454491798,-0.8010604977607727,True,,3.2514428943470617,175.23194222078442,False,0.0
+08J,unsteered,D:\cyp_stage\pool_smoke5\08J__unsteered__s1\input_model_1.cif,5TE8,type_I_active_site,0.15650969529085873,5.166774384527988,-0.8423516154289246,True,,6.0532183982820245,144.07717978114567,False,0.0
+08J,unsteered,D:\cyp_stage\pool_smoke5\08J__unsteered__s1\input_model_2.cif,5TE8,type_I_active_site,0.1461218836565097,5.018404824897725,-1.2099261283874512,True,,3.023841258614612,165.88131126702484,False,0.0
+1RD,steered,D:\cyp_stage\pool_smoke5\1RD__steered__s1\input_model_0.cif,4K9T,type_II_coordinated,0.23068669527896996,6.247297356399444,-0.8764165639877319,True,,2.1984468557597654,175.62379647218032,True,0.0
+1RD,steered,D:\cyp_stage\pool_smoke5\1RD__steered__s1\input_model_1.cif,4K9T,type_II_coordinated,0.2918454935622318,5.807764244655472,-0.9766970872879028,True,,2.1626499206991405,173.4158249434018,True,0.0
+1RD,steered,D:\cyp_stage\pool_smoke5\1RD__steered__s1\input_model_2.cif,4K9T,type_II_coordinated,0.3029327610872675,5.564434020968598,-1.278205394744873,True,,2.238470099286564,171.97282838161527,True,0.0
+1RD,unsteered,D:\cyp_stage\pool_smoke5\1RD__unsteered__s1\input_model_0.cif,4K9T,type_II_coordinated,0.2342632331902718,6.20384322222905,-0.8986186385154724,True,,2.1976794508754,175.9481252491722,True,0.0
+1RD,unsteered,D:\cyp_stage\pool_smoke5\1RD__unsteered__s1\input_model_1.cif,4K9T,type_II_coordinated,0.2814735336194564,5.896500036892735,-0.9363851547241211,True,,2.162758655536951,173.90245088365788,True,0.0
+1RD,unsteered,D:\cyp_stage\pool_smoke5\1RD__unsteered__s1\input_model_2.cif,4K9T,type_II_coordinated,0.31723891273247495,5.453601363583071,-1.3086434602737427,True,,2.182618136573597,172.54940728653773,True,0.0

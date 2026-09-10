@@ -302,35 +302,96 @@ def lddt_lp(model: Complex, ref: Complex, inclusion_radius: float = 15.0,
     return float(np.mean([(diff < t).mean() for t in thresholds]))
 
 
-def best_ligand_mapping(model_smiles: str, model: Complex, ref: Complex) -> np.ndarray | None:
-    """Symmetry-aware atom mapping from model ligand atoms to reference ligand atoms.
+# Covalent radii (Angstrom) for perceiving ligand connectivity from coordinates.
+_COV_R = {"H": 0.31, "C": 0.76, "N": 0.71, "O": 0.66, "F": 0.57, "P": 1.07, "S": 1.05,
+          "CL": 1.02, "BR": 1.20, "I": 1.39, "B": 0.84, "SI": 1.11, "SE": 1.20, "FE": 1.32}
 
-    Uses RDKit substructure matching on the ligand graph. Returns None if the two
-    ligands do not have the same heavy-atom composition, which is itself a useful
-    signal — it means the co-folder emitted a different molecule than we asked for.
+
+def _adjacency(xyz: np.ndarray, elems: list[str], tol: float = 0.45) -> np.ndarray:
+    """Bond adjacency perceived from interatomic distances and covalent radii."""
+    r = np.array([_COV_R.get(e.upper(), 0.77) for e in elems])
+    d = np.linalg.norm(xyz[:, None, :] - xyz[None, :, :], axis=2)
+    cut = r[:, None] + r[None, :] + tol
+    adj = (d < cut) & (d > 0.1)
+    return adj
+
+
+def best_ligand_mapping(model_smiles: str, model: Complex, ref: Complex,
+                        align_resnums: list[int] | None = None) -> np.ndarray | None:
+    """Map model ligand atom i to reference ligand atom `perm[i]`, symmetry-aware.
+
+    **This must not assume the two structures list atoms in the same order.** They do
+    not: a Boltz mmCIF for ligand 1RD begins C,C,C,C,N,C while the deposited crystal
+    begins O,C,O,C,C,S. An index-for-index comparison of those gives 11.4 A where the
+    true answer is far smaller, and it does so silently, poisoning every LDDT-PLI and
+    RMSD downstream. An earlier version of this function made exactly that assumption.
+
+    Method: perceive each ligand's bond graph from its own coordinates, find graph
+    isomorphisms with element labels (VF2), and among them take the mapping that
+    minimises ligand RMSD after superposing on the binding site. Isomorphism enumeration
+    is what makes this symmetry-aware for free — a symmetric substituent yields several
+    valid mappings and we take the best, rather than penalising a correct pose for an
+    arbitrary atom labelling.
+
+    Falls back to an element-constrained Hungarian assignment when no isomorphism is
+    found (a co-folder occasionally emits distorted geometry that breaks bond
+    perception). That fallback is a LOWER bound on RMSD, not the true value, so it is
+    reported separately by callers that care.
+
+    Returns None when the two ligands differ in heavy-atom composition, which is itself
+    informative: the engine did not build the molecule we asked for.
     """
-    try:
-        from rdkit import Chem
-    except ImportError:
+    if len(model.lig_xyz) == 0 or len(ref.lig_xyz) == 0:
         return None
     if len(model.lig_xyz) != len(ref.lig_xyz):
         return None
-    m = Chem.MolFromSmiles(model_smiles)
-    if m is None:
+    me = [e.upper() for e in model.lig_elem]
+    re_ = [e.upper() for e in ref.lig_elem]
+    if sorted(me) != sorted(re_):
         return None
-    m = Chem.RemoveHs(m)
-    if m.GetNumAtoms() != len(ref.lig_xyz):
-        return None
-    matches = m.GetSubstructMatches(m, uniquify=False, useChirality=False, maxMatches=10000)
-    if not matches:
-        return None
+
+    # superpose on the binding site so that "best mapping" is measured in a shared frame
+    resn = align_resnums or pocket_residues_from_structure(ref, radius=8.0)
+    try:
+        aligned, _fit, _n = align_by_residue(model, ref, resnums=resn)
+        mxyz = aligned.lig_xyz
+    except ValueError:
+        mxyz = model.lig_xyz
+
     best, best_rmsd = None, np.inf
-    for perm in matches:
-        p = np.array(perm)
-        r = np.sqrt(((model.lig_xyz - ref.lig_xyz[p]) ** 2).sum(1).mean())
-        if r < best_rmsd:
-            best, best_rmsd = p, r
-    return best
+    try:
+        import networkx as nx
+        from networkx.algorithms.isomorphism import GraphMatcher, categorical_node_match
+
+        gm_a = nx.from_numpy_array(_adjacency(model.lig_xyz, me))
+        gm_b = nx.from_numpy_array(_adjacency(ref.lig_xyz, re_))
+        nx.set_node_attributes(gm_a, {i: e for i, e in enumerate(me)}, "el")
+        nx.set_node_attributes(gm_b, {i: e for i, e in enumerate(re_)}, "el")
+        matcher = GraphMatcher(gm_a, gm_b, node_match=categorical_node_match("el", ""))
+        for k, iso in enumerate(matcher.isomorphisms_iter()):
+            if k > 20000:      # pathological symmetry; the best so far is good enough
+                break
+            p = np.array([iso[i] for i in range(len(me))])
+            r = float(np.sqrt(((mxyz - ref.lig_xyz[p]) ** 2).sum(1).mean()))
+            if r < best_rmsd:
+                best, best_rmsd = p, r
+    except Exception:
+        best = None
+
+    if best is not None:
+        return best
+
+    # fallback: element-constrained optimal assignment (a lower bound on true RMSD)
+    try:
+        from scipy.optimize import linear_sum_assignment
+
+        d = np.linalg.norm(mxyz[:, None, :] - ref.lig_xyz[None, :, :], axis=2)
+        cost = d.copy()
+        cost[np.array(me)[:, None] != np.array(re_)[None, :]] = d.max() + 1e3
+        _r, c = linear_sum_assignment(cost)
+        return np.asarray(c)
+    except Exception:
+        return None
 
 
 def bisy_rmsd(model: Complex, ref: Complex, align_resnums: list[int] | None = None,
