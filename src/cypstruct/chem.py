@@ -139,27 +139,33 @@ def coordinating_atoms(smiles_or_mol, top_k: int = 3) -> list[DonorSite]:
 
 
 def boltz_atom_name(smiles: str, atom_idx: int) -> str | None:
-    """The name Boltz will give heavy atom `atom_idx` of a SMILES ligand.
+    """The name Boltz gives heavy atom `atom_idx` of a SMILES ligand.
 
-    Boltz names SMILES-ligand atoms as `SYMBOL + str(CanonicalRankAtoms(mol)[i] + 1)` —
-    the **canonical rank over all atoms**, not a per-element counter. So the first
-    nitrogen of a molecule is typically NOT "N1": in the ritonavir analog 1RD the
-    coordinating nitrogen is `N19`.
+    The rule is `SYMBOL + str(CanonicalRankAtoms(mol)[i] + 1)`, and the load-bearing
+    detail is that the rank is computed **after hydrogens are added**, over all atoms.
+    So the name is not a per-element counter and it is not the heavy-atom rank either:
+    for the ritonavir analog 1RD the coordinating nitrogen is **N41**, where the
+    heavy-atom-only rank would say N19 and a naive per-element counter would say N1.
 
-    Getting this wrong is not a silent error, which is the one mercy here: Boltz looks
-    the name up in an atom index map and raises, so a bad name fails at parse time
-    rather than quietly constraining the wrong atom. It still costs a full round trip,
-    so compute it correctly.
+    This was settled by running Boltz's own `parse_boltz_schema` on both candidates on
+    CPU (`modal_boltz.probe_yaml`): N19 raised `KeyError: ('L', 0, 'N19')` and N41 parsed.
+    Do not "simplify" this back to ranking the heavy-atom graph.
+
+    A wrong name fails loudly at parse time rather than silently constraining the wrong
+    atom, which is the one mercy here - but on the GPU path it costs a whole batch to
+    find out, so `probe_yaml` is the cheap way to re-check after a Boltz upgrade.
     """
     from rdkit.Chem import AllChem
 
     mol = Chem.MolFromSmiles(smiles)
     if mol is None or atom_idx >= mol.GetNumAtoms():
         return None
-    rank = list(AllChem.CanonicalRankAtoms(mol))
-    a = mol.GetAtomWithIdx(int(atom_idx))
-    name = a.GetSymbol().upper() + str(rank[atom_idx] + 1)
+    # AddHs preserves heavy-atom indices, so atom_idx still addresses the same atom.
+    with_h = Chem.AddHs(mol)
+    rank = list(AllChem.CanonicalRankAtoms(with_h))
+    name = with_h.GetAtomWithIdx(int(atom_idx)).GetSymbol().upper() + str(rank[atom_idx] + 1)
     return name if len(name) <= 4 else None
+
 
 
 def ligand_class(smiles: str) -> str:

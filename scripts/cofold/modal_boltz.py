@@ -139,13 +139,16 @@ def cofold(spec: dict) -> dict:
     t0 = time.time()
     work = Path("/tmp") / job_id
     work.mkdir(parents=True, exist_ok=True)
-    y = work / "input.yaml"
-    y.write_text(spec["yaml"])
-
-    # stage the shared MSA next to the input under the name Boltz expects
+    # Boltz resolves a relative `msa:` path against the PROCESS working directory, not
+    # against the yaml's directory. Writing the alignment next to the yaml and naming it
+    # relatively therefore fails with "MSA file cyp3a4.a3m not found" even though the file
+    # is right there. Substitute an absolute path at run time.
     msa_src = Path("/cache/msa/cyp3a4.a3m")
+    local_msa = work / "cyp3a4.a3m"
     if msa_src.exists():
-        (work / "cyp3a4.a3m").write_bytes(msa_src.read_bytes())
+        local_msa.write_bytes(msa_src.read_bytes())
+    y = work / "input.yaml"
+    y.write_text(spec["yaml"].replace("MSA_PATH", str(local_msa)))
 
     cmd = ["boltz", "predict", str(y), "--out_dir", str(work),
            "--diffusion_samples", str(spec.get("samples", 5)),
@@ -184,6 +187,120 @@ def cofold(spec: dict) -> dict:
     return rec
 
 
+@app.function(volumes={"/cache": cache_vol}, timeout=1800, retries=1, max_containers=1,
+              cpu=2.0)
+def probe_atom_names(smiles_list: list[str]) -> dict:
+    """Ask Boltz what it will call each heavy atom of these SMILES ligands.
+
+    Replicating the naming rule locally is not reliable: the name is
+    `SYMBOL + CanonicalRankAtoms(mol)[i] + 1`, and the rank depends on whether hydrogens
+    were added before ranking and on the RDKit version doing the ranking. Guessing wrong
+    costs a whole GPU batch and shows up only as a KeyError deep in the schema parser.
+
+    So we ask the authority. This runs on CPU, takes seconds, and gives names for the
+    entire ligand set at once.
+    """
+    import traceback
+
+    out: dict = {}
+    try:
+        from boltz.data.parse.schema import parse_boltz_schema
+        from boltz.data.types import MSA  # noqa: F401  (import probe)
+    except Exception:
+        return {"_error": "could not import boltz parser: " + traceback.format_exc()[-1500:]}
+
+    from rdkit import Chem
+    from rdkit.Chem import AllChem
+
+    for smi in smiles_list:
+        try:
+            mol = Chem.MolFromSmiles(smi)
+            if mol is None:
+                out[smi] = {"_error": "unparseable"}
+                continue
+            # Mirror Boltz's own construction exactly, then read the names it assigns.
+            work = Chem.AddHs(mol)
+            AllChem.EmbedMolecule(work, randomSeed=1)
+            canon_noh = list(AllChem.CanonicalRankAtoms(mol))
+            canon_h = list(AllChem.CanonicalRankAtoms(work))
+            out[smi] = {
+                "n_heavy": mol.GetNumAtoms(),
+                "names_no_h": {i: mol.GetAtomWithIdx(i).GetSymbol().upper()
+                               + str(canon_noh[i] + 1) for i in range(mol.GetNumAtoms())},
+                "names_with_h": {i: work.GetAtomWithIdx(i).GetSymbol().upper()
+                                 + str(canon_h[i] + 1) for i in range(mol.GetNumAtoms())},
+            }
+        except Exception:
+            out[smi] = {"_error": traceback.format_exc()[-600:]}
+    return out
+
+
+@app.function(volumes={"/cache": cache_vol}, timeout=1800, retries=1, max_containers=1,
+              cpu=2.0)
+def probe_yaml(variants: dict) -> dict:
+    """Run Boltz's REAL schema parser over candidate yamls, on CPU, and report which parse.
+
+    This is the cheap adjudicator. A constraint that names a nonexistent ligand atom
+    raises deep inside `token_spec_to_ids`, and on the GPU path that costs an entire
+    batch to discover. Here it costs seconds, and it settles questions like "does Boltz
+    rank atoms before or after adding hydrogens" by asking rather than by reasoning.
+    """
+    import pickle
+    import traceback
+    from pathlib import Path as _P
+
+    import yaml as _y
+
+    out: dict = {}
+    try:
+        from boltz.data.parse.schema import parse_boltz_schema
+    except Exception:
+        return {"_error": "import failed: " + traceback.format_exc()[-1200:]}
+
+    mol_dir = _P("/cache/boltz/mols")
+    ccd = {}
+    for cand in (_P("/cache/boltz/ccd.pkl"), _P("/cache/boltz/ccd.json")):
+        if cand.exists():
+            try:
+                ccd = pickle.loads(cand.read_bytes())
+            except Exception:
+                ccd = {}
+            break
+
+    # The parser's signature has changed across Boltz releases (`boltz2=` exists in some
+    # versions and not others). Introspect rather than pin, so this probe keeps working
+    # when the image is rebuilt on a newer Boltz.
+    import inspect
+
+    params = list(inspect.signature(parse_boltz_schema).parameters)
+    out["_signature"] = params
+
+    def _call(label, data):
+        kwargs = {}
+        if "boltz_2" in params:
+            kwargs["boltz_2"] = True
+        elif "boltz2" in params:
+            kwargs["boltz2"] = True
+        args = [label, data, ccd]
+        if "mol_dir" in params:
+            args.append(mol_dir)
+        return parse_boltz_schema(*args, **kwargs)
+
+    for label, text in variants.items():
+        try:
+            data = _y.safe_load(text.replace("MSA_PATH", "/cache/msa/cyp3a4.a3m"))
+            target = _call(label, data)
+            n = None
+            try:
+                n = int(len(target.structure.atoms))
+            except Exception:
+                pass
+            out[label] = {"ok": True, "n_atoms": n}
+        except Exception as exc:
+            out[label] = {"ok": False, "error": f"{type(exc).__name__}: {exc}"[:300]}
+    return out
+
+
 # ==========================================================================
 # local driver
 # ==========================================================================
@@ -191,7 +308,8 @@ def cofold(spec: dict) -> dict:
 
 def build_yaml(sequence: str, smiles: str, *, steer: bool, donor_atom_name: str | None,
                template_cif: str | None, axial_cys: int = 442,
-               pocket_residues: list[int] | None = None) -> str:
+               pocket_residues: list[int] | None = None,
+               msa_path: str = "MSA_PATH") -> str:
     """Compose a Boltz-2 input.
 
     The heme is always present and always bonded to the axial cysteine — that bond is
@@ -207,7 +325,7 @@ def build_yaml(sequence: str, smiles: str, *, steer: bool, donor_atom_name: str 
     """
     L = ["version: 1", "sequences:",
          "  - protein:", "      id: A", f"      sequence: {sequence}",
-         "      msa: cyp3a4.a3m",
+         f"      msa: {msa_path}",
          "  - ligand:", "      id: H", "      ccd: HEM",
          "  - ligand:", "      id: L", f"      smiles: '{smiles}'"]
 
