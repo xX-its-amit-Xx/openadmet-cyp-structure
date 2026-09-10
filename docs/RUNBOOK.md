@@ -15,20 +15,25 @@ We have **99 CYP3A4 ligands with deposited crystal poses**
 pose we generate for these can be scored immediately with `cypstruct.pose.lddt_pli` and
 `bisy_rmsd`. No waiting for the challenge release to start measuring.
 
-```bash
-# smoke (2 ligands, 3 samples) — proves the pipeline end to end
-python scripts/cofold/modal_boltz.py submit --csv data/processed/smoke_ligands.csv \
-    --tag smoke1 --samples 3 --seeds 1
+**Always dry-parse on CPU first.** This is a gate, not a formality:
 
-# the real arm comparison: 99 ligands x {steered, unsteered} x 3 seeds x 10 samples
-python scripts/cofold/modal_boltz.py submit --csv data/processed/validation_ligands.csv \
-    --tag val99 --samples 10 --seeds 1,2,3
-python scripts/cofold/modal_boltz.py collect --tag val99
+```bash
+python scripts/cofold/preflight_parse.py --csv data/processed/validation_ligands.csv     --tag val87 --samples 20            # exits non-zero if anything fails to parse
+python scripts/cofold/modal_boltz.py submit --csv data/processed/validation_ligands.csv     --tag val87 --samples 20 --seeds 1
+python scripts/structure/score_pool.py --pool <collected dir>
 ```
 
-⚠️ 570 jobs at 10 samples estimates ~40 GPU-h and **the preflight will refuse it** as more
-than half the monthly cap. Split it: run the 83 coordinated ligands first (the arm
-comparison only means anything on those), then the rest.
+The gate has already caught two batch-killers: a `contact` constraint with the wrong list
+arity (which fails as **rc=0, zero structures, 25 seconds**, indistinguishable from success
+at a glance), and **12 organometallic ligands** (Ir/Ru dative-bond SMILES) that Boltz
+cannot parse. Those 12 are excluded and recorded in
+`data/processed/excluded_organometallic.json`; they must be reported as uncovered, not
+quietly dropped. The set is now 87 ligands, 72 coordinated and 15 active-site.
+
+Watch the budget: 570 jobs at 10 samples estimates ~40 GPU-h and **the preflight will
+refuse it** as more than half the monthly cap. More samples per job is cheaper than more
+jobs, because Boltz runs the trunk once then diffuses: measured ~122 s for a 3-sample job
+on an A100, and the running 168-job batch at 20 samples estimates 18.5 GPU-h.
 
 **Gate:** does the steered arm beat the unsteered arm on LDDT-PLI, on ligands where the
 donor prediction was correct? Report the **pool oracle** (best achievable in the pool)
