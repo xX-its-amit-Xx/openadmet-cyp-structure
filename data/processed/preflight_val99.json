@@ -1,0 +1,681 @@
+{
+ "_signature": [
+  "name",
+  "schema",
+  "ccd",
+  "mol_dir",
+  "boltz_2"
+ ],
+ "08J__steered__s1": {
+  "ok": true,
+  "n_atoms": 4099
+ },
+ "08J__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4099
+ },
+ "08Y__steered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "08Y__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "1RD__steered__s1": {
+  "ok": true,
+  "n_atoms": 4111
+ },
+ "1RD__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4111
+ },
+ "2QH__steered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "2QH__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "5AW__steered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "5AW__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "6AW__steered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "6AW__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "7AW__steered__s1": {
+  "ok": true,
+  "n_atoms": 4121
+ },
+ "7AW__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4121
+ },
+ "80K__steered__s1": {
+  "ok": true,
+  "n_atoms": 4106
+ },
+ "80K__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4106
+ },
+ "8AW__steered__s1": {
+  "ok": true,
+  "n_atoms": 4111
+ },
+ "8AW__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4111
+ },
+ "A1A06__steered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "A1A06__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "A1A07__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "A1A07__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "A1A08__steered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "A1A08__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "A1A4K__steered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "A1A4K__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "A1A4S__steered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "A1A4S__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "A1A4T__steered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "A1A4T__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "A1A4U__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "A1A4U__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "A1A4V__steered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "A1A4V__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "A1APA__steered__s1": {
+  "ok": true,
+  "n_atoms": 4130
+ },
+ "A1APA__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4130
+ },
+ "A1ASO__steered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "A1ASO__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "A1ASP__steered__s1": {
+  "ok": true,
+  "n_atoms": 4102
+ },
+ "A1ASP__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4102
+ },
+ "A1ASQ__steered__s1": {
+  "ok": true,
+  "n_atoms": 4104
+ },
+ "A1ASQ__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4104
+ },
+ "A1ASR__steered__s1": {
+  "ok": true,
+  "n_atoms": 4102
+ },
+ "A1ASR__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4102
+ },
+ "A1ASS__steered__s1": {
+  "ok": true,
+  "n_atoms": 4098
+ },
+ "A1ASS__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4098
+ },
+ "A1AST__steered__s1": {
+  "ok": true,
+  "n_atoms": 4104
+ },
+ "A1AST__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4104
+ },
+ "A1ASU__steered__s1": {
+  "ok": true,
+  "n_atoms": 4101
+ },
+ "A1ASU__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4101
+ },
+ "A1ASV__steered__s1": {
+  "ok": true,
+  "n_atoms": 4098
+ },
+ "A1ASV__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4098
+ },
+ "A1BNX__steered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "A1BNX__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "A1CIW__steered__s1": {
+  "ok": true,
+  "n_atoms": 4108
+ },
+ "A1CIW__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4108
+ },
+ "CFF__steered__s1": {
+  "ok": true,
+  "n_atoms": 4090
+ },
+ "CFF__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4090
+ },
+ "CL6__steered__s1": {
+  "ok": true,
+  "n_atoms": 4101
+ },
+ "CL6__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4101
+ },
+ "D0R__steered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "D0R__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "D7J__steered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "D7J__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4110
+ },
+ "D7M__steered__s1": {
+  "ok": true,
+  "n_atoms": 4105
+ },
+ "D7M__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4105
+ },
+ "D7Y__steered__s1": {
+  "ok": true,
+  "n_atoms": 4103
+ },
+ "D7Y__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4103
+ },
+ "D81__steered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "D81__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "DEJ__steered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "DEJ__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "DEV__steered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "DEV__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "DJ1__steered__s1": {
+  "ok": true,
+  "n_atoms": 4115
+ },
+ "DJ1__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4115
+ },
+ "ERY__steered__s1": {
+  "ok": true,
+  "n_atoms": 4127
+ },
+ "ERY__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4127
+ },
+ "FZV__steered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "FZV__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "G0D__steered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "G0D__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "G0J__steered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "G0J__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "G0M__steered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "G0M__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "G0V__steered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "G0V__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "G1J__steered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "G1J__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "J9K__steered__s1": {
+  "ok": true,
+  "n_atoms": 4106
+ },
+ "J9K__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4106
+ },
+ "KLN__steered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "KLN__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "MF8__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4085
+ },
+ "MWS__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4103
+ },
+ "MWV__steered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "MWV__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4112
+ },
+ "MWY__steered__s1": {
+  "ok": true,
+  "n_atoms": 4109
+ },
+ "MWY__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4109
+ },
+ "MYT__steered__s1": {
+  "ok": true,
+  "n_atoms": 4093
+ },
+ "MYT__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4093
+ },
+ "NH0__steered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "NH0__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4113
+ },
+ "NI6__steered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "NI6__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "NJ0__steered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "NJ0__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "NJO__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "NJO__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "NXR__steered__s1": {
+  "ok": true,
+  "n_atoms": 4115
+ },
+ "NXR__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4115
+ },
+ "NYF__steered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "NYF__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4119
+ },
+ "PG0__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4084
+ },
+ "PG4__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4089
+ },
+ "PK9__steered__s1": {
+  "ok": true,
+  "n_atoms": 4099
+ },
+ "PK9__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4099
+ },
+ "PKT__steered__s1": {
+  "ok": true,
+  "n_atoms": 4109
+ },
+ "PKT__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4109
+ },
+ "QDJ__steered__s1": {
+  "ok": true,
+  "n_atoms": 4120
+ },
+ "QDJ__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4120
+ },
+ "QDP__steered__s1": {
+  "ok": true,
+  "n_atoms": 4121
+ },
+ "QDP__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4121
+ },
+ "QDV__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "QDV__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "QDY__steered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "QDY__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "QE4__steered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "QE4__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "QEA__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "QEA__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "QEP__steered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "QEP__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "QES__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "QES__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "RIT__steered__s1": {
+  "ok": true,
+  "n_atoms": 4126
+ },
+ "RIT__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4126
+ },
+ "T0K__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "T0K__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "TCI__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4099
+ },
+ "X5Y__steered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "X5Y__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "X6J__steered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X6J__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X6S__steered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X6S__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X6V__steered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "X6V__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4117
+ },
+ "X71__steered__s1": {
+  "ok": true,
+  "n_atoms": 4115
+ },
+ "X71__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4115
+ },
+ "X74__steered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X74__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X7D__steered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X7D__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4118
+ },
+ "X7J__steered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "X7J__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "X7M__steered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "X7M__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "X7P__steered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "X7P__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4114
+ },
+ "Y83__steered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "Y83__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4116
+ },
+ "YNV__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4122
+ },
+ "Z8Z__steered__s1": {
+  "ok": true,
+  "n_atoms": 4125
+ },
+ "Z8Z__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4125
+ },
+ "Z9Z__steered__s1": {
+  "ok": true,
+  "n_atoms": 4126
+ },
+ "Z9Z__unsteered__s1": {
+  "ok": true,
+  "n_atoms": 4126
+ }
+}

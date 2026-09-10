@@ -1,0 +1,13 @@
+id,pdb,cls,smiles
+O39,7UAY,type_II_coordinated,c1ccc2c(c1)C=CC3=[N]2[Ir]45(c6c3cccc6)(c7ccccc7C8=[N]4c9ccccc9C=C8)[N]1=C(C=CC=C1)C1=[N]5C=C(C=C1)CNC(=O)CCSCc1cccnc1
+O3L,7UAZ,type_II_coordinated,c1ccc2c(c1)C3=[N]([Ir]245(c6ccccc6C7=[N]4C=CC=C7)[N]8=CC=CC=C8C9=CC=C(C=[N]59)CNC(=O)CCSCc1cccnc1)C=CC=C3
+WZN,8EWD,type_II_coordinated,CC(C)(C)OC(=O)N[C@@H](Cc1ccncc1)C(=O)NCC2=C[N]3=C(C=C2)C4=CC=CC=[N]4[Ir+]356(c7ccccc7C8=[N]5c9ccccc9C=C8)c1ccccc1C1=CC=C2C=CC=CC2=[N]61
+X0E,8EWE,type_II_coordinated,CC(C)(C)OC(=O)N[C@H](Cc1ccncc1)C(=O)NCC2=C[N]3=C(C=C2)C4=CC=CC=[N]4[Ir+]356(c7ccccc7C8=[N]5c9ccccc9C=C8)c1ccccc1C1=CC=C2C=CC=CC2=[N]61
+X1C,8EWL,type_II_coordinated,c1ccc2c(c1)C=CC3=[N]2[Ir+]45(c6c3cccc6)(c7ccccc7C8=CC=C9C=CC=CC9=[N]48)[N]1=C(C=CC=C1)C1=[N]5C=C(C=C1)CNC(=O)CCc1ccncc1
+X1I,8EWM,type_II_coordinated,CC(C)(C)OC(=O)N[C@@H](Cc1ccncc1)C(=O)/N=C\C2=C[N]3=C(C=C2)C4=[N]([Ir+]356(c7cc(cc(c7C8=[N]5C=CC=C8)F)F)c9cc(cc(c9C1=CC=CC=[N]61)F)F)C=CC=C4
+X1O,8EWN,type_II_coordinated,c1cnccc1CCC(=O)NCC2=CC=C3C4=CC=CC=[N]4[Ir+]56([N]3=C2)(c7cc(cc(c7C8=[N]5C=CC=C8)F)F)c9cc(cc(c9C1=CC=CC=[N]61)F)F
+X2B,8EWQ,type_II_coordinated,c1ccc(cc1)C(=O)N[C@@H](Cc2ccncc2)C(=O)NCC3=C[N]4=C(C=C3)C5=[N]([Ir+]467(c8ccccc8C9=[N]6c1ccccc1C=C9)c1ccccc1C1=CC=C2C=CC=CC2=[N]71)C=CC=C5
+X2Q,8EWP,type_II_coordinated,c1ccc2c(c1)C=CC3=[N]2[Ir+]45(c6c3sc7c6cccc7)(c8c9ccccc9sc8C1=CC=C2C=CC=CC2=[N]41)[N]1=C(C=CC=C1)C1=[N]5C=C(C=C1)CNC(=O)CCc1ccncc1
+X4E,8EXB,type_II_coordinated,c1ccc2c(c1)c3c(s2)C4=CC=C5C=CC=CC5=[N]4[Ir+]367(c8c9ccccc9sc8C1=CC=C2C=CC=CC2=[N]61)[N]1=CC=CC=C1C1=CC=C(C=[N]71)CNC(=O)CCc1cccnc1
+X8P,7KSA,type_II_coordinated,CC1=CC=CC2=[N]1[Ru]34([N]5=C(C=CC=C5)C6=[N]3C(=CC=C6)C7=CC=CC=[N]47)([N]8=C2C=CC=C8C)[N]9=CC=CC(=C9)CCCNC(=O)[C@@H](Cc1ccccc1)SC[C@H](Cc1ccccc1)NC(=O)OC(C)(C)C
+X8S,7KS8,type_I_active_site,CC1=CC=CC2=[N]1[Ru]34([N]5=CC=CC=C5C6=[N]3C(=CC=C6)C7=CC=CC=[N]47)([N]8=C2C=CC=C8C)[N]9=CC(=CC=C9)CNC(=O)CCSC[C@@H](Cc1ccccc1)NC(=O)OC(C)(C)C

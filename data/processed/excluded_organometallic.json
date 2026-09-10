@@ -1,0 +1,19 @@
+{
+ "excluded": [
+  "O39",
+  "O3L",
+  "WZN",
+  "X0E",
+  "X1C",
+  "X1I",
+  "X1O",
+  "X2B",
+  "X2Q",
+  "X4E",
+  "X8P",
+  "X8S"
+ ],
+ "reason": "Boltz cannot parse dative-bond organometallic SMILES (Ir/Ru complexes). These are a real CYP3A4 series, not junk - they are excluded from the co-folding validation set and must be reported as uncovered rather than silently dropped.",
+ "n_remaining": 87,
+ "caught_by": "CPU pre-flight parse, before 21 GPU-hours were spent"
+}
