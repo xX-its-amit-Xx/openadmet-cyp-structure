@@ -85,3 +85,50 @@ tail-rescue or abstention strategy.
    but the expectation should be set low in advance rather than after the fact.
 4. **Do not spend more GPU on sampling.** The oracle is 0.6975 and the PXR winning entry
    was 0.564. There is nothing wrong with the poses we have.
+
+---
+
+## Addendum (same day): why a hugely significant feature is still useless for selection
+
+The Chai smoke test produced the clue in miniature. For the type I substrate **08J**, the
+best pose of five — 0.80 Å RMSD, LDDT-PLI 0.519 — is **not coordinated** (iron 5.62 Å
+away), while the two samples that *do* coordinate score 0.21 and 0.25. A substrate is not
+supposed to ligate the iron; it is supposed to hover over it.
+
+Checked on the full 87-ligand set, the effect is large and unambiguous:
+
+| ligand class | coordinated | not coordinated | Δ | p |
+|---|---|---|---|---|
+| type II (n=1440) | 0.6063 | 0.2763 | **+0.330** | 1.3 × 10⁻⁹ |
+| type I (n=300) | 0.3448 | 0.4700 | **−0.125** | 7.2 × 10⁻⁶ |
+
+Coordination is strongly **good** for type II and significantly **bad** for type I. The
+global "coordination is good" term was averaging two opposite effects.
+
+**So conditioning on ligand class should fix it. It does not.**
+
+| selector | Δ vs random | p |
+|---|---|---|
+| global coordination | +0.0099 | 0.57 |
+| class-conditioned coordination / standoff | +0.0106 | 0.46 |
+| type II subset only | +0.0011 | 0.72 |
+| type I subset only (n=15) | +0.0565 | 0.39 |
+
+**Why: 1,424 of the 1,440 type II poses are already coordinated — 98.9%.** The feature is
+nearly constant within a ligand, so it cannot rank that ligand's samples. Its enormous
+effect size lives entirely in the 16 poses that fail to coordinate, which is a
+between-ligand contrast, not a within-ligand one.
+
+### The general lesson, which now governs how features get evaluated here
+
+**Selection only ever compares poses of the same ligand.** A feature's between-ligand
+effect size is therefore almost irrelevant to it, no matter how significant. What matters
+is *within-ligand variance that correlates with quality*.
+
+This is the same confound that made Boltz's pooled confidence correlation look mildly
+positive (+0.08) while its within-ligand correlation is negative (−0.033): easy ligands
+get both better poses and higher scores on almost any sensible measure.
+
+Every future feature must be reported as a **within-ligand** statistic. A term that is
+constant across a ligand's samples is not a weak selector, it is not a selector at all —
+and p = 1.3 × 10⁻⁹ will not save it.
