@@ -1,0 +1,10 @@
+{
+ "tag": "chaismoke2",
+ "jobs_archived": 2,
+ "files": 22,
+ "n_failed_reads": 0,
+ "failed_sample": [],
+ "remote": "onedrive:rclone-offload/cyp-structure/pool/chaismoke2",
+ "include_npz": false,
+ "seconds": 12.8
+}

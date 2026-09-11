@@ -46,7 +46,7 @@ ENGINES = {
 }
 
 
-def _deploy(module: str) -> str:
+def _deploy(module: str, profile: str | None = None) -> str:
     """`modal deploy` the module so its app becomes server-side and permanent."""
     path = REPO / "scripts" / "cofold" / f"{module}.py"
     # `modal deploy` prints a U+2713 check mark. On this Windows box the child inherits a
@@ -55,6 +55,11 @@ def _deploy(module: str) -> str:
     import os as _os
 
     env = {**_os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
+    if profile:
+        # Set the profile per-command rather than flipping the global active one: other
+        # Claude sessions share this machine and repointing their Modal client silently
+        # would be an unpleasant surprise.
+        env["MODAL_PROFILE"] = profile
     cp = subprocess.run(["modal", "deploy", str(path)],
                         capture_output=True, timeout=1800, env=env)
     out = (cp.stdout or b"").decode("utf-8", "replace")
@@ -86,8 +91,17 @@ def _done_count(tag: str) -> tuple[int, int]:
 
 
 def launch(engine: str, csv: str, tag: str, samples: int, seeds: str,
-           arms: str | None) -> None:
+           arms: str | None, profile: str | None = None) -> None:
+    import os as _os
+
     from cypstruct import budget
+
+    if profile:
+        # Credit AND volumes are per-workspace. Switching for credit means the new
+        # workspace has no cyp-pool, no weight cache and no staged MSA - they are rebuilt
+        # on first use. Archive before switching; see budget.WORKSPACES.
+        _os.environ["MODAL_PROFILE"] = profile
+        print(f"workspace: {profile} (volumes and credit are per-workspace)", flush=True)
 
     spec = ENGINES[engine]
     mod = __import__(spec["module"])
@@ -109,14 +123,25 @@ def launch(engine: str, csv: str, tag: str, samples: int, seeds: str,
     # Skip what is already finished, so a relaunch resumes instead of repeating.
     done_before, _ = _done_count(tag)
     est = budget.estimate(spec["kind"], len(jobs), samples)
-    ok, why, _ = budget.preflight_hours(spec["kind"], est)
     print(f"{len(jobs)} jobs planned ({done_before} already have DONE.json)  "
           f"est {est:.2f} GPU-h", flush=True)
+
+    # Gate on REAL DOLLARS in the workspace we are about to spend them in. The
+    # GPU-hour gate read "headroom available" at the exact moment Modal refused a launch
+    # for exceeding its spend limit, because it was measuring a proxy I invented rather
+    # than the quantity Modal bills. Hours are still printed, but dollars decide.
+    spend = budget.modal_actual_spend()
+    if spend.get("ok"):
+        print(f"  workspace billed this month: ${spend['total_usd']:.2f}", flush=True)
+    ok, why = budget.preflight_usd(est)
     if not ok:
-        raise SystemExit(f"PREFLIGHT REFUSED: {why}")
+        raise SystemExit(f"PREFLIGHT REFUSED (dollars): {why}")
+    ok_h, why_h, _ = budget.preflight_hours(spec["kind"], est)
+    if not ok_h:
+        print(f"  note: local hour ledger also objects ({why_h})", flush=True)
 
     print("deploying the app so the run outlives this process ...", flush=True)
-    print("  ", _deploy(spec["module"]).strip().splitlines()[-1:], flush=True)
+    print("  ", _deploy(spec["module"], profile).strip().splitlines()[-1:], flush=True)
 
     fn = modal.Function.from_name(spec["app"], spec["fn"])
     run_id = f"{tag}-detached-{int(time.time())}"
@@ -164,7 +189,11 @@ def waiting_for_capacity(app_id: str) -> str | None:
     return None
 
 
-def status(engine: str, tag: str) -> None:
+def status(engine: str, tag: str, profile: str | None = None) -> None:
+    import os as _os
+
+    if profile:
+        _os.environ["MODAL_PROFILE"] = profile
     spec = ENGINES[engine]
     done, total = _done_count(tag)
     print(json.dumps({"tag": tag, "engine": engine, "app": spec["app"],
@@ -208,10 +237,13 @@ if __name__ == "__main__":
     ap.add_argument("--samples", type=int, default=10)
     ap.add_argument("--seeds", default="1")
     ap.add_argument("--arms", default=None)
+    ap.add_argument("--profile", default=None,
+                    help="Modal workspace to run in (see cypstruct.budget.WORKSPACES). "
+                         "Volumes are per-workspace, so a switch starts from empty caches.")
     a = ap.parse_args()
     if a.cmd == "launch":
-        launch(a.engine, a.csv, a.tag, a.samples, a.seeds, a.arms)
+        launch(a.engine, a.csv, a.tag, a.samples, a.seeds, a.arms, a.profile)
     elif a.cmd == "status":
-        status(a.engine, a.tag)
+        status(a.engine, a.tag, a.profile)
     else:
         stop(a.engine)

@@ -1,0 +1,10 @@
+{
+ "tag": "val87s2",
+ "jobs_archived": 12,
+ "files": 492,
+ "n_failed_reads": 0,
+ "failed_sample": [],
+ "remote": "onedrive:rclone-offload/cyp-structure/pool/val87s2",
+ "include_npz": false,
+ "seconds": 133.3
+}

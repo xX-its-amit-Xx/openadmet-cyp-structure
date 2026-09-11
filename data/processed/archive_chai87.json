@@ -1,0 +1,10 @@
+{
+ "tag": "chai87",
+ "jobs_archived": 16,
+ "files": 336,
+ "n_failed_reads": 0,
+ "failed_sample": [],
+ "remote": "onedrive:rclone-offload/cyp-structure/pool/chai87",
+ "include_npz": false,
+ "seconds": 101.6
+}

@@ -303,5 +303,23 @@
    "app": "cyp-cofold-boltz",
    "detached": true
   }
+ },
+ {
+  "run_id": "chai87-detached-1789149919",
+  "venue": "modal",
+  "kind": "chai_cofold",
+  "units": 870,
+  "est_gpu_hours": 7.3950000000000005,
+  "started": 1789149919.5371873,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "detached spawn_map app=cyp-cofold-chai tag=chai87",
+  "meta": {
+   "n_jobs": 87,
+   "samples": 10,
+   "app": "cyp-cofold-chai",
+   "detached": true
+  }
  }
 ]

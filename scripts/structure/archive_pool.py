@@ -30,6 +30,7 @@ import shutil
 import sys
 import tempfile
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -38,7 +39,7 @@ sys.path.insert(0, str(REPO / "src"))
 import modal  # noqa: E402
 
 from cypstruct import storage  # noqa: E402
-from cypstruct.paths import DATA_PROCESSED, free_gb  # noqa: E402
+from cypstruct.paths import DATA_PROCESSED, free_gb, safe_workers  # noqa: E402
 
 
 def scratch_root() -> Path:
@@ -85,7 +86,7 @@ def main() -> None:
     ap.add_argument("--tag", required=True)
     ap.add_argument("--include-npz", action="store_true",
                     help="also archive the per-sample plddt/pae/pde arrays (much larger)")
-    ap.add_argument("--batch", type=int, default=12,
+    ap.add_argument("--batch", type=int, default=24,
                     help="jobs to stage before each push; keeps peak local usage small")
     a = ap.parse_args()
 
@@ -110,15 +111,18 @@ def main() -> None:
         chunk = todo[i: i + a.batch]
         stage = Path(tempfile.mkdtemp(prefix=f"cyparch_{a.tag}_", dir=str(root)))
         try:
-            for job in chunk:
+            # Volume reads are network-bound, so fetch jobs concurrently. Sequential
+            # archiving ran at ~12 jobs per 260 s, which is far too slow to finish inside
+            # one turn - and this data is the single most expensive artifact in the
+            # project, so getting a durable copy quickly matters.
+            def fetch(job: str) -> tuple[str, int, list[str]]:
                 dest = stage / job
                 dest.mkdir(parents=True, exist_ok=True)
+                got, bad = 0, []
                 try:
                     entries = list(vol.iterdir(f"/{a.tag}/{job}"))
                 except Exception as exc:
-                    print(f"    [skip job] {job}: {type(exc).__name__}", flush=True)
-                    failed.append(job)
-                    continue
+                    return job, 0, [f"{job} <iterdir {type(exc).__name__}>"]
                 for e in entries:
                     fn = e.path.split("/")[-1]
                     keep = (fn.endswith(".cif") or fn.endswith(".json")
@@ -127,10 +131,17 @@ def main() -> None:
                         continue
                     data = read_with_retry(vol, e.path)
                     if data is None:
-                        failed.append(f"{job}/{fn}")
+                        bad.append(f"{job}/{fn}")
                         continue
                     (dest / fn).write_bytes(data)
-                    n_files += 1
+                    got += 1
+                return job, got, bad
+
+            nw = safe_workers(8, ram_per_worker_gb=0.5)
+            with ThreadPoolExecutor(max_workers=nw) as ex:
+                for _job, got, bad in ex.map(fetch, chunk):
+                    n_files += got
+                    failed.extend(bad)
             if free_gb(stage) < 2.0:
                 raise RuntimeError(f"only {free_gb(stage):.2f} GB free while staging")
             # rclone MOVE: it verifies the transfer before deleting the local copy, so a

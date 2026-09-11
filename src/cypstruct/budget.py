@@ -320,3 +320,51 @@ def preflight_usd(est_gpu_hours: float, usd_per_gpu_hour: float = 2.2) -> tuple[
                        f"${projected:.2f} against a ${MONTHLY_USD_CAP:.2f} cap")
     return True, ""
 
+# --------------------------------------------------------------------------
+# Workspaces
+#
+# Modal credit lives per WORKSPACE, and so do Volumes. Switching workspaces to get more
+# credit therefore also loses read access to `cyp-pool`, the weight caches and the staged
+# MSA - they must be re-created in the new workspace. Archive first, switch second.
+#
+# Known workspaces (2026-09-11, from Amit):
+#   ashenoydiscovery  - primary; OVER its spend limit at $37.58 billed. Holds every
+#                       existing volume: cyp-pool, cyp-boltz-cache, cyp-chai-cache.
+#   xx-its-amit-xx    - the GitHub account, ~$30 credit, $0.00 billed. Clean slate.
+#   re-agent-hackathon - ~$140 credit. NOT configured on this box; needs its token added
+#                       to ~/.modal.toml. Amit's guidance: reserve it for FINE-TUNING /
+#                       pretraining, not for inference batches.
+# --------------------------------------------------------------------------
+
+WORKSPACES = {
+    "ashenoydiscovery": {"credit_usd": 0.0, "note": "primary; over spend limit; holds all volumes"},
+    "xx-its-amit-xx": {"credit_usd": 30.0, "note": "GitHub account; use for inference batches"},
+    "re-agent-hackathon": {"credit_usd": 140.0, "note": "NOT CONFIGURED; reserve for fine-tuning"},
+}
+
+
+def active_profile() -> str:
+    """The Modal profile a subprocess would use right now."""
+    env = os.environ.get("MODAL_PROFILE")
+    if env:
+        return env
+    try:
+        import tomllib
+        cfg = tomllib.loads(Path.home().joinpath(".modal.toml").read_text())
+        for name, block in cfg.items():
+            if isinstance(block, dict) and block.get("active"):
+                return name
+    except Exception:
+        pass
+    return "?"
+
+
+def workspace_env(profile: str) -> dict:
+    """Environment for running a Modal command against a specific workspace.
+
+    Set per-command rather than flipping the global active profile: other Claude sessions
+    share this machine, and silently repointing their Modal client would be rude at best.
+    """
+    return {**os.environ, "MODAL_PROFILE": profile,
+            "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
+
