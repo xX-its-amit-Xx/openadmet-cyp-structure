@@ -30,45 +30,52 @@ track: **LDDT-PLI** primary, BiSyRMSD and lddt_lp secondary.
 
 ## The thesis this repo is built on
 
-Three measurements, made here, that compose into one plan.
+**Superseded in part by `docs/FINDING_001_selection_is_the_whole_problem.md` (n=87,
+3,360 poses). Read that first — two claims below were falsified by it, and are kept here
+with corrections attached because the errors are instructive.**
 
 **A. Co-folding fails on CYP3A4 by getting the ligand's ORIENTATION wrong, not its
-location.** OpenADMET's own co-folding analysis reports the heme is placed correctly and
-the backbone is accurate (no Cα RMSD above 0.75 Å), while only **57.8% of Boltz-2 poses**
-and **31.5% of OpenFold3 poses** reach BiSyRMSD < 2 Å on CYP3A4. Errors include
-near-180° flips.
+location.** OpenADMET's own analysis reports the heme is placed correctly and the
+backbone is accurate, while only 57.8% of Boltz-2 poses reach BiSyRMSD < 2 Å. Our own
+run agrees on the mechanism: whole-protein CA fit is ~1.0 Å and the errors are in the
+ligand. **Still stands.**
 
-**B. Most CYP3A4 ligands coordinate the iron, and that fixes orientation.** Parsing 116
-deposited CYP3A4 entries (`scripts/structure/build_reference_set.py`): of 101 unique
-ligands, **83 coordinate the heme iron directly**, through nitrogen in 103 of 104 chain
-observations. The measured geometry is tight:
+**B. Most CYP3A4 ligands coordinate the iron.** Parsing 116 deposited entries: of 101
+unique ligands, **83 coordinate the heme iron directly**, through nitrogen in 103 of 104
+chain observations. Fe–donor 1.94 / **2.20** / 2.38 Å (p5/p50/p95), S(Cys442)–Fe–donor
+159.5 / **171.2** / 177.6°, and only **0.7%** of ligand atoms on the proximal face.
+**Still stands** — and it is the calibration the scorer uses.
 
-| observable | p5 | p50 | p95 |
-|---|---|---|---|
-| Fe–donor distance (Å) | 1.94 | 2.20 | 2.38 |
-| S(Cys442)–Fe–donor angle (°) | 159.5 | 171.2 | 177.6 |
-| Fe out-of-plane (Å) | −0.42 | −0.05 | +0.06 |
-| Fe–SG(Cys442) (Å) | 2.12 | 2.37 | 2.51 |
+**C. ⚠️ FALSIFIED: "co-folders never reach coordination geometry."** Inherited from a
+sibling-repo pilot that put zero of 120 poses inside the window, closest 2.80 Å. With an
+explicit `bond` from Cys442 SG to the heme FE and a 6,979-sequence MSA, Boltz-2 reaches a
+**median Fe–donor distance of 2.23 Å with 84% of poses inside 1.90–2.45 Å** — essentially
+the crystallographic distribution. The pilot's failure was its setup, not the model.
 
-Only **0.7%** of ligand atoms across the whole set sit on the proximal heme face, making
-the distal-side test a near-perfect validity filter.
+**D. ⚠️ FALSIFIED: "naming the donor atom converts an orientation failure into a
+constraint."** Measured across 87 ligands, forcing the Fe→donor contact is a **null,
+slightly negative**: oracle −0.0023, selected −0.0278, sub-2 Å ligand rate −4.7 points.
+It was redundant, because the heme bond alone already produces the right geometry.
+**Drop the steered arm.**
 
-**C. We can predict which atom coordinates.** `cypstruct.chem.coordinating_atoms` names a
-competent donor for **82 of the 83** coordinated ligands (98.8% recall,
-`scripts/structure/validate_donor_prediction.py`). Its weakness is honest and known: it
-over-calls coordination for **5 of 15** type I substrates that carry an unused aromatic
-nitrogen (33% false-positive rate).
+**E. THE ACTUAL FINDING: Boltz's confidence does not rank poses.** Within-ligand Spearman
+between `complex_ipde` and true LDDT-PLI is **−0.092 (steered) and −0.033 (unsteered)**,
+positive for about half the ligands, i.e. chance. **Selecting the highest-confidence pose
+is worse than selecting at random** (0.5428 vs 0.5585; 0.5706 vs 0.5769). The cross-model
+z-hybrid that won PXR ranks within an engine by exactly this signal, so it has no
+foundation here.
 
-**Therefore:** for the dominant binding mode, naming the donor atom converts an
-orientation failure into a constraint we can hand the model — and into a check the
-scorer can run. Every co-folding run submits a **steered and an unsteered arm** so this
-is measured, not assumed.
+**F. The prize, quantified.** Pool oracle **0.6975** against selection **0.5706** —
+**0.127 LDDT-PLI per ligand** unclaimed in a pool already paid for. The PXR winning entry
+scored 0.564, below our pool's current selection. **Generation is not the bottleneck.**
 
-And a prior pilot in the sibling repo cofolded 24 CYP ligands × 5 samples without
-steering and put **zero of 120 poses** inside the Fe-coordination window (closest 2.80 Å).
-That is the baseline the steered arm has to beat.
+**G. The coordination term survives as a SCORER.** Poses that coordinate the iron score
+**+0.14 LDDT-PLI** over those that do not (0.5992 vs 0.4588). Real CYP-specific signal —
+used as a selection feature, not as a generation constraint.
 
----
+**Therefore:** the physics scorer in `docs/QM_SCORER_DESIGN.md` is now the whole project.
+It does not have to beat a strong incumbent; it has to beat random, which the incumbent
+fails to do.
 
 ## Storage — read before writing anything
 
