@@ -83,8 +83,11 @@ tail-rescue or abstention strategy.
 3. **Then tier-1 QM.** Its per-atom donor and reactivity terms are also anchor-local, so
    on this evidence they should be expected to behave like the others. Worth running,
    but the expectation should be set low in advance rather than after the fact.
-4. **Do not spend more GPU on sampling.** The oracle is 0.6975 and the PXR winning entry
-   was 0.564. There is nothing wrong with the poses we have.
+4. ~~**Do not spend more GPU on sampling.**~~ **⚠️ RETRACTED — see FINDING 004.** This was
+   an assertion, not a measurement, and it confused the pool's ceiling with what a
+   selector can reach. Subsampling the existing pools shows the oracle still climbing at
+   20 samples (+0.024 per doubling) **and the selector tracking it at +0.0125 per
+   doubling**. Sampling is cheap and additive; do it in parallel with the analysis.
 
 ---
 
