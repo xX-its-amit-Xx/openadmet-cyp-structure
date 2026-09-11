@@ -1,0 +1,193 @@
+{
+ "ligand_id": "D7Y",
+ "smiles": "CC(C)N[C@@H](CSCCNC(=O)OC(C)(C)C)C(=O)NCc1cccnc1",
+ "inchikey": "QNDVTMOTJOSTAW-INIZCTEOSA-N",
+ "n_heavy": 27,
+ "formal_charge": 0,
+ "donors": [
+  {
+   "atom_idx": 25,
+   "element": "N",
+   "smarts_pattern": "pyridine_N",
+   "smarts_prior": 0.75,
+   "smarts_score": 0.75,
+   "ring_size": 6,
+   "ring_hetero": [
+    "N"
+   ],
+   "n_ortho_heavy": 1,
+   "rejected": "",
+   "proton_affinity_kcal": 79.151,
+   "proton_affinity_solv_kcal": NaN,
+   "e_protomer_hartree": -84.32710226844,
+   "protomer_ok": true,
+   "fukui_minus": 0.08987842,
+   "fukui_plus": 0.14348634999999998,
+   "dual_descriptor": 0.053607929999999984,
+   "mulliken_charge": -0.21450712,
+   "vbur_at_atom": 33.191775632204404,
+   "vbur_at_metal": 14.508944738176286,
+   "vbur_at_metal_min": 14.499334228457137,
+   "vbur_at_metal_max": 14.520505206389178,
+   "lone_pair_ok": true,
+   "note": ""
+  },
+  {
+   "atom_idx": 3,
+   "element": "N",
+   "smarts_pattern": "aliphatic_amine",
+   "smarts_prior": 0.3,
+   "smarts_score": 0.3,
+   "ring_size": 0,
+   "ring_hetero": [],
+   "n_ortho_heavy": 1,
+   "rejected": "",
+   "proton_affinity_kcal": 84.295,
+   "proton_affinity_solv_kcal": NaN,
+   "e_protomer_hartree": -84.335300213187,
+   "protomer_ok": true,
+   "fukui_minus": 0.04998393000000004,
+   "fukui_plus": 0.007769839999999972,
+   "dual_descriptor": -0.042214090000000065,
+   "mulliken_charge": -0.276612,
+   "vbur_at_atom": 56.791148302700414,
+   "vbur_at_metal": 36.57648572908948,
+   "vbur_at_metal_min": 30.709617752422126,
+   "vbur_at_metal_max": 40.36748360642038,
+   "lone_pair_ok": true,
+   "note": ""
+  }
+ ],
+ "carbons": [
+  {
+   "atom_idx": 0,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 1,
+   "n_h": 1,
+   "environment": "secondary+alpha_N",
+   "bde_proxy_kcal": 91.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 2,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 4,
+   "n_h": 1,
+   "environment": "secondary+alpha_N+alpha_carbonyl",
+   "bde_proxy_kcal": 88.5,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 5,
+   "n_h": 2,
+   "environment": "primary+alpha_S",
+   "bde_proxy_kcal": 93.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 7,
+   "n_h": 2,
+   "environment": "primary+alpha_S",
+   "bde_proxy_kcal": 93.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 8,
+   "n_h": 2,
+   "environment": "primary+alpha_N",
+   "bde_proxy_kcal": 91.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 14,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 15,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 16,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 20,
+   "n_h": 2,
+   "environment": "primary+alpha_N+benzylic_1",
+   "bde_proxy_kcal": 87.2,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 22,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 23,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 24,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 26,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  }
+ ],
+ "e_neutral_hartree": -84.200967614898,
+ "e_neutral_solv_hartree": NaN,
+ "method": "GFN2-xTB (xtb CLI)",
+ "solvent": "gas",
+ "n_conformers": 4,
+ "seconds": 40.86,
+ "n_xtb_calls": 6,
+ "schema_version": 1,
+ "status": "ok",
+ "error": ""
+}

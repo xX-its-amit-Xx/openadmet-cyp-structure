@@ -1,0 +1,232 @@
+{
+ "ligand_id": "G0M",
+ "smiles": "CC(C)(C)OC(=O)N[C@H](CS[C@H](Cc1ccccc1)C(=O)NCc1cccnc1)Cc1ccccc1",
+ "inchikey": "DPUYQVBTNSUNNA-IZZNHLLZSA-N",
+ "n_heavy": 36,
+ "formal_charge": 0,
+ "donors": [
+  {
+   "atom_idx": 27,
+   "element": "N",
+   "smarts_pattern": "pyridine_N",
+   "smarts_prior": 0.75,
+   "smarts_score": 0.75,
+   "ring_size": 6,
+   "ring_hetero": [
+    "N"
+   ],
+   "n_ortho_heavy": 1,
+   "rejected": "",
+   "proton_affinity_kcal": 70.323,
+   "proton_affinity_solv_kcal": NaN,
+   "e_protomer_hartree": -104.330696949296,
+   "protomer_ok": true,
+   "fukui_minus": 0.06985159999999999,
+   "fukui_plus": 0.10629082000000004,
+   "dual_descriptor": 0.03643922000000005,
+   "mulliken_charge": -0.22575768,
+   "vbur_at_atom": 34.21870734465795,
+   "vbur_at_metal": 15.063150798647285,
+   "vbur_at_metal_min": 14.507691193430311,
+   "vbur_at_metal_max": 15.623067451849954,
+   "lone_pair_ok": true,
+   "note": ""
+  }
+ ],
+ "carbons": [
+  {
+   "atom_idx": 0,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 2,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 3,
+   "n_h": 3,
+   "environment": "primary",
+   "bde_proxy_kcal": 101.1,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 8,
+   "n_h": 1,
+   "environment": "secondary+alpha_N",
+   "bde_proxy_kcal": 91.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 9,
+   "n_h": 2,
+   "environment": "primary+alpha_S",
+   "bde_proxy_kcal": 93.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 11,
+   "n_h": 1,
+   "environment": "secondary+alpha_S+alpha_carbonyl",
+   "bde_proxy_kcal": 90.5,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 12,
+   "n_h": 2,
+   "environment": "secondary+benzylic_2",
+   "bde_proxy_kcal": 87.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 14,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 15,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 16,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 17,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 18,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 22,
+   "n_h": 2,
+   "environment": "primary+alpha_N+benzylic_1",
+   "bde_proxy_kcal": 87.2,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 24,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 25,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 26,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 28,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 29,
+   "n_h": 2,
+   "environment": "secondary+benzylic_2",
+   "bde_proxy_kcal": 87.0,
+   "bde_xtb_kcal": NaN,
+   "aromatic": false
+  },
+  {
+   "atom_idx": 31,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 32,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 33,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 34,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  },
+  {
+   "atom_idx": 35,
+   "n_h": 1,
+   "environment": "aromatic",
+   "bde_proxy_kcal": 112.9,
+   "bde_xtb_kcal": NaN,
+   "aromatic": true
+  }
+ ],
+ "e_neutral_hartree": -104.218630860854,
+ "e_neutral_solv_hartree": NaN,
+ "method": "GFN2-xTB (xtb CLI)",
+ "solvent": "gas",
+ "n_conformers": 4,
+ "seconds": 20.74,
+ "n_xtb_calls": 5,
+ "schema_version": 1,
+ "status": "ok",
+ "error": ""
+}

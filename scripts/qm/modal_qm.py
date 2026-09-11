@@ -350,6 +350,9 @@ if __name__ == "__main__":
                     help="replace the graph BDE proxy with real GFN2 homolysis on the "
                          "K most abstractable carbons (K extra optimizations per ligand)")
     ap.add_argument("--force", action="store_true", help="ignore cached outputs")
+    ap.add_argument("--dest", default=None,
+                    help="collect: where to write the per-ligand JSONs "
+                         "(default data/processed/qm/<tag>)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -360,7 +363,7 @@ if __name__ == "__main__":
         with app.run():
             print(json.dumps(calibrate_h_atom.remote(), indent=1))
     elif a.cmd == "collect":
-        collect(a.tag)
+        collect(a.tag, a.dest)
     else:
         if not a.csv:
             raise SystemExit("--csv is required for plan/submit")

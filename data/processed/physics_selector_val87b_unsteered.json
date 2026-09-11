@@ -1,0 +1,94 @@
+{
+ "arm": "unsteered",
+ "n_clusters": 33,
+ "results": [
+  {
+   "selector": "boltz_confidence (incumbent)",
+   "n": 87,
+   "selected": 0.5706,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": -0.0063,
+   "frac_ligands_beating_random": 0.46,
+   "wilcoxon_p": 0.25139,
+   "oracle_captured": -0.052
+  },
+  {
+   "selector": "single: is_coordinated (+)",
+   "n": 87,
+   "selected": 0.5868,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": 0.0099,
+   "frac_ligands_beating_random": 0.506,
+   "wilcoxon_p": 0.5735,
+   "oracle_captured": 0.082
+  },
+  {
+   "selector": "single: n_contacts (+)",
+   "n": 87,
+   "selected": 0.5647,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": -0.0122,
+   "frac_ligands_beating_random": 0.494,
+   "wilcoxon_p": 0.50368,
+   "oracle_captured": -0.101
+  },
+  {
+   "selector": "single: max_clash (-)",
+   "n": 87,
+   "selected": 0.541,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": -0.0359,
+   "frac_ligands_beating_random": 0.368,
+   "wilcoxon_p": 0.00241,
+   "oracle_captured": -0.298
+  },
+  {
+   "selector": "single: frac_proximal (-)",
+   "n": 87,
+   "selected": 0.5854,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": 0.0085,
+   "frac_ligands_beating_random": 0.494,
+   "wilcoxon_p": 0.7445,
+   "oracle_captured": 0.07
+  },
+  {
+   "selector": "single: s_fe_donor_angle (+)",
+   "n": 87,
+   "selected": 0.5411,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": -0.0358,
+   "frac_ligands_beating_random": 0.345,
+   "wilcoxon_p": 0.0007,
+   "oracle_captured": -0.297
+  },
+  {
+   "selector": "single: fe_donor_dist (-)",
+   "n": 87,
+   "selected": 0.578,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": 0.0011,
+   "frac_ligands_beating_random": 0.529,
+   "wilcoxon_p": 0.68763,
+   "oracle_captured": 0.009
+  },
+  {
+   "selector": "fitted ranker (leave-one-cluster-out)",
+   "n": 87,
+   "selected": 0.5817,
+   "random": 0.5769,
+   "oracle": 0.6975,
+   "delta_vs_random": 0.0048,
+   "frac_ligands_beating_random": 0.552,
+   "wilcoxon_p": 0.52001,
+   "oracle_captured": 0.039
+  }
+ ]
+}

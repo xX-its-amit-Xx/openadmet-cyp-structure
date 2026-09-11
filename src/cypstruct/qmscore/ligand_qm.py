@@ -696,17 +696,27 @@ def proton_affinity(molh, cid: int, donor_idx: int, e_neutral: float, workdir: P
 
     That offset is **the same constant for every molecule**, because every protonation
     adds exactly one hydrogen. So differences and orderings are preserved exactly and are
-    the only things any consumer may use. Measured on the four prototypes the design names:
+    the only things any consumer may use. Measured on this implementation, gas phase,
+    xtb 6.7.1, on the four prototypes the design names (kcal/mol):
 
-        imidazole 120.8  >  pyridine 114.3  >  thiazole 108.0  >  oxazole 106.3
+        imidazole 65.4  >  pyridine 60.3  >  thiazole 53.2  >  oxazole 47.4
+        experiment: 225.3  >   222.0    >    208.0   >   199.6
 
-    which is the ordering §2B predicts. Do not compare these values to tabulated proton
-    affinities, and do not let one into an absolute-energy expression.
+    The ordering §2B predicts is reproduced exactly; the offset from experiment is about
+    162 kcal/mol. Do not compare these values to tabulated proton affinities, and do not
+    let one into an absolute-energy expression.
 
-    A second caveat, honestly stated: GFN2 compresses the spread. The experimental
-    pyridine-to-thiazole gap is 14 kcal/mol and this reproduces 6.3. Ordering across
-    azole/azine families is reliable; fine discrimination *within* a family is what
-    tier 3 exists for (§6 of the design says exactly this).
+    A second caveat, honestly stated: GFN2 does not reproduce the experimental *spacing*.
+    The measured gaps are 5.1 / 7.1 / 5.8 against experimental 3.3 / 14.0 / 8.4 — the
+    azine-to-azole separation is compressed roughly twofold and the imidazole-pyridine
+    gap is overstated. Ordering across families is reliable; fine discrimination *within*
+    a family is what tier 3 exists for (§6 of the design says exactly this).
+
+    A third, and the useful one: the term correctly makes 2,6-lutidine (71.4) a
+    *stronger* base than pyridine (60.3), matching experiment (230.1 vs 222.0). It is
+    also a far worse metal ligand, for reasons no electronic descriptor can see. That is
+    what %V_bur is for, and the two numbers must be read together — see
+    `VBUR_TO_KCAL_PRIOR`.
 
     `molh`/`cid` must be the xTB-optimised NEUTRAL geometry — see `_protonate_in_place`
     for why rebuilding the protomer from SMILES instead silently injects conformational
@@ -1013,14 +1023,28 @@ def _load_xyz_into_conformer(molh, cid: int, xyz_text: str) -> None:
 # rankings  (candidate orderings to be VALIDATED, not a fitted model)
 # ==========================================================================
 
-# Coefficient converting %V_bur into a kcal/mol-equivalent penalty for the one composite
-# ranking offered below. It is a PRIOR, chosen so that the ~25 percentage-point gap in
-# %V_bur between an unhindered and a 2,6-disubstituted pyridine costs about as much as
-# the ~6 kcal/mol GFN2 gap between pyridine and thiazole — i.e. so that sterics and
-# electronics are commensurate rather than one dominating by construction.
-# It is NOT fitted, it is NOT validated, and `rank.py` must refit it against LDDT-PLI
-# labels before any of this reaches a submission.
-VBUR_TO_KCAL_PRIOR = 0.25
+# Coefficient converting %V_bur into a kcal/mol-equivalent penalty, for the one composite
+# ranking offered below.
+#
+# It is anchored on the single case where the right answer is not in doubt. Measured
+# here: 2,6-lutidine has PA 71.35 and %V_bur 21.4 at the metal site; pyridine has PA
+# 60.26 and %V_bur 14.5. Lutidine is the stronger BASE and the much weaker METAL LIGAND —
+# that is the textbook 2,6-disubstitution effect and the exact failure mode §2B commissions
+# %V_bur to catch. For the composite to order those two correctly it needs
+#
+#     71.35 - k*21.4  <  60.26 - k*14.5   =>   k > 1.61
+#
+# so the value below sits just above that threshold. An earlier guess of 0.25 — picked to
+# make the two terms "look commensurate" — failed this case outright and is recorded here
+# because a coefficient that cannot reproduce the one thing it was introduced for is worth
+# knowing about.
+#
+# This remains a ONE-POINT ANCHOR on a textbook fact, not a fit: it is set by two molecules
+# and validated on none. `rank.py` must refit it against measured LDDT-PLI labels under
+# leave-one-ligand-cluster-out before any of this reaches a submission, and
+# `scripts/qm/validate_donor_ranking.py` reports the single-criterion rankings separately
+# precisely so that this composite cannot hide which ingredient did the work.
+VBUR_TO_KCAL_PRIOR = 1.65
 
 RANKINGS = ("smarts", "proton_affinity", "fukui_minus", "vbur_at_metal",
             "pa_minus_steric")

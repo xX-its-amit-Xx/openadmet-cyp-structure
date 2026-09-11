@@ -1,4 +1,4 @@
-"""Archive a co-folding pose pool from the Modal volume to OneDrive, durably.
+r"""Archive a co-folding pose pool from the Modal volume to OneDrive, durably.
 
 **Why this exists.** Right now the only copy of a pose pool lives on a Modal volume.
 That is convenient but not durable: it is tied to one account's storage, it is not
@@ -57,6 +57,29 @@ def scratch_root() -> Path:
     return c
 
 
+def read_with_retry(vol, path: str, attempts: int = 4) -> bytes | None:
+    """Read one volume file, tolerating transient server errors.
+
+    Modal's volume reads intermittently return `500 Internal Server Error: error while
+    getting bucket object`. The first archive attempt aborted the entire run on the first
+    such error and transferred nothing. A transient remote fault should cost one file and
+    a retry, never a whole batch, so failures here are isolated and reported rather than
+    raised.
+    """
+    import time as _t
+
+    for k in range(attempts):
+        try:
+            return b"".join(vol.read_file(path))
+        except Exception as exc:
+            if k == attempts - 1:
+                print(f"    [skip] {path}: {type(exc).__name__}", flush=True)
+                return None
+            _t.sleep(1.5 * (k + 1))
+    return None
+
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", required=True)
@@ -80,6 +103,7 @@ def main() -> None:
 
     root = scratch_root()
     pushed = n_files = 0
+    failed: list[str] = []
     t0 = time.time()
 
     for i in range(0, len(todo), a.batch):
@@ -89,13 +113,23 @@ def main() -> None:
             for job in chunk:
                 dest = stage / job
                 dest.mkdir(parents=True, exist_ok=True)
-                for e in vol.iterdir(f"/{a.tag}/{job}"):
+                try:
+                    entries = list(vol.iterdir(f"/{a.tag}/{job}"))
+                except Exception as exc:
+                    print(f"    [skip job] {job}: {type(exc).__name__}", flush=True)
+                    failed.append(job)
+                    continue
+                for e in entries:
                     fn = e.path.split("/")[-1]
                     keep = (fn.endswith(".cif") or fn.endswith(".json")
                             or (a.include_npz and fn.endswith(".npz")))
                     if not keep:
                         continue
-                    (dest / fn).write_bytes(b"".join(vol.read_file(e.path)))
+                    data = read_with_retry(vol, e.path)
+                    if data is None:
+                        failed.append(f"{job}/{fn}")
+                        continue
+                    (dest / fn).write_bytes(data)
                     n_files += 1
             if free_gb(stage) < 2.0:
                 raise RuntimeError(f"only {free_gb(stage):.2f} GB free while staging")
@@ -109,6 +143,7 @@ def main() -> None:
             shutil.rmtree(stage, ignore_errors=True)
 
     receipt = {"tag": a.tag, "jobs_archived": pushed, "files": n_files,
+               "n_failed_reads": len(failed), "failed_sample": failed[:15],
                "remote": f"{storage.REMOTE}/pool/{a.tag}",
                "include_npz": a.include_npz,
                "seconds": round(time.time() - t0, 1)}

@@ -160,5 +160,22 @@
    "app": "cyp-cofold-boltz"
   },
   "ended": 1789046411.228048
+ },
+ {
+  "run_id": "gtval-qm-1789137300",
+  "venue": "modal",
+  "kind": "xtb_pocket_singlepoint",
+  "units": 480,
+  "est_gpu_hours": 0.96,
+  "started": 1789137300.055119,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": 0.2866,
+  "note": "app=cyp-qm-tier1 tag=gtval | 80 ok, 0 failed, 8.6 min wall",
+  "meta": {
+   "n_jobs": 80,
+   "app": "cyp-qm-tier1"
+  },
+  "ended": 1789137818.2554176
  }
 ]
