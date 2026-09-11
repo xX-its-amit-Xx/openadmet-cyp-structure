@@ -1,0 +1,120 @@
+"""Archive a co-folding pose pool from the Modal volume to OneDrive, durably.
+
+**Why this exists.** Right now the only copy of a pose pool lives on a Modal volume.
+That is convenient but not durable: it is tied to one account's storage, it is not
+browsable, and it is not where the rest of this user's finished work lives. The pool is
+also expensive — the val87b batch cost real GPU hours — so it should survive.
+
+**Why it does NOT write through `O:\`.** The `O:` drive is an rclone mount configured
+with `--vfs-cache-mode full` and **no `--vfs-cache-max-size`**, with its cache on the
+near-full `C:`. Every byte written through the drive letter is copied to C: and kept.
+That mount is what drove C: to zero bytes three separate times in this project, once
+silently truncating 40% of a scoring run. So this script streams to the SAME OneDrive
+storage through the `onedrive:` rclone remote, which talks to the Graph API directly and
+never touches the VFS cache.
+
+Shape on OneDrive:
+    onedrive:rclone-offload/cyp-structure/pool/<tag>/<ligand>__<arm>__s<seed>/*.cif
+
+Resumable: a job already present remotely is skipped, so an interrupted archive resumes
+rather than restarts.
+
+    python scripts/structure/archive_pool.py --tag val87b
+    python scripts/structure/archive_pool.py --tag val87b --include-npz   # also the arrays
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import shutil
+import sys
+import tempfile
+import time
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "src"))
+
+import modal  # noqa: E402
+
+from cypstruct import storage  # noqa: E402
+from cypstruct.paths import DATA_PROCESSED, free_gb  # noqa: E402
+
+
+def scratch_root() -> Path:
+    """Staging directory on a local volume with room. Never the session temp dir."""
+    d = Path("D:/cyp_scratch")
+    try:
+        d.mkdir(parents=True, exist_ok=True)
+        if free_gb(d) >= 5.0:
+            return d
+    except OSError:
+        pass
+    c = Path("C:/cyp_scratch")
+    c.mkdir(parents=True, exist_ok=True)
+    if free_gb(c) < 2.0:
+        raise RuntimeError("no local volume has room to stage an archive batch")
+    return c
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--tag", required=True)
+    ap.add_argument("--include-npz", action="store_true",
+                    help="also archive the per-sample plddt/pae/pde arrays (much larger)")
+    ap.add_argument("--batch", type=int, default=12,
+                    help="jobs to stage before each push; keeps peak local usage small")
+    a = ap.parse_args()
+
+    vol = modal.Volume.from_name("cyp-pool")
+    jobs = sorted({e.path.rstrip("/").split("/")[-1] for e in vol.iterdir(f"/{a.tag}")})
+    jobs = [j for j in jobs if "__" in j]
+    print(f"{len(jobs)} jobs in /{a.tag}", flush=True)
+
+    already = {ln.split("/")[0] for ln in storage.ls(f"pool/{a.tag}") if "/" in ln}
+    todo = [j for j in jobs if j not in already]
+    print(f"{len(already)} already archived, {len(todo)} to go", flush=True)
+    if not todo:
+        print("nothing to do")
+        return
+
+    root = scratch_root()
+    pushed = n_files = 0
+    t0 = time.time()
+
+    for i in range(0, len(todo), a.batch):
+        chunk = todo[i: i + a.batch]
+        stage = Path(tempfile.mkdtemp(prefix=f"cyparch_{a.tag}_", dir=str(root)))
+        try:
+            for job in chunk:
+                dest = stage / job
+                dest.mkdir(parents=True, exist_ok=True)
+                for e in vol.iterdir(f"/{a.tag}/{job}"):
+                    fn = e.path.split("/")[-1]
+                    keep = (fn.endswith(".cif") or fn.endswith(".json")
+                            or (a.include_npz and fn.endswith(".npz")))
+                    if not keep:
+                        continue
+                    (dest / fn).write_bytes(b"".join(vol.read_file(e.path)))
+                    n_files += 1
+            if free_gb(stage) < 2.0:
+                raise RuntimeError(f"only {free_gb(stage):.2f} GB free while staging")
+            # rclone MOVE: it verifies the transfer before deleting the local copy, so a
+            # partial upload cannot silently destroy the staged data.
+            storage.push(stage, f"pool/{a.tag}", move=True)
+            pushed += len(chunk)
+            print(f"  archived {pushed}/{len(todo)} jobs, {n_files} files, "
+                  f"{time.time()-t0:.0f}s", flush=True)
+        finally:
+            shutil.rmtree(stage, ignore_errors=True)
+
+    receipt = {"tag": a.tag, "jobs_archived": pushed, "files": n_files,
+               "remote": f"{storage.REMOTE}/pool/{a.tag}",
+               "include_npz": a.include_npz,
+               "seconds": round(time.time() - t0, 1)}
+    (DATA_PROCESSED / f"archive_{a.tag}.json").write_text(json.dumps(receipt, indent=1))
+    print(json.dumps(receipt, indent=2))
+
+
+if __name__ == "__main__":
+    main()

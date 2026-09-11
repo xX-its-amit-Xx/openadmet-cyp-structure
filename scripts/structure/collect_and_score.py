@@ -33,12 +33,48 @@ sys.path.insert(0, str(REPO / "src"))
 import modal  # noqa: E402
 
 from cypstruct import pose as P  # noqa: E402
-from cypstruct.paths import DATA_PROCESSED, resource_headroom, safe_workers  # noqa: E402
+from cypstruct.paths import (  # noqa: E402
+    DATA_PROCESSED, free_gb, resource_headroom, safe_workers,
+)
 from cypstruct.qmscore import geometry as G  # noqa: E402
 from cypstruct.select import Pose, z_hybrid  # noqa: E402
 from cypstruct.targets import fetch_cif  # noqa: E402
 
 _REF_CACHE: dict[str, P.Complex | None] = {}
+
+
+def scratch_root() -> Path:
+    """Directory for transient pose files, on the local volume with the most room.
+
+    Deliberately NOT the O: drive. That mount caches every byte it touches on C: with no
+    size limit, so streaming thousands of structures through it would refill the very
+    disk whose exhaustion this function exists to prevent. Durable archiving of the pool
+    goes to OneDrive through the rclone remote instead - see `archive_pool()`.
+    """
+    # D: is preferred even when C: momentarily shows more room. C: carries the session
+    # scratchpads of every concurrent Claude session plus the unbounded rclone VFS cache,
+    # so its free space is volatile and not ours to plan around; D: is comparatively ours.
+    d = Path("D:/cyp_scratch")
+    try:
+        d.mkdir(parents=True, exist_ok=True)
+        if free_gb(d) >= 5.0:
+            return d
+    except OSError:
+        pass
+    best, best_free = None, -1.0
+    for c in (Path("D:/cyp_scratch"), Path("C:/cyp_scratch")):
+        try:
+            c.mkdir(parents=True, exist_ok=True)
+        except OSError:
+            continue
+        f = free_gb(c)
+        if f > best_free:
+            best, best_free = c, f
+    if best is None or best_free < 2.0:
+        raise RuntimeError(
+            f"no local volume has 2 GB free for pose scratch (best {best_free:.2f} GB)")
+    return best
+
 
 
 def reference_for(pdb_id: str, ligand_code: str) -> P.Complex | None:
@@ -110,7 +146,11 @@ def main() -> None:
 
     rows: list[dict] = []
     poses_by_arm: dict[str, list[Pose]] = defaultdict(list)
-    tmp_root = Path(tempfile.mkdtemp(prefix="cypscore_"))
+    # NEVER use the default temp dir. It resolves to the session scratchpad on C:, which
+    # is the near-full drive, and that is exactly how the first full scoring run died: C:
+    # hit 0 bytes, 70 of 168 jobs failed their file writes, and the run still exited 0 with
+    # a scorecard built from a biased 58% subset. Stage on whichever volume has room.
+    tmp_root = Path(tempfile.mkdtemp(prefix="cypscore_", dir=str(scratch_root())))
 
     # Parallelism is capped by measured headroom, not by core count. This box has no GPU
     # and has hit zero free disk more than once; saturating it degrades every other tool
