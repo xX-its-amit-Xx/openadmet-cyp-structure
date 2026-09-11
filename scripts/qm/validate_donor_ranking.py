@@ -193,8 +193,16 @@ def map_atom_name_to_index(code: str, smiles: str, atom_name: str) -> int | None
                 lines, names = [], []
                 for i, at in enumerate(res):
                     el = at.element.name
+                    # The residue-name field is columns 18-20, exactly THREE characters.
+                    # The PDB's newer five-character CCD codes (A1A06, A1ASO, ... — which
+                    # is what the 2024-25 CYP3A4 depositions use) overflow it and shift
+                    # every subsequent column right by two, so the coordinates parse as
+                    # garbage and the molecule silently fails to match its own template.
+                    # This cost 18 of the 27 ligands that first reported as unmappable.
+                    # The name is cosmetic here, so truncating is safe; what must not
+                    # move is the column alignment.
                     lines.append(
-                        f"HETATM{i + 1:5d} {at.name.strip()[:4]:<4s} {code:>3s} A   1    "
+                        f"HETATM{i + 1:5d} {at.name.strip()[:4]:<4s} {code[:3]:>3s} A   1    "
                         f"{at.pos.x:8.3f}{at.pos.y:8.3f}{at.pos.z:8.3f}  1.00  0.00"
                         f"          {el.upper():>2s}")
                     names.append(at.name.strip())
