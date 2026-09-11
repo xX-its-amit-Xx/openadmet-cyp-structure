@@ -350,6 +350,71 @@ def stage_msa(a3m_text: str) -> dict:
             "a3m_sequences": cleaned.count(">")}
 
 
+@app.function(volumes={"/cache": cache_vol}, timeout=5400, retries=2, max_containers=1,
+              cpu=4.0)
+def prefetch_weights() -> dict:
+    """Download Chai-1's weights into the cache volume, on CPU, with retry. Once.
+
+    The smoke test's gate job spent **960 seconds of A100 time** downloading weights and
+    then died on a truncated transfer:
+    `IncompleteRead(3564830720 bytes read, 2114109746 more expected)` - roughly 3.5 GB of
+    a ~5.6 GB payload. Two things were wrong with that. A multi-gigabyte download does not
+    belong on a GPU container, where it bills at GPU rates to do no compute. And a partial
+    file left in the cache poisons every later run, because the downloader may see a file
+    present and not re-fetch it.
+
+    So: fetch on CPU, with retries, and clear anything implausibly small before trying, so
+    a new attempt starts clean rather than inheriting a corrupt cache.
+    """
+    import shutil
+    import traceback
+
+    cache = Path("/cache/chai")
+    cache.mkdir(parents=True, exist_ok=True)
+
+    def inventory() -> dict:
+        return {str(f.relative_to(cache)): f.stat().st_size
+                for f in cache.rglob("*") if f.is_file()}
+
+    before = inventory()
+    removed = []
+    for f in list(cache.rglob("*")):
+        if (f.is_file() and f.suffix in (".pt", ".pt2", ".safetensors")
+                and f.stat().st_size < 1_000_000):
+            removed.append(str(f.relative_to(cache)))
+            f.unlink(missing_ok=True)
+
+    err = ""
+    try:
+        import chai_lab.utils.paths as _paths
+
+        if hasattr(_paths, "download_models_if_needed"):
+            _paths.download_models_if_needed()
+        else:
+            for comp in ("feature_embedding.pt", "token_embedder.pt", "trunk.pt",
+                         "diffusion_module.pt", "confidence_head.pt"):
+                getter = getattr(_paths, "chai1_component", None)
+                if getter is None:
+                    break
+                try:
+                    getter(comp)
+                except Exception:
+                    pass
+    except Exception:
+        err = traceback.format_exc()[-2500:]
+
+    after = inventory()
+    total = sum(after.values())
+    cache_vol.commit()
+    return {"ok": total > 1_000_000_000 and not err,
+            "total_bytes": total, "n_files": len(after),
+            "new_files": sorted(set(after) - set(before))[:20],
+            "removed_truncated": removed,
+            "cache_free_bytes": shutil.disk_usage("/cache").free,
+            "error": err}
+
+
+
 @app.function(volumes={"/cache": cache_vol}, timeout=1800, retries=1, max_containers=1,
               cpu=2.0)
 def chai_probe(specs: list[dict]) -> dict:
@@ -695,9 +760,22 @@ def submit(csv_path: str, tag: str, samples: int = 5, seeds: tuple[int, ...] = (
             if not w.get("ok"):
                 raise SystemExit("MSA staging failed; not launching the array")
 
-            # Run ONE job alone first. It warms ~4 GB of weights into the cache volume
-            # without every container racing to download them, and it turns a schema or
-            # environment error into one wasted job instead of a whole batch.
+            # Pull the weights on CPU BEFORE any GPU is allocated. The first smoke test
+            # burned 960 s of A100 time downloading and then died on a truncated transfer
+            # (3.5 GB of a ~5.6 GB payload). A multi-gigabyte download billed at GPU rates
+            # for doing no compute is pure waste, and the partial file it leaves behind
+            # poisons the cache for every later run.
+            print("prefetching Chai weights on CPU ...", flush=True)
+            pw = prefetch_weights.remote()
+            print("  ", json.dumps({k: v for k, v in pw.items()
+                                    if k != "error"})[:400], flush=True)
+            if not pw.get("ok"):
+                print("   error tail:", (pw.get("error") or "")[-600:], flush=True)
+                raise SystemExit("weight prefetch failed; not launching the array")
+
+            # Then run ONE job alone. With the weights already cached this is a real
+            # schema/environment check rather than a download, and it turns an error into
+            # one wasted job instead of a whole batch.
             print("gating on a single job before mapping the rest ...", flush=True)
             gate = cofold.remote([jobs[0]])
             print("  ", json.dumps(gate)[:900], flush=True)
