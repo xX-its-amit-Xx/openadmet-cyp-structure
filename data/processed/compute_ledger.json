@@ -142,5 +142,23 @@
    "app": "cyp-cofold-boltz"
   },
   "ended": 1789040960.5016868
+ },
+ {
+  "run_id": "val87b-1789041037",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 3360,
+  "est_gpu_hours": 18.48,
+  "started": 1789041037.8015172,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-boltz tag=val87b | 168 ok, 0 failed",
+  "meta": {
+   "n_jobs": 168,
+   "samples": 20,
+   "app": "cyp-cofold-boltz"
+  },
+  "ended": 1789046411.228048
  }
 ]

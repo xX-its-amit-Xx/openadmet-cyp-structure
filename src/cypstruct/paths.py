@@ -90,6 +90,35 @@ def claim(slug: str) -> bool:
         return False
 
 
+def resource_headroom() -> dict:
+    """Current CPU load and free RAM. Cheap; call before anything locally parallel."""
+    try:
+        import psutil
+    except ImportError:
+        return {"psutil": False}
+    m = psutil.virtual_memory()
+    return {"psutil": True, "cpu_count": psutil.cpu_count(),
+            "cpu_percent": psutil.cpu_percent(interval=0.5),
+            "ram_available_gb": round(m.available / 1024**3, 1),
+            "ram_percent": m.percent}
+
+
+def safe_workers(requested: int = 4, ram_per_worker_gb: float = 1.0) -> int:
+    """How many local workers this box can actually spare right now.
+
+    The standing instruction is to launch what is needed and watch CPU and memory, so
+    the gate is headroom rather than permission. This box has no GPU, has hit zero free
+    disk more than once, and a saturated local process degrades every other tool in the
+    session - so parallelism is capped by what is free, not by core count.
+    """
+    h = resource_headroom()
+    if not h.get("psutil"):
+        return max(1, min(requested, 2))
+    by_cpu = max(1, int(h["cpu_count"] * (100 - h["cpu_percent"]) / 100) - 1)
+    by_ram = max(1, int(h["ram_available_gb"] / max(0.25, ram_per_worker_gb)) - 1)
+    return max(1, min(requested, by_cpu, by_ram))
+
+
 def ensure_dirs() -> None:
     for p in (DATA_RAW, DATA_EXTERNAL, DATA_PROCESSED, SUBMISSIONS,
               POOL, QM_OUT, FINETUNE, REFERENCE):
