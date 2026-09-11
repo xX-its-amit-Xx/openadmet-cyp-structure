@@ -97,12 +97,21 @@ def crash_looping(app_id: str, tail_chars: int = 6000) -> str | None:
 
     Returns the offending log line, or None.
     """
+    # `modal app logs` prints non-ASCII box drawing. With text=True the child inherits a
+    # cp1252 stdout on this box and dies with "'charmap' codec can't encode characters",
+    # so this returned None every time and the crash-loop check was silently disabled -
+    # a guard that cannot fail loudly is worse than no guard. Capture bytes, decode here.
+    import os as _os
+
+    env = {**_os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
     try:
         cp = subprocess.run(["modal", "app", "logs", app_id],
-                            capture_output=True, text=True, timeout=90)
+                            capture_output=True, timeout=90, env=env)
     except (FileNotFoundError, subprocess.TimeoutExpired):
         return None
-    tail = (cp.stdout or "")[-tail_chars:] + (cp.stderr or "")[-tail_chars:]
+    out = (cp.stdout or b"").decode("utf-8", "replace")
+    err = (cp.stderr or b"").decode("utf-8", "replace")
+    tail = out[-tail_chars:] + err[-tail_chars:]
     for line in tail.splitlines():
         if any(m in line for m in CRASHLOOP_MARKERS):
             return line.strip()[:300]

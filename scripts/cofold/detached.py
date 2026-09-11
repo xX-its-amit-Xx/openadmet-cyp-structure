@@ -70,24 +70,39 @@ def _deploy(module: str, profile: str | None = None) -> str:
     return (cp.stdout or "")[-800:]
 
 
-def _done_count(tag: str) -> tuple[int, int]:
-    """(#jobs with DONE.json, #job dirs) on the output volume. Progress, not liveness."""
+def _done_count(tag: str, attempts: int = 3) -> tuple[int, int]:
+    """(#jobs with DONE.json, #job dirs) from ONE recursive listing.
+
+    The previous version issued one `iterdir` per job and counted any exception as
+    "not done". Modal's volume reads intermittently return 500s, so the number wobbled
+    badly - it read 28, then 37, then 25 within a few minutes on a run that was only ever
+    moving forward. Every progress judgement built on it was therefore unreliable, and it
+    twice made an advancing batch look stalled.
+
+    One recursive listing, retried as a whole, is both far cheaper and far steadier: a
+    transient failure now retries instead of silently subtracting from the count.
+    """
+    import time as _t
+
     vol = modal.Volume.from_name("cyp-pool")
-    try:
-        entries = list(vol.iterdir(f"/{tag}"))
-    except Exception:
-        return 0, 0
-    jobs = sorted({e.path.rstrip("/").split("/")[-1] for e in entries})
-    jobs = [j for j in jobs if "__" in j]
-    done = 0
-    for j in jobs:
+    last = None
+    for k in range(attempts):
         try:
-            next(x for x in vol.iterdir(f"/{tag}/{j}")
-                 if x.path.endswith("DONE.json"))
-            done += 1
-        except Exception:
-            pass
-    return done, len(jobs)
+            entries = list(vol.iterdir(f"/{tag}", recursive=True))
+            jobs, done = set(), set()
+            for e in entries:
+                parts = e.path.strip("/").split("/")
+                if len(parts) < 2 or "__" not in parts[1]:
+                    continue
+                jobs.add(parts[1])
+                if parts[-1] == "DONE.json":
+                    done.add(parts[1])
+            return len(done), len(jobs)
+        except Exception as exc:
+            last = exc
+            _t.sleep(2 * (k + 1))
+    print(f"  [warn] could not list /{tag}: {type(last).__name__}", flush=True)
+    return -1, -1          # sentinel: UNKNOWN, never mistake it for zero progress
 
 
 def launch(engine: str, csv: str, tag: str, samples: int, seeds: str,
@@ -177,12 +192,17 @@ def waiting_for_capacity(app_id: str) -> str | None:
     GPU_A100 worker". Queued is not stalled, and killing a queued run throws away its
     place in the queue along with the work. Always check before judging.
     """
+    import os as _os
+
+    env = {**_os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
     try:
         cp = subprocess.run(["modal", "app", "logs", app_id],
-                            capture_output=True, text=True, timeout=90)
+                            capture_output=True, timeout=90, env=env)
     except Exception:
         return None
-    tail = ((cp.stdout or "") + (cp.stderr or ""))[-6000:]
+    out = (cp.stdout or b"").decode("utf-8", "replace")
+    err = (cp.stderr or b"").decode("utf-8", "replace")
+    tail = (out + err)[-6000:]
     for line in reversed(tail.splitlines()):
         if any(m in line for m in CAPACITY_MARKERS):
             return line.strip()[:200]
@@ -207,7 +227,18 @@ def status(engine: str, tag: str, profile: str | None = None) -> None:
             note = ""
             if str(a.get("tasks")) == "0":
                 w = waiting_for_capacity(a["app_id"])
-                note = f"  <- QUEUED FOR CAPACITY: {w}" if w else "  <- idle"
+                if w:
+                    note = f"  <- QUEUED FOR CAPACITY: {w}"
+                else:
+                    # tasks=0 is a SNAPSHOT. Containers scale down between batches, so a
+                    # single reading of zero says nothing - it has now looked like a stall
+                    # three times on runs that were advancing fine. Re-check output
+                    # progress over an interval before using the word idle.
+                    d0, _ = _done_count(tag)
+                    time.sleep(45)
+                    d1, _ = _done_count(tag)
+                    note = (f"  <- ADVANCING (+{d1 - d0} jobs in 45 s)" if d1 > d0
+                            else "  <- idle (no container, no progress in 45 s)")
             print(f"  app {a['app_id']} state={a['state']} tasks={a['tasks']} "
                   f"created={a['created_at']}{note}")
         if not apps:

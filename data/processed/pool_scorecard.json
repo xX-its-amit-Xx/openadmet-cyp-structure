@@ -64,5 +64,38 @@
       "sub2A_ligand_rate_delta": -0.0472,
       "caveat": "Both arms carry the Cys442-SG to heme-FE bond, so 'unsteered' means heme-anchored but ligand-unconstrained, not unconstrained."
     }
+  },
+  {
+    "tag": "chai87",
+    "n_poses": 870,
+    "n_ligands": 87,
+    "arms": {
+      "unsteered": {
+        "n_poses": 870,
+        "n_ligands": 87,
+        "pool_oracle_lddt_pli": 0.6625,
+        "zhybrid_selected_lddt_pli": 0.5343,
+        "random_pose_lddt_pli": 0.5237,
+        "selection_gap_to_oracle": 0.1282,
+        "mean_bisy_rmsd": 4.134,
+        "best_per_ligand_bisy_rmsd": 2.698,
+        "frac_poses_under_2A": 0.1276,
+        "frac_ligands_with_a_sub2A_pose": 0.3793,
+        "frac_poses_valid": 0.9862,
+        "frac_poses_coordinated": 0.808,
+        "frac_mapped": 1.0,
+        "fe_donor_dist_p": {
+          "p5": 2.104,
+          "p25": 2.213,
+          "p50": 2.286,
+          "p75": 2.38,
+          "p95": 5.499
+        },
+        "n_inside_coordination_window": 703,
+        "engine_wins": {
+          "boltz2": 87
+        }
+      }
+    }
   }
 ]
