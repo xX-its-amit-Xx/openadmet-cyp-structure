@@ -202,3 +202,44 @@ def consensus_clusters(poses: list[Pose], coords: dict[str, np.ndarray],
         out[lig] = [[ps[i].path for i in c] for c in
                     sorted(clusters, key=len, reverse=True)]
     return out
+
+# --------------------------------------------------------------------------
+# The deployable selector (FINDING 003)
+# --------------------------------------------------------------------------
+
+CONTACT_WEIGHT = 0.5   # plateau 0.3-0.8; per-fold choices ranged 0.4-0.6, median 0.5
+
+
+def orientation_consensus_score(n_pocket_contacts, mean_rmsd_to_others,
+                                ligand_ids, contact_weight: float = CONTACT_WEIGHT):
+    """The first selector measured to beat random on held-out scaffold clusters.
+
+        score = w * z(pocket contacts)  -  z(mean RMSD to the other samples)
+
+    Both terms z-scored WITHIN the ligand, because selection only ever compares poses of
+    the same ligand - see the FINDING 002 addendum for why a between-ligand effect size,
+    however significant, does not transfer.
+
+    Leave-one-scaffold-cluster-out: **+0.0220 LDDT-PLI, better than random on 66.7% of
+    ligands, p=0.0038**, against an incumbent (Boltz confidence) of -0.0063.
+
+    The two terms are near-independent (within-ligand rho +0.030), which is why the
+    combination clears significance while each alone sits at its edge. One is
+    orientation-aware - how much of the pocket the ligand touches, which changes when a
+    pose rotates about the iron anchor even though the anchor itself barely moves. The
+    other asks whether independent samples agree. Different questions, orthogonal answers.
+
+    Pass arrays of equal length; `ligand_ids` defines the grouping.
+    """
+    import pandas as pd
+
+    df = pd.DataFrame({"lig": list(ligand_ids),
+                       "c": np.asarray(n_pocket_contacts, float),
+                       "m": np.asarray(mean_rmsd_to_others, float)})
+
+    def zw(col: str) -> "pd.Series":
+        g = df.groupby("lig")[col]
+        return (df[col] - g.transform("mean")) / (g.transform("std") + 1e-9)
+
+    return (contact_weight * zw("c") - zw("m")).to_numpy()
+

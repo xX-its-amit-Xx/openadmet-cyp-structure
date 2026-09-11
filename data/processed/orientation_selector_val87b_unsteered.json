@@ -1,0 +1,83 @@
+{
+ "arm": "unsteered",
+ "n_poses": 1740,
+ "results": [
+  {
+   "feature": "contact_consensus",
+   "sign": 1,
+   "within_rho": 0.052,
+   "selected": 0.5797,
+   "random": 0.5769,
+   "delta": 0.0028,
+   "beat_frac": 0.529,
+   "p": 0.57928,
+   "n": 87
+  },
+  {
+   "feature": "n_pocket_residues_touched",
+   "sign": 1,
+   "within_rho": 0.0763,
+   "selected": 0.5877,
+   "random": 0.5769,
+   "delta": 0.0108,
+   "beat_frac": 0.598,
+   "p": 0.04484,
+   "n": 87
+  },
+  {
+   "feature": "distal_half_contacts",
+   "sign": 1,
+   "within_rho": 0.0548,
+   "selected": 0.5768,
+   "random": 0.5769,
+   "delta": -0.0001,
+   "beat_frac": 0.506,
+   "p": 0.7638,
+   "n": 87
+  },
+  {
+   "feature": "distal_half_buried_frac",
+   "sign": 1,
+   "within_rho": 0.0501,
+   "selected": 0.5771,
+   "random": 0.5769,
+   "delta": 0.0002,
+   "beat_frac": 0.575,
+   "p": 0.45633,
+   "n": 87
+  },
+  {
+   "feature": "donor_to_centroid",
+   "sign": -1,
+   "within_rho": -0.043,
+   "selected": 0.5683,
+   "random": 0.5769,
+   "delta": -0.0086,
+   "beat_frac": 0.46,
+   "p": 0.46663,
+   "n": 87
+  },
+  {
+   "feature": "rg_about_donor",
+   "sign": -1,
+   "within_rho": -0.0085,
+   "selected": 0.5477,
+   "random": 0.5769,
+   "delta": -0.0292,
+   "beat_frac": 0.425,
+   "p": 0.05257,
+   "n": 87
+  },
+  {
+   "feature": "centroid_fe_dist",
+   "sign": -1,
+   "within_rho": -0.0295,
+   "selected": 0.5687,
+   "random": 0.5769,
+   "delta": -0.0082,
+   "beat_frac": 0.379,
+   "p": 0.11835,
+   "n": 87
+  }
+ ]
+}
