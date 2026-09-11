@@ -47,6 +47,7 @@ class Complex:
     fe: np.ndarray | None = None             # (3,)
     heme_xyz: np.ndarray = field(default_factory=lambda: np.zeros((0, 3)))
     heme_atom: list[str] = field(default_factory=list)
+    heme_elem: list[str] = field(default_factory=list)   # elements, for name-free parsing
     # proximal thiolate sulfur (Cys442 SG in CYP3A4)
     axial_sg: np.ndarray | None = None
 
@@ -65,8 +66,33 @@ class Complex:
             lig_elem=list(self.lig_elem), lig_name=self.lig_name, lig_chain=self.lig_chain,
             fe=(self.fe @ R.T + t) if self.fe is not None else None,
             heme_xyz=tx(self.heme_xyz), heme_atom=list(self.heme_atom),
+            heme_elem=list(self.heme_elem),
             axial_sg=(self.axial_sg @ R.T + t) if self.axial_sg is not None else None,
         )
+
+
+def _looks_like_heme(res) -> bool:
+    """Recognise an iron-porphyrin by composition, regardless of what it is called.
+
+    A heme is an iron atom inside a ~43-atom macrocycle with four nitrogens. That is a
+    far more reliable signature than the residue name, which varies by engine and by
+    depositor: `HEM` from Boltz and most crystals, `HEC` in some CYP2C9 entries, and a
+    generic `LIG2` from Chai-1, which has no CCD input and receives the cofactor as SMILES.
+
+    Getting this wrong is not a small error. An unrecognised heme is also the largest HET
+    group in the file, so it gets selected as the QUERY LIGAND and every distance, RMSD
+    and LDDT-PLI for that structure silently describes the wrong molecule.
+    """
+    n_fe = n_n = n_at = 0
+    for at in res:
+        n_at += 1
+        el = at.element.name.upper()
+        if el == "FE":
+            n_fe += 1
+        elif el == "N":
+            n_n += 1
+    return n_fe == 1 and n_n >= 4 and n_at >= 30
+
 
 
 def load_structure(path: str | Path, ligand_code: str | None = None,
@@ -95,7 +121,7 @@ def load_structure(path: str | Path, ligand_code: str | None = None,
     md = st[model]
 
     prot_xyz, prot_key, prot_res = [], [], {}
-    heme_xyz, heme_atom, fe = [], [], None
+    heme_xyz, heme_atom, heme_elem, fe = [], [], [], None
     axial_sg = None
     het: dict[tuple[str, str, int], list] = {}
 
@@ -119,12 +145,20 @@ def load_structure(path: str | Path, ligand_code: str | None = None,
                         # true axial SG is disambiguated later by distance to Fe
                         if axial_sg is None:
                             axial_sg = np.array([at.pos.x, at.pos.y, at.pos.z])
-            elif rname in HEME_ALIASES:
+            elif rname in HEME_ALIASES or _looks_like_heme(res):
+                # Name-based detection is not sufficient. Different engines name the same
+                # cofactor differently: Boltz emits the CCD code `HEM`, but Chai-1 - which
+                # takes the heme as a SMILES ligand because it has no CCD input - emits
+                # generic `LIG2`. With only the alias list, the heme went unrecognised AND
+                # was then picked up as the query ligand, because it is the largest HET
+                # group present. Every metric for that structure compared the wrong
+                # molecule and looked merely bad rather than wrong.
                 for at in res:
                     p = [at.pos.x, at.pos.y, at.pos.z]
                     heme_xyz.append(p)
                     heme_atom.append(at.name.strip())
-                    if at.name.strip().upper() == "FE":
+                    heme_elem.append(at.element.name.upper())
+                    if at.element.name.upper() == "FE":
                         fe = np.array(p, float)
             elif rname not in IGNORE_HET:
                 key = (cid, rname, res.seqid.num)
@@ -153,7 +187,7 @@ def load_structure(path: str | Path, ligand_code: str | None = None,
     cx = Complex(name=Path(path).stem, prot_xyz=prot_xyz, prot_key=prot_key,
                  prot_res=prot_res, lig_xyz=lig_xyz, lig_elem=lig_elem,
                  lig_name=lig_name, lig_chain=lig_chain, fe=fe,
-                 heme_xyz=heme_xyz, heme_atom=heme_atom)
+                 heme_xyz=heme_xyz, heme_atom=heme_atom, heme_elem=heme_elem)
     # resolve the real axial thiolate: the Cys SG closest to Fe (should be ~2.3 A)
     if fe is not None:
         sgs = [(i, k) for i, k in enumerate(prot_key)

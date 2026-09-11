@@ -186,14 +186,15 @@
   "est_gpu_hours": 0.12000000000000001,
   "started": 1789138048.5062633,
   "month": "2026-09",
-  "status": "launched",
+  "status": "done",
   "actual_gpu_hours": null,
-  "note": "app=cyp-cofold-chai tag=chaismoke arms=unsteered",
+  "note": "app=cyp-cofold-chai tag=chaismoke arms=unsteered | 2 ok, 0 failed",
   "meta": {
    "n_jobs": 2,
    "samples": 5,
    "app": "cyp-cofold-chai"
-  }
+  },
+  "ended": 1789139631.6918266
  },
  {
   "run_id": "chaismoke-chai-1789138104",
@@ -212,5 +213,23 @@
    "app": "cyp-cofold-chai"
   },
   "ended": 1789139136.3382356
+ },
+ {
+  "run_id": "chaismoke2-chai-1789139237",
+  "venue": "modal",
+  "kind": "chai_cofold",
+  "units": 10,
+  "est_gpu_hours": 0.12000000000000001,
+  "started": 1789139237.491133,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-chai tag=chaismoke2 arms=unsteered | 2 ok, 0 failed",
+  "meta": {
+   "n_jobs": 2,
+   "samples": 5,
+   "app": "cyp-cofold-chai"
+  },
+  "ended": 1789139753.0708385
  }
 ]

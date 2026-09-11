@@ -92,24 +92,51 @@ class GeometryTerms:
 
 
 def porphyrin_frame(heme_xyz: np.ndarray, heme_atom: list[str],
-                    axial_sg: np.ndarray | None) -> tuple[np.ndarray | None, np.ndarray | None]:
+                    axial_sg: np.ndarray | None,
+                    heme_elem: list[str] | None = None
+                    ) -> tuple[np.ndarray | None, np.ndarray | None]:
     """(Fe, unit normal pointing to the DISTAL face).
 
-    Orientation is fixed by the thiolate: the proximal face is the one the Cys sulfur
-    is on, so the distal normal points the other way. Without the thiolate we cannot
-    orient the axis and return None rather than guess — a guessed sign would flip the
-    single most important validity check in the whole scorer.
+    Identification is by ELEMENT, with atom names used only as a fallback. Engines do not
+    agree on naming: a deposited heme calls its iron `FE` and its pyrrole nitrogens
+    `NA/NB/NC/ND`, but Chai-1 receives the cofactor as SMILES and emits generic names, so
+    a name-only lookup finds no iron at all and every metal term silently returns NaN.
+
+    The four pyrrole nitrogens are taken as the four nitrogens nearest the iron, which is
+    true of any porphyrin and needs no naming convention whatsoever.
+
+    Orientation is fixed by the thiolate: the proximal face is the one the Cys sulfur is
+    on. Without it we cannot orient the axis and return None rather than guess - a guessed
+    sign would flip the single most important validity check in the scorer.
     """
-    fe, ns = None, []
-    for p, a in zip(heme_xyz, heme_atom):
-        au = a.upper()
-        if au == "FE":
-            fe = np.asarray(p, float)
-        elif au in ("NA", "NB", "NC", "ND"):
-            ns.append(p)
-    if fe is None or len(ns) < 3:
+    heme_xyz = np.asarray(heme_xyz, float)
+    if len(heme_xyz) == 0:
+        return None, None
+    elems = [e.upper() for e in (heme_elem or [])]
+    names = [a.upper() for a in heme_atom]
+
+    fe = None
+    if elems and len(elems) == len(heme_xyz):
+        idx = [i for i, e in enumerate(elems) if e == "FE"]
+        if idx:
+            fe = heme_xyz[idx[0]]
+    if fe is None:
+        idx = [i for i, a in enumerate(names) if a == "FE" or a.startswith("FE")]
+        if idx:
+            fe = heme_xyz[idx[0]]
+    if fe is None:
+        return None, None
+
+    # pyrrole nitrogens: the four N nearest the iron. No naming convention required.
+    if elems and len(elems) == len(heme_xyz):
+        n_idx = [i for i, e in enumerate(elems) if e == "N"]
+    else:
+        n_idx = [i for i, a in enumerate(names) if a in ("NA", "NB", "NC", "ND")]
+    if len(n_idx) < 3:
         return fe, None
-    N = np.asarray(ns, float)
+    n_idx = sorted(n_idx, key=lambda i: np.linalg.norm(heme_xyz[i] - fe))[:4]
+    N = heme_xyz[n_idx]
+
     _u, _s, vt = np.linalg.svd(N - N.mean(0))
     n = vt[-1] / np.linalg.norm(vt[-1])
     if axial_sg is None:
@@ -151,7 +178,8 @@ def lone_pair_direction(mol, atom_idx: int, conf_xyz: np.ndarray) -> np.ndarray 
 def compute(lig_xyz: np.ndarray, lig_elem: list[str],
             prot_xyz: np.ndarray, heme_xyz: np.ndarray, heme_atom: list[str],
             axial_sg: np.ndarray | None, mol=None,
-            aromatic_rings: list[list[int]] | None = None) -> GeometryTerms:
+            aromatic_rings: list[list[int]] | None = None,
+            heme_elem: list[str] | None = None) -> GeometryTerms:
     """All tier-0 terms for one pose.
 
     `mol` is an RDKit molecule whose atom order matches `lig_xyz` — supply it to get
@@ -164,7 +192,8 @@ def compute(lig_xyz: np.ndarray, lig_elem: list[str],
     lig_xyz = np.asarray(lig_xyz, float)
     els = [e.upper() for e in lig_elem]
 
-    fe, normal = porphyrin_frame(np.asarray(heme_xyz, float), heme_atom, axial_sg)
+    fe, normal = porphyrin_frame(np.asarray(heme_xyz, float), heme_atom,
+                                axial_sg, heme_elem)
 
     # ---- iron coordination -------------------------------------------------
     if fe is not None:
