@@ -177,5 +177,39 @@
    "app": "cyp-qm-tier1"
   },
   "ended": 1789137818.2554176
+ },
+ {
+  "run_id": "chaismoke-chai-1789138048",
+  "venue": "modal",
+  "kind": "chai_cofold",
+  "units": 10,
+  "est_gpu_hours": 0.12000000000000001,
+  "started": 1789138048.5062633,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-chai tag=chaismoke arms=unsteered",
+  "meta": {
+   "n_jobs": 2,
+   "samples": 5,
+   "app": "cyp-cofold-chai"
+  }
+ },
+ {
+  "run_id": "chaismoke-chai-1789138104",
+  "venue": "modal",
+  "kind": "chai_cofold",
+  "units": 10,
+  "est_gpu_hours": 0.12000000000000001,
+  "started": 1789138104.1046774,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "app=cyp-cofold-chai tag=chaismoke arms=unsteered",
+  "meta": {
+   "n_jobs": 2,
+   "samples": 5,
+   "app": "cyp-cofold-chai"
+  }
  }
 ]

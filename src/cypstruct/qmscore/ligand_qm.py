@@ -31,6 +31,20 @@ the 16 opinionated ones, are the entire addressable surface of tier 1 for donor 
 `scripts/qm/validate_donor_ranking.py` scores against that, honestly, and reports the
 denominator rather than quoting an accuracy over the easy 50.
 
+**Measured result, 2026-09-11** (`scripts/qm/validate_donor_ranking.py`, 80 ligands run on
+Modal CPU for 0.287 CPU-hours, 71 mappable to an atom-level ground truth). Top-1 accuracy
+at naming the atom that is actually 1.9-2.45 A from the heme iron in the deposited
+structure, on the 32 ligands where the methods can differ at all:
+
+    incumbent SMARTS prior   0.594      proton affinity alone   0.625
+    Fukui f- alone           0.781      %V_bur alone            0.812
+    PA - k * %V_bur          0.906
+
+On all 71 mapped ligands: SMARTS 0.817 -> 0.958. Tier 1 wins, and the two methods disagree
+on 14 ligands, of which QM takes 12. Note carefully that the 0.988 quoted elsewhere for the
+SMARTS prior is a *molecule-level class recall* ("is this ligand type II at all"), not a
+donor-ranking accuracy; the comparable incumbent number is the 0.594 / 0.817 above.
+
 Everything here returns **raw physical quantities and rankings, never a fitted score**,
 matching `geometry.py`. Weighting happens in the learned ranker against measured
 LDDT-PLI labels, so that no constant in this file quietly becomes a model parameter.
@@ -1039,11 +1053,24 @@ def _load_xyz_into_conformer(molh, cid: int, xyz_text: str) -> None:
 # because a coefficient that cannot reproduce the one thing it was introduced for is worth
 # knowing about.
 #
-# This remains a ONE-POINT ANCHOR on a textbook fact, not a fit: it is set by two molecules
-# and validated on none. `rank.py` must refit it against measured LDDT-PLI labels under
-# leave-one-ligand-cluster-out before any of this reaches a submission, and
-# `scripts/qm/validate_donor_ranking.py` reports the single-criterion rankings separately
-# precisely so that this composite cannot hide which ingredient did the work.
+# The value was fixed at 1.65 from that anchor BEFORE the validation was run. Sweeping it
+# afterwards over the 32 decisive deposited ligands shows a broad plateau, not a knife
+# edge — top-1 accuracy on the decisive subset / on all 71 mapped ligands:
+#
+#     k     0.00   0.25   0.50   0.80   1.00   1.65   2.00   2.50   5.00  10.00
+#     dec  0.625  0.781  0.844  0.906  0.906  0.906  0.906  0.844  0.844  0.844
+#     all  0.831  0.901  0.930  0.958  0.958  0.958  0.958  0.930  0.930  0.930
+#
+# So the result does not depend on hitting this number: anything in 0.8-2.0 gives the same
+# answer, and the real content is that sterics enter AT ROUGHLY UNIT WEIGHT rather than at
+# the 0.25 originally guessed. k=0 (proton affinity alone) is much worse than either
+# ingredient's own ranking, which is the useful negative here.
+#
+# It remains a ONE-POINT ANCHOR on a textbook fact, not a fit: it was set by two molecules.
+# `rank.py` must refit it against measured LDDT-PLI labels under leave-one-ligand-cluster-out
+# before any of this reaches a submission, and `scripts/qm/validate_donor_ranking.py` reports
+# the single-criterion rankings separately precisely so that this composite cannot hide
+# which ingredient did the work.
 VBUR_TO_KCAL_PRIOR = 1.65
 
 RANKINGS = ("smarts", "proton_affinity", "fukui_minus", "vbur_at_metal",

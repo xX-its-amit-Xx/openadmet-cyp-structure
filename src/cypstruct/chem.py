@@ -113,10 +113,19 @@ def coordinating_atoms(smiles_or_mol, top_k: int = 3) -> list[DonorSite]:
                 a = mol.GetAtomWithIdx(idx)
                 if a.GetSymbol() != "N":
                     continue
-                # available lone pair: aromatic N must be two-coordinate;
-                # aliphatic N must not be an amide and must have a free pair
+                # Available lone pair. A pyrrole-type N-H puts its lone pair into the
+                # pi system and cannot coordinate; a pyridine-type N keeps it in-plane
+                # and can.
+                #
+                # ⚠️ This test must count HYDROGENS, not just heavy neighbours.
+                # `GetNeighbors()` returns heavy atoms only, so an N-H reports 2 and the
+                # filter silently never fired: `coordinating_atoms("c1c[nH]cn1")` returned
+                # BOTH imidazole nitrogens at score 1.00, the donor and the N-H alike.
+                # It affected 13 of the 32 multi-candidate ligands in the validation set.
+                # Nothing had visibly broken only because the real donor happened to sort
+                # first by dict insertion order - i.e. the tie was being broken by luck.
                 heavy_nbrs = [n for n in a.GetNeighbors()]
-                if a.GetIsAromatic() and len(heavy_nbrs) != 2:
+                if a.GetIsAromatic() and (len(heavy_nbrs) != 2 or a.GetTotalNumHs() != 0):
                     continue
                 if a.GetFormalCharge() > 0:
                     continue          # protonated / quaternary N cannot donate

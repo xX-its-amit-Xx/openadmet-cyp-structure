@@ -1,148 +1,76 @@
 {
  "summary": {
   "n_ligands_with_ground_truth": 80,
-  "n_scored": 53,
-  "n_unmapped": 27,
+  "n_scored": 71,
+  "n_unmapped": 9,
   "n_missing_qm": 0,
   "note_on_the_988_baseline": "98.8% (82/83) in donor_prediction_validation.json is MOLECULE-LEVEL class recall - did the predictor call the ligand type II at all. It is not a donor-ranking accuracy and is not directly comparable with anything below. The comparable incumbent number is smarts_top1 on the same ligands.",
   "all_ligands": {
    "smarts_top1": {
-    "n": 53,
-    "correct": 42,
-    "accuracy": 0.7925
+    "n": 71,
+    "correct": 58,
+    "accuracy": 0.8169
    },
    "lonepair_filter_top1": {
-    "n": 53,
-    "correct": 42,
-    "accuracy": 0.7925
+    "n": 71,
+    "correct": 58,
+    "accuracy": 0.8169
    },
    "proton_affinity_top1": {
-    "n": 53,
-    "correct": 41,
-    "accuracy": 0.7736
+    "n": 71,
+    "correct": 59,
+    "accuracy": 0.831
    },
    "fukui_minus_top1": {
-    "n": 53,
-    "correct": 49,
-    "accuracy": 0.9245
+    "n": 71,
+    "correct": 64,
+    "accuracy": 0.9014
    },
    "vbur_at_metal_top1": {
-    "n": 53,
-    "correct": 49,
-    "accuracy": 0.9245
+    "n": 71,
+    "correct": 65,
+    "accuracy": 0.9155
    },
    "pa_minus_steric_top1": {
-    "n": 53,
-    "correct": 50,
-    "accuracy": 0.9434
+    "n": 71,
+    "correct": 66,
+    "accuracy": 0.9296
    }
   },
   "decisive_subset_multi_candidate_only": {
    "smarts_top1": {
-    "n": 27,
-    "correct": 16,
-    "accuracy": 0.5926
+    "n": 32,
+    "correct": 19,
+    "accuracy": 0.5938
    },
    "lonepair_filter_top1": {
-    "n": 27,
-    "correct": 16,
-    "accuracy": 0.5926
+    "n": 32,
+    "correct": 19,
+    "accuracy": 0.5938
    },
    "proton_affinity_top1": {
-    "n": 27,
-    "correct": 15,
-    "accuracy": 0.5556
+    "n": 32,
+    "correct": 20,
+    "accuracy": 0.625
    },
    "fukui_minus_top1": {
-    "n": 27,
-    "correct": 23,
-    "accuracy": 0.8519
+    "n": 32,
+    "correct": 25,
+    "accuracy": 0.7812
    },
    "vbur_at_metal_top1": {
-    "n": 27,
-    "correct": 23,
-    "accuracy": 0.8519
+    "n": 32,
+    "correct": 26,
+    "accuracy": 0.8125
    },
    "pa_minus_steric_top1": {
-    "n": 27,
-    "correct": 24,
-    "accuracy": 0.8889
+    "n": 32,
+    "correct": 27,
+    "accuracy": 0.8438
    }
   },
-  "single_candidate_ligands": 26,
+  "single_candidate_ligands": 39,
   "unmapped": [
-   {
-    "ligand": "A1A06",
-    "why": "could not map N33"
-   },
-   {
-    "ligand": "A1A07",
-    "why": "could not map N30"
-   },
-   {
-    "ligand": "A1A08",
-    "why": "could not map N27"
-   },
-   {
-    "ligand": "A1A4K",
-    "why": "could not map N33"
-   },
-   {
-    "ligand": "A1A4S",
-    "why": "could not map N28"
-   },
-   {
-    "ligand": "A1A4T",
-    "why": "could not map N24"
-   },
-   {
-    "ligand": "A1A4U",
-    "why": "could not map N09"
-   },
-   {
-    "ligand": "A1A4V",
-    "why": "could not map N11"
-   },
-   {
-    "ligand": "A1APA",
-    "why": "could not map N43"
-   },
-   {
-    "ligand": "A1ASO",
-    "why": "could not map N17"
-   },
-   {
-    "ligand": "A1ASP",
-    "why": "could not map N20"
-   },
-   {
-    "ligand": "A1ASQ",
-    "why": "could not map N17"
-   },
-   {
-    "ligand": "A1ASR",
-    "why": "could not map N25"
-   },
-   {
-    "ligand": "A1ASS",
-    "why": "could not map N20"
-   },
-   {
-    "ligand": "A1AST",
-    "why": "could not map N27"
-   },
-   {
-    "ligand": "A1ASU",
-    "why": "could not map N11"
-   },
-   {
-    "ligand": "A1ASV",
-    "why": "could not map N07"
-   },
-   {
-    "ligand": "A1BNX",
-    "why": "could not map N33"
-   },
    {
     "ligand": "O39",
     "why": "could not map N57"
@@ -215,6 +143,42 @@
     "true_idx": 42,
     "smarts_top": 31,
     "pa_minus_steric_top": 42,
+    "smarts_correct": false,
+    "pa_minus_steric_correct": true
+   },
+   {
+    "ligand": "A1A4S",
+    "true_atom_name": "N28",
+    "true_idx": 24,
+    "smarts_top": 24,
+    "pa_minus_steric_top": 40,
+    "smarts_correct": true,
+    "pa_minus_steric_correct": false
+   },
+   {
+    "ligand": "A1A4V",
+    "true_atom_name": "N11",
+    "true_idx": 24,
+    "smarts_top": 24,
+    "pa_minus_steric_top": 41,
+    "smarts_correct": true,
+    "pa_minus_steric_correct": false
+   },
+   {
+    "ligand": "A1APA",
+    "true_atom_name": "N43",
+    "true_idx": 42,
+    "smarts_top": 4,
+    "pa_minus_steric_top": 42,
+    "smarts_correct": false,
+    "pa_minus_steric_correct": true
+   },
+   {
+    "ligand": "A1ASU",
+    "true_atom_name": "N11",
+    "true_idx": 8,
+    "smarts_top": 20,
+    "pa_minus_steric_top": 8,
     "smarts_correct": false,
     "pa_minus_steric_correct": true
    },
@@ -405,6 +369,402 @@
    "vbur_at_metal_top": 25,
    "vbur_at_metal_correct": true,
    "pa_minus_steric_top": 25,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1A06",
+   "true_atom_name": "N33",
+   "true_idx": 32,
+   "fe_dist": 2.192,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 32,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 32,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 32,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 32,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 32,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1A07",
+   "true_atom_name": "N30",
+   "true_idx": 31,
+   "fe_dist": 2.134,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 31,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 31,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 31,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 31,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 31,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1A08",
+   "true_atom_name": "N27",
+   "true_idx": 10,
+   "fe_dist": 2.185,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 10,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 10,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 10,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 10,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 10,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1A4K",
+   "true_atom_name": "N33",
+   "true_idx": 24,
+   "fe_dist": 2.216,
+   "n_candidates": 2,
+   "decisive": true,
+   "smarts_top": 24,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 2,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 24,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 24,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 24,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 24,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1A4S",
+   "true_atom_name": "N28",
+   "true_idx": 24,
+   "fe_dist": 2.058,
+   "n_candidates": 2,
+   "decisive": true,
+   "smarts_top": 24,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 2,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 24,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 40,
+   "fukui_minus_correct": false,
+   "vbur_at_metal_top": 40,
+   "vbur_at_metal_correct": false,
+   "pa_minus_steric_top": 40,
+   "pa_minus_steric_correct": false
+  },
+  {
+   "ligand": "A1A4T",
+   "true_atom_name": "N24",
+   "true_idx": 28,
+   "fe_dist": 2.148,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 28,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 28,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 28,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 28,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 28,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1A4U",
+   "true_atom_name": "N09",
+   "true_idx": 10,
+   "fe_dist": 2.2,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 10,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 10,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 10,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 10,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 10,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1A4V",
+   "true_atom_name": "N11",
+   "true_idx": 24,
+   "fe_dist": 2.192,
+   "n_candidates": 2,
+   "decisive": true,
+   "smarts_top": 24,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 2,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 24,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 41,
+   "fukui_minus_correct": false,
+   "vbur_at_metal_top": 41,
+   "vbur_at_metal_correct": false,
+   "pa_minus_steric_top": 41,
+   "pa_minus_steric_correct": false
+  },
+  {
+   "ligand": "A1APA",
+   "true_atom_name": "N43",
+   "true_idx": 42,
+   "fe_dist": 2.141,
+   "n_candidates": 3,
+   "decisive": true,
+   "smarts_top": 4,
+   "smarts_offered_true": true,
+   "smarts_correct": false,
+   "n_candidates_after_filter": 3,
+   "filter_correct": false,
+   "qm_status": "ok",
+   "proton_affinity_top": 42,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 15,
+   "fukui_minus_correct": false,
+   "vbur_at_metal_top": 42,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 42,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1ASO",
+   "true_atom_name": "N17",
+   "true_idx": 16,
+   "fe_dist": 2.231,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 16,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 16,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 16,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 16,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 16,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1ASP",
+   "true_atom_name": "N20",
+   "true_idx": 24,
+   "fe_dist": 2.22,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 24,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 24,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 24,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 24,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 24,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1ASQ",
+   "true_atom_name": "N17",
+   "true_idx": 26,
+   "fe_dist": 2.2,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 26,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 26,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 26,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 26,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 26,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1ASR",
+   "true_atom_name": "N25",
+   "true_idx": 24,
+   "fe_dist": 2.253,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 24,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 24,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 24,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 24,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 24,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1ASS",
+   "true_atom_name": "N20",
+   "true_idx": 16,
+   "fe_dist": 2.223,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 16,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 16,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 16,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 16,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 16,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1AST",
+   "true_atom_name": "N27",
+   "true_idx": 24,
+   "fe_dist": 2.227,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 24,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 24,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 24,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 24,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 24,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1ASU",
+   "true_atom_name": "N11",
+   "true_idx": 8,
+   "fe_dist": 2.207,
+   "n_candidates": 3,
+   "decisive": true,
+   "smarts_top": 20,
+   "smarts_offered_true": true,
+   "smarts_correct": false,
+   "n_candidates_after_filter": 3,
+   "filter_correct": false,
+   "qm_status": "ok",
+   "proton_affinity_top": 8,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 8,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 8,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 8,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1ASV",
+   "true_atom_name": "N07",
+   "true_idx": 20,
+   "fe_dist": 2.209,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 20,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 20,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 20,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 20,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 20,
+   "pa_minus_steric_correct": true
+  },
+  {
+   "ligand": "A1BNX",
+   "true_atom_name": "N33",
+   "true_idx": 32,
+   "fe_dist": 2.356,
+   "n_candidates": 1,
+   "decisive": false,
+   "smarts_top": 32,
+   "smarts_offered_true": true,
+   "smarts_correct": true,
+   "n_candidates_after_filter": 1,
+   "filter_correct": true,
+   "qm_status": "ok",
+   "proton_affinity_top": 32,
+   "proton_affinity_correct": true,
+   "fukui_minus_top": 32,
+   "fukui_minus_correct": true,
+   "vbur_at_metal_top": 32,
+   "vbur_at_metal_correct": true,
+   "pa_minus_steric_top": 32,
    "pa_minus_steric_correct": true
   },
   {

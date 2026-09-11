@@ -681,7 +681,7 @@
    "predicted_class": "type_II",
    "min_fe_dist": 3.763,
    "observed_donor_element": "C",
-   "n_candidate_donors": 3,
+   "n_candidate_donors": 2,
    "top_donor": "imidazole_N3",
    "top_donor_score": 1.0,
    "top_donor_env": "(True, 5, ('N', 'N'))",
