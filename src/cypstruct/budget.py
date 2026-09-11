@@ -368,3 +368,26 @@ def workspace_env(profile: str) -> dict:
     return {**os.environ, "MODAL_PROFILE": profile,
             "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
 
+# --------------------------------------------------------------------------
+# MEASURED dollar costs, 2026-09-11. These are billed figures, not estimates.
+#
+#   Boltz-2  $26.24 for 168 jobs x 20 samples  =  $0.156 / job
+#   Chai-1   $ 4.11 for  10 jobs x 10 samples  =  $0.411 / job
+#
+# Chai is about 2.6x more expensive per job at HALF the samples, i.e. roughly 5x per
+# sample. Worth knowing before choosing which engine to scale: a fixed budget buys far
+# more Boltz poses than Chai poses, so Chai earns its place only as a source of
+# CROSS-ENGINE disagreement, never as a way to enlarge a pool.
+# --------------------------------------------------------------------------
+USD_PER_JOB = {
+    "boltz2_cofold": 0.156,
+    "chai_cofold": 0.411,
+}
+
+
+def usd_estimate(kind: str, n_jobs: int) -> float:
+    """Projected dollars for a batch, from MEASURED per-job cost where we have it."""
+    if kind in USD_PER_JOB:
+        return round(n_jobs * USD_PER_JOB[kind], 2)
+    return round(estimate(kind, n_jobs, 1) * 2.2, 2)
+
