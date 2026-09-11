@@ -266,5 +266,42 @@
    "app": "cyp-cofold-chai",
    "detached": true
   }
+ },
+ {
+  "run_id": "val87s2-detached-1789141933",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 3360,
+  "est_gpu_hours": 18.48,
+  "started": 1789141933.0267282,
+  "month": "2026-09",
+  "status": "killed",
+  "actual_gpu_hours": 0.5,
+  "note": "detached spawn_map app=cyp-cofold-boltz tag=val87s2 | over-scoped: detached passed arms only to chai, so boltz planned the steered arm too (168 jobs / 18.5 GPU-h instead of 87 / 9.6). Stopped within ~2 min; relaunching unsteered only.",
+  "meta": {
+   "n_jobs": 168,
+   "samples": 20,
+   "app": "cyp-cofold-boltz",
+   "detached": true
+  },
+  "ended": 1789141969.6843836
+ },
+ {
+  "run_id": "val87s2-detached-1789141974",
+  "venue": "modal",
+  "kind": "boltz2_cofold",
+  "units": 1740,
+  "est_gpu_hours": 9.57,
+  "started": 1789141974.013062,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "detached spawn_map app=cyp-cofold-boltz tag=val87s2",
+  "meta": {
+   "n_jobs": 87,
+   "samples": 20,
+   "app": "cyp-cofold-boltz",
+   "detached": true
+  }
  }
 ]

@@ -94,9 +94,17 @@ def launch(engine: str, csv: str, tag: str, samples: int, seeds: str,
 
     seed_list = [int(s) for s in seeds.split(",")]
     kwargs = dict(csv_path=csv, tag=tag, samples=samples, seeds=seed_list)
-    if arms is not None and engine == "chai":
+    # BOTH engines take `arms`. Passing it only to Chai meant a Boltz launch silently
+    # planned the STEERED arm as well, doubling a 9.6 GPU-h run to 18.5 - on an arm
+    # FINDING 001 measured as a null. Boltz defaults to unsteered here for that reason;
+    # ask for the steered arm explicitly if you ever want to re-measure it.
+    if arms is None and engine == "boltz":
+        arms = "unsteered"
+    if arms is not None:
         kwargs["arms"] = tuple(a.strip() for a in arms.split(",") if a.strip())
     jobs = mod.plan(**kwargs)
+    if not jobs:
+        raise SystemExit(f"plan() produced no jobs for arms={arms!r}")
 
     # Skip what is already finished, so a relaunch resumes instead of repeating.
     done_before, _ = _done_count(tag)
