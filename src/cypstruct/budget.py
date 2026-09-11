@@ -249,3 +249,74 @@ def summary() -> dict:
 
 if __name__ == "__main__":
     print(json.dumps(summary(), indent=2))
+
+# --------------------------------------------------------------------------
+# ACTUAL spend, in dollars, from Modal itself
+#
+# The guard in this module failed on 2026-09-11 and it is worth being precise about how.
+# It tracked GPU-HOURS against a cap I invented (60/month), computed from MY OWN estimates
+# of what each run would cost. Modal bills in DOLLARS against a workspace spend limit I
+# never queried. So the ledger read "44 of 60 GPU-h, headroom available" at the exact
+# moment Modal refused a launch with "Workspace has exceeded its spend limit".
+#
+# Worse, the ledger counted runs that were planned and then killed, so it over-reported
+# the very number it was gating on while under-reporting the one that mattered.
+#
+# A budget guard that measures a proxy instead of the billed quantity is not a guard.
+# --------------------------------------------------------------------------
+
+MONTHLY_USD_CAP = 25.0     # act well below the real limit; raise deliberately, not by drift
+
+
+def modal_actual_spend(period: str = "this month") -> dict:
+    """Real dollars billed by Modal, from `modal billing report`.
+
+    This is the authoritative number. The local ledger is a planning aid; this is what
+    actually stops the work.
+    """
+    import subprocess
+
+    try:
+        cp = subprocess.run(["modal", "billing", "report", "--for", period, "--json"],
+                            capture_output=True, timeout=420,
+                            env={**os.environ, "PYTHONIOENCODING": "utf-8",
+                                 "PYTHONUTF8": "1"})
+        raw = (cp.stdout or b"").decode("utf-8", "replace")
+        start = raw.find("[")
+        rows = json.loads(raw[start:]) if start >= 0 else []
+    except Exception as exc:
+        return {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+
+    by_app: dict[str, float] = {}
+    total = 0.0
+    for r in rows:
+        try:
+            c = float(r.get("cost", 0.0))
+        except (TypeError, ValueError):
+            continue
+        total += c
+        by_app[r.get("description", "?")] = by_app.get(r.get("description", "?"), 0.0) + c
+    return {"ok": True, "period": period, "total_usd": round(total, 2),
+            "by_app": {k: round(v, 2) for k, v in sorted(by_app.items(),
+                                                         key=lambda kv: -kv[1])},
+            "cap_usd": MONTHLY_USD_CAP,
+            "over_cap": total > MONTHLY_USD_CAP}
+
+
+def preflight_usd(est_gpu_hours: float, usd_per_gpu_hour: float = 2.2) -> tuple[bool, str]:
+    """Gate a launch on REAL dollars remaining, not on estimated hours.
+
+    `usd_per_gpu_hour` is calibrated from the val87b batch: 168 jobs x 20 samples billed
+    **$26.24**, against an estimate of 18.5 GPU-h, i.e. about $1.4 per estimated GPU-hour
+    on A100-40GB. The default is deliberately above that so the gate errs toward refusing.
+    """
+    spend = modal_actual_spend()
+    if not spend.get("ok"):
+        return False, f"cannot read Modal billing ({spend.get('error')}); refusing to launch blind"
+    projected = spend["total_usd"] + est_gpu_hours * usd_per_gpu_hour
+    if projected > MONTHLY_USD_CAP:
+        return False, (f"${spend['total_usd']:.2f} already billed this month; this launch "
+                       f"adds about ${est_gpu_hours * usd_per_gpu_hour:.2f}, projecting "
+                       f"${projected:.2f} against a ${MONTHLY_USD_CAP:.2f} cap")
+    return True, ""
+

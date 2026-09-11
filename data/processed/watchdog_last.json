@@ -1,18 +1,32 @@
 {
-  "checked": "2026-09-11 14:47:45",
+  "checked": "2026-09-11 16:30:42",
   "dry_run": true,
   "max_age_hours": 8.0,
-  "owned_apps_running": 5,
+  "owned_apps_running": 10,
   "runaways": [],
   "idle_ephemeral_shells": [],
   "stale_ledger_rows": [],
+  "modal_usd": {
+    "ok": true,
+    "period": "this month",
+    "total_usd": 37.58,
+    "by_app": {
+      "cyp-cofold-boltz": 29.84,
+      "cyp-cofold-chai": 7.61,
+      "cyp-qm-tier1": 0.13,
+      "cyp-qm-probe": 0.0
+    },
+    "cap_usd": 25.0,
+    "over_cap": true
+  },
+  "ALERT_usd": "Modal billed $37.58 this month against a $25.00 self-imposed cap. GPU launches are blocked until the workspace limit is raised or credits reset.",
   "spend": {
     "modal": {
       "month": "2026-09",
       "venue": "modal",
-      "n_runs": 11,
-      "gpu_hours": 19.526,
-      "in_flight": 1
+      "n_runs": 17,
+      "gpu_hours": 44.006,
+      "in_flight": 3
     },
     "boltz": {
       "month": "2026-09",
@@ -29,11 +43,11 @@
       "in_flight": 0
     }
   },
-  "modal_cap_fraction": 0.325,
+  "modal_cap_fraction": 0.733,
   "disk": {
-    "free_C_gb": 12.15,
-    "free_D_gb": 10.58,
-    "rclone_vfs_cache_gb": 13.92,
+    "free_C_gb": 9.02,
+    "free_D_gb": 10.51,
+    "rclone_vfs_cache_gb": 0.0,
     "warning": "rclone VFS cache is unbounded (no --vfs-cache-max-size); never write bulk data through O:\\ \u2014 use storage.push()"
   }
 }

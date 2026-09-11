@@ -49,7 +49,14 @@ if REPO is not None and (REPO / "src" / "cypstruct").is_dir():
 APP_NAME = "cyp-cofold-boltz"
 
 # --- resource envelope -----------------------------------------------------
-GPU = os.environ.get("CYP_BOLTZ_GPU", "A100-40GB")
+# A GPU FALLBACK LIST, not a single type. Both batches sat queued behind
+# "waiting to be scheduled on a GPU_A100 worker" with zero containers running --
+# which looks exactly like a stall if you only watch output counts. Modal accepts
+# a list and takes whichever is free. Every entry has >=40 GB so a large complex
+# cannot OOM on a smaller card that merely happened to be available.
+GPU = os.environ.get("CYP_BOLTZ_GPU", "").strip() or ["A100-40GB", "L40S", "A100-80GB"]
+if isinstance(GPU, str) and "," in GPU:
+    GPU = [g.strip() for g in GPU.split(",") if g.strip()]
 MAX_CONTAINERS = int(os.environ.get("CYP_BOLTZ_MAX_CONTAINERS", "8"))
 FN_TIMEOUT = int(os.environ.get("CYP_BOLTZ_TIMEOUT", "2400"))   # seconds per ligand job
 

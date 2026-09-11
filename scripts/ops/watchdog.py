@@ -175,7 +175,15 @@ def main() -> int:
          "age_hours": round((time.time() - r["started"]) / 3600, 2),
          "est_gpu_hours": r["est_gpu_hours"]}
         for r in stale]
-    # 3: spend
+    # 3: spend — REAL dollars first, estimated hours second.
+    # The hours cap read "44 of 60, headroom available" at the moment Modal refused a
+    # launch for exceeding its workspace spend limit. A guard on a proxy is not a guard.
+    usd = budget.modal_actual_spend()
+    report["modal_usd"] = usd
+    if usd.get("ok") and usd.get("over_cap"):
+        report["ALERT_usd"] = (f"Modal billed ${usd['total_usd']:.2f} this month against a "
+                               f"${usd['cap_usd']:.2f} self-imposed cap. GPU launches are "
+                               f"blocked until the workspace limit is raised or credits reset.")
     spend = {v: budget.spent(v) for v in ("modal", "boltz", "openprotein")}
     cap = budget.CAPS["modal_gpu_hours"]
     used = spend["modal"]["gpu_hours"]
@@ -199,15 +207,20 @@ def main() -> int:
         print(f"[watchdog {report['checked']}] "
               f"owned apps running: {report['owned_apps_running']}, "
               f"runaways: {len(runaways)}, stale ledger rows: {len(report['stale_ledger_rows'])}")
-        print(f"  modal GPU-h this month: {used:.2f} / {cap:.0f}")
+        u = report.get("modal_usd", {})
+        if u.get("ok"):
+            print(f"  modal BILLED this month: ${u['total_usd']:.2f} / ${u['cap_usd']:.2f} cap"
+                  + ("   <-- OVER" if u.get("over_cap") else ""))
+        print(f"  modal GPU-h (local estimate): {used:.2f} / {cap:.0f}")
         print(f"  disk  C: {h['free_C_gb']} GB   D: {h['free_D_gb']} GB   "
               f"rclone cache {h['rclone_vfs_cache_gb']} GB")
-        for k in ("ALERT_spend", "ALERT_disk", "modal_error"):
+        for k in ("ALERT_usd", "ALERT_spend", "ALERT_disk", "modal_error"):
             if report.get(k):
                 print(f"  !! {report[k]}")
         for r in runaways:
             print(f"  !! runaway {r['name']} ({r['age_hours']}h): {r['action']}")
-    return 1 if (runaways or report.get("ALERT_spend") or report.get("ALERT_disk")) else 0
+    return 1 if (runaways or report.get("ALERT_usd") or report.get("ALERT_spend")
+                 or report.get("ALERT_disk")) else 0
 if __name__ == "__main__":
     raise SystemExit(main())
 

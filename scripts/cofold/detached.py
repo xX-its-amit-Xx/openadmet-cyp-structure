@@ -141,6 +141,29 @@ def launch(engine: str, csv: str, tag: str, samples: int, seeds: str,
           f"--engine {engine} --tag {tag}", flush=True)
 
 
+CAPACITY_MARKERS = ("waiting to be scheduled", "acquiring more capacity")
+
+
+def waiting_for_capacity(app_id: str) -> str | None:
+    """Is this app queued for a GPU rather than broken?
+
+    Both batches once sat at zero running containers with their output counts frozen,
+    which reads as a stall. The logs said otherwise: "waiting to be scheduled on a
+    GPU_A100 worker". Queued is not stalled, and killing a queued run throws away its
+    place in the queue along with the work. Always check before judging.
+    """
+    try:
+        cp = subprocess.run(["modal", "app", "logs", app_id],
+                            capture_output=True, text=True, timeout=90)
+    except Exception:
+        return None
+    tail = ((cp.stdout or "") + (cp.stderr or ""))[-6000:]
+    for line in reversed(tail.splitlines()):
+        if any(m in line for m in CAPACITY_MARKERS):
+            return line.strip()[:200]
+    return None
+
+
 def status(engine: str, tag: str) -> None:
     spec = ENGINES[engine]
     done, total = _done_count(tag)
@@ -152,8 +175,12 @@ def status(engine: str, tag: str) -> None:
         apps = [a for a in json.loads(cp.stdout)
                 if a.get("description") == spec["app"] and not a.get("stopped_at")]
         for a in apps:
+            note = ""
+            if str(a.get("tasks")) == "0":
+                w = waiting_for_capacity(a["app_id"])
+                note = f"  <- QUEUED FOR CAPACITY: {w}" if w else "  <- idle"
             print(f"  app {a['app_id']} state={a['state']} tasks={a['tasks']} "
-                  f"created={a['created_at']}")
+                  f"created={a['created_at']}{note}")
         if not apps:
             print("  (no live app — finished, or never deployed)")
     except Exception:

@@ -120,7 +120,14 @@ APP_NAME = "cyp-cofold-chai"
 # MONOMER plus heme plus one drug-sized ligand is ~520 tokens, comfortably a "smaller
 # complex", so A100-40GB is the default and `low_memory=True` (chai's own default) is
 # left on. UNVERIFIED: no published memory number for this token count.
-GPU = os.environ.get("CYP_CHAI_GPU", "A100-40GB")
+# A GPU FALLBACK LIST, not a single type. Both batches sat queued behind
+# "waiting to be scheduled on a GPU_A100 worker" with zero containers running --
+# which looks exactly like a stall if you only watch output counts. Modal accepts
+# a list and takes whichever is free. Every entry has >=40 GB so a large complex
+# cannot OOM on a smaller card that merely happened to be available.
+GPU = os.environ.get("CYP_CHAI_GPU", "").strip() or ["A100-40GB", "L40S", "A100-80GB"]
+if isinstance(GPU, str) and "," in GPU:
+    GPU = [g.strip() for g in GPU.split(",") if g.strip()]
 MAX_CONTAINERS = int(os.environ.get("CYP_CHAI_MAX_CONTAINERS", "6"))
 FN_TIMEOUT = int(os.environ.get("CYP_CHAI_TIMEOUT", "3600"))      # seconds per chunk
 INNER_TIMEOUT = max(600, FN_TIMEOUT - 600)   # always leave the container room to REPORT
