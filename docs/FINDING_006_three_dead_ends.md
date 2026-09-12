@@ -70,3 +70,38 @@ mode-level descriptors speak to it.
 3. **Physics with real within-ligand contrast** — the tier-2 xTB interaction energy on a
    pocket cutout, which was specified in `docs/QM_SCORER_DESIGN.md` and never run. It is
    the one remaining candidate that is not a mode-level descriptor.
+
+---
+
+## Addendum, same day: contact *deviation* also fails, and the pre-screen is vindicated
+
+Candidate 1 from the list below — per-residue contact deviation between sibling poses —
+was the next tried. Three variants, all contrasts between poses of the same ligand rather
+than against any prior:
+
+| feature | within-ligand CV | Δ vs random | p |
+|---|---|---|---|
+| `missing_common` (common contacts this pose lacks) | **1.69** | +0.0168 | 0.15 |
+| `rare_contact_count` (idiosyncratic contacts) | **1.49** | +0.0136 | 0.28 |
+| `weighted_agreement` (entropy-weighted sibling agreement) | 0.70 | +0.0056 | 0.55 |
+
+**The pre-screen worked exactly as intended.** These have within-ligand CV of 1.5–1.7,
+twenty times the spread of anything previously tested, so they sail past the flatness
+filter — confirming it is a genuine necessary-condition check and not a proxy for
+"features I happened to like".
+
+**And they still fail.** `missing_common` at +0.0168 is the largest single-feature effect
+measured so far, bigger than either term inside the working selector, yet p = 0.15 and it
+*degrades* the selector at every weight from +0.0279 down to +0.0125.
+
+The reason is redundancy, and it is measurable: **ρ = +0.357 between `missing_common` and
+the contact count** already in the selector. A pose that lacks the commonly-touched
+residues necessarily touches fewer residues overall, so the two terms are two views of one
+quantity. Compare the +0.030 between the selector's own two terms — that is what
+independence looks like, and it is why they compose.
+
+Running tally: **eight features tested, eight rejected.** The selector is unchanged at
++0.0279 on all data, +0.0220 on held-out clusters.
+
+Remaining untried: sub-pocket lobe occupancy, and the tier-2 xTB interaction energy — the
+only candidate left that is neither mode-level nor a re-expression of contact count.
