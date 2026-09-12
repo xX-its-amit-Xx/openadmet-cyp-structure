@@ -10,15 +10,27 @@ the wrong moment:
   as `LIG1`, Chai-1 emits it as `LIG3`, and deposited structures use the PDB chemical
   component code. A submission built by copying co-folder output unchanged is rejected.
 
-Format, recovered from the PXR structure track, which OpenADMET said this one mirrors:
-  - one `.pdb` per structure id, named `<structure_id>.pdb`, in a flat `.zip`
-  - each file: the protein, plus **exactly one** residue named `LIG`
-  - the ligand's molecular graph must match the expected SMILES for that id
+**Format — now the OFFICIAL spec**, read from the challenge Space's own `submission.py`
+(`huggingface.co/spaces/openadmet/cyp-challenge`, fetched 2026-09-12), not inferred:
 
-⚠️ **One genuine unknown: the heme.** PXR had no cofactor, so its validator never had an
-opinion about one. CYP3A4 does. `--heme keep|drop|rename` covers the options; the default
-keeps it as `HEM`, because it is part of the structure being predicted and dropping it
-would misrepresent the model. Re-check against the official validator the moment it ships.
+    "Submit a .zip archive containing exactly {STRUCTURE_DATASET_SIZE} .pdb files, one per
+     compound, named after the compound identifier (e.g. x00011-1.pdb). Each file must be a
+     full protein-ligand complex with the ligand residue named LIG."
+
+Three things that settles:
+  - one flat `.zip` of `<compound_id>.pdb` -- as built here;
+  - the ligand residue must be named exactly `LIG` -- Boltz emits `LIG1`, Chai `LIG3`, so
+    a zip of raw co-folder output is rejected. The converter renames and then asserts it;
+  - **"full protein-ligand complex" resolves the heme question: KEEP it.** The default was
+    already `--heme keep`; it is now the documented answer rather than a judgement call.
+
+The Space also gates on FILE COUNT before anything else: a zip whose file count differs
+from `STRUCTURE_DATASET_SIZE` is refused at upload with no further diagnosis. So
+`--expect-n` checks that here, where the message can be useful.
+
+⚠️ `STRUCTURE_TRACK_LIVE = False` and `STRUCTURE_DATASET_SIZE = 184  # TODO: Update when
+final dataset is ready` as of 2026-09-12 -- 184 is the PXR count, a placeholder, and the
+example id `x00011-1` is a PXR id too. Re-read both the moment the track goes live.
 
     python scripts/submit/build_submission.py build --tag val87b --out submissions/01_test.zip
     python scripts/submit/build_submission.py validate --zip submissions/01_test.zip
@@ -175,7 +187,7 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
         shutil.rmtree(tmp, ignore_errors=True)
 
 
-def validate(zip_path: Path, ligands_csv: Path) -> int:
+def validate(zip_path: Path, ligands_csv: Path, expect_n: int | None = None) -> int:
     """The checks the PXR validator ran, re-implemented so failures are found here.
 
     Deliberately strict about the ligand graph: a submission whose atoms do not match the
@@ -194,6 +206,9 @@ def validate(zip_path: Path, ligands_csv: Path) -> int:
     with zipfile.ZipFile(zip_path) as zf:
         names = [n for n in zf.namelist() if n.lower().endswith(".pdb")]
         got = {Path(n).stem for n in names}
+        # The Space refuses on file count BEFORE any other check, with no diagnosis.
+        if expect_n is not None and len(names) != expect_n:
+            errs.append(f"zip has {len(names)} .pdb files, the portal expects {expect_n}")
         missing, extra = sorted(set(expected) - got), sorted(got - set(expected))
         if missing:
             errs.append(f"missing {len(missing)} structures, first: {missing[:5]}")
@@ -256,9 +271,11 @@ if __name__ == "__main__":
     ap.add_argument("--zip", default=None)
     ap.add_argument("--ligands", default=str(DATA_PROCESSED / "validation_ligands.csv"))
     ap.add_argument("--heme", default="keep", choices=["keep", "drop", "rename"])
+    ap.add_argument("--expect-n", type=int, default=None,
+                    help="file count the portal expects (config.STRUCTURE_DATASET_SIZE)")
     ap.add_argument("--profile", default=None)
     a = ap.parse_args()
     if a.cmd == "build":
         build(a.tag, a.arm, Path(a.out), a.heme, None, a.profile)
     else:
-        raise SystemExit(validate(Path(a.zip or a.out), Path(a.ligands)))
+        raise SystemExit(validate(Path(a.zip or a.out), Path(a.ligands), a.expect_n))
