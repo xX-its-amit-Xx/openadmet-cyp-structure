@@ -125,3 +125,36 @@ the release is scoreable ground truth and part is the blind target. When the dat
   one unit of work can complete does not detect stalls, it causes them.
 - Every launch goes through `budget.preflight_hours` and is recorded in the ledger
   **before** it starts, so the watchdog can clean up even if the launcher dies.
+
+---
+
+## Every ops tick, run this first
+
+```bash
+python scripts/ops/watchdog.py        # runaways, real dollar spend, disk
+python scripts/ops/readiness.py       # upstream state + drop-day readiness
+```
+
+`readiness.py` replaces polling the Space by hand. It reports `STRUCTURE_TRACK_LIVE`,
+`STRUCTURE_DATASET_SIZE` and the dataset file list, diffs them against the last run, and
+exits 2 when anything upstream moves. It also checks that every piece of the drop-day path
+exists and that the selector still imports — a pipeline that has never been run is not a
+pipeline.
+
+**As of 2026-09-12: `STRUCTURE_TRACK_LIVE = False`, data unreleased, 11/11 readiness
+checks pass.** `STRUCTURE_DATASET_SIZE = 184` is the PXR count with a `TODO` beside it, so
+treat both it and the example id format as placeholders until the track goes live.
+
+### Drop-day path, in order
+
+1. **Re-read the Space config.** Dataset size and identifier format were placeholders.
+2. `scripts/cofold/preflight_parse.py` on the new ligands — CPU, catches schema errors
+   before any GPU is allocated. It has already caught two batch-killers.
+3. `scripts/cofold/detached.py launch --engine boltz --arms unsteered` — detached so it
+   survives the client; unsteered because FINDING 001 retired the steered arm.
+4. `collect_and_score.py` → `orientation_features.py` → `test_consensus_selector.py`.
+5. `build_submission.py build`, then `validate --expect-n <size>`.
+
+Budget note: Boltz is about $0.156 per job at 20 samples. The primary Modal workspace is
+over its spend limit; `xx-its-amit-xx` has ~$7.61 left, and the ~$140 hackathon workspace
+is not configured on this box.
