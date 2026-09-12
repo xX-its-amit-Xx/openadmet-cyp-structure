@@ -240,14 +240,15 @@
   "est_gpu_hours": 7.3950000000000005,
   "started": 1789141078.2474735,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "app=cyp-cofold-chai tag=chai87 arms=unsteered",
+  "status": "done",
+  "actual_gpu_hours": 0.0,
+  "note": "app=cyp-cofold-chai tag=chai87 arms=unsteered | superseded by the detached relaunch on xx-its-amit-xx; this ephemeral attempt never mapped",
   "meta": {
    "n_jobs": 87,
    "samples": 10,
    "app": "cyp-cofold-chai"
-  }
+  },
+  "ended": 1789165545.6990113
  },
  {
   "run_id": "chai87-detached-1789141741",
@@ -257,15 +258,16 @@
   "est_gpu_hours": 7.3950000000000005,
   "started": 1789141741.213112,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "detached spawn_map app=cyp-cofold-chai tag=chai87",
+  "status": "killed",
+  "actual_gpu_hours": 0.0,
+  "note": "detached spawn_map app=cyp-cofold-chai tag=chai87 | launched on ashenoydiscovery before the spend limit; superseded by the xx-its-amit-xx run",
   "meta": {
    "n_jobs": 87,
    "samples": 10,
    "app": "cyp-cofold-chai",
    "detached": true
-  }
+  },
+  "ended": 1789165545.7005112
  },
  {
   "run_id": "val87s2-detached-1789141933",
@@ -294,15 +296,16 @@
   "est_gpu_hours": 9.57,
   "started": 1789141974.013062,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "detached spawn_map app=cyp-cofold-boltz tag=val87s2",
+  "status": "killed",
+  "actual_gpu_hours": 2.0,
+  "note": "detached spawn_map app=cyp-cofold-boltz tag=val87s2 | Boltz seed-2: completed only 12 of 87 jobs before ashenoydiscovery hit its Modal spend limit; workspace blocked",
   "meta": {
    "n_jobs": 87,
    "samples": 20,
    "app": "cyp-cofold-boltz",
    "detached": true
-  }
+  },
+  "ended": 1789165545.7019782
  },
  {
   "run_id": "chai87-detached-1789149919",
@@ -312,14 +315,15 @@
   "est_gpu_hours": 7.3950000000000005,
   "started": 1789149919.5371873,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "detached spawn_map app=cyp-cofold-chai tag=chai87",
+  "status": "done",
+  "actual_gpu_hours": 5.4,
+  "note": "detached spawn_map app=cyp-cofold-chai tag=chai87 | completed 87/87 jobs, 870 poses, on xx-its-amit-xx. Billed $22.39. Result: FINDING 005, a clean null.",
   "meta": {
    "n_jobs": 87,
    "samples": 10,
    "app": "cyp-cofold-chai",
    "detached": true
-  }
+  },
+  "ended": 1789172692.4091797
  }
 ]
