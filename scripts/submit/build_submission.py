@@ -55,12 +55,21 @@ LIG_RESNAME = "LIG"
 
 
 def choose_poses(tag: str, arm: str = "unsteered") -> dict[str, str]:
-    """Pick one pose per ligand with the FINDING 003 selector. Returns {ligand: sample}.
+    """Pick one pose per ligand. Returns {ligand: sample}.
 
-    score = 0.5 * z(pocket contacts) - z(mean RMSD to siblings), z-scored WITHIN ligand.
-    Measured +0.0220 on held-out scaffold clusters, above the 99th percentile of the
-    random-feature null (FINDING 007). Falls back to the medoid alone if the orientation
-    features are missing, and says so rather than silently using a different rule.
+    **Preferred: cross-engine agreement** (FINDING 011/012). Score each pose by its mean
+    Chamfer distance, in the heme frame, to independent engines' poses of the SAME ligand;
+    take the smallest. Measured **+0.0381** on CYP3A4 against the FINDING 003 selector's
+    +0.0265 and Boltz confidence's -0.0417, and it **generalises**: +0.3006 across 17
+    held-out P450 targets with no parameters fitted (FINDING 012).
+
+    It needs a `xeng_{tag}.csv` of {ligand, sample, xeng} built from >= 4 GENUINELY
+    independent reference poses - replicate jobs, deduplicated, because `diffusion_samples`
+    does not diversify the ligand on OpenProtein (FINDING 009). Below that depth the
+    feature is worthless: at one reference pose it measured -0.0055.
+
+    Falls back to FINDING 003 (contacts + medoid, +0.0265) and then to the medoid alone,
+    and always prints which rule ran rather than silently changing selectors.
     """
     scored = pd.read_csv(DATA_PROCESSED / f"poses_scored_{tag}.csv")
     scored = scored[scored.arm == arm]
@@ -78,13 +87,27 @@ def choose_poses(tag: str, arm: str = "unsteered") -> dict[str, str]:
         g = df.groupby("ligand")[col]
         return (df[col] - g.transform("mean")) / (g.transform("std") + 1e-9)
 
-    if have_orient and "n_pocket_residues_touched" in df:
+    xf = DATA_PROCESSED / f"xeng_{tag}.csv"
+    if xf.exists():
+        xe = pd.read_csv(xf)
+        df = df.merge(xe[["ligand", "sample", "xeng"]], on=["ligand", "sample"],
+                      how="left")
+        n_missing = int(df.xeng.isna().sum())
+        if n_missing:
+            print(f"  WARNING: {n_missing} poses have no cross-engine score", flush=True)
+        df = df.dropna(subset=["xeng"])
+        # unweighted and alone on purpose: adding the sibling-consensus term measured
+        # WORSE at full depth (+0.0183 against +0.0336), and fitting weights collapses
+        # it into the noise (+0.0149). There is nothing here to tune.
+        df["_s"] = -zw("xeng")
+        rule = "FINDING 011/012 cross-engine agreement (+0.0381)"
+    elif have_orient and "n_pocket_residues_touched" in df:
         df = df.dropna(subset=["n_pocket_residues_touched"])
         df["_s"] = 0.5 * zw("n_pocket_residues_touched") - zw("mean_rmsd_to_others")
-        rule = "FINDING 003 (contacts + medoid)"
+        rule = "FINDING 003 (contacts + medoid, +0.0265) - no xeng_*.csv found"
     else:
         df["_s"] = -zw("mean_rmsd_to_others")
-        rule = "MEDOID ONLY - orientation features absent, weaker selector"
+        rule = "MEDOID ONLY - weakest selector; xeng and orientation features both absent"
     print(f"selector: {rule}", flush=True)
     return {lig: g.loc[g._s.idxmax(), "sample"] for lig, g in df.groupby("ligand")}
 
