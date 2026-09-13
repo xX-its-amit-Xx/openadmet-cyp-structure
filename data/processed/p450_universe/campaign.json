@@ -160,7 +160,7 @@
    "job_id": "e62d607e-6c15-4fb9-a88f-1f15c0c6d847",
    "uniprot": "Q7Z1V1",
    "submitted": 1789330153.5767615,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "477_a506c224": {
    "job_id": "fba6b879-61dc-419b-b6b9-73d44ff1ee22",
@@ -8613,7 +8613,8 @@
    "samples": 1,
    "rep": 4,
    "engine": "protenix_v2",
-   "submitted": 1789342520.1034355
+   "submitted": 1789342520.1034355,
+   "done": true
   },
   "f872b036-e28c-4841-bdac-80cd4ad9b6b6": {
    "target_key": "410_bc4a20dd",
@@ -8730,7 +8731,8 @@
    "samples": 1,
    "rep": 4,
    "engine": "protenix_v2",
-   "submitted": 1789342543.8437586
+   "submitted": 1789342543.8437586,
+   "done": true
   },
   "544160c2-a617-43d5-a609-a772778e3f0e": {
    "target_key": "450_9c481af8",
@@ -8771,7 +8773,8 @@
    "samples": 1,
    "rep": 4,
    "engine": "protenix_v2",
-   "submitted": 1789342552.664031
+   "submitted": 1789342552.664031,
+   "done": true
   },
   "960c1bed-b51c-4639-82db-c21c6361a074": {
    "target_key": "458_c4bcedc3",
@@ -8806,7 +8809,8 @@
    "samples": 1,
    "rep": 4,
    "engine": "protenix_v2",
-   "submitted": 1789342560.8326848
+   "submitted": 1789342560.8326848,
+   "done": true
   }
  }
 }

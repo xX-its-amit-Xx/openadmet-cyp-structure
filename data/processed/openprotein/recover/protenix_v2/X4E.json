@@ -1,0 +1,11 @@
+{
+ "ligand": "X4E",
+ "engine": "protenix_v2",
+ "files": [
+  "X4E__r0s0.cif",
+  "X4E__r0s1.cif",
+  "X4E__r0s2.cif",
+  "X4E__r0s3.cif",
+  "X4E__r0s4.cif"
+ ]
+}
