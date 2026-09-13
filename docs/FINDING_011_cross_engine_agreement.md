@@ -79,3 +79,80 @@ it does not, the feature is retired.
 
 Logged as a negative for now, per the repo rule: anything absorbed or degraded by the
 incumbent is a negative, and "promising" is not a result.
+
+---
+
+# UPDATE — the pre-registered re-test passed, and cross-engine agreement now beats the incumbent
+
+**Date:** 2026-09-13, same day. **Pool:** 1,260 Boltz poses, **63 ligands with >= 4
+independent Protenix poses each** (median 8).
+
+The prediction above was: *if the signal scales with the number of independent poses to
+agree with, the combination may stop being subtractive; if not, retire the feature.*
+It scaled.
+
+## The dose-response is clean
+
+| feature | 1 pose/ligand | **>= 4 poses/ligand** |
+|---|---|---|
+| `xeng_min` | +0.0154, p = 0.024 | **+0.0225, p = 0.0035** |
+| `xeng_mean` | **-0.0055**, p = 0.65 | **+0.0284, p = 0.0000** |
+
+`xeng_mean` inverted from useless to best, which is the mechanism working exactly as
+stated: averaged over one pose it *was* that pose, and averaged over eight independent
+ones it is an estimator of where the other engine actually thinks the ligand goes.
+
+**A bug caught before it could fake this result.** The collection code took the first N
+*files* per ligand, and replicate 0 alone contributes 20 models sharing a single ligand
+conformation (FINDING 009). That would have handed back eight copies of one pose and
+called them eight independent opinions - the FINDING 009 trap, reintroduced by the code
+written to exploit FINDING 009. Poses are now keyed on replicate index.
+
+## It beats the incumbent, with no fitted parameters
+
+Random 0.5736, oracle 0.6963, null 95th +0.0134 / 99th **+0.0204** (3,000 draws).
+
+| selector | selected | gain | p | fitted params |
+|---|---|---|---|---|
+| incumbent `0.5*zc - zm` | 0.5943 | +0.0207 | 0.0097 | none |
+| **`-zx` alone** | 0.6019 | **+0.0284** | **0.0000** | **none** |
+| `-zm - zx`, equal weights | 0.6041 | **+0.0305** | 0.0000 | none |
+| `0.5*zc - zm - 2*zx` | 0.6012 | +0.0276 | 0.0007 | none |
+| **LOCO, weights fit out-of-fold** | 0.5885 | **+0.0149** | 0.036 | 3 |
+
+Two things to read carefully here.
+
+**The headline is honest.** `-zx` has **no fitted parameters**, so there is no train/test
+split to get wrong and no held-out fold to demand - a fixed feature cannot overfit a
+weight it does not have. It was pre-registered before the data existed, and 0 of 3,000
+random draws beat it. Both variants the script computes cleared the 99th percentile, so
+this does not rest on picking the better of two after the fact.
+
+**The fitted combination does NOT validate.** Fitting three weights leave-one-scaffold-
+cluster-out drops it to +0.0149, inside the noise floor. That replicates FINDING 002's
+result that a fitted ranker (+0.0048) loses to simple fixed selectors, and it is the
+reason the shipping recommendation is a fixed unweighted term, not a tuned blend.
+`-zm - zx` at +0.0305 is the best number on the board but was chosen post-hoc from about
+eight tried, so treat it as provisional against the fixed `-zx`.
+
+## Why this one works when thirty others did not
+
+Both surviving terms are **within-ligand consensus**: does this pose agree with other
+opinions about *this molecule*. `zc` (pocket contacts), the one geometric term in the
+incumbent, is the part that drops out - `-zm - zx` beats `0.5*zc - zm - zx`.
+
+That is FINDING 010's thesis holding up under a real test rather than a negative one.
+Population-level priors cannot select because predicted poses already agree on everything
+population-level. Agreement between independent opinions about one specific molecule can.
+And an architecturally different engine is a better second opinion than the same engine
+sampled twice, **even though its errors correlate with Boltz's at rho = +0.596** - which
+is the genuinely surprising part, and the thing FINDING 005's framing would not have
+predicted.
+
+## Caveats
+
+- **n = 63**, not 87; the incumbent scores +0.0207 on this subset against +0.0279
+  reported on the full set, so the subset is not a neutral slice.
+- Requires a second engine's pool at inference. That is affordable here (OpenProtein is
+  unmetered) but it is a real dependency, not a free feature.
+- Re-run at 12 replicates and on all 87 ligands before this goes into a submission.

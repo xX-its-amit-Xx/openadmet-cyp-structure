@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -69,20 +70,32 @@ def main(n_null: int = 2000) -> dict:
     from cypstruct import pose as P
 
     # Protenix side, keyed by ligand
-    prot: dict[str, list[np.ndarray]] = {}
+    # ONE pose per replicate, keyed on the replicate index. Taking the first N *files*
+    # would be the FINDING 009 trap all over again: replicate 0 alone contributes 20
+    # models that share a single ligand conformation, so a file-order slice would hand
+    # back eight copies of one pose and call it eight independent opinions.
+    byrep: dict[str, dict[int, np.ndarray]] = {}
     for f in sorted(PROT_POOL.glob("*__r*.cif")):
-        lig = f.name.split("__")[0]
+        mm = re.match(r"(.+)__r(\d+)s(\d+)\.cif$", f.name)
+        if mm is None:
+            continue
+        lig, rep = mm.group(1), int(mm.group(2))
+        if rep in byrep.get(lig, {}):
+            continue
         try:
             v = in_frame(P.load_structure(f))
         except Exception:
             continue
         if v is not None:
-            prot.setdefault(lig, []).append(v)
-    # rep 0 carries 20 models that share ONE ligand pose (FINDING 009), so keeping all of
-    # them would weight that single pose 20x. One representative per replicate.
-    for lig in prot:
-        prot[lig] = prot[lig][:8]
-    print(f"protenix ligands: {len(prot)}", flush=True)
+            byrep.setdefault(lig, {})[rep] = v
+    prot = {lig: list(d.values()) for lig, d in byrep.items()}
+    depth = {k: len(v) for k, v in prot.items()}
+    print(f"protenix ligands: {len(prot)}, independent poses each: "
+          f"min {min(depth.values())} median {int(np.median(list(depth.values())))} "
+          f"max {max(depth.values())}", flush=True)
+    # the pre-registered re-test needs >= 4 independent poses to mean anything
+    prot = {k: v for k, v in prot.items() if len(v) >= 4}
+    print(f"ligands with >= 4 independent poses: {len(prot)}", flush=True)
 
     rows = []
     for dirp in sorted(BOLTZ_POOL.glob("*__unsteered__*")):

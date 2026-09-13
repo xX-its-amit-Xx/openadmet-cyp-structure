@@ -46,13 +46,13 @@
    "job_id": "9f256ccc-0b5c-471d-a076-bbd2a0347492",
    "uniprot": "Q7Z1V1",
    "submitted": 1789330137.7324104,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "467_acd53678": {
    "job_id": "36391fe2-bc72-43ea-82b0-cf25f4ca848c",
    "uniprot": "Q7Z1V1",
    "submitted": 1789330138.5168192,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "475_74349f57": {
    "job_id": "5c7fba1f-b890-4e14-9ab8-ba2155cee6db",
