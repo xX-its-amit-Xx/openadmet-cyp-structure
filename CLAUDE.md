@@ -68,6 +68,7 @@ foundation here.
 **F. The prize, quantified.** Pool oracle **0.6975** against selection **0.5706** —
 **0.127 LDDT-PLI per ligand** unclaimed in a pool already paid for. The PXR winning entry
 scored 0.564, below our pool's current selection. **Generation is not the bottleneck.**
+*(Update: selection is now 0.6164 via claim K, so 0.081 of that 0.127 is still unclaimed.)*
 
 **G. The coordination term survives as a SCORER.** Poses that coordinate the iron score
 **+0.14 LDDT-PLI** over those that do not (0.5992 vs 0.4588). Real CYP-specific signal —
@@ -86,6 +87,16 @@ four decimals (FINDING 008 addendum). Fourth independent confirmation.
 **J. Architectural diversity has not bought decorrelation - 0 for 2.** Chai rho = +0.45,
 Protenix rho = +0.474 against Boltz's per-ligand oracle. The hard ligands are hard for
 everyone, which points the remaining upside at scoring rather than at another engine.
+
+**K. SOLVED, in part: cross-engine agreement selects.** Score a Boltz pose by its mean
+Chamfer distance, in the heme frame, to poses of the SAME ligand from independent engines.
+Converged at **+0.0381** over random (selected **0.6164**, oracle 0.6975, null 99th pct
++0.0179, 0 of 4,000 draws) against the incumbent's +0.0265 and Boltz confidence's
+**-0.0417**. Within-ligand rho -0.258, correct on 75.9% of ligands, p=3.7e-06. It captures
+**32% of the oracle gap** where the incumbent captures 22%. No fitted parameters. Ships as
+`cypstruct.xengine.select()`. See FINDING 011 - and note what it required: >= 4 GENUINELY
+independent reference poses, which means replicate jobs (FINDING 009) with duplicate poses
+removed (39% of them were duplicates).
 
 **Therefore:** the physics scorer in `docs/QM_SCORER_DESIGN.md` is now the whole project.
 It does not have to beat a strong incumbent; it has to beat random, which the incumbent
