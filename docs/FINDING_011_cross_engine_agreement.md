@@ -156,3 +156,36 @@ predicted.
 - Requires a second engine's pool at inference. That is affordable here (OpenProtein is
   unmetered) but it is a real dependency, not a free feature.
 - Re-run at 12 replicates and on all 87 ligands before this goes into a submission.
+
+---
+
+## Addendum — how many opinions, and from where
+
+Decision-relevant, because it says whether to buy more replicates or more checkpoints.
+Restricted to the **52 ligands with >= 8 v2 replicates**, so `k` varies while the ligand
+set does not (numbers are therefore not comparable to the n = 63 table above).
+
+| reference set | gain | p |
+|---|---|---|
+| k = 1 independent v2 pose | +0.0155 | 0.058 |
+| k = 2 | +0.0091 | 0.18 |
+| k = 4 | +0.0250 | 0.010 |
+| k = 8 | +0.0240 | 0.015 |
+| **8x v2 + 1x protenix-v1** | **+0.0310** | 0.0017 |
+
+**Read the curve cautiously.** k = 2 dips below k = 1, which cannot be a real mechanism -
+it is noise at n = 52 with 600 null draws. What survives that caution is only the coarse
+shape: k = 1-2 is worth clearly less than k >= 4, and **k = 8 is not better than k = 4**.
+The feature saturates at about four independent poses.
+
+**Checkpoint diversity looks worth more than sample count.** Adding a single pose from a
+*different checkpoint* (protenix-v1) moved +0.0240 -> +0.0310, more than doubling 4 -> 8
+poses of the same checkpoint achieved. One data point, so not a law - but it points the
+next spend at more engines rather than deeper replicates, and it is consistent with the
+mechanism: a second opinion is worth more when it is drawn from a different distribution.
+
+**Consequences for the campaign.** Replicates beyond ~6 are still worth buying for the
+POOL (FINDING 004: the oracle keeps climbing, and the selector tracks it), but they add
+little to *this feature*. Both Protenix checkpoints should go into the reference set, and
+any further engine that runs on OpenProtein is worth more than another replicate of one
+already in it.
