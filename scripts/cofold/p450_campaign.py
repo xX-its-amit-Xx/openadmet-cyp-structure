@@ -105,7 +105,7 @@ def cmd_msa_status() -> dict:
 
 
 def cmd_submit(samples: int, batch: int, limit: int | None,
-               replicates: int = 1) -> dict:
+               replicates: int = 1, engine: str = "protenix_v2") -> dict:
     """Fold every pair whose target MSA is ready, grouped so a job shares one target.
 
     `replicates`, not `samples`, is what builds a pool - see FINDING 009. Within one job
@@ -126,7 +126,8 @@ def cmd_submit(samples: int, batch: int, limit: int | None,
     # grouping also means one MSA object is reused rather than reloaded per complex.
     for rep in range(replicates):
       claimed = {p for f in st["folds"].values()
-                 if f.get("rep", 0) == rep for p in f["pairs"]}
+                 if f.get("rep", 0) == rep
+                 and f.get("engine", "protenix_v2") == engine for p in f["pairs"]}
       todo = df[df.target_key.isin(ready) & ~df.pair.isin(claimed)]
       print(f"rep {rep}: {len(todo)} pairs to fold", flush=True)
       for key, grp in todo.groupby("target_key"):
@@ -140,13 +141,13 @@ def cmd_submit(samples: int, batch: int, limit: int | None,
                 break
             chunk = rows[i:i + batch]
             try:
-                fut = getattr(s.fold, "protenix_v2").fold(
+                fut = getattr(s.fold, engine).fold(
                     sequences=[build_complex(seq, r.smiles, msa) for r in chunk],
                     diffusion_samples=samples, num_recycles=3)
                 st["folds"][str(fut.job_id)] = {
                     "target_key": key, "pairs": [r.pair for r in chunk],
                     "ligands": [r.id for r in chunk], "samples": samples,
-                    "rep": rep, "submitted": time.time()}
+                    "rep": rep, "engine": engine, "submitted": time.time()}
                 _save(st)
                 n += 1
                 print(f"  {key} [{','.join(r.id for r in chunk)}] -> {fut.job_id}",
@@ -184,7 +185,10 @@ def cmd_collect() -> dict:
         ok_all = True
         for idx, pair in enumerate(rec["pairs"]):
             rep = rec.get("rep", 0)
-            d = OUT / pair
+            eng = rec.get("engine", "protenix_v2")
+            # per-engine subdirectory: the cross-engine feature needs to know WHICH
+            # engine produced a pose, and a flat directory silently merges them
+            d = OUT / pair / eng
             mf = d / "manifest.json"
             if any(d.glob(f"{pair}__r{rep}s*.cif")):
                 n_ok += 1
@@ -195,7 +199,7 @@ def cmd_collect() -> dict:
                 prev = json.loads(mf.read_text())["files"] if mf.exists() else []
                 mf.write_text(json.dumps(
                     {"pair": pair, "files": sorted(set(prev) | set(names)),
-                     "engine": "protenix_v2"}, indent=1))
+                     "engine": eng}, indent=1))
                 n_ok += 1
             except Exception as exc:
                 print(f"  {pair}: {type(exc).__name__}: {exc}", flush=True)
@@ -215,6 +219,8 @@ if __name__ == "__main__":
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--replicates", type=int, default=1,
                     help="separate jobs per pair - THIS is what samples the ligand")
+    ap.add_argument("--engine", default="protenix_v2",
+                    help="protenix_v2 | protenix | esmfold2 (all verified to run here)")
     a = ap.parse_args()
     lim = a.limit or None
 
@@ -223,7 +229,8 @@ if __name__ == "__main__":
     elif a.cmd == "msa-status":
         print(json.dumps(cmd_msa_status(), indent=2))
     elif a.cmd == "submit":
-        print(json.dumps(cmd_submit(a.samples, a.batch, lim, a.replicates), indent=2))
+        print(json.dumps(cmd_submit(a.samples, a.batch, lim, a.replicates, a.engine),
+                         indent=2))
     elif a.cmd == "collect":
         print(json.dumps(cmd_collect(), indent=2))
     else:
