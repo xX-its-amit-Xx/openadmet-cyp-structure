@@ -16,9 +16,11 @@ cofactor arrives with its ideal geometry, as it does for Boltz.
 new engine, run ~20 ligands and check per-ligand oracle correlation against the incumbent.
 Decorrelation is the only thing that makes a second engine worth anything.
 
-Measured engine support (op_probe.py, 2026-09-13): **protenix-v2 and protenix work**;
-boltz-1, boltz-1x, boltz-2 and rosettafold-3 all fail at runtime on protein+HEM+ligand;
-alphafold2 warns that it discards ligand chains. So the decorrelation candidate is
+Measured engine support (op_probe.py, 2026-09-13): **protenix-v2, protenix and esmfold2
+work**; boltz-1, boltz-1x, boltz-2 and rosettafold-3 all fail at runtime on
+protein+HEM+ligand; alphafold2 warns that it discards ligand chains. esmfold2 was first
+recorded as failing - that was reading a still-RUNNING job as a failure, and it in fact
+returns a coordinated complex (Fe-ligand 2.28 A against Protenix's 2.43 A). So the decorrelation candidate is
 Protenix, which is at least architecturally distinct from Boltz-2.
 
     python scripts/cofold/openprotein_cofold.py submit  --samples 20        # returns at once
