@@ -310,3 +310,38 @@ is the quality of the reference opinions, not their variety.** A reference pose 
 wrong is something to disagree with, and averaging it in costs signal. Protenix x2 at
 depth 7 remains the best measured configuration at **+0.0380** (selected 0.6164,
 rho -0.258, correct on 76% of ligands).
+
+
+---
+
+## Pre-registered re-test at depth 4: esmfold2 genuinely hurts, and "more engines" is dead
+
+The earlier esmfold2 result was held open because it ran at ~1.4 replicates, inside the
+noisy regime. esmfold2 has now completed 4 replicates per ligand and samples the ligand
+properly (median per-atom sd 2.206 Å, 0 of 36 deterministic). The re-test confirms the
+provisional result rather than overturning it:
+
+| reference set | depth (median) | selected | gain | within-ligand rho |
+|---|---|---|---|---|
+| **protenix x2** | 7 | **0.6164** | **+0.0380** | -0.258 |
+| esmfold2 alone | 4 | 0.5985 | +0.0201 | -0.267 |
+| protenix x2 + esmfold2 | 11 | 0.5963 | +0.0178 | -0.275 |
+| all four engines | 13 | 0.6051 | +0.0267 | -0.289 |
+
+**"Checkpoint diversity beats replicate count" is retracted.** It rested on one
+within-family data point - protenix-v1 added to protenix-v2, +0.0240 -> +0.0310 - and was
+labelled as such. Adding a genuinely different architecture at proper depth *halves* the
+gain. The right statement is that **reference quality beats reference variety**: a pose
+you ought to disagree with costs signal once it is averaged into the mean.
+
+### A methodological catch worth keeping
+
+**Rank correlation and top-1 selection move in OPPOSITE directions here.** rho improves
+monotonically as engines are added (-0.258 -> -0.275 -> -0.289) while the selection gain
+falls (+0.0380 -> +0.0178). A richer reference set orders the whole pool slightly better
+and still picks a worse single pose, because argmin is decided by the tail of the
+distribution rather than its middle.
+
+So rho is not a safe proxy for selection value, and any future feature must be judged on
+the metric that will actually be used. Had this been graded on rho alone, "all four
+engines" would have looked like the clear winner and cost 0.011 LDDT-PLI per ligand.
