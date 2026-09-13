@@ -60,6 +60,14 @@ def connect():
     return openprotein.connect(username=USER, password=PASS)
 
 
+# API gotcha: `Protein.single_sequence_mode` is not a method, it is a CLASS (an alias of
+# `Protein.NullMSA`) that you pass to `set_msa`. Calling it as `p.single_sequence_mode()`
+# silently constructs an instance, leaves the MSA unset, and the submission is then
+# rejected with the very error message that names the attribute you just called.
+#     WRONG: p.single_sequence_mode()
+#     RIGHT: p.set_msa(Protein.NullMSA)
+
+
 def build_complex(seq: str, smiles: str, msa=None):
     from openprotein.molecules.chains import Ligand
     from openprotein.molecules.complex import Complex
