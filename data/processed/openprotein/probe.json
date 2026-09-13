@@ -1,0 +1,83 @@
+{
+ "protenix_v2__msa__s3": {
+  "job_id": "54cd2e75-46b8-44a6-940e-ffae64bb85bb",
+  "engine": "protenix_v2",
+  "n_seq": 1,
+  "samples": 3,
+  "t": 1789328314.354965,
+  "ligands": [
+   "08J"
+  ]
+ },
+ "protenix_v2__batch2": {
+  "job_id": "a24d279d-6ad0-4f61-ae96-80071ec341d3",
+  "engine": "protenix_v2",
+  "n_seq": 2,
+  "samples": 1,
+  "t": 1789328337.6466663,
+  "ligands": [
+   "08J",
+   "08Y"
+  ]
+ },
+ "protenix__msa": {
+  "job_id": "61e10dda-e955-4576-8ab6-378c16961ce1",
+  "engine": "protenix",
+  "n_seq": 1,
+  "samples": 1,
+  "t": 1789328340.959186,
+  "ligands": [
+   "08J"
+  ]
+ },
+ "boltz_1x__msa": {
+  "job_id": "786f9dbe-3b63-4ade-b9f3-36721b13b5eb",
+  "engine": "boltz_1x",
+  "n_seq": 1,
+  "samples": 1,
+  "t": 1789328343.4424133,
+  "ligands": [
+   "08J"
+  ]
+ },
+ "boltz_1__msa": {
+  "job_id": "b92d4790-e2da-4513-90ac-a6f9688e1f52",
+  "engine": "boltz_1",
+  "n_seq": 1,
+  "samples": 1,
+  "t": 1789328345.7396183,
+  "ligands": [
+   "08J"
+  ]
+ },
+ "boltz_2__msa": {
+  "job_id": "833247fd-2629-407a-ab6d-7cbbb65d0088",
+  "engine": "boltz2",
+  "n_seq": 1,
+  "samples": 1,
+  "t": 1789328348.5182133,
+  "ligands": [
+   "08J"
+  ]
+ },
+ "esmfold2__msa": {
+  "job_id": "7eede289-9152-437b-9e33-b0c959637361",
+  "engine": "esmfold2",
+  "n_seq": 1,
+  "samples": 1,
+  "t": 1789328350.559513,
+  "ligands": [
+   "08J"
+  ]
+ },
+ "rosettafold_3__msa": {
+  "job_id": "bf07700f-8394-4151-ae50-af77ff7b9142",
+  "engine": "rosettafold_3",
+  "n_seq": 1,
+  "samples": 1,
+  "t": 1789328352.7337732,
+  "ligands": [
+   "08J"
+  ]
+ }
+}
