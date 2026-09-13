@@ -7,3 +7,12 @@ to fetch: 494
   250/494
   300/494
   350/494
+  400/494
+  450/494
+cached atoms for 1002 pairs -> p450_atoms.parquet
+
+1002 measured pairs, 369 unique ligands
+  donor_dist          1.93 /    2.18 /    2.48   (n=463)
+  s_fe_donor_deg    161.96 /  172.63 /  177.88   (n=463)
+  donor_height        1.90 /    2.16 /    2.42   (n=463)
+  frac_proximal    mean 0.0007

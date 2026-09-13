@@ -123,7 +123,11 @@ def measure(pid: str, cif: Path, want: set[tuple[str, str]]) -> tuple[list, list
                 ang = float(np.degrees(np.arccos(np.clip(
                     v1 @ v2 / (np.linalg.norm(v1) * np.linalg.norm(v2)), -1, 1))))
             rows.append({
-                "pdb": pid, "chain": chain.name, "lig": name,
+                # seqid is part of the key: a single chain routinely holds TWO copies of
+                # the same compound, one in the pocket and one at the peripheral site, so
+                # (pdb, chain, lig) is NOT unique. Joining on it cross-joins the copies
+                # and silently pairs one copy's atoms with the other copy's distances.
+                "pdb": pid, "chain": chain.name, "lig": name, "seqid": res.seqid.num,
                 "n_heavy": len(heavy),
                 "closest_fe": float(d_fe[heavy].min()),
                 "donor_elem": els[don] if don is not None else None,
@@ -137,7 +141,7 @@ def measure(pid: str, cif: Path, want: set[tuple[str, str]]) -> tuple[list, list
                 "max_height": float(h[heavy].max()),
             })
             atoms.append({
-                "pdb": pid, "chain": chain.name, "lig": name,
+                "pdb": pid, "chain": chain.name, "lig": name, "seqid": res.seqid.num,
                 "elems": "".join(f"{els[i]}," for i in heavy),
                 "xyz": np.asarray(xyz[heavy], dtype=np.float32).tobytes(),
                 "fe": fe.astype(np.float32).tobytes(),
@@ -204,7 +208,7 @@ def main() -> int:
         new = pd.DataFrame(atom_store)
         if ap_path.exists():
             new = pd.concat([pd.read_parquet(ap_path), new]) \
-                    .drop_duplicates(["pdb", "chain", "lig"])
+                    .drop_duplicates(["pdb", "chain", "lig", "seqid"])
         new.to_parquet(ap_path)
         print(f"cached atoms for {len(new)} pairs -> {ap_path.name}")
 
