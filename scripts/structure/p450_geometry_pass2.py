@@ -48,12 +48,16 @@ def frame(chain) -> dict | None:
     """
     fe = None
     ns: list[np.ndarray] = []
+    hx: list[np.ndarray] = []
+    he: list[str] = []
     for res in chain:
         if res.name.strip().upper() not in HEME_ALIASES:
             continue
         for at in res:
             e = at.element.name.upper()
             p = np.array([at.pos.x, at.pos.y, at.pos.z])
+            hx.append(p)
+            he.append(e)
             if e == "FE":
                 fe = p
             elif e == "N":
@@ -86,7 +90,19 @@ def frame(chain) -> dict | None:
     # sign of every out-of-plane number is arbitrary and "proximal face" is meaningless.
     if np.dot(normal, sg - fe) > 0:
         normal = -normal
-    return {"fe": fe, "normal": normal, "sg": sg, "sg_d": sg_d}
+    # The propionate oxygens are the only O atoms in a heme, so their centroid gives an
+    # in-plane reference direction that is defined by chemistry rather than by atom names.
+    # Without it there is no consistent azimuthal zero: the porphyrin's 4-fold pseudo
+    # symmetry means any axis taken from the pyrrole nitrogens is arbitrary up to 90 deg.
+    ox = [p for p, e in zip(hx, he) if e == "O"]
+    xaxis = None
+    if ox:
+        v = np.mean(ox, axis=0) - fe
+        v = v - normal * (v @ normal)
+        if np.linalg.norm(v) > 1e-6:
+            xaxis = v / np.linalg.norm(v)
+    return {"fe": fe, "normal": normal, "sg": sg, "sg_d": sg_d, "xaxis": xaxis,
+            "n_heme_o": len(ox)}
 
 
 def measure(pid: str, cif: Path, want: set[tuple[str, str]]) -> tuple[list, list]:
@@ -147,6 +163,8 @@ def measure(pid: str, cif: Path, want: set[tuple[str, str]]) -> tuple[list, list
                 "fe": fe.astype(np.float32).tobytes(),
                 "normal": normal.astype(np.float32).tobytes(),
                 "sg": fr["sg"].astype(np.float32).tobytes(),
+                "xaxis": (fr["xaxis"].astype(np.float32).tobytes()
+                          if fr["xaxis"] is not None else b""),
             })
     return rows, atoms
 
