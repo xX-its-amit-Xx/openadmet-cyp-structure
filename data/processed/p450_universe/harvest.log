@@ -1,0 +1,20 @@
+PF00067 entries at <= 3.2 A: 786
+already parsed: 8
+  50/778  new=50 err=0
+  100/778  new=100 err=0
+  150/778  new=150 err=0
+  200/778  new=200 err=0
+  250/778  new=250 err=0
+  300/778  new=300 err=0
+  350/778  new=350 err=0
+  400/778  new=400 err=0
+  450/778  new=450 err=0
+  500/778  new=500 err=0
+  550/778  new=550 err=0
+  600/778  new=600 err=0
+  650/778  new=650 err=0
+  700/778  new=700 err=0
+  750/778  new=750 err=0
+
+1025 (chain, ligand) observations across 585 entries, 412 unique ligands
+coordinated: 482 (47.0%)

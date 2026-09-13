@@ -6,3 +6,5 @@ __pycache__/
 .env
 secrets/
 D:/cyp_stage/
+data/processed/p450_universe/*.jsonl
+data/processed/openprotein/op1/
