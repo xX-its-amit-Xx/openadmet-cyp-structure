@@ -76,7 +76,7 @@
    "job_id": "acd16d45-9408-48fc-9b21-5ca698114f7c",
    "uniprot": "Q9Y6A2",
    "submitted": 1789330141.766025,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "486_f605e37d": {
    "job_id": "6bfa3c22-1e49-46df-b0de-6805d980eb13",
