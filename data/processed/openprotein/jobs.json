@@ -1231,7 +1231,8 @@
     ],
     "rep": 4,
     "samples": 5,
-    "submitted": 1789330987.4247155
+    "submitted": 1789330987.4247155,
+    "done": true
    },
    {
     "job_id": "ac9d7a0b-4d98-45b0-b99f-caabf7e35b25",
@@ -1256,7 +1257,8 @@
     ],
     "rep": 4,
     "samples": 5,
-    "submitted": 1789330996.4996133
+    "submitted": 1789330996.4996133,
+    "done": true
    },
    {
     "job_id": "dd52a037-37dd-4d9b-8109-d3c373ccd311",
@@ -1268,7 +1270,8 @@
     ],
     "rep": 4,
     "samples": 5,
-    "submitted": 1789331000.711741
+    "submitted": 1789331000.711741,
+    "done": true
    },
    {
     "job_id": "027bc2f3-d41c-4b09-92f1-0ed5596d4f27",
@@ -1317,7 +1320,8 @@
     ],
     "rep": 4,
     "samples": 5,
-    "submitted": 1789331017.7239773
+    "submitted": 1789331017.7239773,
+    "done": true
    },
    {
     "job_id": "57cb800a-4fce-4e6f-ad62-7cf6685fecdc",
@@ -1329,7 +1333,8 @@
     ],
     "rep": 4,
     "samples": 5,
-    "submitted": 1789331021.7697268
+    "submitted": 1789331021.7697268,
+    "done": true
    },
    {
     "job_id": "22035570-8179-4909-9838-14ea48ecf678",
