@@ -189,3 +189,48 @@ POOL (FINDING 004: the oracle keeps climbing, and the selector tracks it), but t
 little to *this feature*. Both Protenix checkpoints should go into the reference set, and
 any further engine that runs on OpenProtein is worth more than another replicate of one
 already in it.
+
+---
+
+# FULL-DEPTH CONFIRMATION — and the post-hoc combination does not replicate
+
+**All 87 ligands, 1,740 Boltz poses, 12-13 independent reference poses each** (both
+Protenix checkpoints). Random 0.5784, oracle 0.6975, null 95th +0.0122 / 99th +0.0180
+over 3,000 draws.
+
+| selector | n = 63 | **n = 87, full depth** | fitted params |
+|---|---|---|---|
+| incumbent `0.5*zc - zm` | +0.0207 | +0.0264 | none |
+| **`-zx` alone** | +0.0284 | **+0.0336**, p = 0.0000 | **none** |
+| `-zm - zx` | +0.0305 | **+0.0183** | none |
+| `0.5*zc - zm - zx` | +0.0276 | +0.0229 | none |
+
+Within-ligand Spearman **-0.2703**, correct direction on **74.7%** of ligands,
+Wilcoxon p = **0.000002**.
+
+## Two conclusions, one of them against my own earlier reporting
+
+**The single term is the result, and it strengthened.** `-zx` alone goes +0.0284 -> +0.0336
+as the reference set deepens from ~8 to ~12 independent poses, with 0 of 3,000 random
+draws beating it. Selected score **0.6120** against an oracle of 0.6975 and the PXR
+winning entry's 0.5640. It has no fitted parameters, so there is no held-out fold to
+demand and nothing to tune away.
+
+**`-zm - zx` was a small-sample artefact and is retracted.** It was the best number on the
+n = 63 board at +0.0305 and I flagged it as post-hoc, chosen from about eight tried. At
+full depth it drops to **+0.0183**, below the incumbent. That is exactly what the FINDING
+007 arithmetic predicts for a best-of-eight pick, and it is the cleanest demonstration in
+this repo of why post-hoc combinations get labelled rather than banked.
+
+**Adding self-consensus actively hurts.** Every combination is worse than `-zx` alone:
++0.0183, +0.0229 against +0.0336. Once you have ~12 independent opinions from other
+engines, asking whether Boltz agrees with *itself* adds nothing and dilutes the signal.
+`mean_rmsd_to_others` was a proxy for "do independent opinions agree", and a direct
+measurement of that supersedes the proxy.
+
+## What ships
+
+`cypstruct.xengine.select(df, xeng_col="xeng")` — the unweighted single term, deliberately
+with `sibling_rmsd_col` left off by default. Requires >= 4 genuinely independent reference
+poses per ligand; check with `reference_depth()` first, because below that the same
+feature measured -0.0055.
