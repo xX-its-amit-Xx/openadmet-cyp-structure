@@ -153,6 +153,11 @@ treat both it and the example id format as placeholders until the track goes liv
 3. `scripts/cofold/detached.py launch --engine boltz --arms unsteered` — detached so it
    survives the client; unsteered because FINDING 001 retired the steered arm.
 4. `collect_and_score.py` → `orientation_features.py` → `test_consensus_selector.py`.
+4b. **`build_xeng_feature.py --tag <tag> --pool <dir> --refs protenix_v2 protenix`**
+   — writes `xeng_<tag>.csv`, which `build_submission.py` then prefers automatically.
+   It REFUSES on a thin reference set rather than degrading, because at one reference
+   pose the feature measures -0.0055: it would make selection worse, not weaker.
+   Needs >= 4 independent reference poses per ligand, i.e. replicate jobs, deduplicated.
 5. `build_submission.py build`, then `validate --expect-n <size>`.
 
 Budget note: Boltz is about $0.156 per job at 20 samples. The primary Modal workspace is
