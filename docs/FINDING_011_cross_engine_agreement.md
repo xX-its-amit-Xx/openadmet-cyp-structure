@@ -234,3 +234,36 @@ measurement of that supersedes the proxy.
 with `sibling_rmsd_col` left off by default. Requires >= 4 genuinely independent reference
 poses per ligand; check with `reference_depth()` first, because below that the same
 feature measured -0.0055.
+
+---
+
+## Dedup — 39% of the "independent" reference poses were duplicates
+
+A separate job is not automatically a separate opinion. Checking replicate diversity per
+engine, as the RUNBOOK gate requires:
+
+* **rosettafold-3 (single-sequence) is *sometimes* deterministic.** Across replicates of
+  one ligand, per-atom sd 0.64 and 1.59 Å; of another, exactly **0.0000**. It varies by
+  ligand, so the engine cannot be trusted either way without checking.
+* **Protenix replicates converge often.** Median 12 raw (engine, replicate) entries per
+  ligand collapse to **7 distinct poses — 39% duplicates**, even across separate jobs.
+
+`reference_poses` now deduplicates, and it **improved** the result rather than costing
+anything, because duplicates were double-weighting some opinions in the mean:
+
+| reference set | depth (median) | selected | gain |
+|---|---|---|---|
+| protenix x2, raw | 12 | 0.6120 | +0.0336 |
+| **protenix x2, deduped** | **7** | **0.6136** | **+0.0352** |
+| + rosettafold-3, deduped | 8 | 0.6098 | +0.0314 |
+
+Within-ligand ρ = −0.2547, correct on **75.9%** of ligands, Wilcoxon p = 3.4e−06.
+
+**RoseTTAFold-3 does not help yet, and the test is not clean.** Its campaign is mostly
+replicate 0 at this point and it runs in single-sequence mode, so its poses are both fewer
+and built without evolutionary information. Re-test when its four replicates are in before
+concluding anything about it.
+
+**The general rule, which is FINDING 009 in its final form:** count *distinct poses*, never
+distinct jobs. Independence has to be measured, not assumed from the fact that two things
+were submitted separately.

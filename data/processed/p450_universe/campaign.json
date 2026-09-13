@@ -100,7 +100,7 @@
    "job_id": "3e8e4046-ee04-4947-a4b4-80ec11925cbb",
    "uniprot": "P08684",
    "submitted": 1789330145.1741257,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "509_e452cdaf": {
    "job_id": "0219f3bd-1c21-4820-bf38-3a2551d95f54",
@@ -1200,7 +1200,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789331366.6925368
+   "submitted": 1789331366.6925368,
+   "done": true
   },
   "0457204e-4de8-47b1-b8e3-51565e7200f8": {
    "target_key": "410_bc4a20dd",
@@ -1266,7 +1267,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789331381.0019016
+   "submitted": 1789331381.0019016,
+   "done": true
   },
   "64d175e5-98d2-466c-b723-b262d91a3533": {
    "target_key": "417_0e6cd8b9",
@@ -1290,7 +1292,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789331386.8527498
+   "submitted": 1789331386.8527498,
+   "done": true
   },
   "a0fff662-d395-4226-a497-fe3c83dc1720": {
    "target_key": "469_ec879091",
@@ -1302,7 +1305,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789331389.0898414
+   "submitted": 1789331389.0898414,
+   "done": true
   }
  }
 }
