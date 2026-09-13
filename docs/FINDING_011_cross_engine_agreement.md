@@ -267,3 +267,46 @@ concluding anything about it.
 **The general rule, which is FINDING 009 in its final form:** count *distinct poses*, never
 distinct jobs. Independence has to be measured, not assumed from the fact that two things
 were submitted separately.
+
+---
+
+## Replicate diversity differs sharply by engine, and "more checkpoints" is NOT a law
+
+Running the RUNBOOK gate on both new engines:
+
+| engine | ligands with >= 2 reps | median per-atom sd across reps | deterministic (sd < 0.05) |
+|---|---|---|---|
+| **esmfold2** | 36 | **2.206 Å** | **0 of 36** |
+| rosettafold-3 (single-seq) | 76 | 0.212 Å | **36 of 76** |
+
+esmfold2 samples the ligand properly. RoseTTAFold-3 in single-sequence mode collapses to
+the same pose about half the time and is barely diverse otherwise - which is what
+single-sequence mode buys: removing the MSA removes the stochasticity along with it.
+Dedup handles this correctly, but it means RF3 contributes far fewer opinions than its
+replicate count suggests.
+
+### Adding a checkpoint can make it worse
+
+| reference set | depth (median) | selected | gain |
+|---|---|---|---|
+| **protenix x2** | 7 | **0.6164** | **+0.0380** |
+| + esmfold2 | 8 | 0.6085 | +0.0301 |
+| esmfold2 alone | 1 | 0.5999 | +0.0215 |
+| all four engines | 10 | 0.6144 | +0.0360 |
+
+**This weakens the earlier "checkpoint diversity beats replicate count" claim**, which
+rested on a single data point (adding protenix-v1 to protenix-v2, +0.0240 -> +0.0310) and
+was labelled as such. Adding esmfold2 - a genuinely different architecture with genuinely
+diverse samples - *lowers* the gain.
+
+**But the test is not clean and must be re-run.** esmfold2 is only ~1.4 replicates deep,
+squarely in the regime its own dose-response calls noise (at depth 1 the feature measured
++0.0215 alone, and -0.0055 in the very first version). Adding one weak opinion to seven
+good ones dilutes the mean. Re-test when esmfold2 reaches 4 replicates before concluding
+anything about it.
+
+The defensible statement today is narrower than "more engines is better": **what matters
+is the quality of the reference opinions, not their variety.** A reference pose that is
+wrong is something to disagree with, and averaging it in costs signal. Protenix x2 at
+depth 7 remains the best measured configuration at **+0.0380** (selected 0.6164,
+rho -0.258, correct on 76% of ligands).
