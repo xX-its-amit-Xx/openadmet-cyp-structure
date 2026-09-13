@@ -68,3 +68,44 @@ more than +0.038.
 - esmfold2 reference depth is mostly 2, below the 4 the CYP3A4 dose-response wants. The
   effect is large enough that this is unlikely to reverse it, but the number will move.
 - 17 targets is not 185. The remaining MSAs are still computing.
+
+---
+
+## Addendum — the mechanism is confirmed on CYP3A4, and it makes the feature self-limiting
+
+The catastrophe-detector explanation predicts that the gain should track how uncertain the
+pool is, not which protein it came from. Testing that on the CYP3A4 set, split at the
+median within-ligand spread:
+
+| CYP3A4 subset | ligands | random | selected | gain | rho | p |
+|---|---|---|---|---|---|---|
+| **wide pool spread (> 0.23)** | 43 | 0.587 | 0.657 | **+0.0704** | −0.387 | 0.0000 |
+| **narrow pool spread (<= 0.23)** | 44 | 0.570 | 0.577 | **+0.0063** | −0.132 | 0.17 |
+
+An **11x difference** on the same protein, the same engines and the same feature, driven
+only by how much disagreement there is to resolve. The narrow-spread half is a clean null.
+
+This is the mechanism holding up under a test that could have refuted it, and the P450
+half could not supply that test: only 13 of 141 P450 pairs have a worst pose above 0.2, so
+there is no clean subset there to compare against. The converse split does work - P450
+pairs that contain a catastrophe score +0.3343 against +0.3099 overall.
+
+### Why this is a good property rather than a caveat
+
+The feature **pays where the pool is uncertain and costs nothing where it is not**:
++0.0704 when there is disagreement to resolve, +0.0063 (indistinguishable from zero) when
+there is not. It is a safety net, not a gamble. Adding it cannot meaningfully hurt a
+well-behaved target, which is exactly the property that makes it safe to apply blind to a
+release whose difficulty we cannot know in advance.
+
+It also explains the headline +0.0381 as an average over two regimes rather than a single
+effect: roughly half the CYP3A4 ligands are getting +0.07 and the other half nothing.
+
+### One number that does not fit, and is not being explained away
+
+Splitting instead on whether the pool contains a genuinely bad pose (< 0.25) gives
+**gain +0.0767 with rho +0.005** on 15 ligands - a large mean gain with *zero* rank
+correlation. The two statistics disagree completely. The plausible reading is that
+avoiding one catastrophic pose lifts the mean while leaving the ordering of the remaining
+good poses uninformative, but n=15 is too small to call it, and it is recorded as
+unresolved rather than folded into the story.
