@@ -1,0 +1,15 @@
+id,pdb,smiles,n_heavy,coordinated
+X1O,8EWN,c1cnccc1CCC(=O)NCC2=CC=C3C4=CC=CC=[N]4[Ir+]56([N]3=C2)(c7cc(cc(c7C8=[N]5C=CC=C8)F)F)c9cc(cc(c9C1=CC=CC=[N]61)F)F,53,True
+X4E,8EXB,c1ccc2c(c1)c3c(s2)C4=CC=C5C=CC=CC5=[N]4[Ir+]367(c8c9ccccc9sc8C1=CC=C2C=CC=CC2=[N]61)[N]1=CC=CC=C1C1=CC=C(C=[N]71)CNC(=O)CCc1cccnc1,63,True
+X2Q,8EWP,c1ccc2c(c1)C=CC3=[N]2[Ir+]45(c6c3sc7c6cccc7)(c8c9ccccc9sc8C1=CC=C2C=CC=CC2=[N]41)[N]1=C(C=CC=C1)C1=[N]5C=C(C=C1)CNC(=O)CCc1ccncc1,63,True
+WZN,8EWD,CC(C)(C)OC(=O)N[C@@H](Cc1ccncc1)C(=O)NCC2=C[N]3=C(C=C2)C4=CC=CC=[N]4[Ir+]356(c7ccccc7C8=[N]5c9ccccc9C=C8)c1ccccc1C1=CC=C2C=CC=CC2=[N]61,65,True
+X1I,8EWM,CC(C)(C)OC(=O)N[C@@H](Cc1ccncc1)C(=O)/N=C\C2=C[N]3=C(C=C2)C4=[N]([Ir+]356(c7cc(cc(c7C8=[N]5C=CC=C8)F)F)c9cc(cc(c9C1=CC=CC=[N]61)F)F)C=CC=C4,61,True
+X1C,8EWL,c1ccc2c(c1)C=CC3=[N]2[Ir+]45(c6c3cccc6)(c7ccccc7C8=CC=C9C=CC=CC9=[N]48)[N]1=C(C=CC=C1)C1=[N]5C=C(C=C1)CNC(=O)CCc1ccncc1,57,True
+O3L,7UAZ,c1ccc2c(c1)C3=[N]([Ir]245(c6ccccc6C7=[N]4C=CC=C7)[N]8=CC=CC=C8C9=CC=C(C=[N]59)CNC(=O)CCSCc1cccnc1)C=CC=C3,51,True
+X0E,8EWE,CC(C)(C)OC(=O)N[C@H](Cc1ccncc1)C(=O)NCC2=C[N]3=C(C=C2)C4=CC=CC=[N]4[Ir+]356(c7ccccc7C8=[N]5c9ccccc9C=C8)c1ccccc1C1=CC=C2C=CC=CC2=[N]61,65,True
+TPF,6MA7,c1cc(c(cc1F)F)C(Cn2cncn2)(Cn3cncn3)O,22,True
+X2B,8EWQ,c1ccc(cc1)C(=O)N[C@@H](Cc2ccncc2)C(=O)NCC3=C[N]4=C(C=C3)C5=[N]([Ir+]467(c8ccccc8C9=[N]6c1ccccc1C=C9)c1ccccc1C1=CC=C2C=CC=CC2=[N]71)C=CC=C5,66,True
+G1D,6DAL,CC(C)(C)OC(=O)N[C@@H](Cc1ccccc1)CN[C@H](Cc2ccccc2)C(=O)NCCc3cccnc3,37,True
+G0Y,6DAG,CC(C)(C)OC(=O)N[C@H](Cc1ccccc1)CS[C@@H](Cc2ccccc2)C(=O)NCCc3cccnc3,37,True
+O39,7UAY,c1ccc2c(c1)C=CC3=[N]2[Ir]45(c6c3cccc6)(c7ccccc7C8=[N]4c9ccccc9C=C8)[N]1=C(C=CC=C1)C1=[N]5C=C(C=C1)CNC(=O)CCSCc1cccnc1,59,True
+X8S,7KS8,CC1=CC=CC2=[N]1[Ru]34([N]5=CC=CC=C5C6=[N]3C(=CC=C6)C7=CC=CC=[N]47)([N]8=C2C=CC=C8C)[N]9=CC(=CC=C9)CNC(=O)CCSC[C@@H](Cc1ccccc1)NC(=O)OC(C)(C)C,63,False
