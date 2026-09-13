@@ -8,3 +8,5 @@ secrets/
 D:/cyp_stage/
 data/processed/p450_universe/*.jsonl
 data/processed/openprotein/op1/
+data/processed/p450_universe/poses/
+data/processed/p450_universe/entry_meta.json
