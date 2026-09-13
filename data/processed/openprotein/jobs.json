@@ -155,7 +155,8 @@
     ],
     "samples": 20,
     "submitted": 1789328726.468298,
-    "rep": 0
+    "rep": 0,
+    "done": true
    },
    {
     "job_id": "8b8ea725-a906-4fcf-97c3-a629cd72552d",
@@ -1876,6 +1877,36 @@
     "samples": 20,
     "submitted": 1789328905.518659,
     "rep": 0
+   }
+  ]
+ },
+ "recover/protenix_v2": {
+  "engine": "protenix_v2",
+  "tag": "recover",
+  "samples": 5,
+  "batches": [
+   {
+    "job_id": "26c25a03-c3fb-4d19-9c2e-07d8f34f3514",
+    "ligands": [
+     "TPF",
+     "G1D",
+     "G0Y"
+    ],
+    "rep": 0,
+    "samples": 5,
+    "submitted": 1789332132.84023
+   },
+   {
+    "job_id": "15965602-7770-4dc1-a383-2ceb99b0f9e9",
+    "ligands": [
+     "X1O",
+     "X4E",
+     "X2Q",
+     "WZN"
+    ],
+    "rep": 0,
+    "samples": 5,
+    "submitted": 1789332136.0912488
    }
   ]
  }
