@@ -21,9 +21,11 @@ measured −0.0055. Verify with `reference_depth()` before trusting any selectio
 `diffusion_samples` does NOT produce independent poses on OpenProtein's Protenix
 (FINDING 009) — replicate jobs do.
 
-Checkpoint diversity beats replicate count: one pose from a second checkpoint moved
-+0.0240 → +0.0310, more than doubling 4 → 8 poses of the same checkpoint achieved. So
-pass every engine you have.
+**Do NOT pass every engine you have.** Measured at matched depth, the best reference set
+is the two Protenix checkpoints alone (+0.0380). Adding esmfold2 — a genuinely different
+architecture, sampling properly, at depth 4 — drops it to +0.0178, and all four engines
+give +0.0267. Reference quality beats reference variety: a pose you should disagree with
+costs signal when it is averaged into the mean.
 """
 from __future__ import annotations
 
