@@ -201,7 +201,7 @@ def _split_models(cif_text: str, sid: str, out: Path) -> list[str]:
     """
     import gemmi
 
-    st = gemmi.read_structure_from_string(cif_text)
+    st = gemmi.read_structure_string(cif_text)
     names = []
     for k in range(len(st)):
         one = st.clone()
@@ -260,6 +260,7 @@ def collect(engine: str, tag: str) -> dict:
             n_pending += len(b["ligands"])
             continue
 
+        ok_all = True
         for idx, sid in enumerate(b["ligands"]):
             try:
                 txt = results[idx].to_string()
@@ -277,7 +278,13 @@ def collect(engine: str, tag: str) -> dict:
             except Exception as exc:
                 print(f"  {sid}: save failed ({type(exc).__name__}: {exc})", flush=True)
                 n_fail += 1
-        b["done"] = True
+                ok_all = False
+        # Only retire the batch once every ligand in it is on disk. Marking it done
+        # regardless would discard a whole job's poses on any transient save error - and
+        # did exactly that on the first run, where a wrong gemmi function name failed all
+        # four saves while the batch was retired as complete.
+        if ok_all:
+            b["done"] = True
     _save_jobs(jobs)
 
     if conf_rows:

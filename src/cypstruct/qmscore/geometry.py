@@ -35,14 +35,24 @@ VDW = {"H": 1.10, "C": 1.70, "N": 1.55, "O": 1.52, "F": 1.47, "P": 1.80,
 #   Fe-SG(Cys442)       p5 2.12   p50 2.37   p95 2.51
 #   type I standoff     p5 2.85   p50 3.91   p95 5.91
 #
-# The single most useful number here: only **0.7%** of ligand atoms across the whole
-# reference set fall on the proximal face of the porphyrin. Real structures essentially
-# never violate it, which makes the distal-side test a near-perfect validity filter.
+# The single most useful number here is stronger than first measured. Across 874 in-pocket
+# pairs spanning the whole P450 superfamily, **not one ligand heavy atom** lies on the
+# proximal face of the porphyrin - the minimum signed height is +1.72 A at the 1st
+# percentile. The earlier "0.7%" came from CYP3A4 alone and counted peripheral-site copies
+# as pocket ligands. So the distal-side test is not a soft term to be weighted: it is a
+# hard validity filter that real structures never violate.
 # --------------------------------------------------------------------------
-COORD_LO, COORD_HI = 1.90, 2.45      # Fe-donor dative bond (p5-p95 with a small margin)
-TRANS_ANGLE_MIN = 155.0              # S(Cys)-Fe-donor; measured p5 is 159.5
-LONEPAIR_ANGLE_MAX = 35.0            # (lone-pair vector, N->Fe). Not yet measured — prior.
-SOM_LO, SOM_HI = 2.9, 5.9            # substrate standoff over Fe (type I p5-p95)
+# RECALIBRATED on the whole P450 superfamily (874 in-pocket pairs, 369 ligands, PF00067)
+# rather than on 116 CYP3A4 entries. See FINDING_008.
+#
+# The windows were built as p5-p95, which is a **category error for an acceptance test**:
+# a p5-p95 window rejects 10% of true positives by construction. Measured against 463
+# genuinely coordinated crystal poses, 1.90-2.45 admitted only 89.8% of them - one
+# coordinated pose in ten scored as non-coordinating. Acceptance windows are p1-p99.
+COORD_LO, COORD_HI = 1.85, 2.55      # Fe-donor dative bond; admits 97.4% (p1 1.86/p99 2.56)
+TRANS_ANGLE_MIN = 150.0              # S(Cys)-Fe-donor; measured p1 is 157.0, admits 99.8%
+LONEPAIR_ANGLE_MAX = 35.0            # (lone-pair vector, N->Fe). Not yet measured - prior.
+SOM_LO, SOM_HI = 2.8, 5.8            # substrate standoff over Fe (type I p5-p95, n=411)
 STACK_LO, STACK_HI = 3.2, 4.2        # ring centroid to porphyrin plane. Prior.
 STACK_ANGLE_MAX = 25.0               # interplanar angle for stacking. Prior.
 
