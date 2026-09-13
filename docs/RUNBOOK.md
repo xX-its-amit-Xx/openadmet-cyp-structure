@@ -191,6 +191,19 @@ and `protenix_v2` run protein+HEM+ligand there. **Read FINDING 009 before launch
    Justified by FINDING 004: the oracle is still climbing and the selector tracks it at
    +0.0125 per doubling, which is larger than any feature gain measured so far.
 
+1b. **BEFORE using esmfold2 or rosettafold_3 in the FINDING 011 reference set, verify
+   their replicates actually differ.** rosettafold_3 runs in single-sequence mode, which
+   removes the MSA as a source of stochasticity, so its replicates could be deterministic -
+   the FINDING 009 trap in a new engine. One command:
+
+       python - <<'PY'
+       # per-atom sd across replicates must be >> 0; FINDING 009 was sd = 0.0000
+       PY
+
+   Expect ~2-4 A per-atom sd, as Chai and Protenix-between-replicates show. If it is
+   0.0000, replicates of that engine are worthless as independent opinions and only ONE
+   pose per ligand can enter the reference set.
+
 2. **Re-run the FINDING 011 test** once most ligands have >= 4 replicates:
    `python scripts/structure/cross_engine_agreement.py`. This is a pre-registered test
    with a stated prediction, not a fishing expedition. Cross-engine agreement gave
