@@ -178,7 +178,13 @@ and `protenix_v2` run protein+HEM+ligand there. **Read FINDING 009 before launch
 
 ### Do these in order, when the gate opens
 
-1. **Resume replicate depth to 12** once the fold queue is under ~100 pending:
+1. ~~Resume replicate depth to 12 once the fold queue is under ~100 pending~~
+   **CORRECTED and already done, 2026-09-13.** The premise was wrong. MSA throughput is
+   serial and independent of fold load: 7 -> 9 in ~1 h while 490 folds were queued, then
+   9 -> 12 in ~2 h with the queue draining - about one per 20-25 min either way.
+   Throttling the folds bought nothing and cost six replicates of depth. Do not throttle
+   folds for the MSA queue's sake again; the two do not compete. Command, if depth is
+   needed beyond 12:
    `openprotein_cofold.py submit --engine protenix_v2 --samples 5 --batch 4
    --replicates 12 --tag op1` (resumes on `(rep, ligand)`; re-running is safe).
    It was stopped at 6 because ~490 queued folds were starving the MSA searches.
@@ -204,5 +210,6 @@ and `protenix_v2` run protein+HEM+ligand there. **Read FINDING 009 before launch
   addendum, 010) and only within-ligand comparisons have ever worked. Six were tried on
   2026-09-13 alone, and best-of-six random scores about +0.012, which is most of why the
   best of them did not count.
-- Submit large fold batches while MSA searches are pending; they share a queue, and the
-  MSAs gate the 5.7x larger dataset.
+- ~~Submit large fold batches while MSA searches are pending~~ — measured false, see
+  item 1. Folds and MSA searches do not compete; the MSA queue is serial at ~1 per
+  20-25 min regardless of what else is running.
