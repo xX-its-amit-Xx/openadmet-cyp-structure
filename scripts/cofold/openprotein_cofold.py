@@ -89,8 +89,8 @@ def build_complex(seq: str, smiles: str, msa=None):
     return cx
 
 
-def ligand_set(limit: int | None, seed: int = 0) -> pd.DataFrame:
-    df = pd.read_csv(DATA_PROCESSED / "validation_ligands.csv")
+def ligand_set(limit: int | None, seed: int = 0, csv: str | None = None) -> pd.DataFrame:
+    df = pd.read_csv(csv or (DATA_PROCESSED / "validation_ligands.csv"))
     if limit:
         # Sample across the whole set rather than taking the head: the csv is sorted by
         # ligand code, so a head() slice would be a chemically biased subset and the
@@ -420,12 +420,13 @@ if __name__ == "__main__":
     ap.add_argument("--single-sequence", action="store_true",
                     help="no MSA; REQUIRED for rosettafold_3, which fails on an uploaded one")
     ap.add_argument("--tag", default="op1")
+    ap.add_argument("--csv", default=None, help="ligand csv; defaults to validation set")
     a = ap.parse_args()
 
     if a.cmd == "models":
         print(connect().fold.list_models())
     elif a.cmd == "submit":
-        print(json.dumps(submit(a.engine, ligand_set(a.n or None), a.samples, a.tag,
+        print(json.dumps(submit(a.engine, ligand_set(a.n or None, csv=a.csv), a.samples, a.tag,
                                 batch=a.batch, replicates=a.replicates,
                                 single_sequence=a.single_sequence), indent=1)[:800])
     elif a.cmd == "collect":

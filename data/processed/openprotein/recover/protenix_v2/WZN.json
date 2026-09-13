@@ -1,0 +1,11 @@
+{
+ "ligand": "WZN",
+ "engine": "protenix_v2",
+ "files": [
+  "WZN__r0s0.cif",
+  "WZN__r0s1.cif",
+  "WZN__r0s2.cif",
+  "WZN__r0s3.cif",
+  "WZN__r0s4.cif"
+ ]
+}
