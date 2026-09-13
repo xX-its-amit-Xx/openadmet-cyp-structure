@@ -117,7 +117,26 @@ def reference_poses(pool_dirs, loader) -> dict[str, list[np.ndarray]]:
                 continue
             if v is not None:
                 ref.setdefault(lig, {})[key] = v
-    return {lig: list(d.values()) for lig, d in ref.items()}
+    return {lig: _dedupe(list(d.values())) for lig, d in ref.items()}
+
+
+def _dedupe(poses: list[np.ndarray], tol: float = 0.05) -> list[np.ndarray]:
+    """Drop poses identical to one already kept. A replicate is not an opinion.
+
+    Being a separate job is not sufficient for independence. RoseTTAFold-3 in
+    single-sequence mode is *sometimes* deterministic - measured across replicates of one
+    ligand at per-atom sd 0.64 and 1.59 A, and of another at exactly 0.0000 - so the
+    replicate count overstates how many independent opinions there really are, and
+    `xeng_score` would then average a duplicate in twice and weight it double.
+
+    Counting distinct poses rather than distinct jobs is the general form of the FINDING
+    009 lesson, and it costs one comparison per pair.
+    """
+    keep: list[np.ndarray] = []
+    for p in poses:
+        if not any(len(q) == len(p) and float(np.abs(q - p).max()) < tol for q in keep):
+            keep.append(p)
+    return keep
 
 
 def reference_depth(ref: dict[str, list[np.ndarray]]) -> dict:
@@ -144,10 +163,13 @@ def xeng_score(pose_xyz_in_frame: np.ndarray, refs: list[np.ndarray]) -> float:
 def select(df, ligand_col="ligand", xeng_col="xeng", sibling_rmsd_col=None):
     """Pick one pose per ligand. Unweighted by design — fitting weights loses the gain.
 
-    With `sibling_rmsd_col` this is `-z(sibling rmsd) - z(xeng)`, the best measured
-    combination (+0.0305); without it, `-z(xeng)` alone (+0.0284). Both beat the incumbent
-    (+0.0207) and neither has a parameter to tune. Terms are z-scored WITHIN the ligand,
-    because selection only ever compares poses of the same molecule.
+    Default is `-z(xeng)` ALONE, which at full depth scores +0.0336 against the incumbent
+    `0.5*zc - zm` at +0.0264. Passing `sibling_rmsd_col` adds `-z(sibling rmsd)` and makes
+    it WORSE (+0.0183): once ~10 independent opinions from other engines are available,
+    asking whether one engine agrees with itself adds nothing. The combination looked best
+    at n=63 (+0.0305) and did not replicate - it is kept only as an option, not a default.
+    Terms are z-scored WITHIN the ligand, since selection only compares poses of the same
+    molecule.
     """
     import pandas as pd
 
