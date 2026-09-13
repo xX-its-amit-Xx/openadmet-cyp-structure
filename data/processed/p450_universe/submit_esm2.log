@@ -35,3 +35,15 @@ rep 1: 184 pairs to fold
   475_74349f57 [X2N] -> de560abd-1ed3-4ff8-9bde-06c2ed5e8714
   475_83a489fa [TPF] -> 8ba08d07-0134-4ebd-ba7f-a5645a0077c2
   475_c96c5508 [U51] -> b722488d-2a9e-401f-ad2d-c95d4d8674a5
+  476_1eccdb5d [PB2,PB2,TMI,06X] -> 85104b97-431b-4604-810e-f7374f3693f3
+  476_1eccdb5d [CPZ,CGE,TB2,TIC] -> 6755e214-e233-48ca-ba5d-9fb4ba1410bf
+  476_1eccdb5d [0BV,8PR] -> fd8141c8-3c60-4b33-95fa-e2ee5c79ad84
+  476_7621de71 [CPZ] -> d7170902-957a-40f0-86f5-98c1fcc360b9
+  479_f5b99101 [SI6,PN0,PN0,SI5] -> d2511934-f172-4171-a79d-883032a83fa0
+  479_f5b99101 [AJN] -> ec0d368a-7027-44ee-8d99-ef545bd9c095
+rep 2: 184 pairs to fold
+rep 3: 184 pairs to fold
+{
+  "jobs_submitted": 40,
+  "total_jobs": 162
+}
