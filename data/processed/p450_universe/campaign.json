@@ -1,0 +1,930 @@
+{
+ "msa": {
+  "469_ec879091": {
+   "job_id": "5e44fb4f-da89-4f67-8ee8-b70ab6f7f85f",
+   "uniprot": "Q385E8",
+   "submitted": 1789330131.9865015
+  },
+  "487_32859637": {
+   "job_id": "4fb8a0ca-ac44-4ad9-9555-1cdd79be72ab",
+   "uniprot": "P08684",
+   "submitted": 1789330132.7924078
+  },
+  "483_4a1aae09": {
+   "job_id": "e0642971-2f53-4986-a428-513f83865b2a",
+   "uniprot": "P19099",
+   "submitted": 1789330133.594214
+  },
+  "475_c96c5508": {
+   "job_id": "545d9247-2e6e-498a-bce0-820182db9ed0",
+   "uniprot": "F1RE08",
+   "submitted": 1789330134.4728653
+  },
+  "368_3c6d23e6": {
+   "job_id": "47fe6a13-aa65-49ce-8043-8314cb0fde1b",
+   "uniprot": "Q55080",
+   "submitted": 1789330135.2407186
+  },
+  "476_1eccdb5d": {
+   "job_id": "5db0d52d-c6fb-4ae3-aa0b-5b9e4a27340b",
+   "uniprot": "P00178",
+   "submitted": 1789330136.0972412
+  },
+  "453_3fc5a1f6": {
+   "job_id": "faa1570b-1574-4a40-a94f-2b03e61acb0f",
+   "uniprot": "A2TEF2",
+   "submitted": 1789330136.9360843
+  },
+  "458_c4bcedc3": {
+   "job_id": "9f256ccc-0b5c-471d-a076-bbd2a0347492",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330137.7324104
+  },
+  "467_acd53678": {
+   "job_id": "36391fe2-bc72-43ea-82b0-cf25f4ca848c",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330138.5168192
+  },
+  "475_74349f57": {
+   "job_id": "5c7fba1f-b890-4e14-9ab8-ba2155cee6db",
+   "uniprot": "Q385E8",
+   "submitted": 1789330139.34384
+  },
+  "480_0010cf69": {
+   "job_id": "7591ff0d-e083-42e8-9185-dc77c559aa82",
+   "uniprot": "P20815",
+   "submitted": 1789330140.142927
+  },
+  "476_7621de71": {
+   "job_id": "925eff08-dde5-4cc4-92a2-0b982f7ceed4",
+   "uniprot": "P00178",
+   "submitted": 1789330140.966463
+  },
+  "474_5043b011": {
+   "job_id": "acd16d45-9408-48fc-9b21-5ca698114f7c",
+   "uniprot": "Q9Y6A2",
+   "submitted": 1789330141.766025
+  },
+  "486_f605e37d": {
+   "job_id": "6bfa3c22-1e49-46df-b0de-6805d980eb13",
+   "uniprot": "P08684",
+   "submitted": 1789330142.6197934
+  },
+  "448_7a54e61e": {
+   "job_id": "8c90d1a7-cbcf-4d05-a696-91b89c7db34f",
+   "uniprot": "Q385E8",
+   "submitted": 1789330143.4987261
+  },
+  "411_e3e8183c": {
+   "job_id": "8faec929-bc79-47c3-ac37-ab3e48dadfc3",
+   "uniprot": "P48635",
+   "submitted": 1789330144.3478117
+  },
+  "487_ecbf61ae": {
+   "job_id": "3e8e4046-ee04-4947-a4b4-80ec11925cbb",
+   "uniprot": "P08684",
+   "submitted": 1789330145.1741257
+  },
+  "509_e452cdaf": {
+   "job_id": "0219f3bd-1c21-4820-bf38-3a2551d95f54",
+   "uniprot": "A0A8M1PIC7",
+   "submitted": 1789330146.1775799
+  },
+  "489_d6dd2913": {
+   "job_id": "c2a8dee9-c96e-4041-87dd-e6a42eaab265",
+   "uniprot": "P19099",
+   "submitted": 1789330147.0263212
+  },
+  "475_83a489fa": {
+   "job_id": "2845cd09-d833-4eb9-880c-3a45bb005e0a",
+   "uniprot": "Q385E8",
+   "submitted": 1789330147.8212562
+  },
+  "479_f5b99101": {
+   "job_id": "a19d0b87-3781-4ed7-9918-4d5e23bb338b",
+   "uniprot": "P10635",
+   "submitted": 1789330148.6186657
+  },
+  "450_9c481af8": {
+   "job_id": "3e3696f8-02ff-4efd-afaf-e9e31afd9ade",
+   "uniprot": "Q385E8",
+   "submitted": 1789330149.4340672
+  },
+  "414_949a8532": {
+   "job_id": "80400a2c-10ee-4a4d-b423-a7f39d35f4be",
+   "uniprot": "P9WPN8",
+   "submitted": 1789330150.2998543
+  },
+  "539_5aebb388": {
+   "job_id": "94d988d1-17ab-40d5-a934-c3114b9dc636",
+   "uniprot": "P10614",
+   "submitted": 1789330151.1238108
+  },
+  "497_9e5b0951": {
+   "job_id": "e9b74b38-3152-4634-b82a-cad6d04e9555",
+   "uniprot": "P15128",
+   "submitted": 1789330151.976141
+  },
+  "470_4634f49c": {
+   "job_id": "f919d655-dc8f-4b98-90d0-fa0dc55f966d",
+   "uniprot": "E9QY26",
+   "submitted": 1789330152.7758462
+  },
+  "460_2af8865f": {
+   "job_id": "e62d607e-6c15-4fb9-a88f-1f15c0c6d847",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330153.5767615
+  },
+  "477_a506c224": {
+   "job_id": "fba6b879-61dc-419b-b6b9-73d44ff1ee22",
+   "uniprot": "E9QY26",
+   "submitted": 1789330154.3823104
+  },
+  "446_68e6f289": {
+   "job_id": "315530c2-5e9f-47fa-a557-3b1f026dcc8a",
+   "uniprot": "Q16850",
+   "submitted": 1789330155.1958742
+  },
+  "435_b1170faa": {
+   "job_id": "73dd627a-6130-44dc-a764-675cfb63073e",
+   "uniprot": "P9WPP3",
+   "submitted": 1789330155.9690647
+  },
+  "443_05636834": {
+   "job_id": "070915df-a355-424a-a661-a8277ab5a486",
+   "uniprot": "Q16850",
+   "submitted": 1789330156.8159938
+  },
+  "515_00bd6347": {
+   "job_id": "b26e3a1f-7144-407e-99af-3635e3d3a0db",
+   "uniprot": "P50859",
+   "submitted": 1789330157.618705
+  },
+  "476_84104a34": {
+   "job_id": "fd693a98-2802-4048-9d55-442e2daf34bd",
+   "uniprot": "P11509",
+   "submitted": 1789330158.4629946
+  },
+  "461_217b532e": {
+   "job_id": "d8b4a9fc-da11-4513-b136-c22c03c26fd6",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330159.2752068
+  },
+  "403_e7509160": {
+   "job_id": "08f911e7-7e7b-4068-af61-278fc5f09e89",
+   "uniprot": "Q00441",
+   "submitted": 1789330160.0882921
+  },
+  "476_aca4f268": {
+   "job_id": "bda02298-05c8-421e-bfb7-ca3a98616d75",
+   "uniprot": "Q16696",
+   "submitted": 1789330160.9273498
+  },
+  "467_6a91af88": {
+   "job_id": "d6228c4f-2edb-4400-8598-17506493bc00",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330161.7798738
+  },
+  "454_40de364f": {
+   "job_id": "ea6f8cfa-20d9-4b96-9d03-bcfc7cfee8da",
+   "uniprot": "Q385E8",
+   "submitted": 1789330162.6543055
+  },
+  "473_4b734b6b": {
+   "job_id": "a0496a0c-45ce-406d-bc4c-b6b6c59d524a",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330163.4886782
+  },
+  "396_672140e8": {
+   "job_id": "44f06d08-cf08-47af-b0f7-a2dab0530428",
+   "uniprot": "P9WPP7",
+   "submitted": 1789330164.2874806
+  },
+  "485_6cd5c2fe": {
+   "job_id": "62671bbd-64c4-453a-8c40-8ca39ee550c9",
+   "uniprot": "P08684",
+   "submitted": 1789330165.0713944
+  },
+  "418_eb9ea735": {
+   "job_id": "0b9eca6f-5e19-4cd2-bc40-21896f241cd4",
+   "uniprot": "P9WPL5",
+   "submitted": 1789330165.9222946
+  },
+  "490_6a8e1ea2": {
+   "job_id": "8ed18957-ccb4-47e6-9dd4-daf9acc5bfe4",
+   "uniprot": "P10613",
+   "submitted": 1789330166.8298821
+  },
+  "487_8538537b": {
+   "job_id": "8bd0e235-050e-439e-9249-73908a81caae",
+   "uniprot": "P08684",
+   "submitted": 1789330167.6821404
+  },
+  "461_b17f2608": {
+   "job_id": "9614caec-dacb-479b-b5b2-8a84162f6c42",
+   "uniprot": "Q16850",
+   "submitted": 1789330168.7512681
+  },
+  "486_fe430384": {
+   "job_id": "c029996c-5b23-402f-bb49-c31f9c0f9a72",
+   "uniprot": "P15538",
+   "submitted": 1789330169.557046
+  },
+  "470_03aefc00": {
+   "job_id": "8064e5f1-5ee7-4749-9c65-45fb032d7c98",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330170.406234
+  },
+  "413_9f4eac9a": {
+   "job_id": "cf27d58c-6953-45da-82b5-9975a0d4069b",
+   "uniprot": "P9WPN5",
+   "submitted": 1789330171.2132907
+  },
+  "398_712f2bbf": {
+   "job_id": "c8900651-2de4-45f0-967e-ae837cb9304e",
+   "uniprot": "P9WPL5",
+   "submitted": 1789330172.5546176
+  },
+  "435_330d7a26": {
+   "job_id": "e82ae501-0ff8-4fc2-abbf-ebe4c3a438fd",
+   "uniprot": "P9WPP3",
+   "submitted": 1789330173.4079325
+  },
+  "460_0f25ea19": {
+   "job_id": "9315eb4d-3fd1-4dfa-956c-c943bb5c7998",
+   "uniprot": "L8GJB3",
+   "submitted": 1789330174.2088175
+  },
+  "418_b02dd5c4": {
+   "job_id": "d01d5493-9c35-4c47-a722-4e82dba2a0c7",
+   "uniprot": "A0R5U2",
+   "submitted": 1789330175.6772258
+  },
+  "455_48438573": {
+   "job_id": "1dfe8a16-e6e6-4c7c-8afc-5063c4734c4c",
+   "uniprot": "P9WPP9",
+   "submitted": 1789330176.4895291
+  },
+  "418_d6145562": {
+   "job_id": "4f68af16-76c2-4e49-87df-afda2b00a854",
+   "uniprot": "P9WPP1",
+   "submitted": 1789330177.2970307
+  },
+  "494_df1f3120": {
+   "job_id": "d208e5a1-ab66-464b-ac1b-d725132701cb",
+   "uniprot": "P05093",
+   "submitted": 1789330178.1650462
+  },
+  "388_7e6828a0": {
+   "job_id": "d6b5f94c-4eed-4af1-b3d8-2027c8c841e8",
+   "uniprot": "I7HHD0",
+   "submitted": 1789330179.0056698
+  },
+  "473_ca85e740": {
+   "job_id": "14fcad37-2516-4087-9f27-5341a83f46c0",
+   "uniprot": "E9QY26",
+   "submitted": 1789330179.8178318
+  },
+  "478_9f6a0c23": {
+   "job_id": "7bbcaf13-10e4-4ccf-b0d8-2400414c3395",
+   "uniprot": "P00178",
+   "submitted": 1789330180.616398
+  },
+  "536_e0febc59": {
+   "job_id": "49a81813-8e92-480d-b1ed-91286b2bd350",
+   "uniprot": "P10614",
+   "submitted": 1789330181.414602
+  },
+  "539_5f23ede7": {
+   "job_id": "b8b6dcf8-7102-4c93-8247-4ef13ee7e0bd",
+   "uniprot": "P10614",
+   "submitted": 1789330182.2552676
+  },
+  "464_4dc0771e": {
+   "job_id": "46b38b86-3e46-4bb5-9d72-f69e271979b4",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330183.0983958
+  },
+  "498_b2766aaa": {
+   "job_id": "601d9d50-5676-4f2c-96c3-35beb38ee93c",
+   "uniprot": "Q16647",
+   "submitted": 1789330183.8869002
+  },
+  "476_042e6596": {
+   "job_id": "de60d9cd-d19e-468e-b588-797e3e09b93c",
+   "uniprot": "P05181",
+   "submitted": 1789330184.666144
+  },
+  "537_fdcdbc81": {
+   "job_id": "45148487-cf1a-4f99-be34-90883f279640",
+   "uniprot": "P10613",
+   "submitted": 1789330185.4585023
+  },
+  "476_5965a73b": {
+   "job_id": "778c522e-ac0f-4c34-99d8-724e953a9935",
+   "uniprot": "P00178",
+   "submitted": 1789330186.2481048
+  },
+  "539_7cd83d49": {
+   "job_id": "c957fba6-f83f-4895-841d-b2dee21124a5",
+   "uniprot": "P10614",
+   "submitted": 1789330187.0253286
+  },
+  "410_bc4a20dd": {
+   "job_id": "15b9f2b1-b75f-41eb-a37a-417f1da27582",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330187.7755852
+  },
+  "487_3996026d": {
+   "job_id": "0d08e59f-5be5-4e06-82e7-1b47468fcc61",
+   "uniprot": "P08684",
+   "submitted": 1789330188.633608
+  },
+  "455_0c860b28": {
+   "job_id": "46682b87-f509-40ba-82f2-b36c06f309cf",
+   "uniprot": "P9WPP9",
+   "submitted": 1789330189.449139
+  },
+  "539_91e1b8cc": {
+   "job_id": "f4b04e27-ed0d-4a5e-a2bc-fe2917220208",
+   "uniprot": "P10614",
+   "submitted": 1789330190.290379
+  },
+  "476_ec577891": {
+   "job_id": "5583f8de-b549-4b31-ba55-70768f6d0b14",
+   "uniprot": "P20813",
+   "submitted": 1789330191.0950432
+  },
+  "477_f6ac8610": {
+   "job_id": "4ab2b60a-3017-4c07-9e40-a048598ab48c",
+   "uniprot": "P11712",
+   "submitted": 1789330191.9784486
+  },
+  "491_3c76f070": {
+   "job_id": "79de810c-fd85-46bc-bc6a-a3829d6ef595",
+   "uniprot": "O64989",
+   "submitted": 1789330192.8476887
+  },
+  "403_b3a2f553": {
+   "job_id": "788a08ee-2983-4636-86a5-90d0e5b0a5c5",
+   "uniprot": "Q00441",
+   "submitted": 1789330193.699343
+  },
+  "479_af4ae158": {
+   "job_id": "cec15d42-0a4a-4959-ba9a-f01539c594bb",
+   "uniprot": "P10635",
+   "submitted": 1789330194.5131037
+  },
+  "435_2f9ec93d": {
+   "job_id": "dc085e2d-b101-468f-b7bb-1dc8e4d84812",
+   "uniprot": "A0A1M4Y7D5",
+   "submitted": 1789330196.3575683
+  },
+  "486_ee37fc5f": {
+   "job_id": "c797d853-d7de-45d3-bee9-ece7e202e4f0",
+   "uniprot": "P00189",
+   "submitted": 1789330197.178985
+  },
+  "455_d4843705": {
+   "job_id": "7d6e5e39-b4b6-4dd6-bdf9-8c6fd5852340",
+   "uniprot": "P9WPP9",
+   "submitted": 1789330197.9398298
+  },
+  "484_08f22cf5": {
+   "job_id": "b927677b-d90b-4386-93c7-14c1453706a4",
+   "uniprot": "P19099",
+   "submitted": 1789330198.7375398
+  },
+  "484_16b493d6": {
+   "job_id": "7d541bb3-d22a-4db4-b155-a5f9df4233c1",
+   "uniprot": "P15538",
+   "submitted": 1789330199.5736132
+  },
+  "487_f5412e3a": {
+   "job_id": "61f7e5a1-c1d9-4e63-8e4c-62fe111c7c97",
+   "uniprot": "P08684",
+   "submitted": 1789330200.3780193
+  },
+  "417_e0528f9e": {
+   "job_id": "1a645da5-990a-40d8-9810-7ed4c6d64757",
+   "uniprot": "P9WPP1",
+   "submitted": 1789330201.243336
+  },
+  "395_f9cfd803": {
+   "job_id": "07ad5086-f3b3-4a6d-9f39-b16134469fe2",
+   "uniprot": "P9WPP7",
+   "submitted": 1789330202.061127
+  },
+  "457_0da0339b": {
+   "job_id": "03935ae9-dad6-4fa8-bce2-3fc510682846",
+   "uniprot": "O64989",
+   "submitted": 1789330203.1472666
+  },
+  "476_9dbeadc0": {
+   "job_id": "651b7a90-fbee-4157-93ba-c91d47b65b48",
+   "uniprot": "P11509",
+   "submitted": 1789330203.940033
+  },
+  "487_932e3608": {
+   "job_id": "4ad7328a-9244-477b-9553-12b8e6087e5e",
+   "uniprot": "P05108",
+   "submitted": 1789330204.7877038
+  },
+  "489_c3fc2428": {
+   "job_id": "33dc066f-61f3-4e01-9918-5c24e6d93bbb",
+   "uniprot": "Q9UNU6",
+   "submitted": 1789330205.6191535
+  },
+  "484_a14ea32d": {
+   "job_id": "a6b42be2-7922-4394-9c1e-2d71120c7adc",
+   "uniprot": "P08684",
+   "submitted": 1789330206.4667554
+  },
+  "437_6f9809c9": {
+   "job_id": "f0aedcf3-c401-4598-9bb2-dd2424df8361",
+   "uniprot": "Q2GB12",
+   "submitted": 1789330207.3059862
+  },
+  "414_63852e7b": {
+   "job_id": "f552207e-88ce-4809-8d0f-f467d2f7341d",
+   "uniprot": "P9WPN5",
+   "submitted": 1789330208.156662
+  },
+  "413_9c5d7a9c": {
+   "job_id": "05340b9f-5e81-4d25-b0e5-0ec675e04fba",
+   "uniprot": "Q9KZF5",
+   "submitted": 1789330208.9454498
+  },
+  "478_6eb03748": {
+   "job_id": "bed3bd86-0f94-4fcd-a46d-fa7e4801aed5",
+   "uniprot": "P00178",
+   "submitted": 1789330209.797926
+  },
+  "421_838aa221": {
+   "job_id": "7e8ee770-1a3d-4c4a-acfb-29351ea1ebde",
+   "uniprot": "Q2GB12",
+   "submitted": 1789330210.5929039
+  },
+  "425_918da379": {
+   "job_id": "0a3b656a-b00b-4da7-9173-57936f174948",
+   "uniprot": "O31440",
+   "submitted": 1789330211.3995886
+  },
+  "421_446a58b4": {
+   "job_id": "6d8fc44a-0b16-4815-aaa6-4f86f5d02b79",
+   "uniprot": "Q2GB12",
+   "submitted": 1789330212.2210474
+  },
+  "432_82bbf621": {
+   "job_id": "68727fc1-e205-4422-8261-258939dc34e6",
+   "uniprot": "A0A1M7CBV6",
+   "submitted": 1789330213.0254776
+  },
+  "396_9ca07298": {
+   "job_id": "dec074eb-993a-4971-8b50-0fe3217107d8",
+   "uniprot": "Q93NX6",
+   "submitted": 1789330213.8820643
+  },
+  "390_41f96d07": {
+   "job_id": "902eea75-10a1-4e4d-8f00-a4ae74f6122f",
+   "uniprot": "A0A239NBQ6",
+   "submitted": 1789330214.6577237
+  },
+  "471_d4280bc5": {
+   "job_id": "37a4b613-80c9-4668-8196-675c78b69f1c",
+   "uniprot": "P05108",
+   "submitted": 1789330215.4924533
+  },
+  "458_683cba10": {
+   "job_id": "357b45e4-67d5-4a08-991a-1ef5bf2ece9e",
+   "uniprot": "Q16850",
+   "submitted": 1789330216.2875712
+  },
+  "495_90353ec6": {
+   "job_id": "bb79ffbb-746f-41a5-a3fb-72e51b6f6a43",
+   "uniprot": "Q96242",
+   "submitted": 1789330217.682062
+  },
+  "476_8c5622dc": {
+   "job_id": "f16959dc-53c8-4065-b3e5-8d8a82e63069",
+   "uniprot": "P11712",
+   "submitted": 1789330218.5010872
+  },
+  "410_420f8942": {
+   "job_id": "2b6f4d3a-809f-45f1-83a5-9f7690fe48a0",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330219.3216488
+  },
+  "416_8845d560": {
+   "job_id": "bb20653f-8d08-4bc7-9b69-1b2837df84cf",
+   "uniprot": "O31440",
+   "submitted": 1789330220.1561005
+  },
+  "495_4b188212": {
+   "job_id": "d6058fc6-cd41-476e-bcb0-c1f872c42efb",
+   "uniprot": "Q96242",
+   "submitted": 1789330220.994962
+  },
+  "453_31297a04": {
+   "job_id": "02177632-a8a0-4312-aa6f-b14e00a0927f",
+   "uniprot": "Q385E8",
+   "submitted": 1789330221.8494418
+  },
+  "393_c3358fa1": {
+   "job_id": "12e409f1-0b8c-4fdd-8300-c4cc876f22f6",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330222.6621702
+  },
+  "455_bf9cfaeb": {
+   "job_id": "0fcacfa8-00ef-4039-b230-5888760d0974",
+   "uniprot": "Q8NSW2",
+   "submitted": 1789330223.5076952
+  },
+  "410_33697e28": {
+   "job_id": "b13f8ee0-0b7c-48c7-8e0c-3abdf41d3850",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330224.3549337
+  },
+  "486_62b873ed": {
+   "job_id": "b53d4ec3-57b5-4e53-82bd-f2c07a63025c",
+   "uniprot": "P08684",
+   "submitted": 1789330225.1475863
+  },
+  "503_f3121c0f": {
+   "job_id": "ad0ede91-b9db-4ca7-9042-c1e78608d1aa",
+   "uniprot": "P11511",
+   "submitted": 1789330225.9370358
+  },
+  "393_7d481b62": {
+   "job_id": "c9840c62-fc9b-42a9-a732-e077d8217410",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330226.8087575
+  },
+  "407_6f94dcc0": {
+   "job_id": "a2472e7d-6b34-4a72-b35a-5d578e0987f7",
+   "uniprot": "Q9FCA6",
+   "submitted": 1789330227.653701
+  },
+  "418_cdc79ec5": {
+   "job_id": "a5d7c9f2-725c-456c-88d0-635e181cdc5c",
+   "uniprot": "O31440",
+   "submitted": 1789330228.4461467
+  },
+  "410_83d6f89c": {
+   "job_id": "fd0a0da0-7c64-4bc8-9d53-f650f188cf02",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330230.2898965
+  },
+  "485_3260576c": {
+   "job_id": "db20b40c-237b-4e9f-9ea7-f03f9d0b24c4",
+   "uniprot": "Q7Z1V1",
+   "submitted": 1789330231.140731
+  },
+  "407_79f598c9": {
+   "job_id": "350a9d5c-8362-4687-9afe-b3408d2c6a8e",
+   "uniprot": "A0R4Q6",
+   "submitted": 1789330231.9319236
+  },
+  "411_4ad73dbc": {
+   "job_id": "1da8c1a2-22f1-432c-b07e-46c641325810",
+   "uniprot": "A9ERX9",
+   "submitted": 1789330232.949424
+  },
+  "491_57ef6006": {
+   "job_id": "7b4aa226-2c70-470e-a9cf-6143bad8b0b1",
+   "uniprot": "P04798",
+   "submitted": 1789330233.7558327
+  },
+  "410_f7949552": {
+   "job_id": "da0e3bb0-527d-4cde-ae48-06fcbc307073",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330235.5560603
+  },
+  "482_3314a5f9": {
+   "job_id": "f65aa560-cd48-4aef-9ea4-b2c45c8548e2",
+   "uniprot": "P08686",
+   "submitted": 1789330236.3649268
+  },
+  "486_c05cda03": {
+   "job_id": "46d3ca92-2447-4024-9e5e-f8931fd1e526",
+   "uniprot": "P24462",
+   "submitted": 1789330237.1698272
+  },
+  "405_04029c87": {
+   "job_id": "fc507b2f-ec8c-4624-a49e-a1d2a30149b5",
+   "uniprot": "B2HI07",
+   "submitted": 1789330238.6752753
+  },
+  "429_42e1ecdf": {
+   "job_id": "43c62265-ffa2-48be-8fb7-bd407ee2de21",
+   "uniprot": "Q5YNS8",
+   "submitted": 1789330239.4872134
+  },
+  "491_ec153e60": {
+   "job_id": "32f8c9b0-c36a-435d-b27b-c0fcf4922b92",
+   "uniprot": "P22680",
+   "submitted": 1789330240.3340483
+  },
+  "456_8d7b7719": {
+   "job_id": "f915c976-1d2e-4246-a71a-55f9e5674ded",
+   "uniprot": "O64989",
+   "submitted": 1789330241.1366475
+  },
+  "551_c92602dd": {
+   "job_id": "36217e91-b727-48bf-a7c9-9efe23e9ab5e",
+   "uniprot": "Q603T8",
+   "submitted": 1789330242.0050318
+  },
+  "454_6f07a0ed": {
+   "job_id": "da5c9f48-7717-446e-a82b-15dc367fad65",
+   "uniprot": "Q16850",
+   "submitted": 1789330242.7862964
+  },
+  "400_3b97c392": {
+   "job_id": "c7dff475-54a0-49bc-9e78-e951357099aa",
+   "uniprot": "A9FDB7",
+   "submitted": 1789330243.618538
+  },
+  "393_40400e22": {
+   "job_id": "16c7a2b4-6479-4dfc-af02-42d1bbecdd68",
+   "uniprot": "Q82LM3",
+   "submitted": 1789330244.4015968
+  },
+  "410_b64fbb1a": {
+   "job_id": "9c72e294-9f4d-4acb-bb54-c0abbf275c63",
+   "uniprot": "Q5YNS8",
+   "submitted": 1789330245.2669644
+  },
+  "476_f7fff33f": {
+   "job_id": "b88d5f9f-3b49-48f2-8c6b-f79df46a125f",
+   "uniprot": "P10632",
+   "submitted": 1789330246.0629475
+  },
+  "400_dff94071": {
+   "job_id": "7c4bf558-d0f0-4ae5-9ac9-56286e3bc9c5",
+   "uniprot": "A9FDB7",
+   "submitted": 1789330246.8958943
+  },
+  "423_69bac218": {
+   "job_id": "bc9cd495-88b9-4de8-a2f4-01b699458e65",
+   "uniprot": "B2HHT9",
+   "submitted": 1789330247.7838912
+  },
+  "410_824c8e4c": {
+   "job_id": "f29dcf97-c9c7-4c41-8edd-1f3390f36f89",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330248.581472
+  },
+  "481_4e319598": {
+   "job_id": "64b4674e-cc23-4153-b67a-f4f6bc49d601",
+   "uniprot": "P20815",
+   "submitted": 1789330249.4012794
+  },
+  "429_d4604a8c": {
+   "job_id": "c03021d6-7517-4800-a4f2-0e508c170e79",
+   "uniprot": "Q5YNS8",
+   "submitted": 1789330250.2019353
+  },
+  "420_545c0f8c": {
+   "job_id": "946ecd7b-0aa3-471b-93da-d7c73a576bd3",
+   "uniprot": "Q2IU02",
+   "submitted": 1789330251.010347
+  },
+  "399_d04da719": {
+   "job_id": "c43c3836-26e1-4f3f-8c05-ac22048f42e2",
+   "uniprot": "G0L713",
+   "submitted": 1789330251.7916563
+  },
+  "473_6790f922": {
+   "job_id": "150a643f-7e33-45e4-b58a-eebc591150ee",
+   "uniprot": "P00179",
+   "submitted": 1789330252.860309
+  },
+  "441_9f5ce965": {
+   "job_id": "6703c118-ad88-41d3-bfd1-71c31b6c2d45",
+   "uniprot": "A0A0M2KDV0",
+   "submitted": 1789330253.6665788
+  },
+  "440_fd3539ea": {
+   "job_id": "5795af40-aee7-4eb4-b2d0-b24ff6ce66ba",
+   "uniprot": "P9WPP1",
+   "submitted": 1789330254.5087547
+  },
+  "409_7ea29415": {
+   "job_id": "b041ae7c-d13c-4d72-b378-d660b30dc6be",
+   "uniprot": "Q5YNS8",
+   "submitted": 1789330255.3194392
+  },
+  "419_2ab9350e": {
+   "job_id": "877aeecb-6295-4a31-bfc2-f17d6990e94b",
+   "uniprot": "B2HMF7",
+   "submitted": 1789330256.792145
+  },
+  "433_1a485928": {
+   "job_id": "fe1f0aef-c6c1-45ca-bed2-4a3046bf204f",
+   "uniprot": "B2HHT9",
+   "submitted": 1789330257.5794766
+  },
+  "429_3c548ba6": {
+   "job_id": "76cfae9b-ce5b-433f-b280-10c38648a626",
+   "uniprot": "A0A1Y1RQ53",
+   "submitted": 1789330259.4097178
+  },
+  "444_2f85a59c": {
+   "job_id": "e02a15d9-990a-40a6-be98-bfeb8c442477",
+   "uniprot": "Q59990",
+   "submitted": 1789330260.263127
+  },
+  "401_a9170273": {
+   "job_id": "876ad72c-4684-4ae5-a528-a8290f1332d4",
+   "uniprot": "G1UDU7",
+   "submitted": 1789330261.104902
+  },
+  "456_c9a58f1b": {
+   "job_id": "044f1ff3-551e-4d87-a05c-2db3bb7ab563",
+   "uniprot": "B2HH81",
+   "submitted": 1789330261.911167
+  },
+  "401_b00cace2": {
+   "job_id": "504d7c39-3325-492e-ae79-0d0a332f0f6b",
+   "uniprot": "G1UDU7",
+   "submitted": 1789330262.703959
+  },
+  "406_a7c41b23": {
+   "job_id": "b4797007-a88f-4d7a-8258-03af12166c7b",
+   "uniprot": "Q9FCA6",
+   "submitted": 1789330263.5357254
+  },
+  "404_da66167c": {
+   "job_id": "7439c88d-309c-45ec-86ab-385c28e5b014",
+   "uniprot": "Q00441",
+   "submitted": 1789330264.3972387
+  },
+  "477_39eada44": {
+   "job_id": "9fbfb114-3e3b-4fb9-bee0-24e198018f34",
+   "uniprot": "P33261",
+   "submitted": 1789330265.202521
+  },
+  "404_7fe08af5": {
+   "job_id": "34299818-b48f-49bd-9743-67728eaf7675",
+   "uniprot": "Q00441",
+   "submitted": 1789330265.9883416
+  },
+  "404_a7f52c3e": {
+   "job_id": "ccc65ca7-d32a-413b-83dd-ddda8808769c",
+   "uniprot": "Q00441",
+   "submitted": 1789330266.7894714
+  },
+  "420_6f493f38": {
+   "job_id": "ff119c47-90ec-40c4-bc64-6368b6b18fa0",
+   "uniprot": "Q82GL5",
+   "submitted": 1789330267.5807145
+  },
+  "492_9ba7e278": {
+   "job_id": "287e317f-cdf3-4b73-ae60-a0783f63b812",
+   "uniprot": "Q82D73",
+   "submitted": 1789330268.3938096
+  },
+  "407_496a34be": {
+   "job_id": "0fbd72fd-c7e2-4c5c-9407-53f910fbaded",
+   "uniprot": "Q9FCA6",
+   "submitted": 1789330269.1993284
+  },
+  "405_90b62d6a": {
+   "job_id": "91c077b3-b3be-4081-9458-a097ea3dcfa8",
+   "uniprot": "Q8NSW2",
+   "submitted": 1789330270.0318134
+  },
+  "403_b29b1ed4": {
+   "job_id": "6eda0189-ade1-499a-9f6a-d8825188bb03",
+   "uniprot": "Q00441",
+   "submitted": 1789330271.106566
+  },
+  "463_2621ae02": {
+   "job_id": "2a1e71c3-2d66-44f3-9c91-87a8dc7d689f",
+   "uniprot": "P11712",
+   "submitted": 1789330271.927163
+  },
+  "400_77edf82b": {
+   "job_id": "06a75957-415e-4c31-b01f-f8c2b6699dff",
+   "uniprot": "Q82GL5",
+   "submitted": 1789330272.725536
+  },
+  "476_7cf5aebf": {
+   "job_id": "f1eda89e-db03-4a2a-80cf-7f8dc0494cc2",
+   "uniprot": "P11712",
+   "submitted": 1789330273.556996
+  },
+  "414_1ba62fe9": {
+   "job_id": "945f4d7b-b667-42ab-a3d5-a73fbc6b096b",
+   "uniprot": "A0A918H2T3",
+   "submitted": 1789330274.3378122
+  },
+  "495_3cc65aad": {
+   "job_id": "629932e5-8ca9-4780-9c3c-ba8f0ec4a60f",
+   "uniprot": "P05177",
+   "submitted": 1789330275.1254344
+  },
+  "396_6abe88bf": {
+   "job_id": "7d627efc-7046-4b5f-ae1e-b8fd1aa96759",
+   "uniprot": "A0A160P685",
+   "submitted": 1789330275.9133046
+  },
+  "421_0306eb73": {
+   "job_id": "9eb4b96c-1621-44ff-bd26-9eb4cbf07a22",
+   "uniprot": "I3DZK9",
+   "submitted": 1789330276.710269
+  },
+  "393_47d43e97": {
+   "job_id": "7795cf86-f25d-4911-939c-58d024ddbab2",
+   "uniprot": "Q825I8",
+   "submitted": 1789330277.5593855
+  },
+  "473_82bdfad8": {
+   "job_id": "fda02663-de6a-4109-b80a-5b7b99f1a3cd",
+   "uniprot": "P11712",
+   "submitted": 1789330278.3492298
+  },
+  "481_e03083a2": {
+   "job_id": "9686df71-7f72-458b-a807-8770b610bc95",
+   "uniprot": "Q6VVX0",
+   "submitted": 1789330279.1306381
+  },
+  "476_5b1c057d": {
+   "job_id": "7c76a1fd-91ef-4579-8d67-a14715070ec3",
+   "uniprot": "P11712",
+   "submitted": 1789330279.9328344
+  },
+  "476_1c30957d": {
+   "job_id": "dd90975c-3cad-4314-9e43-2901882d340d",
+   "uniprot": "P11712",
+   "submitted": 1789330280.746462
+  },
+  "411_af24ac3c": {
+   "job_id": "778b2ed7-46ca-496e-bd53-5dc42ab0c52a",
+   "uniprot": "P48635",
+   "submitted": 1789330281.5516927
+  },
+  "417_0e6cd8b9": {
+   "job_id": "e7c4a3e4-db01-4613-8a37-3ee224a6233c",
+   "uniprot": "O31440",
+   "submitted": 1789330282.3593333
+  },
+  "479_7301ea5f": {
+   "job_id": "4c3cfbd5-6f0a-49c0-82b0-47edacb0c684",
+   "uniprot": "Q6VVX0",
+   "submitted": 1789330283.1433842
+  },
+  "487_6d9fa596": {
+   "job_id": "4cf93c85-19c3-48f6-ac92-1ca61e248b49",
+   "uniprot": "P08684",
+   "submitted": 1789330283.9659197
+  },
+  "439_20b8b15f": {
+   "job_id": "ea3c013c-9b7e-452c-999c-65b838f2e2f3",
+   "uniprot": "B2HHT9",
+   "submitted": 1789330284.8546925
+  },
+  "482_89b551e9": {
+   "job_id": "c40dc5d3-d2ac-40da-8693-6723d008beb4",
+   "uniprot": "Q09128",
+   "submitted": 1789330285.649806
+  },
+  "394_ffc37182": {
+   "job_id": "5a1f3497-1e8c-4e94-87dd-0d1421bb292c",
+   "uniprot": "P9WPP7",
+   "submitted": 1789330286.4861968
+  },
+  "479_cf53e4c3": {
+   "job_id": "dc409f3b-661d-4fdf-ab30-c831d91f42ee",
+   "uniprot": "P00178",
+   "submitted": 1789330287.2918308
+  },
+  "396_475f6489": {
+   "job_id": "3298020d-6fff-4768-a001-0f0c07440039",
+   "uniprot": "Q2G637",
+   "submitted": 1789330288.1179972
+  },
+  "450_e1393289": {
+   "job_id": "e5167548-1937-4cdc-a6c5-b4e956d798d7",
+   "uniprot": "Q603T8",
+   "submitted": 1789330288.9289017
+  },
+  "441_fdb186c9": {
+   "job_id": "e2b8a6a0-231a-44d6-bb12-0ca8f3c106c5",
+   "uniprot": "A0A0H3CVZ6",
+   "submitted": 1789330289.767838
+  },
+  "475_07812ca9": {
+   "job_id": "e8c17e07-a281-4e5a-8cef-649aba8313b1",
+   "uniprot": "P11712",
+   "submitted": 1789330290.610145
+  },
+  "418_8d7c0f49": {
+   "job_id": "ba8e66c1-4dc5-44a9-af28-617faf05419f",
+   "uniprot": "P9WPP1",
+   "submitted": 1789330291.417632
+  }
+ },
+ "folds": {}
+}

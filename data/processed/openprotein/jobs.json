@@ -47,7 +47,8 @@
      "A1A4U"
     ],
     "samples": 20,
-    "submitted": 1789328687.7578845
+    "submitted": 1789328687.7578845,
+    "done": true
    },
    {
     "job_id": "42260453-b659-4ed9-9628-82d971d569a1",
@@ -58,7 +59,8 @@
      "A1ASP"
     ],
     "samples": 20,
-    "submitted": 1789328692.4194977
+    "submitted": 1789328692.4194977,
+    "done": true
    },
    {
     "job_id": "fa96e4bc-4a93-4667-9ebd-bc4d9bb745b8",
