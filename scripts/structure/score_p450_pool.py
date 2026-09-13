@@ -62,6 +62,51 @@ def _ref_for(pdb: str, lig: str, chain: str):
     return P.load_structure(cif, ligand_code=lig, assembly_chain=use)
 
 
+def renumber_to_reference(pred, ref):
+    """Shift the prediction's residue numbering onto the crystal's.
+
+    **Not cosmetic: without it most targets score exactly 0.000.** We fold the DEPOSITED
+    CONSTRUCT sequence, which the engine numbers from 1, while the crystal keeps author
+    numbering that usually starts elsewhere - 3TK3 runs 28..492 against a prediction
+    numbered 1..476, an offset of 27. `align_by_residue` matches by residue NUMBER, so
+    every contact then compares two different residues and LDDT-PLI collapses to zero.
+    It looks exactly like a target the model cannot fold, which is why it survived a first
+    pass: 20 targets, several at precisely 0.000, read as "co-folding is hard here".
+
+    The offset maximises three-letter residue-name agreement over candidate shifts - no
+    alignment library, and it cannot silently choose a frame where the sequences disagree.
+    Returns (pred, offset, identity); identity below ~0.8 means the pairing is wrong and
+    the pair should be dropped rather than scored.
+    """
+    pm = {num: name for (_ch, num), name in pred.prot_res.items()}
+    rm = {num: name for (_ch, num), name in ref.prot_res.items()}
+    if len(pm) < 30 or len(rm) < 30:
+        return pred, 0, 0.0
+
+    # Search EVERY shift that leaves the two ranges overlapping. The obvious narrow window
+    # - anchoring the prediction's first residue to the crystal's first OBSERVED one - is
+    # wrong whenever the crystal has a disordered N-terminus, which is most of the time:
+    # 2JJO's first modelled residue is 19 and its true offset is 0, so a +-10 window around
+    # 18 never tested the right answer and the pair was discarded as unmatchable. That
+    # dropped 189 of 351 poses while looking like a data problem.
+    best, best_id = 0, -1.0
+    lo = min(rm) - max(pm)
+    hi = max(rm) - min(pm)
+    for off in range(int(lo), int(hi) + 1):
+        shared = [n for n in pm if n + off in rm]
+        if len(shared) < 30:
+            continue
+        ident = sum(pm[n] == rm[n + off] for n in shared) / len(shared)
+        if ident > best_id:
+            best, best_id = off, ident
+    if best_id < 0:
+        return pred, 0, 0.0
+    if best != 0:
+        pred.prot_key = [(c, n + best, a) for (c, n, a) in pred.prot_key]
+        pred.prot_res = {(c, n + best): v for (c, n), v in pred.prot_res.items()}
+    return pred, best, best_id
+
+
 def cmd_score(limit: int | None) -> dict:
     from cypstruct import pose as P
 
@@ -86,7 +131,10 @@ def cmd_score(limit: int | None) -> dict:
         m = meta.get(d.name)
         if m is None:
             continue
-        files = [f for f in sorted(d.glob("*.cif")) if f.name not in done]
+        # poses live in per-engine subdirectories; recurse so a second engine's pool is
+        # picked up rather than silently ignored
+        files = [f for f in sorted(d.rglob("*.cif"))
+                 if f"{f.parent.name}/{f.name}" not in done]
         if not files:
             continue
         try:
@@ -100,11 +148,17 @@ def cmd_score(limit: int | None) -> dict:
                 mo = P.load_structure(f)
                 if len(mo.lig_xyz) == 0:
                     continue
+                mo, off, ident = renumber_to_reference(mo, ref)
+                if ident < 0.8:
+                    n_err += 1
+                    continue
                 perm = P.best_ligand_mapping(m.smiles, mo, ref)
                 rows.append({
-                    "pair": d.name, "pose": f.name, "ligand": m.id, "pdb": m.pdb,
+                    "pair": d.name, "pose": f"{f.parent.name}/{f.name}",
+                    "engine": f.parent.name, "ligand": m.id, "pdb": m.pdb,
                     "target_key": m.target_key, "uniprot": m.uniprot,
                     "coordinated": m.coordinated, "n_heavy": m.n_heavy,
+                    "resnum_offset": off, "seq_identity": round(float(ident), 3),
                     "lddt_pli": P.lddt_pli(mo, ref, lig_perm=perm),
                     "bisy_rmsd": P.bisy_rmsd(mo, ref, lig_perm=perm),
                 })
@@ -136,7 +190,7 @@ def cmd_features() -> dict:
         loaded = {}
         for f in grp.pose:
             try:
-                loaded[f] = P.load_structure(d / f)
+                loaded[f] = P.load_structure(d / f)   # pose is "<engine>/<file>.cif"
             except Exception:
                 pass
         if len(loaded) < 2:

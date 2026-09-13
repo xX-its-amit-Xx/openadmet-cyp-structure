@@ -118,7 +118,7 @@
    "job_id": "2845cd09-d833-4eb9-880c-3a45bb005e0a",
    "uniprot": "Q385E8",
    "submitted": 1789330147.8212562,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "479_f5b99101": {
    "job_id": "a19d0b87-3781-4ed7-9918-4d5e23bb338b",
@@ -1392,7 +1392,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338773.307067
+   "submitted": 1789338773.307067,
+   "done": true
   },
   "ed4a8146-1d11-40b8-9515-80a4740533e8": {
    "target_key": "467_acd53678",
@@ -1417,7 +1418,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338778.6953971
+   "submitted": 1789338778.6953971,
+   "done": true
   },
   "f78a7dc1-741c-4964-a9c3-4483e026116b": {
    "target_key": "474_5043b011",
@@ -1435,7 +1437,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338782.4275901
+   "submitted": 1789338782.4275901,
+   "done": true
   },
   "ab5c6b09-bbe8-4652-a8c9-03334d92042c": {
    "target_key": "474_5043b011",
@@ -1472,7 +1475,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338791.6934197
+   "submitted": 1789338791.6934197,
+   "done": true
   },
   "3dfa3c87-4449-47de-9677-d80a6c3cc078": {
    "target_key": "475_74349f57",
@@ -1484,7 +1488,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338794.1884701
+   "submitted": 1789338794.1884701,
+   "done": true
   },
   "7a157b4f-4f12-46da-9ae2-983a5f954243": {
    "target_key": "475_c96c5508",
@@ -1496,7 +1501,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338796.439615
+   "submitted": 1789338796.439615,
+   "done": true
   },
   "4b4e0230-630d-47b7-8093-7d08767c371e": {
    "target_key": "476_1eccdb5d",
@@ -1514,7 +1520,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338800.5399861
+   "submitted": 1789338800.5399861,
+   "done": true
   },
   "0817b2ad-6237-4c0c-aa9d-88e8c129d5f0": {
    "target_key": "476_1eccdb5d",
@@ -1532,7 +1539,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338804.694601
+   "submitted": 1789338804.694601,
+   "done": true
   },
   "e92031d4-bc5b-4e10-ba5f-86f34a434b7b": {
    "target_key": "476_1eccdb5d",
@@ -1546,7 +1554,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338807.3834932
+   "submitted": 1789338807.3834932,
+   "done": true
   },
   "17aba892-5324-424c-97e9-be70441eb484": {
    "target_key": "476_7621de71",
@@ -1558,7 +1567,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338810.4631498
+   "submitted": 1789338810.4631498,
+   "done": true
   },
   "1c97ec8f-42ac-4f0f-a4e1-a6229d4de1a1": {
    "target_key": "480_0010cf69",
@@ -1576,7 +1586,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338814.0986679
+   "submitted": 1789338814.0986679,
+   "done": true
   },
   "69a437db-d232-4fd0-8bc0-58cfb9384217": {
    "target_key": "483_4a1aae09",
@@ -1590,7 +1601,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338816.96739
+   "submitted": 1789338816.96739,
+   "done": true
   },
   "94bd6a05-e89d-4bde-8206-c994f7cca018": {
    "target_key": "486_f605e37d",
@@ -1608,7 +1620,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338821.8032324
+   "submitted": 1789338821.8032324,
+   "done": true
   },
   "6df335e5-cde4-4b55-a1f4-779d419456bf": {
    "target_key": "486_f605e37d",
@@ -1626,7 +1639,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338825.7693565
+   "submitted": 1789338825.7693565,
+   "done": true
   },
   "5a6d4416-bae4-4d2a-8ab7-d2d6368e4a30": {
    "target_key": "487_32859637",
@@ -1644,7 +1658,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338829.4907365
+   "submitted": 1789338829.4907365,
+   "done": true
   },
   "56a650b5-1b43-47df-8c8b-414620471b6d": {
    "target_key": "487_32859637",
@@ -1662,7 +1677,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338833.2167513
+   "submitted": 1789338833.2167513,
+   "done": true
   },
   "06f2e347-9ce9-47f7-8627-9c5be31fb39f": {
    "target_key": "487_32859637",
@@ -1680,7 +1696,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338837.1096528
+   "submitted": 1789338837.1096528,
+   "done": true
   },
   "66fa5d59-f410-44e8-b601-9f8dd40dabb8": {
    "target_key": "487_32859637",
@@ -1752,7 +1769,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338854.3710036
+   "submitted": 1789338854.3710036,
+   "done": true
   },
   "ead840ac-ee56-4017-a5f4-5bb8829c73b5": {
    "target_key": "487_32859637",
@@ -1788,7 +1806,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338862.91108
+   "submitted": 1789338862.91108,
+   "done": true
   },
   "f41a3642-a18b-4095-a956-570de02b1678": {
    "target_key": "487_32859637",
@@ -1806,7 +1825,8 @@
    ],
    "samples": 3,
    "rep": 0,
-   "submitted": 1789338866.5470521
+   "submitted": 1789338866.5470521,
+   "done": true
   },
   "cb1a3d5b-e69d-4ead-814c-ebff98fafbd2": {
    "target_key": "487_32859637",
@@ -2307,6 +2327,878 @@
    "rep": 1,
    "submitted": 1789338968.3909314,
    "done": true
+  },
+  "00445ad1-db2a-4e7d-a365-d4e012941f66": {
+   "target_key": "368_3c6d23e6",
+   "pairs": [
+    "4WQJ_36Y",
+    "4TUV_CPZ",
+    "4WPD_3SQ",
+    "4TT5_36Y"
+   ],
+   "ligands": [
+    "36Y",
+    "CPZ",
+    "3SQ",
+    "36Y"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339902.9240017
+  },
+  "5507fe5f-d38b-4ae5-9041-755171d5e412": {
+   "target_key": "403_e7509160",
+   "pairs": [
+    "1JIN_KTN",
+    "1EGY_9AP",
+    "1EUP_ASD",
+    "1OXA_DEB"
+   ],
+   "ligands": [
+    "KTN",
+    "9AP",
+    "ASD",
+    "DEB"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339906.705713
+  },
+  "35c275ad-2b44-475b-af58-c88fb14b92d8": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "6U30_PQM",
+    "6U31_PQP",
+    "8VL0_LVC",
+    "7U00_L4I"
+   ],
+   "ligands": [
+    "PQM",
+    "PQP",
+    "LVC",
+    "L4I"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339910.5379932
+  },
+  "7f13c76b-cc55-4245-95af-63c0b8dc4906": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "8VOC_M4F",
+    "7TZY_L3K",
+    "6PRS_OW7",
+    "5YQA_8ZU"
+   ],
+   "ligands": [
+    "M4F",
+    "L3K",
+    "OW7",
+    "8ZU"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339914.9372683
+  },
+  "ba62f753-86bb-4fbb-94e8-ac2973cee2b9": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGN_TWO",
+    "7R8S_8ZU",
+    "6UNN_K3Z",
+    "8D39_QDB"
+   ],
+   "ligands": [
+    "TWO",
+    "8ZU",
+    "K3Z",
+    "QDB"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339919.1643105
+  },
+  "627426c1-1619-4f88-8973-a58a14e8c824": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGO_1F1",
+    "7N14_ZRS",
+    "8VKF_LVK",
+    "7TRU_KQR"
+   ],
+   "ligands": [
+    "1F1",
+    "ZRS",
+    "LVK",
+    "KQR"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339922.6933672
+  },
+  "2813132e-a35e-4ba6-97ec-ddb814c79d26": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7JXB_VLG",
+    "6U3K_PQS",
+    "7TRT_KQF",
+    "7JW5_Z7Z"
+   ],
+   "ligands": [
+    "VLG",
+    "PQS",
+    "KQF",
+    "Z7Z"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339926.4437065
+  },
+  "fd30b691-41da-4b2d-bb3d-73b3bd282c52": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7TND_JO4",
+    "9ZEG_JO4",
+    "4EGP_FIV",
+    "9ZEH_JO4"
+   ],
+   "ligands": [
+    "JO4",
+    "JO4",
+    "FIV",
+    "JO4"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339929.8215222
+  },
+  "b6cffa9b-21d8-41a1-b40d-088a289537db": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "9ZEI_JO4"
+   ],
+   "ligands": [
+    "JO4"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339932.2116575
+  },
+  "40036ecb-c0cb-48df-b9b5-c2f8f7d245c6": {
+   "target_key": "411_e3e8183c",
+   "pairs": [
+    "2JJP_KLN",
+    "2XFH_CL6",
+    "2JJO_EY5"
+   ],
+   "ligands": [
+    "KLN",
+    "CL6",
+    "EY5"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339935.536497
+  },
+  "682d67dd-c5fe-43ad-a581-760a0e578640": {
+   "target_key": "417_0e6cd8b9",
+   "pairs": [
+    "1IZO_PAM"
+   ],
+   "ligands": [
+    "PAM"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339938.7971256
+  },
+  "acd8e8d5-6cba-470f-8bac-df03a3e8ebe9": {
+   "target_key": "448_7a54e61e",
+   "pairs": [
+    "4G7G_VFV",
+    "4G3J_VNT"
+   ],
+   "ligands": [
+    "VFV",
+    "VNT"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339941.3872724
+  },
+  "e8a8e4b7-c5cd-4c9c-847b-02d7ac0e2356": {
+   "target_key": "453_3fc5a1f6",
+   "pairs": [
+    "3L4D_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339943.670425
+  },
+  "97191692-01bf-47b8-b310-16851b627a1f": {
+   "target_key": "455_d4843705",
+   "pairs": [
+    "1EA1_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339945.8016686
+  },
+  "04abaa69-0dae-4715-bfff-5c81380f7c63": {
+   "target_key": "458_c4bcedc3",
+   "pairs": [
+    "3KSW_VNF",
+    "3K1O_POZ"
+   ],
+   "ligands": [
+    "VNF",
+    "POZ"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339948.3107405
+  },
+  "0fdb8306-53ce-49ad-ad86-82ef77f6ddfb": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4BY0_5PS",
+    "4UVR_J5Y",
+    "4BMM_TU1",
+    "4C0C_WVH"
+   ],
+   "ligands": [
+    "5PS",
+    "J5Y",
+    "TU1",
+    "WVH"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339951.9892151
+  },
+  "5ffd79d9-f455-40ec-8179-a3b5c157c803": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4UQH_25S"
+   ],
+   "ligands": [
+    "25S"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339954.1256585
+  },
+  "57d0d981-5105-4ea6-8d94-7c65cbee4ee1": {
+   "target_key": "469_ec879091",
+   "pairs": [
+    "4BJK_18I"
+   ],
+   "ligands": [
+    "18I"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339956.6708288
+  },
+  "8e116b0f-4929-46a6-a9ce-4e471a24fc10": {
+   "target_key": "473_ca85e740",
+   "pairs": [
+    "5FRB_VT2"
+   ],
+   "ligands": [
+    "VT2"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339958.866404
+  },
+  "ee187732-3ac3-4966-b77c-5602c0c613bd": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7N3M_05D",
+    "7LS4_YCG",
+    "9NNI_A1BZC",
+    "7N6F_0I1"
+   ],
+   "ligands": [
+    "05D",
+    "YCG",
+    "A1BZC",
+    "0I1"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339962.3642845
+  },
+  "c66d16b4-d20c-45fc-9431-6834178623be": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LS3_YCJ",
+    "9NNO_A1BY9",
+    "9NNA_A1BZE",
+    "7N3L_04Y"
+   ],
+   "ligands": [
+    "YCJ",
+    "A1BY9",
+    "A1BZE",
+    "04Y"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339966.012267
+  },
+  "32b4ee11-ae5f-40ba-9299-dd6c0e9d1265": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LRL_YBS",
+    "9NNM_A1BZA",
+    "9NNE_A1BZD",
+    "9NNJ_A1BZB"
+   ],
+   "ligands": [
+    "YBS",
+    "A1BZA",
+    "A1BZD",
+    "A1BZB"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339969.3967507
+  },
+  "f6e6c558-7587-4927-9b10-1f38382bfbb4": {
+   "target_key": "475_74349f57",
+   "pairs": [
+    "2X2N_X2N"
+   ],
+   "ligands": [
+    "X2N"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339971.7991433
+  },
+  "3564b33a-79a5-434e-bd2a-7d817ac17530": {
+   "target_key": "475_c96c5508",
+   "pairs": [
+    "3B99_U51"
+   ],
+   "ligands": [
+    "U51"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339973.9578607
+  },
+  "7c5fcbf2-ec78-42dd-bcba-4536810e3706": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3G93_PB2",
+    "3G5N_PB2",
+    "2BDM_TMI",
+    "3TMZ_06X"
+   ],
+   "ligands": [
+    "PB2",
+    "PB2",
+    "TMI",
+    "06X"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339977.9184432
+  },
+  "57082926-b324-4611-91ce-2fe29e6dce27": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "1SUO_CPZ",
+    "3ME6_CGE",
+    "3R1B_TB2",
+    "3KW4_TIC"
+   ],
+   "ligands": [
+    "CPZ",
+    "CGE",
+    "TB2",
+    "TIC"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339982.0124562
+  },
+  "c32f6d6c-cef4-4358-89c3-5ca87e4d7470": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3UAS_0BV",
+    "4JLT_8PR"
+   ],
+   "ligands": [
+    "0BV",
+    "8PR"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339985.0279872
+  },
+  "55727f82-8b6a-4e41-88dc-7f848b6ef438": {
+   "target_key": "476_7621de71",
+   "pairs": [
+    "3TK3_CPZ"
+   ],
+   "ligands": [
+    "CPZ"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339987.4718893
+  },
+  "a4e5e78b-41e1-4b26-a960-a74b578e6753": {
+   "target_key": "480_0010cf69",
+   "pairs": [
+    "8SG5_CL6",
+    "5VEU_RIT",
+    "9MS2_A1BNX",
+    "7SV2_MWY"
+   ],
+   "ligands": [
+    "CL6",
+    "RIT",
+    "A1BNX",
+    "MWY"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339990.9514537
+  },
+  "388c624b-7897-4825-96e4-5eab8b4dbb13": {
+   "target_key": "483_4a1aae09",
+   "pairs": [
+    "4FDH_0T3",
+    "4DVQ_1CA"
+   ],
+   "ligands": [
+    "0T3",
+    "1CA"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339993.831464
+  },
+  "42d6a8e7-4f6f-4272-b86e-0dbfc30b36a7": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "8SPD_CL6",
+    "9BVA_A1ASQ",
+    "9BV6_A1ASU",
+    "9BV5_A1ASV"
+   ],
+   "ligands": [
+    "CL6",
+    "A1ASQ",
+    "A1ASU",
+    "A1ASV"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789339997.3739831
+  },
+  "433ae895-314e-417e-9a4b-c3d3231b50b5": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "9BVB_A1ASP",
+    "9BV8_A1ASS",
+    "9BVC_A1ASO",
+    "9BV9_A1ASR"
+   ],
+   "ligands": [
+    "A1ASP",
+    "A1ASS",
+    "A1ASO",
+    "A1ASR"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340001.7209806
+  },
+  "621244ce-fa11-42a6-b2f7-493f0594d667": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWN_X1O",
+    "8EXB_X4E",
+    "8EWP_X2Q",
+    "8EWD_WZN"
+   ],
+   "ligands": [
+    "X1O",
+    "X4E",
+    "X2Q",
+    "WZN"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340005.146826
+  },
+  "e5111ddc-89a5-4bdb-9e20-38c18cee6094": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWM_X1I",
+    "8EWS_X2Q",
+    "8EWL_X1C",
+    "4K9X_8AW"
+   ],
+   "ligands": [
+    "X1I",
+    "X2Q",
+    "X1C",
+    "8AW"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340009.4219735
+  },
+  "e8d5a631-dd26-46a1-be38-812c5c1ffeaa": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4D7D_PKT",
+    "7UFD_T0K",
+    "7UAZ_O3L",
+    "8EWE_X0E"
+   ],
+   "ligands": [
+    "PKT",
+    "T0K",
+    "O3L",
+    "X0E"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340012.87847
+  },
+  "e4c0e61c-3896-446b-bf44-a734983045f5": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COV_A1A4S",
+    "4K9W_7AW",
+    "7UF9_NH0",
+    "7KVQ_X7D"
+   ],
+   "ligands": [
+    "A1A4S",
+    "7AW",
+    "NH0",
+    "X7D"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340017.0370944
+  },
+  "2e28f13b-01d1-4708-b6bb-a691f7f90dba": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVO_X6S",
+    "7UFA_NI6",
+    "7KVN_X6V",
+    "4I4G_Z8Z"
+   ],
+   "ligands": [
+    "X6S",
+    "NI6",
+    "X6V",
+    "Z8Z"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340020.687735
+  },
+  "a3a89213-c29c-47e5-b06f-97648aa0020c": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UFC_NJO",
+    "4K9V_6AW",
+    "3TJS_D0R",
+    "7KVH_X5Y"
+   ],
+   "ligands": [
+    "NJO",
+    "6AW",
+    "D0R",
+    "X5Y"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340025.0554597
+  },
+  "ab2e419b-b2da-4629-8f18-726eb0311528": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVM_X71",
+    "4D78_J9K",
+    "9COR_A1A07",
+    "6BD8_D81"
+   ],
+   "ligands": [
+    "X71",
+    "J9K",
+    "A1A07",
+    "D81"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340029.5434906
+  },
+  "85a82b47-8c15-4813-b0eb-d1b8d437fc01": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4I4H_Z9Z",
+    "9BBB_A1APA",
+    "9COY_A1A4T",
+    "5VC0_RIT"
+   ],
+   "ligands": [
+    "Z9Z",
+    "A1APA",
+    "A1A4T",
+    "RIT"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340033.0289087
+  },
+  "ead57175-ff11-479f-aaf8-9bdaf45eb673": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4K9T_1RD",
+    "7KVJ_X7M",
+    "9COT_A1A08",
+    "9COW_A1A4V"
+   ],
+   "ligands": [
+    "1RD",
+    "X7M",
+    "A1A08",
+    "A1A4V"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340036.7063308
+  },
+  "88850c79-6699-415b-a864-9d3a07d8defe": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COS_A1A06",
+    "7KVI_X7P",
+    "6UNG_QEP",
+    "9COU_A1A4U"
+   ],
+   "ligands": [
+    "A1A06",
+    "X7P",
+    "QEP",
+    "A1A4U"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340040.1039443
+  },
+  "88e0e487-705a-4800-8be8-644321a7dd4a": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWQ_X2B",
+    "6DAB_G0V",
+    "6BD7_D7J",
+    "6BDM_Y83"
+   ],
+   "ligands": [
+    "X2B",
+    "G0V",
+    "D7J",
+    "Y83"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340043.6102211
+  },
+  "757fb3c6-2536-4ad8-b1e6-a3fe9823dc1a": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COX_A1A4K",
+    "6DA5_G1J",
+    "6BD6_80K",
+    "7KVP_X6J"
+   ],
+   "ligands": [
+    "A1A4K",
+    "G1J",
+    "80K",
+    "X6J"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340047.2749066
+  },
+  "06983b81-3fec-40cf-921f-5ed9eb5870a0": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAL_G1D",
+    "6DAG_G0Y",
+    "6DAA_G0M",
+    "8EWR_WZN"
+   ],
+   "ligands": [
+    "G1D",
+    "G0Y",
+    "G0M",
+    "WZN"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340051.6920931
+  },
+  "a7a799ec-3bed-411a-b293-084014455521": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DA3_G0D",
+    "6BD5_D7M",
+    "6BDI_DEJ",
+    "6BCZ_D7Y"
+   ],
+   "ligands": [
+    "G0D",
+    "D7M",
+    "DEJ",
+    "D7Y"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340055.0967972
+  },
+  "74b532b7-2b95-4817-b032-95e33939c4ae": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UAY_O39",
+    "7UFB_NJ0",
+    "6UNM_QDP",
+    "6MA6_MYT"
+   ],
+   "ligands": [
+    "O39",
+    "NJ0",
+    "QDP",
+    "MYT"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340059.8491726
+  },
+  "568f257f-d408-4903-9317-66dde963bccd": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAJ_FZV",
+    "6UNH_QEA",
+    "6UNE_QES",
+    "4K9U_5AW"
+   ],
+   "ligands": [
+    "FZV",
+    "QEA",
+    "QES",
+    "5AW"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340063.3246052
+  },
+  "54823e8e-3cef-4ab1-bf03-d84ff1975aff": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNK_QE4",
+    "6BDK_DJ1",
+    "6BDH_DEV",
+    "6DA2_G0D"
+   ],
+   "ligands": [
+    "QE4",
+    "DJ1",
+    "DEV",
+    "G0D"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340068.0814986
+  },
+  "5c713dad-ffb5-4749-b845-3858be41397c": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNI_QDV",
+    "6UNL_QDJ",
+    "6DA8_G0J",
+    "6DAC_FZV"
+   ],
+   "ligands": [
+    "QDV",
+    "QDJ",
+    "G0J",
+    "FZV"
+   ],
+   "samples": 2,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789340072.5374444
   }
  }
 }
