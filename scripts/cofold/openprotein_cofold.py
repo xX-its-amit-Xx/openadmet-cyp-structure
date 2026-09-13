@@ -69,13 +69,19 @@ def connect():
 
 
 def build_complex(seq: str, smiles: str, msa=None):
+    """`msa=None` means explicit single-sequence mode, which some engines REQUIRE.
+
+    RoseTTAFold-3 and boltz-2 fail with a server-side "internal server error" when handed
+    an UPLOADED msa, and rosettafold-3 succeeds immediately without one. So the earlier
+    "these engines are broken" conclusion was wrong: they are broken on `upload_msa`
+    output specifically, not on this complex.
+    """
     from openprotein.molecules.chains import Ligand
     from openprotein.molecules.complex import Complex
     from openprotein.molecules.protein import Protein
 
     prot = Protein.from_expr(seq)
-    if msa is not None:
-        prot.set_msa(msa)
+    prot.set_msa(msa if msa is not None else Protein.NullMSA)
     cx = Complex()
     cx.set_chain("A", prot)
     cx.set_chain("H", Ligand(ccd="HEM"))     # cofactor with ideal geometry, not SMILES
@@ -147,7 +153,7 @@ def get_msa(s):
 
 
 def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
-           batch: int = 4, replicates: int = 1) -> dict:
+           batch: int = 4, replicates: int = 1, single_sequence: bool = False) -> dict:
     """Submit folds, RECORD THE JOB IDS, and return without waiting.
 
     Three facts about this API, each measured by `op_probe.py` rather than assumed, and
@@ -175,7 +181,7 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
     seq = fetch_sequences()["cyp3a4"]
     out = OUT_ROOT / tag / engine
     out.mkdir(parents=True, exist_ok=True)
-    msa = get_msa(s)
+    msa = None if single_sequence else get_msa(s)
 
     jobs = _jobs()
     key = f"{tag}/{engine}"
@@ -411,6 +417,8 @@ if __name__ == "__main__":
     ap.add_argument("--batch", type=int, default=4, help="complexes per job")
     ap.add_argument("--replicates", type=int, default=1,
                     help="separate jobs per ligand - THIS is what samples the ligand")
+    ap.add_argument("--single-sequence", action="store_true",
+                    help="no MSA; REQUIRED for rosettafold_3, which fails on an uploaded one")
     ap.add_argument("--tag", default="op1")
     a = ap.parse_args()
 
@@ -418,7 +426,8 @@ if __name__ == "__main__":
         print(connect().fold.list_models())
     elif a.cmd == "submit":
         print(json.dumps(submit(a.engine, ligand_set(a.n or None), a.samples, a.tag,
-                                batch=a.batch, replicates=a.replicates), indent=1)[:800])
+                                batch=a.batch, replicates=a.replicates,
+                                single_sequence=a.single_sequence), indent=1)[:800])
     elif a.cmd == "collect":
         print(json.dumps(collect(a.engine, a.tag), indent=2))
     else:
