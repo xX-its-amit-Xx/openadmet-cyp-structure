@@ -48,7 +48,20 @@ an implausibly tidy number has been the thread worth pulling.
 thing being sampled* before scoring any of them. Distinct file hashes are not evidence of
 distinct poses.
 
-### Scope: this is about OpenProtein's Protenix, NOT about co-folding APIs in general
+### Scope: this is an OPENPROTEIN behaviour, across engines — not a Protenix quirk
+
+Measured again on esmfold2, a completely different architecture on the same platform:
+within a single job its samples are **identical, per-atom sd 0.0000 Å** on all six pairs
+checked, exactly as Protenix behaves. Across *replicate jobs* esmfold2 is properly diverse
+(median sd 2.206 Å). So the boundary is the **platform**, not the engine: on OpenProtein,
+`diffusion_samples` never diversifies the ligand for any engine tested.
+
+**This costs real compute.** The P450 campaigns ran at `samples=3` and `samples=2`, so
+roughly two-thirds of those poses are duplicates of one another — 654 Protenix poses over
+174 pairs is nearer 1.3 independent poses per pair than 3.8. Every OpenProtein submission
+should use `samples=1` and buy depth with `--replicates`.
+
+Chai-on-Modal is the counterexample that keeps this scoped rather than universal:
 
 Checked against the archived Chai-1 pool so the rule is not over-generalised. Chai samples
 the ligand properly - within a **single job** of 10 models:
