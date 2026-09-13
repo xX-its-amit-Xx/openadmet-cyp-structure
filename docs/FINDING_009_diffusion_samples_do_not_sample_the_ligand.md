@@ -99,8 +99,31 @@ errors. The working hypothesis that architectural diversity buys decorrelation i
 0 for 2, and the ligands that are hard appear to be hard for everyone — which points the
 remaining upside at scoring rather than at buying yet another engine.
 
-Treat the ρ as provisional: n = 16, p = 0.064, and §1 means this pool is one ligand pose
-per ligand. Re-run the gate on the replicate pool before making it a settled number.
+### Settled at full n (added later the same day)
+
+The provisional ρ was too low, not too high. Re-run over all **87 ligands / 1,900 poses**:
+
+| | n = 16 (provisional) | **n = 87 (settled)** |
+|---|---|---|
+| oracle ρ vs Boltz | +0.474, p = 0.064 | **+0.596, p ≈ 0** |
+| Protenix oracle | 0.6664 | 0.6273 |
+| Boltz oracle, same ligands | 0.7399 | 0.6975 |
+| union oracle | 0.7503 (+0.0104) | **0.7201 (+0.0226)** |
+| beats Boltz on | 6 of 16 | 22 of 87 |
+
+So the decorrelation gate is answered and the answer is no: Chai +0.45, Protenix **+0.60**,
+and architectural diversity is 0 for 2 with the second case stronger than the first.
+
+But the **union oracle gain doubled** as the pool grew, +0.0104 → +0.0226. That is not
+decorrelation, it is depth — FINDING 004's result that the oracle is still climbing, and
+it climbs on poses from a correlated engine too. Protenix's value here is that it is an
+unlimited source of additional poses, not that it disagrees usefully.
+
+**The test that actually matters is still open.** An oracle gain is not a selection gain,
+and PXR's lesson 3 is that Protenix as a full pool member *regressed* the board
+0.5551 → 0.5241 while an 8-ligand tail swap won it. Run the incumbent selector over the
+union pool against Boltz-only once the replicates are in, before treating +0.0226 as
+anything but an upper bound.
 
 ---
 

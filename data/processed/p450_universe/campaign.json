@@ -40,7 +40,7 @@
    "job_id": "faa1570b-1574-4a40-a94f-2b03e61acb0f",
    "uniprot": "A2TEF2",
    "submitted": 1789330136.9360843,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "458_c4bcedc3": {
    "job_id": "9f256ccc-0b5c-471d-a076-bbd2a0347492",
