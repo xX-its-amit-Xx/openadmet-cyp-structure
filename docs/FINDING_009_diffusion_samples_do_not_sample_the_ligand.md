@@ -48,6 +48,26 @@ an implausibly tidy number has been the thread worth pulling.
 thing being sampled* before scoring any of them. Distinct file hashes are not evidence of
 distinct poses.
 
+### Scope: this is about OpenProtein's Protenix, NOT about co-folding APIs in general
+
+Checked against the archived Chai-1 pool so the rule is not over-generalised. Chai samples
+the ligand properly - within a **single job** of 10 models:
+
+| ligand | per-atom sd | median pairwise ligand RMSD |
+|---|---|---|
+| 08J | 2.77 Å | 6.94 Å |
+| 08Y | 4.25 Å | 10.61 Å |
+| 1RD | 3.83 Å | 9.90 Å |
+| 2QH | 3.62 Å | 10.08 Å |
+
+Against Protenix-on-OpenProtein's **0.0000 Å**. So one Chai job buys ten independent poses
+where one Protenix job buys one, which matters for FINDING 011: the reference set needs
+about four independent poses per ligand, and Chai reaches that in a single job.
+
+The practical trade is cost against throughput. OpenProtein is unmetered but serial, so
+four independent poses cost four queued jobs; Modal bills but delivers ten per job, and is
+currently over its cap. Verify per engine - never assume either behaviour.
+
 ---
 
 ## 2. Protenix's confidence does not rank poses either
