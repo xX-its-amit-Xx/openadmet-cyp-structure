@@ -158,3 +158,51 @@ treat both it and the example id format as placeholders until the track goes liv
 Budget note: Boltz is about $0.156 per job at 20 samples. The primary Modal workspace is
 over its spend limit; `xx-its-amit-xx` has ~$7.61 left, and the ~$140 hackathon workspace
 is not configured on this box.
+
+---
+
+## Current state, 2026-09-13 — what the next tick should do
+
+Venue is **OpenProtein**, not Modal (over cap, reserved for fine-tuning). Only `protenix`
+and `protenix_v2` run protein+HEM+ligand there. **Read FINDING 009 before launching**:
+`diffusion_samples` does not sample the ligand, `--replicates` does.
+
+### In flight
+
+| campaign | state | command |
+|---|---|---|
+| CYP3A4 replicates, 6 of 12 | ~419 folds queued | `openprotein_cofold.py collect --engine protenix_v2 --tag op1` |
+| 11 organometallic + 3 new CYP3A4 ligands | queued | same, `--tag recover` |
+| P450 MSAs | 11 of 185 done, ~1 per 15 min | `p450_campaign.py msa-status` |
+| P450 folds | 12 jobs, 120 pairs unblocked | `p450_campaign.py collect` |
+
+### Do these in order, when the gate opens
+
+1. **Resume replicate depth to 12** once the fold queue is under ~100 pending:
+   `openprotein_cofold.py submit --engine protenix_v2 --samples 5 --batch 4
+   --replicates 12 --tag op1` (resumes on `(rep, ligand)`; re-running is safe).
+   It was stopped at 6 because ~490 queued folds were starving the MSA searches.
+   Justified by FINDING 004: the oracle is still climbing and the selector tracks it at
+   +0.0125 per doubling, which is larger than any feature gain measured so far.
+
+2. **Re-run the FINDING 011 test** once most ligands have >= 4 replicates:
+   `python scripts/structure/cross_engine_agreement.py`. This is a pre-registered test
+   with a stated prediction, not a fishing expedition. Cross-engine agreement gave
+   rho = -0.202 at p = 0.00053 using a Protenix side of ONE pose per ligand. If the
+   signal scales with independent poses, the combination may stop being subtractive; if
+   it does not, retire the feature.
+
+3. **Fold the rest of the P450 set** as MSAs land:
+   `p450_campaign.py submit --samples 3 --batch 4 --replicates 3` (raise `--limit` as the
+   queue allows), then `score_p450_pool.py score / features / validate` for the
+   leave-one-TARGET-out result.
+
+### Do NOT
+
+- Add more single-feature selection candidates without a mechanism. Roughly 30 have been
+  tested; everything anchor-local or population-level has failed (FINDINGS 002, 006, 008
+  addendum, 010) and only within-ligand comparisons have ever worked. Six were tried on
+  2026-09-13 alone, and best-of-six random scores about +0.012, which is most of why the
+  best of them did not count.
+- Submit large fold batches while MSA searches are pending; they share a queue, and the
+  MSAs gate the 5.7x larger dataset.
