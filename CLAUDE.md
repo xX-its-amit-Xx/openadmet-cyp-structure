@@ -73,9 +73,37 @@ scored 0.564, below our pool's current selection. **Generation is not the bottle
 **+0.14 LDDT-PLI** over those that do not (0.5992 vs 0.4588). Real CYP-specific signal —
 used as a selection feature, not as a generation constraint.
 
+**H. Confidence fails in BOTH engines, so this is the problem, not a Boltz quirk.**
+Protenix-v2's seven confidence fields rank poses within a ligand at `frac(rho>0) = 0.50`
+for four of five, every p > 0.6 (FINDING 009). Two independently trained architectures,
+both at chance ranking their own samples.
+
+**I. The iron anchor is saturated; the signal is in substituent placement.** 84% of Boltz
+poses already sit inside any reasonable coordination window, so recalibrating that window
+on the whole P450 superfamily moved selection by -0.0002 and the angle term is inert to
+four decimals (FINDING 008 addendum). Fourth independent confirmation.
+
+**J. Architectural diversity has not bought decorrelation - 0 for 2.** Chai rho = +0.45,
+Protenix rho = +0.474 against Boltz's per-ligand oracle. The hard ligands are hard for
+everyone, which points the remaining upside at scoring rather than at another engine.
+
 **Therefore:** the physics scorer in `docs/QM_SCORER_DESIGN.md` is now the whole project.
 It does not have to beat a strong incumbent; it has to beat random, which the incumbent
-fails to do.
+fails to do - and which a second engine's incumbent also fails to do.
+
+## The data situation changed on 2026-09-13
+
+`n = 87` was the ceiling on every negative result: FINDING 007 puts the noise floor at
++0.0138, so a real +0.015 effect is unprovable there. The whole P450 superfamily is now
+harvested (PF00067): **493 foldable pairs, 367 ligands, 185 distinct targets**, with the
+active-site atoms cached in `data/processed/p450_universe/p450_atoms.parquet` so no
+geometric question needs another 585 downloads. 185 targets turns
+leave-one-ligand-cluster-out into **leave-one-TARGET-out**.
+
+**Venue note.** Modal is over its cap and reserved for fine-tuning; pools now come from
+**OpenProtein**, where only `protenix` and `protenix_v2` actually run protein+HEM+ligand.
+Read FINDING 009 before launching anything there: `diffusion_samples` does NOT sample the
+ligand - it varies only the protein, and pose diversity requires `--replicates`.
 
 ## Storage — read before writing anything
 
