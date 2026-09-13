@@ -104,8 +104,14 @@ def cmd_msa_status() -> dict:
     return counts
 
 
-def cmd_submit(samples: int, batch: int, limit: int | None) -> dict:
-    """Fold every pair whose target MSA is ready, grouped so a job shares one target."""
+def cmd_submit(samples: int, batch: int, limit: int | None,
+               replicates: int = 1) -> dict:
+    """Fold every pair whose target MSA is ready, grouped so a job shares one target.
+
+    `replicates`, not `samples`, is what builds a pool - see FINDING 009. Within one job
+    every model carries an identical ligand and only the protein moves, so a run with
+    samples=10 and replicates=1 yields exactly one pose per pair.
+    """
     from openprotein_cofold import build_complex
 
     s = connect()
@@ -114,15 +120,16 @@ def cmd_submit(samples: int, batch: int, limit: int | None) -> dict:
     ready = {k for k, v in st["msa"].items() if v.get("status") == "SUCCESS"}
     print(f"{len(ready)} of {df.target_key.nunique()} targets have an MSA", flush=True)
 
-    claimed = {p for f in st["folds"].values() for p in f["pairs"]}
     df["pair"] = df.pdb + "_" + df.id
-    todo = df[df.target_key.isin(ready) & ~df.pair.isin(claimed)]
-    print(f"{len(todo)} pairs to fold", flush=True)
-
     n = 0
     # Group by target: every complex in one job must carry the same MSA future, and
     # grouping also means one MSA object is reused rather than reloaded per complex.
-    for key, grp in todo.groupby("target_key"):
+    for rep in range(replicates):
+      claimed = {p for f in st["folds"].values()
+                 if f.get("rep", 0) == rep for p in f["pairs"]}
+      todo = df[df.target_key.isin(ready) & ~df.pair.isin(claimed)]
+      print(f"rep {rep}: {len(todo)} pairs to fold", flush=True)
+      for key, grp in todo.groupby("target_key"):
         if limit and n >= limit:
             break
         msa = s.load_job(st["msa"][key]["job_id"])
@@ -139,7 +146,7 @@ def cmd_submit(samples: int, batch: int, limit: int | None) -> dict:
                 st["folds"][str(fut.job_id)] = {
                     "target_key": key, "pairs": [r.pair for r in chunk],
                     "ligands": [r.id for r in chunk], "samples": samples,
-                    "submitted": time.time()}
+                    "rep": rep, "submitted": time.time()}
                 _save(st)
                 n += 1
                 print(f"  {key} [{','.join(r.id for r in chunk)}] -> {fut.job_id}",
@@ -176,15 +183,19 @@ def cmd_collect() -> dict:
 
         ok_all = True
         for idx, pair in enumerate(rec["pairs"]):
+            rep = rec.get("rep", 0)
             d = OUT / pair
-            if (d / "manifest.json").exists():
+            mf = d / "manifest.json"
+            if any(d.glob(f"{pair}__r{rep}s*.cif")):
                 n_ok += 1
                 continue
             try:
                 d.mkdir(parents=True, exist_ok=True)
-                names = _split_models(res[idx].to_string(), pair, d)
-                (d / "manifest.json").write_text(json.dumps(
-                    {"pair": pair, "files": names, "engine": "protenix_v2"}, indent=1))
+                names = _split_models(res[idx].to_string(), pair, d, rep)
+                prev = json.loads(mf.read_text())["files"] if mf.exists() else []
+                mf.write_text(json.dumps(
+                    {"pair": pair, "files": sorted(set(prev) | set(names)),
+                     "engine": "protenix_v2"}, indent=1))
                 n_ok += 1
             except Exception as exc:
                 print(f"  {pair}: {type(exc).__name__}: {exc}", flush=True)
@@ -202,6 +213,8 @@ if __name__ == "__main__":
     ap.add_argument("--samples", type=int, default=10)
     ap.add_argument("--batch", type=int, default=4)
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--replicates", type=int, default=1,
+                    help="separate jobs per pair - THIS is what samples the ligand")
     a = ap.parse_args()
     lim = a.limit or None
 
@@ -210,7 +223,7 @@ if __name__ == "__main__":
     elif a.cmd == "msa-status":
         print(json.dumps(cmd_msa_status(), indent=2))
     elif a.cmd == "submit":
-        print(json.dumps(cmd_submit(a.samples, a.batch, lim), indent=2))
+        print(json.dumps(cmd_submit(a.samples, a.batch, lim, a.replicates), indent=2))
     elif a.cmd == "collect":
         print(json.dumps(cmd_collect(), indent=2))
     else:

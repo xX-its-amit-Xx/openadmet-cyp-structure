@@ -137,7 +137,7 @@ def get_msa(s):
 
 
 def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
-           batch: int = 4) -> dict:
+           batch: int = 4, replicates: int = 1) -> dict:
     """Submit folds, RECORD THE JOB IDS, and return without waiting.
 
     Three facts about this API, each measured by `op_probe.py` rather than assumed, and
@@ -150,6 +150,13 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
       over samples, so 87 ligands is ~22 jobs rather than 87.
     * **`diffusion_samples=N` returns N models inside one structure**, not N structures.
       `collect` splits them.
+
+    **And the one that decides the whole campaign shape (FINDING 009):**
+    `diffusion_samples` does NOT sample the ligand. Across 20 models of one job the ligand
+    and heme coordinates are byte-identical (per-atom sd 0.0000 A) and only the protein
+    moves. Two SEPARATE jobs for the same ligand differ by 8.63 A ligand RMSD. So pose
+    diversity comes from REPLICATE JOBS, and `replicates` - not `samples` - is the knob
+    that builds a pool. A run with samples=20, replicates=1 yields one ligand pose.
     """
     from cypstruct.targets import fetch_sequences
 
@@ -167,31 +174,42 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
     # Resume on two independent markers: a ligand is skipped if it is already collected
     # to disk OR already sitting in a submitted batch. Only the first would resubmit the
     # entire in-flight campaign on the next call, which is how you get duplicate work.
-    claimed = {sid for b in jobs[key]["batches"] for sid in b["ligands"]}
-    todo = [(r.id, r.smiles) for r in df.itertuples()
-            if r.id not in claimed and not (out / f"{r.id}.json").exists()]
-    print(f"{engine}: {len(todo)} of {len(df)} ligands to fold, "
-          f"{samples} samples each, {batch} per job", flush=True)
+    # Resume is keyed on (replicate, ligand): a ligand is "done" for replicate 3 only if
+    # replicate 3 was submitted, so re-running tops the pool up instead of either
+    # resubmitting everything or refusing to add depth.
+    claimed = {(b.get("rep", 0), sid)
+               for b in jobs[key]["batches"] for sid in b["ligands"]}
+    n_sub = 0
+    for rep in range(replicates):
+        todo = [(r.id, r.smiles) for r in df.itertuples()
+                if (rep, r.id) not in claimed]
+        if not todo:
+            continue
+        print(f"{engine} rep {rep}: {len(todo)} ligands, {samples} samples, "
+              f"{batch} per job", flush=True)
+        for i in range(0, len(todo), batch):
+            chunk = todo[i:i + batch]
+            sids = [sid for sid, _ in chunk]
+            try:
+                fut = model.fold(
+                    sequences=[build_complex(seq, smi, msa) for _s, smi in chunk],
+                    diffusion_samples=samples, num_recycles=3)
+                jobs[key]["batches"].append(
+                    {"job_id": str(fut.job_id), "ligands": sids, "rep": rep,
+                     "samples": samples, "submitted": time.time()})
+                _save_jobs(jobs)
+                n_sub += 1
+                print(f"  r{rep}[{i//batch+1}] {','.join(sids)} -> {fut.job_id}",
+                      flush=True)
+            except Exception as exc:
+                print(f"  r{rep}[{i//batch+1}] SUBMIT-FAIL {sids}: "
+                      f"{type(exc).__name__}: {exc}", flush=True)
+            time.sleep(0.6)
+    return {"key": key, "submitted_jobs": n_sub,
+            "total_batches": len(jobs[key]["batches"])}
 
-    for i in range(0, len(todo), batch):
-        chunk = todo[i:i + batch]
-        sids = [sid for sid, _ in chunk]
-        try:
-            fut = model.fold(
-                sequences=[build_complex(seq, smi, msa) for _s, smi in chunk],
-                diffusion_samples=samples, num_recycles=3)
-            jobs[key]["batches"].append({"job_id": str(fut.job_id), "ligands": sids,
-                                         "samples": samples, "submitted": time.time()})
-            _save_jobs(jobs)
-            print(f"  [{i//batch+1}] {','.join(sids)} -> {fut.job_id}", flush=True)
-        except Exception as exc:
-            print(f"  [{i//batch+1}] SUBMIT-FAIL {sids}: "
-                  f"{type(exc).__name__}: {exc}", flush=True)
-        time.sleep(1)
-    return {"key": key, "batches": len(jobs[key]["batches"])}
 
-
-def _split_models(cif_text: str, sid: str, out: Path) -> list[str]:
+def _split_models(cif_text: str, sid: str, out: Path, rep: int = 0) -> list[str]:
     """One file per diffusion sample, because the pose scorer takes one pose at a time.
 
     The samples come back as models inside a single mmCIF. Reading that with the pose
@@ -209,7 +227,7 @@ def _split_models(cif_text: str, sid: str, out: Path) -> list[str]:
             if j != k:
                 del one[j]
         one.setup_entities()
-        f = out / f"{sid}__s{k}.cif"
+        f = out / f"{sid}__r{rep}s{k}.cif"
         f.write_text(one.make_mmcif_document().as_string())
         names.append(f.name)
     return names
@@ -263,17 +281,21 @@ def collect(engine: str, tag: str) -> dict:
         ok_all = True
         for idx, sid in enumerate(b["ligands"]):
             try:
+                rep = b.get("rep", 0)
                 txt = results[idx].to_string()
-                names = _split_models(txt, sid, out)
+                names = _split_models(txt, sid, out, rep)
                 for k, c in enumerate(confs[idx] or []):
-                    conf_rows.append({"ligand": sid, "sample": k, "engine": engine,
+                    conf_rows.append({"ligand": sid, "sample": k, "rep": rep,
+                                      "engine": engine,
                                       **{f: getattr(c, f) for f in
                                          ("ranking_score", "ptm", "iptm", "plddt",
                                           "gpde", "has_clash", "disorder")
                                          if hasattr(c, f)}})
-                (out / f"{sid}.json").write_text(json.dumps(
-                    {"ligand": sid, "engine": engine, "n_samples": len(names),
-                     "files": names}, indent=1))
+                mf = out / f"{sid}.json"
+                prev = json.loads(mf.read_text())["files"] if mf.exists() else []
+                mf.write_text(json.dumps(
+                    {"ligand": sid, "engine": engine,
+                     "files": sorted(set(prev) | set(names))}, indent=1))
                 n_ok += 1
             except Exception as exc:
                 print(f"  {sid}: save failed ({type(exc).__name__}: {exc})", flush=True)
@@ -291,7 +313,7 @@ def collect(engine: str, tag: str) -> dict:
         cf = OUT_ROOT / f"confidence_{tag}_{engine}.csv"
         prev = pd.read_csv(cf) if cf.exists() else None
         new = pd.DataFrame(conf_rows)
-        out_df = pd.concat([prev, new]).drop_duplicates(["ligand", "sample"]) \
+        out_df = pd.concat([prev, new]).drop_duplicates(["ligand", "sample", "rep"]) \
             if prev is not None else new
         out_df.to_csv(cf, index=False)
 
@@ -328,7 +350,7 @@ def score_and_correlate(engine: str, tag: str) -> dict:
             ref = P.load_structure(cif, ligand_code=sid, assembly_chain=chain)
         except Exception:
             continue
-        for f in sorted(out.glob(f"{sid}__s*.cif")):
+        for f in sorted(out.glob(f"{sid}__r*.cif")):
             try:
                 model = P.load_structure(f)
             except Exception:
@@ -377,6 +399,8 @@ if __name__ == "__main__":
     ap.add_argument("--n", type=int, default=0, help="0 = all ligands")
     ap.add_argument("--samples", type=int, default=20)
     ap.add_argument("--batch", type=int, default=4, help="complexes per job")
+    ap.add_argument("--replicates", type=int, default=1,
+                    help="separate jobs per ligand - THIS is what samples the ligand")
     ap.add_argument("--tag", default="op1")
     a = ap.parse_args()
 
@@ -384,7 +408,7 @@ if __name__ == "__main__":
         print(connect().fold.list_models())
     elif a.cmd == "submit":
         print(json.dumps(submit(a.engine, ligand_set(a.n or None), a.samples, a.tag,
-                                batch=a.batch), indent=1)[:800])
+                                batch=a.batch, replicates=a.replicates), indent=1)[:800])
     elif a.cmd == "collect":
         print(json.dumps(collect(a.engine, a.tag), indent=2))
     else:
