@@ -122,3 +122,31 @@ question needs another 585 downloads.
 experiment — it recalibrates the physics terms that selection will use. The n = 87
 constraint on *validating a selector* is only lifted if these 496 pairs are actually
 co-folded, which needs per-target sequences and MSAs and is the obvious next step.
+
+---
+
+## Addendum — the recalibration is correct and changes nothing about selection
+
+Tested directly on the 1,740-pose unsteered Boltz pool (87 ligands, random baseline
+0.5784, oracle 0.6975), selecting per ligand among poses inside the coordination window:
+
+| window | poses in-window | ligands with >= 1 | selected | vs random |
+|---|---|---|---|---|
+| 1.90 - 2.45 (old, p5-p95) | 84.1% | 74/87 | 0.5899 | +0.0115 |
+| 1.85 - 2.55 (new, p1-p99) | 84.2% | 74/87 | 0.5897 | +0.0113 |
+| 1.80 - 2.60 (wider still) | 84.2% | 74/87 | 0.5897 | +0.0113 |
+
+Adding the angle term on top is **inert to four decimal places** at every threshold from
+155 down to 0.
+
+Both sit below the +0.020 noise bar of FINDING 007, and widening the window moves the
+number by -0.0002. The reason is visible in the middle column: **84% of poses are already
+inside any reasonable window**, because once the heme is bonded to Cys442 Boltz reaches a
+median Fe-donor distance of 2.23 A (thesis claim C, falsified). The pool simply does not
+straddle the boundary, so where the boundary sits cannot matter.
+
+So the recalibration buys fidelity to crystal geometry - it will matter for any pool that
+does NOT already coordinate reliably, and for scoring a released structure honestly - but
+it buys nothing for selection. This is the fourth independent confirmation that the iron
+anchor is saturated and that the discriminating signal lives in substituent placement,
+not at the metal. Logged as a negative, per the repo rule.
