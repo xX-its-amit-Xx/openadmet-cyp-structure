@@ -130,13 +130,13 @@
    "job_id": "3e3696f8-02ff-4efd-afaf-e9e31afd9ade",
    "uniprot": "Q385E8",
    "submitted": 1789330149.4340672,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "414_949a8532": {
    "job_id": "80400a2c-10ee-4a4d-b423-a7f39d35f4be",
    "uniprot": "P9WPN8",
    "submitted": 1789330150.2998543,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "539_5aebb388": {
    "job_id": "94d988d1-17ab-40d5-a934-c3114b9dc636",
@@ -2233,7 +2233,8 @@
    ],
    "samples": 3,
    "rep": 1,
-   "submitted": 1789338946.0564547
+   "submitted": 1789338946.0564547,
+   "done": true
   },
   "f9c15a23-1545-479f-89f1-de4b792718ca": {
    "target_key": "417_0e6cd8b9",
@@ -2301,7 +2302,8 @@
    ],
    "samples": 3,
    "rep": 1,
-   "submitted": 1789338959.577775
+   "submitted": 1789338959.577775,
+   "done": true
   },
   "13ac7825-8a1d-458c-9c0a-18938c94dd2d": {
    "target_key": "467_acd53678",
@@ -2927,7 +2929,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340005.146826
+   "submitted": 1789340005.146826,
+   "done": "failed"
   },
   "e5111ddc-89a5-4bdb-9e20-38c18cee6094": {
    "target_key": "487_32859637",
@@ -2946,7 +2949,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340009.4219735
+   "submitted": 1789340009.4219735,
+   "done": "failed"
   },
   "e8d5a631-dd26-46a1-be38-812c5c1ffeaa": {
    "target_key": "487_32859637",
@@ -2965,7 +2969,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340012.87847
+   "submitted": 1789340012.87847,
+   "done": "failed"
   },
   "e4c0e61c-3896-446b-bf44-a734983045f5": {
    "target_key": "487_32859637",
@@ -3084,7 +3089,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340036.7063308
+   "submitted": 1789340036.7063308,
+   "done": true
   },
   "88850c79-6699-415b-a864-9d3a07d8defe": {
    "target_key": "487_32859637",
@@ -3103,7 +3109,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340040.1039443
+   "submitted": 1789340040.1039443,
+   "done": true
   },
   "88e0e487-705a-4800-8be8-644321a7dd4a": {
    "target_key": "487_32859637",
@@ -3122,7 +3129,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340043.6102211
+   "submitted": 1789340043.6102211,
+   "done": "failed"
   },
   "757fb3c6-2536-4ad8-b1e6-a3fe9823dc1a": {
    "target_key": "487_32859637",
@@ -3141,7 +3149,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340047.2749066
+   "submitted": 1789340047.2749066,
+   "done": true
   },
   "06983b81-3fec-40cf-921f-5ed9eb5870a0": {
    "target_key": "487_32859637",
@@ -3160,7 +3169,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340051.6920931
+   "submitted": 1789340051.6920931,
+   "done": "failed"
   },
   "a7a799ec-3bed-411a-b293-084014455521": {
    "target_key": "487_32859637",
@@ -3179,7 +3189,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340055.0967972
+   "submitted": 1789340055.0967972,
+   "done": true
   },
   "74b532b7-2b95-4817-b032-95e33939c4ae": {
    "target_key": "487_32859637",
@@ -3198,7 +3209,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340059.8491726
+   "submitted": 1789340059.8491726,
+   "done": true
   },
   "568f257f-d408-4903-9317-66dde963bccd": {
    "target_key": "487_32859637",
@@ -3217,7 +3229,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340063.3246052
+   "submitted": 1789340063.3246052,
+   "done": true
   },
   "54823e8e-3cef-4ab1-bf03-d84ff1975aff": {
    "target_key": "487_32859637",
@@ -3236,7 +3249,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340068.0814986
+   "submitted": 1789340068.0814986,
+   "done": true
   },
   "5c713dad-ffb5-4749-b845-3858be41397c": {
    "target_key": "487_32859637",
@@ -3255,7 +3269,8 @@
    "samples": 2,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789340072.5374444
+   "submitted": 1789340072.5374444,
+   "done": true
   },
   "39c41aa2-c46d-40d2-abc8-86eb832703bc": {
    "target_key": "475_83a489fa",
@@ -3268,7 +3283,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341133.1871283
+   "submitted": 1789341133.1871283,
+   "done": true
   },
   "7e23468b-4dff-4c98-8d2c-766aa949fd32": {
    "target_key": "479_f5b99101",
@@ -3287,7 +3303,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341137.6883042
+   "submitted": 1789341137.6883042,
+   "done": true
   },
   "35507d28-c573-43ca-a549-5e5e8406e823": {
    "target_key": "479_f5b99101",
@@ -3300,7 +3317,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341139.9845574
+   "submitted": 1789341139.9845574,
+   "done": true
   },
   "3f067b9d-6c93-41cd-9419-a1627f1d7d3e": {
    "target_key": "487_32859637",
@@ -3319,7 +3337,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341144.877547
+   "submitted": 1789341144.877547,
+   "done": true
   },
   "dbaab9f4-4fc1-4fa1-b7ed-66e928d8e351": {
    "target_key": "487_32859637",
@@ -3338,7 +3357,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341149.032998
+   "submitted": 1789341149.032998,
+   "done": "failed"
   },
   "e0361d28-83bf-4435-af84-4e38f7efe91b": {
    "target_key": "487_32859637",
@@ -3355,7 +3375,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341152.3831306
+   "submitted": 1789341152.3831306,
+   "done": true
   },
   "768936db-31e0-4bab-a8b5-a88fe327bb79": {
    "target_key": "487_ecbf61ae",
@@ -3370,7 +3391,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341155.117362
+   "submitted": 1789341155.117362,
+   "done": true
   },
   "c936d539-d510-4408-b4b8-1d8a3520c5d8": {
    "target_key": "489_d6dd2913",
@@ -3387,7 +3409,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341159.5645967
+   "submitted": 1789341159.5645967,
+   "done": true
   },
   "3794c0a2-1875-4f81-b799-1458ef1a94e1": {
    "target_key": "509_e452cdaf",
@@ -3400,7 +3423,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "esmfold2",
-   "submitted": 1789341162.2410488
+   "submitted": 1789341162.2410488,
+   "done": true
   },
   "2d7fed3b-be47-4551-a72b-2de72e976d5f": {
    "target_key": "368_3c6d23e6",
@@ -3419,7 +3443,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "esmfold2",
-   "submitted": 1789341165.8888667
+   "submitted": 1789341165.8888667,
+   "done": true
   },
   "476a4064-0aa0-43ae-9a76-d80c9ca4021a": {
    "target_key": "403_e7509160",
@@ -3438,7 +3463,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "esmfold2",
-   "submitted": 1789341169.8218205
+   "submitted": 1789341169.8218205,
+   "done": true
   },
   "fc42a5a3-d2fa-4e13-8daa-58a29267eebc": {
    "target_key": "410_bc4a20dd",
@@ -3457,7 +3483,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "esmfold2",
-   "submitted": 1789341173.8053422
+   "submitted": 1789341173.8053422,
+   "done": true
   },
   "336d0f69-049b-4518-b412-bc7a3de620da": {
    "target_key": "410_bc4a20dd",
@@ -3476,7 +3503,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "esmfold2",
-   "submitted": 1789341178.059833
+   "submitted": 1789341178.059833,
+   "done": true
   },
   "7cd4efe1-8845-4d50-8faa-5b0501531f90": {
    "target_key": "410_bc4a20dd",
@@ -3495,7 +3523,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "esmfold2",
-   "submitted": 1789341181.699975
+   "submitted": 1789341181.699975,
+   "done": true
   },
   "9a654408-d56e-4118-a829-0eec8ad6fa99": {
    "target_key": "410_bc4a20dd",
@@ -3514,7 +3543,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "esmfold2",
-   "submitted": 1789341186.2678013
+   "submitted": 1789341186.2678013,
+   "done": true
   },
   "c8783499-3818-4f65-b05f-98789e8af540": {
    "target_key": "410_bc4a20dd",
@@ -3533,7 +3563,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "esmfold2",
-   "submitted": 1789341190.17405
+   "submitted": 1789341190.17405,
+   "done": true
   },
   "afa8fd10-f958-450e-a4b5-aa13e2b75dde": {
    "target_key": "475_83a489fa",
@@ -3546,7 +3577,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "protenix_v2",
-   "submitted": 1789341193.605247
+   "submitted": 1789341193.605247,
+   "done": true
   },
   "8ee448f2-53fc-4c27-aa2c-773c18f2d355": {
    "target_key": "479_f5b99101",
@@ -3565,7 +3597,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "protenix_v2",
-   "submitted": 1789341196.9917583
+   "submitted": 1789341196.9917583,
+   "done": true
   },
   "7f35db43-e308-40f0-b537-cadbb0e8e17a": {
    "target_key": "479_f5b99101",
@@ -3578,7 +3611,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "protenix_v2",
-   "submitted": 1789341199.7991683
+   "submitted": 1789341199.7991683,
+   "done": true
   },
   "52cd241a-d293-436d-818b-7bd6a49d1dd8": {
    "target_key": "489_d6dd2913",
@@ -3595,7 +3629,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "protenix_v2",
-   "submitted": 1789341203.6563017
+   "submitted": 1789341203.6563017,
+   "done": true
   },
   "96769815-9d56-45ab-9119-df141c4d8626": {
    "target_key": "509_e452cdaf",
@@ -3608,7 +3643,8 @@
    "samples": 1,
    "rep": 0,
    "engine": "protenix_v2",
-   "submitted": 1789341207.192159
+   "submitted": 1789341207.192159,
+   "done": true
   },
   "4606c5b4-84fa-4c20-85ba-98d94c9cd319": {
    "target_key": "473_ca85e740",
@@ -3621,7 +3657,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341209.7616403
+   "submitted": 1789341209.7616403,
+   "done": true
   },
   "cd29d8ec-3e1a-4f0c-a854-7e0b11a2a131": {
    "target_key": "474_5043b011",
@@ -3640,7 +3677,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341213.0513263
+   "submitted": 1789341213.0513263,
+   "done": true
   },
   "1743ef90-d61b-4f42-ad60-cbe7024c43ee": {
    "target_key": "474_5043b011",
@@ -3659,7 +3697,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341218.2372863
+   "submitted": 1789341218.2372863,
+   "done": true
   },
   "3f2a4d4c-262e-428d-9285-43fceecece89": {
    "target_key": "474_5043b011",
@@ -3678,7 +3717,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341222.4233835
+   "submitted": 1789341222.4233835,
+   "done": true
   },
   "114e54c1-116f-4619-8850-75d1c22945fd": {
    "target_key": "475_74349f57",
@@ -3691,7 +3731,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341224.8752348
+   "submitted": 1789341224.8752348,
+   "done": true
   },
   "b3d71191-9233-462d-9e38-99abf97190ef": {
    "target_key": "475_83a489fa",
@@ -3704,7 +3745,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341227.0713897
+   "submitted": 1789341227.0713897,
+   "done": true
   },
   "2a548bae-d2f3-497a-ad64-b9ffbfb83450": {
    "target_key": "475_c96c5508",
@@ -3717,7 +3759,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341229.551185
+   "submitted": 1789341229.551185,
+   "done": true
   },
   "6362de3b-1e98-4cbc-9ef3-18491af96588": {
    "target_key": "476_1eccdb5d",
@@ -3736,7 +3779,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341233.6078277
+   "submitted": 1789341233.6078277,
+   "done": true
   },
   "dc662568-99be-41cd-9123-d4fa92c77702": {
    "target_key": "476_1eccdb5d",
@@ -3770,7 +3814,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341241.8622606
+   "submitted": 1789341241.8622606,
+   "done": true
   },
   "e7807dda-1078-440c-a225-a33008e36276": {
    "target_key": "476_7621de71",
@@ -3783,7 +3828,8 @@
    "samples": 1,
    "rep": 1,
    "engine": "protenix_v2",
-   "submitted": 1789341244.4695928
+   "submitted": 1789341244.4695928,
+   "done": true
   },
   "e9e675f8-2661-46aa-b3eb-0c7da73723df": {
    "target_key": "479_f5b99101",
@@ -3803,6 +3849,3743 @@
    "rep": 1,
    "engine": "protenix_v2",
    "submitted": 1789341249.390388
+  },
+  "480ed77d-6ce7-4b75-80d3-22a10b127979": {
+   "target_key": "479_f5b99101",
+   "pairs": [
+    "4WNT_AJN"
+   ],
+   "ligands": [
+    "AJN"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341251.8788106,
+   "done": true
+  },
+  "2fab21df-59dc-4781-a662-5f46de463741": {
+   "target_key": "480_0010cf69",
+   "pairs": [
+    "8SG5_CL6",
+    "5VEU_RIT",
+    "9MS2_A1BNX",
+    "7SV2_MWY"
+   ],
+   "ligands": [
+    "CL6",
+    "RIT",
+    "A1BNX",
+    "MWY"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341256.696978
+  },
+  "3560bc72-2420-4aa7-880e-e4b7691e8dc1": {
+   "target_key": "483_4a1aae09",
+   "pairs": [
+    "4FDH_0T3",
+    "4DVQ_1CA"
+   ],
+   "ligands": [
+    "0T3",
+    "1CA"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341260.6672232
+  },
+  "8b10960f-a5db-4795-8629-b8fba17b205f": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "8SPD_CL6",
+    "9BVA_A1ASQ",
+    "9BV6_A1ASU",
+    "9BV5_A1ASV"
+   ],
+   "ligands": [
+    "CL6",
+    "A1ASQ",
+    "A1ASU",
+    "A1ASV"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341265.12966
+  },
+  "28c12cfd-e6a1-402a-97bc-70c56f89223b": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "9BVB_A1ASP",
+    "9BV8_A1ASS",
+    "9BVC_A1ASO",
+    "9BV9_A1ASR"
+   ],
+   "ligands": [
+    "A1ASP",
+    "A1ASS",
+    "A1ASO",
+    "A1ASR"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341270.6717167
+  },
+  "d6aa9564-e628-4045-8a17-bc55e2d8eee0": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWN_X1O",
+    "8EXB_X4E",
+    "8EWP_X2Q",
+    "8EWD_WZN"
+   ],
+   "ligands": [
+    "X1O",
+    "X4E",
+    "X2Q",
+    "WZN"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341274.8850517
+  },
+  "d89f84d3-aa36-47b6-9c64-3f374a18c380": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWM_X1I",
+    "8EWS_X2Q",
+    "8EWL_X1C",
+    "4K9X_8AW"
+   ],
+   "ligands": [
+    "X1I",
+    "X2Q",
+    "X1C",
+    "8AW"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341278.9595258
+  },
+  "4948a0e1-48a9-483a-b19b-01cd9111102c": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4D7D_PKT",
+    "7UFD_T0K",
+    "7UAZ_O3L",
+    "8EWE_X0E"
+   ],
+   "ligands": [
+    "PKT",
+    "T0K",
+    "O3L",
+    "X0E"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341283.4564545
+  },
+  "408678d1-d47a-4e3b-948c-c66b911a6d14": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COV_A1A4S",
+    "4K9W_7AW",
+    "7UF9_NH0",
+    "7KVQ_X7D"
+   ],
+   "ligands": [
+    "A1A4S",
+    "7AW",
+    "NH0",
+    "X7D"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341287.9293096
+  },
+  "5addce2b-e0ec-4e2e-938f-285c5acc9192": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVO_X6S",
+    "7UFA_NI6",
+    "7KVN_X6V",
+    "4I4G_Z8Z"
+   ],
+   "ligands": [
+    "X6S",
+    "NI6",
+    "X6V",
+    "Z8Z"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341291.560994
+  },
+  "fb84fff6-9d5f-4339-a166-d493e9e0765e": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UFC_NJO",
+    "4K9V_6AW",
+    "3TJS_D0R",
+    "7KVH_X5Y"
+   ],
+   "ligands": [
+    "NJO",
+    "6AW",
+    "D0R",
+    "X5Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341295.7892396
+  },
+  "f55b4e06-6e4c-47db-b2d3-1cc7f4d5e13e": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVM_X71",
+    "4D78_J9K",
+    "9COR_A1A07",
+    "6BD8_D81"
+   ],
+   "ligands": [
+    "X71",
+    "J9K",
+    "A1A07",
+    "D81"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341299.99957
+  },
+  "3f0ed025-347c-4ac5-8ff6-c7c08e72a584": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4I4H_Z9Z",
+    "9BBB_A1APA",
+    "9COY_A1A4T",
+    "5VC0_RIT"
+   ],
+   "ligands": [
+    "Z9Z",
+    "A1APA",
+    "A1A4T",
+    "RIT"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341304.2909846
+  },
+  "39cd699b-7633-4a71-8d8b-8c2537da9d73": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4K9T_1RD",
+    "7KVJ_X7M",
+    "9COT_A1A08",
+    "9COW_A1A4V"
+   ],
+   "ligands": [
+    "1RD",
+    "X7M",
+    "A1A08",
+    "A1A4V"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341308.158895
+  },
+  "c17afe0e-838e-4d07-938d-b110846f5dca": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COS_A1A06",
+    "7KVI_X7P",
+    "6UNG_QEP",
+    "9COU_A1A4U"
+   ],
+   "ligands": [
+    "A1A06",
+    "X7P",
+    "QEP",
+    "A1A4U"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341311.6473708
+  },
+  "f29795dd-2798-4ad5-b43d-47ed462d349f": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWQ_X2B",
+    "6DAB_G0V",
+    "6BD7_D7J",
+    "6BDM_Y83"
+   ],
+   "ligands": [
+    "X2B",
+    "G0V",
+    "D7J",
+    "Y83"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341315.0150716
+  },
+  "63577586-0c79-4070-8fa0-27ceec52128d": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COX_A1A4K",
+    "6DA5_G1J",
+    "6BD6_80K",
+    "7KVP_X6J"
+   ],
+   "ligands": [
+    "A1A4K",
+    "G1J",
+    "80K",
+    "X6J"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341319.01765
+  },
+  "35b16e6d-a714-4c2f-8f6a-0461e29ddc4e": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAL_G1D",
+    "6DAG_G0Y",
+    "6DAA_G0M",
+    "8EWR_WZN"
+   ],
+   "ligands": [
+    "G1D",
+    "G0Y",
+    "G0M",
+    "WZN"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341322.508731
+  },
+  "fc69ebbb-4efe-448e-8f58-eee4393875d6": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DA3_G0D",
+    "6BD5_D7M",
+    "6BDI_DEJ",
+    "6BCZ_D7Y"
+   ],
+   "ligands": [
+    "G0D",
+    "D7M",
+    "DEJ",
+    "D7Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341326.1420398
+  },
+  "fa05ee39-e96a-4481-9a19-f2e6e8959338": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UAY_O39",
+    "7UFB_NJ0",
+    "6UNM_QDP",
+    "6MA6_MYT"
+   ],
+   "ligands": [
+    "O39",
+    "NJ0",
+    "QDP",
+    "MYT"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341330.3880925
+  },
+  "ec496bd7-2000-40bb-863d-3133accd20c4": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAJ_FZV",
+    "6UNH_QEA",
+    "6UNE_QES",
+    "4K9U_5AW"
+   ],
+   "ligands": [
+    "FZV",
+    "QEA",
+    "QES",
+    "5AW"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341334.394767
+  },
+  "32cf7787-43aa-4de4-9140-4ad4b91bc594": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNK_QE4",
+    "6BDK_DJ1",
+    "6BDH_DEV",
+    "6DA2_G0D"
+   ],
+   "ligands": [
+    "QE4",
+    "DJ1",
+    "DEV",
+    "G0D"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341338.2674026
+  },
+  "ed71c972-3bb7-4c05-b3fa-5e2c8c78d8e5": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNI_QDV",
+    "6UNL_QDJ",
+    "6DA8_G0J",
+    "6DAC_FZV"
+   ],
+   "ligands": [
+    "QDV",
+    "QDJ",
+    "G0J",
+    "FZV"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789341341.8517373
+  },
+  "d6a947a3-4488-40f5-9a59-9e82a2fb56cc": {
+   "target_key": "414_949a8532",
+   "pairs": [
+    "5LI8_KKK",
+    "5LI6_6XF"
+   ],
+   "ligands": [
+    "KKK",
+    "6XF"
+   ],
+   "samples": 1,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789341686.7975962
+  },
+  "1987d482-ea66-45c9-af02-c835b13ad16e": {
+   "target_key": "450_9c481af8",
+   "pairs": [
+    "3GW9_VNI"
+   ],
+   "ligands": [
+    "VNI"
+   ],
+   "samples": 1,
+   "rep": 0,
+   "engine": "esmfold2",
+   "submitted": 1789341689.1090643
+  },
+  "58103aa4-9fa8-4db8-abf1-545859a6cd86": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7TND_JO4",
+    "9ZEG_JO4",
+    "4EGP_FIV",
+    "9ZEH_JO4"
+   ],
+   "ligands": [
+    "JO4",
+    "JO4",
+    "FIV",
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341692.5911973
+  },
+  "ea7a5a9a-f016-44c4-938e-c0173e1dce77": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "9ZEI_JO4"
+   ],
+   "ligands": [
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341694.7861283
+  },
+  "94c48adb-311e-4254-87f6-2619ac6fe04b": {
+   "target_key": "411_e3e8183c",
+   "pairs": [
+    "2JJP_KLN",
+    "2XFH_CL6",
+    "2JJO_EY5"
+   ],
+   "ligands": [
+    "KLN",
+    "CL6",
+    "EY5"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341698.0030122
+  },
+  "a2946acc-d2ee-4a7f-9c96-86af2421291d": {
+   "target_key": "414_949a8532",
+   "pairs": [
+    "5LI8_KKK",
+    "5LI6_6XF"
+   ],
+   "ligands": [
+    "KKK",
+    "6XF"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341700.5693061
+  },
+  "21440835-3b24-4d89-8c33-27c559346b30": {
+   "target_key": "417_0e6cd8b9",
+   "pairs": [
+    "1IZO_PAM"
+   ],
+   "ligands": [
+    "PAM"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341702.9487333
+  },
+  "43ef15a8-2712-4206-9e74-9610c1891a11": {
+   "target_key": "448_7a54e61e",
+   "pairs": [
+    "4G7G_VFV",
+    "4G3J_VNT"
+   ],
+   "ligands": [
+    "VFV",
+    "VNT"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341705.6984394
+  },
+  "d391e8cb-9669-4ac4-a081-1393a8abc7d0": {
+   "target_key": "450_9c481af8",
+   "pairs": [
+    "3GW9_VNI"
+   ],
+   "ligands": [
+    "VNI"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341708.177718
+  },
+  "0d47ac37-b738-4e03-a52d-f7c407daf6b6": {
+   "target_key": "453_3fc5a1f6",
+   "pairs": [
+    "3L4D_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341711.2667227
+  },
+  "801a8c5b-0245-4410-a404-61d5e287fcc9": {
+   "target_key": "455_d4843705",
+   "pairs": [
+    "1EA1_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341713.6948948
+  },
+  "63a719d1-67d4-491b-aaa8-cd938142a767": {
+   "target_key": "458_c4bcedc3",
+   "pairs": [
+    "3KSW_VNF",
+    "3K1O_POZ"
+   ],
+   "ligands": [
+    "VNF",
+    "POZ"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341716.2306447
+  },
+  "beec599d-b38f-4429-b3ae-648699471083": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4BY0_5PS",
+    "4UVR_J5Y",
+    "4BMM_TU1",
+    "4C0C_WVH"
+   ],
+   "ligands": [
+    "5PS",
+    "J5Y",
+    "TU1",
+    "WVH"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341720.228536
+  },
+  "6fa45bf6-5368-4de8-91f8-853f5ae09139": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4UQH_25S"
+   ],
+   "ligands": [
+    "25S"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341722.450835
+  },
+  "7cfc2551-a887-40c4-ba4d-8aab53084e0b": {
+   "target_key": "469_ec879091",
+   "pairs": [
+    "4BJK_18I"
+   ],
+   "ligands": [
+    "18I"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341725.451086
+  },
+  "f5412331-8f8e-4582-a5ab-2830db9732b9": {
+   "target_key": "473_ca85e740",
+   "pairs": [
+    "5FRB_VT2"
+   ],
+   "ligands": [
+    "VT2"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341727.8369985
+  },
+  "dc088207-5143-4879-9bfa-4d302a6ff3a3": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7N3M_05D",
+    "7LS4_YCG",
+    "9NNI_A1BZC",
+    "7N6F_0I1"
+   ],
+   "ligands": [
+    "05D",
+    "YCG",
+    "A1BZC",
+    "0I1"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341732.419601
+  },
+  "311ee105-5ceb-4a1f-a87d-16585da3a954": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LS3_YCJ",
+    "9NNO_A1BY9",
+    "9NNA_A1BZE",
+    "7N3L_04Y"
+   ],
+   "ligands": [
+    "YCJ",
+    "A1BY9",
+    "A1BZE",
+    "04Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341735.8909774
+  },
+  "80dec624-7725-4d94-941c-da681ebc2887": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LRL_YBS",
+    "9NNM_A1BZA",
+    "9NNE_A1BZD",
+    "9NNJ_A1BZB"
+   ],
+   "ligands": [
+    "YBS",
+    "A1BZA",
+    "A1BZD",
+    "A1BZB"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341739.6005423
+  },
+  "5bd37893-b5e5-4443-9ace-b04f91b00894": {
+   "target_key": "475_74349f57",
+   "pairs": [
+    "2X2N_X2N"
+   ],
+   "ligands": [
+    "X2N"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341741.8794777
+  },
+  "8f5dac6b-fd19-44c9-9df4-f4cef3cc9a8d": {
+   "target_key": "475_83a489fa",
+   "pairs": [
+    "2WV2_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341745.048991
+  },
+  "6ef0744b-afde-4303-b85a-ac21069708cf": {
+   "target_key": "475_c96c5508",
+   "pairs": [
+    "3B99_U51"
+   ],
+   "ligands": [
+    "U51"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341747.4038165
+  },
+  "7b2bb039-ce9e-41f2-b711-0c8f0b2cb002": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3G93_PB2",
+    "3G5N_PB2",
+    "2BDM_TMI",
+    "3TMZ_06X"
+   ],
+   "ligands": [
+    "PB2",
+    "PB2",
+    "TMI",
+    "06X"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341752.124964
+  },
+  "6d34aa42-1cc3-4324-b30c-df5dff4fee0b": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "1SUO_CPZ",
+    "3ME6_CGE",
+    "3R1B_TB2",
+    "3KW4_TIC"
+   ],
+   "ligands": [
+    "CPZ",
+    "CGE",
+    "TB2",
+    "TIC"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341755.989985
+  },
+  "a4822050-4771-4f8e-98d2-82a0ae12623c": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3UAS_0BV",
+    "4JLT_8PR"
+   ],
+   "ligands": [
+    "0BV",
+    "8PR"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341758.5180495
+  },
+  "4b7a8807-b16a-49d3-a4df-00aeae520714": {
+   "target_key": "476_7621de71",
+   "pairs": [
+    "3TK3_CPZ"
+   ],
+   "ligands": [
+    "CPZ"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341761.678795
+  },
+  "ae670f10-5782-4d53-b75d-7af3d68dfb17": {
+   "target_key": "479_f5b99101",
+   "pairs": [
+    "4XRZ_SI6",
+    "3TDA_PN0",
+    "3QM4_PN0",
+    "4XRY_SI5"
+   ],
+   "ligands": [
+    "SI6",
+    "PN0",
+    "PN0",
+    "SI5"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341766.2530918
+  },
+  "01c51619-5606-42bc-aee9-4b389d287d51": {
+   "target_key": "479_f5b99101",
+   "pairs": [
+    "4WNT_AJN"
+   ],
+   "ligands": [
+    "AJN"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341768.6627736
+  },
+  "6971ebf3-34bb-4a00-86be-d9fbec046714": {
+   "target_key": "480_0010cf69",
+   "pairs": [
+    "8SG5_CL6",
+    "5VEU_RIT",
+    "9MS2_A1BNX",
+    "7SV2_MWY"
+   ],
+   "ligands": [
+    "CL6",
+    "RIT",
+    "A1BNX",
+    "MWY"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341772.3193996
+  },
+  "df2f2bbf-27ed-42d5-a9cc-f2f460584318": {
+   "target_key": "483_4a1aae09",
+   "pairs": [
+    "4FDH_0T3",
+    "4DVQ_1CA"
+   ],
+   "ligands": [
+    "0T3",
+    "1CA"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341775.0763597
+  },
+  "ba3858d6-743b-4473-88af-7d32176d0202": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "8SPD_CL6",
+    "9BVA_A1ASQ",
+    "9BV6_A1ASU",
+    "9BV5_A1ASV"
+   ],
+   "ligands": [
+    "CL6",
+    "A1ASQ",
+    "A1ASU",
+    "A1ASV"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341778.8138962
+  },
+  "ca7646da-753c-434a-ba91-e7d5551eabff": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "9BVB_A1ASP",
+    "9BV8_A1ASS",
+    "9BVC_A1ASO",
+    "9BV9_A1ASR"
+   ],
+   "ligands": [
+    "A1ASP",
+    "A1ASS",
+    "A1ASO",
+    "A1ASR"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341782.3904989
+  },
+  "bf2f19fd-37bb-4058-8bef-aa5c13d612cd": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWN_X1O",
+    "8EXB_X4E",
+    "8EWP_X2Q",
+    "8EWD_WZN"
+   ],
+   "ligands": [
+    "X1O",
+    "X4E",
+    "X2Q",
+    "WZN"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341787.1402655
+  },
+  "44076120-b542-479a-9381-5e94270fe917": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWM_X1I",
+    "8EWS_X2Q",
+    "8EWL_X1C",
+    "4K9X_8AW"
+   ],
+   "ligands": [
+    "X1I",
+    "X2Q",
+    "X1C",
+    "8AW"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341790.5421636
+  },
+  "69b2a270-5cec-4d56-b4ae-4f5c5063f5d5": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4D7D_PKT",
+    "7UFD_T0K",
+    "7UAZ_O3L",
+    "8EWE_X0E"
+   ],
+   "ligands": [
+    "PKT",
+    "T0K",
+    "O3L",
+    "X0E"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341794.9887326
+  },
+  "86f0e3ff-c6e0-4595-a955-88df006f71b8": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COV_A1A4S",
+    "4K9W_7AW",
+    "7UF9_NH0",
+    "7KVQ_X7D"
+   ],
+   "ligands": [
+    "A1A4S",
+    "7AW",
+    "NH0",
+    "X7D"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341798.700386
+  },
+  "0ec9b4fe-a8ef-4240-9bef-dc332f374621": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVO_X6S",
+    "7UFA_NI6",
+    "7KVN_X6V",
+    "4I4G_Z8Z"
+   ],
+   "ligands": [
+    "X6S",
+    "NI6",
+    "X6V",
+    "Z8Z"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341802.1713867
+  },
+  "d6a8f27b-ecc9-49ae-9223-0ea83a5218e9": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UFC_NJO",
+    "4K9V_6AW",
+    "3TJS_D0R",
+    "7KVH_X5Y"
+   ],
+   "ligands": [
+    "NJO",
+    "6AW",
+    "D0R",
+    "X5Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341805.6969411
+  },
+  "00b4b4b1-c6c8-4da9-892b-68f73b5aece3": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVM_X71",
+    "4D78_J9K",
+    "9COR_A1A07",
+    "6BD8_D81"
+   ],
+   "ligands": [
+    "X71",
+    "J9K",
+    "A1A07",
+    "D81"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341809.7623863
+  },
+  "718780b9-2752-486e-9881-cd273b10b3c2": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4I4H_Z9Z",
+    "9BBB_A1APA",
+    "9COY_A1A4T",
+    "5VC0_RIT"
+   ],
+   "ligands": [
+    "Z9Z",
+    "A1APA",
+    "A1A4T",
+    "RIT"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341813.193974
+  },
+  "ab9e978b-12ac-4bbe-b804-4088ce378747": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4K9T_1RD",
+    "7KVJ_X7M",
+    "9COT_A1A08",
+    "9COW_A1A4V"
+   ],
+   "ligands": [
+    "1RD",
+    "X7M",
+    "A1A08",
+    "A1A4V"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341816.5477145
+  },
+  "95b19724-45af-40bb-8afa-6436ae7cafc0": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COS_A1A06",
+    "7KVI_X7P",
+    "6UNG_QEP",
+    "9COU_A1A4U"
+   ],
+   "ligands": [
+    "A1A06",
+    "X7P",
+    "QEP",
+    "A1A4U"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341820.0186071
+  },
+  "d2eb2bb4-f29c-4dc5-8513-ebc92f42d60a": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWQ_X2B",
+    "6DAB_G0V",
+    "6BD7_D7J",
+    "6BDM_Y83"
+   ],
+   "ligands": [
+    "X2B",
+    "G0V",
+    "D7J",
+    "Y83"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341824.377645
+  },
+  "2bf82922-cae6-4e16-93d1-c1c919e571b0": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COX_A1A4K",
+    "6DA5_G1J",
+    "6BD6_80K",
+    "7KVP_X6J"
+   ],
+   "ligands": [
+    "A1A4K",
+    "G1J",
+    "80K",
+    "X6J"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341827.9425747
+  },
+  "b1d533dd-6a9b-4bda-9b02-cac09d3d300f": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAL_G1D",
+    "6DAG_G0Y",
+    "6DAA_G0M",
+    "8EWR_WZN"
+   ],
+   "ligands": [
+    "G1D",
+    "G0Y",
+    "G0M",
+    "WZN"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341831.5969908
+  },
+  "100d47b9-7958-4c13-aa87-e4b0dd8e5707": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DA3_G0D",
+    "6BD5_D7M",
+    "6BDI_DEJ",
+    "6BCZ_D7Y"
+   ],
+   "ligands": [
+    "G0D",
+    "D7M",
+    "DEJ",
+    "D7Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341836.5574393
+  },
+  "81630ac5-5ee5-4d56-b773-f474cb255f72": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UAY_O39",
+    "7UFB_NJ0",
+    "6UNM_QDP",
+    "6MA6_MYT"
+   ],
+   "ligands": [
+    "O39",
+    "NJ0",
+    "QDP",
+    "MYT"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341840.2495384
+  },
+  "13a67e5d-63d4-4326-9a65-1405536fb8ce": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAJ_FZV",
+    "6UNH_QEA",
+    "6UNE_QES",
+    "4K9U_5AW"
+   ],
+   "ligands": [
+    "FZV",
+    "QEA",
+    "QES",
+    "5AW"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341844.4568348
+  },
+  "74ba6956-7708-475f-bb13-eddba5405539": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNK_QE4",
+    "6BDK_DJ1",
+    "6BDH_DEV",
+    "6DA2_G0D"
+   ],
+   "ligands": [
+    "QE4",
+    "DJ1",
+    "DEV",
+    "G0D"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341847.7376077
+  },
+  "cc7ade21-262e-43e4-9709-b5b6d9672190": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNI_QDV",
+    "6UNL_QDJ",
+    "6DA8_G0J",
+    "6DAC_FZV"
+   ],
+   "ligands": [
+    "QDV",
+    "QDJ",
+    "G0J",
+    "FZV"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341851.6498423
+  },
+  "75f8ad72-07fb-452c-8fa9-ec7eaa9a6079": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNJ_QDY",
+    "5TE8_08J",
+    "8SO2_CFF",
+    "3UA1_08Y"
+   ],
+   "ligands": [
+    "QDY",
+    "08J",
+    "CFF",
+    "08Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341856.951599
+  },
+  "af7e1053-8e09-48cc-866f-b2b9ea84fa08": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8SO1_CFF",
+    "6OO9_MWV",
+    "7KS8_X8S",
+    "9PLJ_TCI"
+   ],
+   "ligands": [
+    "CFF",
+    "MWV",
+    "X8S",
+    "TCI"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341860.346745
+  },
+  "c64109bb-634b-4304-bc3e-5f6272da1332": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6OOA_MWY",
+    "9PLK_A1CIW",
+    "6OOB_MWS"
+   ],
+   "ligands": [
+    "MWY",
+    "A1CIW",
+    "MWS"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341863.3810008
+  },
+  "5ec2386b-0010-4b01-88df-f07091d1f3e6": {
+   "target_key": "487_ecbf61ae",
+   "pairs": [
+    "5VCE_RIT",
+    "5VCG_08Y"
+   ],
+   "ligands": [
+    "RIT",
+    "08Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341866.0924804
+  },
+  "a31471d3-f5a4-4962-a54c-d5468f9cda89": {
+   "target_key": "489_d6dd2913",
+   "pairs": [
+    "4ZGX_QHC",
+    "6XZ8_O4T",
+    "6XZ9_O4W"
+   ],
+   "ligands": [
+    "QHC",
+    "O4T",
+    "O4W"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341869.4853284
+  },
+  "9bd220e7-60e2-44d9-96e3-12676f03098d": {
+   "target_key": "509_e452cdaf",
+   "pairs": [
+    "6B82_AER"
+   ],
+   "ligands": [
+    "AER"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "esmfold2",
+   "submitted": 1789341872.3016484
+  },
+  "bdb28cd7-a89f-46b2-aafc-9338531a58f4": {
+   "target_key": "368_3c6d23e6",
+   "pairs": [
+    "4WQJ_36Y",
+    "4TUV_CPZ",
+    "4WPD_3SQ",
+    "4TT5_36Y"
+   ],
+   "ligands": [
+    "36Y",
+    "CPZ",
+    "3SQ",
+    "36Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341875.9641192
+  },
+  "dbdc72a6-6b33-4460-baaf-f24717e43741": {
+   "target_key": "403_e7509160",
+   "pairs": [
+    "1JIN_KTN",
+    "1EGY_9AP",
+    "1EUP_ASD",
+    "1OXA_DEB"
+   ],
+   "ligands": [
+    "KTN",
+    "9AP",
+    "ASD",
+    "DEB"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341879.688144
+  },
+  "d7f540c1-029f-4f4d-a852-29b95e405163": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "6U30_PQM",
+    "6U31_PQP",
+    "8VL0_LVC",
+    "7U00_L4I"
+   ],
+   "ligands": [
+    "PQM",
+    "PQP",
+    "LVC",
+    "L4I"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341883.1724954
+  },
+  "20db2ca2-df21-424c-a616-7d3b97389ac4": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "8VOC_M4F",
+    "7TZY_L3K",
+    "6PRS_OW7",
+    "5YQA_8ZU"
+   ],
+   "ligands": [
+    "M4F",
+    "L3K",
+    "OW7",
+    "8ZU"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341886.721012
+  },
+  "4875fad4-08bc-4ae6-85e4-169824b06749": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGN_TWO",
+    "7R8S_8ZU",
+    "6UNN_K3Z",
+    "8D39_QDB"
+   ],
+   "ligands": [
+    "TWO",
+    "8ZU",
+    "K3Z",
+    "QDB"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341890.6482303
+  },
+  "c7e4edb3-c9d2-4ede-8be8-9b3908e5675b": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGO_1F1",
+    "7N14_ZRS",
+    "8VKF_LVK",
+    "7TRU_KQR"
+   ],
+   "ligands": [
+    "1F1",
+    "ZRS",
+    "LVK",
+    "KQR"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341894.8546762
+  },
+  "3a0ba538-0dfb-4b4a-85ae-d4b80b743fbe": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7JXB_VLG",
+    "6U3K_PQS",
+    "7TRT_KQF",
+    "7JW5_Z7Z"
+   ],
+   "ligands": [
+    "VLG",
+    "PQS",
+    "KQF",
+    "Z7Z"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341898.7394662
+  },
+  "25019e46-f56f-458b-8ec6-65de797c30c6": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7TND_JO4",
+    "9ZEG_JO4",
+    "4EGP_FIV",
+    "9ZEH_JO4"
+   ],
+   "ligands": [
+    "JO4",
+    "JO4",
+    "FIV",
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341902.7398546
+  },
+  "c1105c22-d7ad-45fd-9eb8-64d815a2474d": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "9ZEI_JO4"
+   ],
+   "ligands": [
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341904.9880195
+  },
+  "374b50f2-bc58-4bbb-84aa-b73283842056": {
+   "target_key": "411_e3e8183c",
+   "pairs": [
+    "2JJP_KLN",
+    "2XFH_CL6",
+    "2JJO_EY5"
+   ],
+   "ligands": [
+    "KLN",
+    "CL6",
+    "EY5"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341908.4247649
+  },
+  "d60eee06-1b6a-46b7-b069-0fe499eec38f": {
+   "target_key": "414_949a8532",
+   "pairs": [
+    "5LI8_KKK",
+    "5LI6_6XF"
+   ],
+   "ligands": [
+    "KKK",
+    "6XF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341911.0591264
+  },
+  "a8e52a85-7afe-48f3-a5e2-ad08e911977a": {
+   "target_key": "417_0e6cd8b9",
+   "pairs": [
+    "1IZO_PAM"
+   ],
+   "ligands": [
+    "PAM"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341913.3593142
+  },
+  "9812d0f3-a08f-41bd-a758-6294655b11cf": {
+   "target_key": "448_7a54e61e",
+   "pairs": [
+    "4G7G_VFV",
+    "4G3J_VNT"
+   ],
+   "ligands": [
+    "VFV",
+    "VNT"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341916.290485
+  },
+  "eaa099d9-6c77-4c8e-8550-aedfc41d1048": {
+   "target_key": "450_9c481af8",
+   "pairs": [
+    "3GW9_VNI"
+   ],
+   "ligands": [
+    "VNI"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341918.5093148
+  },
+  "bbfa083f-8609-44af-b9b5-f5c6eef4115f": {
+   "target_key": "453_3fc5a1f6",
+   "pairs": [
+    "3L4D_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341920.8455894
+  },
+  "834c06af-2e7f-4f6a-9ba6-a88a230492a9": {
+   "target_key": "455_d4843705",
+   "pairs": [
+    "1EA1_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341923.4363124
+  },
+  "5a6e4509-0672-43b1-be44-75da238f47a5": {
+   "target_key": "458_c4bcedc3",
+   "pairs": [
+    "3KSW_VNF",
+    "3K1O_POZ"
+   ],
+   "ligands": [
+    "VNF",
+    "POZ"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341926.3392012
+  },
+  "19b84f56-5ec3-4bdd-ba57-89160688ffbb": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4BY0_5PS",
+    "4UVR_J5Y",
+    "4BMM_TU1",
+    "4C0C_WVH"
+   ],
+   "ligands": [
+    "5PS",
+    "J5Y",
+    "TU1",
+    "WVH"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341929.763702
+  },
+  "27dba39d-65af-4329-bc5c-dfd51d6adff8": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4UQH_25S"
+   ],
+   "ligands": [
+    "25S"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341932.0260959
+  },
+  "92a344c0-f172-4b7b-8423-6bd1f8e32bab": {
+   "target_key": "469_ec879091",
+   "pairs": [
+    "4BJK_18I"
+   ],
+   "ligands": [
+    "18I"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341934.3317869
+  },
+  "3cdbcd24-4acf-4634-b331-9167c6027b1f": {
+   "target_key": "473_ca85e740",
+   "pairs": [
+    "5FRB_VT2"
+   ],
+   "ligands": [
+    "VT2"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341936.593365
+  },
+  "4c6e55c1-a651-4fca-af07-329d39ab6143": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7N3M_05D",
+    "7LS4_YCG",
+    "9NNI_A1BZC",
+    "7N6F_0I1"
+   ],
+   "ligands": [
+    "05D",
+    "YCG",
+    "A1BZC",
+    "0I1"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341940.7887683
+  },
+  "60d2802a-c769-4610-a7e9-fd2f10826dd6": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LS3_YCJ",
+    "9NNO_A1BY9",
+    "9NNA_A1BZE",
+    "7N3L_04Y"
+   ],
+   "ligands": [
+    "YCJ",
+    "A1BY9",
+    "A1BZE",
+    "04Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341944.2639303
+  },
+  "52bbd5ff-9f92-44aa-aee6-bb972eb1b5e1": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LRL_YBS",
+    "9NNM_A1BZA",
+    "9NNE_A1BZD",
+    "9NNJ_A1BZB"
+   ],
+   "ligands": [
+    "YBS",
+    "A1BZA",
+    "A1BZD",
+    "A1BZB"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341947.8710487
+  },
+  "ad5a51cc-db99-4508-94fa-cce034fbf531": {
+   "target_key": "475_74349f57",
+   "pairs": [
+    "2X2N_X2N"
+   ],
+   "ligands": [
+    "X2N"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341950.1410909
+  },
+  "a666476d-aba3-4ac9-9982-816f000fab69": {
+   "target_key": "475_83a489fa",
+   "pairs": [
+    "2WV2_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341952.3279295
+  },
+  "39e3e493-ee43-4f66-8c7c-eb1e951342f8": {
+   "target_key": "475_c96c5508",
+   "pairs": [
+    "3B99_U51"
+   ],
+   "ligands": [
+    "U51"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341954.8663473
+  },
+  "9a137c59-4fc5-4f57-bcd7-a0f9fc4e37dd": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3G93_PB2",
+    "3G5N_PB2",
+    "2BDM_TMI",
+    "3TMZ_06X"
+   ],
+   "ligands": [
+    "PB2",
+    "PB2",
+    "TMI",
+    "06X"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341958.7749817
+  },
+  "c78957b7-870f-4af2-9444-c60eb0e5a643": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "1SUO_CPZ",
+    "3ME6_CGE",
+    "3R1B_TB2",
+    "3KW4_TIC"
+   ],
+   "ligands": [
+    "CPZ",
+    "CGE",
+    "TB2",
+    "TIC"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341963.2914684
+  },
+  "a53045a3-0b87-4342-9366-8aef65faa3d1": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3UAS_0BV",
+    "4JLT_8PR"
+   ],
+   "ligands": [
+    "0BV",
+    "8PR"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341966.0099735
+  },
+  "0ba43391-1443-46cc-a49e-8dda156342cf": {
+   "target_key": "476_7621de71",
+   "pairs": [
+    "3TK3_CPZ"
+   ],
+   "ligands": [
+    "CPZ"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341968.3186011
+  },
+  "87a8073b-eb99-4c2d-b74c-5ffd5f811486": {
+   "target_key": "479_f5b99101",
+   "pairs": [
+    "4XRZ_SI6",
+    "3TDA_PN0",
+    "3QM4_PN0",
+    "4XRY_SI5"
+   ],
+   "ligands": [
+    "SI6",
+    "PN0",
+    "PN0",
+    "SI5"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341972.2788603
+  },
+  "3c3a2742-a808-454c-ae1f-c4e6ffdf3d2b": {
+   "target_key": "479_f5b99101",
+   "pairs": [
+    "4WNT_AJN"
+   ],
+   "ligands": [
+    "AJN"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341974.597904
+  },
+  "ce154789-435b-4af9-9740-8483d979b0b8": {
+   "target_key": "480_0010cf69",
+   "pairs": [
+    "8SG5_CL6",
+    "5VEU_RIT",
+    "9MS2_A1BNX",
+    "7SV2_MWY"
+   ],
+   "ligands": [
+    "CL6",
+    "RIT",
+    "A1BNX",
+    "MWY"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341978.7219598
+  },
+  "3617bc4d-2601-44b2-9d0b-5343fd458196": {
+   "target_key": "483_4a1aae09",
+   "pairs": [
+    "4FDH_0T3",
+    "4DVQ_1CA"
+   ],
+   "ligands": [
+    "0T3",
+    "1CA"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341981.964015
+  },
+  "8c1ac572-1178-4e0e-b716-5f1f86619331": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "8SPD_CL6",
+    "9BVA_A1ASQ",
+    "9BV6_A1ASU",
+    "9BV5_A1ASV"
+   ],
+   "ligands": [
+    "CL6",
+    "A1ASQ",
+    "A1ASU",
+    "A1ASV"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341985.8736684
+  },
+  "6c759113-b900-4c4a-89fc-d3d70c78aee9": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "9BVB_A1ASP",
+    "9BV8_A1ASS",
+    "9BVC_A1ASO",
+    "9BV9_A1ASR"
+   ],
+   "ligands": [
+    "A1ASP",
+    "A1ASS",
+    "A1ASO",
+    "A1ASR"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341989.8135867
+  },
+  "91a180c9-59be-42da-abfe-6a90667f2782": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWN_X1O",
+    "8EXB_X4E",
+    "8EWP_X2Q",
+    "8EWD_WZN"
+   ],
+   "ligands": [
+    "X1O",
+    "X4E",
+    "X2Q",
+    "WZN"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341994.26426
+  },
+  "c70f6d8d-5728-42ba-b9df-1ed64460732f": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWM_X1I",
+    "8EWS_X2Q",
+    "8EWL_X1C",
+    "4K9X_8AW"
+   ],
+   "ligands": [
+    "X1I",
+    "X2Q",
+    "X1C",
+    "8AW"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789341998.0894027
+  },
+  "0833749e-d9d3-4371-9111-eb5b10e4f832": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4D7D_PKT",
+    "7UFD_T0K",
+    "7UAZ_O3L",
+    "8EWE_X0E"
+   ],
+   "ligands": [
+    "PKT",
+    "T0K",
+    "O3L",
+    "X0E"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789342001.6957788
+  },
+  "26a4269a-d0a3-4a03-9077-5a0330ef1610": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COV_A1A4S",
+    "4K9W_7AW",
+    "7UF9_NH0",
+    "7KVQ_X7D"
+   ],
+   "ligands": [
+    "A1A4S",
+    "7AW",
+    "NH0",
+    "X7D"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789342006.3671622
+  },
+  "4209e36d-cc95-4aaf-a4b2-dfb23bd8904d": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVO_X6S",
+    "7UFA_NI6",
+    "7KVN_X6V",
+    "4I4G_Z8Z"
+   ],
+   "ligands": [
+    "X6S",
+    "NI6",
+    "X6V",
+    "Z8Z"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789342009.7577505
+  },
+  "5e267adb-2f88-438e-9bdb-c3da7433099a": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UFC_NJO",
+    "4K9V_6AW",
+    "3TJS_D0R",
+    "7KVH_X5Y"
+   ],
+   "ligands": [
+    "NJO",
+    "6AW",
+    "D0R",
+    "X5Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789342014.2075644
+  },
+  "968c0fd2-f459-4c29-b3ee-09bb203296f5": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVM_X71",
+    "4D78_J9K",
+    "9COR_A1A07",
+    "6BD8_D81"
+   ],
+   "ligands": [
+    "X71",
+    "J9K",
+    "A1A07",
+    "D81"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789342017.9407883
+  },
+  "eabc71c2-620b-4876-826c-de653c9b6ba5": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4I4H_Z9Z",
+    "9BBB_A1APA",
+    "9COY_A1A4T",
+    "5VC0_RIT"
+   ],
+   "ligands": [
+    "Z9Z",
+    "A1APA",
+    "A1A4T",
+    "RIT"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789342021.9147625
+  },
+  "4596d610-3244-4f84-aeed-eca3e7b4da0d": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4K9T_1RD",
+    "7KVJ_X7M",
+    "9COT_A1A08",
+    "9COW_A1A4V"
+   ],
+   "ligands": [
+    "1RD",
+    "X7M",
+    "A1A08",
+    "A1A4V"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "esmfold2",
+   "submitted": 1789342027.052889
+  },
+  "f0477ad8-ad34-448a-b16d-b6e43fb3cf79": {
+   "target_key": "414_949a8532",
+   "pairs": [
+    "5LI8_KKK",
+    "5LI6_6XF"
+   ],
+   "ligands": [
+    "KKK",
+    "6XF"
+   ],
+   "samples": 1,
+   "rep": 0,
+   "engine": "protenix_v2",
+   "submitted": 1789342034.1155899
+  },
+  "8032101d-7d91-4739-8506-a1603aa576c4": {
+   "target_key": "450_9c481af8",
+   "pairs": [
+    "3GW9_VNI"
+   ],
+   "ligands": [
+    "VNI"
+   ],
+   "samples": 1,
+   "rep": 0,
+   "engine": "protenix_v2",
+   "submitted": 1789342036.3452826
+  },
+  "12a611e1-1e7b-4c52-9d46-dbfaf4f5439c": {
+   "target_key": "414_949a8532",
+   "pairs": [
+    "5LI8_KKK",
+    "5LI6_6XF"
+   ],
+   "ligands": [
+    "KKK",
+    "6XF"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342039.513768
+  },
+  "9075cc32-3a23-4bfd-a2df-bb4ba0f892f0": {
+   "target_key": "450_9c481af8",
+   "pairs": [
+    "3GW9_VNI"
+   ],
+   "ligands": [
+    "VNI"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342042.0822535
+  },
+  "0cfa3dcf-4453-4ee1-ab75-15e7f7de0196": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNJ_QDY",
+    "5TE8_08J",
+    "8SO2_CFF",
+    "3UA1_08Y"
+   ],
+   "ligands": [
+    "QDY",
+    "08J",
+    "CFF",
+    "08Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342046.6113684
+  },
+  "b3902808-aeff-4c6e-b2bc-e282214e0637": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8SO1_CFF",
+    "6OO9_MWV",
+    "7KS8_X8S",
+    "9PLJ_TCI"
+   ],
+   "ligands": [
+    "CFF",
+    "MWV",
+    "X8S",
+    "TCI"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342050.3821514
+  },
+  "8c8d2128-234f-4bf2-8645-f20b7fc0c2df": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6OOA_MWY",
+    "9PLK_A1CIW",
+    "6OOB_MWS"
+   ],
+   "ligands": [
+    "MWY",
+    "A1CIW",
+    "MWS"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342054.5015924
+  },
+  "8b3165b6-a2a5-432e-8f0a-eb43595a870b": {
+   "target_key": "487_ecbf61ae",
+   "pairs": [
+    "5VCE_RIT",
+    "5VCG_08Y"
+   ],
+   "ligands": [
+    "RIT",
+    "08Y"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342057.740016
+  },
+  "4e6a5233-6f5c-4253-bfd8-181cf547cde1": {
+   "target_key": "489_d6dd2913",
+   "pairs": [
+    "4ZGX_QHC",
+    "6XZ8_O4T",
+    "6XZ9_O4W"
+   ],
+   "ligands": [
+    "QHC",
+    "O4T",
+    "O4W"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342060.8283224
+  },
+  "aefde950-236e-4141-9110-efa6fdd80132": {
+   "target_key": "509_e452cdaf",
+   "pairs": [
+    "6B82_AER"
+   ],
+   "ligands": [
+    "AER"
+   ],
+   "samples": 1,
+   "rep": 1,
+   "engine": "protenix_v2",
+   "submitted": 1789342063.3741863
+  },
+  "aa64b9a1-1ba9-4c6d-83f2-1d23af0ba13c": {
+   "target_key": "368_3c6d23e6",
+   "pairs": [
+    "4WQJ_36Y",
+    "4TUV_CPZ",
+    "4WPD_3SQ",
+    "4TT5_36Y"
+   ],
+   "ligands": [
+    "36Y",
+    "CPZ",
+    "3SQ",
+    "36Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342068.7523835
+  },
+  "107a8b7b-253e-4458-a9cf-d9804a80961c": {
+   "target_key": "403_e7509160",
+   "pairs": [
+    "1JIN_KTN",
+    "1EGY_9AP",
+    "1EUP_ASD",
+    "1OXA_DEB"
+   ],
+   "ligands": [
+    "KTN",
+    "9AP",
+    "ASD",
+    "DEB"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342071.9959438
+  },
+  "a9c95c62-71bd-4151-8fd0-7186f230918d": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "6U30_PQM",
+    "6U31_PQP",
+    "8VL0_LVC",
+    "7U00_L4I"
+   ],
+   "ligands": [
+    "PQM",
+    "PQP",
+    "LVC",
+    "L4I"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342076.5441787
+  },
+  "741f3404-2675-475a-b9ec-cd3cb58bd68f": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "8VOC_M4F",
+    "7TZY_L3K",
+    "6PRS_OW7",
+    "5YQA_8ZU"
+   ],
+   "ligands": [
+    "M4F",
+    "L3K",
+    "OW7",
+    "8ZU"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342080.8731756
+  },
+  "d34e450d-a50a-4127-aac7-654b3c7f32b5": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGN_TWO",
+    "7R8S_8ZU",
+    "6UNN_K3Z",
+    "8D39_QDB"
+   ],
+   "ligands": [
+    "TWO",
+    "8ZU",
+    "K3Z",
+    "QDB"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342084.4342368
+  },
+  "633d1ef7-7e82-4b72-8131-1f028e2696e2": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGO_1F1",
+    "7N14_ZRS",
+    "8VKF_LVK",
+    "7TRU_KQR"
+   ],
+   "ligands": [
+    "1F1",
+    "ZRS",
+    "LVK",
+    "KQR"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342088.0017843
+  },
+  "c16de001-0563-4c0d-b098-735d85b303d1": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7JXB_VLG",
+    "6U3K_PQS",
+    "7TRT_KQF",
+    "7JW5_Z7Z"
+   ],
+   "ligands": [
+    "VLG",
+    "PQS",
+    "KQF",
+    "Z7Z"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342092.042367
+  },
+  "2a6247f7-b1d6-47a3-9488-70ad9f6a0ac1": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7TND_JO4",
+    "9ZEG_JO4",
+    "4EGP_FIV",
+    "9ZEH_JO4"
+   ],
+   "ligands": [
+    "JO4",
+    "JO4",
+    "FIV",
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342096.9822328
+  },
+  "e9d82571-8098-4c70-8c3e-478f2f95cdc2": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "9ZEI_JO4"
+   ],
+   "ligands": [
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342099.1596904
+  },
+  "24f10713-6ec8-4600-884f-afa6a24b6548": {
+   "target_key": "411_e3e8183c",
+   "pairs": [
+    "2JJP_KLN",
+    "2XFH_CL6",
+    "2JJO_EY5"
+   ],
+   "ligands": [
+    "KLN",
+    "CL6",
+    "EY5"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342103.2427857
+  },
+  "ddfa5f35-a1d6-4e7d-bda2-36020c557e06": {
+   "target_key": "414_949a8532",
+   "pairs": [
+    "5LI8_KKK",
+    "5LI6_6XF"
+   ],
+   "ligands": [
+    "KKK",
+    "6XF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342106.0129688
+  },
+  "ccb226a0-595a-42f3-b198-ae42ac68e718": {
+   "target_key": "417_0e6cd8b9",
+   "pairs": [
+    "1IZO_PAM"
+   ],
+   "ligands": [
+    "PAM"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342109.3684008
+  },
+  "b85b7eda-18d7-48b9-907c-5710a4105b11": {
+   "target_key": "448_7a54e61e",
+   "pairs": [
+    "4G7G_VFV",
+    "4G3J_VNT"
+   ],
+   "ligands": [
+    "VFV",
+    "VNT"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342112.0626419
+  },
+  "164a8d7e-db73-4922-acc4-eaa09bae6327": {
+   "target_key": "450_9c481af8",
+   "pairs": [
+    "3GW9_VNI"
+   ],
+   "ligands": [
+    "VNI"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342114.3894906
+  },
+  "f23cc398-9755-4d44-85c5-699ae09812c7": {
+   "target_key": "453_3fc5a1f6",
+   "pairs": [
+    "3L4D_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342117.1794708
+  },
+  "67bbbaff-97bb-45ea-9690-0f2ffff9554e": {
+   "target_key": "455_d4843705",
+   "pairs": [
+    "1EA1_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342120.3068745
+  },
+  "ec039214-c6b7-42f9-a401-36f74c89459d": {
+   "target_key": "458_c4bcedc3",
+   "pairs": [
+    "3KSW_VNF",
+    "3K1O_POZ"
+   ],
+   "ligands": [
+    "VNF",
+    "POZ"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342123.198326
+  },
+  "048e0351-7e45-4a8d-9d69-659e32fffdd8": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4BY0_5PS",
+    "4UVR_J5Y",
+    "4BMM_TU1",
+    "4C0C_WVH"
+   ],
+   "ligands": [
+    "5PS",
+    "J5Y",
+    "TU1",
+    "WVH"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342126.8874972
+  },
+  "5bda68df-ef21-4ee3-a933-3ba9d7b3f0f0": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4UQH_25S"
+   ],
+   "ligands": [
+    "25S"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342130.7209494
+  },
+  "f183502e-b19a-4b9a-9b5e-8b763fcf842c": {
+   "target_key": "469_ec879091",
+   "pairs": [
+    "4BJK_18I"
+   ],
+   "ligands": [
+    "18I"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342133.1673985
+  },
+  "950c6d40-4ce2-4465-a04b-aa7b5fabbf9d": {
+   "target_key": "473_ca85e740",
+   "pairs": [
+    "5FRB_VT2"
+   ],
+   "ligands": [
+    "VT2"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342135.4591172
+  },
+  "4d69510b-c937-489e-a1a8-06c9e28c0ace": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7N3M_05D",
+    "7LS4_YCG",
+    "9NNI_A1BZC",
+    "7N6F_0I1"
+   ],
+   "ligands": [
+    "05D",
+    "YCG",
+    "A1BZC",
+    "0I1"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342139.1697533
+  },
+  "aafa8a44-5a30-4ae9-ae9e-a36d8c569d86": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LS3_YCJ",
+    "9NNO_A1BY9",
+    "9NNA_A1BZE",
+    "7N3L_04Y"
+   ],
+   "ligands": [
+    "YCJ",
+    "A1BY9",
+    "A1BZE",
+    "04Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342143.1757889
+  },
+  "b86cfc63-e4a5-477a-9624-24dbfff4bdd0": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LRL_YBS",
+    "9NNM_A1BZA",
+    "9NNE_A1BZD",
+    "9NNJ_A1BZB"
+   ],
+   "ligands": [
+    "YBS",
+    "A1BZA",
+    "A1BZD",
+    "A1BZB"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342146.6481726
+  },
+  "64ad5793-7ebd-4d47-bf09-c9c1f635b3b0": {
+   "target_key": "475_74349f57",
+   "pairs": [
+    "2X2N_X2N"
+   ],
+   "ligands": [
+    "X2N"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342148.8595467
+  },
+  "1a34bcbb-5dd7-4ce8-a54f-3b2afa3211f6": {
+   "target_key": "475_83a489fa",
+   "pairs": [
+    "2WV2_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342151.4194021
+  },
+  "bff2f979-ff1a-4219-8b5f-3f04fe521a69": {
+   "target_key": "475_c96c5508",
+   "pairs": [
+    "3B99_U51"
+   ],
+   "ligands": [
+    "U51"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342154.0909767
+  },
+  "a4d3248f-b9ba-4f08-be46-c40abf1746ba": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3G93_PB2",
+    "3G5N_PB2",
+    "2BDM_TMI",
+    "3TMZ_06X"
+   ],
+   "ligands": [
+    "PB2",
+    "PB2",
+    "TMI",
+    "06X"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342158.1744761
+  },
+  "6c17b279-6918-494c-a52c-25ed878311db": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "1SUO_CPZ",
+    "3ME6_CGE",
+    "3R1B_TB2",
+    "3KW4_TIC"
+   ],
+   "ligands": [
+    "CPZ",
+    "CGE",
+    "TB2",
+    "TIC"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342162.0604622
+  },
+  "7ec3a5da-61df-40da-9e84-b9988f0c518a": {
+   "target_key": "476_1eccdb5d",
+   "pairs": [
+    "3UAS_0BV",
+    "4JLT_8PR"
+   ],
+   "ligands": [
+    "0BV",
+    "8PR"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342165.5265803
+  },
+  "a929e89c-3e08-47e2-8bda-6b1a611fd1f9": {
+   "target_key": "476_7621de71",
+   "pairs": [
+    "3TK3_CPZ"
+   ],
+   "ligands": [
+    "CPZ"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342168.2019482
+  },
+  "6adc94dd-a414-46f3-921f-975b98316e67": {
+   "target_key": "479_f5b99101",
+   "pairs": [
+    "4XRZ_SI6",
+    "3TDA_PN0",
+    "3QM4_PN0",
+    "4XRY_SI5"
+   ],
+   "ligands": [
+    "SI6",
+    "PN0",
+    "PN0",
+    "SI5"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342173.7470827
+  },
+  "3ac55f64-f3ff-4b4f-b322-c4268b6bbc89": {
+   "target_key": "479_f5b99101",
+   "pairs": [
+    "4WNT_AJN"
+   ],
+   "ligands": [
+    "AJN"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342176.3849714
+  },
+  "f3717708-0db7-4be9-bd3b-1558263ec401": {
+   "target_key": "480_0010cf69",
+   "pairs": [
+    "8SG5_CL6",
+    "5VEU_RIT",
+    "9MS2_A1BNX",
+    "7SV2_MWY"
+   ],
+   "ligands": [
+    "CL6",
+    "RIT",
+    "A1BNX",
+    "MWY"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342180.2946565
+  },
+  "730d8f0f-90b1-4292-a5e2-cc3cf310b5ab": {
+   "target_key": "483_4a1aae09",
+   "pairs": [
+    "4FDH_0T3",
+    "4DVQ_1CA"
+   ],
+   "ligands": [
+    "0T3",
+    "1CA"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342183.4341042
+  },
+  "2a452934-b33c-47e1-8d5a-236ef39be0cb": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "8SPD_CL6",
+    "9BVA_A1ASQ",
+    "9BV6_A1ASU",
+    "9BV5_A1ASV"
+   ],
+   "ligands": [
+    "CL6",
+    "A1ASQ",
+    "A1ASU",
+    "A1ASV"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342188.2695494
+  },
+  "70cb5921-499d-4f92-b81d-2549f732948d": {
+   "target_key": "486_f605e37d",
+   "pairs": [
+    "9BVB_A1ASP",
+    "9BV8_A1ASS",
+    "9BVC_A1ASO",
+    "9BV9_A1ASR"
+   ],
+   "ligands": [
+    "A1ASP",
+    "A1ASS",
+    "A1ASO",
+    "A1ASR"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342192.0299387
+  },
+  "852d746d-aa5c-45ce-8195-45338ce3bfe8": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWN_X1O",
+    "8EXB_X4E",
+    "8EWP_X2Q",
+    "8EWD_WZN"
+   ],
+   "ligands": [
+    "X1O",
+    "X4E",
+    "X2Q",
+    "WZN"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342195.7616134
+  },
+  "fb3dd865-2444-41a5-8c98-13700e7b4daa": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWM_X1I",
+    "8EWS_X2Q",
+    "8EWL_X1C",
+    "4K9X_8AW"
+   ],
+   "ligands": [
+    "X1I",
+    "X2Q",
+    "X1C",
+    "8AW"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342199.4443538
+  },
+  "612b5d17-36ec-45ec-8e59-f0b78aa89280": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4D7D_PKT",
+    "7UFD_T0K",
+    "7UAZ_O3L",
+    "8EWE_X0E"
+   ],
+   "ligands": [
+    "PKT",
+    "T0K",
+    "O3L",
+    "X0E"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342203.2666032
+  },
+  "3d375f7b-734c-4fd8-af2f-e880e5b04493": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COV_A1A4S",
+    "4K9W_7AW",
+    "7UF9_NH0",
+    "7KVQ_X7D"
+   ],
+   "ligands": [
+    "A1A4S",
+    "7AW",
+    "NH0",
+    "X7D"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342207.6479862
+  },
+  "01b49b45-e36f-4cfb-9c6b-b4260dcf108b": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVO_X6S",
+    "7UFA_NI6",
+    "7KVN_X6V",
+    "4I4G_Z8Z"
+   ],
+   "ligands": [
+    "X6S",
+    "NI6",
+    "X6V",
+    "Z8Z"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342211.4651732
+  },
+  "b06f077b-9b00-4efd-ad00-0b34e889280b": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UFC_NJO",
+    "4K9V_6AW",
+    "3TJS_D0R",
+    "7KVH_X5Y"
+   ],
+   "ligands": [
+    "NJO",
+    "6AW",
+    "D0R",
+    "X5Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342216.2316031
+  },
+  "24bac365-05dd-4c6a-b52d-1418ffe7f7fb": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7KVM_X71",
+    "4D78_J9K",
+    "9COR_A1A07",
+    "6BD8_D81"
+   ],
+   "ligands": [
+    "X71",
+    "J9K",
+    "A1A07",
+    "D81"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342219.7976468
+  },
+  "2015ddfd-122c-4857-a5f0-bf3daf2828d9": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4I4H_Z9Z",
+    "9BBB_A1APA",
+    "9COY_A1A4T",
+    "5VC0_RIT"
+   ],
+   "ligands": [
+    "Z9Z",
+    "A1APA",
+    "A1A4T",
+    "RIT"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342223.320582
+  },
+  "132da1a6-ea17-46bd-a3ff-24c0e6c82e4c": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "4K9T_1RD",
+    "7KVJ_X7M",
+    "9COT_A1A08",
+    "9COW_A1A4V"
+   ],
+   "ligands": [
+    "1RD",
+    "X7M",
+    "A1A08",
+    "A1A4V"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342226.7064192
+  },
+  "ca9e62d8-e7ad-45ef-9b4f-070096c107bd": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COS_A1A06",
+    "7KVI_X7P",
+    "6UNG_QEP",
+    "9COU_A1A4U"
+   ],
+   "ligands": [
+    "A1A06",
+    "X7P",
+    "QEP",
+    "A1A4U"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342230.4258614
+  },
+  "e8a9872e-62a1-43ce-a46d-b3b10bcafbbd": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8EWQ_X2B",
+    "6DAB_G0V",
+    "6BD7_D7J",
+    "6BDM_Y83"
+   ],
+   "ligands": [
+    "X2B",
+    "G0V",
+    "D7J",
+    "Y83"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342234.1522512
+  },
+  "6b406dab-af19-4e3f-855e-13611564f257": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "9COX_A1A4K",
+    "6DA5_G1J",
+    "6BD6_80K",
+    "7KVP_X6J"
+   ],
+   "ligands": [
+    "A1A4K",
+    "G1J",
+    "80K",
+    "X6J"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342237.460683
+  },
+  "2b6982f0-1de8-46f4-8bb9-54c7641cdca0": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAL_G1D",
+    "6DAG_G0Y",
+    "6DAA_G0M",
+    "8EWR_WZN"
+   ],
+   "ligands": [
+    "G1D",
+    "G0Y",
+    "G0M",
+    "WZN"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342240.8229656
+  },
+  "54dcd754-2fda-408d-b690-e5405677119f": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DA3_G0D",
+    "6BD5_D7M",
+    "6BDI_DEJ",
+    "6BCZ_D7Y"
+   ],
+   "ligands": [
+    "G0D",
+    "D7M",
+    "DEJ",
+    "D7Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342244.720068
+  },
+  "2a8a98a1-3809-4f63-803b-d7d12067243b": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "7UAY_O39",
+    "7UFB_NJ0",
+    "6UNM_QDP",
+    "6MA6_MYT"
+   ],
+   "ligands": [
+    "O39",
+    "NJ0",
+    "QDP",
+    "MYT"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342248.5038476
+  },
+  "d1daef5b-3f5e-442c-a4f9-c2d63b5a7131": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6DAJ_FZV",
+    "6UNH_QEA",
+    "6UNE_QES",
+    "4K9U_5AW"
+   ],
+   "ligands": [
+    "FZV",
+    "QEA",
+    "QES",
+    "5AW"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342252.1521318
+  },
+  "f78dfa0c-d37d-41da-9550-c7b6795e9c50": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNK_QE4",
+    "6BDK_DJ1",
+    "6BDH_DEV",
+    "6DA2_G0D"
+   ],
+   "ligands": [
+    "QE4",
+    "DJ1",
+    "DEV",
+    "G0D"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342256.4975805
+  },
+  "fab1a78e-e623-4eb4-a59f-b763cd32825a": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNI_QDV",
+    "6UNL_QDJ",
+    "6DA8_G0J",
+    "6DAC_FZV"
+   ],
+   "ligands": [
+    "QDV",
+    "QDJ",
+    "G0J",
+    "FZV"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342260.4329722
+  },
+  "bd589c56-639a-4125-a499-afefbdc7af97": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6UNJ_QDY",
+    "5TE8_08J",
+    "8SO2_CFF",
+    "3UA1_08Y"
+   ],
+   "ligands": [
+    "QDY",
+    "08J",
+    "CFF",
+    "08Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342264.8558295
+  },
+  "079d0bac-0521-4cbd-ae31-9e3a6d357a87": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "8SO1_CFF",
+    "6OO9_MWV",
+    "7KS8_X8S",
+    "9PLJ_TCI"
+   ],
+   "ligands": [
+    "CFF",
+    "MWV",
+    "X8S",
+    "TCI"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342268.598379
+  },
+  "5a36ce79-cc59-4089-a8ce-0026140d8a4f": {
+   "target_key": "487_32859637",
+   "pairs": [
+    "6OOA_MWY",
+    "9PLK_A1CIW",
+    "6OOB_MWS"
+   ],
+   "ligands": [
+    "MWY",
+    "A1CIW",
+    "MWS"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342272.3735087
+  },
+  "1d123210-2117-4b20-bc71-f9d106184fe1": {
+   "target_key": "487_ecbf61ae",
+   "pairs": [
+    "5VCE_RIT",
+    "5VCG_08Y"
+   ],
+   "ligands": [
+    "RIT",
+    "08Y"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342274.993046
+  },
+  "066c36de-14a5-4244-877e-328c92f1d10e": {
+   "target_key": "489_d6dd2913",
+   "pairs": [
+    "4ZGX_QHC",
+    "6XZ8_O4T",
+    "6XZ9_O4W"
+   ],
+   "ligands": [
+    "QHC",
+    "O4T",
+    "O4W"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342279.402106
+  },
+  "cdb8e4d8-d5cb-4268-aaee-4e98b11cb862": {
+   "target_key": "509_e452cdaf",
+   "pairs": [
+    "6B82_AER"
+   ],
+   "ligands": [
+    "AER"
+   ],
+   "samples": 1,
+   "rep": 2,
+   "engine": "protenix_v2",
+   "submitted": 1789342281.9162636
+  },
+  "58c27d97-802c-44c1-b2fa-9eecb3850d2d": {
+   "target_key": "368_3c6d23e6",
+   "pairs": [
+    "4WQJ_36Y",
+    "4TUV_CPZ",
+    "4WPD_3SQ",
+    "4TT5_36Y"
+   ],
+   "ligands": [
+    "36Y",
+    "CPZ",
+    "3SQ",
+    "36Y"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342285.8682194
+  },
+  "7bc50ee1-dfa1-4a8d-b15a-aec74b07e062": {
+   "target_key": "403_e7509160",
+   "pairs": [
+    "1JIN_KTN",
+    "1EGY_9AP",
+    "1EUP_ASD",
+    "1OXA_DEB"
+   ],
+   "ligands": [
+    "KTN",
+    "9AP",
+    "ASD",
+    "DEB"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342289.5933485
+  },
+  "7514e5b3-241d-4da2-b86d-f92ea4239000": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "6U30_PQM",
+    "6U31_PQP",
+    "8VL0_LVC",
+    "7U00_L4I"
+   ],
+   "ligands": [
+    "PQM",
+    "PQP",
+    "LVC",
+    "L4I"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342294.1295629
+  },
+  "d4e2f93b-7e95-4770-8375-8e161d907ff8": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "8VOC_M4F",
+    "7TZY_L3K",
+    "6PRS_OW7",
+    "5YQA_8ZU"
+   ],
+   "ligands": [
+    "M4F",
+    "L3K",
+    "OW7",
+    "8ZU"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342298.520767
+  },
+  "fc8ad7cc-0b97-4663-9f4d-3245738d06b9": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGN_TWO",
+    "7R8S_8ZU",
+    "6UNN_K3Z",
+    "8D39_QDB"
+   ],
+   "ligands": [
+    "TWO",
+    "8ZU",
+    "K3Z",
+    "QDB"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342302.1246443
+  },
+  "32294ac2-1bd6-437c-b1d9-eeeb0638732b": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "4EGO_1F1",
+    "7N14_ZRS",
+    "8VKF_LVK",
+    "7TRU_KQR"
+   ],
+   "ligands": [
+    "1F1",
+    "ZRS",
+    "LVK",
+    "KQR"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342305.7448359
+  },
+  "a179a156-f3a9-48bc-842a-0735d56b4970": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7JXB_VLG",
+    "6U3K_PQS",
+    "7TRT_KQF",
+    "7JW5_Z7Z"
+   ],
+   "ligands": [
+    "VLG",
+    "PQS",
+    "KQF",
+    "Z7Z"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342310.137474
+  },
+  "f45ddb37-5a6c-426a-9883-d59ffe075ce5": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "7TND_JO4",
+    "9ZEG_JO4",
+    "4EGP_FIV",
+    "9ZEH_JO4"
+   ],
+   "ligands": [
+    "JO4",
+    "JO4",
+    "FIV",
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342314.6960382
+  },
+  "baef326d-75e8-45dd-9b3f-fdf874b5dd70": {
+   "target_key": "410_bc4a20dd",
+   "pairs": [
+    "9ZEI_JO4"
+   ],
+   "ligands": [
+    "JO4"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342316.8582656
+  },
+  "3819aa86-6bcc-46cb-96e4-d027e3c6ec0d": {
+   "target_key": "411_e3e8183c",
+   "pairs": [
+    "2JJP_KLN",
+    "2XFH_CL6",
+    "2JJO_EY5"
+   ],
+   "ligands": [
+    "KLN",
+    "CL6",
+    "EY5"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342321.344174
+  },
+  "b252bdae-5d30-40be-a106-d57d4dfc7f52": {
+   "target_key": "414_949a8532",
+   "pairs": [
+    "5LI8_KKK",
+    "5LI6_6XF"
+   ],
+   "ligands": [
+    "KKK",
+    "6XF"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342324.1026945
+  },
+  "16c2a3b4-3f3d-48e6-9041-ba8ca17dd3b3": {
+   "target_key": "417_0e6cd8b9",
+   "pairs": [
+    "1IZO_PAM"
+   ],
+   "ligands": [
+    "PAM"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342326.2221208
+  },
+  "5fbd917f-3343-404c-bcef-3562193894b5": {
+   "target_key": "448_7a54e61e",
+   "pairs": [
+    "4G7G_VFV",
+    "4G3J_VNT"
+   ],
+   "ligands": [
+    "VFV",
+    "VNT"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342329.175558
+  },
+  "5cdc0c8e-ffa9-4441-8ace-c08fa0ca2acb": {
+   "target_key": "450_9c481af8",
+   "pairs": [
+    "3GW9_VNI"
+   ],
+   "ligands": [
+    "VNI"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342331.2405725
+  },
+  "7ca33c6a-6ebf-4c63-a9f2-8d8ada0e50c8": {
+   "target_key": "453_3fc5a1f6",
+   "pairs": [
+    "3L4D_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342334.3099394
+  },
+  "fcbc3e9d-9aea-4c95-ab45-45adc0df0e70": {
+   "target_key": "455_d4843705",
+   "pairs": [
+    "1EA1_TPF"
+   ],
+   "ligands": [
+    "TPF"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342336.4501312
+  },
+  "ab201120-992d-4d77-a198-c3c2b81ee8a4": {
+   "target_key": "458_c4bcedc3",
+   "pairs": [
+    "3KSW_VNF",
+    "3K1O_POZ"
+   ],
+   "ligands": [
+    "VNF",
+    "POZ"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342338.9512744
+  },
+  "6f87456c-53a6-4fec-8d23-608677b327e7": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4BY0_5PS",
+    "4UVR_J5Y",
+    "4BMM_TU1",
+    "4C0C_WVH"
+   ],
+   "ligands": [
+    "5PS",
+    "J5Y",
+    "TU1",
+    "WVH"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342342.4829397
+  },
+  "fc265398-5d09-4894-bcb3-0daa6b67c652": {
+   "target_key": "467_acd53678",
+   "pairs": [
+    "4UQH_25S"
+   ],
+   "ligands": [
+    "25S"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342344.7495043
+  },
+  "69a13c51-f463-4c1d-aaf2-4c1555bffc7b": {
+   "target_key": "469_ec879091",
+   "pairs": [
+    "4BJK_18I"
+   ],
+   "ligands": [
+    "18I"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342346.9148664
+  },
+  "e2eb6d8b-c8fe-4c45-8903-5e98cdb613ec": {
+   "target_key": "473_ca85e740",
+   "pairs": [
+    "5FRB_VT2"
+   ],
+   "ligands": [
+    "VT2"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342349.2518458
+  },
+  "e709b59d-4bd3-4eda-bda1-5cf3fa48d7d4": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7N3M_05D",
+    "7LS4_YCG",
+    "9NNI_A1BZC",
+    "7N6F_0I1"
+   ],
+   "ligands": [
+    "05D",
+    "YCG",
+    "A1BZC",
+    "0I1"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342353.8416133
+  },
+  "ec6767c0-52ef-4a0b-b6e7-0a00cc398f13": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LS3_YCJ",
+    "9NNO_A1BY9",
+    "9NNA_A1BZE",
+    "7N3L_04Y"
+   ],
+   "ligands": [
+    "YCJ",
+    "A1BY9",
+    "A1BZE",
+    "04Y"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342357.3657086
+  },
+  "f645ce96-b14c-4cc9-95f8-8353f0989001": {
+   "target_key": "474_5043b011",
+   "pairs": [
+    "7LRL_YBS",
+    "9NNM_A1BZA",
+    "9NNE_A1BZD",
+    "9NNJ_A1BZB"
+   ],
+   "ligands": [
+    "YBS",
+    "A1BZA",
+    "A1BZD",
+    "A1BZB"
+   ],
+   "samples": 1,
+   "rep": 3,
+   "engine": "protenix_v2",
+   "submitted": 1789342362.3659961
   }
  }
 }
