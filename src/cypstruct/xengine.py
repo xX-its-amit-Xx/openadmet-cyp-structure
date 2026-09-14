@@ -21,6 +21,13 @@ measured −0.0055. Verify with `reference_depth()` before trusting any selectio
 `diffusion_samples` does NOT produce independent poses on OpenProtein's Protenix
 (FINDING 009) — replicate jobs do.
 
+**protenix-v1 is DETERMINISTIC — buy exactly one replicate of it, ever.** Measured at
+per-atom sd 0.0000 Å across replicates on 6 of 6 standard ligands and 14 of 14
+organometallics. It contributes exactly one independent pose per ligand no matter how many
+jobs you run, and that one pose is worth having (adding it to 8 Protenix-v2 poses moved
++0.0240 → +0.0310) — but every replicate after the first is pure waste. Protenix-v2 on the
+same ligands is properly diverse (median sd 1.29 Å).
+
 **Do NOT pass every engine you have.** Measured at matched depth, the best reference set
 is the two Protenix checkpoints alone (+0.0380). Adding esmfold2 — a genuinely different
 architecture, sampling properly, at depth 4 — drops it to +0.0178, and all four engines

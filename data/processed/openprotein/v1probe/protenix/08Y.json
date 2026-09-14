@@ -1,0 +1,9 @@
+{
+ "ligand": "08Y",
+ "engine": "protenix",
+ "files": [
+  "08Y__r0s0.cif",
+  "08Y__r1s0.cif",
+  "08Y__r2s0.cif"
+ ]
+}
