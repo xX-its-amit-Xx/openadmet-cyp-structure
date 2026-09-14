@@ -1,0 +1,14 @@
+{
+ "ligand": "O39",
+ "engine": "protenix_v2",
+ "files": [
+  "O39__r0s0.cif",
+  "O39__r1s0.cif",
+  "O39__r2s0.cif",
+  "O39__r3s0.cif",
+  "O39__r4s0.cif",
+  "O39__r5s0.cif",
+  "O39__r6s0.cif",
+  "O39__r7s0.cif"
+ ]
+}
