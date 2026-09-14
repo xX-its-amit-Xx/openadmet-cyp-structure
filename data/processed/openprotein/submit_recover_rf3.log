@@ -1,0 +1,37 @@
+rosettafold_3 rep 0: 14 ligands, 1 samples, 2 per job
+  r0[1] X1O,X4E -> 96c2c566-0ee8-47ff-b4a9-16cb30a49c6f
+  r0[2] X2Q,WZN -> 2047fc9b-7685-4672-8a90-973efd26fdd0
+  r0[3] X1I,X1C -> 23286241-2f6e-42af-97a6-27a7c522c95c
+  r0[4] O3L,X0E -> 3af96fed-4501-4682-bd11-bd43605101e1
+  r0[5] TPF,X2B -> 9b2b8861-8bff-4043-8109-f4b386f648d1
+  r0[6] G1D,G0Y -> ad4b69e9-9c27-41c9-812a-58f81b8969d6
+  r0[7] O39,X8S -> 8ccbcc98-d9ac-4f91-bbf8-8acfdad9b91c
+rosettafold_3 rep 1: 14 ligands, 1 samples, 2 per job
+  r1[1] X1O,X4E -> 9e48a446-ae11-4fc7-928f-b5e5bee57f23
+  r1[2] X2Q,WZN -> 9cafe0ea-1fe9-4d2b-995e-795e2b14282a
+  r1[3] X1I,X1C -> 6f2f0107-d16b-40a8-bc3e-dbb7aaffd1cf
+  r1[4] O3L,X0E -> 391d438e-11c7-4d1a-a0fd-af21752efe04
+  r1[5] TPF,X2B -> d290661b-469e-4c09-ac66-93a265f69d8b
+  r1[6] G1D,G0Y -> 317ec65a-b69c-48a2-ba8f-d3c6be7289ad
+  r1[7] O39,X8S -> 58a38cb7-9850-4852-9874-75ab3b5e5bfb
+rosettafold_3 rep 2: 14 ligands, 1 samples, 2 per job
+  r2[1] X1O,X4E -> 985bf577-42d3-46ea-861b-a3e7b6e3d31b
+  r2[2] X2Q,WZN -> 6c5dec7c-7468-46fa-98b6-bc0df8c88c8c
+  r2[3] X1I,X1C -> 230ac11d-0990-44f2-9009-498204b66d0a
+  r2[4] O3L,X0E -> 80c85941-bda6-4ef3-a136-12be7e60aae7
+  r2[5] TPF,X2B -> 396f1f9b-a84e-4f8c-b486-11e7b718cad7
+  r2[6] G1D,G0Y -> 914e370c-92fb-493a-b90a-4a88239897e7
+  r2[7] O39,X8S -> f38ab3ff-ac55-448a-bc71-32bf6920b976
+rosettafold_3 rep 3: 14 ligands, 1 samples, 2 per job
+  r3[1] X1O,X4E -> f9e10b68-178d-4b1d-abcd-ea4458a9b0ac
+  r3[2] X2Q,WZN -> 05eaf4c7-2d65-48cb-a8ae-6df50b7ee86f
+  r3[3] X1I,X1C -> e263a288-9805-4b84-9d79-e7b1eb00bd4c
+  r3[4] O3L,X0E -> 391d9242-8043-4a1c-b8ad-6c0620c3929b
+  r3[5] TPF,X2B -> 7931c198-0bd5-44c8-a0fd-9107c76824a9
+  r3[6] G1D,G0Y -> 447cb200-0143-432e-830a-da318dc95036
+  r3[7] O39,X8S -> c3dc8bbe-0670-401f-83a9-2060a67adaad
+{
+ "key": "recover/rosettafold_3",
+ "submitted_jobs": 28,
+ "total_batches": 28
+}
