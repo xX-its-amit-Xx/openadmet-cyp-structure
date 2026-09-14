@@ -334,7 +334,7 @@
    "job_id": "d6b5f94c-4eed-4af1-b3d8-2027c8c841e8",
    "uniprot": "I7HHD0",
    "submitted": 1789330179.0056698,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "473_ca85e740": {
    "job_id": "14fcad37-2516-4087-9f27-5341a83f46c0",
@@ -32598,6 +32598,36 @@
    "single_sequence": false,
    "submitted": 1789357771.5894532,
    "done": true
+  },
+  "49c99487-f38d-4c65-96c7-4a40e7c9b3d7": {
+   "target_key": "388_7e6828a0",
+   "pairs": [
+    "9VGO_A1MAI",
+    "9VGP_L0O"
+   ],
+   "ligands": [
+    "A1MAI",
+    "L0O"
+   ],
+   "samples": 1,
+   "rep": 0,
+   "engine": "protenix_v2",
+   "single_sequence": false,
+   "submitted": 1789358900.4908552
+  },
+  "7b65a01d-26e0-43c9-8d1a-87b3558362cf": {
+   "target_key": "388_7e6828a0",
+   "pairs": [
+    "9VGQ_A1MAJ"
+   ],
+   "ligands": [
+    "A1MAJ"
+   ],
+   "samples": 1,
+   "rep": 0,
+   "engine": "protenix_v2",
+   "single_sequence": false,
+   "submitted": 1789358903.1254194
   }
  }
 }
