@@ -63,8 +63,13 @@ def main() -> int:
     # archived. A 2.2 GB pool deduplicates to ~240 KB of actual reference poses, so the
     # frozen copy is what makes the selector reproducible after the mmCIFs go to cold
     # storage - and stops the pool looking like dead weight that is safe to delete.
+    # An ARCHIVED pool leaves an empty directory behind - the collectors recreate it on
+    # every poll - and an empty directory still passes `exists()`. Testing existence would
+    # therefore take the raw-pool branch, build an EMPTY reference set, and never reach the
+    # frozen fallback. Check for actual poses, not for the container.
     pools = [OP_ROOT / e for e in a.refs]
-    if all(p.exists() for p in pools):
+    populated = [p for p in pools if any(p.glob("*.cif"))] if pools else []
+    if pools and len(populated) == len(pools):
         ref = X.reference_poses(pools, P.load_structure)
     elif Path(a.frozen).exists():
         ref = X.load_reference(a.frozen)
