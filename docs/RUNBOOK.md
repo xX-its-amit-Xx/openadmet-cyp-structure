@@ -244,7 +244,16 @@ well-behaved release. Which pool we submit from now matters as much as the selec
    gating 10 proteins, and filling them moved the count 22 -> 27 -> 30. Run with no flags
    to see the gaps without submitting. It skips rosettafold_3 and protenix-v1 on purpose:
    both are deterministic enough that replicates produce byte-identical files.
-3b. **Disk**: the reference set is frozen at `data/processed/reference_set_cyp3a4.npz`
+3b. **Disk — DONE, 2026-09-14.** All four op1 pools are now on OneDrive
+   (`onedrive:rclone-offload/cyp-structure/pool/op1`, 9,234 objects / 2.92 GiB), which
+   took D: from 6.2 GB back to 9.6 GB. The selector is unaffected and that was verified
+   against the genuinely archived state, not a simulated one: it reproduces the feature
+   across all 1,740 poses to 2.8e-08 from the frozen reference. Pull any pool back with
+   `cypstruct.storage.pull("pool/op1/<engine>", <dest>)` if a reference set ever needs
+   re-deriving with different dedup settings.
+
+   Original note kept for the method: the reference set is frozen at
+   `data/processed/reference_set_cyp3a4.npz`
    (241 KB, verified to reproduce xeng to 2.8e-08). So the 2.2 GB `op1/protenix_v2` and
    589 MB `op1/protenix` pools ARE archivable - `build_xeng_feature` falls back to the
    frozen copy automatically. Archive order when D: approaches ~3 GB: `rosettafold_3` and
