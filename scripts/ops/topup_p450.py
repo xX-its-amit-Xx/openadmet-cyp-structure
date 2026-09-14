@@ -114,6 +114,26 @@ def main() -> int:
               f"{sc.target_key.nunique()} construct sequences")
         print(f"  pairs with <3 protenix poses (dropped from the test): {len(thin)}"
               f"  -> gating {gated} proteins")
+    # Pairs with ZERO poses are invisible to replicate_counts, which only sees what is on
+    # disk - so "pairs below target" read 0 while 17 MSA-ready pairs had never been folded
+    # at all. The submit path was fine (it works off the csv); the REPORT was lying, which
+    # is worse, because it says there is nothing to do.
+    import json as _json
+    state = UNI / "campaign.json"
+    unfolded = 0
+    if state.exists() and (UNI / "p450_cofold_set.csv").exists():
+        ready = {k for k, v in _json.loads(state.read_text())["msa"].items()
+                 if v.get("status") == "SUCCESS"}
+        cs = pd.read_csv(UNI / "p450_cofold_set.csv")
+        cs["pair"] = cs.pdb + "_" + cs.id
+        on_disk = set(replicate_counts("protenix_v2")) | set(replicate_counts("esmfold2"))
+        avail = cs[cs.target_key.isin(ready)]
+        never = set(avail.pair) - on_disk
+        unfolded = len(never)
+        if unfolded:
+            print(f"  MSA-ready but NEVER folded: {unfolded} pairs "
+                  f"({avail[avail.pair.isin(never)].uniprot.nunique()} proteins)")
+
     pv = replicate_counts("protenix_v2")
     es = replicate_counts("esmfold2")
     print(f"  protenix_v2 replicates/pair: median "
