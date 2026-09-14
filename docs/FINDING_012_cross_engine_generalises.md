@@ -507,3 +507,44 @@ jobs; best-of-three selection inflates any single result; and the thresholds are
 rather than fitted. It needs confirmation on the full set and on CYP3A4 before it goes into
 the drop-day path. But it is the first candidate that improves selection when acted upon
 rather than merely correlating with something.
+
+---
+
+## RETRACTION: "the reference must be better than the pool" is contradicted
+
+I claimed above that the feature fails where the reference engine is worse than the pool it
+judges, and said it "explains every failure in the set rather than most of them." **That is
+wrong, and CYP3A4 contradicts it directly:**
+
+| set | reference mean | pool mean | reference better? | outcome |
+|---|---|---|---|---|
+| P450 P20815 | 0.301 | 0.476 | no | **−0.0144** (fails) |
+| **CYP3A4** | **0.1923** (Protenix) | **0.5769** (Boltz) | **no** | **+0.0381 (works)** |
+
+CYP3A4 violates the stated condition more severely than P20815 does - its reference averages
+a third of the pool's quality - and the feature works there. So relative mean quality is not
+the discriminator, and the three-protein pattern I read it from was a coincidence of a small
+sample.
+
+**What stands and what does not.** P11509 and Q16696 are still explained by having nothing
+to catch (zero catastrophic poses; Q16696's pool mean and oracle differ by 0.002). **P20815
+returns to unexplained.** The reference-quality story is withdrawn as a general mechanism.
+
+One observation that survives and may matter: CYP3A4's reference has a low mean (0.1923) but
+a **high oracle (0.6273)** - it contains good poses even though most are poor. `xeng` scores
+against the mean distance to all references, so a reference set with a few good poses may
+still guide selection. Whether the reference *oracle* rather than its mean is the right
+quantity is untested, and is the obvious next thing to look at rather than another proxy.
+
+### And the confidence proxy does not transfer to CYP3A4
+
+Tested on the set that actually matters: rho(reference iptm, per-ligand gain) = **−0.060,
+p = 0.58**, and acting on it does not improve anything (+0.0380 → +0.0351 → +0.0335 →
++0.0368). The reason is visible in the spread - CYP3A4's reference confidence is nearly
+constant (sd 0.0137, IQR 0.020) against P450's (sd 0.0297, IQR 0.051), **2.5x less
+variance**. On a familiar target the reference engine is uniformly confident, so there is
+no signal to exploit.
+
+That is not bad news for the submission, but it is not the good news it first looks like
+either: it means the *detector* is inert on CYP3A4, while the failure mode it was built to
+detect is no longer understood.
