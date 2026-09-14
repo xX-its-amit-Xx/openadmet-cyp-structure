@@ -81,14 +81,47 @@ def readiness() -> list[tuple[str, bool, str]]:
         rows.append(("selector importable", False, f"{type(exc).__name__}: {exc}"))
 
     # a submission was actually produced and validated end to end
-    dry = REPO / "submissions/00_dryrun_val87b.zip"
+    dry = REPO / "submissions/01_xeng_val87b.zip"
+    if not dry.exists():
+        dry = REPO / "submissions/00_dryrun_val87b.zip"
     rows.append(("dry-run submission exists", dry.exists(),
-                 f"{dry.stat().st_size//1024} KB" if dry.exists() else "never built"))
+                 f"{dry.name} {dry.stat().st_size//1024} KB" if dry.exists()
+                 else "never built"))
+
+    # EXERCISE the selector, do not merely check that its file is present. A readiness
+    # check that only stats files reported 11/11 passing while `build()` could not read a
+    # local pool at all - `pool_dir` was a dead parameter, so with Modal over its cap the
+    # submission was unbuildable. Importing and calling is what would have caught it.
+    try:
+        sys.path.insert(0, str(REPO / "scripts" / "submit"))
+        import inspect
+
+        from build_submission import build, choose_poses
+        sig = inspect.signature(build)
+        src = inspect.getsource(build)
+        wired = "pool_dir" in sig.parameters and "pool_dir is None" in src
+        rows.append(("build() can read a LOCAL pool", wired,
+                     "--pool-dir honoured" if wired
+                     else "pool_dir is dead - Modal-only, unbuildable while over cap"))
+        picks = choose_poses("val87b")
+        rows.append(("selector runs end to end", len(picks) > 0,
+                     f"{len(picks)} ligands picked"))
+    except Exception as exc:
+        rows.append(("build()/selector exercisable", False,
+                     f"{type(exc).__name__}: {exc}"))
+
+    # the cross-engine feature is what the selector now prefers; absent, it silently
+    # falls back to the weaker FINDING 003 rule
+    xe = DATA_PROCESSED / "xeng_val87b.csv"
+    rows.append(("cross-engine feature built", xe.exists(),
+                 "xeng_val87b.csv (+0.0381 selector)" if xe.exists()
+                 else "MISSING - selector would fall back to +0.0265"))
 
     # measured selector performance, so the number is not recalled from memory
     sel = DATA_PROCESSED / "orientation_selector_val87b_unsteered.json"
     rows.append(("selector measured", sel.exists(),
-                 "+0.0220 held-out, above the 99th pct of the random-feature null"))
+                 "xeng +0.0381 (FINDING 011); generalises +0.2045 over 17 P450 "
+                 "targets (FINDING 012)"))
     return rows
 
 
