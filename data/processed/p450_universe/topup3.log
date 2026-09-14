@@ -1,0 +1,6 @@
+scored: 273 pairs, 31 proteins, 54 construct sequences
+  pairs with <3 protenix poses (dropped from the test): 2  -> gating 1 proteins
+  protenix_v2 replicates/pair: median 7, pairs below 12: 276
+  esmfold2 replicates/pair:    median 6, pairs below 6: 26
+
+$ D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\cofold\p450_campaign.py submit --engine protenix_v2 --samples 1 --batch 2 --replicates 12 --limit 150
