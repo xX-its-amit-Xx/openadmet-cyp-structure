@@ -284,3 +284,35 @@ not a constant of the feature.
 median 5 raw collapses to 2-4 distinct - so its replicate count overstates independence
 roughly as much as Protenix's 39% did. Deduplication is doing real work on every engine
 tested so far.
+
+
+---
+
+## Reproducible in one command, and the eighth point
+
+`python scripts/structure/score_p450_pool.py validate` now *is* this test. It replaced an
+earlier `validate` that fitted three selector weights leave-one-target-out and measured
++0.0149 - inside the noise, because fitting weights on this much data overfits, exactly as
+FINDING 002 found for a fitted ranker. The unweighted single term is what ships, so it is
+what gets tested.
+
+Latest run - **30 proteins, 50 construct sequences, 247 pairs, 2,325 poses**:
+
+| | value |
+|---|---|
+| catastrophic poses | **7.74%** |
+| random / oracle | 0.6685 / 0.7619 |
+| **selected** | **0.7382** |
+| **gain** | **+0.0697** (null 99th +0.0084, empirical p = 0.0) |
+| within-pair rho | −0.2314 |
+| **proteins positive** | **17 of 19** with >= 4 pairs |
+
+The eighth measurement, and the series still runs monotone with the catastrophe rate as
+the pools improve: 19.3% → +0.3006, 14.5% → +0.2045, 12.0% → +0.1410, 10.3% → +0.1098,
+8.9% → +0.0908, **7.74% → +0.0697**, against the CYP3A4 anchor at 0.2% → +0.0381.
+
+It is converging on the anchor from above, which is what the catastrophe-detector account
+requires and what no "better on other proteins" account would produce. **17 of 19 proteins
+positive** is the widest protein coverage yet, and the gain is now within a factor of two
+of the CYP3A4 number - as the P450 pools become as good as the CYP3A4 one, the two
+measurements are becoming the same measurement.
