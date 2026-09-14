@@ -468,3 +468,42 @@ feature earns its keep.
 most here; "reference worse than pool" means do not - and cross-engine distance cannot tell
 them apart. Gap still open, now with two specific dead ends recorded so the next attempt
 starts somewhere else.
+
+### Third attempt: the REFERENCE engine's own confidence. This one survives.
+
+FINDING 009 showed engine confidence cannot rank poses *within* a ligand - chance, in two
+architectures. But "is my reference engine doing badly on this target" is a **between-target**
+question, which is a different thing, and confidence turns out to answer it.
+
+esmfold2's own `iptm`, over 160 pairs, entirely ground-truth-free:
+
+| | rho | p |
+|---|---|---|
+| iptm vs esmfold2's own pose quality | **+0.702** | 0.0000 |
+| iptm vs (reference quality − pool quality) | **+0.367** | 0.0000 |
+| ptm vs the same gap | +0.318 | 0.0000 |
+
+**And acting on it works**, which is where the previous two attempts died:
+
+| subset | random | selected | gain |
+|---|---|---|---|
+| all pairs | 0.6223 | 0.7205 | +0.0982 |
+| drop lowest 10% iptm | 0.6348 | 0.7339 | +0.0991 |
+| drop lowest 25% iptm | 0.6566 | 0.7638 | **+0.1072** |
+| drop lowest 40% iptm | 0.6844 | 0.8016 | **+0.1171** |
+
+Monotone, and the contrast with the cross-distance proxy is the whole point: there the gain
+**fell** as pairs were excluded (+0.0583 → +0.0428) while the baseline rose, showing it was
+selecting for *easy* rather than for *reliable reference*. Here both rise together.
+
+**How to use it, since excluding ligands is not an option on a submission.** Every ligand
+must be submitted, so the value is not filtering - it is knowing *when to trust the feature*.
+A low-`iptm` reference means cross-engine agreement is unreliable for that ligand and the
+older FINDING 003 selector (contacts + sibling consensus, +0.0265, needs no reference) is
+the safer choice there. That makes the selector choosable per ligand on a blind release.
+
+**Caveats, stated because this is the third proxy tried.** n = 154 pairs sampled from 60
+jobs; best-of-three selection inflates any single result; and the thresholds are descriptive
+rather than fitted. It needs confirmation on the full set and on CYP3A4 before it goes into
+the drop-day path. But it is the first candidate that improves selection when acted upon
+rather than merely correlating with something.
