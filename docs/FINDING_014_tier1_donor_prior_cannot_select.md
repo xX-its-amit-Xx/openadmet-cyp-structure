@@ -57,3 +57,46 @@ poses per ligand, so the cost is bounded.
 
 **Run the same CV pre-check on tier 2 before building it.** It should pass by construction,
 but "should" is what this finding just cost two minutes to disprove about tier 1.
+
+---
+
+## Addendum — tier 2 feasibility, and an honest prior against it
+
+Tier 2 needs GFN2-xTB. Where it can actually run, checked rather than assumed:
+
+| venue | status |
+|---|---|
+| local | `xtb` absent; `tblite` fails to install (no wheel); OpenMM and RDKit present |
+| Explorer (NEU cluster) | connects fine, **no xtb module, no conda on PATH** - needs a from-scratch install |
+| Modal | over its $25 cap and blocked; the $140 hackathon workspace token is still not on this box |
+
+So tier 2 costs a real installation on a cluster before a single number comes out.
+
+**And the prior from related terms is poor, which is the part worth stating before
+spending the time.** The crude, classical versions of "score a pose by its physical
+interaction with the pocket" are already measured, and they do not merely fail - two of
+them are significantly *worse than random*:
+
+| term | Δ vs random | p |
+|---|---|---|
+| `max_clash` (low) | **−0.0359** | 0.0024 |
+| `n_contacts` (high) | −0.0122 | 0.50 |
+| `s_fe_donor_angle` (high) | **−0.0358** | 0.0007 |
+| `n_pocket_residues_touched` (high) | **+0.0108** | — works, and is in the incumbent |
+
+The one member of this family that works is a *count of distinct residues touched*, not an
+energy. Steric energy proxies actively mislead. GFN2-xTB would add electrostatics,
+polarisation and real strain, which is a genuine difference from a clash count - but it is
+a bet that better physics rescues a family where the cheap members are negative.
+
+**Recommendation: do not start the xTB installation on the strength of FINDING 013 alone.**
+The argument for tier 2 is real (it is the only known way to collect the +0.0375 of oracle
+a union pool adds) but it is an argument from elimination, not from positive evidence that
+an interaction energy discriminates here. With 10 days to the interim deadline, a validated
++0.0381 selector already shipping, and ~30 features dead, the expected value is better spent
+on the P450 generalisation set - which is accumulating for free - than on a cluster install
+with a negative prior.
+
+**What would flip this:** a cheap classical interaction energy (OpenMM is already available)
+showing within-ligand variance *and* any positive correlation on held-out ligands. That is
+a bounded experiment and the right gate before the xTB work, rather than after it.
