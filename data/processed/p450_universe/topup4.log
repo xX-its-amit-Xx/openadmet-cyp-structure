@@ -6,3 +6,7 @@ scored: 284 pairs, 33 proteins, 57 construct sequences
   esmfold2 replicates/pair:    median 6, pairs below 6: 0
 
 $ D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\cofold\p450_campaign.py submit --engine protenix_v2 --samples 1 --batch 2 --replicates 12 --limit 150
+  submitted 150 jobs; skipping 2 pairs protenix_v2 cannot fold
+
+$ D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\cofold\p450_campaign.py submit --engine esmfold2 --samples 1 --batch 2 --replicates 6 --limit 150
+  submitted 60 jobs; skipping 24 pairs esmfold2 cannot fold
