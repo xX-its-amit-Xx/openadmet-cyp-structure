@@ -54,6 +54,43 @@ def replicate_counts(engine: str) -> dict[str, int]:
     return {k: len(v) for k, v in out.items()}
 
 
+def refresh_skip_lists() -> dict:
+    """Learn which pairs each engine cannot fold, from the failures it already produced.
+
+    Every engine tested so far has ligands it chokes on, and they are not the same set:
+    esmfold2 refuses the Ir/Ru organometallics, and protenix_v2 turned out to fail on
+    2FDW_D3G / 2FDY_D4G. Without this, each new replicate round re-submits the same
+    doomed pairs - 8 protenix jobs and 15 esmfold2 jobs were burned that way before
+    anyone looked at WHICH pairs were failing rather than how many.
+
+    A pair is only listed once it has failed at least twice, so a single transient
+    server-side error does not permanently exclude a pair that would otherwise fold.
+    """
+    import json
+
+    state = UNI / "campaign.json"
+    if not state.exists():
+        return {}
+    st = json.loads(state.read_text())
+    fails: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
+    for rec in st.get("folds", {}).values():
+        if rec.get("done") != "failed":
+            continue
+        eng = rec.get("engine", "protenix_v2")
+        for pair in rec["pairs"]:
+            fails[eng][pair] += 1
+    out = {}
+    for eng, counter in fails.items():
+        repeat = {p: c for p, c in counter.items() if c >= 2}
+        if not repeat:
+            continue
+        path = UNI / f"{eng}_unsupported.json"
+        prev = set(json.loads(path.read_text()).get("pairs", [])) if path.exists() else set()
+        path.write_text(json.dumps({"pairs": sorted(repeat), "counts": repeat}, indent=1))
+        out[eng] = {"pairs": len(repeat), "new": len(set(repeat) - prev)}
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--submit", action="store_true")
@@ -61,6 +98,11 @@ def main() -> int:
     ap.add_argument("--ref-replicates", type=int, default=6)
     ap.add_argument("--limit", type=int, default=150)
     a = ap.parse_args()
+
+    skips = refresh_skip_lists()
+    for eng, info in sorted(skips.items()):
+        print(f"  {eng}: cannot fold {info['pairs']} pairs"
+              + (f" (+{info['new']} newly learned)" if info["new"] else ""))
 
     scored = UNI / "p450_poses_scored.csv"
     if scored.exists():
