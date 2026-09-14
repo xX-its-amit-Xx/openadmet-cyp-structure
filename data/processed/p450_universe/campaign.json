@@ -454,7 +454,7 @@
    "job_id": "dc085e2d-b101-468f-b7bb-1dc8e4d84812",
    "uniprot": "A0A1M4Y7D5",
    "submitted": 1789330196.3575683,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "486_ee37fc5f": {
    "job_id": "c797d853-d7de-45d3-bee9-ece7e202e4f0",

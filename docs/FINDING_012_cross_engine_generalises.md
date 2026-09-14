@@ -410,3 +410,26 @@ adding a *better* reference engine would help more than adding a more *diverse* 
 is what the esmfold2 experiment already showed at matched depth), and it gives a concrete
 thing to look for - a proxy for "is my reference worse than my pool" computable without
 crystal structures would close the last gap in the drop-day check.
+
+### Attempted: a ground-truth-free detector for "reference worse than pool". It does not work.
+
+If a worse reference engine produced more scattered poses, reference self-consistency would
+flag the failure mode without crystal structures. Tested over 10 proteins with >= 4 pairs:
+
+| proxy | rho with gain | p |
+|---|---|---|
+| ref_spread / pool_spread ratio | **−0.455** | 0.187 |
+| reference spread alone | −0.164 | 0.65 |
+| pool spread alone | −0.139 | 0.70 |
+| mean cross-engine distance | −0.030 | 0.93 |
+
+**Not a usable detector.** The ratio points the right way and catches two of the three
+failures - Q16696 at 2.141 (references more scattered than the pool they judge) and P11509
+at 0.999 - but **misses P20815 at 0.299**, which is squarely inside the successful range
+(0.071 to 0.464). With n = 10 proteins and four proxies tried, nothing here clears
+significance, and the best-of-four selection makes rho = −0.455 weaker than it looks.
+
+So the gap stands: **the failure mode is real, explained, and currently undetectable
+without ground truth.** Recorded as an open problem rather than a solved one. The natural
+next attempt is a proxy built on the reference engine's own confidence or on its agreement
+with a *third* engine, neither of which was tried here.
