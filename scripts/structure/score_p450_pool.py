@@ -121,6 +121,10 @@ def cmd_score(limit: int | None) -> dict:
     else:
         prev = None
 
+    # single-sequence poses are a separate, far worse population (oracle 0.0505 against
+    # 0.8760, 75% catastrophic) and must not be averaged into the main pool - including
+    # them dragged the reported P450 oracle from 0.7368 to 0.6254.
+    skip_engines = {"protenix_v2_ss"}
     rows, n_err = [], 0
     dirs = sorted(p for p in POSES.glob("*") if p.is_dir())
     if limit:
@@ -134,7 +138,8 @@ def cmd_score(limit: int | None) -> dict:
         # poses live in per-engine subdirectories; recurse so a second engine's pool is
         # picked up rather than silently ignored
         files = [f for f in sorted(d.rglob("*.cif"))
-                 if f"{f.parent.name}/{f.name}" not in done]
+                 if f.parent.name not in skip_engines
+                 and f"{f.parent.name}/{f.name}" not in done]
         if not files:
             continue
         try:

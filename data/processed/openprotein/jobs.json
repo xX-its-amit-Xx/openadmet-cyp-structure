@@ -7107,6 +7107,206 @@
     "rep": 3,
     "samples": 1,
     "submitted": 1789347450.081965
+   },
+   {
+    "job_id": "3a0e1291-5443-4500-a404-d3573bfca4e5",
+    "ligands": [
+     "X2Q",
+     "WZN"
+    ],
+    "rep": 3,
+    "samples": 1,
+    "submitted": 1789347453.3984265
+   },
+   {
+    "job_id": "85c48273-293e-44d9-93f8-16650a7a0f4d",
+    "ligands": [
+     "X1I",
+     "X1C"
+    ],
+    "rep": 3,
+    "samples": 1,
+    "submitted": 1789347456.5456207
+   },
+   {
+    "job_id": "4716fd64-1c61-4566-89b8-8f2c888adf47",
+    "ligands": [
+     "O3L",
+     "X0E"
+    ],
+    "rep": 3,
+    "samples": 1,
+    "submitted": 1789347459.6714337
+   },
+   {
+    "job_id": "17a68d54-0415-4f17-9559-15cc51bb491e",
+    "ligands": [
+     "TPF",
+     "X2B"
+    ],
+    "rep": 3,
+    "samples": 1,
+    "submitted": 1789347463.0890784
+   },
+   {
+    "job_id": "32b84d79-4420-4e78-b467-15ec3f0f993c",
+    "ligands": [
+     "G1D",
+     "G0Y"
+    ],
+    "rep": 3,
+    "samples": 1,
+    "submitted": 1789347465.8933647
+   },
+   {
+    "job_id": "08db0fd0-73da-4386-b9cd-e25dcb153826",
+    "ligands": [
+     "O39",
+     "X8S"
+    ],
+    "rep": 3,
+    "samples": 1,
+    "submitted": 1789347468.8238938
+   },
+   {
+    "job_id": "d0c42ba5-c58c-4652-9b75-c8bf78625512",
+    "ligands": [
+     "X1O",
+     "X4E"
+    ],
+    "rep": 4,
+    "samples": 1,
+    "submitted": 1789347471.9800258
+   },
+   {
+    "job_id": "5ac1d3bc-1e93-475c-9e1c-3e95b38ecf8a",
+    "ligands": [
+     "X2Q",
+     "WZN"
+    ],
+    "rep": 4,
+    "samples": 1,
+    "submitted": 1789347474.9297528
+   },
+   {
+    "job_id": "a83607c1-dba6-4b48-b4e9-8632ac41b039",
+    "ligands": [
+     "X1I",
+     "X1C"
+    ],
+    "rep": 4,
+    "samples": 1,
+    "submitted": 1789347478.7841372
+   },
+   {
+    "job_id": "5324ff91-7f04-496a-a0b8-6c7ed481b996",
+    "ligands": [
+     "O3L",
+     "X0E"
+    ],
+    "rep": 4,
+    "samples": 1,
+    "submitted": 1789347481.873665
+   },
+   {
+    "job_id": "19ac8b51-9fd1-4e93-abc3-8a5768de7027",
+    "ligands": [
+     "TPF",
+     "X2B"
+    ],
+    "rep": 4,
+    "samples": 1,
+    "submitted": 1789347484.9553668
+   },
+   {
+    "job_id": "b2d7c746-0959-4abe-8988-3937d6e44867",
+    "ligands": [
+     "G1D",
+     "G0Y"
+    ],
+    "rep": 4,
+    "samples": 1,
+    "submitted": 1789347487.9742267
+   },
+   {
+    "job_id": "bd3aa67b-2ea7-4cca-8d66-42523dca1a7b",
+    "ligands": [
+     "O39",
+     "X8S"
+    ],
+    "rep": 4,
+    "samples": 1,
+    "submitted": 1789347491.0976715
+   },
+   {
+    "job_id": "25e66c62-5ddd-49af-9206-4a6da64bdc91",
+    "ligands": [
+     "X1O",
+     "X4E"
+    ],
+    "rep": 5,
+    "samples": 1,
+    "submitted": 1789347495.1839921
+   },
+   {
+    "job_id": "8b686131-0b94-43e4-9efe-04fabcc9602e",
+    "ligands": [
+     "X2Q",
+     "WZN"
+    ],
+    "rep": 5,
+    "samples": 1,
+    "submitted": 1789347499.032614
+   },
+   {
+    "job_id": "5d448d6e-e919-4977-85fa-e084129df3c0",
+    "ligands": [
+     "X1I",
+     "X1C"
+    ],
+    "rep": 5,
+    "samples": 1,
+    "submitted": 1789347502.0941617
+   },
+   {
+    "job_id": "e3e35a73-50e5-4078-a8e5-e72bb42479e9",
+    "ligands": [
+     "O3L",
+     "X0E"
+    ],
+    "rep": 5,
+    "samples": 1,
+    "submitted": 1789347505.0706618
+   },
+   {
+    "job_id": "db4069fd-8b1f-4b7a-bc2d-79c3c850de53",
+    "ligands": [
+     "TPF",
+     "X2B"
+    ],
+    "rep": 5,
+    "samples": 1,
+    "submitted": 1789347508.1303897
+   },
+   {
+    "job_id": "1e9a0a87-662d-4ca6-be00-e7a52ce1111a",
+    "ligands": [
+     "G1D",
+     "G0Y"
+    ],
+    "rep": 5,
+    "samples": 1,
+    "submitted": 1789347511.0007007
+   },
+   {
+    "job_id": "098ef88a-da95-4855-8c46-3bf49b5a1c25",
+    "ligands": [
+     "O39",
+     "X8S"
+    ],
+    "rep": 5,
+    "samples": 1,
+    "submitted": 1789347515.2561576
    }
   ]
  }

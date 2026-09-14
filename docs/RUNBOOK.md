@@ -196,12 +196,19 @@ well-behaved release. Which pool we submit from now matters as much as the selec
 
 ### Do next, in order
 
-1. **Measure what single-sequence costs** once the 30 probe jobs land: compare
-   `protenix_v2_ss` against `protenix_v2` on pairs that have both. If the cost is small,
-   run the remaining ~150 MSA-blocked targets that way instead of waiting days.
-   **Beware the trap:** a degraded pool has more catastrophes, which INFLATES the
-   cross-engine gain while producing worse submissions. Judge on absolute oracle and pool
-   mean, never on the gain.
+1. ~~Measure what single-sequence costs~~ **MEASURED - single-sequence is NOT usable for
+   the P450 set.** On the 4 pairs with both, MSA gives pool mean 0.5825 / oracle 0.8760
+   with **zero** catastrophic poses; single-sequence gives 0.0505 / 0.0505 with **75%**
+   catastrophic. MSA wins 4/4, mean oracle delta **-0.8255**. Wait for the MSA queue;
+   do not take the shortcut.
+
+   This is exactly the trap that was flagged in advance: a degraded pool has more
+   catastrophes, which INFLATES the cross-engine gain while producing far worse
+   submissions. Judged on absolute oracle, as intended, it is disqualifying.
+
+   Note single-sequence DOES work for one well-studied target - the CYP3A4 probe placed
+   the ligand at Fe 2.23 A. It is diverse and unfamiliar P450s where removing the MSA
+   destroys the prediction. Do not generalise from the CYP3A4 result.
 2. **Re-run the P450 generalisation** as targets accumulate (`score_p450_pool.py score`
    then the cross-engine block). It has held at 17 targets; 185 is the goal.
 3. **Keep P450 depth building** - `p450_campaign.py submit --samples 1 --replicates 8`.
