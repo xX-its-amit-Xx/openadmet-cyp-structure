@@ -577,3 +577,29 @@ significant, and exactly the kind of near-miss FINDING 007 says not to chase. **
 this thread here.** MSAs are adding proteins at ~1 per 20 minutes; at 20+ proteins with
 known outcomes the same test becomes worth re-running, and until then further attempts are
 fishing rather than investigating.
+
+### The outlier failures are permanently underpowered, not awaiting data
+
+I set a resumption condition - "if P20815 survives to 10+ pairs it is a real counterexample"
+- without checking it was reachable. It is not:
+
+| protein | pairs scored | pairs that EXIST in the whole harvest |
+|---|---|---|
+| P20815 | 4 | **5** |
+| Q16696 | 4 | **4** |
+| P11509 | 7 | **9** |
+
+The PDB does not contain more ligand-bound structures for these proteins, so none of the
+three can reach 10 pairs however long the campaign runs. At 4-5 pairs a single pose changing
+rank flips the sign of the per-protein gain, and all three sit between −0.006 and −0.014 -
+well inside that.
+
+**So the honest reading is not "an unexplained mechanism failure" but "three proteins with
+too few ligands to measure."** That also retires the hunt: three hypotheses were tested
+against 10 proteins to explain what is most likely sampling noise in the three smallest of
+them. The eleventh measurement makes the point another way - **41 proteins, gain +0.0529 at
+5.7% catastrophic, positive on 20 of 23** - and the negatives are the same three every time
+precisely because they are the same three tiny samples every time.
+
+What would settle it is more *ligands* for those proteins, which the crystallographic record
+does not have. Recorded as closed-by-data-limit rather than open.
