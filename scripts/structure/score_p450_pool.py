@@ -222,66 +222,101 @@ def cmd_features() -> dict:
     return {"rows": len(out), "pairs": out.pair.nunique()}
 
 
-def cmd_validate(n_boot: int = 2000) -> dict:
-    """Leave-one-TARGET-out, against a random-feature null measured on this same pool."""
-    from cypstruct.select import orientation_consensus_score
+def cmd_validate(n_null: int = 3000) -> dict:
+    """The FINDING 012 generalisation test, as one command.
 
-    d = pd.read_csv(FEATS)
-    d = d[d.groupby("pair").pose.transform("size") >= 3]
-    if d.empty:
-        return {"error": "not enough poses per pair yet"}
-    rng = np.random.default_rng(0)
+    Pool = protenix_v2 poses. Reference = esmfold2 poses of the SAME pair, one per
+    replicate and deduplicated. Cross-engine by construction, on proteins the feature was
+    never developed on, with **no parameters fitted** - so every protein is held out and
+    there is no fold to leak across.
 
-    def mean_pick(score_col: pd.Series) -> float:
-        idx = d.assign(s=score_col.values).groupby("pair").s.idxmax()
-        return float(d.loc[idx].lddt_pli.mean())
+    This replaces an earlier `validate` that fitted three selector weights
+    leave-one-target-out. That version measured +0.0149, inside the noise, because fitting
+    weights on this much data overfits - the same result FINDING 002 got from a fitted
+    ranker. The unweighted single term is what ships and what is tested here.
+    """
+    import re
 
-    rand = float(np.mean([
-        d.groupby("pair").lddt_pli.apply(lambda s: s.sample(1, random_state=i).iloc[0])
-        .mean() for i in range(100)]))
-    oracle = float(d.groupby("pair").lddt_pli.max().mean())
+    from scipy import stats
 
-    # leave-one-target-out: the weight is fit on every OTHER protein
-    picks = []
-    for tgt in d.target_key.unique():
-        tr, te = d[d.target_key != tgt], d[d.target_key == tgt]
-        if tr.empty or te.empty:
+    from cypstruct import pose as P
+    from cypstruct import xengine as X
+
+    sc = pd.read_csv(SCORED)
+
+    def refs(pair: str) -> list:
+        out: dict[int, object] = {}
+        d = POSES / pair / "esmfold2"
+        for f in sorted(d.glob("*.cif")) if d.exists() else []:
+            m = re.match(r"(.+)__r(\d+)s(\d+)\.cif$", f.name)
+            rep = int(m.group(2)) if m else 0
+            if rep in out:
+                continue
+            try:
+                v = X.in_heme_frame(P.load_structure(f))
+            except Exception:
+                continue
+            if v is not None:
+                out[rep] = v
+        return X._dedupe(list(out.values()))
+
+    rows = []
+    for pair in sc.pair.unique():
+        r = refs(pair)
+        if len(r) < 2:
             continue
-        best_w, best_v = 0.5, -1.0
-        for w in (0.0, 0.25, 0.5, 0.75, 1.0):
-            s = orientation_consensus_score(tr.n_pocket_contacts,
-                                            tr.mean_rmsd_to_others, tr.pair,
-                                            contact_weight=w)
-            idx = tr.assign(s=np.asarray(s)).groupby("pair").s.idxmax()
-            v = float(tr.loc[idx].lddt_pli.mean())
-            if v > best_v:
-                best_w, best_v = w, v
-        s = orientation_consensus_score(te.n_pocket_contacts, te.mean_rmsd_to_others,
-                                        te.pair, contact_weight=best_w)
-        idx = te.assign(s=np.asarray(s)).groupby("pair").s.idxmax()
-        picks.extend(te.loc[idx].lddt_pli.tolist())
-    selected = float(np.mean(picks)) if picks else float("nan")
+        d = POSES / pair / "protenix_v2"
+        for f in sorted(d.glob("*.cif")) if d.exists() else []:
+            try:
+                v = X.in_heme_frame(P.load_structure(f))
+            except Exception:
+                continue
+            if v is None:
+                continue
+            rows.append({"pair": pair, "pose": f"protenix_v2/{f.name}",
+                         "xeng": X.xeng_score(v, r)})
+    if not rows:
+        return {"error": "no pairs with >= 2 independent esmfold2 references yet"}
 
-    # the null that FINDING 007 insists on: what does a RANDOM feature score here?
-    null = []
-    for _ in range(min(n_boot, 500)):
-        s = rng.normal(size=len(d))
-        null.append(mean_pick(pd.Series(s)) - rand)
-    null = np.array(null)
+    m = sc.merge(pd.DataFrame(rows), on=["pair", "pose"])
+    m = m[m.groupby("pair").pose.transform("size") >= 3]
+    rng = np.random.default_rng(0)
+    rand = float(np.mean([
+        m.groupby("pair").lddt_pli.apply(lambda s: s.sample(1, random_state=i).iloc[0])
+        .mean() for i in range(300)]))
+    oracle = float(m.groupby("pair").lddt_pli.max().mean())
+    null = np.array([
+        float(m.assign(s=rng.normal(size=len(m)))
+              .pipe(lambda t: t.loc[t.groupby("pair").s.idxmax()]).lddt_pli.mean()) - rand
+        for _ in range(n_null)])
+    sel = float(m.loc[m.groupby("pair").xeng.idxmin()].lddt_pli.mean())
+    gain = sel - rand
+    rs = np.array([stats.spearmanr(g.xeng, g.lddt_pli).statistic
+                   for _p, g in m.groupby("pair") if g.xeng.nunique() >= 3])
+    rs = rs[np.isfinite(rs)]
+
+    per = []
+    for t, g in m.groupby("uniprot"):
+        if g.pair.nunique() < 4:
+            continue
+        r0 = float(np.mean([
+            g.groupby("pair").lddt_pli.apply(lambda s: s.sample(1, random_state=i).iloc[0])
+            .mean() for i in range(100)]))
+        s0 = float(g.loc[g.groupby("pair").xeng.idxmin()].lddt_pli.mean())
+        per.append((t, int(g.pair.nunique()), round(s0 - r0, 4)))
 
     return {
-        "pairs": int(d.pair.nunique()), "targets": int(d.target_key.nunique()),
-        "poses": int(len(d)),
+        "poses": len(m), "pairs": int(m.pair.nunique()),
+        "proteins": int(m.uniprot.nunique()),
+        "construct_sequences": int(m.target_key.nunique()),
+        "catastrophic_frac": round(float((m.lddt_pli < 0.1).mean()), 4),
         "random": round(rand, 4), "oracle": round(oracle, 4),
-        "selected_LOTO": round(selected, 4),
-        "gain_vs_random": round(selected - rand, 4),
-        "null_sd": round(float(null.std()), 4),
-        "null_p95": round(float(np.percentile(null, 95)), 4),
+        "selected": round(sel, 4), "gain": round(gain, 4),
         "null_p99": round(float(np.percentile(null, 99)), 4),
-        "empirical_p": round(float((null >= (selected - rand)).mean()), 4),
-        "verdict": ("BEATS the null on held-out TARGETS"
-                    if selected - rand > np.percentile(null, 99)
-                    else "inside the noise floor - do not call it promising"),
+        "empirical_p": round(float((null >= gain).mean()), 4),
+        "within_pair_rho": round(float(rs.mean()), 4),
+        "proteins_positive": f"{sum(1 for x in per if x[2] > 0)}/{len(per)}",
+        "per_protein": sorted(per, key=lambda x: -x[2]),
     }
 
 

@@ -328,7 +328,7 @@
    "job_id": "d208e5a1-ab66-464b-ac1b-d725132701cb",
    "uniprot": "P05093",
    "submitted": 1789330178.1650462,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "388_7e6828a0": {
    "job_id": "d6b5f94c-4eed-4af1-b3d8-2027c8c841e8",
@@ -30557,7 +30557,8 @@
    "rep": 7,
    "engine": "protenix_v2",
    "single_sequence": false,
-   "submitted": 1789357420.6957972
+   "submitted": 1789357420.6957972,
+   "done": true
   },
   "ef61fa21-48c9-43b5-828a-d5296a803558": {
    "target_key": "418_eb9ea735",
@@ -32114,7 +32115,8 @@
    "rep": 1,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357690.6173522
+   "submitted": 1789357690.6173522,
+   "done": true
   },
   "05880636-6333-4279-9397-ac525448559b": {
    "target_key": "455_48438573",
@@ -32130,7 +32132,8 @@
    "rep": 1,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357693.5296261
+   "submitted": 1789357693.5296261,
+   "done": true
   },
   "ec57d9ba-56d1-4594-9839-7016ef815401": {
    "target_key": "418_b02dd5c4",
@@ -32146,7 +32149,8 @@
    "rep": 2,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357696.1709507
+   "submitted": 1789357696.1709507,
+   "done": true
   },
   "0ef1c0a1-7563-4345-be79-5dcd0e2f4d9b": {
    "target_key": "455_48438573",
@@ -32162,7 +32166,8 @@
    "rep": 2,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357698.804229
+   "submitted": 1789357698.804229,
+   "done": true
   },
   "e9b20540-1c2f-4c8c-be13-9e02d6ba127a": {
    "target_key": "455_48438573",
@@ -32178,7 +32183,8 @@
    "rep": 2,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357702.478083
+   "submitted": 1789357702.478083,
+   "done": true
   },
   "a807ec76-bfba-4769-a71d-bc97c1dc836d": {
    "target_key": "418_b02dd5c4",
@@ -32194,7 +32200,8 @@
    "rep": 3,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357705.084121
+   "submitted": 1789357705.084121,
+   "done": true
   },
   "d7f24134-ce97-4e0a-b985-867b0fde2060": {
    "target_key": "455_48438573",
@@ -32210,7 +32217,8 @@
    "rep": 3,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357707.780968
+   "submitted": 1789357707.780968,
+   "done": true
   },
   "62c7e133-e0df-4720-89e1-ef6a7778a96c": {
    "target_key": "455_48438573",
@@ -32226,7 +32234,8 @@
    "rep": 3,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357710.305583
+   "submitted": 1789357710.305583,
+   "done": true
   },
   "6b400b57-e860-4f0f-9e7e-283dcfaaab6a": {
    "target_key": "418_b02dd5c4",
@@ -32242,7 +32251,8 @@
    "rep": 4,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357713.2726958
+   "submitted": 1789357713.2726958,
+   "done": true
   },
   "02aade40-9494-496b-8a7d-1dd090595acb": {
    "target_key": "455_48438573",
@@ -32258,7 +32268,8 @@
    "rep": 4,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357716.3887446
+   "submitted": 1789357716.3887446,
+   "done": true
   },
   "b9d3481b-0b91-4ccf-affe-b86fc28704a1": {
    "target_key": "455_48438573",
@@ -32274,7 +32285,8 @@
    "rep": 4,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357719.036682
+   "submitted": 1789357719.036682,
+   "done": true
   },
   "6d86cddf-4212-45cf-8e7e-2c5562d7df38": {
    "target_key": "418_b02dd5c4",
@@ -32290,7 +32302,8 @@
    "rep": 5,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357723.0529978
+   "submitted": 1789357723.0529978,
+   "done": true
   },
   "8df214ba-8a73-4b1f-a486-2b94e5d2da3e": {
    "target_key": "455_48438573",
@@ -32306,7 +32319,8 @@
    "rep": 5,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357725.642206
+   "submitted": 1789357725.642206,
+   "done": true
   },
   "545e7d72-1879-4a9e-a292-9b5d4abc699b": {
    "target_key": "455_48438573",
@@ -32322,7 +32336,8 @@
    "rep": 5,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789357728.2999823
+   "submitted": 1789357728.2999823,
+   "done": true
   },
   "dc0ac95a-e5cf-47da-a5a9-99fb37f632ee": {
    "target_key": "487_32859637",
