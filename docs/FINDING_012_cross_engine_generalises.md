@@ -692,3 +692,31 @@ The batch carrying these 10 new proteins ran **163 minutes** against the previou
 thresholds considered would have discarded exactly the data that produced this measurement.
 The signal that justified waiting was that **MSAs kept completing throughout** - the
 platform was demonstrably processing work, so "slow" was better supported than "stuck".
+
+## Fifteenth measurement — the curves cross, which is worth stating precisely
+
+**78 proteins in the test, 147 construct sequences, 418 pairs, 5,110 poses.** Catastrophic
+4.32%, selected 0.7517 against random 0.7148, **gain +0.0369** (null 99th +0.0086, p = 0.0),
+rho −0.2049, positive on **26 of 30**.
+
+| | catastrophic | gain |
+|---|---|---|
+| P450, 14th | 4.47% | +0.0398 |
+| **P450, 15th** | **4.32%** | **+0.0369** |
+| **CYP3A4 anchor** | **0.2%** | **+0.0381** |
+
+**The P450 figure has now passed slightly BELOW the anchor** (+0.0369 vs +0.0381) rather
+than settling onto it. The within-P450 series remains monotone - the gain fell as its
+catastrophe rate fell, exactly as before - but the two settings are no longer ordered the
+way a pure catastrophe-rate account would put them: P450 still has 20x the catastrophe rate
+and now a marginally lower gain.
+
+**What that means, stated carefully.** The difference is 0.0012 - about 3%, and well inside
+what a single re-measurement moves this number by. So the honest reading is that the two
+settings are now **equal within noise**, not that P450 has genuinely overtaken CYP3A4. What
+the crossing does rule out is any claim that catastrophe rate is the *only* determinant: at
+4.32% against 0.2% the gains should still differ visibly, and they do not.
+
+So the account survives in its useful form - the gain tracks pool quality, and predicting it
+from pool disagreement works - but it is not a one-variable law. Something else contributes
+at the margin, and this data cannot say what.
