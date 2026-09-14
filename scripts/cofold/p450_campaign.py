@@ -105,7 +105,8 @@ def cmd_msa_status() -> dict:
 
 
 def cmd_submit(samples: int, batch: int, limit: int | None,
-               replicates: int = 1, engine: str = "protenix_v2") -> dict:
+               replicates: int = 1, engine: str = "protenix_v2",
+               single_sequence: bool = False) -> dict:
     """Fold every pair whose target MSA is ready, grouped so a job shares one target.
 
     `replicates`, not `samples`, is what builds a pool - see FINDING 009. Within one job
@@ -117,23 +118,42 @@ def cmd_submit(samples: int, batch: int, limit: int | None,
     s = connect()
     st = _state()
     df = pd.read_csv(SET)
-    ready = {k for k, v in st["msa"].items() if v.get("status") == "SUCCESS"}
-    print(f"{len(ready)} of {df.target_key.nunique()} targets have an MSA", flush=True)
+    if single_sequence:
+        # No MSA needed, so EVERY target is available immediately. The alignment queue is
+        # serial at roughly one per 20 minutes, so waiting for all 185 costs about two
+        # days; single-sequence mode trades some prediction quality for all of it back.
+        ready = set(df.target_key)
+        print(f"single-sequence mode: all {len(ready)} targets available", flush=True)
+    else:
+        ready = {k for k, v in st["msa"].items() if v.get("status") == "SUCCESS"}
+        print(f"{len(ready)} of {df.target_key.nunique()} targets have an MSA", flush=True)
 
     df["pair"] = df.pdb + "_" + df.id
+    # Some ligands make an engine fail server-side every single time - esmfold2 cannot
+    # handle the Ir/Ru organometallics, and each replicate re-failed on the same pairs,
+    # burning queue slots for nothing. Skip what is already known not to work here.
+    skip_path = (DATA_PROCESSED / "p450_universe" / f"{engine}_unsupported.json")
+    if skip_path.exists():
+        skip = set(json.loads(skip_path.read_text()).get("pairs", []))
+        before = len(df)
+        df = df[~df.pair.isin(skip)]
+        if before != len(df):
+            print(f"skipping {before - len(df)} pairs {engine} cannot fold", flush=True)
     n = 0
     # Group by target: every complex in one job must carry the same MSA future, and
     # grouping also means one MSA object is reused rather than reloaded per complex.
     for rep in range(replicates):
       claimed = {p for f in st["folds"].values()
                  if f.get("rep", 0) == rep
-                 and f.get("engine", "protenix_v2") == engine for p in f["pairs"]}
+                 and f.get("engine", "protenix_v2") == engine
+                 and f.get("single_sequence", False) == single_sequence
+                 for p in f["pairs"]}
       todo = df[df.target_key.isin(ready) & ~df.pair.isin(claimed)]
       print(f"rep {rep}: {len(todo)} pairs to fold", flush=True)
       for key, grp in todo.groupby("target_key"):
         if limit and n >= limit:
             break
-        msa = s.load_job(st["msa"][key]["job_id"])
+        msa = None if single_sequence else s.load_job(st["msa"][key]["job_id"])
         seq = grp.sequence.iloc[0]
         rows = list(grp.itertuples())
         for i in range(0, len(rows), batch):
@@ -147,7 +167,8 @@ def cmd_submit(samples: int, batch: int, limit: int | None,
                 st["folds"][str(fut.job_id)] = {
                     "target_key": key, "pairs": [r.pair for r in chunk],
                     "ligands": [r.id for r in chunk], "samples": samples,
-                    "rep": rep, "engine": engine, "submitted": time.time()}
+                    "rep": rep, "engine": engine, "single_sequence": single_sequence,
+                    "submitted": time.time()}
                 _save(st)
                 n += 1
                 print(f"  {key} [{','.join(r.id for r in chunk)}] -> {fut.job_id}",
@@ -186,6 +207,8 @@ def cmd_collect() -> dict:
         for idx, pair in enumerate(rec["pairs"]):
             rep = rec.get("rep", 0)
             eng = rec.get("engine", "protenix_v2")
+            if rec.get("single_sequence"):
+                eng = eng + "_ss"      # kept apart: different inputs, different pool
             # per-engine subdirectory: the cross-engine feature needs to know WHICH
             # engine produced a pose, and a flat directory silently merges them
             d = OUT / pair / eng
@@ -219,6 +242,8 @@ if __name__ == "__main__":
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--replicates", type=int, default=1,
                     help="separate jobs per pair - THIS is what samples the ligand")
+    ap.add_argument("--single-sequence", action="store_true",
+                    help="no MSA; unblocks every target at once and works on all engines")
     ap.add_argument("--engine", default="protenix_v2",
                     help="protenix_v2 | protenix | esmfold2 (all verified to run here)")
     a = ap.parse_args()
@@ -229,8 +254,8 @@ if __name__ == "__main__":
     elif a.cmd == "msa-status":
         print(json.dumps(cmd_msa_status(), indent=2))
     elif a.cmd == "submit":
-        print(json.dumps(cmd_submit(a.samples, a.batch, lim, a.replicates, a.engine),
-                         indent=2))
+        print(json.dumps(cmd_submit(a.samples, a.batch, lim, a.replicates, a.engine,
+                                    a.single_sequence), indent=2))
     elif a.cmd == "collect":
         print(json.dumps(cmd_collect(), indent=2))
     else:

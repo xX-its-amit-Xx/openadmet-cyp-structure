@@ -1,0 +1,37 @@
+single-sequence mode: all 185 targets available
+rep 0: 493 pairs to fold
+  368_3c6d23e6 [36Y,CPZ] -> daafdaba-c463-47a1-9369-cf75e9ad2974
+  368_3c6d23e6 [3SQ,36Y] -> a28fa3a4-2ba5-43e5-9185-388bdeb4844c
+  388_7e6828a0 [A1MAI,L0O] -> de1adc9d-0f00-4907-93ad-d4914d645660
+  388_7e6828a0 [A1MAJ] -> a281effc-e335-4f7b-b92b-b06f3005d570
+  390_41f96d07 [A1EGF] -> 8ff115b5-2c06-43db-b4a9-ed16a0f35556
+  393_40400e22 [DAO] -> d5505ffc-45e6-4344-b50b-f5fa7650d2b4
+  393_47d43e97 [DIF] -> c95ce55c-77c6-4d5b-b52f-67d9e74aa2c7
+  393_7d481b62 [4IA] -> c216ba53-ac8f-4061-81ac-c8b9548edbff
+  393_c3358fa1 [8QM,4IA] -> 65f04176-3286-436d-a1e7-835c48ed11c7
+  393_c3358fa1 [EH1,81J] -> 815579f4-f53f-495c-860f-2958b1070af3
+  393_c3358fa1 [EJD,EJV] -> 088aada8-b41d-4322-baf4-9c0ef6b85024
+  393_c3358fa1 [HX1,81M] -> 5da305bc-e73c-43eb-aa72-0e5c9d119892
+  393_c3358fa1 [QZP] -> 05d40995-0aef-4ddd-8303-c09a181e25ce
+  394_ffc37182 [1ED] -> 019e07d3-beaf-4bef-abc8-7fd79548d4c9
+  395_f9cfd803 [TQU,QFD] -> 1e702a70-4bf2-451c-9b24-5c1552983a81
+  395_f9cfd803 [KEQ,YTT] -> c9a216d8-2eb9-4374-85e1-038d57e81caf
+  395_f9cfd803 [1GB,YTT] -> 0ab0734b-5147-43f2-b6dd-fc581e75908d
+  395_f9cfd803 [YTT,1G7] -> 6c2d9e33-389a-4a82-b8c7-e77538241908
+  396_475f6489 [ID3] -> 299bf03f-1c2a-4811-b368-fa7179c5a215
+  396_672140e8 [9KE,9KB] -> c29d36ed-2e54-42d9-89c5-db8aa2d27450
+  396_672140e8 [69M,TZM] -> c2abb6b9-6021-4aa8-b68d-f3521b2b3aae
+  396_672140e8 [GGJ,69W] -> f66d5462-3db4-4811-b73f-2eddf871509c
+  396_672140e8 [TPF,MQN] -> 528ff7a9-d6dc-4373-b999-93ecb6c04c18
+  396_672140e8 [69S,KEQ] -> 733c7bb2-f6d6-4eb5-8715-82669890096d
+  396_672140e8 [KEZ,Q47] -> 4f79f0cc-5ece-4a59-85d2-99a92632a81a
+  396_672140e8 [KEH,N5Z] -> 07e0894a-f27b-42df-9508-dd83439c4b93
+  396_672140e8 [N5W,KEB] -> ae923407-9ae3-46b0-acbf-5888d0119ab9
+  396_672140e8 [KEW,ULZ] -> ff0c7a9e-ec87-4916-b667-1b692f4c6216
+  396_672140e8 [OUC,KE5] -> 75039d81-694d-4dbb-950a-5ac972008b3f
+  396_672140e8 [N55,R2H] -> b841faff-ea5f-46b0-b143-952a885ad58a
+rep 1: 493 pairs to fold
+{
+  "jobs_submitted": 30,
+  "total_jobs": 587
+}
