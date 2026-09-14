@@ -633,3 +633,30 @@ That convergence is the strongest form the evidence takes. Two settings that dif
 protein, engine, pool construction and MSA source are arriving at the same number as their
 catastrophe rates equalise - which is what "the gain is a property of the pool" predicts and
 what "the feature behaves differently on different proteins" cannot produce.
+
+## Thirteenth measurement — within 12% of the anchor
+
+**47 proteins in the test (53 scored), 88 construct sequences, 338 pairs, 4,448 poses.**
+Catastrophic 4.81%, selected 0.7519 against random 0.7091, **gain +0.0428** (null 99th
++0.0102, p = 0.0), rho −0.1973, positive on **24 of 27**.
+
+| measurement | catastrophic | gain |
+|---|---|---|
+| 1st | 19.3% | +0.3006 |
+| 5th | 8.9% | +0.0908 |
+| 9th | 6.07% | +0.0566 |
+| 12th | 5.23% | +0.0465 |
+| **13th** | **4.81%** | **+0.0428** |
+| **CYP3A4 anchor** | **0.2%** | **+0.0381** |
+
+The P450 measurement is now **within 12% of the CYP3A4 anchor**, having started 8x above it,
+and has decreased monotonically at every one of thirteen re-measurements while the protein
+count grew from 17 to 47.
+
+Two settings - different protein, different pool engine, different reference engine,
+different MSA source, different construct sequences - are arriving at the same number as
+their catastrophe rates converge. Nothing was tuned between measurements; the pools improved
+on their own as replicates accumulated, and each re-run is its own commit in the history.
+
+The three negatives are unchanged and remain the three proteins with 4, 4 and 7 available
+pairs - the permanently underpowered set, not a systematic failure.
