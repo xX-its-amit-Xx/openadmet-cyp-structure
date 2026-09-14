@@ -433,3 +433,38 @@ So the gap stands: **the failure mode is real, explained, and currently undetect
 without ground truth.** Recorded as an open problem rather than a solved one. The natural
 next attempt is a proxy built on the reference engine's own confidence or on its agreement
 with a *third* engine, neither of which was tried here.
+
+### Second attempt: triangulation with a third engine. Also fails, and the near-miss is instructive.
+
+Added Protenix-v1 across the P450 set as a third opinion (one replicate - it is
+deterministic), to test whether "esmfold2 disagrees with BOTH Protenix checkpoints" flags a
+bad reference without ground truth. 97 pairs have all three engines.
+
+**One worry was misplaced.** Same-family agreement is the *weaker* quality signal, not the
+stronger one: v1↔v2 correlates with Protenix pose quality at ρ = −0.178 (p = 0.08) while
+cross-family v2↔esmfold2 reaches ρ = −0.327 (p = 0.001). Agreement between two checkpoints
+of one architecture carries less information than agreement across architectures.
+
+**And a promising signal appeared.** Cross-engine distance predicts the reference-quality
+gap at **ρ = −0.401, p < 0.0001** over 97 pairs - ground-truth-free, and far stronger than
+the self-consistency proxy that failed earlier (ρ = −0.030).
+
+**Then acting on it fails.** Excluding high cross-distance pairs *lowers* the gain:
+
+| subset | random | selected | gain |
+|---|---|---|---|
+| all pairs | 0.6756 | 0.7338 | **+0.0583** |
+| cross-dist below p90 | 0.6942 | 0.7516 | +0.0574 |
+| cross-dist below p75 | 0.7157 | 0.7637 | +0.0480 |
+| cross-dist below p50 | 0.7617 | 0.8045 | +0.0428 |
+
+The random baseline **rises** from 0.676 to 0.762 as pairs are excluded, which gives it
+away: **high cross-engine distance marks HARD pairs, not bad-reference pairs.** On a hard
+target both engines do worse, so the quality gap and the distance move together - the
+ρ = −0.401 is real and confounded. Excluding on it discards exactly the cases where the
+feature earns its keep.
+
+**The two failure modes need opposite responses** - "hard" means apply the feature, it pays
+most here; "reference worse than pool" means do not - and cross-engine distance cannot tell
+them apart. Gap still open, now with two specific dead ends recorded so the next attempt
+starts somewhere else.
