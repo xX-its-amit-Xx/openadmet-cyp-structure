@@ -14062,7 +14062,8 @@
    "rep": 3,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789348787.336615
+   "submitted": 1789348787.336615,
+   "done": true
   },
   "5c3c1a13-49c5-4e34-ac2f-bc373d3b5c20": {
    "target_key": "476_1eccdb5d",
@@ -14127,7 +14128,8 @@
    "rep": 3,
    "engine": "esmfold2",
    "single_sequence": false,
-   "submitted": 1789348798.9978447
+   "submitted": 1789348798.9978447,
+   "done": true
   },
   "55b51c21-64ba-4a19-827c-3c6cccd3de69": {
    "target_key": "476_84104a34",
