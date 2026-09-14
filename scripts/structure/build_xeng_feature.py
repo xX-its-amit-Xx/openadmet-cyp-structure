@@ -52,11 +52,26 @@ def main() -> int:
                     help="engine pool names under data/processed/openprotein/op1/")
     ap.add_argument("--pattern", default="*.cif")
     ap.add_argument("--min-depth", type=int, default=4)
+    ap.add_argument("--frozen",
+                    default=str(DATA_PROCESSED / "reference_set_cyp3a4.npz"),
+                    help="frozen reference set, used when the raw pools are archived")
     ap.add_argument("--force", action="store_true",
                     help="write even if the reference set is too shallow (do not)")
     a = ap.parse_args()
 
-    ref = X.reference_poses([OP_ROOT / e for e in a.refs], P.load_structure)
+    # Prefer the raw pools; fall back to the frozen reference set if they have been
+    # archived. A 2.2 GB pool deduplicates to ~240 KB of actual reference poses, so the
+    # frozen copy is what makes the selector reproducible after the mmCIFs go to cold
+    # storage - and stops the pool looking like dead weight that is safe to delete.
+    pools = [OP_ROOT / e for e in a.refs]
+    if all(p.exists() for p in pools):
+        ref = X.reference_poses(pools, P.load_structure)
+    elif Path(a.frozen).exists():
+        ref = X.load_reference(a.frozen)
+        print(f"raw pools absent; using frozen reference {Path(a.frozen).name}")
+    else:
+        print(f"neither the pools {[str(p) for p in pools]} nor {a.frozen} exist")
+        return 1
     depth = X.reference_depth(ref)
     print(f"reference engines: {a.refs}")
     print(f"reference depth: {  {k: v for k, v in depth.items() if k != 'note'} }")

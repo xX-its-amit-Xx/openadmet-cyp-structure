@@ -36,13 +36,15 @@ costs signal when it is averaged into the mean.
 """
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
 import numpy as np
 
 __all__ = ["heme_frame", "in_heme_frame", "chamfer", "reference_poses",
-           "reference_depth", "xeng_score", "select"]
+           "reference_depth", "save_reference", "load_reference", "xeng_score",
+           "select"]
 
 _FNAME = re.compile(r"(.+)__r(\d+)s(\d+)\.cif$")
 
@@ -146,6 +148,40 @@ def _dedupe(poses: list[np.ndarray], tol: float = 0.05) -> list[np.ndarray]:
         if not any(len(q) == len(p) and float(np.abs(q - p).max()) < tol for q in keep):
             keep.append(p)
     return keep
+
+
+def save_reference(ref: dict[str, list[np.ndarray]], path) -> dict:
+    """Freeze a reference set to one small npz so the raw pool can be archived.
+
+    The pool behind a reference set is large - 2.2 GB of mmCIF for the CYP3A4 Protenix
+    pools - but what survives deduplication is about seven 40x3 float arrays per ligand,
+    a few hundred KB in total. Keeping the frozen set means the selector stays
+    reproducible after the poses are pushed to cold storage, and it removes the temptation
+    to delete something the feature silently depends on.
+    """
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    flat, index, off = [], {}, 0
+    for lig, poses in sorted(ref.items()):
+        spans = []
+        for v in poses:
+            flat.append(np.asarray(v, np.float32))
+            spans.append((off, len(v)))
+            off += len(v)
+        index[lig] = spans
+    stacked = np.concatenate(flat) if flat else np.zeros((0, 3), np.float32)
+    np.savez_compressed(path, xyz=stacked,
+                        index=np.array(json.dumps(index), dtype=object))
+    return {"ligands": len(ref), "poses": len(flat),
+            "atoms": int(stacked.shape[0]), "kb": path.stat().st_size // 1024}
+
+
+def load_reference(path) -> dict[str, list[np.ndarray]]:
+    """Read back a frozen reference set; interchangeable with `reference_poses`."""
+    d = np.load(Path(path), allow_pickle=True)
+    xyz = d["xyz"]
+    index = json.loads(str(d["index"]))
+    return {lig: [xyz[o:o + n] for o, n in spans] for lig, spans in index.items()}
 
 
 def reference_depth(ref: dict[str, list[np.ndarray]]) -> dict:
