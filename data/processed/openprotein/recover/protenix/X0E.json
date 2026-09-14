@@ -1,0 +1,12 @@
+{
+ "ligand": "X0E",
+ "engine": "protenix",
+ "files": [
+  "X0E__r0s0.cif",
+  "X0E__r1s0.cif",
+  "X0E__r2s0.cif",
+  "X0E__r3s0.cif",
+  "X0E__r4s0.cif",
+  "X0E__r5s0.cif"
+ ]
+}

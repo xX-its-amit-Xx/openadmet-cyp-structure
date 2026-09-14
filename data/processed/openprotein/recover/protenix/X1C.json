@@ -1,0 +1,12 @@
+{
+ "ligand": "X1C",
+ "engine": "protenix",
+ "files": [
+  "X1C__r0s0.cif",
+  "X1C__r1s0.cif",
+  "X1C__r2s0.cif",
+  "X1C__r3s0.cif",
+  "X1C__r4s0.cif",
+  "X1C__r5s0.cif"
+ ]
+}
