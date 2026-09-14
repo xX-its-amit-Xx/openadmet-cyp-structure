@@ -50,6 +50,11 @@ a meaningless word here.
 - `-zm - zx` looked best at n=63 (+0.0305) and fell to +0.0183 at full depth — **retracted**.
 - "Checkpoint diversity beats replicate count" rested on one data point — **retracted**; adding esmfold2 at matched depth halves the gain.
 - 009's scope widened twice: Protenix-only → all OpenProtein engines; two working engines → six.
+- **"The reference must be better than the pool"** — proposed to explain 012's outlier
+  failures, then **contradicted by CYP3A4**, whose reference averages a third of its pool's
+  quality and works anyway. Two successor hypotheses (reference self-consistency, reference
+  oracle) also failed. P20815 remains an unexplained failure; the thread is stopped until
+  20+ proteins have known outcomes.
 - The "shallow pools" and "reference depth" caveats on 012 were **tested and retired** rather than repeated.
 
 Each is left next to the reasoning that produced it, because the reasoning is what repeats.
