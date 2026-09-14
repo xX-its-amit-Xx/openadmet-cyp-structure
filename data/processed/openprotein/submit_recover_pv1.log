@@ -24,3 +24,30 @@ protenix rep 2: 14 ligands, 1 samples, 2 per job
   r2[7] O39,X8S -> d62f2d8c-2f95-4215-a7c7-44d052290fad
 protenix rep 3: 14 ligands, 1 samples, 2 per job
   r3[1] X1O,X4E -> 9c750370-abe8-4f5f-9707-522652573b7f
+  r3[2] X2Q,WZN -> 3a0e1291-5443-4500-a404-d3573bfca4e5
+  r3[3] X1I,X1C -> 85c48273-293e-44d9-93f8-16650a7a0f4d
+  r3[4] O3L,X0E -> 4716fd64-1c61-4566-89b8-8f2c888adf47
+  r3[5] TPF,X2B -> 17a68d54-0415-4f17-9559-15cc51bb491e
+  r3[6] G1D,G0Y -> 32b84d79-4420-4e78-b467-15ec3f0f993c
+  r3[7] O39,X8S -> 08db0fd0-73da-4386-b9cd-e25dcb153826
+protenix rep 4: 14 ligands, 1 samples, 2 per job
+  r4[1] X1O,X4E -> d0c42ba5-c58c-4652-9b75-c8bf78625512
+  r4[2] X2Q,WZN -> 5ac1d3bc-1e93-475c-9e1c-3e95b38ecf8a
+  r4[3] X1I,X1C -> a83607c1-dba6-4b48-b4e9-8632ac41b039
+  r4[4] O3L,X0E -> 5324ff91-7f04-496a-a0b8-6c7ed481b996
+  r4[5] TPF,X2B -> 19ac8b51-9fd1-4e93-abc3-8a5768de7027
+  r4[6] G1D,G0Y -> b2d7c746-0959-4abe-8988-3937d6e44867
+  r4[7] O39,X8S -> bd3aa67b-2ea7-4cca-8d66-42523dca1a7b
+protenix rep 5: 14 ligands, 1 samples, 2 per job
+  r5[1] X1O,X4E -> 25e66c62-5ddd-49af-9206-4a6da64bdc91
+  r5[2] X2Q,WZN -> 8b686131-0b94-43e4-9efe-04fabcc9602e
+  r5[3] X1I,X1C -> 5d448d6e-e919-4977-85fa-e084129df3c0
+  r5[4] O3L,X0E -> e3e35a73-50e5-4078-a8e5-e72bb42479e9
+  r5[5] TPF,X2B -> db4069fd-8b1f-4b7a-bc2d-79c3c850de53
+  r5[6] G1D,G0Y -> 1e9a0a87-662d-4ca6-be00-e7a52ce1111a
+  r5[7] O39,X8S -> 098ef88a-da95-4855-8c46-3bf49b5a1c25
+{
+ "key": "recover/protenix",
+ "submitted_jobs": 42,
+ "total_batches": 42
+}
