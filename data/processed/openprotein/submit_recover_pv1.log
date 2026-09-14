@@ -1,0 +1,26 @@
+protenix rep 0: 14 ligands, 1 samples, 2 per job
+  r0[1] X1O,X4E -> 0847338b-a035-4971-af58-c16d86ed591d
+  r0[2] X2Q,WZN -> aad21576-2ebc-4842-a8a2-e234b0785ef0
+  r0[3] X1I,X1C -> dd30022b-052c-4a2e-9792-ad60884da96a
+  r0[4] O3L,X0E -> 68b36e82-0ac0-4c7c-a744-46a17df055a0
+  r0[5] TPF,X2B -> 424dc020-7a2d-4b64-b703-27a1c0355c50
+  r0[6] G1D,G0Y -> 4e9dd498-40e3-405f-8ba0-29300153bc40
+  r0[7] O39,X8S -> 35897714-497d-4e95-b43b-129dcd143742
+protenix rep 1: 14 ligands, 1 samples, 2 per job
+  r1[1] X1O,X4E -> 4a5d6577-791c-4847-aeb5-be2dc82d5886
+  r1[2] X2Q,WZN -> d5e520bf-6104-4b5c-b463-8b2e77c5edfa
+  r1[3] X1I,X1C -> 62dd622a-9dba-4b73-b78e-e8310f55c549
+  r1[4] O3L,X0E -> 95f5d756-bad2-4ad5-a386-98dad09c19e1
+  r1[5] TPF,X2B -> 35f48ad5-8b7d-4e00-b42f-f841d8781d51
+  r1[6] G1D,G0Y -> 1db08b86-2dba-4aaf-b454-6043b2af03a8
+  r1[7] O39,X8S -> 0580c268-0d63-41ce-95dd-ecb8c6b965ce
+protenix rep 2: 14 ligands, 1 samples, 2 per job
+  r2[1] X1O,X4E -> 4924f5ef-66f8-4469-a685-1abd9ad2dc22
+  r2[2] X2Q,WZN -> 70ce21e3-f1fa-435f-bdcf-2b8a2e44369e
+  r2[3] X1I,X1C -> cc12bde4-e906-4e3f-8027-61624bdd6be3
+  r2[4] O3L,X0E -> cbe4a83b-8c3e-42c8-927f-14c975f2759c
+  r2[5] TPF,X2B -> c7b09727-3104-4408-bf4d-c72d8d4c5f53
+  r2[6] G1D,G0Y -> 62146448-7f3c-460c-a942-d199019e1785
+  r2[7] O39,X8S -> d62f2d8c-2f95-4215-a7c7-44d052290fad
+protenix rep 3: 14 ligands, 1 samples, 2 per job
+  r3[1] X1O,X4E -> 9c750370-abe8-4f5f-9707-522652573b7f

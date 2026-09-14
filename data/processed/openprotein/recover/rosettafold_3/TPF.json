@@ -1,0 +1,8 @@
+{
+ "ligand": "TPF",
+ "engine": "rosettafold_3",
+ "files": [
+  "TPF__r0s0.cif",
+  "TPF__r3s0.cif"
+ ]
+}

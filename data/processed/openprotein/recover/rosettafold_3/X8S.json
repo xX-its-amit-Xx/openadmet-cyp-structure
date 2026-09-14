@@ -1,0 +1,9 @@
+{
+ "ligand": "X8S",
+ "engine": "rosettafold_3",
+ "files": [
+  "X8S__r0s0.cif",
+  "X8S__r1s0.cif",
+  "X8S__r2s0.cif"
+ ]
+}

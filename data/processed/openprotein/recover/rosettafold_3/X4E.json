@@ -1,0 +1,10 @@
+{
+ "ligand": "X4E",
+ "engine": "rosettafold_3",
+ "files": [
+  "X4E__r0s0.cif",
+  "X4E__r1s0.cif",
+  "X4E__r2s0.cif",
+  "X4E__r3s0.cif"
+ ]
+}
