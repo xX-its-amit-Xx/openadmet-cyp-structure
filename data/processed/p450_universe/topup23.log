@@ -1,0 +1,13 @@
+  esmfold2: cannot fold 24 pairs
+  protenix_v2: cannot fold 2 pairs
+scored: 479 pairs, 84 proteins, 172 construct sequences
+  pairs with <3 protenix poses (dropped from the test): 0  -> gating 0 proteins
+  MSA-ready but NEVER folded: 6 pairs (5 proteins)
+  protenix_v2 replicates/pair: median 12, pairs below 12: 69
+  esmfold2 replicates/pair:    median 6, pairs below 6: 20
+
+$ D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\cofold\p450_campaign.py submit --engine protenix_v2 --samples 1 --batch 2 --replicates 12 --limit 150
+  submitted 150 jobs; skipping 2 pairs protenix_v2 cannot fold
+
+$ D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\cofold\p450_campaign.py submit --engine esmfold2 --samples 1 --batch 2 --replicates 6 --limit 150
+  submitted 48 jobs; skipping 24 pairs esmfold2 cannot fold

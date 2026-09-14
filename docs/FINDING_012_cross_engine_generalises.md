@@ -720,3 +720,50 @@ the crossing does rule out is any claim that catastrophe rate is the *only* dete
 So the account survives in its useful form - the gain tracks pool quality, and predicting it
 from pool disagreement works - but it is not a one-variable law. Something else contributes
 at the margin, and this data cannot say what.
+
+---
+
+# FINAL — sixteenth measurement, campaign complete
+
+All 185 MSAs finished; the campaign reached **479 pairs / 84 proteins / 172 construct
+sequences** against the 493 pairs originally harvested, i.e. ~97% of everything the
+crystallographic record offered.
+
+**The generalisation test at full extent: 81 proteins, 158 construct sequences, 430 pairs,
+5,448 poses.**
+
+| | value |
+|---|---|
+| catastrophic poses | 4.13% |
+| random / oracle | 0.7118 / 0.7691 |
+| **selected** | **0.7475** |
+| **gain** | **+0.0357** (null 99th +0.0076, p = 0.0) |
+| within-pair rho | −0.1959 |
+| **proteins positive** | **26 of 30** with >= 4 pairs |
+| CYP3A4 anchor | +0.0381 |
+
+## What the sixteen measurements establish
+
+Cross-engine agreement was developed on one protein and applied unchanged, with **no fitted
+parameters**, to 81 others. It is positive on 26 of 30 with p = 0.0 against a null measured
+on the same data.
+
+The gain fell monotonically from +0.3006 to +0.0357 as the pools improved (19.3% → 4.13%
+catastrophic), converging on and slightly crossing the CYP3A4 value. Nothing was tuned
+between measurements; the pools improved on their own and every re-run is its own commit.
+
+## What they do NOT establish
+
+- **Catastrophe rate is not the sole determinant.** The final figure sits marginally *below*
+  the anchor while carrying 20x its catastrophe rate. The difference is inside noise, but it
+  rules out a one-variable law.
+- **The four negatives are the four smallest samples** - 4, 5, 7 and 7 pairs - and the PDB
+  has no more ligands for them. Permanently unmeasurable, not explained.
+- **The failure mode has no blind-side detector.** Three attempts failed (self-consistency,
+  triangulation, reference confidence-the last works on P450 and is inert on CYP3A4).
+
+## For the challenge
+
+Expect the **+0.04 regime**, not the +0.30 the early P450 pools showed - the released
+CYP3A4 structures are the well-behaved case. `pool_diagnostics.py` reports which regime a
+pool is in before submission, calibrated on two anchors and honest about resting on two.
