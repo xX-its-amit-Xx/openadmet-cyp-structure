@@ -548,3 +548,32 @@ no signal to exploit.
 That is not bad news for the submission, but it is not the good news it first looks like
 either: it means the *detector* is inert on CYP3A4, while the failure mode it was built to
 detect is no longer understood.
+
+### The reference-oracle successor also fails; the outlier failures stay unexplained
+
+Tested whether the reference *oracle* rather than its mean is the operative quantity, over
+10 proteins with known outcomes:
+
+| quantity | rho with gain | p |
+|---|---|---|
+| ref_oracle / pool_oracle | **+0.030** | 0.93 |
+| ref_mean / pool_mean | +0.224 | 0.53 |
+| ref_oracle (absolute) | +0.539 | 0.11 |
+| ref_mean (absolute) | +0.273 | 0.45 |
+
+The individual rows kill it plainly: Q00441 and Q55080 have the two *lowest* oracle ratios
+(0.769, 0.744) and two of the *highest* gains (+0.226, +0.225), while Q16696 has a high
+ratio (0.942) and fails. Relative reference quality does not discriminate on either
+measure.
+
+**Current honest state of this thread.** Three hypotheses proposed and all three rejected:
+reference-worse-than-pool (contradicted by CYP3A4), reference self-consistency (rho −0.030),
+and reference oracle (rho +0.030). P11509 and Q16696 remain explained by having nothing to
+catch; **P20815 remains unexplained.**
+
+The only surviving hint is that *absolute* reference quality may matter more than relative
+(ref_oracle alone, rho +0.539, p = 0.11) - suggestive at n = 10 proteins, nowhere near
+significant, and exactly the kind of near-miss FINDING 007 says not to chase. **Stopping
+this thread here.** MSAs are adding proteins at ~1 per 20 minutes; at 20+ proteins with
+known outcomes the same test becomes worth re-running, and until then further attempts are
+fishing rather than investigating.
