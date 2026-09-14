@@ -161,13 +161,23 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
     import shutil
     import tempfile
 
-    if profile:
-        os.environ["MODAL_PROFILE"] = profile
-    import modal
-
     picks = choose_poses(tag, arm)
     print(f"{len(picks)} ligands selected", flush=True)
-    vol = modal.Volume.from_name("cyp-pool")
+
+    # A LOCAL pool must work without Modal. `pool_dir` was a dead parameter - build()
+    # always read from the Modal volume and was always called with None - so with Modal
+    # over its spend cap the submission could not be built at all. That is a drop-day
+    # blocker hiding in a code path nobody exercises until the day it matters.
+    vol = None
+    if pool_dir is None:
+        if profile:
+            os.environ["MODAL_PROFILE"] = profile
+        import modal
+        vol = modal.Volume.from_name("cyp-pool")
+        print("pool source: Modal volume cyp-pool", flush=True)
+    else:
+        pool_dir = Path(pool_dir)
+        print(f"pool source: local {pool_dir}", flush=True)
     tmp = Path(tempfile.mkdtemp(prefix="cypsub_", dir="D:/cyp_scratch"))
     reports = {}
     try:
@@ -177,9 +187,22 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
             job = f"{lig}__{arm}__s1"
             src = tmp / f"{lig}.cif"
             try:
-                src.write_bytes(b"".join(vol.read_file(f"/{tag}/{job}/{sample}.cif")))
+                if vol is not None:
+                    src.write_bytes(b"".join(
+                        vol.read_file(f"/{tag}/{job}/{sample}.cif")))
+                else:
+                    # accept both pool layouts: <pool>/<LIG>__<arm>__s1/<sample>.cif as
+                    # the Modal volume is organised, and a flat <pool>/<sample>.cif
+                    cands = [pool_dir / job / f"{sample}.cif",
+                             pool_dir / f"{sample}.cif",
+                             pool_dir / lig / f"{sample}.cif"]
+                    hit = next((c for c in cands if c.exists()), None)
+                    if hit is None:
+                        raise FileNotFoundError(
+                            f"{sample}.cif not found under {pool_dir}")
+                    shutil.copyfile(hit, src)
             except Exception as exc:
-                reports[lig] = {"error": f"{type(exc).__name__}"}
+                reports[lig] = {"error": f"{type(exc).__name__}: {exc}"}
                 continue
             try:
                 reports[lig] = to_submission_pdb(src, staged / f"{lig}.pdb", heme)
@@ -297,8 +320,11 @@ if __name__ == "__main__":
     ap.add_argument("--expect-n", type=int, default=None,
                     help="file count the portal expects (config.STRUCTURE_DATASET_SIZE)")
     ap.add_argument("--profile", default=None)
+    ap.add_argument("--pool-dir", default=None,
+                    help="read poses from a local directory instead of the Modal volume")
     a = ap.parse_args()
     if a.cmd == "build":
-        build(a.tag, a.arm, Path(a.out), a.heme, None, a.profile)
+        build(a.tag, a.arm, Path(a.out), a.heme,
+              Path(a.pool_dir) if a.pool_dir else None, a.profile)
     else:
         raise SystemExit(validate(Path(a.zip or a.out), Path(a.ligands), a.expect_n))
