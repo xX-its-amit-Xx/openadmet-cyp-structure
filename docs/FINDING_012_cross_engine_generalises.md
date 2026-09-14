@@ -109,3 +109,51 @@ correlation. The two statistics disagree completely. The plausible reading is th
 avoiding one catastrophic pose lifts the mean while leaving the ordering of the remaining
 good poses uninformative, but n=15 is too small to call it, and it is recorded as
 unresolved rather than folded into the story.
+
+---
+
+## Update — the gain attenuates as the pool improves, exactly as the mechanism predicts
+
+Re-run after the P450 pools deepened. The catastrophe rate fell from 19.3% to 14.5% of
+poses, and the gain fell with it:
+
+| | first run | **deeper pool** |
+|---|---|---|
+| catastrophic poses (< 0.1) | 19.3% | **14.5%** |
+| random / oracle | 0.4241 / 0.7360 | 0.5219 / 0.7464 |
+| **gain** | +0.3006 | **+0.2045** |
+| within-pair rho | −0.763 | −0.579 |
+| correct direction | 96.7% | 86.7% (p = 2.7e−14) |
+
+This is the catastrophe-detector account making a **prospective** prediction and being
+right: improve the pool, and the feature has less to catch. It was not fitted to this
+outcome - the mechanism was written down first, from the CYP3A4/P450 contrast, and the
+pool then improved on its own as replicates landed.
+
+### It is positive on every held-out target
+
+| target | pairs | random → selected | gain |
+|---|---|---|---|
+| Q2IU02 | 25 | 0.598 → 0.904 | +0.3060 |
+| Q7Z1V1 | 7 | 0.504 → 0.795 | +0.2910 |
+| Q00441 | 4 | 0.550 → 0.806 | +0.2558 |
+| Q55080 | 4 | 0.570 → 0.814 | +0.2446 |
+| Q9Y6A2 | 12 | 0.611 → 0.855 | +0.2440 |
+| Q385E8 | 4 | 0.470 → 0.708 | +0.2376 |
+| **P08684 (CYP3A4)** | 60 | 0.461 → 0.659 | **+0.1978** |
+| P20815 | 4 | 0.373 → 0.470 | +0.0968 |
+| P00178 | 11 | 0.393 → 0.485 | +0.0928 |
+
+**9 of 9 positive**, spanning human and bacterial P450s, with no parameters fitted.
+
+### The internal control nobody designed
+
+P08684 **is** CYP3A4 — the same protein the feature was developed on — and here it gains
+**+0.1978** against the +0.0381 measured on the Boltz pool. Same protein, same feature,
+same reference engine; the only difference is the pool being selected from. The P450
+campaign's CYP3A4 pool is Protenix with a freshly computed MSA and contains far more
+catastrophic poses than the Boltz pool does with its bonded heme.
+
+That is the cleanest available demonstration that **the gain is a property of the pool, not
+of the protein or of any tuning**. It also warns against reading the P450 numbers as "the
+feature is better on other proteins" - it is not, those pools are simply worse.
