@@ -30,9 +30,9 @@ track: **LDDT-PLI** primary, BiSyRMSD and lddt_lp secondary.
 
 ## The thesis this repo is built on
 
-**Superseded in part by `docs/FINDING_001_selection_is_the_whole_problem.md` (n=87,
-3,360 poses). Read that first — two claims below were falsified by it, and are kept here
-with corrections attached because the errors are instructive.**
+**Start at `docs/README.md`** — an index of all fourteen findings, what is retracted, and
+the three traps that cost the most. Then `FINDING_001` (two claims below were falsified by
+it) and `FINDING_011`/`012` for the selector that ships.
 
 **A. Co-folding fails on CYP3A4 by getting the ligand's ORIENTATION wrong, not its
 location.** OpenADMET's own analysis reports the heme is placed correctly and the
