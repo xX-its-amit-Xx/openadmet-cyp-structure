@@ -316,3 +316,34 @@ requires and what no "better on other proteins" account would produce. **17 of 1
 positive** is the widest protein coverage yet, and the gain is now within a factor of two
 of the CYP3A4 number - as the P450 pools become as good as the CYP3A4 one, the two
 measurements are becoming the same measurement.
+
+## Ninth measurement, and an honest look at where it fails
+
+**34 proteins, 56 construct sequences, 268 pairs, 2,781 poses.** Catastrophic 7.05%,
+random 0.6691, oracle 0.7584, selected 0.7347, **gain +0.0655** (null 99th +0.0138,
+empirical p = 0.0), rho −0.2068, **positive on 17 of 20** proteins with >= 4 pairs.
+
+Ninth point, still monotone in the catastrophe rate as the pools improve, still converging
+on the CYP3A4 anchor (0.2% → +0.0381).
+
+### The three proteins where it loses
+
+All three losses are near zero (−0.0, −0.0056, −0.0106), but "near zero" is not an
+explanation, so:
+
+| protein | pairs | pool mean | catastrophic | oracle | explained? |
+|---|---|---|---|---|---|
+| P11509 | 5 | 0.895 | **0.000** | 0.914 | yes - an excellent pool with nothing to catch |
+| Q16696 | 4 | 0.589 | **0.000** | 0.591 | yes - pool mean ≈ oracle, every pose is equally good |
+| **P20815** | 4 | 0.461 | 4.5% | 0.591 | **no - a genuine miss** |
+
+The negative set averages **1.5% catastrophic against 4.9% elsewhere**, so the pattern
+holds in aggregate: the feature loses where there is nothing to win. Two of the three are
+textbook - Q16696's pool mean and oracle differ by 0.002, meaning its poses are
+interchangeable and any selector is picking between equivalents.
+
+**P20815 is not explained by the mechanism.** It has real spread (0.461 mean against a
+0.591 oracle) and 4.5% catastrophic poses, so there was something to catch, and the feature
+caught none of it. At 4 pairs this is well inside sampling noise and should not be
+over-read - but it is recorded as an unexplained miss rather than folded into the
+"nothing to catch" story it does not fit.
