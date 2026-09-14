@@ -112,8 +112,10 @@ geometric question needs another 585 downloads. 185 targets turns
 leave-one-ligand-cluster-out into **leave-one-TARGET-out**.
 
 **Venue note.** Modal is over its cap and reserved for fine-tuning; pools now come from
-**OpenProtein**, where `protenix`, `protenix_v2` and **`esmfold2`** run protein+HEM+ligand
-(boltz-1/-1x/-2 and rosettafold-3 fail; alphafold2 discards ligand chains).
+**OpenProtein**, where **six** engines run protein+HEM+ligand: `protenix`, `protenix_v2`,
+`esmfold2`, `rosettafold_3`, `boltz2`, `boltz_1x`. Four of them require **single-sequence
+mode** (`prot.set_msa(Protein.NullMSA)`) - an UPLOADED msa makes them fail server-side,
+which is what made them look broken. Only alphafold2 genuinely cannot (it discards ligands).
 Read FINDING 009 before launching anything there: `diffusion_samples` does NOT sample the
 ligand - it varies only the protein, and pose diversity requires `--replicates`.
 
