@@ -256,3 +256,31 @@ are **built differently** from the CYP3A4 Boltz pool - Protenix with a fresh MSA
 Boltz with a bonded heme - and that difference is exactly why their catastrophe rates
 differ. The gain follows the catastrophe rate across seven measurements now, whether the
 pool is shallow or deep, CYP3A4 or bacterial.
+
+## The reference-depth caveat: partly real, and it needs reading carefully
+
+The other standing caveat was that esmfold2 supplies only ~2 reference poses per pair,
+below the >= 4 the CYP3A4 dose-response wants. Tested:
+
+| esmfold2 reference depth | pairs | catastrophic | gain | p |
+|---|---|---|---|---|
+| >= 2 | 234 | 8.9% | +0.0908 | 0.0000 |
+| **>= 3** | 170 | 9.7% | **+0.1028** | 0.0000 |
+| >= 4 | **21** | **3.3%** | +0.0162 | 0.29 |
+
+**The >= 4 row is not a depth failure and must not be read as one.** It is 21 pairs at a
+3.3% catastrophe rate - an unusually *easy* subset, where the mechanism predicts almost no
+gain and delivers almost none. Reading it as "deep references stop working" would invert
+the actual cause, which is that those pairs have nothing to catch.
+
+What is genuinely true: **two to three independent references are enough here**, against
+the >= 4 the CYP3A4 dose-response required. The likely reason is that the two settings ask
+different questions - catching a catastrophe is a coarse judgement that a couple of
+independent opinions settle, while fine-ranking mostly-decent poses needs a better estimate
+of where the other engine thinks the ligand goes. The threshold is a property of the task,
+not a constant of the feature.
+
+**A measurement worth carrying separately:** esmfold2's raw replicates dedupe heavily -
+median 5 raw collapses to 2-4 distinct - so its replicate count overstates independence
+roughly as much as Protenix's 39% did. Deduplication is doing real work on every engine
+tested so far.
