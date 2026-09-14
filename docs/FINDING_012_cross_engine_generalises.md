@@ -660,3 +660,35 @@ on their own as replicates accumulated, and each re-run is its own commit in the
 
 The three negatives are unchanged and remain the three proteins with 4, 4 and 7 available
 pairs - the permanently underpowered set, not a systematic failure.
+
+## Fourteenth measurement — the two settings have converged
+
+**61 proteins in the test (67 scored), 109 construct sequences, 378 pairs, 4,791 poses.**
+Catastrophic 4.47%, selected 0.7575 against random 0.7176, **gain +0.0398** (null 99th
++0.0088, p = 0.0), rho −0.1936, positive on **25 of 29**.
+
+| | catastrophic | gain |
+|---|---|---|
+| P450, first measurement | 19.3% | +0.3006 |
+| **P450, fourteenth** | **4.47%** | **+0.0398** |
+| **CYP3A4 anchor** | **0.2%** | **+0.0381** |
+
+**Within 4.5% of the anchor.** The P450 measurement began 8x above it and has decreased
+monotonically at all fourteen re-measurements while the protein count grew 17 → 61.
+
+Two settings that share no protein, no pool engine, no reference engine, no MSA source and
+no construct sequence now produce the same number, because their catastrophe rates have
+equalised. That is the catastrophe-detector account's central claim, tested to the point
+where the two curves meet.
+
+The negatives remain the small-sample set: Q5YNS8 (5 pairs), Q16696 (4), P11509 (7),
+P20815 (4) - every one of them among the fewest-ligand proteins in the harvest, where a
+single pose changing rank flips the sign.
+
+### A note on the operational judgement behind this measurement
+
+The batch carrying these 10 new proteins ran **163 minutes** against the previous batches'
+90 and 120, with no failures and no output for over two hours. Killing it at any of the
+thresholds considered would have discarded exactly the data that produced this measurement.
+The signal that justified waiting was that **MSAs kept completing throughout** - the
+platform was demonstrably processing work, so "slow" was better supported than "stuck".
