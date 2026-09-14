@@ -100,3 +100,55 @@ with a negative prior.
 **What would flip this:** a cheap classical interaction energy (OpenMM is already available)
 showing within-ligand variance *and* any positive correlation on held-out ligands. That is
 a bounded experiment and the right gate before the xTB work, rather than after it.
+
+---
+
+## The gate ran, and it fails: a classical interaction energy does not discriminate
+
+Implemented the **AutoDock Vina** scoring terms - a real published function, not a proxy
+invented here - over 900 poses / 45 ligands. Two gates, set in advance.
+
+**GATE 1 passes.** Unlike the tier-1 donor prior, these terms genuinely vary within a
+ligand, so they *can* rank its poses:
+
+| term | median within-ligand CV |
+|---|---|
+| hbond | 0.473 |
+| repulsion | 0.328 |
+| gauss1 | 0.096 |
+| full Vina score | 0.081 |
+| hydrophobic | 0.075 |
+
+**GATE 2 fails.** Random 0.5925, null 99th pct **+0.0248**:
+
+| term | direction | gain | rho | p |
+|---|---|---|---|---|
+| **full Vina score** | low (better energy) | **+0.0205** | −0.083 | 0.028 |
+| repulsion | low | +0.0034 | +0.062 | 0.33 |
+| gauss1 | high | −0.0016 | +0.127 | 0.49 |
+| hydrophobic | low | **−0.0380** | +0.157 | 0.999 |
+| hbond | low | **−0.0461** | +0.087 | 1.000 |
+
+The best term does **not** clear the null, and the individual physical terms are null or
+strongly negative. The full score at least points the chemically correct way - lower
+interaction energy is better - but at ρ = −0.083 and +0.0205 against a +0.0248 threshold it
+is indistinguishable from the noise, and it is one of ten tests reported here.
+
+### Decision
+
+**The xTB installation is not justified.** The recommendation above was made on a prior;
+it now rests on a measurement. A classical interaction energy has exactly the property
+tier 1 lacked - within-ligand variance - and still cannot discriminate, which means the
+limitation is not "the term is constant" but that **agreement with the pocket does not
+separate good CYP3A4 poses from bad ones at this pool's resolution**.
+
+**Honest caveat, because it cuts the other way.** This Vina implementation is approximate:
+protein atom types are inferred from the first character of the atom name, there is no
+torsional entropy term, and no desolvation. GFN2-xTB would add electrostatics,
+polarisation and real strain, which is a genuine physical difference rather than a
+refinement. So this is evidence against the *family*, not proof against xTB specifically.
+What it removes is the justification for paying a cluster install up front: the cheap
+member of the family should have shown *something*, and it showed +0.0205 on ten tries.
+
+**Where the effort goes instead:** the P450 generalisation set, which accumulates for free
+and has already produced the strongest result of the campaign.
