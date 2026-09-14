@@ -1,0 +1,9 @@
+{
+ "ligand": "O39",
+ "engine": "rosettafold_3",
+ "files": [
+  "O39__r0s0.cif",
+  "O39__r1s0.cif",
+  "O39__r2s0.cif"
+ ]
+}

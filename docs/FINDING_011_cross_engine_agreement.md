@@ -345,3 +345,32 @@ distribution rather than its middle.
 So rho is not a safe proxy for selection value, and any future feature must be judged on
 the metric that will actually be used. Had this been graded on rho alone, "all four
 engines" would have looked like the clear winner and cost 0.011 LDDT-PLI per ligand.
+
+
+---
+
+## Reference engines are not interchangeable: rosettafold-3 fails as a reference here
+
+The 14 recovered CYP3A4 ligands (the Ir/Ru organometallics Boltz cannot parse, plus three
+plain ones) have a Protenix pool but needed a second engine to be selectable at all.
+esmfold2 refuses them outright. rosettafold-3 *parses* them - atom counts exact, 57=57,
+61=61 - but places them badly, and at n=42 poses the gap is not close:
+
+| engine | poses | mean LDDT-PLI | best |
+|---|---|---|---|
+| protenix_v2 | 140 | **0.351** | 0.677 |
+| rosettafold-3 (single-seq) | 42 | **0.057** | 0.232 |
+
+Per-ligand oracles: Protenix 0.203-0.677 against rosettafold-3's **0.002-0.232**, worse on
+all 14. Two causes compound - these are 53-65 heavy-atom organometallics, and
+single-sequence mode strips the evolutionary signal that would help most on an unusual
+ligand.
+
+**A reference set needs poses good enough to agree WITH.** FINDING 011 already showed that
+adding a weaker engine costs signal (esmfold2 at matched depth: +0.0380 -> +0.0178); this
+is the same lesson at the extreme, where the candidate reference is not merely weaker but
+wrong. Using rosettafold-3 here would have been worse than having no second engine.
+
+Falling back to what already measured best: **protenix-v1 as the second checkpoint**,
+submitted at 6 replicates for these ligands. Same family, different checkpoint, and it
+parses the organometallics.

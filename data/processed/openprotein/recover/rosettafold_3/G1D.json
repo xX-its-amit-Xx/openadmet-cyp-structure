@@ -1,0 +1,8 @@
+{
+ "ligand": "G1D",
+ "engine": "rosettafold_3",
+ "files": [
+  "G1D__r0s0.cif",
+  "G1D__r2s0.cif"
+ ]
+}
