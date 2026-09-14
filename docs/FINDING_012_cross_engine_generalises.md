@@ -157,3 +157,40 @@ catastrophic poses than the Boltz pool does with its bonded heme.
 That is the cleanest available demonstration that **the gain is a property of the pool, not
 of the protein or of any tuning**. It also warns against reading the P450 numbers as "the
 feature is better on other proteins" - it is not, those pools are simply worse.
+
+---
+
+## The mechanism is now quantitative: gain tracks the catastrophe rate
+
+Three independent re-measurements as the P450 pools deepened, plus the CYP3A4 anchor. The
+pool improved on its own; nothing was tuned between these points.
+
+| pool | catastrophic poses (< 0.1) | gain | within-pair rho | targets |
+|---|---|---|---|---|
+| P450, first | 19.3% | **+0.3006** | −0.763 | 17 |
+| P450, deeper | 14.5% | **+0.2045** | −0.579 | 17 |
+| P450, deeper still | **12.0%** | **+0.1448** | −0.331 | 22 |
+| CYP3A4 Boltz (anchor) | 0.2% | **+0.0381** | −0.258 | 1 |
+
+Monotone in the catastrophe rate across a 100-fold range of it and an 8-fold range of the
+gain. The P450 series is converging toward the CYP3A4 value as its pools stop producing
+catastrophic poses, which is what the catastrophe-detector account requires and what a
+"this feature is better on other proteins" account cannot explain.
+
+Still **positive on 9 of 10** targets with >= 4 pairs at the latest point (one target has
+now gone slightly negative - expected as the effect shrinks toward the noise floor, and
+recorded rather than dropped).
+
+### Why this matters for the challenge
+
+The gain is now predictable from something **measurable on the day, without ground truth**.
+The catastrophe rate cannot be computed directly on a blind release, but its proxy can:
+within-ligand pool spread, which is what FINDING 012's addendum already split on
+(+0.0704 wide vs +0.0063 narrow). So on drop day:
+
+1. build the pool, compute the within-ligand spread distribution;
+2. a wide-spread, high-disagreement pool means the feature is worth a lot - closer to the
+   +0.10-0.30 regime;
+3. a tight pool means expect +0.04, and the effort is better spent on generation.
+
+That converts "we hope this transfers" into a check that can be run before submitting.
