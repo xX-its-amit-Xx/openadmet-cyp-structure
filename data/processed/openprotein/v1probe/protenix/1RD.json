@@ -1,0 +1,9 @@
+{
+ "ligand": "1RD",
+ "engine": "protenix",
+ "files": [
+  "1RD__r0s0.cif",
+  "1RD__r1s0.cif",
+  "1RD__r2s0.cif"
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "ligand": "2QH",
+ "engine": "protenix",
+ "files": [
+  "2QH__r0s0.cif",
+  "2QH__r1s0.cif",
+  "2QH__r2s0.cif"
+ ]
+}

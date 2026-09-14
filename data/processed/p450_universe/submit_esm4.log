@@ -128,3 +128,28 @@ on resource: https://api.openprotein.ai/api/v1/fold/models/esmfold2
   469_ec879091 [18I] -> 5e08464a-0bc7-441d-9306-50ab120688ab
   470_4634f49c [VNI,VOR] -> 776d7c7c-2f4e-4331-9f19-7cd30983ea1a
   473_ca85e740 [VT2] -> fae9e5ec-0243-441a-8166-ace59a39510f
+  474_5043b011 [05D,YCG] -> 00e190fa-43b2-4362-91a7-107dae24ad7e
+  474_5043b011 [A1BZC,0I1] -> dc18333b-c0a6-47f2-b51d-21f791f55acc
+  474_5043b011 [YCJ,A1BY9] -> eb798311-4d25-4ee9-aa98-85dc0628db98
+  474_5043b011 [A1BZE,04Y] -> ddc22fed-59b1-479e-a113-87de28eafc2d
+  474_5043b011 [YBS,A1BZA] -> aee4a8f2-61ee-4f73-9952-eb59cf9a6a02
+  474_5043b011 [A1BZD,A1BZB] -> 21c4f369-920d-478c-a0a6-9360b06a6d2e
+  475_74349f57 [X2N] -> 8f8a0ca7-beac-4028-b1bf-f25dbff74605
+  475_83a489fa [TPF] -> b971d0f6-c2aa-49d1-ac6f-60786fdf4610
+  475_c96c5508 [U51] -> 920cb906-5ae1-416b-9775-48af1e5233ec
+  476_1eccdb5d [PB2,PB2] -> 2ca09253-b040-4a36-b074-88ea2effbb3f
+  476_1eccdb5d [TMI,06X] -> a603ee7b-157f-4d82-b22c-66a6e00166af
+  476_1eccdb5d [CPZ,CGE] -> 544b999f-041c-4089-bb27-e2d926a1e219
+  476_1eccdb5d [TB2,TIC] -> 4bce9f5f-4c79-45d7-b842-02b89441e3e8
+  476_1eccdb5d [0BV,8PR] -> 5c3c1a13-49c5-4e34-ac2f-bc373d3b5c20
+  476_7621de71 [CPZ] -> 0c928954-dcd6-4d9c-8108-7d6e83c6b2c2
+  476_84104a34 [9PL,D2G] -> 010389b4-8ca6-45b3-8f26-5d654c59ca46
+  476_84104a34 [D3G,D4G] -> bd688e6e-0f6e-42ed-b3d0-93eb99e9784b
+  476_84104a34 [D1G,NCT] -> 55b51c21-64ba-4a19-827c-3c6cccd3de69
+  476_84104a34 [8MO] -> f74c64fc-f48f-4f29-b0da-843c9b6264c6
+rep 4: 196 pairs to fold
+rep 5: 196 pairs to fold
+{
+  "jobs_submitted": 140,
+  "total_jobs": 762
+}

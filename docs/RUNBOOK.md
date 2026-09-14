@@ -186,6 +186,11 @@ well-behaved release. Which pool we submit from now matters as much as the selec
   them fail server-side. Only alphafold2 genuinely cannot (it discards ligands).
 - **`--samples` never diversifies the ligand here, for any engine.** Only `--replicates`.
   And replicates are not automatically distinct - dedupe (39% were duplicates).
+- **protenix-v1 is DETERMINISTIC**: sd 0.0000 across replicates on 6/6 standard ligands
+  and 14/14 organometallics. One replicate is all it will ever give, and that single pose
+  is worth +0.007 in the reference set. Never buy more than one. rosettafold_3 in
+  single-sequence mode is deterministic for about half of ligands; esmfold2 and
+  protenix_v2 are properly diverse.
 - **More engines is NOT better.** Best reference set is the two Protenix checkpoints
   (+0.0380); adding esmfold2 at matched depth drops it to +0.0178.
 - Single-sequence mode unblocks all 185 P450 targets at once against ~2 days of serial

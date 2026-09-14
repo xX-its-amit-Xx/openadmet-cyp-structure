@@ -1,0 +1,9 @@
+{
+ "ligand": "6AW",
+ "engine": "protenix",
+ "files": [
+  "6AW__r0s0.cif",
+  "6AW__r1s0.cif",
+  "6AW__r2s0.cif"
+ ]
+}
