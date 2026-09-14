@@ -128,6 +128,27 @@ the release is scoreable ground truth and part is the blind target. When the dat
 
 ---
 
+## The whole ops tick, in four commands
+
+```bash
+python scripts/ops/watchdog.py            # runaways, real dollar spend, disk
+python scripts/ops/readiness.py           # upstream state + drop-day path, EXERCISED
+python scripts/ops/topup_p450.py --submit # learns skip lists, fills pool+reference depth
+python scripts/structure/score_p450_pool.py score &&   python scripts/structure/score_p450_pool.py validate   # the FINDING 012 test
+```
+
+All four are idempotent and safe to run on an empty queue. Only the last is slow (it
+rescores new poses), so run it when `topup` reports new pairs, not every tick.
+
+**What "nominal" looks like right now:** watchdog 0 runaways with Modal blocked (expected -
+everything is on OpenProtein), readiness 14/14, topup reporting 0 thin pairs, and validate
+reporting a gain that *shrinks* as the pools improve. That last one is the counter-intuitive
+part: a falling number there is the mechanism working, not a regression. It tracks the
+catastrophe rate, which falls as pools deepen (FINDING 012 - eight measurements,
+19.3% -> 7.74% catastrophic giving +0.3006 -> +0.0697).
+
+---
+
 ## Every ops tick, run this first
 
 ```bash
