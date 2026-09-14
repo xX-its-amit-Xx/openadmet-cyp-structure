@@ -347,3 +347,32 @@ interchangeable and any selector is picking between equivalents.
 caught none of it. At 4 pairs this is well inside sampling noise and should not be
 over-read - but it is recorded as an unexplained miss rather than folded into the
 "nothing to catch" story it does not fit.
+
+## Tenth measurement — and the failures are the SAME proteins every time
+
+**38 proteins, 63 construct sequences, 283 pairs, 3,412 poses.** Catastrophic 6.07%,
+selected 0.7338 against random 0.6773, **gain +0.0566** (null 99th +0.0126, p = 0.0),
+rho −0.2032, **positive on 20 of 23** proteins with >= 4 pairs.
+
+The full series, ten measurements, nothing tuned between them:
+
+| catastrophic | 19.3% | 14.5% | 12.0% | 10.3% | 8.9% | 7.74% | 7.05% | **6.07%** | 0.2% |
+|---|---|---|---|---|---|---|---|---|---|
+| **gain** | +.3006 | +.2045 | +.1410 | +.1098 | +.0908 | +.0697 | +.0655 | **+.0566** | +.0381 |
+
+Monotone throughout, converging on the CYP3A4 anchor as the P450 pools stop producing
+catastrophic poses.
+
+### The negatives are stable, which is the useful part
+
+Across the last three measurements the losing proteins are **the same three every time** —
+Q16696, P11509, P20815 — not a rotating cast. If these were sampling noise, different
+proteins would drop below zero on each re-run as the pools changed. They do not.
+
+Two are explained: P11509 and Q16696 have **zero** catastrophic poses, and Q16696's pool
+mean and oracle differ by 0.002, so its poses are interchangeable and any selector is
+choosing between equivalents. **P20815 remains unexplained** and has drifted slightly
+further negative (−0.0 → −0.0144) as its pool grew. At 4 pairs that is still inside
+sampling noise, but it is now a *persistent* unexplained miss rather than a one-off, which
+is worth more attention than its magnitude suggests. If it survives to 10+ pairs it is a
+real counterexample to the mechanism and should be treated as one.
