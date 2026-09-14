@@ -376,3 +376,37 @@ further negative (−0.0 → −0.0144) as its pool grew. At 4 pairs that is sti
 sampling noise, but it is now a *persistent* unexplained miss rather than a one-off, which
 is worth more attention than its magnitude suggests. If it survives to 10+ pairs it is a
 real counterexample to the mechanism and should be treated as one.
+
+## P20815 explained: the reference must be BETTER than the pool, not merely different
+
+The persistent unexplained miss is now explained, and the explanation generalises. Scoring
+the esmfold2 *reference* poses against crystal, alongside the Protenix *pool* they judge:
+
+| protein | reference quality | pool quality | selector outcome |
+|---|---|---|---|
+| **P20815** | **0.301** | 0.476 | **−0.0144** (fails) |
+| **Q16696** | **0.453** | 0.589 | **−0.0055** (fails) |
+| Q2IU02 | **0.752** | 0.589 | **+0.2771** (best result in the set) |
+
+**The feature fails exactly where the reference engine is worse than the pool it judges.**
+Agreeing with a worse opinion pulls the selection toward worse poses - the sign of the term
+effectively inverts. Where the reference is better (Q2IU02: 0.752 against 0.589), the
+feature produces the largest gain measured anywhere.
+
+This supersedes the "nothing to catch" reading for P20815, which never fitted: it had 4.5%
+catastrophic poses and real spread, so there *was* something to catch. It also sharpens
+FINDING 011's "reference quality beats reference variety" from a slogan into a testable
+condition: **quality relative to the pool is what matters, not absolute quality and not
+architectural diversity.**
+
+### What this costs and what it buys
+
+**Costs:** the condition needs ground truth to check directly, so it cannot be evaluated on
+a blind release. That is a real limitation on the drop-day story, and `pool_diagnostics.py`
+does not currently detect it.
+
+**Buys:** it explains every failure in the set rather than most of them, it predicts that
+adding a *better* reference engine would help more than adding a more *diverse* one (which
+is what the esmfold2 experiment already showed at matched depth), and it gives a concrete
+thing to look for - a proxy for "is my reference worse than my pool" computable without
+crystal structures would close the last gap in the drop-day check.

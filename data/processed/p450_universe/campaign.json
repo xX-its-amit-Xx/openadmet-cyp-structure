@@ -45406,7 +45406,8 @@
    "rep": 7,
    "engine": "protenix_v2",
    "single_sequence": false,
-   "submitted": 1789366193.9960175
+   "submitted": 1789366193.9960175,
+   "done": true
   },
   "4cc2dde5-ee66-483a-bc71-016886b22070": {
    "target_key": "477_f6ac8610",
@@ -45471,7 +45472,8 @@
    "rep": 8,
    "engine": "protenix_v2",
    "single_sequence": false,
-   "submitted": 1789366204.881791
+   "submitted": 1789366204.881791,
+   "done": true
   },
   "901c2e74-4dea-457f-8765-3ee7991d6d97": {
    "target_key": "476_ec577891",
@@ -45485,7 +45487,8 @@
    "rep": 8,
    "engine": "protenix_v2",
    "single_sequence": false,
-   "submitted": 1789366207.370191
+   "submitted": 1789366207.370191,
+   "done": true
   },
   "f558be0b-c295-4999-baa9-472101ac37e5": {
    "target_key": "477_f6ac8610",
@@ -45501,7 +45504,8 @@
    "rep": 8,
    "engine": "protenix_v2",
    "single_sequence": false,
-   "submitted": 1789366210.1394815
+   "submitted": 1789366210.1394815,
+   "done": true
   },
   "ac7c2719-5d8d-4231-bfca-43d18135e491": {
    "target_key": "477_f6ac8610",
@@ -45598,7 +45602,8 @@
    "rep": 9,
    "engine": "protenix_v2",
    "single_sequence": false,
-   "submitted": 1789366226.9708312
+   "submitted": 1789366226.9708312,
+   "done": true
   },
   "e456c72d-5c40-48e3-bafc-5fbaea324a21": {
    "target_key": "477_f6ac8610",
@@ -45614,7 +45619,8 @@
    "rep": 9,
    "engine": "protenix_v2",
    "single_sequence": false,
-   "submitted": 1789366229.8932252
+   "submitted": 1789366229.8932252,
+   "done": true
   },
   "28fe7969-9d92-404f-9735-b5dffeafa563": {
    "target_key": "491_3c76f070",
