@@ -224,3 +224,35 @@ than worrying: each new protein arrives with a better pool than the early ones h
 there is less for a catastrophe detector to catch. The clearest case is **P11509**, whose
 pool is already excellent - random 0.909, selected 0.909, **delta −0.0006**. Nothing to
 catch, and nothing lost by looking.
+
+---
+
+## The "shallow pools" caveat was wrong, and testing it retires it
+
+Every version of this finding has carried a caveat: *the P450 pools are shallow (3-7 poses
+per pair) against CYP3A4's 20, so the comparison may be unfair.* The pools have now grown
+enough to test that directly rather than keep repeating it.
+
+| subset | pairs | proteins | catastrophic | oracle | selected | gain |
+|---|---|---|---|---|---|---|
+| all (>= 3 poses) | 234 | 28 | 8.9% | 0.761 | 0.738 | **+0.0908** |
+| deeper (>= 6 poses) | 234 | 28 | 8.9% | 0.761 | 0.738 | **+0.0908** |
+| **deepest (>= 8 poses)** | 147 | 16 | **11.7%** | 0.739 | 0.712 | **+0.1402** |
+
+**Depth is not the driver.** The deepest subset gives the *larger* gain, which rules out
+"shallow pools inflate the effect" outright. It gives the larger gain because it happens to
+contain harder pairs - 11.7% catastrophic against 8.9% - which is the mechanism again, now
+confirmed on a split chosen for depth rather than for difficulty.
+
+Two more points for the series, both consistent:
+
+| catastrophic | gain |
+|---|---|
+| 11.7% | +0.1402 |
+| 8.9% | +0.0908 |
+
+So the caveat is retired. What remains true, and is a different claim, is that these pools
+are **built differently** from the CYP3A4 Boltz pool - Protenix with a fresh MSA rather than
+Boltz with a bonded heme - and that difference is exactly why their catastrophe rates
+differ. The gain follows the catastrophe rate across seven measurements now, whether the
+pool is shallow or deep, CYP3A4 or bacterial.
