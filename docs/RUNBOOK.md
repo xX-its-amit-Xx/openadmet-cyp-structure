@@ -216,7 +216,13 @@ well-behaved release. Which pool we submit from now matters as much as the selec
    destroys the prediction. Do not generalise from the CYP3A4 result.
 2. **Re-run the P450 generalisation** as targets accumulate (`score_p450_pool.py score`
    then the cross-engine block). It has held at 17 targets; 185 is the goal.
-3. **Keep P450 depth building** - `p450_campaign.py submit --samples 1 --replicates 8`.
+3. **Keep P450 depth building** - `python scripts/ops/topup_p450.py --submit`. One
+   command, idempotent, and it reports the gaps before queueing. The gap that matters is
+   not visible from job counts: a pair with fewer than 3 POOL poses is dropped from the
+   generalisation test entirely, so thin pairs cost whole PROTEINS - 48 of them were
+   gating 10 proteins, and filling them moved the count 22 -> 27 -> 30. Run with no flags
+   to see the gaps without submitting. It skips rosettafold_3 and protenix-v1 on purpose:
+   both are deterministic enough that replicates produce byte-identical files.
 3b. **Disk**: the reference set is frozen at `data/processed/reference_set_cyp3a4.npz`
    (241 KB, verified to reproduce xeng to 2.8e-08). So the 2.2 GB `op1/protenix_v2` and
    589 MB `op1/protenix` pools ARE archivable - `build_xeng_feature` falls back to the
