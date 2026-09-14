@@ -217,6 +217,12 @@ well-behaved release. Which pool we submit from now matters as much as the selec
 2. **Re-run the P450 generalisation** as targets accumulate (`score_p450_pool.py score`
    then the cross-engine block). It has held at 17 targets; 185 is the goal.
 3. **Keep P450 depth building** - `p450_campaign.py submit --samples 1 --replicates 8`.
+3b. **Disk**: the reference set is frozen at `data/processed/reference_set_cyp3a4.npz`
+   (241 KB, verified to reproduce xeng to 2.8e-08). So the 2.2 GB `op1/protenix_v2` and
+   589 MB `op1/protenix` pools ARE archivable - `build_xeng_feature` falls back to the
+   frozen copy automatically. Archive order when D: approaches ~3 GB: `rosettafold_3` and
+   `esmfold2` op1 first (both measured NOT to help the CYP3A4 reference set), then the
+   Protenix pools. Push with `cypstruct.storage.push`, never through the `O:` drive letter.
 4. **Rebuild the submission** whenever the pool changes:
    `build_xeng_feature.py` then `build_submission.py build --pool-dir <dir>`.
 
