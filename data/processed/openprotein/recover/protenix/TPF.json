@@ -1,0 +1,12 @@
+{
+ "ligand": "TPF",
+ "engine": "protenix",
+ "files": [
+  "TPF__r0s0.cif",
+  "TPF__r1s0.cif",
+  "TPF__r2s0.cif",
+  "TPF__r3s0.cif",
+  "TPF__r4s0.cif",
+  "TPF__r5s0.cif"
+ ]
+}

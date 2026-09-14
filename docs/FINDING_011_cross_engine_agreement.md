@@ -374,3 +374,32 @@ wrong. Using rosettafold-3 here would have been worse than having no second engi
 Falling back to what already measured best: **protenix-v1 as the second checkpoint**,
 submitted at 6 replicates for these ligands. Same family, different checkpoint, and it
 parses the organometallics.
+
+---
+
+## The recovered organometallics have no viable reference engine
+
+The 14 ligands recovered from the "unparseable" list fold well under Protenix-v2 (oracle
+0.203-0.677) but cannot currently be *selected* by cross-engine agreement, because all
+three candidate reference engines fail them in a different way:
+
+| candidate reference | outcome on the 14 recovered ligands |
+|---|---|
+| esmfold2 | **refuses them** - server-side error on every submission |
+| rosettafold-3 (single-seq) | parses them, **places them wrongly** - oracle 0.002-0.232 |
+| **protenix-v1** | parses and places them fine, but is **DETERMINISTIC**: 14/14 ligands show per-atom sd **0.0000 Å** across 6 replicates |
+
+Protenix-v1 therefore supplies exactly **one** independent reference pose per ligand, and
+at depth 1 this feature measured **-0.0055** - it would actively harm the selection. By
+contrast Protenix-v2 on the same ligands is properly diverse (median sd 1.286 Å, only 4 of
+14 deterministic), which is why it works as the pool.
+
+**This is new information about protenix-v1**, not a restatement. Its op1 campaign ran at
+`replicates=1`, so its replicate behaviour was never observed there - it contributed a
+single pose per ligand by construction and nothing revealed that more replicates would
+have added nothing. Any future use of protenix-v1 as a *reference* must check this first.
+
+**Consequence:** the recovered ligands fall back to self-consensus within the Protenix-v2
+replicates - the FINDING 003 rule, weaker but applicable, and safe because v2's replicates
+are genuinely diverse. They are covered for *generation*, which is what the 87 -> 98 gain
+was really about, but not yet for cross-engine *selection*.

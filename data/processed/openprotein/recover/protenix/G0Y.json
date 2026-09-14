@@ -1,0 +1,12 @@
+{
+ "ligand": "G0Y",
+ "engine": "protenix",
+ "files": [
+  "G0Y__r0s0.cif",
+  "G0Y__r1s0.cif",
+  "G0Y__r2s0.cif",
+  "G0Y__r3s0.cif",
+  "G0Y__r4s0.cif",
+  "G0Y__r5s0.cif"
+ ]
+}

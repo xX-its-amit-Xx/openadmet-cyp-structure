@@ -1,0 +1,12 @@
+{
+ "ligand": "O3L",
+ "engine": "protenix",
+ "files": [
+  "O3L__r0s0.cif",
+  "O3L__r1s0.cif",
+  "O3L__r2s0.cif",
+  "O3L__r3s0.cif",
+  "O3L__r4s0.cif",
+  "O3L__r5s0.cif"
+ ]
+}
