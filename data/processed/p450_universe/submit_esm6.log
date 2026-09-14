@@ -1,0 +1,28 @@
+51 of 185 targets have an MSA
+skipping 24 pairs esmfold2 cannot fold
+rep 0: 2 pairs to fold
+  470_03aefc00 [T9H] -> 7ba7fe3b-f6eb-4968-99e5-734601583d7f
+  486_fe430384 [MYT] -> f9ff6b6a-e31b-4863-ae30-8b496dbca4c4
+rep 1: 2 pairs to fold
+  470_03aefc00 [T9H] -> 65fcc264-77dd-4790-bf58-fb9d9fb911b2
+  486_fe430384 [MYT] -> 2600db24-b505-4650-9c5a-9291d069089c
+rep 2: 2 pairs to fold
+  470_03aefc00 [T9H] -> af5a99d3-477b-4836-acda-a0ce089ba10b
+  486_fe430384 [MYT] -> e5ff2255-72fe-4dc1-9994-4880e742817d
+rep 3: 17 pairs to fold
+  470_03aefc00 [T9H] -> b9eb4509-8b27-4143-9b2f-268c38a3e3a6
+  486_fe430384 [MYT] -> 0ae5f5d6-d925-4b9a-bbf3-d2c89de08723
+  487_8538537b [NXR,NYF] -> 8d8f3761-0687-4ab3-8215-cd6db69dd68e
+  487_ecbf61ae [RIT,08Y] -> 4674b171-779f-48f5-b79d-91a5fb6b1e90
+  489_d6dd2913 [QHC,O4T] -> b312164d-a0af-4c57-a34e-e58f5edbea55
+  489_d6dd2913 [O4W] -> 0487eaee-87bd-456d-9fcc-b57a9dab90ad
+  490_6a8e1ea2 [X2N,VT1] -> a5569586-36de-41fb-bb26-4d896cb46f72
+  497_9e5b0951 [V16] -> d78587f3-b89f-4a5c-871b-eb400b06f688
+  509_e452cdaf [AER] -> 69b0921c-c802-472b-892f-2fa891b41358
+  515_00bd6347 [1YN] -> acfbd701-4c78-4ae5-ba55-589796c0ac92
+  539_5aebb388 [SKX,A1AB6] -> c95076bf-f9bc-4293-9a30-6660e0544ef0
+  539_5aebb388 [1YN] -> e1a97e9c-e083-48d5-8b31-aa15c0798564
+{
+  "jobs_submitted": 18,
+  "total_jobs": 948
+}

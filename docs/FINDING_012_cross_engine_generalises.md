@@ -194,3 +194,33 @@ within-ligand pool spread, which is what FINDING 012's addendum already split on
 3. a tight pool means expect +0.04, and the effort is better spent on generation.
 
 That converts "we hope this transfers" into a check that can be run before submitting.
+
+
+---
+
+## Fifth measurement, more proteins — and a terminology correction
+
+**Correction first, because it changes how every count above reads.** This repo's scoring
+output says "targets" for **distinct construct sequences**, while the per-target tables
+group by **UniProt accession**, i.e. distinct proteins. They are not the same: the current
+pool is **44 construct sequences over 27 proteins**. The honest denominator for "does this
+generalise across proteins" is the protein count, and earlier sections that say "17
+targets" or "22 targets" mean *proteins* where they appear in per-target tables and
+*sequences* where they come from the scorer. Numbers below state which.
+
+| pool | catastrophic | gain | rho | proteins | pairs |
+|---|---|---|---|---|---|
+| P450, first | 19.3% | +0.3006 | −0.763 | 17 | 141 |
+| P450, deeper | 14.5% | +0.2045 | −0.579 | 17 | 141 |
+| P450, deeper still | 12.0% | +0.1410 | −0.352 | 22 | 173 |
+| **P450, current** | **10.3%** | **+0.1098** | **−0.296** | **27** | **227** |
+| CYP3A4 Boltz (anchor) | 0.2% | +0.0381 | −0.258 | 1 | 87 |
+
+Five points, monotone in the catastrophe rate, converging on the CYP3A4 anchor as the pools
+improve. **Positive on 13 of 16 proteins** with >= 4 pairs.
+
+The per-protein hit rate falls as coverage grows (9/10 → 13/16) and that is expected rather
+than worrying: each new protein arrives with a better pool than the early ones had, so
+there is less for a catastrophe detector to catch. The clearest case is **P11509**, whose
+pool is already excellent - random 0.909, selected 0.909, **delta −0.0006**. Nothing to
+catch, and nothing lost by looking.

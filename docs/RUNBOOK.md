@@ -169,8 +169,8 @@ is not configured on this box.
 ## Current state, 2026-09-14 — what the next tick should do
 
 **The selector changed.** Cross-engine agreement (FINDING 011/012) replaces the FINDING 003
-rule: **+0.0381** on CYP3A4 against its +0.0265, and it **generalises** - +0.2045 across 17
-held-out P450 targets, positive on 9 of 9. No fitted parameters. A validated submission
+rule: **+0.0381** on CYP3A4 against its +0.0265, and it **generalises** - +0.1098 across 27
+held-out P450 PROTEINS (44 construct sequences), positive on 13 of 16. No fitted parameters. A validated submission
 already exists at `submissions/01_xeng_val87b.zip` (87 PDBs, mean LDDT-PLI 0.6164 against
 PXR's winning 0.5640).
 
