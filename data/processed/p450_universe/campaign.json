@@ -250,7 +250,7 @@
    "job_id": "0b9eca6f-5e19-4cd2-bc40-21896f241cd4",
    "uniprot": "P9WPL5",
    "submitted": 1789330165.9222946,
-   "status": "RUNNING"
+   "status": "SUCCESS"
   },
   "490_6a8e1ea2": {
    "job_id": "8ed18957-ccb4-47e6-9dd4-daf9acc5bfe4",
