@@ -166,68 +166,53 @@ is not configured on this box.
 
 ---
 
-## Current state, 2026-09-13 — what the next tick should do
+## Current state, 2026-09-14 — what the next tick should do
 
-Venue is **OpenProtein**, not Modal (over cap, reserved for fine-tuning). Only `protenix`
-and `protenix_v2` run protein+HEM+ligand there. **Read FINDING 009 before launching**:
-`diffusion_samples` does not sample the ligand, `--replicates` does.
+**The selector changed.** Cross-engine agreement (FINDING 011/012) replaces the FINDING 003
+rule: **+0.0381** on CYP3A4 against its +0.0265, and it **generalises** - +0.2045 across 17
+held-out P450 targets, positive on 9 of 9. No fitted parameters. A validated submission
+already exists at `submissions/01_xeng_val87b.zip` (87 PDBs, mean LDDT-PLI 0.6164 against
+PXR's winning 0.5640).
 
-### In flight
+**The mechanism matters more than the number.** It is a *catastrophe detector*: the gain
+tracks how bad the pool's worst poses are, not which protein it is. CYP3A4 wide-spread
+ligands +0.0704, narrow-spread +0.0063 (null). Expect the **+0.04 regime** for a
+well-behaved release. Which pool we submit from now matters as much as the selector.
 
-| campaign | state | command |
-|---|---|---|
-| CYP3A4 replicates, 6 of 12 | ~419 folds queued | `openprotein_cofold.py collect --engine protenix_v2 --tag op1` |
-| 11 organometallic + 3 new CYP3A4 ligands | queued | same, `--tag recover` |
-| P450 MSAs | 11 of 185 done, ~1 per 15 min | `p450_campaign.py msa-status` |
-| P450 folds | 12 jobs, 120 pairs unblocked | `p450_campaign.py collect` |
+### Venue facts, all measured
 
-### Do these in order, when the gate opens
+- **Six** OpenProtein engines fold protein+HEM+ligand: protenix, protenix_v2, esmfold2,
+  rosettafold_3, boltz2, boltz_1x. Four need `--single-sequence`; an UPLOADED msa makes
+  them fail server-side. Only alphafold2 genuinely cannot (it discards ligands).
+- **`--samples` never diversifies the ligand here, for any engine.** Only `--replicates`.
+  And replicates are not automatically distinct - dedupe (39% were duplicates).
+- **More engines is NOT better.** Best reference set is the two Protenix checkpoints
+  (+0.0380); adding esmfold2 at matched depth drops it to +0.0178.
+- Single-sequence mode unblocks all 185 P450 targets at once against ~2 days of serial
+  MSA queue. Quality cost not yet measured - 30 probe jobs are running for that.
+- Protenix parses the Ir/Ru organometallics Boltz cannot; esmfold2 does not (skip list at
+  `p450_universe/esmfold2_unsupported.json`). rosettafold_3 parses them but places them
+  badly in single-sequence mode (n=2, LDDT-PLI 0.002/0.034 - watch, do not yet conclude).
 
-1. ~~Resume replicate depth to 12 once the fold queue is under ~100 pending~~
-   **CORRECTED and already done, 2026-09-13.** The premise was wrong. MSA throughput is
-   serial and independent of fold load: 7 -> 9 in ~1 h while 490 folds were queued, then
-   9 -> 12 in ~2 h with the queue draining - about one per 20-25 min either way.
-   Throttling the folds bought nothing and cost six replicates of depth. Do not throttle
-   folds for the MSA queue's sake again; the two do not compete. Command, if depth is
-   needed beyond 12:
-   `openprotein_cofold.py submit --engine protenix_v2 --samples 5 --batch 4
-   --replicates 12 --tag op1` (resumes on `(rep, ligand)`; re-running is safe).
-   It was stopped at 6 because ~490 queued folds were starving the MSA searches.
-   Justified by FINDING 004: the oracle is still climbing and the selector tracks it at
-   +0.0125 per doubling, which is larger than any feature gain measured so far.
+### Do next, in order
 
-1b. **BEFORE using esmfold2 or rosettafold_3 in the FINDING 011 reference set, verify
-   their replicates actually differ.** rosettafold_3 runs in single-sequence mode, which
-   removes the MSA as a source of stochasticity, so its replicates could be deterministic -
-   the FINDING 009 trap in a new engine. One command:
-
-       python - <<'PY'
-       # per-atom sd across replicates must be >> 0; FINDING 009 was sd = 0.0000
-       PY
-
-   Expect ~2-4 A per-atom sd, as Chai and Protenix-between-replicates show. If it is
-   0.0000, replicates of that engine are worthless as independent opinions and only ONE
-   pose per ligand can enter the reference set.
-
-2. **Re-run the FINDING 011 test** once most ligands have >= 4 replicates:
-   `python scripts/structure/cross_engine_agreement.py`. This is a pre-registered test
-   with a stated prediction, not a fishing expedition. Cross-engine agreement gave
-   rho = -0.202 at p = 0.00053 using a Protenix side of ONE pose per ligand. If the
-   signal scales with independent poses, the combination may stop being subtractive; if
-   it does not, retire the feature.
-
-3. **Fold the rest of the P450 set** as MSAs land:
-   `p450_campaign.py submit --samples 3 --batch 4 --replicates 3` (raise `--limit` as the
-   queue allows), then `score_p450_pool.py score / features / validate` for the
-   leave-one-TARGET-out result.
+1. **Measure what single-sequence costs** once the 30 probe jobs land: compare
+   `protenix_v2_ss` against `protenix_v2` on pairs that have both. If the cost is small,
+   run the remaining ~150 MSA-blocked targets that way instead of waiting days.
+   **Beware the trap:** a degraded pool has more catastrophes, which INFLATES the
+   cross-engine gain while producing worse submissions. Judge on absolute oracle and pool
+   mean, never on the gain.
+2. **Re-run the P450 generalisation** as targets accumulate (`score_p450_pool.py score`
+   then the cross-engine block). It has held at 17 targets; 185 is the goal.
+3. **Keep P450 depth building** - `p450_campaign.py submit --samples 1 --replicates 8`.
+4. **Rebuild the submission** whenever the pool changes:
+   `build_xeng_feature.py` then `build_submission.py build --pool-dir <dir>`.
 
 ### Do NOT
 
-- Add more single-feature selection candidates without a mechanism. Roughly 30 have been
-  tested; everything anchor-local or population-level has failed (FINDINGS 002, 006, 008
-  addendum, 010) and only within-ligand comparisons have ever worked. Six were tried on
-  2026-09-13 alone, and best-of-six random scores about +0.012, which is most of why the
-  best of them did not count.
-- ~~Submit large fold batches while MSA searches are pending~~ — measured false, see
-  item 1. Folds and MSA searches do not compete; the MSA queue is serial at ~1 per
-  20-25 min regardless of what else is running.
+- Add single-feature selection candidates without a mechanism. ~30 tested; everything
+  anchor-local or population-level has failed.
+- Trust `rho` as a proxy for selection value. It moved OPPOSITE to the gain twice.
+- Trust a job status or a passing check without exercising the thing it names. Three
+  engines and one unbuildable submission path were lost to exactly that this session.
+
