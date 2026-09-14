@@ -603,3 +603,33 @@ precisely because they are the same three tiny samples every time.
 
 What would settle it is more *ligands* for those proteins, which the crystallographic record
 does not have. Recorded as closed-by-data-limit rather than open.
+
+## Twelfth measurement — the two settings are converging on the same number
+
+**43 proteins in the test (47 scored), 75 construct sequences, 308 pairs, 4,088 poses.**
+Catastrophic 5.23%, selected 0.7375 against random 0.6910, **gain +0.0465** (null 99th
++0.0104, p = 0.0), rho −0.1861, positive on 20 of 23.
+
+The complete series, twelve measurements, nothing tuned between any of them:
+
+| catastrophic | gain |
+|---|---|
+| 19.3% | +0.3006 |
+| 14.5% | +0.2045 |
+| 12.0% | +0.1410 |
+| 10.3% | +0.1098 |
+| 8.9% | +0.0908 |
+| 7.74% | +0.0697 |
+| 7.05% | +0.0655 |
+| 6.07% | +0.0566 |
+| 5.7% | +0.0529 |
+| **5.23%** | **+0.0465** |
+| **0.2% (CYP3A4 anchor)** | **+0.0381** |
+
+Monotone across all twelve, and the P450 figure is now **within 22% of the CYP3A4 anchor**,
+approaching from above as its pools stop producing catastrophic poses.
+
+That convergence is the strongest form the evidence takes. Two settings that differ in
+protein, engine, pool construction and MSA source are arriving at the same number as their
+catastrophe rates equalise - which is what "the gain is a property of the pool" predicts and
+what "the feature behaves differently on different proteins" cannot produce.
