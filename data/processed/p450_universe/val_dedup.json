@@ -1,0 +1,127 @@
+D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\structure\score_p450_pool.py:320: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  rs = np.array([stats.spearmanr(g.xeng, g.lddt_pli).statistic
+{
+  "max_rep": null,
+  "dedupe_pool": true,
+  "poses": 1239,
+  "pairs": 342,
+  "poses_per_pair": 3.62,
+  "proteins": 66,
+  "construct_sequences": 121,
+  "catastrophic_frac": 0.0395,
+  "random": 0.7022,
+  "oracle": 0.7673,
+  "selected": 0.7436,
+  "gain": 0.0414,
+  "null_p99": 0.0175,
+  "empirical_p": 0.0,
+  "within_pair_rho": -0.2431,
+  "proteins_positive": "20/21",
+  "per_protein": [
+    [
+      "Q55080",
+      4,
+      0.1222
+    ],
+    [
+      "Q9Y6A2",
+      12,
+      0.0987
+    ],
+    [
+      "Q385E8",
+      5,
+      0.0686
+    ],
+    [
+      "P08684",
+      71,
+      0.0668
+    ],
+    [
+      "Q00441",
+      9,
+      0.0556
+    ],
+    [
+      "P00178",
+      11,
+      0.0546
+    ],
+    [
+      "Q2IU02",
+      46,
+      0.0453
+    ],
+    [
+      "Q7Z1V1",
+      19,
+      0.0399
+    ],
+    [
+      "P9WPP1",
+      15,
+      0.0368
+    ],
+    [
+      "P04798",
+      5,
+      0.0356
+    ],
+    [
+      "P20815",
+      5,
+      0.0315
+    ],
+    [
+      "P11712",
+      7,
+      0.0231
+    ],
+    [
+      "P9WPP7",
+      18,
+      0.0159
+    ],
+    [
+      "P20813",
+      4,
+      0.0141
+    ],
+    [
+      "Q96242",
+      5,
+      0.0086
+    ],
+    [
+      "P10614",
+      4,
+      0.006
+    ],
+    [
+      "P9WPP3",
+      4,
+      0.0058
+    ],
+    [
+      "P9WPP9",
+      4,
+      0.004
+    ],
+    [
+      "Q16850",
+      5,
+      0.0027
+    ],
+    [
+      "P11511",
+      5,
+      0.002
+    ],
+    [
+      "Q5YNS8",
+      6,
+      -0.0031
+    ]
+  ]
+}

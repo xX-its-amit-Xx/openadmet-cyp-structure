@@ -1,0 +1,12 @@
+10712 poses over 430 pairs
+
+reference depth         pairs   random  selected      gain
+2-3 (below threshold)     316   0.7035    0.7387   +0.0352
+4+  (FINDING 011 ok)      114   0.7651    0.7719   +0.0068
+ALL                       430   0.7198    0.7475   +0.0277
+
+per exact depth:
+  depth 2: pairs  111  random 0.7194  selected 0.7439  gain +0.0245
+  depth 3: pairs  205  random 0.6948  selected 0.7359  gain +0.0411
+  depth 4: pairs   61  random 0.7848  selected 0.7921  gain +0.0074
+  depth 5: pairs   39  random 0.7480  selected 0.7526  gain +0.0046

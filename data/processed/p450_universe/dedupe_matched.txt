@@ -1,0 +1,8 @@
+matched pair set: 342 pairs, 66 proteins
+
+arm                         posesper pair   random  selected   oracle     gain
+with duplicates              8594   25.13   0.7129    0.7436   0.7677  +0.0306
+deduplicated                 1239    3.62   0.7022    0.7436   0.7673  +0.0414
+
+SAME pairs, same references, only duplicates removed: +0.0306 -> +0.0414  (delta +0.0108)
+duplicate fraction in the matched pool: 85.6%
