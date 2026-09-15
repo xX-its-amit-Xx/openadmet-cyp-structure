@@ -1,0 +1,11 @@
+320 poses, 80 pairs, 26 proteins (1x200 excluded as degrading)
+
+default 3x200 only : 0.7739
+random over settings: 0.7766
+SELECTED (xeng)     : 0.7701
+oracle              : 0.8094
+
+gain over random    : -0.0065   (null p99 +0.0100, p=0.9003)
+gain over DEFAULT   : -0.0038   <- what shipping this actually buys
+oracle over default : +0.0355
+fraction of new oracle captured: -10.7%

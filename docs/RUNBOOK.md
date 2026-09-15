@@ -219,6 +219,13 @@ well-behaved release. Which pool we submit from now matters as much as the selec
   Replicate count is not a lever for this engine; `num_recycles` / `num_steps` are the
   untested ones. Dedupe the POOL before believing any depth number, not just the
   reference - checking only the reference is how this went unnoticed for a whole campaign.
+- **Depth is buyable through the SAMPLER, not replicates** (FINDING 016). Varying
+  `num_recycles` / `num_steps` gives 5 distinct poses from 5 settings on 100/100 pairs at
+  1.2% catastrophic. Drop `num_recycles=1` - it degrades by -0.0596. Use it as the
+  REFERENCE, never as a pool member: as a pool expansion it adds +0.0355 oracle and the
+  selector captures -0.0038 of it, which is FINDING 013 reproduced by a second mechanism.
+  As a reference it covers 100 pairs where esmfold2 covers 80, and unlike esmfold2 it can
+  be generated for any target on demand.
 - **More engines is NOT better.** Best reference set is the two Protenix checkpoints
   (+0.0380); adding esmfold2 at matched depth drops it to +0.0178.
 - Single-sequence mode unblocks all 185 P450 targets at once against ~2 days of serial

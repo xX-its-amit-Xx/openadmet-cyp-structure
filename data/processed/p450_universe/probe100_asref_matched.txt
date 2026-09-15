@@ -1,0 +1,9 @@
+matched pair set: 80 pairs (esmfold2-usable 80, sweep-usable 100)
+
+reference arm                 pairs   random  selected     gain
+esmfold2 only                    80   0.7405    0.7764  +0.0359
+sweep only                       80   0.7405    0.7842  +0.0436
+esmfold2 + sweep                 80   0.7405    0.7788  +0.0383
+
+SAME pairs, same pool. sweep vs esmfold2: +0.0078; combined vs esmfold2: +0.0024
+pairs the sweep can reference that esmfold2 CANNOT: 20

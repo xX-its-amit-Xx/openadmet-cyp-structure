@@ -1,0 +1,23 @@
+500 poses over 100 pairs, 29 proteins (errors 0)
+
+by setting:
+         count    mean     std
+setting                       
+10x200     100  0.7353  0.2149
+1x200      100  0.6677  0.2113
+3x200      100  0.7274  0.2079
+3x400      100  0.7251  0.2123
+3x50       100  0.7307  0.2043
+
+catastrophic (<0.1): 1.20%
+
+pairs compared: 100
+default (3x200) mean : 0.7274
+5-setting ORACLE     : 0.7653   (+0.0379)
+pairs where a non-default setting BEAT the default: 82 of 100
+mean improvement where it improved: 0.0462
+  setting 10x200  alone: mean 0.7353  vs default 0.7274  delta +0.0079
+  setting 1x200   alone: mean 0.6677  vs default 0.7274  delta -0.0596
+  setting 3x200   alone: mean 0.7274  vs default 0.7274  delta +0.0000
+  setting 3x400   alone: mean 0.7251  vs default 0.7274  delta -0.0023
+  setting 3x50    alone: mean 0.7307  vs default 0.7274  delta +0.0033

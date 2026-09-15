@@ -1,0 +1,4 @@
+reference arm                 pairs  ref depth   random  selected     gain
+esmfold2 only (incumbent)        80          3   0.7405    0.7764  +0.0359
+sweep only                      100          4   0.6979    0.7354  +0.0374
+esmfold2 + sweep                100          7   0.6979    0.7311  +0.0332
