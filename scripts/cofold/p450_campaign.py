@@ -29,6 +29,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -52,8 +54,28 @@ def _state() -> dict:
 
 
 def _save(d: dict) -> None:
+    """Write the campaign state atomically, keeping the previous copy.
+
+    This file is the ONLY record of in-flight OpenProtein jobs - at the time this was
+    written, 2,300 of them - and a submitter and two collectors all read-modify-write it
+    concurrently. A bare `write_text` truncates the file before it refills, so any crash
+    or interleave in that window leaves unparseable JSON and every queued job becomes
+    unrecoverable: the job ids exist only here.
+
+    Temp-file-and-replace makes the swap atomic, so a reader sees either the old state or
+    the new one and never a half-written one. `.prev` is the recovery copy for the case
+    atomicity does not cover - a concurrent writer clobbering another's new records.
+    """
     STATE.parent.mkdir(parents=True, exist_ok=True)
-    STATE.write_text(json.dumps(d, indent=1))
+    payload = json.dumps(d, indent=1)
+    if STATE.exists():
+        try:
+            shutil.copyfile(STATE, STATE.with_suffix(".json.prev"))
+        except OSError:
+            pass
+    tmp = STATE.with_suffix(f".json.tmp{os.getpid()}")
+    tmp.write_text(payload)
+    os.replace(tmp, STATE)
 
 
 def targets() -> pd.DataFrame:
