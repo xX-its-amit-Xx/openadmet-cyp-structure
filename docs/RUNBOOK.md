@@ -251,13 +251,23 @@ well-behaved release. Which pool we submit from now matters as much as the selec
    destroys the prediction. Do not generalise from the CYP3A4 result.
 2. **Re-run the P450 generalisation** as targets accumulate (`score_p450_pool.py score`
    then the cross-engine block). It has held at 17 targets; 185 is the goal.
-3. **Keep P450 depth building** - `python scripts/ops/topup_p450.py --submit`. One
-   command, idempotent, and it reports the gaps before queueing. The gap that matters is
-   not visible from job counts: a pair with fewer than 3 POOL poses is dropped from the
-   generalisation test entirely, so thin pairs cost whole PROTEINS - 48 of them were
-   gating 10 proteins, and filling them moved the count 22 -> 27 -> 30. Run with no flags
-   to see the gaps without submitting. It skips rosettafold_3 and protenix-v1 on purpose:
-   both are deterministic enough that replicates produce byte-identical files.
+3. ~~**Keep P450 depth building** - `topup_p450.py --submit`~~ **DEAD, 2026-09-15
+   (FINDING 015).** Do not run this. Both OpenProtein engines now return a byte-identical
+   pose per input: a 12 -> 24 replicate doubling produced 5,892 poses and moved the oracle
+   on **0 of 489 pairs**, and deepening the esmfold2 reference added zero new poses on 468
+   of 469. `--replicates` buys nothing at any count, from either engine. The step cost
+   ~4,450 jobs before the check that catches it - hash the outputs, count distinct - was
+   finally run.
+
+   **What replaces it:** the SAMPLER sweep (FINDING 016). `num_recycles` / `num_steps`
+   give 4 distinct placements from 4 settings at 1.2% catastrophic, and the whole P450 set
+   is already swept (`p450_universe/diversity_probe`, 489 of 491 pairs).
+
+       python scripts/cofold/diversity_probe.py --pairs <n>
+
+   Use it as the REFERENCE, never as a pool member - as a pool expansion it adds +0.0355
+   oracle and selection captures -0.0038, which is FINDING 013 a second time. Feed it in
+   with `build_xeng_feature.py --ref-sweep <dir> --skip-thin`.
 3b. **Disk — DONE, 2026-09-14.** All four op1 pools are now on OneDrive
    (`onedrive:rclone-offload/cyp-structure/pool/op1`, 9,234 objects / 2.92 GiB), which
    took D: from 6.2 GB back to 9.6 GB. The selector is unaffected and that was verified

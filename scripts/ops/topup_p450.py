@@ -1,5 +1,19 @@
 """Top up the P450 campaign: one command the ops tick can run without thinking.
 
+⚠️ **OBSOLETE as of 2026-09-15 — FINDING 015. `--submit` now refuses.**
+
+Everything below was true when both OpenProtein engines still sampled. They no longer do:
+each returns a byte-identical pose for a given input, so `--replicates` buys nothing at
+any count. A 12 -> 24 doubling produced 5,892 poses and moved the per-pair oracle on **0
+of 489 pairs**; deepening the esmfold2 reference added zero new poses on 468 of 469. This
+script's entire purpose was buying depth through replicates, and that lever is gone.
+
+The replacement is the sampler sweep (FINDING 016) - `scripts/cofold/diversity_probe.py`,
+varying `num_recycles` / `num_steps`, which gives 4 distinct placements from 4 settings.
+
+The reporting half is still useful and still runs with no flags.
+
+
 The generalisation set (FINDING 012) is the only experiment still producing new
 information, and it grows in two ways - new proteins as MSAs finish, and deeper pools on
 proteins already covered. Both are just `p450_campaign.py submit` with the right engine
@@ -19,8 +33,8 @@ It deliberately does NOT submit rosettafold_3 or protenix-v1: RF3 is half-determ
 single-sequence mode and places organometallics wrongly, and protenix-v1 is fully
 deterministic, so replicates of either buy nothing (FINDING 011).
 
-    python scripts/ops/topup_p450.py            # report the gaps, submit nothing
-    python scripts/ops/topup_p450.py --submit
+    python scripts/ops/topup_p450.py            # report the gaps (still works)
+    python scripts/ops/topup_p450.py --submit   # REFUSES, exit 2 - see the banner above
 """
 from __future__ import annotations
 
@@ -94,6 +108,9 @@ def refresh_skip_lists() -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--submit", action="store_true")
+    ap.add_argument("--i-know-replicates-are-dead", action="store_true",
+                    help="override the FINDING 015 refusal; only after verifying "
+                         "by hashing that the engine samples again")
     ap.add_argument("--pool-replicates", type=int, default=12)
     ap.add_argument("--ref-replicates", type=int, default=6)
     ap.add_argument("--limit", type=int, default=150)
@@ -144,8 +161,22 @@ def main() -> int:
           f"pairs below {a.ref_replicates}: {sum(1 for v in es.values() if v < a.ref_replicates)}")
 
     if not a.submit:
-        print("\n(dry run - pass --submit to queue the work)")
+        print("\n(dry run - reporting only; --submit is disabled, see below)")
         return 0
+
+    # Refuse rather than warn. A warning at the top of a log is not read at 3am, and the
+    # cost of ignoring it is thousands of jobs producing byte-identical files - which is
+    # exactly what happened before FINDING 015 was measured.
+    if not a.i_know_replicates_are_dead:
+        print("\nREFUSING to submit. FINDING 015: both OpenProtein engines return a")
+        print("byte-identical pose per input, so replicates buy nothing at any count.")
+        print("  - 12 -> 24 doubling: 5,892 poses, oracle moved on 0 of 489 pairs")
+        print("  - esmfold2 6 -> 14:  zero new poses on 468 of 469 pairs")
+        print("Use the sampler sweep instead: scripts/cofold/diversity_probe.py")
+        print("(FINDING 016 - num_recycles/num_steps, 4 distinct from 4 settings).")
+        print("\nIf the service starts sampling again, verify it FIRST by hashing the")
+        print("outputs, then pass --i-know-replicates-are-dead to override.")
+        return 2
 
     runner = REPO / "scripts" / "cofold" / "p450_campaign.py"
     for engine, reps in (("protenix_v2", a.pool_replicates),
