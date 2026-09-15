@@ -78,6 +78,38 @@ def _save(d: dict) -> None:
     os.replace(tmp, STATE)
 
 
+def _save_merged(d: dict) -> None:
+    """Save by overlaying our changes onto whatever is on disk NOW.
+
+    Atomicity was not enough, and that showed up as 349 vanished job records. A collector
+    reads the state, spends many minutes downloading, and saves - writing back a dict that
+    predates every job the submitter queued in the meantime. The newest records are the
+    ones destroyed, which is the worst possible selection: those jobs are running on
+    OpenProtein with nothing left that knows their ids.
+
+    Re-reading at save time and overlaying makes concurrent writers additive. Disk is the
+    base, so records this process never saw survive; our own fields win per record, so the
+    `done` flags we just earned are applied. Two writers can still race inside the
+    read-write window here, but it is microseconds wide instead of minutes.
+    """
+    try:
+        base = json.loads(STATE.read_text()) if STATE.exists() else {}
+    except (OSError, json.JSONDecodeError):
+        _save(d)
+        return
+    for section in ("folds", "msa"):
+        merged = dict(base.get(section, {}))
+        for k, v in d.get(section, {}).items():
+            if isinstance(v, dict) and isinstance(merged.get(k), dict):
+                merged[k] = {**merged[k], **v}
+            else:
+                merged[k] = v
+        d[section] = merged
+    for k, v in base.items():
+        d.setdefault(k, v)
+    _save(d)
+
+
 def targets() -> pd.DataFrame:
     """One row per distinct sequence: what an MSA is actually keyed on."""
     df = pd.read_csv(SET)
@@ -252,7 +284,9 @@ def cmd_collect() -> dict:
                 ok_all = False
         if ok_all:
             rec["done"] = True
-    _save(st)
+    # a collect pass takes minutes; the submitter appends records throughout it, so
+    # writing our own stale dict back would delete them (it did - 349 of them)
+    _save_merged(st)
     return {"collected": n_ok, "pending": n_pend, "failed": n_fail}
 
 
