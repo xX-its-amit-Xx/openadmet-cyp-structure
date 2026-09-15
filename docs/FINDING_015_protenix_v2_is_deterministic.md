@@ -114,3 +114,52 @@ seventeen prior measurements incomparable while improving nothing.
 What it does change is the read on FINDING 011/012: their +0.0381 and +0.0357 were
 measured against nulls that included duplicates, so the selector's *discriminative power*
 is stronger than those figures imply, even though the poses it picks are the same ones.
+
+---
+
+## Second addendum, same day — esmfold2 is deterministic too. Replicates are dead.
+
+The reference-depth question needed a within-pair test, so esmfold2 was deepened 6 → 14
+replicates. Applying this finding's own rule *while the batch ran* rather than after:
+
+```
+pairs with new esmfold2 replicates on disk: 469
+  reps 0-5 : median 3 distinct of 6
+  reps 6+  : median 1 distinct of 2
+  NEW poses not already present: median 0.0, MEAN 0.00
+  pairs where the new reps added NOTHING: 468 of 469
+```
+
+Zero. Killed at 652 jobs instead of 1,200.
+
+**Both engines now return a deterministic pose per input.** The ~50% duplication in
+esmfold2 reps 0-5 and the 3-4-distinct-of-12 in protenix_v2 reps 0-11 are *historical* —
+from when the service behaved differently. Nothing submitted today diversifies at all.
+
+### What this means, and it is not small
+
+**Pose depth on OpenProtein is frozen at what we already have** — about 4 distinct
+protenix_v2 poses and 3 distinct esmfold2 poses per pair. It cannot be increased by
+buying replicates, from either engine, at any count. The `--replicates` lever that this
+whole campaign was built on has stopped working.
+
+Remaining levers, none of them yet measured:
+
+1. **`num_recycles` / `num_steps`** — change the trajectory rather than resampling it.
+   Cheapest to test and the obvious next probe.
+2. **Other engines** — rosettafold_3, boltz2, boltz_1x run here. RF3 was already
+   half-deterministic; the Boltz pair is untested for diversity on this venue.
+3. **MSA variation** — subsample the 6,979-sequence MSA to different depths. Changes the
+   input, so determinism of the engine does not prevent diversity of the output.
+4. **Modal-hosted Boltz** — genuinely stochastic, but over its spend cap.
+
+Until one of those is shown to work, **stop buying replicates**. They are pure cost.
+
+### The pattern worth naming
+
+Three times now the same check has decided the outcome, and each time it was applied one
+step later than it should have been: FINDING 009 (samples do not diversify), FINDING 011
+(39% of reference replicates were duplicates), and this one twice over — the pool, then
+the reference. The check is always the same and always cheap: **hash the outputs and
+count distinct ones before believing a depth number.** The cost of skipping it here was
+~3,800 protenix_v2 jobs plus ~650 esmfold2 jobs. The cost of running it is one command.
