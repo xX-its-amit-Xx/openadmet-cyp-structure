@@ -37,8 +37,10 @@ from cypstruct.paths import DATA_PROCESSED  # noqa: E402
 
 UNI = DATA_PROCESSED / "p450_universe"
 
-# (num_recycles, num_steps) - the defaults are (3, 200) as this campaign submits them
-SETTINGS = [(3, 200), (1, 200), (10, 200), (3, 50), (3, 400)]
+# (num_recycles, num_steps) - the defaults are (3, 200) as this campaign submits them.
+# (1, 200) was measured and DROPPED: -0.0596 against the default over 100 pairs. It is the
+# only setting that degrades rather than diversifies (FINDING 016).
+SETTINGS = [(3, 200), (10, 200), (3, 50), (3, 400)]
 
 
 def main() -> int:
@@ -59,7 +61,16 @@ def main() -> int:
     ready = {k for k, v in st["msa"].items() if v.get("status") == "SUCCESS"}
     cs = pd.read_csv(UNI / "p450_cofold_set.csv")
     cs["pair"] = cs.pdb + "_" + cs.id
-    cs = cs[cs.target_key.isin(ready)].drop_duplicates("pair").head(a.pairs)
+    # pairs this engine has already proved it cannot fold - submitting them again buys
+    # nothing and, worse, each doomed job costs the full retrieval budget while waiting
+    unsup = UNI / f"{a.engine}_unsupported.json"
+    skip = set(json.loads(unsup.read_text()).get("pairs", [])) if unsup.exists() else set()
+    cs = cs[cs.target_key.isin(ready)].drop_duplicates("pair")
+    if skip:
+        before = len(cs)
+        cs = cs[~cs.pair.isin(skip)]
+        print(f"skipping {before - len(cs)} pairs {a.engine} cannot fold")
+    cs = cs.head(a.pairs)
     print(f"probing {len(cs)} pairs x {len(SETTINGS)} settings on {a.engine}\n")
 
     out = Path(a.out)
@@ -83,6 +94,17 @@ def main() -> int:
         # and then printed a confident verdict from the one that survived.
         res = None
         for _attempt in range(40):
+            # Read the STATUS before retrying. A job that has already FAILED will never
+            # become retrievable, and blindly retrying it costs the full 10-minute budget
+            # per job - the full-set run stalled for 40 minutes on 2FDY_D4G, a pair
+            # already known unfoldable, because this loop could not tell "not finished
+            # yet" from "finished badly".
+            try:
+                status = str(f.job.status).upper()
+            except Exception:
+                status = ""
+            if "FAIL" in status or "CANCEL" in status:
+                break
             try:
                 res = f.get()
                 break
