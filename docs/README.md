@@ -1,6 +1,6 @@
 # Findings index
 
-Fourteen findings, most of them negative. Read them in this order if you are arriving cold;
+Fifteen findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
 ## Start here
@@ -38,10 +38,11 @@ a meaningless word here.
 | 008 | the P450 superfamily replicates the coordination thesis; a p5–p95 window is **not** an acceptance test and was discarding 10% of true coordination |
 | 009 | **`diffusion_samples` does not sample the ligand on OpenProtein** — for any engine. Only replicate jobs do, and replicates are not automatically distinct either |
 | 013 | a union pool adds **+0.0375 of oracle that selection cannot reach** — keep a second engine as *reference*, never as a pool member |
+| 015 | **protenix_v2 is deterministic too** — a 12→24 doubling moved the oracle on 0 of 489 pairs. Nominal depth 12 is real depth ~4, and the POOL was never deduped, only the reference |
 
 ## The three traps that cost the most
 
-1. **Counting artifacts instead of independent opinions.** 20 identical models read as 20 poses; 39% of "replicates" were duplicates; RF3 half-deterministic; Protenix-v1 fully deterministic. Count *distinct poses*, never jobs. (009, 011)
+1. **Counting artifacts instead of independent opinions.** 20 identical models read as 20 poses; 39% of "replicates" were duplicates; RF3 half-deterministic; Protenix-v1 fully deterministic — and now protenix_v2 too, where a 5,892-pose doubling turned out to be one file repeated. Count *distinct poses*, never jobs — and apply it to the POOL, not only the reference, which is the half that went unchecked. (009, 011, 015)
 2. **Trusting a status or a passing check.** Three engines were written off on a misread status or an unread `failure_message`; a readiness check reported 11/11 while the submission was unbuildable. Exercise the thing, do not stat it. (see RUNBOOK "Do NOT")
 3. **Reading ρ as selection value.** Rank correlation and top-1 selection moved in *opposite* directions twice. Judge on the metric that will actually be used. (011, 012)
 

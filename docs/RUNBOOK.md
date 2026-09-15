@@ -210,8 +210,15 @@ well-behaved release. Which pool we submit from now matters as much as the selec
 - **protenix-v1 is DETERMINISTIC**: sd 0.0000 across replicates on 6/6 standard ligands
   and 14/14 organometallics. One replicate is all it will ever give, and that single pose
   is worth +0.007 in the reference set. Never buy more than one. rosettafold_3 in
-  single-sequence mode is deterministic for about half of ligands; esmfold2 and
-  protenix_v2 are properly diverse.
+  single-sequence mode is deterministic for about half of ligands; esmfold2 is
+  properly diverse.
+- **protenix_v2 is ALSO DETERMINISTIC** (FINDING 015, 2026-09-15). This list used to say
+  it was "properly diverse". A 12 -> 24 replicate doubling moved the oracle on **0 of 489
+  pairs**, delta +0.000000: replicates 12-23 are one file written twelve times, and the
+  older half holds 3-4 distinct files out of 12. Nominal depth 12 is a REAL depth of ~4.
+  Replicate count is not a lever for this engine; `num_recycles` / `num_steps` are the
+  untested ones. Dedupe the POOL before believing any depth number, not just the
+  reference - checking only the reference is how this went unnoticed for a whole campaign.
 - **More engines is NOT better.** Best reference set is the two Protenix checkpoints
   (+0.0380); adding esmfold2 at matched depth drops it to +0.0178.
 - Single-sequence mode unblocks all 185 P450 targets at once against ~2 days of serial
