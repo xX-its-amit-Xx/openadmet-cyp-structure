@@ -120,8 +120,8 @@ def readiness() -> list[tuple[str, bool, str]]:
     # measured selector performance, so the number is not recalled from memory
     sel = DATA_PROCESSED / "orientation_selector_val87b_unsteered.json"
     rows.append(("selector measured", sel.exists(),
-                 "xeng +0.0381 (FINDING 011); generalises +0.2045 over 17 P450 "
-                 "targets (FINDING 012)"))
+                 "xeng +0.0381 (FINDING 011); generalises +0.0357 over 81 P450 "
+                 "proteins, p=0.0 (FINDING 012, final)"))
     return rows
 
 
