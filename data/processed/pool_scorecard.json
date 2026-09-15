@@ -115,5 +115,23 @@
   "catastrophic_frac": 0.0407,
   "proteins_positive": "26/30",
   "note": "reproduces +0.0357 at +0.0358 with nothing tuned; catastrophe rate 4.07%"
+ },
+ {
+  "date": "2026-09-15",
+  "what": "P450 generalisation, 18th measurement - SWEEP as reference (FINDING 016)",
+  "ref_source": "sweep",
+  "poses": 12134,
+  "pairs": 487,
+  "proteins": 87,
+  "construct_sequences": 181,
+  "random": 0.706,
+  "selected": 0.729,
+  "oracle": 0.7542,
+  "gain": 0.0229,
+  "null_p99": 0.0097,
+  "empirical_p": 0.0,
+  "catastrophic_frac": 0.0298,
+  "proteins_positive": "24/31",
+  "note": "coverage 487 pairs / 87 proteins vs esmfold2's 430 / 81; on the MATCHED 428 pairs sweep -0.0028 vs esmfold2, i.e. equivalent, not better - the +0.0078 seen at n=80 was noise and is retracted"
  }
 ]
