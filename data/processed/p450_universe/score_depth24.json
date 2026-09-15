@@ -1,0 +1,28 @@
+493 pair directories
+  25/493  scored=300 err=0
+  50/493  scored=576 err=0
+  75/493  scored=876 err=0
+  100/493  scored=1176 err=0
+  125/493  scored=1476 err=0
+  150/493  scored=1776 err=0
+  175/493  scored=2076 err=0
+  200/493  scored=2376 err=0
+  225/493  scored=2676 err=0
+  250/493  scored=2952 err=60
+  275/493  scored=3252 err=60
+  300/493  scored=3552 err=60
+  325/493  scored=3852 err=60
+  350/493  scored=4152 err=60
+  375/493  scored=4452 err=60
+  400/493  scored=4752 err=60
+  425/493  scored=5052 err=60
+  450/493  scored=5352 err=60
+  475/493  scored=5652 err=60
+{
+  "poses": 15389,
+  "pairs": 491,
+  "targets": 183,
+  "errors": 60,
+  "pool_mean": 0.6984,
+  "oracle": 0.7925
+}
