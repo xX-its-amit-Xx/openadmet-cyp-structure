@@ -1,0 +1,12 @@
+<stdin>:63: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+<stdin>:63: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+<stdin>:63: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+esmfold2 can reference 432 pairs; sweep 488; BOTH 429
+sweep-only pairs (esmfold2 cannot): 59   esmfold2-only: 3
+
+reference               pairs  proteins   random  selected     gain      rho
+esmfold2                  428        81   0.7209    0.7479  +0.0270   -0.170
+sweep                     428        81   0.7209    0.7451  +0.0242   -0.202
+esmfold2 + sweep          428        81   0.7209    0.7474  +0.0264   -0.193
+
+SAME 428 pairs, same pool. sweep - esmfold2 = -0.0028;  combined - esmfold2 = -0.0006

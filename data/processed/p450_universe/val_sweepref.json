@@ -1,0 +1,178 @@
+D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\structure\score_p450_pool.py:341: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  rs = np.array([stats.spearmanr(g.xeng, g.lddt_pli).statistic
+{
+  "max_rep": null,
+  "dedupe_pool": false,
+  "ref_source": "sweep",
+  "poses": 12134,
+  "pairs": 487,
+  "poses_per_pair": 24.92,
+  "proteins": 87,
+  "construct_sequences": 181,
+  "catastrophic_frac": 0.0298,
+  "random": 0.706,
+  "oracle": 0.7542,
+  "selected": 0.729,
+  "gain": 0.0229,
+  "null_p99": 0.0097,
+  "empirical_p": 0.0,
+  "within_pair_rho": -0.2184,
+  "proteins_positive": "24/31",
+  "per_protein": [
+    [
+      "Q55080",
+      4,
+      0.1218
+    ],
+    [
+      "P48635",
+      4,
+      0.0768
+    ],
+    [
+      "Q2IU02",
+      48,
+      0.0731
+    ],
+    [
+      "Q9Y6A2",
+      12,
+      0.0671
+    ],
+    [
+      "Q00441",
+      9,
+      0.0595
+    ],
+    [
+      "Q385E8",
+      8,
+      0.0589
+    ],
+    [
+      "Q7Z1V1",
+      21,
+      0.0537
+    ],
+    [
+      "P19099",
+      6,
+      0.0486
+    ],
+    [
+      "P08684",
+      107,
+      0.0476
+    ],
+    [
+      "O31440",
+      4,
+      0.0316
+    ],
+    [
+      "P10635",
+      6,
+      0.0235
+    ],
+    [
+      "Q16850",
+      8,
+      0.0177
+    ],
+    [
+      "P00178",
+      15,
+      0.0176
+    ],
+    [
+      "E9QY26",
+      4,
+      0.0169
+    ],
+    [
+      "P10614",
+      9,
+      0.014
+    ],
+    [
+      "P9WPP9",
+      6,
+      0.0095
+    ],
+    [
+      "P9WPP7",
+      33,
+      0.0086
+    ],
+    [
+      "P20813",
+      5,
+      0.0076
+    ],
+    [
+      "P9WPP3",
+      8,
+      0.006
+    ],
+    [
+      "P11511",
+      7,
+      0.0024
+    ],
+    [
+      "P11712",
+      10,
+      0.0002
+    ],
+    [
+      "Q16696",
+      4,
+      0.0002
+    ],
+    [
+      "Q5YNS8",
+      7,
+      0.0002
+    ],
+    [
+      "P05108",
+      4,
+      0.0001
+    ],
+    [
+      "Q96242",
+      5,
+      -0.0012
+    ],
+    [
+      "P9WPP1",
+      14,
+      -0.0031
+    ],
+    [
+      "P9WPL5",
+      7,
+      -0.0046
+    ],
+    [
+      "P11509",
+      7,
+      -0.0056
+    ],
+    [
+      "P05181",
+      4,
+      -0.0058
+    ],
+    [
+      "P04798",
+      6,
+      -0.0361
+    ],
+    [
+      "P20815",
+      5,
+      -0.0424
+    ]
+  ]
+}

@@ -71,11 +71,10 @@ Three things, in decreasing order of confidence:
 2. **Renewability — the strategic result.** esmfold2 is frozen and cannot be deepened at
    any price. A sweep can be generated for *any* pair on demand, including test ligands
    nobody has folded yet. The reference source stops being a fixed asset.
-3. **+0.0078 over the incumbent — suggestive, not established.** It is below this pool's
-   own null p99 of +0.0100. Do not quote it as an improvement; quote coverage.
+3. **⚠️ RETRACTED: "+0.0078 over the incumbent".** It did not replicate. See below.
 
-Combining the two references is **worse than either alone** (+0.0383 vs +0.0436), which
-is the third independent confirmation of FINDING 011's "more engines is NOT better".
+Combining the two references looked **worse than either alone** here (+0.0383 vs
++0.0436). That did not replicate either — at full scale all three arms are equal.
 
 ## What to do with it
 
@@ -91,3 +90,43 @@ is the third independent confirmation of FINDING 011's "more engines is NOT bett
 500 jobs to close the pool question and open the reference one. The pool arm was decided
 by one number — gain over *default*, not over random — because random over a sweep is not
 the alternative anyone would ship.
+
+
+---
+
+## Correction — the quality edge was noise. Coverage is the whole result.
+
+The matched comparison above used 80 pairs. Repeated on **428** — the full set where both
+reference sources are usable, same pool, only the reference varying:
+
+| reference | pairs | proteins | selected | gain | within-pair ρ |
+|---|---|---|---|---|---|
+| esmfold2 | 428 | 81 | 0.7479 | **+0.0270** | −0.170 |
+| sweep | 428 | 81 | 0.7451 | **+0.0242** | −0.202 |
+| esmfold2 + sweep | 428 | 81 | 0.7474 | +0.0264 | −0.193 |
+
+**sweep − esmfold2 = −0.0028.** At n=80 it was +0.0078. The effect reversed sign, and
+both values sit inside this pool's null p99 of ~+0.0100. That is FINDING 007's arithmetic
+doing exactly what it was written to do: **under +0.020 is noise**, and a number quoted as
+"suggestive" at n=80 was simply noise with a sign.
+
+So the honest statement is that **the sweep and esmfold2 are equivalent as reference
+sources.** Not better. Equivalent.
+
+Note also that the sweep has the *better* rank correlation (−0.202 vs −0.170) while
+losing on top-1 selection. Rank correlation and selection moving in opposite directions is
+the third trap in `docs/README.md`, met for a third time. Judge on the metric that ships.
+
+### What survives, and it is still worth having
+
+- **Coverage.** The sweep references **488 pairs where esmfold2 manages 432**, including
+  **59 pairs esmfold2 cannot reference at all**. At full-set scale that is 487 pairs / 87
+  proteins in the generalisation test against 430 / 81 — six whole proteins that had no
+  working selector now have one. This needs no statistical claim and does not depend on
+  the retracted edge.
+- **Renewability.** esmfold2 is deterministic and frozen; a sweep can be generated for any
+  target, including test ligands nobody has folded. That is what makes it a drop-day
+  reference recipe rather than a fixed asset.
+
+The pool-expansion result is untouched: as a pool member the sweep is still −0.0038, and
+FINDING 013 still holds twice over.
