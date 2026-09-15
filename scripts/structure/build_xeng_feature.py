@@ -13,16 +13,27 @@ Three traps, all of them already paid for once:
 
 * `diffusion_samples` does not diversify the ligand on OpenProtein - within one job every
   model shares a single ligand conformation, for Protenix and esmfold2 alike (FINDING 009).
-  Only replicate jobs count, which is why references are keyed on replicate.
-* Replicates are not automatically distinct either: 39% of nominal Protenix replicates
-  were duplicates, and rosettafold-3 in single-sequence mode is deterministic for about
-  half of ligands. `reference_poses` dedupes.
+* **Replicates buy NOTHING at all any more** (FINDING 015). Both OpenProtein engines now
+  return a byte-identical pose per input: a 12->24 replicate doubling moved the oracle on
+  0 of 489 pairs. The lever that still works is the SAMPLER - `num_recycles` / `num_steps`
+  give 4 distinct placements from 4 settings (FINDING 016). `reference_poses` still
+  dedupes, because historical pools are ~85% duplicates.
 * More engines is NOT better. The best measured reference set is the two Protenix
   checkpoints; adding esmfold2 at matched depth drops +0.0380 to +0.0178 (FINDING 011).
 
+Two reference sources, and the sweep is the drop-day one because it can be generated for
+any target whereas the engines are frozen:
+
+    # engine reference (historical pools)
     python scripts/structure/build_xeng_feature.py --tag val87b \\
         --pool D:/cyp_scratch/val87b_unsteered \\
         --refs protenix_v2 protenix
+
+    # sampler-sweep reference (FINDING 016) - note the pool layout differs
+    python scripts/structure/build_xeng_feature.py --tag p450 \\
+        --pool data/processed/p450_universe/poses \\
+        --pool-glob '*' --pattern 'protenix_v2/*.cif' \\
+        --ref-sweep data/processed/p450_universe/diversity_probe --skip-thin
 """
 from __future__ import annotations
 
@@ -51,10 +62,22 @@ def main() -> int:
     ap.add_argument("--refs", nargs="+", default=["protenix_v2", "protenix"],
                     help="engine pool names under data/processed/openprotein/op1/")
     ap.add_argument("--pattern", default="*.cif")
+    ap.add_argument("--pool-glob", default="*__*",
+                    help="directory glob inside --pool. The default matches the val87b "
+                         "layout (<LIG>__<arm>__<n>); use '*' together with --pattern "
+                         "'<engine>/*.cif' for the P450 and sweep layouts.")
     ap.add_argument("--min-depth", type=int, default=4)
+    ap.add_argument("--ref-sweep", default=None,
+                    help="directory of <pair>/ dirs holding a SAMPLER SWEEP to use as the "
+                         "reference instead of engine pools (FINDING 016). This is the "
+                         "drop-day path: the sweep can be generated for any target, "
+                         "whereas the engines are deterministic and cannot be deepened.")
     ap.add_argument("--frozen",
                     default=str(DATA_PROCESSED / "reference_set_cyp3a4.npz"),
                     help="frozen reference set, used when the raw pools are archived")
+    ap.add_argument("--skip-thin", action="store_true",
+                    help="omit ligands below --min-depth instead of refusing the whole "
+                         "build; those ligands fall back to the older selector")
     ap.add_argument("--force", action="store_true",
                     help="write even if the reference set is too shallow (do not)")
     a = ap.parse_args()
@@ -67,29 +90,81 @@ def main() -> int:
     # every poll - and an empty directory still passes `exists()`. Testing existence would
     # therefore take the raw-pool branch, build an EMPTY reference set, and never reach the
     # frozen fallback. Check for actual poses, not for the container.
-    pools = [OP_ROOT / e for e in a.refs]
+    if a.ref_sweep:
+        # A sweep reference is keyed on the SETTING, not on a replicate index, and
+        # num_recycles=1 is excluded because it measured -0.0596 against the default -
+        # the one setting that degrades rather than diversifies (FINDING 016).
+        root = Path(a.ref_sweep)
+        ref = {}
+        for dirp in sorted(root.glob("*")):
+            if not dirp.is_dir():
+                continue
+            lig = dirp.name.split("__")[0]
+            vs = []
+            for f in sorted(dirp.glob("*.cif")):
+                if "1x200" in f.name:
+                    continue
+                try:
+                    v = X.in_heme_frame(P.load_structure(f))
+                except Exception:
+                    continue
+                if v is not None:
+                    vs.append(v)
+            if vs:
+                ref.setdefault(lig, []).extend(vs)
+        ref = {k: X._dedupe(v) for k, v in ref.items()}
+        if not ref:
+            print(f"no sweep poses under {root}")
+            return 1
+        print(f"reference: sampler sweep from {root} ({len(ref)} ligands)")
+        pools = []
+    else:
+        pools = [OP_ROOT / e for e in a.refs]
     populated = [p for p in pools if any(p.glob("*.cif"))] if pools else []
     if pools and len(populated) == len(pools):
         ref = X.reference_poses(pools, P.load_structure)
-    elif Path(a.frozen).exists():
+    elif not a.ref_sweep and Path(a.frozen).exists():
         ref = X.load_reference(a.frozen)
         print(f"raw pools absent; using frozen reference {Path(a.frozen).name}")
-    else:
+    elif not a.ref_sweep:
         print(f"neither the pools {[str(p) for p in pools]} nor {a.frozen} exist")
         return 1
     depth = X.reference_depth(ref)
-    print(f"reference engines: {a.refs}")
+    if not a.ref_sweep:
+        print(f"reference engines: {a.refs}")
     print(f"reference depth: {  {k: v for k, v in depth.items() if k != 'note'} }")
     thin = [k for k, v in ref.items() if len(v) < a.min_depth]
-    if thin and not a.force:
+    if thin and a.skip_thin:
+        # Better than refusing the whole build when a handful of ligands are thin: emit
+        # the feature only where it is trustworthy and leave the rest out, so
+        # build_submission falls back to the older selector for those ligands rather
+        # than losing the feature for every ligand. On the full sweep this is 11 of 490.
+        for k in thin:
+            ref.pop(k)
+        print(f"\nskipping {len(thin)} ligands below depth {a.min_depth} "
+              f"(e.g. {thin[:5]}); {len(ref)} keep the feature, the rest fall back")
+    elif thin and not a.force:
         print(f"\nREFUSING: {len(thin)} of {len(ref)} ligands have fewer than "
               f"{a.min_depth} independent reference poses, e.g. {thin[:5]}.")
         print("At one reference pose this feature measured -0.0055 - it would make the")
-        print("selection WORSE, not weaker. Add replicate jobs (not samples) and re-run.")
+        print("selection WORSE, not weaker.")
+        # This message used to say "add replicate jobs (not samples)". FINDING 015 made
+        # that advice dead: replicates are byte-identical on BOTH OpenProtein engines at
+        # any count, so following it would burn jobs and change nothing.
+        print("Add SAMPLER SETTINGS (num_recycles / num_steps, FINDING 016) - NOT")
+        print("replicates, which are byte-identical on both engines (FINDING 015).")
+        print(f"Or pass --skip-thin to build for the other {len(ref) - len(thin)} "
+              "ligands and let these fall back.")
         return 2
 
     rows = []
-    for dirp in sorted(Path(a.pool).glob("*__*")):
+    # The val87b pool names its directories <LIG>__<arm>__<n>; the P450 and sweep pools
+    # name them <PAIR> with poses nested under an engine subdirectory. Hardcoding the
+    # first layout made the builder silently find zero poses in the second - it printed
+    # "no poses read from the pool" rather than anything about layout.
+    for dirp in sorted(Path(a.pool).glob(a.pool_glob)):
+        if not dirp.is_dir():
+            continue
         lig = dirp.name.split("__")[0]
         if lig not in ref or not ref[lig]:
             continue
