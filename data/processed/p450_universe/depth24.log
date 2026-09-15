@@ -6,3 +6,24 @@ scored: 491 pairs, 87 proteins, 183 construct sequences
   esmfold2 replicates/pair:    median 6, pairs below 6: 0
 
 $ D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\cofold\p450_campaign.py submit --engine protenix_v2 --samples 1 --batch 2 --replicates 24 --limit 150
+  submitted 150 jobs; skipping 2 pairs protenix_v2 cannot fold
+
+$ D:\Users\ashenoy00000\.windsurf\OpenADMET-cyp-structure\scripts\cofold\p450_campaign.py submit --engine esmfold2 --samples 1 --batch 2 --replicates 6 --limit 150
+  submitted 0 jobs; skipping 24 pairs esmfold2 cannot fold
+185 of 185 targets have an MSA
+skipping 2 pairs protenix_v2 cannot fold
+rep 0: 0 pairs to fold
+rep 1: 0 pairs to fold
+rep 2: 0 pairs to fold
+rep 3: 0 pairs to fold
+rep 4: 0 pairs to fold
+rep 5: 0 pairs to fold
+rep 6: 0 pairs to fold
+rep 7: 0 pairs to fold
+rep 8: 0 pairs to fold
+rep 9: 0 pairs to fold
+rep 10: 0 pairs to fold
+rep 11: 0 pairs to fold
+rep 12: 252 pairs to fold
+  473_4b734b6b [TPF,TPF] -> 69862ae1-78f5-40b4-a4c1-512d89fe770e
+  473_6790f922 [DMZ,DIF] -> 3e8c7df0-2c9b-437f-bc8f-45a267e1e91b
