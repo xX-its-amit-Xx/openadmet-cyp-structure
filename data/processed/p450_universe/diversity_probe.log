@@ -1,0 +1,34 @@
+probing 4 pairs x 5 settings on protenix_v2
+
+  4BJK_18I recycles=3 steps=200 -> ef347305-b9fc-4f20-9b51-0b911263221b
+  4BJK_18I recycles=1 steps=200 -> 37020688-023c-4eb5-8d97-dea312251621
+  4BJK_18I recycles=10 steps=200 -> ad888e85-c2f8-4f60-a0b2-9d1ba7c6cd43
+  4BJK_18I recycles=3 steps=50 -> dfc11ed9-a827-43ce-8d76-606c2e52c05e
+  4BJK_18I recycles=3 steps=400 -> 33d7f9a3-e2ae-45c0-89d6-0da7c221ebfa
+  8EWN_X1O recycles=3 steps=200 -> cbb91b91-599a-4e79-87b3-8d6e0f551e81
+  8EWN_X1O recycles=1 steps=200 -> ceca7dac-037b-46db-9275-36642069a8e3
+  8EWN_X1O recycles=10 steps=200 -> dd0a9ca0-9718-48e7-a103-4801cf9e04c2
+  8EWN_X1O recycles=3 steps=50 -> 6233acf3-f126-40d9-afe8-767c22fa1cc7
+  8EWN_X1O recycles=3 steps=400 -> b2f1f2d1-8481-4e19-b072-a5a95d8c08fd
+  4FDH_0T3 recycles=3 steps=200 -> 4fb8dd86-ba4c-417c-a181-c00751c1ea9b
+  4FDH_0T3 recycles=1 steps=200 -> e76c1691-40b4-4485-83c4-32d85330c9e7
+  4FDH_0T3 recycles=10 steps=200 -> a0ef3507-a880-4a2c-ae92-5e3f5afb8ccf
+  4FDH_0T3 recycles=3 steps=50 -> 7296130d-41fe-44bd-9298-25ad2bfac9aa
+  4FDH_0T3 recycles=3 steps=400 -> 73359a8a-a24c-4369-b92e-8467280a3de4
+  8EXB_X4E recycles=3 steps=200 -> 38a9ec04-e075-4649-a5eb-a2da92ce3a22
+  8EXB_X4E recycles=1 steps=200 -> d3208fae-39aa-4a7f-acac-c91e811a8c0e
+  8EXB_X4E recycles=10 steps=200 -> 2c23b292-9c97-4fad-9fd3-12eebcb7c559
+  8EXB_X4E recycles=3 steps=50 -> b0d97a36-8505-451b-8189-b07c91ede1f3
+  8EXB_X4E recycles=3 steps=400 -> ba3176ef-33fc-459b-a933-6bada63e1f27
+
+waiting...
+
+pair            settings  distinct ligand placements
+4BJK_18I               5  5 distinct, max atom displacement 18.570 A
+4FDH_0T3               5  5 distinct, max atom displacement 2.056 A
+8EWN_X1O               5  5 distinct, max atom displacement 10.068 A
+8EXB_X4E               5  5 distinct, max atom displacement 11.368 A
+
+pairs with >= 3 settings retrieved: 4 of 4   (jobs never retrievable: 0)
+median distinct placements across 5 settings: 5.0
+VERDICT: these knobs DO diversify - 5.0 distinct from 5 settings. This is a usable depth lever.

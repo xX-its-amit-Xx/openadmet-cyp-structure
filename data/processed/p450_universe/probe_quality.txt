@@ -1,0 +1,22 @@
+20 probe poses over 4 pairs
+
+setting   10x200  1x200  3x200  3x400   3x50
+pair                                        
+4BJK_18I   0.397  0.345  0.400  0.395  0.402
+4FDH_0T3   0.988  0.977  0.988  0.988  0.988
+8EWN_X1O   0.463  0.362  0.434  0.420  0.444
+8EXB_X4E   0.542  0.575  0.577  0.556  0.585
+
+by setting (recycles x steps):
+         count    mean     min     max
+setting                               
+10x200       4  0.5972  0.3969  0.9875
+1x200        4  0.5648  0.3449  0.9770
+3x200        4  0.5997  0.4002  0.9875
+3x400        4  0.5898  0.3952  0.9882
+3x50         4  0.6047  0.4018  0.9882
+
+catastrophic (<0.1): 0.0%
+
+default (3x200) mean : 0.5997
+probe-pool ORACLE    : 0.6095   (+0.0098 over default)
