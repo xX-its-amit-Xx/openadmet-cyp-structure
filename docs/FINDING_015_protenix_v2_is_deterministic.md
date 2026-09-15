@@ -163,3 +163,55 @@ step later than it should have been: FINDING 009 (samples do not diversify), FIN
 the reference. The check is always the same and always cheap: **hash the outputs and
 count distinct ones before believing a depth number.** The cost of skipping it here was
 ~3,800 protenix_v2 jobs plus ~650 esmfold2 jobs. The cost of running it is one command.
+
+---
+
+## Third addendum — `num_recycles` / `num_steps` DO diversify. The lever is not dead.
+
+Replicates are dead; the sampler knobs are not. Four pairs, five settings
+(recycles × steps: 3×200 default, 1×200, 10×200, 3×50, 3×400):
+
+```
+4BJK_18I   5 distinct, max atom displacement 18.570 A
+4FDH_0T3   5 distinct, max atom displacement  2.056 A
+8EWN_X1O   5 distinct, max atom displacement 10.068 A
+8EXB_X4E   5 distinct, max atom displacement 11.368 A
+```
+
+Five distinct ligand placements from five settings, on every pair, nothing unretrievable.
+
+### And the diversity is not degradation
+
+This is the check that disqualified single-sequence mode, which produced plenty of
+"diversity" at 75% catastrophic poses and an oracle of 0.0505. Scored against crystal
+ground truth:
+
+| setting | mean LDDT-PLI | min | max |
+|---|---|---|---|
+| 3×200 (default) | 0.5997 | 0.4002 | 0.9875 |
+| 3×50 | 0.6047 | 0.4018 | 0.9882 |
+| 10×200 | 0.5972 | 0.3969 | 0.9875 |
+| 3×400 | 0.5898 | 0.3952 | 0.9882 |
+| 1×200 | 0.5648 | 0.3449 | 0.9770 |
+
+**Catastrophic poses: 0.0%.** Every setting but `num_recycles=1` matches the default's
+quality. Five-setting oracle 0.6095 against the default's 0.5997, **+0.0098**.
+
+**n = 4 pairs and 20 poses. The +0.0098 is not significant at that size** and is quoted
+only to say the direction is right; a 100-pair run is queued to measure it properly.
+
+One thing to watch: 4BJK_18I shows 18.6 Å of atom displacement while its LDDT-PLI moves
+only 0.345 → 0.402. Large coordinate spread with small score spread — either the
+differences sit where LDDT-PLI is insensitive, or the ligand has a symmetry the heme-frame
+comparison is treating as motion. Worth understanding before trusting displacement as a
+diversity proxy.
+
+### Corrects this finding's own earlier conclusion
+
+The second addendum said "no replicate-style lever remains on this venue" as an open
+question; the probe's first run then *printed* that as a verdict from one pair with one
+setting, after 19 of 20 jobs failed retrieval against a loaded queue. That was wrong, and
+it was the dangerous direction to be wrong in — it argued for abandoning the last
+untested lever. Re-run on a quiet queue: 4 of 4 pairs, 0 failures, unambiguous.
+
+**Depth is purchasable again — through the sampler settings, not through replicates.**
