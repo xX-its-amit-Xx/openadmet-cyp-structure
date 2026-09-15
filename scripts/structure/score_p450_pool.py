@@ -222,7 +222,7 @@ def cmd_features() -> dict:
     return {"rows": len(out), "pairs": out.pair.nunique()}
 
 
-def cmd_validate(n_null: int = 3000, max_rep: int = 0) -> dict:
+def cmd_validate(n_null: int = 3000, max_rep: int = 0, dedupe_pool: bool = False) -> dict:
     """The FINDING 012 generalisation test, as one command.
 
     Pool = protenix_v2 poses. Reference = esmfold2 poses of the SAME pair, one per
@@ -235,7 +235,14 @@ def cmd_validate(n_null: int = 3000, max_rep: int = 0) -> dict:
     weights on this much data overfits - the same result FINDING 002 got from a fitted
     ranker. The unweighted single term is what ships and what is tested here.
    
-    `max_rep` truncates the POOL to replicates < max_rep, leaving the reference set
+    `dedupe_pool` drops poses identical to one already kept for that pair. FINDING 015
+    measured protenix_v2 at 85% duplicates, and duplicates are not neutral here: they
+    inflate the random baseline toward whichever pose the engine deterministically
+    returns, which DEFLATES the measured gain. The 12-vs-24 comparison shows it in
+    isolation - oracle and selected identical to four decimals, only `random` moving,
+    gain falling +0.0358 -> +0.0268 with no change to the selector at all.
+
+        `max_rep` truncates the POOL to replicates < max_rep, leaving the reference set
     untouched. That is the only honest way to ask what depth buys: run the same command
     twice on the same files, same pairs, same references, with nothing differing but how
     many pool poses each pair is allowed. Comparing two separately-collected pools would
@@ -267,6 +274,7 @@ def cmd_validate(n_null: int = 3000, max_rep: int = 0) -> dict:
         return X._dedupe(list(out.values()))
 
     rows = []
+    seen: dict[str, list] = {}
     for pair in sc.pair.unique():
         r = refs(pair)
         if len(r) < 2:
@@ -285,6 +293,12 @@ def cmd_validate(n_null: int = 3000, max_rep: int = 0) -> dict:
                 continue
             if v is None:
                 continue
+            if dedupe_pool:
+                # same tolerance the reference set uses; a replicate is not an opinion
+                if any(np.allclose(v, w, atol=0.05) and v.shape == w.shape
+                       for w in seen.setdefault(pair, [])):
+                    continue
+                seen[pair].append(v)
             rows.append({"pair": pair, "pose": f"protenix_v2/{f.name}",
                          "xeng": X.xeng_score(v, r)})
     if not rows:
@@ -318,7 +332,7 @@ def cmd_validate(n_null: int = 3000, max_rep: int = 0) -> dict:
         per.append((t, int(g.pair.nunique()), round(s0 - r0, 4)))
 
     return {
-        "max_rep": max_rep or None,
+        "max_rep": max_rep or None, "dedupe_pool": dedupe_pool,
         "poses": len(m), "pairs": int(m.pair.nunique()),
         "poses_per_pair": round(float(m.groupby("pair").size().mean()), 2),
         "proteins": int(m.uniprot.nunique()),
@@ -338,6 +352,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["score", "features", "validate"])
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--dedupe-pool", action="store_true",
+                    help="drop poses identical to one already kept for that pair; "
+                         "duplicates inflate the random baseline (FINDING 015)")
     ap.add_argument("--max-rep", type=int, default=0,
                     help="cap the POOL at replicates < N (reference untouched); "
                          "run twice at different N to measure what depth buys")
@@ -347,4 +364,5 @@ if __name__ == "__main__":
     elif a.cmd == "features":
         print(json.dumps(cmd_features(), indent=2))
     else:
-        print(json.dumps(cmd_validate(max_rep=a.max_rep), indent=2))
+        print(json.dumps(cmd_validate(max_rep=a.max_rep,
+                                      dedupe_pool=a.dedupe_pool), indent=2))

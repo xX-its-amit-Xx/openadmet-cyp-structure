@@ -82,3 +82,35 @@ is the same check FINDING 009 and FINDING 011 already demanded for the *referenc
 written down and applied to the reference while the pool went unchecked.
 
 **Dedupe the pool before believing any depth number.** Not the reference only. The pool.
+
+---
+
+## Addendum, same day — what duplicates do to the measured gain
+
+Matched comparison: the same 342 pairs, the same references, only duplicates removed.
+
+| arm | poses/pair | random | selected | oracle | gain |
+|---|---|---|---|---|---|
+| with duplicates | 25.13 | 0.7129 | **0.7436** | 0.7677 | +0.0306 |
+| deduplicated | 3.62 | 0.7022 | **0.7436** | 0.7673 | **+0.0414** |
+
+`selected` is **identical to four decimals** and the oracle is unchanged. The whole
++0.0108 comes from the *null* moving, because duplicating the pose the engine
+deterministically returns drags a random draw toward it. Duplicate fraction: 85.6%.
+
+**Do not read this as "the selector got better".** It did not move at all. The two
+numbers answer different questions, and both are defensible:
+
+- **+0.0306** is the gain over *pick a random file from what you generated*. On drop day
+  the duplicates are real — that is genuinely what a naive baseline would hand you.
+- **+0.0414** is the gain *per distinct opinion*, which is the honest measure of the
+  selector's discriminative power.
+
+The thing that matters for the leaderboard is unchanged either way: **selected = 0.7436**.
+No submission gets better because we chose a different denominator. So `--dedupe-pool`
+stays opt-in rather than becoming the default — silently switching it would make the
+seventeen prior measurements incomparable while improving nothing.
+
+What it does change is the read on FINDING 011/012: their +0.0381 and +0.0357 were
+measured against nulls that included duplicates, so the selector's *discriminative power*
+is stronger than those figures imply, even though the poses it picks are the same ones.
