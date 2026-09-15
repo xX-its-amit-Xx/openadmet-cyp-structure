@@ -1,0 +1,610 @@
+probing 100 pairs x 5 settings on protenix_v2
+
+  4BJK_18I recycles=3 steps=200 -> 9775dcd5-e075-4674-90c7-711b86102653
+  4BJK_18I recycles=1 steps=200 -> 9cb57651-e991-4a36-bfb7-34e882814fb9
+  4BJK_18I recycles=10 steps=200 -> 7037f9bf-1dc2-45b7-9f28-5141689aa11b
+  4BJK_18I recycles=3 steps=50 -> 44e68162-e0ee-4410-b99a-6980cded5fe2
+  4BJK_18I recycles=3 steps=400 -> 299de7a0-e12a-49ec-a23e-957d08564c81
+  8EWN_X1O recycles=3 steps=200 -> ff34eaf4-7e86-41c0-b8da-13f2aa7aa689
+  8EWN_X1O recycles=1 steps=200 -> 9002ded4-c1b9-43e7-9025-1a1950c98691
+  8EWN_X1O recycles=10 steps=200 -> d5b03c16-1bbc-40bd-bb53-41ccb10bdf8d
+  8EWN_X1O recycles=3 steps=50 -> 42a63936-dfac-47e0-a8b0-70065620da7c
+  8EWN_X1O recycles=3 steps=400 -> 890eb230-7cf5-41cc-92a3-80a1df792822
+  4FDH_0T3 recycles=3 steps=200 -> 68032765-0ee5-440f-9881-f965bd105900
+  4FDH_0T3 recycles=1 steps=200 -> 772d44fc-21c2-4e04-a15c-88574296985e
+  4FDH_0T3 recycles=10 steps=200 -> e12482fc-1756-43b1-977e-02960247e101
+  4FDH_0T3 recycles=3 steps=50 -> b9559a5a-958e-4dcd-be06-8766e49be4c3
+  4FDH_0T3 recycles=3 steps=400 -> e8a437e3-7142-42e4-9d77-d22438e43bed
+  8EXB_X4E recycles=3 steps=200 -> c7c0381b-6379-465d-ade3-c1a2540c675e
+  8EXB_X4E recycles=1 steps=200 -> 6dd3fddf-74ce-4593-81e6-44beff3fe1d0
+  8EXB_X4E recycles=10 steps=200 -> 40823551-5483-4bcf-9d5e-f275dd24dfd3
+  8EXB_X4E recycles=3 steps=50 -> 3b249591-8ff1-43c9-b4ba-87c670c04ed1
+  8EXB_X4E recycles=3 steps=400 -> 29648ebf-fe6c-4fbd-a31a-76a6a1d93a16
+  3B99_U51 recycles=3 steps=200 -> bf280939-2972-4453-bc7c-27afdb587cb9
+  3B99_U51 recycles=1 steps=200 -> 9396ee01-f3fe-4acd-9a21-a25a7fabd80a
+  3B99_U51 recycles=10 steps=200 -> f505cdf4-a43f-4271-a86c-758f37451829
+  3B99_U51 recycles=3 steps=50 -> 0cfaa0a6-078f-450a-a23e-7672790d2658
+  3B99_U51 recycles=3 steps=400 -> 15843138-0edf-4662-a328-8edcd96202b4
+  4WQJ_36Y recycles=3 steps=200 -> b1a2a0db-3a4e-43a8-a637-0b97712a165b
+  4WQJ_36Y recycles=1 steps=200 -> 735f61e9-1870-4488-abf7-f7eb8d2b5c8e
+  4WQJ_36Y recycles=10 steps=200 -> 8dce2789-0f1f-45fc-be53-0c4c67deeb54
+  4WQJ_36Y recycles=3 steps=50 -> e6650bcb-04fd-4785-9342-7bd2479227a7
+  4WQJ_36Y recycles=3 steps=400 -> 2752b2d3-9aa0-45da-bde8-37e16f07ae94
+  3G93_PB2 recycles=3 steps=200 -> 387271fc-5456-4d27-96bb-eddada287a7d
+  3G93_PB2 recycles=1 steps=200 -> e0424cf9-fac7-4bef-a335-bcd6c52498b5
+  3G93_PB2 recycles=10 steps=200 -> b506fd6f-5e7b-48e0-b3b6-631906a574c9
+  3G93_PB2 recycles=3 steps=50 -> 3a23cb7f-7af5-4fa6-8e6f-161f98e19350
+  3G93_PB2 recycles=3 steps=400 -> 2b14e207-9ca9-42e1-92ed-e1b626d5c41d
+  3L4D_TPF recycles=3 steps=200 -> 86d04c98-c5ff-46bf-9531-856deba2a293
+  3L4D_TPF recycles=1 steps=200 -> 15641c1e-672e-4b76-b7ed-2bfe2dc593f5
+  3L4D_TPF recycles=10 steps=200 -> f7d4dcd0-024a-4728-9c6c-9c04fd010a9e
+  3L4D_TPF recycles=3 steps=50 -> d7640405-ea39-4775-b0f0-3e7d94ced85e
+  3L4D_TPF recycles=3 steps=400 -> 6ccde0ab-d4e3-4b1e-ab7d-43ba25bec9fc
+  8EWP_X2Q recycles=3 steps=200 -> cef894f6-78be-421b-b25f-d21418a38665
+  8EWP_X2Q recycles=1 steps=200 -> fa76457c-7fc1-4aae-9b55-d214330e555b
+  8EWP_X2Q recycles=10 steps=200 -> a7ed685a-ed2d-4ec8-92d3-b07437987aef
+  8EWP_X2Q recycles=3 steps=50 -> 5fb2d4a0-c604-4e00-b112-793714e8b862
+  8EWP_X2Q recycles=3 steps=400 -> 7c5b7b7a-fde2-4ab0-b970-1e644b660c01
+  8EWD_WZN recycles=3 steps=200 -> 6b808ff6-ec3c-4987-82fc-894dd10f8c8b
+  8EWD_WZN recycles=1 steps=200 -> 2e1c2a96-b2d3-463d-b898-776da312ea61
+  8EWD_WZN recycles=10 steps=200 -> 457fd937-587d-41c6-aef7-6a2bef65a9c9
+  8EWD_WZN recycles=3 steps=50 -> 7de83b05-9209-402e-b81b-6c14651fa5ce
+  8EWD_WZN recycles=3 steps=400 -> 924d28f2-1e12-42a4-9648-b1d45e50cd0b
+  3KSW_VNF recycles=3 steps=200 -> 59098c19-4a6c-474f-bba8-b6bf2742e664
+  3KSW_VNF recycles=1 steps=200 -> cda298c0-aa94-41fc-939a-7d39f9eeed06
+  3KSW_VNF recycles=10 steps=200 -> f47318dc-5ef8-467d-80b6-ca425aa019d8
+  3KSW_VNF recycles=3 steps=50 -> 8b557e92-b6ee-4ace-8b55-7f754a538a82
+  3KSW_VNF recycles=3 steps=400 -> 410580c0-73ba-46b2-b783-aca2042ea81b
+  4BY0_5PS recycles=3 steps=200 -> a2095642-5dc7-4a14-b449-73164326bfd1
+  4BY0_5PS recycles=1 steps=200 -> 9db5a134-1b2f-43f3-a115-acba0b18882c
+  4BY0_5PS recycles=10 steps=200 -> 9704cc82-f8a2-4882-ab83-e29ba30319f1
+  4BY0_5PS recycles=3 steps=50 -> 33c657d4-0142-4636-a6ed-e949da9638bd
+  4BY0_5PS recycles=3 steps=400 -> 7fd78088-8c93-47e3-a458-705f3f81f00c
+  2X2N_X2N recycles=3 steps=200 -> eb701e92-2337-42ec-b5a7-de6761fdedba
+  2X2N_X2N recycles=1 steps=200 -> 2449b828-630c-41b0-8632-d215d2c756b6
+  2X2N_X2N recycles=10 steps=200 -> 663cd5df-aba2-45f7-8e94-972da191f800
+  2X2N_X2N recycles=3 steps=50 -> 6d718189-f07c-4cce-850c-38584bf0bf2d
+  2X2N_X2N recycles=3 steps=400 -> 0a0af670-21de-4bf9-87ae-4aa955179857
+  8SG5_CL6 recycles=3 steps=200 -> d71182d9-e6e5-4d9b-87fd-9ec8da87c639
+  8SG5_CL6 recycles=1 steps=200 -> 4abccc2c-6d92-4faf-acd1-11c5ba7890fb
+  8SG5_CL6 recycles=10 steps=200 -> 55095a46-c8a4-4213-b354-ee6c19578bc9
+  8SG5_CL6 recycles=3 steps=50 -> ad84c70e-1604-46e1-a8ae-2e55d947b220
+  8SG5_CL6 recycles=3 steps=400 -> 91b0f9df-fd8c-4e67-81ea-de6ee5306f6a
+  4TUV_CPZ recycles=3 steps=200 -> 6a19123b-fdf2-4212-8c0b-475295b2a101
+  4TUV_CPZ recycles=1 steps=200 -> d201ce3b-69d8-4b10-80b4-7ceb930b5a80
+  4TUV_CPZ recycles=10 steps=200 -> d70a32c1-e995-47e3-b27d-6fb62ded2f8f
+  4TUV_CPZ recycles=3 steps=50 -> 221ba9aa-0425-40bb-8423-486a55deb3c8
+  4TUV_CPZ recycles=3 steps=400 -> 748c686a-b314-4b90-a83a-8f7ece04ef35
+  3TK3_CPZ recycles=3 steps=200 -> 9dcbd4b8-175c-4fb2-af51-e1d68c547cbb
+  3TK3_CPZ recycles=1 steps=200 -> 7fce1f8d-3639-4a26-a232-ce6188d0b50e
+  3TK3_CPZ recycles=10 steps=200 -> a4e3fdd9-b1df-416e-a1e0-fc8492f3409e
+  3TK3_CPZ recycles=3 steps=50 -> 3afacb9f-a679-4558-9605-7ca611f91297
+  3TK3_CPZ recycles=3 steps=400 -> ba2043e2-6496-4a37-9a59-435349464c06
+  7N3M_05D recycles=3 steps=200 -> 1dbb26b0-7d06-4af5-93e4-66ab183d724f
+  7N3M_05D recycles=1 steps=200 -> e90b1dfb-59ec-49f0-84f6-1a5e77aedb9a
+  7N3M_05D recycles=10 steps=200 -> 1d302fdc-9ef6-4720-8bba-0e0783ea9794
+  7N3M_05D recycles=3 steps=50 -> 8c04d001-668d-4a10-8530-95bf41dbc4ff
+  7N3M_05D recycles=3 steps=400 -> c6f1f360-c90e-46a3-90a1-1a1eb257973c
+  8EWM_X1I recycles=3 steps=200 -> fad53fb1-7b10-4b52-abc5-0f58b69154b6
+  8EWM_X1I recycles=1 steps=200 -> 1f8e6fd6-05b1-426f-83f1-a5758d4c1704
+  8EWM_X1I recycles=10 steps=200 -> 90d8c359-ba8d-4d28-b1f2-f26bb79eb2d2
+  8EWM_X1I recycles=3 steps=50 -> b127ccb6-3c52-4f87-89ad-402cf2e12d4a
+  8EWM_X1I recycles=3 steps=400 -> 04fea499-9f08-4d70-b3f7-47e8e116910e
+  8SPD_CL6 recycles=3 steps=200 -> ae7b087a-228b-4304-b55e-a2f4a6dda5ad
+  8SPD_CL6 recycles=1 steps=200 -> c520a5a1-aa3d-45fc-bf0c-5a58b632f690
+  8SPD_CL6 recycles=10 steps=200 -> 12270861-2831-4fc9-b962-a73393156b7d
+  8SPD_CL6 recycles=3 steps=50 -> b70ee679-510f-4022-b207-7967d8c24ff8
+  8SPD_CL6 recycles=3 steps=400 -> 841e5306-7ae9-40d9-b537-5447882d231e
+  8EWS_X2Q recycles=3 steps=200 -> 086fe2a1-e348-47b2-8c6d-1d081a542e01
+  8EWS_X2Q recycles=1 steps=200 -> 8188a1a6-f295-4464-80cc-aaee04f007d7
+  8EWS_X2Q recycles=10 steps=200 -> 7c28c3f6-8ee2-4c9e-9d6e-5567451d8b45
+  8EWS_X2Q recycles=3 steps=50 -> 89016e5c-9e43-4b79-b7eb-2624d58235e5
+  8EWS_X2Q recycles=3 steps=400 -> 8c4877b7-e22b-4f6d-a0d1-abe74ec22c68
+  4G7G_VFV recycles=3 steps=200 -> 7ed5af3b-75fa-4282-b518-9f75e21b4d77
+  4G7G_VFV recycles=1 steps=200 -> 982ee742-ab40-40a6-819c-0d42ba208305
+  4G7G_VFV recycles=10 steps=200 -> fcc18b83-74f3-42e7-93ec-486db3eea927
+  4G7G_VFV recycles=3 steps=50 -> 84800123-afb4-4327-9f8d-d5b7bf226a81
+  4G7G_VFV recycles=3 steps=400 -> 99d7a0cf-f510-407c-8db5-1b957b58fbef
+  8EWL_X1C recycles=3 steps=200 -> ea5e6d36-346b-460f-b343-866e737549a6
+  8EWL_X1C recycles=1 steps=200 -> 0386d633-4926-4d86-9a7a-cef43a1480e4
+  8EWL_X1C recycles=10 steps=200 -> 5b4ce043-c8a8-441f-b507-16bb5826343c
+  8EWL_X1C recycles=3 steps=50 -> 13119a8e-deb6-4159-9862-dbf85bbf82cf
+  8EWL_X1C recycles=3 steps=400 -> cf1fb084-bb3c-4e54-82a5-ddef5e79c38b
+  4WPD_3SQ recycles=3 steps=200 -> 97fec725-8a2d-4586-9273-302a5872ee7f
+  4WPD_3SQ recycles=1 steps=200 -> 802f889d-8cd0-4e6a-b722-658f1a668c7b
+  4WPD_3SQ recycles=10 steps=200 -> e0dc7a2a-1430-468d-90ae-3974e0616d2e
+  4WPD_3SQ recycles=3 steps=50 -> e96b5a3a-f360-48c2-9d4c-09c3b8cda90f
+  4WPD_3SQ recycles=3 steps=400 -> de8280ac-b15a-495f-9255-74d857461358
+  2JJP_KLN recycles=3 steps=200 -> 58b0d90e-a7d1-489d-8555-691b2ab18bd9
+  2JJP_KLN recycles=1 steps=200 -> 4fa29c1f-4cd3-4898-bff2-55fb91de1d2b
+  2JJP_KLN recycles=10 steps=200 -> 439c75bb-e396-483b-880c-e60ef910d410
+  2JJP_KLN recycles=3 steps=50 -> d54715bc-980f-4537-a171-c8e3d9bf1798
+  2JJP_KLN recycles=3 steps=400 -> e5b845d2-932e-472e-8e8f-05951983d4d0
+  5VCE_RIT recycles=3 steps=200 -> e063c18f-3784-4619-9d78-f75b88530657
+  5VCE_RIT recycles=1 steps=200 -> 30e7a592-7a2b-4224-85b9-c1d701c96264
+  5VCE_RIT recycles=10 steps=200 -> 2fd6d226-ac33-4b78-b174-4b660af9ce9f
+  5VCE_RIT recycles=3 steps=50 -> 2436a6a8-8f0a-4469-8eec-d12dc5da7a7c
+  5VCE_RIT recycles=3 steps=400 -> 0d272d19-d4e3-43ae-8908-915573e56db3
+  6B82_AER recycles=3 steps=200 -> c60eb1b7-ac09-4dfc-a470-2d044db429ed
+  6B82_AER recycles=1 steps=200 -> e5d64c2c-34f7-40fc-b098-450396402c90
+  6B82_AER recycles=10 steps=200 -> d77522f0-d2fc-48a3-af18-5227a664f83e
+  6B82_AER recycles=3 steps=50 -> 4a122517-8b28-4953-98f0-c1f837249935
+  6B82_AER recycles=3 steps=400 -> 47a6b642-133b-4581-9fca-6eea8a396550
+  4ZGX_QHC recycles=3 steps=200 -> 15f114a0-d641-4193-9414-f687a141c559
+  4ZGX_QHC recycles=1 steps=200 -> e05dc5b4-95e7-4ec2-adc6-21115cb8d2f3
+  4ZGX_QHC recycles=10 steps=200 -> 4532f1bc-9d4d-4107-9799-4359a0915c20
+  4ZGX_QHC recycles=3 steps=50 -> 03498b23-0669-41be-b506-d5e85042f74f
+  4ZGX_QHC recycles=3 steps=400 -> 92791769-065b-44aa-b6df-41284ded8133
+  4K9X_8AW recycles=3 steps=200 -> 8c835a4a-ea80-4484-8d8c-648ed0939d27
+  4K9X_8AW recycles=1 steps=200 -> 82b1cecf-4823-4120-a3ea-2af2e99635e1
+  4K9X_8AW recycles=10 steps=200 -> e8e7d75b-99d8-49c3-bd9d-9d0e6f8147e1
+  4K9X_8AW recycles=3 steps=50 -> 8176eccd-231e-41e0-848a-02a789d34162
+  4K9X_8AW recycles=3 steps=400 -> dd518eb0-16c6-48f2-b809-243c96fba2a3
+  2WV2_TPF recycles=3 steps=200 -> 5705f02b-5fc0-45eb-abd8-b13df0a0520c
+  2WV2_TPF recycles=1 steps=200 -> 16c270b9-acda-435c-9d52-c4d8a271e38f
+  2WV2_TPF recycles=10 steps=200 -> eab0294d-1306-4cc0-966e-7d8128fc4597
+  2WV2_TPF recycles=3 steps=50 -> 61f1747e-716a-4641-9617-149a2c05b18b
+  2WV2_TPF recycles=3 steps=400 -> f265abe2-1189-4fbf-b072-311eaa793180
+  4XRZ_SI6 recycles=3 steps=200 -> 15f11c48-d502-4737-82f2-33e02b923af6
+  4XRZ_SI6 recycles=1 steps=200 -> d2dceeb9-89c5-46af-9e0b-68caee85aac1
+  4XRZ_SI6 recycles=10 steps=200 -> bd84e8b3-66d4-4a16-95be-9d09d1a070a8
+  4XRZ_SI6 recycles=3 steps=50 -> 3b2f4117-a0a3-494e-af90-b682caefdb41
+  4XRZ_SI6 recycles=3 steps=400 -> e5a9d185-ce6f-435d-b5d9-c04041df8757
+  4TT5_36Y recycles=3 steps=200 -> c2d55be9-8253-47c0-9497-7073ac1ab579
+  4TT5_36Y recycles=1 steps=200 -> 36bdebe6-a966-411e-af31-7dc14277d0c2
+  4TT5_36Y recycles=10 steps=200 -> 9451c10d-2d5b-4779-b4a3-4759ace4386c
+  4TT5_36Y recycles=3 steps=50 -> 4511d25d-9506-499a-a88c-54261f18df27
+  4TT5_36Y recycles=3 steps=400 -> 316f7968-b42a-46c7-99c2-d605be82c0f1
+  3GW9_VNI recycles=3 steps=200 -> 4e4c4796-3d46-4c57-9499-972375594add
+  3GW9_VNI recycles=1 steps=200 -> a2a89c0a-070d-4abf-8aed-e795b48b27be
+  3GW9_VNI recycles=10 steps=200 -> c1523bfd-3873-4b02-985a-27829a8545b0
+  3GW9_VNI recycles=3 steps=50 -> d0161fa2-e013-47b0-a0b9-d8a0adb2f769
+  3GW9_VNI recycles=3 steps=400 -> 7904f86a-0d95-406f-ba66-366be1547bb5
+  5LI8_KKK recycles=3 steps=200 -> e6c98ec1-2f18-4dff-b9db-1a4e0c9622f4
+  5LI8_KKK recycles=1 steps=200 -> c38239a0-035b-4334-81fc-e172db5143f5
+  5LI8_KKK recycles=10 steps=200 -> bfa64ecc-752c-477d-8208-1a98d1faf566
+  5LI8_KKK recycles=3 steps=50 -> 78aca06b-7520-423d-a60a-affe71454cc1
+  5LI8_KKK recycles=3 steps=400 -> f7876822-6d81-4599-9edd-fd5a8ac96458
+  8DL4_SKX recycles=3 steps=200 -> 47b44850-5387-4f93-928d-477358d716a5
+  8DL4_SKX recycles=1 steps=200 -> b17330cd-3476-4d44-b514-d0c5d0123b13
+  8DL4_SKX recycles=10 steps=200 -> e514de02-4851-4537-ac5a-cf42ab2ff329
+  8DL4_SKX recycles=3 steps=50 -> 71babf46-035c-49d8-8af0-6b06781d8546
+  8DL4_SKX recycles=3 steps=400 -> 02270687-34d8-4826-bbbf-933633cf28dd
+  3G5N_PB2 recycles=3 steps=200 -> 3793f1d1-9ff2-48be-aa07-d8a9beda316b
+  3G5N_PB2 recycles=1 steps=200 -> b1e8ba26-9330-499a-aa43-51064a96a87e
+  3G5N_PB2 recycles=10 steps=200 -> 0504c65c-641a-4e56-97dd-be90481e8918
+  3G5N_PB2 recycles=3 steps=50 -> 642d6ceb-b40b-4aa0-bbec-54a46739ba63
+  3G5N_PB2 recycles=3 steps=400 -> 55e75bfe-c200-411f-b243-d95ad0497908
+  4D7D_PKT recycles=3 steps=200 -> 3af1ba96-b480-4a1d-a741-9e7379618d8a
+  4D7D_PKT recycles=1 steps=200 -> 079e8bf4-ad01-4348-888f-572f4c9298b3
+  4D7D_PKT recycles=10 steps=200 -> a0005163-3274-4d0b-932d-307e85cbf471
+  4D7D_PKT recycles=3 steps=50 -> 93abf4ee-3c12-451d-b285-e20c970f1b00
+  4D7D_PKT recycles=3 steps=400 -> 7e72e92b-6a64-41c3-8b4f-6d60b9fba112
+  8VK6_A1AB6 recycles=3 steps=200 -> 48967aff-e2eb-4269-ac42-985aa57478ee
+  8VK6_A1AB6 recycles=1 steps=200 -> 1f7fa308-34f2-4663-a3db-f74ea91464f2
+  8VK6_A1AB6 recycles=10 steps=200 -> 583b2957-9d9c-4104-bca7-8e09badb8275
+  8VK6_A1AB6 recycles=3 steps=50 -> 91755739-fc14-4384-ac4a-020c3746e9bc
+  8VK6_A1AB6 recycles=3 steps=400 -> 36dcc5dc-77da-4260-8307-ac5922be35c1
+  6C94_V16 recycles=3 steps=200 -> c83e2f72-0495-4429-a58b-84857d6cf916
+  6C94_V16 recycles=1 steps=200 -> cfa032a0-c989-4452-afac-d2114c9aad0f
+  6C94_V16 recycles=10 steps=200 -> 47bf5576-7e18-4dbd-a1c0-86a676f79f03
+  6C94_V16 recycles=3 steps=50 -> fe7fcb6d-102e-4d56-b998-f0c2f4a26f97
+  6C94_V16 recycles=3 steps=400 -> d8926e87-db7b-4f7b-9e89-43d65126c634
+  7LS4_YCG recycles=3 steps=200 -> 3c2ae10d-7438-42e6-852e-897ff3cac84b
+  7LS4_YCG recycles=1 steps=200 -> 3fcf359b-286a-4979-98d7-47c87a4894d5
+  7LS4_YCG recycles=10 steps=200 -> d7f32a81-7443-472e-a2bc-b8d5634263a1
+  7LS4_YCG recycles=3 steps=50 -> 54b96c44-8637-43ea-ab67-a53bf264514a
+  7LS4_YCG recycles=3 steps=400 -> 40da69e5-c9a6-45c6-896d-659b1ceeaf58
+  4UYL_VNI recycles=3 steps=200 -> 76b29a29-a51f-48ca-b8fe-f00ef1182005
+  4UYL_VNI recycles=1 steps=200 -> 960b2b7f-d58b-4b87-af67-b3854ab007d9
+  4UYL_VNI recycles=10 steps=200 -> 6d5f30e7-17db-44fb-b7c0-51fbb0091614
+  4UYL_VNI recycles=3 steps=50 -> d2fb682b-6ec1-414c-b295-449100e6bfa4
+  4UYL_VNI recycles=3 steps=400 -> ea97099a-0d74-4a5c-b79b-3ddca23b79c8
+  4CK8_LFD recycles=3 steps=200 -> 24b07d37-37d8-4759-86c5-5dede10fc0a0
+  4CK8_LFD recycles=1 steps=200 -> 0746a663-bfa2-444f-abcf-4e18a04b96ae
+  4CK8_LFD recycles=10 steps=200 -> 9fc64955-43aa-4f67-a192-db7718d224ad
+  4CK8_LFD recycles=3 steps=50 -> ced9a729-48c3-4b44-b4fd-c2649f894c13
+  4CK8_LFD recycles=3 steps=400 -> 4600c0b2-c4fd-468a-94a9-d39310e77adb
+  6CR2_LFV recycles=3 steps=200 -> 60f53eaf-2be0-4940-8d6a-6bb61fda330e
+  6CR2_LFV recycles=1 steps=200 -> 18ad84c5-ac4e-4f8f-8a81-e779abc7d9d0
+  6CR2_LFV recycles=10 steps=200 -> d353e269-6cb9-4166-b0e0-f31823909b17
+  6CR2_LFV recycles=3 steps=50 -> 095049ee-bf6d-445a-aa35-cff6a2de350a
+  6CR2_LFV recycles=3 steps=400 -> 5eff3903-1d6b-4639-aef3-35ba8f644a63
+  4CKA_LFS recycles=3 steps=200 -> 8bf08452-d482-482e-813d-b0f10245d5fd
+  4CKA_LFS recycles=1 steps=200 -> 5a716066-0ab7-4454-9b0a-8b1847263891
+  4CKA_LFS recycles=10 steps=200 -> cf59bb1d-66db-451f-b1d5-8d4beb6eaaf2
+  4CKA_LFS recycles=3 steps=50 -> 0d00fb4c-1616-42f8-99e3-8e8fb779a646
+  4CKA_LFS recycles=3 steps=400 -> 639f8d5a-b12a-4eeb-b5e1-caba697ddff0
+  4UHL_VFV recycles=3 steps=200 -> f23b89bb-e07a-4788-b509-f2b177440b82
+  4UHL_VFV recycles=1 steps=200 -> d7f8fedf-93ee-4bf5-a63b-c1a189268599
+  4UHL_VFV recycles=10 steps=200 -> 8edac367-4096-4b7f-8dc3-2407560072a2
+  4UHL_VFV recycles=3 steps=50 -> 39d878d0-9302-46fe-9ac9-54a7918138d3
+  4UHL_VFV recycles=3 steps=400 -> 4b086109-21fe-400f-9a84-32767519a69e
+  4CK9_LFT recycles=3 steps=200 -> b319cbf6-6dca-42e9-b6d7-1a37b81bdf16
+  4CK9_LFT recycles=1 steps=200 -> a35365b7-1a63-473d-95e1-7005b565b654
+  4CK9_LFT recycles=10 steps=200 -> 731bd150-b8ae-4547-b92b-4d40d9fcf690
+  4CK9_LFT recycles=3 steps=50 -> d72714e8-7f3f-4cef-a001-70e451f5247e
+  4CK9_LFT recycles=3 steps=400 -> 1cdcf1e4-18a6-4037-8f6e-cc8098c96522
+  6T0L_M8N recycles=3 steps=200 -> e330a154-f99e-4f61-9ac0-0b0f74e1ccd4
+  6T0L_M8N recycles=1 steps=200 -> 513235a2-f13d-4154-8e26-dc67b10be2c3
+  6T0L_M8N recycles=10 steps=200 -> 6ad32e11-2454-4333-b8a3-55f48c3b8f11
+  6T0L_M8N recycles=3 steps=50 -> dcd37897-e819-4512-8f73-1dd2c4bd938c
+  6T0L_M8N recycles=3 steps=400 -> 344e9940-f1e9-4499-a767-a2119468e762
+  4UHI_VFV recycles=3 steps=200 -> adeed512-36d2-4323-b7d9-bf21bee970bb
+  4UHI_VFV recycles=1 steps=200 -> fb1d660c-e825-4203-996f-3d4d32fea143
+  4UHI_VFV recycles=10 steps=200 -> 1e95e90a-377f-47e5-8b8a-5def6302de91
+  4UHI_VFV recycles=3 steps=50 -> cebd4740-208e-4d2a-ab8c-c47f121e9ca5
+  4UHI_VFV recycles=3 steps=400 -> 306635e5-46ce-4e21-a665-52903588d0fe
+  5JLC_1YN recycles=3 steps=200 -> ddd2217c-ec29-416f-b21c-ba2facbc35c8
+  5JLC_1YN recycles=1 steps=200 -> 81e7f88b-f6b0-4d9f-8083-a66e25f8cbc9
+  5JLC_1YN recycles=10 steps=200 -> d6053279-5699-4e4e-8641-98c09c8c4327
+  5JLC_1YN recycles=3 steps=50 -> 8f4d2f19-751c-4c8c-b77a-69c745eb04fb
+  5JLC_1YN recycles=3 steps=400 -> ef9d03ea-30b8-416a-9f08-1739319d0df8
+  7UFD_T0K recycles=3 steps=200 -> 4356ce15-8a6b-4668-832a-e2207acc6f24
+  7UFD_T0K recycles=1 steps=200 -> aafd7ff0-c4c0-46cc-b283-75eed94ec7f4
+  7UFD_T0K recycles=10 steps=200 -> 17767402-dcf9-4e27-b535-b08ccf75f8e7
+  7UFD_T0K recycles=3 steps=50 -> 4b610ada-6fdb-49c7-a59f-c4a78cce3944
+  7UFD_T0K recycles=3 steps=400 -> 8e896388-094a-4c1f-b5d8-87110a1a46ca
+  3T3R_9PL recycles=3 steps=200 -> e7bbef56-6665-4869-9a53-dbc26c641c2f
+  3T3R_9PL recycles=1 steps=200 -> 2c54659a-bce4-4d72-94f3-c141cb7303de
+  3T3R_9PL recycles=10 steps=200 -> cd012681-2612-40be-9c0c-e98264057fc6
+  3T3R_9PL recycles=3 steps=50 -> da8e520f-2ee9-4fcd-9bad-a8195b64101f
+  3T3R_9PL recycles=3 steps=400 -> 13f05ef1-8276-471c-85fb-bb4d2a5bb6c2
+  4H6O_NEE recycles=3 steps=200 -> 04b1c022-566a-4394-95e3-9e9e4b617e38
+  4H6O_NEE recycles=1 steps=200 -> 34fe1b5e-a1c5-4767-bd34-28cfba1da5c2
+  4H6O_NEE recycles=10 steps=200 -> e65c8079-700a-4bd2-a1da-a29300d0a1b2
+  4H6O_NEE recycles=3 steps=50 -> f4955e72-5c54-41b7-b98d-c0b70084a5f1
+  4H6O_NEE recycles=3 steps=400 -> 88d02425-180d-4bc3-80cb-ce7b8251a3ec
+  1JIN_KTN recycles=3 steps=200 -> db02f16b-b63c-4e85-85f7-2437e941882a
+  1JIN_KTN recycles=1 steps=200 -> b35d75ed-c5f3-438a-80a4-fb81733e224d
+  1JIN_KTN recycles=10 steps=200 -> 650da832-3740-441c-b19c-520176e7dfee
+  1JIN_KTN recycles=3 steps=50 -> 0f78235e-68e4-4354-8668-901fba1567a1
+  1JIN_KTN recycles=3 steps=400 -> 6f2c76af-ceba-495a-95fd-fbad17b2d86f
+  7UAZ_O3L recycles=3 steps=200 -> 1ea0896d-68b4-4dab-ad96-3da1a590acb0
+  7UAZ_O3L recycles=1 steps=200 -> 091b557c-6119-4f34-b106-050023204f20
+  7UAZ_O3L recycles=10 steps=200 -> 91df25c4-20f8-4e0b-aa27-b7685dad6b54
+  7UAZ_O3L recycles=3 steps=50 -> a85d3cc9-10c4-4a56-815b-b9e030403684
+  7UAZ_O3L recycles=3 steps=400 -> e60b01c6-1b54-41d8-b9e6-c377df65af8d
+  4EJI_0QA recycles=3 steps=200 -> 5a456960-1a12-4673-8c51-cae73614b300
+  4EJI_0QA recycles=1 steps=200 -> 0413f7dd-2bea-463f-a5f5-f087e074c2af
+  4EJI_0QA recycles=10 steps=200 -> 6e39cb06-991a-4e23-8863-f4020ebf9422
+  4EJI_0QA recycles=3 steps=50 -> f8f904a3-5f03-4bd4-9598-e088782a56f9
+  4EJI_0QA recycles=3 steps=400 -> 24e1c2e7-e7d6-4bcf-a8da-42a2e438941f
+  4C27_26N recycles=3 steps=200 -> 31239ff0-b730-46b4-977a-22afbc52f624
+  4C27_26N recycles=1 steps=200 -> b8adde3c-4a3b-4c48-8866-c493f7d1bb93
+  4C27_26N recycles=10 steps=200 -> bcdfd54e-b518-4131-9a5c-b044c84c2c3f
+  4C27_26N recycles=3 steps=50 -> 389b8134-f40f-4b34-9034-b91be9d1e214
+  4C27_26N recycles=3 steps=400 -> 5786df6d-8523-4897-81ee-1a8da2fe04ba
+  3TIK_JKF recycles=3 steps=200 -> 67042499-fcbb-41cf-9c5c-4e6dacd51a45
+  3TIK_JKF recycles=1 steps=200 -> a86aedd9-1043-4583-a0ab-98585448fd66
+  3TIK_JKF recycles=10 steps=200 -> 3a67e72c-9311-4d16-8aa2-377b921a1cad
+  3TIK_JKF recycles=3 steps=50 -> f2e0c2ca-59ff-4cb8-9625-3325c22af653
+  3TIK_JKF recycles=3 steps=400 -> 56651edb-7be4-4ec3-a80c-0a83d1f33fdc
+  3K1O_POZ recycles=3 steps=200 -> 141c720c-67c9-4af5-a610-cbbe68c556fd
+  3K1O_POZ recycles=1 steps=200 -> dc7ec82a-5cbb-41f2-9435-ca4448084ffd
+  3K1O_POZ recycles=10 steps=200 -> b8387da1-7420-4dd2-b1c1-8304f28f0476
+  3K1O_POZ recycles=3 steps=50 -> 88cc6161-d1b8-498d-8803-2692e819b353
+  3K1O_POZ recycles=3 steps=400 -> bcdf096e-5f0f-4980-a46c-9254aa617a80
+  8EWE_X0E recycles=3 steps=200 -> e7fc7842-ae3a-4ff2-8f79-93cd5ceaf73e
+  8EWE_X0E recycles=1 steps=200 -> 4ff866cd-7fd8-46d5-8e28-8f5241b700f1
+  8EWE_X0E recycles=10 steps=200 -> 6e48556f-c47c-4c78-9bab-39c38c02d96c
+  8EWE_X0E recycles=3 steps=50 -> 06587c07-0310-4013-95db-05589bc91792
+  8EWE_X0E recycles=3 steps=400 -> 30ed4846-f103-486b-a2f9-f2a6e55ae29a
+  3T3S_9PL recycles=3 steps=200 -> 21615e5a-949f-4dec-9dc1-ae93b3a88393
+  3T3S_9PL recycles=1 steps=200 -> d9ec11f6-6bda-40f4-8a5b-c4ed1b3b28f6
+  3T3S_9PL recycles=10 steps=200 -> b7151d8a-1fe8-4e64-887e-f96fccfa0868
+  3T3S_9PL recycles=3 steps=50 -> a51c7000-bdcc-491a-8960-d0a884cca021
+  3T3S_9PL recycles=3 steps=400 -> 8b6ac447-baa1-4afb-be30-b57697d06080
+  9COV_A1A4S recycles=3 steps=200 -> cd6a068e-5e8b-489a-8e6a-2f1118552558
+  9COV_A1A4S recycles=1 steps=200 -> 004d921c-bd0b-4aff-996c-7000f28a7739
+  9COV_A1A4S recycles=10 steps=200 -> 959e9e8a-83a2-4bb4-b34e-9ff9b4c86998
+  9COV_A1A4S recycles=3 steps=50 -> 5e05d5ec-36f6-4be9-9860-da2c7db1cc4a
+  9COV_A1A4S recycles=3 steps=400 -> a5ac121a-238e-4b7e-91a7-912deee2a7fc
+  9NNI_A1BZC recycles=3 steps=200 -> 7744d0c3-db5d-44e0-bcf4-dc1dc3df8937
+  9NNI_A1BZC recycles=1 steps=200 -> a6e913b7-1414-48fe-af43-d1af086f25c0
+  9NNI_A1BZC recycles=10 steps=200 -> 3caf106f-d5ae-4ed7-8239-b12c5669e655
+  9NNI_A1BZC recycles=3 steps=50 -> 8a858c15-50ac-43b0-b9bf-0b515a97297d
+  9NNI_A1BZC recycles=3 steps=400 -> 64f0f20f-d141-40a9-b197-9f4f16e530c5
+  2WX2_TPF recycles=3 steps=200 -> ab048add-83ac-4850-a4df-f276524bd3b9
+  2WX2_TPF recycles=1 steps=200 -> 265ec3ea-f9fe-48a9-a389-090eb559a50e
+  2WX2_TPF recycles=10 steps=200 -> e18c8494-54fb-4859-b84d-741439e0ceb0
+  2WX2_TPF recycles=3 steps=50 -> ed19959f-728d-484c-acf1-014e247cc347
+  2WX2_TPF recycles=3 steps=400 -> 9b848cee-8060-4263-903d-37bc08ff318a
+  4K9W_7AW recycles=3 steps=200 -> ba7cd383-b5b9-4fb3-9036-acbc8211b5bf
+  4K9W_7AW recycles=1 steps=200 -> ab246483-aa72-4be9-9500-04ea1eb7c363
+  4K9W_7AW recycles=10 steps=200 -> b2b77a62-82dc-4e89-bc06-59da68fb359e
+  4K9W_7AW recycles=3 steps=50 -> d63ba915-9de0-4848-a0a8-764efc2e2be5
+  4K9W_7AW recycles=3 steps=400 -> dd4be3b6-8694-472d-80b8-95ea3c688780
+  5O4K_9KE recycles=3 steps=200 -> 71bf0c72-33f7-45c1-9c75-a06b7788e5e0
+  5O4K_9KE recycles=1 steps=200 -> 79819bc5-a892-43b2-a9f2-4f79b21f47b3
+  5O4K_9KE recycles=10 steps=200 -> 0ae339ec-7f32-49c6-8f4a-5133cea774f1
+  5O4K_9KE recycles=3 steps=50 -> 55625869-5b17-44a2-bcf2-fb324344e403
+  5O4K_9KE recycles=3 steps=400 -> 57e36dbe-e8ba-45a2-b502-3bc03c03d0e9
+  2V0M_KLN recycles=3 steps=200 -> 5a711c16-1c1a-4ea4-ab65-f5e77b459798
+  2V0M_KLN recycles=1 steps=200 -> 0ba221f3-8f49-4825-9305-0b0d048552f6
+  2V0M_KLN recycles=10 steps=200 -> 68d2ac21-06ea-426b-829c-113287dd7ce2
+  2V0M_KLN recycles=3 steps=50 -> ea417508-119c-4e68-9e14-5502a42df46c
+  2V0M_KLN recycles=3 steps=400 -> 05f77491-06e5-416c-8f1d-78ba26ab5d8e
+  7UF9_NH0 recycles=3 steps=200 -> 019d91a8-90a6-4406-9fd3-853f6c8ce0ca
+  7UF9_NH0 recycles=1 steps=200 -> 776aa2fe-e606-44ad-ba37-a29432a1eba5
+  7UF9_NH0 recycles=10 steps=200 -> 02c97d81-2c90-4a1f-aaa1-5a5fb63f58b4
+  7UF9_NH0 recycles=3 steps=50 -> f802eb18-5087-43ee-a34d-0d0dba53299c
+  7UF9_NH0 recycles=3 steps=400 -> fac8a45e-b4f7-45bf-8362-6308ed868a28
+  7KVQ_X7D recycles=3 steps=200 -> 0cc04ddf-24ee-4ffc-88f6-d8b6eeb3af8a
+  7KVQ_X7D recycles=1 steps=200 -> df758899-2924-41d7-87a3-ecb2dacc3e51
+  7KVQ_X7D recycles=10 steps=200 -> 408f5d98-8a3c-4fd0-a9bf-5d9ccf14002c
+  7KVQ_X7D recycles=3 steps=50 -> 42c3125a-c0a5-42fc-b779-6ff8189afc48
+  7KVQ_X7D recycles=3 steps=400 -> 71bd077f-e498-47a5-9210-af9aabbde136
+  8S53_3QO recycles=3 steps=200 -> 7518477d-d466-43ca-a294-2ff315e73b64
+  8S53_3QO recycles=1 steps=200 -> 0db9be7c-fa08-4d63-a22e-fa7bb2753e2d
+  8S53_3QO recycles=10 steps=200 -> f61328ee-3923-4de5-a220-780edade88f7
+  8S53_3QO recycles=3 steps=50 -> 63c5cd02-df9d-4fdb-af02-1feda4ddc513
+  8S53_3QO recycles=3 steps=400 -> 24802f38-7e74-491a-809d-d93ceccb204b
+  7KVO_X6S recycles=3 steps=200 -> 3ff98929-2a1f-45d4-86f8-d7fce5ecec84
+  7KVO_X6S recycles=1 steps=200 -> d07788cf-3987-48f2-8afe-89443f719032
+  7KVO_X6S recycles=10 steps=200 -> efe96d65-5b21-4a5d-94ee-e5d4c326b22f
+  7KVO_X6S recycles=3 steps=50 -> 2439f99b-1c4a-4307-b661-f6ce0ec14b49
+  7KVO_X6S recycles=3 steps=400 -> 670b3a0a-ac06-49ad-af09-6f86b5ff143a
+  4G3J_VNT recycles=3 steps=200 -> 159f5560-fdd6-4336-8530-4cd5a731e0be
+  4G3J_VNT recycles=1 steps=200 -> b71e43c0-bb6c-49cc-a9ab-afb1f1c56f3e
+  4G3J_VNT recycles=10 steps=200 -> a92976f6-8350-4788-9a82-91bc1f6b9c62
+  4G3J_VNT recycles=3 steps=50 -> f9d44ba4-0116-4227-8b28-380bff74dd24
+  4G3J_VNT recycles=3 steps=400 -> 72be7932-e681-44eb-9d48-b5949b5e6e5b
+  6Q2T_PJM recycles=3 steps=200 -> 18211e82-8d88-4fa0-8e5a-435780a04be4
+  6Q2T_PJM recycles=1 steps=200 -> 40ac54bc-c291-4265-be1f-6c398d50ed39
+  6Q2T_PJM recycles=10 steps=200 -> a7df45c9-750d-4b74-acba-9f60af2d6c47
+  6Q2T_PJM recycles=3 steps=50 -> db2322af-3ae6-4d19-be01-9a878e7998f8
+  6Q2T_PJM recycles=3 steps=400 -> 2835baa3-322b-4fc3-8830-b1f9567df1a0
+  7UFA_NI6 recycles=3 steps=200 -> a0d7ebc1-85c9-41c6-837d-14a968963f7c
+  7UFA_NI6 recycles=1 steps=200 -> 430bb430-03f5-48c1-b1de-066167408d9b
+  7UFA_NI6 recycles=10 steps=200 -> a1749146-7a00-486a-b8ed-e036a0fca62c
+  7UFA_NI6 recycles=3 steps=50 -> d450672e-eea2-4aec-8a21-29dcb5581059
+  7UFA_NI6 recycles=3 steps=400 -> d909361d-705b-4444-bd32-9d98e91571c3
+  5FSA_X2N recycles=3 steps=200 -> 27c27c1e-f6eb-4519-bfff-54af0b838599
+  5FSA_X2N recycles=1 steps=200 -> b3576d0b-d824-4c88-8f33-252ab59775bc
+  5FSA_X2N recycles=10 steps=200 -> 41c7442c-ff36-458b-983e-cf7374360a3c
+  5FSA_X2N recycles=3 steps=50 -> 5b57e5fb-1f4c-4cf4-877a-6aa74375ce74
+  5FSA_X2N recycles=3 steps=400 -> 795c9b36-9f08-48e4-8bca-603166b6c37c
+  7KVN_X6V recycles=3 steps=200 -> f4e80e79-f0c6-4a5a-a4a3-4e39d6247611
+  7KVN_X6V recycles=1 steps=200 -> 2a5aca05-6a69-4999-8909-1cb2b305f347
+  7KVN_X6V recycles=10 steps=200 -> d4a4a0e0-39fb-46c7-b271-083ed9dd1365
+  7KVN_X6V recycles=3 steps=50 -> 9b153d46-eef6-4237-bd09-f529f43b7b64
+  7KVN_X6V recycles=3 steps=400 -> 03bb0d93-8f9e-4f55-b850-715d9e967266
+  7KVS_X74 recycles=3 steps=200 -> 3f3421db-3ea9-40fa-ac0f-3c203d07c09a
+  7KVS_X74 recycles=1 steps=200 -> d6f2db67-27e3-49b1-8941-85d3b7266812
+  7KVS_X74 recycles=10 steps=200 -> 28fc5236-59ce-45db-a8eb-afd086ae589d
+  7KVS_X74 recycles=3 steps=50 -> d6228f9f-852b-4b87-b9f7-9256b77e4114
+  7KVS_X74 recycles=3 steps=400 -> b65d26d0-f2a4-4a06-8754-192fa4238ee8
+  4UVR_J5Y recycles=3 steps=200 -> 972cb162-41c9-478c-afe2-1ea836c3c166
+  4UVR_J5Y recycles=1 steps=200 -> 65f4af3e-8a0d-4a3a-919c-f10b93601e32
+  4UVR_J5Y recycles=10 steps=200 -> 3a57275d-72ff-4d82-b44a-722df8856be0
+  4UVR_J5Y recycles=3 steps=50 -> 63e977af-f263-457f-8f29-2f700bcfd01c
+  4UVR_J5Y recycles=3 steps=400 -> efb22fd7-6a7c-4eda-8c88-4138f23cb86d
+  3JUS_ECL recycles=3 steps=200 -> efeee9fd-0fb2-4984-b0c6-9fabf7b9dc95
+  3JUS_ECL recycles=1 steps=200 -> 54d5d2d2-bc1d-43af-baba-57d0c8e5f464
+  3JUS_ECL recycles=10 steps=200 -> 7d957868-6027-4c77-b780-99b71fd09abc
+  3JUS_ECL recycles=3 steps=50 -> de6a64b0-3249-42b1-97f4-07112119dc8d
+  3JUS_ECL recycles=3 steps=400 -> f2f87dd7-020f-4fa1-b0b1-93efdeb24cd7
+  7E7F_MYT recycles=3 steps=200 -> c8a83f2b-96f4-4478-8abe-da2371a4f0b9
+  7E7F_MYT recycles=1 steps=200 -> edb6e3c5-149b-4c04-a5a8-88a3f4905b98
+  7E7F_MYT recycles=10 steps=200 -> 979f3705-c3f2-4870-88b9-40dc51e5ee28
+  7E7F_MYT recycles=3 steps=50 -> 6cb08368-d49a-4792-b80a-7b9bd7986d3e
+  7E7F_MYT recycles=3 steps=400 -> 514bf727-7119-42b2-9464-40dfbc32ddfb
+  6XZ8_O4T recycles=3 steps=200 -> 04af1a69-40ba-40c5-8126-ea054e34af3c
+  6XZ8_O4T recycles=1 steps=200 -> b43596ea-4466-4d77-a6fe-81c18772f222
+  6XZ8_O4T recycles=10 steps=200 -> 506ffc31-0921-4ae1-b974-9c8da73e00e0
+  6XZ8_O4T recycles=3 steps=50 -> 84e289e2-2fc9-4b29-aef5-8942a648dbcf
+  6XZ8_O4T recycles=3 steps=400 -> 0d6a05bb-7405-43f9-9f31-ada568740519
+  4COH_T9H recycles=3 steps=200 -> 4b9da4de-ba9c-4530-aec1-0bdd18e30575
+  4COH_T9H recycles=1 steps=200 -> 936a6259-6eda-44cf-b801-f75260be1f04
+  4COH_T9H recycles=10 steps=200 -> d163cc2e-3c1c-4785-b26a-0196d166a0b3
+  4COH_T9H recycles=3 steps=50 -> c3008452-de0e-400e-b2da-2a60bb26632f
+  4COH_T9H recycles=3 steps=400 -> c2f77362-b006-49c9-939a-208ecb72c412
+  2WH8_II2 recycles=3 steps=200 -> b06a5edb-5f0f-4cab-a0a7-ed48eae1bbd0
+  2WH8_II2 recycles=1 steps=200 -> 043e7ad5-f502-40cb-a297-ee6ea04b75ac
+  2WH8_II2 recycles=10 steps=200 -> 1c5b9557-2cec-4848-8630-842ad151814d
+  2WH8_II2 recycles=3 steps=50 -> 5d6379ee-3275-489e-b4e2-7881fe4ee5d8
+  2WH8_II2 recycles=3 steps=400 -> 90ad566e-cc83-4fdd-a5de-faeb63e70490
+  4EJH_0QA recycles=3 steps=200 -> ef96304d-42ac-446f-9d4d-a62badb3636e
+  4EJH_0QA recycles=1 steps=200 -> 2ceafa85-77c9-4dae-b7d8-70c0ef0d2696
+  4EJH_0QA recycles=10 steps=200 -> f3db7b61-8b12-43ba-90aa-a5100570d8bd
+  4EJH_0QA recycles=3 steps=50 -> e2b8bfcc-84d4-47c7-9746-efad524e63ae
+  4EJH_0QA recycles=3 steps=400 -> 467ccb50-c61d-4d36-9f79-e179a108ae03
+  7N6F_0I1 recycles=3 steps=200 -> f3666be4-56ca-4552-aca8-cc780041b7ea
+  7N6F_0I1 recycles=1 steps=200 -> c9616659-8743-415c-acf3-9f30d1cf12a5
+  7N6F_0I1 recycles=10 steps=200 -> 5f7e1bdf-e4f4-41b9-8c8e-aab3239b17bb
+  7N6F_0I1 recycles=3 steps=50 -> b9bc0ae8-58d8-4f1f-ad95-600c0cb5e4b5
+  7N6F_0I1 recycles=3 steps=400 -> 15670774-2858-467f-8ad9-a346aa619797
+  7P5T_5YG recycles=3 steps=200 -> 4523425a-2735-4bd2-9b04-a9f1cc902760
+  7P5T_5YG recycles=1 steps=200 -> eea65490-24f9-4664-ae70-dd0ac3ade3d3
+  7P5T_5YG recycles=10 steps=200 -> 11e5c4c2-30e7-45e3-ab6d-35c444a21ba4
+  7P5T_5YG recycles=3 steps=50 -> 0f001161-2b24-4f2a-b8be-f05b035381c5
+  7P5T_5YG recycles=3 steps=400 -> faffa50d-55ca-48bf-865a-676155e11681
+  7LS3_YCJ recycles=3 steps=200 -> ad7afc3f-6b93-4717-b780-ebd75b7c7e49
+  7LS3_YCJ recycles=1 steps=200 -> 8e1d1840-d941-49d2-9f05-e7a4f37b09e1
+  7LS3_YCJ recycles=10 steps=200 -> 1a5486ca-5061-4cda-a23a-264f7ab35f76
+  7LS3_YCJ recycles=3 steps=50 -> 657b559d-113e-47de-8291-3db7b75d249e
+  7LS3_YCJ recycles=3 steps=400 -> 133e2452-1d42-45bc-b418-45ce9e8c2737
+  4I4G_Z8Z recycles=3 steps=200 -> a5f87899-3e64-4bf8-864a-7e0ff2bfbb78
+  4I4G_Z8Z recycles=1 steps=200 -> 932e5a90-ebd8-41cb-9799-bcc29db76e90
+  4I4G_Z8Z recycles=10 steps=200 -> f9de1786-905e-46f8-bd21-4dab464e9ea2
+  4I4G_Z8Z recycles=3 steps=50 -> 98bb7969-e669-4da5-b529-25cfe1fb1fca
+  4I4G_Z8Z recycles=3 steps=400 -> 937db0a2-2e4b-4a48-85bd-bd2785026421
+  8A9P_ENK recycles=3 steps=200 -> 2874a186-7482-4120-9935-5b7520efd2c1
+  8A9P_ENK recycles=1 steps=200 -> 949c456d-c70f-47e7-b372-8144bcc47bc9
+  8A9P_ENK recycles=10 steps=200 -> 9d60665a-3beb-408c-ba75-9684b8825d02
+  8A9P_ENK recycles=3 steps=50 -> e57d3627-f04b-4666-a1dd-18e218621d83
+  8A9P_ENK recycles=3 steps=400 -> 2cc17c09-1b5a-4fff-ae63-9f14d71c2d91
+  1EGY_9AP recycles=3 steps=200 -> 055ef3c3-d0bf-4b73-bc66-09957a7906d1
+  1EGY_9AP recycles=1 steps=200 -> f183b961-99ea-4e40-a0d0-f0cf3f942aaa
+  1EGY_9AP recycles=10 steps=200 -> 77afe6e5-1dcc-450e-8938-39a0a033fec4
+  1EGY_9AP recycles=3 steps=50 -> e9d67373-dd87-4e61-b546-096456d4d323
+  1EGY_9AP recycles=3 steps=400 -> 0007f56a-033c-42c1-8675-03a3ec3a00bb
+  7UFC_NJO recycles=3 steps=200 -> 9c99218e-19cf-476e-8b38-c32ae6b96eec
+  7UFC_NJO recycles=1 steps=200 -> 2cf41628-71d5-4253-bd20-f1734827d4b5
+  7UFC_NJO recycles=10 steps=200 -> b93ea3e1-9d72-4294-ac3d-4d1643c86b5b
+  7UFC_NJO recycles=3 steps=50 -> 75348c99-e791-4e75-bd4f-39981af49c02
+  7UFC_NJO recycles=3 steps=400 -> 6a33badf-731d-4208-af12-dc09fdf69d11
+  2XFH_CL6 recycles=3 steps=200 -> a0c19444-89f1-48d7-82ba-17bb9c36c32b
+  2XFH_CL6 recycles=1 steps=200 -> 1fd55a53-49b1-4db8-964d-494d80c2c00a
+  2XFH_CL6 recycles=10 steps=200 -> fa61b56e-f03d-47f3-ae50-d9ff1d335a8b
+  2XFH_CL6 recycles=3 steps=50 -> 4540a028-b640-40f3-901f-6435bda7ec6c
+  2XFH_CL6 recycles=3 steps=400 -> 2d1c90ce-85a9-4469-af53-7cb692fef402
+  4K9V_6AW recycles=3 steps=200 -> 8b53ca7b-eb1a-4a9b-b936-6641990c8cf7
+  4K9V_6AW recycles=1 steps=200 -> ccc0bcb5-6649-472c-a792-ca2a6b646aef
+  4K9V_6AW recycles=10 steps=200 -> ea5432e3-e8f4-4f28-b2b5-2b86946d7477
+  4K9V_6AW recycles=3 steps=50 -> 0f209d21-0cff-4c15-bfe7-f6a9790fa774
+  4K9V_6AW recycles=3 steps=400 -> e1573f20-e31d-4353-938d-209a1fea3dff
+  9NNO_A1BY9 recycles=3 steps=200 -> add7ea0f-fcaa-458b-83a1-41a97c989196
+  9NNO_A1BY9 recycles=1 steps=200 -> 19b4bb3a-5983-4131-bdb9-035ae328e774
+  9NNO_A1BY9 recycles=10 steps=200 -> 00975303-f166-4bda-ad47-8ae25fd404c2
+  9NNO_A1BY9 recycles=3 steps=50 -> 33e19aec-f0b9-488c-a126-3d2994f0af68
+  9NNO_A1BY9 recycles=3 steps=400 -> 0462cd3b-94d4-4fc8-a8db-4d5e63d58b46
+  6T0K_M65 recycles=3 steps=200 -> c3f05348-c03b-4933-bb10-32591fe461af
+  6T0K_M65 recycles=1 steps=200 -> db55363f-1eec-4393-a691-11e149eec189
+  6T0K_M65 recycles=10 steps=200 -> 25c55716-832b-4dbd-a4d4-05586759b538
+  6T0K_M65 recycles=3 steps=50 -> 2727c08b-0e5b-47d5-94e4-fd7f13a76c14
+  6T0K_M65 recycles=3 steps=400 -> c6a242b6-3e67-4b95-912c-077eab12b55a
+  6UW2_CL6 recycles=3 steps=200 -> dde1e45d-6859-45ba-8b7c-37a288d0f89f
+  6UW2_CL6 recycles=1 steps=200 -> 0f291cfd-e079-45c4-a5dc-776e7ac3521b
+  6UW2_CL6 recycles=10 steps=200 -> e7c3f679-8b70-4e94-a13b-301164f87772
+  6UW2_CL6 recycles=3 steps=50 -> 80340ad0-9630-4c02-a03e-0a2708986fff
+  6UW2_CL6 recycles=3 steps=400 -> 4583deec-8197-4355-929d-37b580bf9c88
+  9NNA_A1BZE recycles=3 steps=200 -> 6911b71b-01b4-42a3-a85d-2da75f2d0b22
+  9NNA_A1BZE recycles=1 steps=200 -> f10283ab-60d9-4abc-91f1-981c04b0b3ac
+  9NNA_A1BZE recycles=10 steps=200 -> c86bea2f-01bd-4214-8682-87bc9a0ffdb1
+  9NNA_A1BZE recycles=3 steps=50 -> c15a5bb3-c2b5-4da8-a77e-42b7fa034734
+  9NNA_A1BZE recycles=3 steps=400 -> e776aa24-16ea-4f64-a43c-1d79ffe7224b
+  4UYM_VOR recycles=3 steps=200 -> e59c50b2-6291-468e-9d35-158e64f721f2
+  4UYM_VOR recycles=1 steps=200 -> 15015f0a-271a-490e-aae5-a5192e832b72
+  4UYM_VOR recycles=10 steps=200 -> 85e74fea-e0f0-4eac-a0fa-1403a12eb220
+  4UYM_VOR recycles=3 steps=50 -> 090b8895-5475-4a09-bf93-241aa9dfb723
+  4UYM_VOR recycles=3 steps=400 -> 8a89a372-1543-47a9-affa-86aa91157d2b
+  3TJS_D0R recycles=3 steps=200 -> be8940cb-5245-4bbe-9f50-928a31fcea6d
+  3TJS_D0R recycles=1 steps=200 -> 67db47b2-634c-4cd1-ba74-f916d29a2043
+  3TJS_D0R recycles=10 steps=200 -> f4cd24e9-d2d6-43ec-92e0-8a23b0e956bc
+  3TJS_D0R recycles=3 steps=50 -> 4a940273-9546-4820-b6c3-d212aaa3fd81
+  3TJS_D0R recycles=3 steps=400 -> 56f31f36-6c6f-4419-99c8-4d8309f16731
+  4BMM_TU1 recycles=3 steps=200 -> 84a92c99-29fc-49bd-97da-b11758b29f55
+  4BMM_TU1 recycles=1 steps=200 -> 396e7021-ecb9-4611-b1c4-73f957bc0eab
+  4BMM_TU1 recycles=10 steps=200 -> 50de2278-ee60-4b32-8592-be83e1c6a04f
+  4BMM_TU1 recycles=3 steps=50 -> 07ef9604-ed15-44e7-9e0a-080d519803c2
+  4BMM_TU1 recycles=3 steps=400 -> 2ce3a70c-b274-47b6-94f6-f8c5bae26dcf
+  5EQB_1YN recycles=3 steps=200 -> 5f26768f-f627-40b6-8b60-85a9b83b2ad5
+  5EQB_1YN recycles=1 steps=200 -> e54c45f0-7547-48d8-a871-a08120f2987b
+  5EQB_1YN recycles=10 steps=200 -> 643e5c5e-4541-4196-87a3-8d120fcf36a3
+  5EQB_1YN recycles=3 steps=50 -> fd44aef7-2a7e-4c6c-8be7-9fcd1d3b24ae
+  5EQB_1YN recycles=3 steps=400 -> a489af06-6b98-4a6f-9384-ff524aac9005
+  7KVH_X5Y recycles=3 steps=200 -> ba91d3c8-5a6a-40ea-8f2e-569f4e4343a1
+  7KVH_X5Y recycles=1 steps=200 -> 25267d8a-ac7f-44d7-85b5-f73c5bb67c42
+  7KVH_X5Y recycles=10 steps=200 -> 961e7519-acbb-4491-9629-299f6eab78ad
+  7KVH_X5Y recycles=3 steps=50 -> ee9008ab-62aa-46fc-ac6a-c7540c54e21d
+  7KVH_X5Y recycles=3 steps=400 -> 691d5527-2ebd-4ed0-929d-d35e8387c9cf
+
+waiting...
+
+pair            settings  distinct ligand placements
+1EGY_9AP               5  5 distinct, max atom displacement 5.948 A
+1JIN_KTN               5  5 distinct, max atom displacement 2.551 A
+2JJP_KLN               5  5 distinct, max atom displacement 3.630 A
+2V0M_KLN               5  5 distinct, max atom displacement 8.655 A
+2WH8_II2               5  5 distinct, max atom displacement 13.098 A
+2WV2_TPF               5  5 distinct, max atom displacement 5.521 A
+2WX2_TPF               5  5 distinct, max atom displacement 1.375 A
+2X2N_X2N               5  5 distinct, max atom displacement 4.506 A
+2XFH_CL6               5  5 distinct, max atom displacement 4.240 A
+3B99_U51               5  5 distinct, max atom displacement 1.896 A
+3G5N_PB2               5  5 distinct, max atom displacement 2.405 A
+3G93_PB2               5  5 distinct, max atom displacement 2.281 A
+3GW9_VNI               5  5 distinct, max atom displacement 2.661 A
+3JUS_ECL               5  5 distinct, max atom displacement 4.863 A
+3K1O_POZ               5  5 distinct, max atom displacement 4.539 A
+3KSW_VNF               5  5 distinct, max atom displacement 0.900 A
+3L4D_TPF               5  5 distinct, max atom displacement 5.526 A
+3T3R_9PL               5  5 distinct, max atom displacement 2.363 A
+3T3S_9PL               5  5 distinct, max atom displacement 0.418 A
+3TIK_JKF               5  5 distinct, max atom displacement 1.270 A
+3TJS_D0R               5  5 distinct, max atom displacement 6.692 A
+3TK3_CPZ               5  5 distinct, max atom displacement 0.927 A
+4BJK_18I               5  5 distinct, max atom displacement 18.570 A
+4BMM_TU1               5  5 distinct, max atom displacement 3.328 A
+4BY0_5PS               5  5 distinct, max atom displacement 2.734 A
+4C27_26N               5  5 distinct, max atom displacement 5.746 A
+4CK8_LFD               5  5 distinct, max atom displacement 2.987 A
+4CK9_LFT               5  5 distinct, max atom displacement 2.542 A
+4CKA_LFS               5  5 distinct, max atom displacement 2.872 A
+4COH_T9H               5  5 distinct, max atom displacement 2.482 A
+4D7D_PKT               5  5 distinct, max atom displacement 10.045 A
+4EJH_0QA               5  5 distinct, max atom displacement 2.350 A
+4EJI_0QA               5  5 distinct, max atom displacement 3.876 A
+4FDH_0T3               5  5 distinct, max atom displacement 2.056 A
+4G3J_VNT               5  5 distinct, max atom displacement 5.179 A
+4G7G_VFV               5  5 distinct, max atom displacement 2.299 A
+4H6O_NEE               5  5 distinct, max atom displacement 4.329 A
+4I4G_Z8Z               5  5 distinct, max atom displacement 3.351 A
+4K9V_6AW               5  5 distinct, max atom displacement 4.473 A
+4K9W_7AW               5  5 distinct, max atom displacement 7.435 A
+4K9X_8AW               5  5 distinct, max atom displacement 3.540 A
+4TT5_36Y               5  5 distinct, max atom displacement 8.266 A
+4TUV_CPZ               5  5 distinct, max atom displacement 2.276 A
+4UHI_VFV               5  5 distinct, max atom displacement 5.118 A
+4UHL_VFV               5  5 distinct, max atom displacement 6.030 A
+4UVR_J5Y               5  5 distinct, max atom displacement 5.796 A
+4UYL_VNI               5  5 distinct, max atom displacement 3.466 A
+4UYM_VOR               5  5 distinct, max atom displacement 1.085 A
+4WPD_3SQ               5  5 distinct, max atom displacement 5.727 A
+4WQJ_36Y               5  5 distinct, max atom displacement 2.957 A
+4XRZ_SI6               5  5 distinct, max atom displacement 1.939 A
+4ZGX_QHC               5  5 distinct, max atom displacement 3.675 A
+5EQB_1YN               5  5 distinct, max atom displacement 4.626 A
+5FSA_X2N               5  5 distinct, max atom displacement 4.204 A
+5JLC_1YN               5  5 distinct, max atom displacement 3.899 A
+5LI8_KKK               5  5 distinct, max atom displacement 2.555 A
+5O4K_9KE               5  5 distinct, max atom displacement 1.883 A
+5VCE_RIT               5  5 distinct, max atom displacement 6.404 A
+6B82_AER               5  5 distinct, max atom displacement 0.577 A
+6C94_V16               5  5 distinct, max atom displacement 1.183 A
+6CR2_LFV               5  5 distinct, max atom displacement 10.781 A
+6Q2T_PJM               5  5 distinct, max atom displacement 9.620 A
+6T0K_M65               5  5 distinct, max atom displacement 2.970 A
+6T0L_M8N               5  5 distinct, max atom displacement 2.237 A
+6UW2_CL6               5  5 distinct, max atom displacement 5.562 A
+6XZ8_O4T               5  5 distinct, max atom displacement 2.997 A
+7E7F_MYT               5  5 distinct, max atom displacement 6.372 A
+7KVH_X5Y               5  5 distinct, max atom displacement 3.868 A
+7KVN_X6V               5  5 distinct, max atom displacement 7.198 A
+7KVO_X6S               5  5 distinct, max atom displacement 7.991 A
+7KVQ_X7D               5  5 distinct, max atom displacement 4.809 A
+7KVS_X74               5  5 distinct, max atom displacement 4.581 A
+7LS3_YCJ               5  5 distinct, max atom displacement 2.468 A
+7LS4_YCG               5  5 distinct, max atom displacement 2.515 A
+7N3M_05D               5  5 distinct, max atom displacement 1.529 A
+7N6F_0I1               5  5 distinct, max atom displacement 1.241 A
+7P5T_5YG               5  5 distinct, max atom displacement 5.099 A
+7UAZ_O3L               5  5 distinct, max atom displacement 9.358 A
+7UF9_NH0               5  5 distinct, max atom displacement 7.273 A
+7UFA_NI6               5  5 distinct, max atom displacement 5.419 A
+7UFC_NJO               5  5 distinct, max atom displacement 11.354 A
+7UFD_T0K               5  5 distinct, max atom displacement 8.488 A
+8A9P_ENK               5  5 distinct, max atom displacement 2.152 A
+8DL4_SKX               5  5 distinct, max atom displacement 2.968 A
+8EWD_WZN               5  5 distinct, max atom displacement 10.919 A
+8EWE_X0E               5  5 distinct, max atom displacement 9.607 A
+8EWL_X1C               5  5 distinct, max atom displacement 10.450 A
+8EWM_X1I               5  5 distinct, max atom displacement 10.125 A
+8EWN_X1O               5  5 distinct, max atom displacement 10.068 A
+8EWP_X2Q               5  5 distinct, max atom displacement 10.775 A
+8EWS_X2Q               5  5 distinct, max atom displacement 10.775 A
+8EXB_X4E               5  5 distinct, max atom displacement 11.368 A
+8S53_3QO               5  5 distinct, max atom displacement 2.397 A
+8SG5_CL6               5  5 distinct, max atom displacement 6.398 A
+8SPD_CL6               5  5 distinct, max atom displacement 7.021 A
+8VK6_A1AB6             5  5 distinct, max atom displacement 3.178 A
+9COV_A1A4S             5  5 distinct, max atom displacement 6.174 A
+9NNA_A1BZE             5  5 distinct, max atom displacement 3.614 A
+9NNI_A1BZC             5  5 distinct, max atom displacement 1.490 A
+9NNO_A1BY9             5  5 distinct, max atom displacement 3.094 A
+
+pairs with >= 3 settings retrieved: 100 of 100   (jobs never retrievable: 0)
+median distinct placements across 5 settings: 5.0
+VERDICT: these knobs DO diversify - 5.0 distinct from 5 settings. This is a usable depth lever.
