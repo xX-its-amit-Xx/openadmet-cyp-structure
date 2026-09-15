@@ -38,7 +38,7 @@ a meaningless word here.
 | 008 | the P450 superfamily replicates the coordination thesis; a p5–p95 window is **not** an acceptance test and was discarding 10% of true coordination |
 | 009 | **`diffusion_samples` does not sample the ligand on OpenProtein** — for any engine. Only replicate jobs do, and replicates are not automatically distinct either |
 | 013 | a union pool adds **+0.0375 of oracle that selection cannot reach** — keep a second engine as *reference*, never as a pool member |
-| 016 | **the sampler sweep is a renewable REFERENCE** — `num_recycles`/`num_steps` give 5 distinct poses from 5 settings at 1.2% catastrophic; worthless as a pool expansion (−0.0038, FINDING 013 again) but references 100 pairs where esmfold2 manages 80, and can be generated for any target on demand |
+| 016 | **the sampler sweep is a renewable REFERENCE** — `num_recycles`/`num_steps` diversify at 1.2% catastrophic; worthless as a pool expansion (−0.0038, FINDING 013 again). As a reference it is **equal** to esmfold2 in quality (a +0.0078 edge at n=80 reversed to −0.0028 at n=428) but references **59 pairs esmfold2 cannot**, and can be regenerated for any target |
 | 015 | **protenix_v2 is deterministic too** — a 12→24 doubling moved the oracle on 0 of 489 pairs. Nominal depth 12 is real depth ~4, and the POOL was never deduped, only the reference |
 
 ## The three traps that cost the most

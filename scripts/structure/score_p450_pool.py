@@ -222,7 +222,8 @@ def cmd_features() -> dict:
     return {"rows": len(out), "pairs": out.pair.nunique()}
 
 
-def cmd_validate(n_null: int = 3000, max_rep: int = 0, dedupe_pool: bool = False) -> dict:
+def cmd_validate(n_null: int = 3000, max_rep: int = 0, dedupe_pool: bool = False,
+                 ref_source: str = "esmfold2") -> dict:
     """The FINDING 012 generalisation test, as one command.
 
     Pool = protenix_v2 poses. Reference = esmfold2 poses of the SAME pair, one per
@@ -258,8 +259,28 @@ def cmd_validate(n_null: int = 3000, max_rep: int = 0, dedupe_pool: bool = False
     sc = pd.read_csv(SCORED)
 
     def refs(pair: str) -> list:
+        """Independent reference poses for one pair, deduplicated.
+
+        `ref_source` is either an engine subdirectory under poses/, or "sweep" for the
+        sampler sweep (FINDING 016). The sweep references 489 of 491 pairs where esmfold2
+        manages far fewer, because esmfold2 determinism leaves many pairs below the
+        2-distinct minimum - and unlike esmfold2 it can be regenerated for any target.
+        """
         out: dict[int, object] = {}
-        d = POSES / pair / "esmfold2"
+        if ref_source == "sweep":
+            d = UNI / "diversity_probe" / pair
+            vs = []
+            for f in sorted(d.glob("*.cif")) if d.exists() else []:
+                if "1x200" in f.name:      # measured degrading, -0.0596 (FINDING 016)
+                    continue
+                try:
+                    v = X.in_heme_frame(P.load_structure(f))
+                except Exception:
+                    continue
+                if v is not None:
+                    vs.append(v)
+            return X._dedupe(vs)
+        d = POSES / pair / ref_source
         for f in sorted(d.glob("*.cif")) if d.exists() else []:
             m = re.match(r"(.+)__r(\d+)s(\d+)\.cif$", f.name)
             rep = int(m.group(2)) if m else 0
@@ -333,6 +354,7 @@ def cmd_validate(n_null: int = 3000, max_rep: int = 0, dedupe_pool: bool = False
 
     return {
         "max_rep": max_rep or None, "dedupe_pool": dedupe_pool,
+        "ref_source": ref_source,
         "poses": len(m), "pairs": int(m.pair.nunique()),
         "poses_per_pair": round(float(m.groupby("pair").size().mean()), 2),
         "proteins": int(m.uniprot.nunique()),
@@ -352,6 +374,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["score", "features", "validate"])
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--ref-source", default="esmfold2",
+                    help="engine subdirectory under poses/, or 'sweep' for the sampler "
+                         "sweep (FINDING 016)")
     ap.add_argument("--dedupe-pool", action="store_true",
                     help="drop poses identical to one already kept for that pair; "
                          "duplicates inflate the random baseline (FINDING 015)")
@@ -365,4 +390,5 @@ if __name__ == "__main__":
         print(json.dumps(cmd_features(), indent=2))
     else:
         print(json.dumps(cmd_validate(max_rep=a.max_rep,
-                                      dedupe_pool=a.dedupe_pool), indent=2))
+                                      dedupe_pool=a.dedupe_pool,
+                                      ref_source=a.ref_source), indent=2))
