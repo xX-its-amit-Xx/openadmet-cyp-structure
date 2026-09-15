@@ -26,6 +26,7 @@ import os
 import shutil
 import subprocess
 import time
+import warnings
 from pathlib import Path
 
 from .paths import free_gb
@@ -74,7 +75,18 @@ def push(local: str | Path, remote_subpath: str, *, move: bool = True,
     local = Path(local)
     if not local.exists():
         raise FileNotFoundError(local)
-    dest = f"{REMOTE}/{remote_subpath.strip('/')}"
+    # REMOTE already ends in the project name, so passing "cyp-structure/pool/x" nests it
+    # twice and the archive lands somewhere nobody looking beside pool/op1 would ever find
+    # it. That happened to a 1.7 GiB archive and had to be moved server-side afterwards.
+    sub = remote_subpath.strip("/")
+    leaf = REMOTE.rstrip("/").rsplit("/", 1)[-1]
+    if sub == leaf or sub.startswith(leaf + "/"):
+        sub = sub[len(leaf):].lstrip("/")
+        warnings.warn(
+            f"remote_subpath started with {leaf!r}, which REMOTE already ends in; "
+            f"using {sub!r} so the archive lands beside the others, not nested under "
+            f"a second {leaf!r}", stacklevel=2)
+    dest = f"{REMOTE}/{sub}"
     t0 = time.time()
     verb = "move" if move else "copy"
     cp = _run([verb, str(local), dest, "--transfers", str(transfers),
