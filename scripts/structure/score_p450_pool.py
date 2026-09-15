@@ -222,7 +222,7 @@ def cmd_features() -> dict:
     return {"rows": len(out), "pairs": out.pair.nunique()}
 
 
-def cmd_validate(n_null: int = 3000) -> dict:
+def cmd_validate(n_null: int = 3000, max_rep: int = 0) -> dict:
     """The FINDING 012 generalisation test, as one command.
 
     Pool = protenix_v2 poses. Reference = esmfold2 poses of the SAME pair, one per
@@ -234,6 +234,12 @@ def cmd_validate(n_null: int = 3000) -> dict:
     leave-one-target-out. That version measured +0.0149, inside the noise, because fitting
     weights on this much data overfits - the same result FINDING 002 got from a fitted
     ranker. The unweighted single term is what ships and what is tested here.
+   
+    `max_rep` truncates the POOL to replicates < max_rep, leaving the reference set
+    untouched. That is the only honest way to ask what depth buys: run the same command
+    twice on the same files, same pairs, same references, with nothing differing but how
+    many pool poses each pair is allowed. Comparing two separately-collected pools would
+    confound depth with whatever else changed between them.
     """
     import re
 
@@ -267,6 +273,12 @@ def cmd_validate(n_null: int = 3000) -> dict:
             continue
         d = POSES / pair / "protenix_v2"
         for f in sorted(d.glob("*.cif")) if d.exists() else []:
+            if max_rep:
+                mm = re.match(r"(.+)__r(\d+)s(\d+)\.cif$", f.name)
+                # a file that does not carry a replicate index cannot be placed at a
+                # depth, so it is excluded rather than silently counted as rep 0
+                if not mm or int(mm.group(2)) >= max_rep:
+                    continue
             try:
                 v = X.in_heme_frame(P.load_structure(f))
             except Exception:
@@ -306,7 +318,9 @@ def cmd_validate(n_null: int = 3000) -> dict:
         per.append((t, int(g.pair.nunique()), round(s0 - r0, 4)))
 
     return {
+        "max_rep": max_rep or None,
         "poses": len(m), "pairs": int(m.pair.nunique()),
+        "poses_per_pair": round(float(m.groupby("pair").size().mean()), 2),
         "proteins": int(m.uniprot.nunique()),
         "construct_sequences": int(m.target_key.nunique()),
         "catastrophic_frac": round(float((m.lddt_pli < 0.1).mean()), 4),
@@ -324,10 +338,13 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["score", "features", "validate"])
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--max-rep", type=int, default=0,
+                    help="cap the POOL at replicates < N (reference untouched); "
+                         "run twice at different N to measure what depth buys")
     a = ap.parse_args()
     if a.cmd == "score":
         print(json.dumps(cmd_score(a.limit or None), indent=2))
     elif a.cmd == "features":
         print(json.dumps(cmd_features(), indent=2))
     else:
-        print(json.dumps(cmd_validate(), indent=2))
+        print(json.dumps(cmd_validate(max_rep=a.max_rep), indent=2))
