@@ -133,5 +133,18 @@
   "catastrophic_frac": 0.0298,
   "proteins_positive": "24/31",
   "note": "coverage 487 pairs / 87 proteins vs esmfold2's 430 / 81; on the MATCHED 428 pairs sweep -0.0028 vs esmfold2, i.e. equivalent, not better - the +0.0078 seen at n=80 was noise and is retracted"
+ },
+ {
+  "date": "2026-09-16",
+  "what": "Reference DEPTH within-pair test (FINDING 016): 4 vs 8 sweep settings",
+  "pairs": 487,
+  "proteins": 87,
+  "gain_depth4": 0.0315,
+  "gain_depth8": 0.0345,
+  "delta": 0.003,
+  "noise_floor_95": 0.0138,
+  "median_depth": "4 -> 8",
+  "pairs_at_depth4": "479 -> 490",
+  "verdict": "saturated - doubling the reference is not measurably better; buy 4 settings"
  }
 ]
