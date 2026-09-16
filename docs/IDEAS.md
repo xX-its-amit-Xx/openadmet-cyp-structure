@@ -99,3 +99,41 @@ The analogy failed at the level of the mapping, not the arithmetic. In a portfol
 variance is *risk borne by the holder*; here, variance across reference poses is just
 disagreement among opinions, and the catastrophe detector already extracts what that
 disagreement is worth through the mean.
+
+
+### B3 — differential fuzzing (cyber). **BLOCKED BY CHEMISTRY, 2026-09-16.**
+
+162 folds over 80 pairs: up to 3 distinct tautomers each, plus a chirality-flipped
+negative control. All collected, none failed.
+
+| reference arm | pairs | random | selected | gain |
+|---|---|---|---|---|
+| sweep only (incumbent) | 30 | 0.5655 | 0.6068 | +0.0413 |
+| tautomers only | 30 | 0.5655 | 0.6146 | **+0.0491** |
+| sweep + tautomers | 30 | 0.5655 | 0.6095 | +0.0441 |
+| chirality flip (control) | — | — | — | **could not run** |
+
+**This does not clear the criterion, and the +0.0491 must not be read as beating +0.0381.**
+Three reasons, in order of how badly each would mislead:
+
+1. **The negative control never ran.** Flipped-chirality references reach median depth 1,
+   below the 2 needed to score at all. So there is no evidence that tautomer references
+   beat *any* perturbation — the check designed to catch exactly that failed to execute.
+   An uncontrolled positive is not a positive.
+2. **Different pair set.** The random baseline here is 0.5655 against ~0.70 on the full
+   set: these 30 pairs are the *hard* ones, and the catastrophe detector gives larger
+   gains where pools are worse. Comparing +0.0491 here to +0.0381 there is the
+   composition confound this log has rejected three times. The valid comparison is
+   within these 30 pairs: tautomers +0.0491 vs sweep +0.0413, **delta +0.0078** — inside
+   the noise floor.
+3. **n = 30.**
+
+**The real finding is structural, and it closes the idea rather than deferring it.**
+Tautomer reference depth is **median 1**, with `>= 2` on only 30 of 68 pairs and `>= 4` on
+**zero**. FINDING 011 requires >= 4 independent references for the feature to be reliable
+and measures **−0.0055 at one**. Most drug-like molecules simply do not have four distinct
+tautomers, so this axis *cannot* supply an adequate reference at any budget. It is limited
+by chemistry, not by compute — which is why no amount of further folding fixes it.
+
+Kept as an option only in the combined arm, where it also failed to beat the sweep alone
+(+0.0441 vs +0.0413), consistent with the standing "more references is not better" result.

@@ -1,0 +1,12 @@
+fuzzed pairs: 68
+  tautomer reference depth: median 1, >=2 on 30 pairs, >=4 on 0
+  chiralflip depth:         median 1
+  matched pairs (all arms usable): 30
+
+  reference arm                      pairs   random  selected     gain
+  sweep only (INCUMBENT)                30   0.5655    0.6068  +0.0413
+  tautomers only                        30   0.5655    0.6146  +0.0491
+  sweep + tautomers                     30   0.5655    0.6095  +0.0441
+  chirality flip (NEGATIVE CONTROL)  no usable pairs
+
+kill criterion: beat +0.0381.
