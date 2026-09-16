@@ -1,0 +1,1786 @@
+{
+ "folds": {
+  "229041e7-9350-4491-89e1-8c2e24d8d47f": {
+   "key": "4BJK_18I:taut0",
+   "pair": "4BJK_18I",
+   "kind": "taut0",
+   "smiles": "O=C(N=c1cc[nH]cc1)C(Cc1c[nH]c2ccccc12)N=C(O)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583114.4227507,
+   "files": [
+    "4BJK_18I__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "4176f072-beb1-4e69-bf2a-30d62c29fa6d": {
+   "key": "4BJK_18I:taut1",
+   "pair": "4BJK_18I",
+   "kind": "taut1",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)N=c1cc[nH]cc1)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583116.7473621,
+   "files": [
+    "4BJK_18I__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "452b7417-b644-463c-8efa-f06d9d824b73": {
+   "key": "4BJK_18I:taut2",
+   "pair": "4BJK_18I",
+   "kind": "taut2",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)Nc1ccncc1)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583119.2307324,
+   "files": [
+    "4BJK_18I__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "a7ede8c3-f8bd-4084-9dc1-9f4a20751847": {
+   "key": "4BJK_18I:chiralflip",
+   "pair": "4BJK_18I",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cc1c[nH]c2c[c@@H]ccc12)C(=O)Nc1ccncc1)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583121.418606,
+   "files": [
+    "4BJK_18I__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "4dd16f96-272b-43c6-80af-9117845b1f94": {
+   "key": "8EWN_X1O:taut1",
+   "pair": "8EWN_X1O",
+   "kind": "taut1",
+   "smiles": "OC(=CCc1ccncc1)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5cc(F)cc(F)c5-c5cccc[n]->35)([c]3cc(F)cc(F)c3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583123.5498283,
+   "files": [
+    "8EWN_X1O__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "b60a0729-cb93-474c-a542-98c4f9b55ff3": {
+   "key": "8EWN_X1O:taut2",
+   "pair": "8EWN_X1O",
+   "kind": "taut2",
+   "smiles": "OC(CCc1ccncc1)=NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5cc(F)cc(F)c5-c5cccc[n]->35)([c]3cc(F)cc(F)c3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583125.591646,
+   "files": [
+    "8EWN_X1O__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "31cf914d-9b2e-42f8-84ff-1eadff4c9819": {
+   "key": "4FDH_0T3:chiralflip",
+   "pair": "4FDH_0T3",
+   "kind": "chiralflip",
+   "smiles": "N#Cc1ccc([C@H]2C[C@@H2]Cc3cncn32)cc1",
+   "submitted": 1789583127.5697584,
+   "files": [
+    "4FDH_0T3__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "31417f2d-f7c3-49ee-bed4-857685b08506": {
+   "key": "8EXB_X4E:taut1",
+   "pair": "8EXB_X4E",
+   "kind": "taut1",
+   "smiles": "OC(=CCc1cccnc1)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5c(-c6ccc7ccccc7[n]->36)sc3ccccc53)([c]3c(-c5ccc6ccccc6[n]->45)sc4ccccc34)<-[n]2c1",
+   "submitted": 1789583129.6539147,
+   "files": [
+    "8EXB_X4E__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "a54cb938-17f7-4227-bae2-b2a583aa22a2": {
+   "key": "8EXB_X4E:taut2",
+   "pair": "8EXB_X4E",
+   "kind": "taut2",
+   "smiles": "OC(CCc1cccnc1)=NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5c(-c6ccc7ccccc7[n]->36)sc3ccccc53)([c]3c(-c5ccc6ccccc6[n]->45)sc4ccccc34)<-[n]2c1",
+   "submitted": 1789583131.6932688,
+   "files": [
+    "8EXB_X4E__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "1592320b-755d-4094-b1f5-c77c89f82a5a": {
+   "key": "3B99_U51:taut0",
+   "pair": "3B99_U51",
+   "kind": "taut0",
+   "smiles": "CCCCCC/C=C/[C@@H]1[C@@H](CC=CCCC=C(O)O)[C@@H]2C[C@H]1N=N2",
+   "submitted": 1789583134.563121,
+   "files": [
+    "3B99_U51__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "43568d14-f175-4d69-9d04-06ef1b116ac2": {
+   "key": "3B99_U51:chiralflip",
+   "pair": "3B99_U51",
+   "kind": "chiralflip",
+   "smiles": "CCCCCC/C=C/[C@H]1[C@@H](CC=CCCCC(=O)O)[C@@H]2C[C@H]1N=N2",
+   "submitted": 1789583136.9494214,
+   "files": [
+    "3B99_U51__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "75b0a226-9d9f-487f-9ea3-e01caf29986a": {
+   "key": "4WQJ_36Y:taut1",
+   "pair": "4WQJ_36Y",
+   "kind": "taut1",
+   "smiles": "Brc1ccc(-c2cnc[nH]2)cc1",
+   "submitted": 1789583138.9223437,
+   "files": [
+    "4WQJ_36Y__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "33bf0650-bb2d-4db1-ad0b-d37e21cda925": {
+   "key": "8EWP_X2Q:taut1",
+   "pair": "8EWP_X2Q",
+   "kind": "taut1",
+   "smiles": "OC(=CCc1ccncc1)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5c(-c6ccc7ccccc7[n]->36)sc3ccccc53)([c]3c(-c5ccc6ccccc6[n]->45)sc4ccccc34)<-[n]2c1",
+   "submitted": 1789583140.7267692,
+   "files": [
+    "8EWP_X2Q__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "1b2ea511-7bd4-422f-8e87-3b751e0fdac4": {
+   "key": "8EWP_X2Q:taut2",
+   "pair": "8EWP_X2Q",
+   "kind": "taut2",
+   "smiles": "OC(CCc1ccncc1)=NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5c(-c6ccc7ccccc7[n]->36)sc3ccccc53)([c]3c(-c5ccc6ccccc6[n]->45)sc4ccccc34)<-[n]2c1",
+   "submitted": 1789583142.8596714,
+   "files": [
+    "8EWP_X2Q__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "76c7a723-00d3-4140-850d-f19dd3a3df24": {
+   "key": "8EWD_WZN:taut0",
+   "pair": "8EWD_WZN",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)=C(O)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583144.6387486,
+   "files": [
+    "8EWD_WZN__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "a0fe1cab-51b4-4132-9096-cf26122c76f3": {
+   "key": "8EWD_WZN:taut1",
+   "pair": "8EWD_WZN",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)C(=O)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583146.9459393,
+   "files": [
+    "8EWD_WZN__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "52bd002c-a8ec-4234-ad40-de8850ed628b": {
+   "key": "8EWD_WZN:taut2",
+   "pair": "8EWD_WZN",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)C(O)=NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583149.168281,
+   "files": [
+    "8EWD_WZN__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "e77cef07-1229-4f37-8cb8-a8752bbb479f": {
+   "key": "8EWD_WZN:chiralflip",
+   "pair": "8EWD_WZN",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](Cc1ccncc1)C(=O)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583151.0790677,
+   "files": [
+    "8EWD_WZN__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "cc0e065b-32a9-406b-a22f-504458148134": {
+   "key": "3KSW_VNF:taut1",
+   "pair": "3KSW_VNF",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccccc1)c1ccc(-c2ccc(Cl)cc2)cc1",
+   "submitted": 1789583154.9566476,
+   "files": [
+    "3KSW_VNF__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "36d3a400-b1dc-4ca1-b180-a322448ab7d0": {
+   "key": "3KSW_VNF:chiralflip",
+   "pair": "3KSW_VNF",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1cnc[c@@H]1)c1ccccc1)c1ccc(-c2ccc(Cl)cc2)cc1",
+   "submitted": 1789583157.0335784,
+   "files": [
+    "3KSW_VNF__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "2aacc9aa-120c-4d7c-88dd-d66949d84442": {
+   "key": "4BY0_5PS:taut0",
+   "pair": "4BY0_5PS",
+   "kind": "taut0",
+   "smiles": "O=C(N=c1cc[nH]cc1)C(Cc1c[nH]c2ccccc12)N=C(O)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583158.9765816,
+   "files": [
+    "4BY0_5PS__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "2838c2d6-1c35-44c7-be5f-728e4be7c628": {
+   "key": "4BY0_5PS:taut1",
+   "pair": "4BY0_5PS",
+   "kind": "taut1",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)N=c1cc[nH]cc1)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583160.9890726,
+   "files": [
+    "4BY0_5PS__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "5cf0e5ed-9c96-4be0-859a-d395f3124c3c": {
+   "key": "4BY0_5PS:taut2",
+   "pair": "4BY0_5PS",
+   "kind": "taut2",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)Nc1ccncc1)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583163.7965493,
+   "files": [
+    "4BY0_5PS__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "f10dd570-7ca0-4e98-bb57-dc227fbf7000": {
+   "key": "4BY0_5PS:chiralflip",
+   "pair": "4BY0_5PS",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@H](Cc1c[nH]c2c[c@@H]ccc12)C(=O)Nc1ccncc1)c1ccc(-c2cccc(F)c2)cc1F",
+   "submitted": 1789583165.6297588,
+   "files": [
+    "4BY0_5PS__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "f00e2cf9-9b41-4e92-900a-8e753649b071": {
+   "key": "2X2N_X2N:chiralflip",
+   "pair": "2X2N_X2N",
+   "kind": "chiralflip",
+   "smiles": "CC[C@H]([C@H](C)O)n1ncn(-c2ccc(N3CCN(c4ccc(OC[C@@H]5CO[C@@](Cn6cncn6)(c6ccc(F)cc6F)C5)cc4)CC3)cc2)c1=O",
+   "submitted": 1789583167.918972,
+   "files": [
+    "2X2N_X2N__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "fe171021-e460-415e-a756-46c4f0aec626": {
+   "key": "4TUV_CPZ:taut0",
+   "pair": "4TUV_CPZ",
+   "kind": "taut0",
+   "smiles": "Clc1ccc(-c2c[nH]cn2)cc1",
+   "submitted": 1789583170.2002997,
+   "files": [
+    "4TUV_CPZ__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "f4fd6fee-2056-4791-9ee2-8144ee75e6ab": {
+   "key": "3TK3_CPZ:taut0",
+   "pair": "3TK3_CPZ",
+   "kind": "taut0",
+   "smiles": "Clc1ccc(-c2c[nH]cn2)cc1",
+   "submitted": 1789583172.3174822,
+   "files": [
+    "3TK3_CPZ__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "452055b3-0dc1-452c-a9cd-7d85607acdd7": {
+   "key": "7N3M_05D:taut0",
+   "pair": "7N3M_05D",
+   "kind": "taut0",
+   "smiles": "Cc1cnn(-c2ccncc2N2CCC(=C(O)N(C)C)CC2)c1",
+   "submitted": 1789583176.0932076,
+   "files": [
+    "7N3M_05D__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "7ef992bc-02af-48c3-a995-34585f780303": {
+   "key": "8EWM_X1I:taut0",
+   "pair": "8EWM_X1I",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)=C(O)/N=C\\c1ccc2-c3cccc[n]3->[Ir+]34([c]5cc(F)cc(F)c5-c5cccc[n]->35)([c]3cc(F)cc(F)c3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583178.3838832,
+   "files": [
+    "8EWM_X1I__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "c65488f3-f6ef-4548-b4ac-632703e8e5f9": {
+   "key": "8EWM_X1I:taut1",
+   "pair": "8EWM_X1I",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)C(=O)/N=C\\c1ccc2-c3cccc[n]3->[Ir+]34([c]5cc(F)cc(F)c5-c5cccc[n]->35)([c]3cc(F)cc(F)c3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583180.4730608,
+   "files": [
+    "8EWM_X1I__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "5ea050be-2db1-45ec-8607-f31e81310130": {
+   "key": "8EWM_X1I:taut2",
+   "pair": "8EWM_X1I",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(O)=NC(Cc1ccncc1)=C(O)/N=C\\c1ccc2-c3cccc[n]3->[Ir+]34([c]5cc(F)cc(F)c5-c5cccc[n]->35)([c]3cc(F)cc(F)c3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583182.6036136,
+   "files": [
+    "8EWM_X1I__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "53bc1ca8-74ef-449c-84ee-d58ee1a34097": {
+   "key": "8EWM_X1I:chiralflip",
+   "pair": "8EWM_X1I",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](Cc1ccncc1)C(=O)/N=C\\c1ccc2-c3cccc[n]3->[Ir+]34([c]5cc(F)cc(F)c5-c5cccc[n]->35)([c]3cc(F)cc(F)c3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583184.3495643,
+   "files": [
+    "8EWM_X1I__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "3072e9f8-3ddb-4bb3-8a63-b7df37aca8b4": {
+   "key": "8EWS_X2Q:taut1",
+   "pair": "8EWS_X2Q",
+   "kind": "taut1",
+   "smiles": "OC(=CCc1ccncc1)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5c(-c6ccc7ccccc7[n]->36)sc3ccccc53)([c]3c(-c5ccc6ccccc6[n]->45)sc4ccccc34)<-[n]2c1",
+   "submitted": 1789583186.349678,
+   "files": [
+    "8EWS_X2Q__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "e35e5963-8439-4c5b-bde8-e8d6adfa81d9": {
+   "key": "8EWS_X2Q:taut2",
+   "pair": "8EWS_X2Q",
+   "kind": "taut2",
+   "smiles": "OC(CCc1ccncc1)=NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5c(-c6ccc7ccccc7[n]->36)sc3ccccc53)([c]3c(-c5ccc6ccccc6[n]->45)sc4ccccc34)<-[n]2c1",
+   "submitted": 1789583188.1478949,
+   "files": [
+    "8EWS_X2Q__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "a5a9afa1-29cf-4666-ab6c-3690d7ef22e6": {
+   "key": "4G7G_VFV:taut1",
+   "pair": "4G7G_VFV",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)cc2)cc1F)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583190.021363,
+   "files": [
+    "4G7G_VFV__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "744397a6-921d-4a2a-9e65-7ea3227deca9": {
+   "key": "4G7G_VFV:chiralflip",
+   "pair": "4G7G_VFV",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)c[c@@H]2)cc1F)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583191.9964774,
+   "files": [
+    "4G7G_VFV__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "78daa30e-b70d-4aee-95eb-c183c3a2ab6e": {
+   "key": "8EWL_X1C:taut1",
+   "pair": "8EWL_X1C",
+   "kind": "taut1",
+   "smiles": "OC(=CCc1ccncc1)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583193.8967788,
+   "files": [
+    "8EWL_X1C__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "d4781e4d-ae61-4efa-9e8d-b8a65c225294": {
+   "key": "8EWL_X1C:taut2",
+   "pair": "8EWL_X1C",
+   "kind": "taut2",
+   "smiles": "OC(CCc1ccncc1)=NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583196.676762,
+   "files": [
+    "8EWL_X1C__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "cb745453-97f8-43ca-8df9-9703c81ed10f": {
+   "key": "4WPD_3SQ:taut1",
+   "pair": "4WPD_3SQ",
+   "kind": "taut1",
+   "smiles": "Fc1ccc(-c2cnc[nH]2)cc1",
+   "submitted": 1789583198.459576,
+   "files": [
+    "4WPD_3SQ__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "7d1b6636-07fa-4f12-aff8-4e668d040f54": {
+   "key": "2JJP_KLN:taut0",
+   "pair": "2JJP_KLN",
+   "kind": "taut0",
+   "smiles": "C=C(O)N1CCN(c2ccc(OC[C@@H]3CO[C@@](Cn4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583200.2513194,
+   "files": [
+    "2JJP_KLN__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "4fdf776c-3240-4a43-ad29-b0b8dd502cc0": {
+   "key": "2JJP_KLN:chiralflip",
+   "pair": "2JJP_KLN",
+   "kind": "chiralflip",
+   "smiles": "CC(=O)N1CCN(c2ccc(OC[C@@H]3CO[C@@]([C@@H2]n4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583202.0221639,
+   "files": [
+    "2JJP_KLN__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "99c5c949-7994-4140-a008-14687fdd52a1": {
+   "key": "5VCE_RIT:taut0",
+   "pair": "5VCE_RIT",
+   "kind": "taut0",
+   "smiles": "CC(C)=C1NC(CN(C)C(=O)NC(=C(O)N[C@@H](Cc2ccccc2)C[C@H](O)[C@H](Cc2ccccc2)N=C(O)OCc2cncs2)C(C)C)=CS1",
+   "submitted": 1789583204.8462634,
+   "files": [
+    "5VCE_RIT__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "6686c145-d668-41ca-ac14-04a751b593e7": {
+   "key": "5VCE_RIT:taut1",
+   "pair": "5VCE_RIT",
+   "kind": "taut1",
+   "smiles": "CC(C)=C1NC(CN(C)C(=O)NC(=C(O)N[C@@H](Cc2ccccc2)C[C@H](O)[C@H](Cc2ccccc2)NC(=O)OCc2cncs2)C(C)C)=CS1",
+   "submitted": 1789583206.6655343,
+   "files": [
+    "5VCE_RIT__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "f8036443-f76c-4250-9ada-e4c07d64c781": {
+   "key": "5VCE_RIT:taut2",
+   "pair": "5VCE_RIT",
+   "kind": "taut2",
+   "smiles": "CC(C)=C1NC(CN(C)C(=O)NC(C(=O)N[C@@H](Cc2ccccc2)C[C@H](O)[C@H](Cc2ccccc2)N=C(O)OCc2cncs2)C(C)C)=CS1",
+   "submitted": 1789583208.7990246,
+   "files": [
+    "5VCE_RIT__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "2cf007e6-2b3f-48c6-940e-63e4628ee741": {
+   "key": "5VCE_RIT:chiralflip",
+   "pair": "5VCE_RIT",
+   "kind": "chiralflip",
+   "smiles": "CC(C)c1nc(CN(C)C(=O)N[C@H](C(=[O@@])N[C@@H](Cc2ccccc2)C[C@H](O)[C@H](Cc2ccccc2)NC(=O)OCc2cncs2)C(C)C)cs1",
+   "submitted": 1789583210.9579592,
+   "files": [
+    "5VCE_RIT__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "813e8224-99be-4c09-9b88-5993b721cf1b": {
+   "key": "6B82_AER:chiralflip",
+   "pair": "6B82_AER",
+   "kind": "chiralflip",
+   "smiles": "C[C@@]12CC[C@H](O)CC1=CC[C@@H]1[C@@H]2CC[C@]2(C)C(c3cccnc3)=CC[C@@H]12",
+   "submitted": 1789583212.7491455,
+   "files": [
+    "6B82_AER__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "b86629fc-135d-4f64-894f-800ac8a3ffc8": {
+   "key": "4ZGX_QHC:taut0",
+   "pair": "4ZGX_QHC",
+   "kind": "taut0",
+   "smiles": "CC=C(O)N[C@@H]1CCCc2c(-c3ccc(Cl)c(F)c3)cncc21",
+   "submitted": 1789583214.9069993,
+   "files": [
+    "4ZGX_QHC__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "e6b18ae7-6a79-4c49-b652-320fe81f8382": {
+   "key": "4ZGX_QHC:taut2",
+   "pair": "4ZGX_QHC",
+   "kind": "taut2",
+   "smiles": "CCC(O)=N[C@@H]1CCCc2c(-c3ccc(Cl)c(F)c3)cncc21",
+   "submitted": 1789583217.3487275,
+   "files": [
+    "4ZGX_QHC__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "e28946d5-cb46-4387-a6a9-02160c40e47b": {
+   "key": "4ZGX_QHC:chiralflip",
+   "pair": "4ZGX_QHC",
+   "kind": "chiralflip",
+   "smiles": "CCC(=O)N[C@H]1CCCc2c(-c3ccc(Cl)c(F)c3)cncc21",
+   "submitted": 1789583219.4994502,
+   "files": [
+    "4ZGX_QHC__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "e3f81459-c595-45ed-bd96-0255da1d693e": {
+   "key": "4K9X_8AW:taut0",
+   "pair": "4K9X_8AW",
+   "kind": "taut0",
+   "smiles": "CCC(C)=C(O)N[C@H](CC[C@H](Cc1ccccc1)N=C(O)OCc1cncs1)Cc1ccccc1",
+   "submitted": 1789583221.6702836,
+   "files": [
+    "4K9X_8AW__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "82be83b8-5894-440e-a580-1c01e962f45f": {
+   "key": "4K9X_8AW:taut1",
+   "pair": "4K9X_8AW",
+   "kind": "taut1",
+   "smiles": "CCC(C)=C(O)N[C@H](CC[C@H](Cc1ccccc1)NC(=O)OCc1cncs1)Cc1ccccc1",
+   "submitted": 1789583223.6875505,
+   "files": [
+    "4K9X_8AW__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "efe9dd32-7a24-479a-86b1-3e5da3d43168": {
+   "key": "4K9X_8AW:taut2",
+   "pair": "4K9X_8AW",
+   "kind": "taut2",
+   "smiles": "CCC(C)C(=O)N[C@H](CC[C@H](Cc1ccccc1)N=C(O)OCc1cncs1)Cc1ccccc1",
+   "submitted": 1789583225.904477,
+   "files": [
+    "4K9X_8AW__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "225c8033-4da2-4411-accf-fd9c2734ed95": {
+   "key": "4K9X_8AW:chiralflip",
+   "pair": "4K9X_8AW",
+   "kind": "chiralflip",
+   "smiles": "CC[C@@H](C)C(=O)N[C@H](CC[C@H](Cc1ccccc1)NC(=O)OCc1cncs1)Cc1ccccc1",
+   "submitted": 1789583227.841093,
+   "files": [
+    "4K9X_8AW__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "92c7f5c6-d15e-4d3b-b01e-3eeb6dabf32c": {
+   "key": "4XRZ_SI6:taut0",
+   "pair": "4XRZ_SI6",
+   "kind": "taut0",
+   "smiles": "N=C1N[C@@]2(c3ccc(F)cc3F)CO[C@@H](c3cn[nH]c3)C[C@H]2CS1",
+   "submitted": 1789583230.536034,
+   "files": [
+    "4XRZ_SI6__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "f3b8072e-9bf4-4f0c-aa59-d3c2defe508d": {
+   "key": "4XRZ_SI6:chiralflip",
+   "pair": "4XRZ_SI6",
+   "kind": "chiralflip",
+   "smiles": "NC1=N[C@@]2(c3ccc([F@@])cc3F)CO[C@@H](c3cn[nH]c3)C[C@H]2CS1",
+   "submitted": 1789583232.3881748,
+   "files": [
+    "4XRZ_SI6__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "e6984889-4ab2-4878-82b2-cd438b7f527b": {
+   "key": "4TT5_36Y:taut1",
+   "pair": "4TT5_36Y",
+   "kind": "taut1",
+   "smiles": "Brc1ccc(-c2cnc[nH]2)cc1",
+   "submitted": 1789583234.4304128,
+   "files": [
+    "4TT5_36Y__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "46d9bf86-ef38-4568-921c-f12339582599": {
+   "key": "3GW9_VNI:taut1",
+   "pair": "3GW9_VNI",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583236.427323,
+   "files": [
+    "3GW9_VNI__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "f90a31c6-c540-4390-98bb-f90576cdc87f": {
+   "key": "3GW9_VNI:chiralflip",
+   "pair": "3GW9_VNI",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3ccccc3)o2)[c@@H]c1",
+   "submitted": 1789583240.0846932,
+   "files": [
+    "3GW9_VNI__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "34235724-801b-4e48-bc40-69095ed88c13": {
+   "key": "5LI8_KKK:taut0",
+   "pair": "5LI8_KKK",
+   "kind": "taut0",
+   "smiles": "C=C(O)N1CCN(c2ccc(OC[C@H]3CO[C@](Cn4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583242.1005976,
+   "files": [
+    "5LI8_KKK__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "a199bc83-21c6-4574-9c87-1b35619d0d0f": {
+   "key": "5LI8_KKK:chiralflip",
+   "pair": "5LI8_KKK",
+   "kind": "chiralflip",
+   "smiles": "CC(=O)N1CCN(c2ccc(OC[C@H]3CO[C@]([C@@H2]n4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583244.4998193,
+   "files": [
+    "5LI8_KKK__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "903a832e-2753-4303-b5cb-b1ebcfe03fac": {
+   "key": "8DL4_SKX:taut1",
+   "pair": "8DL4_SKX",
+   "kind": "taut1",
+   "smiles": "CCN(CC)c1ccc2cc(C(O)=NC[C@](O)(Cn3cncn3)c3ccc(F)cc3F)c(=O)oc2c1",
+   "submitted": 1789583246.4198427,
+   "files": [
+    "8DL4_SKX__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "d8fd5857-d3c4-4b48-99f1-ede4ce861278": {
+   "key": "8DL4_SKX:chiralflip",
+   "pair": "8DL4_SKX",
+   "kind": "chiralflip",
+   "smiles": "CCN(CC)c1ccc2cc(C(=O)NC[C@](O)(Cn3c[n@@]cn3)c3ccc(F)cc3F)c(=O)oc2c1",
+   "submitted": 1789583248.2027547,
+   "files": [
+    "8DL4_SKX__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "b6e1588b-017b-4ec8-b731-f2a37d53009d": {
+   "key": "4D7D_PKT:taut0",
+   "pair": "4D7D_PKT",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSCC=C(O)NCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583250.1699376,
+   "files": [
+    "4D7D_PKT__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "f3518c5f-8a5a-425f-bf18-8d816bac32ed": {
+   "key": "4D7D_PKT:taut2",
+   "pair": "4D7D_PKT",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSCCC(O)=NCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583251.9149265,
+   "files": [
+    "4D7D_PKT__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "f63a03f3-48a2-437b-ba7a-21b85b147e23": {
+   "key": "4D7D_PKT:taut3",
+   "pair": "4D7D_PKT",
+   "kind": "taut3",
+   "smiles": "CC(C)(C)OC(O)=N[C@H](CSCC=C(O)NCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583254.1659486,
+   "files": [
+    "4D7D_PKT__rtaut3s0.cif"
+   ],
+   "done": true
+  },
+  "44d9e550-fdd9-447c-9a9b-8ddc9579d921": {
+   "key": "4D7D_PKT:chiralflip",
+   "pair": "4D7D_PKT",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CSCCC(=O)NCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583255.957985,
+   "files": [
+    "4D7D_PKT__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "4e05007e-94f1-4723-9789-8e4426133576": {
+   "key": "8VK6_A1AB6:taut1",
+   "pair": "8VK6_A1AB6",
+   "kind": "taut1",
+   "smiles": "OC(=NC[C@](O)(Cn1cncn1)c1ccc(F)cc1F)c1ccc(-c2ccc(OC(F)(F)F)cc2)cc1",
+   "submitted": 1789583258.9574919,
+   "files": [
+    "8VK6_A1AB6__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "7162bb0a-b666-45f5-bc70-e870b11d0a15": {
+   "key": "8VK6_A1AB6:chiralflip",
+   "pair": "8VK6_A1AB6",
+   "kind": "chiralflip",
+   "smiles": "O=C(NC[C@](O)(Cn1cncn1)c1ccc(F)cc1F)c1ccc(-c2ccc(OC(F)(F)F)cc2)c[c@@H]1",
+   "submitted": 1789583262.0753262,
+   "files": [
+    "8VK6_A1AB6__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "97e96f1a-e329-4371-9c4a-9aa6798e10de": {
+   "key": "6C94_V16:taut0",
+   "pair": "6C94_V16",
+   "kind": "taut0",
+   "smiles": "CCCCc1ccc(N=CNO)c(C)c1",
+   "submitted": 1789583264.0347953,
+   "files": [
+    "6C94_V16__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "9b268c78-9065-486b-bdd0-14a0a635979c": {
+   "key": "6C94_V16:taut1",
+   "pair": "6C94_V16",
+   "kind": "taut1",
+   "smiles": "CCCCc1ccc(NC=NO)c(C)c1",
+   "submitted": 1789583266.2035937,
+   "files": [
+    "6C94_V16__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "29b02675-b20d-41e3-b06e-c2d2542beb1e": {
+   "key": "6C94_V16:taut2",
+   "pair": "6C94_V16",
+   "kind": "taut2",
+   "smiles": "CCCCc1ccc(NCN=O)c(C)c1",
+   "submitted": 1789583268.0731037,
+   "files": [
+    "6C94_V16__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "115e2af8-fb18-4223-adb4-c62f9bcb582a": {
+   "key": "4UYL_VNI:taut1",
+   "pair": "4UYL_VNI",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583270.0523944,
+   "files": [
+    "4UYL_VNI__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "0d2ca44e-fbd4-4c36-bcc6-9c32b0922ed4": {
+   "key": "4UYL_VNI:chiralflip",
+   "pair": "4UYL_VNI",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3ccccc3)o2)[c@@H]c1",
+   "submitted": 1789583271.9982724,
+   "files": [
+    "4UYL_VNI__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "8bd7aaff-3085-4370-98d5-72fe59d1b65e": {
+   "key": "4CK8_LFD:taut1",
+   "pair": "4CK8_LFD",
+   "kind": "taut1",
+   "smiles": "OC(=Nc1ccc(N2CCN(c3ccc(Cl)c(Cl)c3)CC2)cc1)O[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl",
+   "submitted": 1789583273.9184012,
+   "files": [
+    "4CK8_LFD__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "7d6b5dc9-2f1e-4d6e-b3a0-9461ae67241c": {
+   "key": "4CK8_LFD:chiralflip",
+   "pair": "4CK8_LFD",
+   "kind": "chiralflip",
+   "smiles": "O=C(Nc1ccc(N2CC[N@@](c3ccc(Cl)c(Cl)c3)CC2)cc1)O[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl",
+   "submitted": 1789583275.8314967,
+   "files": [
+    "4CK8_LFD__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "52cd0dac-8b25-4c20-b992-428eb562cc4d": {
+   "key": "6CR2_LFV:taut1",
+   "pair": "6CR2_LFV",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3ccc(OCC(F)(F)F)cc3F)o2)cc1",
+   "submitted": 1789583278.1874623,
+   "files": [
+    "6CR2_LFV__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "0fef5d36-507c-455e-9d1f-a299cb7fa6dc": {
+   "key": "6CR2_LFV:chiralflip",
+   "pair": "6CR2_LFV",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1ccnc1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3[c@@H]cc(OCC(F)(F)F)cc3F)o2)cc1",
+   "submitted": 1789583279.9982526,
+   "files": [
+    "6CR2_LFV__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "480817c1-6c5f-45e0-8f7c-d900e2648960": {
+   "key": "4CKA_LFS:taut0",
+   "pair": "4CKA_LFS",
+   "kind": "taut0",
+   "smiles": "CC(C)c1ccc(N=C(O)O[C@H](Cn2ccnc2)c2ccc(F)cc2)cc1",
+   "submitted": 1789583283.1705968,
+   "files": [
+    "4CKA_LFS__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "1ef4dde7-17a2-4966-b561-4d060091c6d8": {
+   "key": "4CKA_LFS:chiralflip",
+   "pair": "4CKA_LFS",
+   "kind": "chiralflip",
+   "smiles": "CC(C)c1ccc(NC(=O)O[C@H](C[n@@]2ccnc2)c2ccc(F)cc2)cc1",
+   "submitted": 1789583285.0228698,
+   "files": [
+    "4CKA_LFS__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "04a3c1f1-e7f5-4176-ad3d-8538dd8bae56": {
+   "key": "4UHL_VFV:taut1",
+   "pair": "4UHL_VFV",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)cc2)cc1F)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583287.0515392,
+   "files": [
+    "4UHL_VFV__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "27317e87-d181-4b7f-85ea-68ccd91b7ed3": {
+   "key": "4UHL_VFV:chiralflip",
+   "pair": "4UHL_VFV",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)c[c@@H]2)cc1F)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583288.8977573,
+   "files": [
+    "4UHL_VFV__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "f22a96bc-6324-4496-a98c-c7c086f2c6f3": {
+   "key": "4CK9_LFT:taut0",
+   "pair": "4CK9_LFT",
+   "kind": "taut0",
+   "smiles": "CC(C)c1ccc(N=C(O)O[C@H](Cn2ccnc2)c2ccc(Cl)cc2)cc1",
+   "submitted": 1789583291.0571027,
+   "files": [
+    "4CK9_LFT__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "0ae6ebe5-031b-4aee-834a-0ab557090ecf": {
+   "key": "4CK9_LFT:chiralflip",
+   "pair": "4CK9_LFT",
+   "kind": "chiralflip",
+   "smiles": "CC(C)c1ccc(NC(=O)O[C@H](C[n@@]2ccnc2)c2ccc(Cl)cc2)cc1",
+   "submitted": 1789583293.027702,
+   "files": [
+    "4CK9_LFT__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "fd628439-6424-4fb0-90c4-fbec98ebebd0": {
+   "key": "4UHI_VFV:taut1",
+   "pair": "4UHI_VFV",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)cc2)cc1F)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583294.9294057,
+   "files": [
+    "4UHI_VFV__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "0563d80e-0c61-412b-b0ac-e9e1b1c49a23": {
+   "key": "4UHI_VFV:chiralflip",
+   "pair": "4UHI_VFV",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)c[c@@H]2)cc1F)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583296.7823665,
+   "files": [
+    "4UHI_VFV__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "f2830da8-98fa-4bfa-a9ed-8ca13d6a93c6": {
+   "key": "5JLC_1YN:chiralflip",
+   "pair": "5JLC_1YN",
+   "kind": "chiralflip",
+   "smiles": "CC[C@H](C)n1ncn(-c2ccc(N3CCN(c4ccc(OC[C@H]5CO[C@](Cn6cncn6)(c6ccc(Cl)cc6Cl)O5)cc4)CC3)cc2)c1=O",
+   "submitted": 1789583298.9277775,
+   "files": [
+    "5JLC_1YN__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "441287ae-b80a-4461-8193-2336728cd3bf": {
+   "key": "7UFD_T0K:taut0",
+   "pair": "7UFD_T0K",
+   "kind": "taut0",
+   "smiles": "O=C(CCc1cccnc1)N[C@H](CSC(Cc1ccccc1)=C(O)NCCc1cccnc1)Cc1ccccc1",
+   "submitted": 1789583301.1163936,
+   "files": [
+    "7UFD_T0K__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "985ebf2b-8177-4681-80b5-dba73bca8e06": {
+   "key": "7UFD_T0K:taut1",
+   "pair": "7UFD_T0K",
+   "kind": "taut1",
+   "smiles": "O=C(CCc1cccnc1)N[C@H](CSC(Cc1ccccc1)C(=O)NCCc1cccnc1)Cc1ccccc1",
+   "submitted": 1789583303.3874862,
+   "files": [
+    "7UFD_T0K__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "aedbb293-a38f-458a-9632-ebe8bc9a40ee": {
+   "key": "7UFD_T0K:taut2",
+   "pair": "7UFD_T0K",
+   "kind": "taut2",
+   "smiles": "O=C(CCc1cccnc1)N[C@H](CSC(Cc1ccccc1)C(O)=NCCc1cccnc1)Cc1ccccc1",
+   "submitted": 1789583305.2970297,
+   "files": [
+    "7UFD_T0K__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "bc3058fa-148d-4b8d-aec6-8d1dbe759451": {
+   "key": "7UFD_T0K:chiralflip",
+   "pair": "7UFD_T0K",
+   "kind": "chiralflip",
+   "smiles": "O=C(CCc1cc[c@@H]nc1)N[C@H](CS[C@@H](Cc1ccccc1)C(=O)NCCc1cccnc1)Cc1ccccc1",
+   "submitted": 1789583307.26624,
+   "files": [
+    "7UFD_T0K__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "6f69c660-3ce9-428d-be42-9a897836e12a": {
+   "key": "3T3R_9PL:taut0",
+   "pair": "3T3R_9PL",
+   "kind": "taut0",
+   "smiles": "CCC1=C(O)OC[C@@H]1Cc1cncn1C",
+   "submitted": 1789583309.0753791,
+   "files": [
+    "3T3R_9PL__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "76c776c2-b1f4-4283-af82-b07454712bb4": {
+   "key": "3T3R_9PL:taut1",
+   "pair": "3T3R_9PL",
+   "kind": "taut1",
+   "smiles": "CCC1C(=O)OC[C@@H]1Cc1cncn1C",
+   "submitted": 1789583310.8789546,
+   "files": [
+    "3T3R_9PL__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "79d91d04-ff33-4051-89d4-5c7d3f3224a5": {
+   "key": "3T3R_9PL:chiralflip",
+   "pair": "3T3R_9PL",
+   "kind": "chiralflip",
+   "smiles": "CC[C@H]1C(=O)OC[C@@H]1Cc1cncn1C",
+   "submitted": 1789583313.2140982,
+   "files": [
+    "3T3R_9PL__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "c12886ed-7ad4-4ab9-bbdc-938d94d3b2e5": {
+   "key": "1JIN_KTN:taut0",
+   "pair": "1JIN_KTN",
+   "kind": "taut0",
+   "smiles": "C=C(O)N1CCN(c2ccc(OC[C@H]3COC(Cn4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583315.077152,
+   "files": [
+    "1JIN_KTN__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "fb09cddd-f27b-490a-9a70-0dba8f97da2c": {
+   "key": "1JIN_KTN:chiralflip",
+   "pair": "1JIN_KTN",
+   "kind": "chiralflip",
+   "smiles": "CC(=O)N1CCN(c2ccc(OC[C@H]3COC([C@@H2]n4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583317.033337,
+   "files": [
+    "1JIN_KTN__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "9625cb4c-be4d-4fad-96bc-352af966274d": {
+   "key": "7UAZ_O3L:taut1",
+   "pair": "7UAZ_O3L",
+   "kind": "taut1",
+   "smiles": "OC(=CCSCc1cccnc1)NCc1ccc2-c3cccc[n]3->[Ir]34([c]5ccccc5-c5cccc[n]->35)([c]3ccccc3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583318.8631666,
+   "files": [
+    "7UAZ_O3L__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "1079d769-3280-4b52-b9eb-2e5981af293b": {
+   "key": "7UAZ_O3L:taut2",
+   "pair": "7UAZ_O3L",
+   "kind": "taut2",
+   "smiles": "OC(CCSCc1cccnc1)=NCc1ccc2-c3cccc[n]3->[Ir]34([c]5ccccc5-c5cccc[n]->35)([c]3ccccc3-c3cccc[n]->43)<-[n]2c1",
+   "submitted": 1789583320.5334477,
+   "files": [
+    "7UAZ_O3L__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "a4231877-efeb-40b4-a72a-54151ad2537b": {
+   "key": "4EJI_0QA:taut0",
+   "pair": "4EJI_0QA",
+   "kind": "taut0",
+   "smiles": "CN(CCC=C(O)c1cccnc1)N=O",
+   "submitted": 1789583324.0130403,
+   "files": [
+    "4EJI_0QA__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "bf4353f3-4bee-4269-9519-a1c5092d04c2": {
+   "key": "4C27_26N:taut0",
+   "pair": "4C27_26N",
+   "kind": "taut0",
+   "smiles": "O=C(N=c1cc[nH]cc1)C(Cc1c[nH]c2ccccc12)N=C(O)c1ccc(N2CCN(c3ccc(C(F)(F)F)cc3)CC2)cc1F",
+   "submitted": 1789583326.0021527,
+   "files": [
+    "4C27_26N__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "03e8a98c-74ba-4c09-82ae-2f7c93e71ed9": {
+   "key": "4C27_26N:taut1",
+   "pair": "4C27_26N",
+   "kind": "taut1",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)N=c1cc[nH]cc1)c1ccc(N2CCN(c3ccc(C(F)(F)F)cc3)CC2)cc1F",
+   "submitted": 1789583327.6761065,
+   "files": [
+    "4C27_26N__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "af407063-7956-416e-b2e7-cf67e82d9d29": {
+   "key": "4C27_26N:taut2",
+   "pair": "4C27_26N",
+   "kind": "taut2",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)Nc1ccncc1)c1ccc(N2CCN(c3ccc(C(F)(F)F)cc3)CC2)cc1F",
+   "submitted": 1789583329.675534,
+   "files": [
+    "4C27_26N__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "fa18c0f3-3900-4493-a11e-13d0ad6c02cb": {
+   "key": "4C27_26N:chiralflip",
+   "pair": "4C27_26N",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@H](Cc1c[nH]c2c[c@@H]ccc12)C(=O)Nc1ccncc1)c1ccc(N2CCN(c3ccc(C(F)(F)F)cc3)CC2)cc1F",
+   "submitted": 1789583331.7598674,
+   "files": [
+    "4C27_26N__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "cd4ebb53-0556-4202-848d-b249b0b74146": {
+   "key": "3TIK_JKF:chiralflip",
+   "pair": "3TIK_JKF",
+   "kind": "chiralflip",
+   "smiles": "CO[C@](c1cc[c@@](Cl)cc1)(c1ccc2c(c1)c(-c1c(F)cccc1F)cc(=O)n2C)c1cncn1C",
+   "submitted": 1789583333.6494186,
+   "files": [
+    "3TIK_JKF__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "e564404e-573c-4025-9657-a222add502a8": {
+   "key": "3K1O_POZ:chiralflip",
+   "pair": "3K1O_POZ",
+   "kind": "chiralflip",
+   "smiles": "CC[C@H]([C@H](C)O)n1ncn(-c2ccc(N3CCN(c4ccc(OC[C@@H]5CC[C@@](Cn6cncn6)(c6ccc(F)cc6F)O5)cc4)CC3)cc2)c1=O",
+   "submitted": 1789583335.769739,
+   "files": [
+    "3K1O_POZ__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "fb3a8a6e-fd9f-43be-8af5-20b03b6d6284": {
+   "key": "8EWE_X0E:taut0",
+   "pair": "8EWE_X0E",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)=C(O)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583337.7483125,
+   "files": [
+    "8EWE_X0E__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "25986246-e402-4526-b99f-dbc5c4a9a9f7": {
+   "key": "8EWE_X0E:taut1",
+   "pair": "8EWE_X0E",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)C(=O)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583339.661727,
+   "files": [
+    "8EWE_X0E__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "4079771f-92e6-4950-b661-b041e5bdad58": {
+   "key": "8EWE_X0E:taut2",
+   "pair": "8EWE_X0E",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)NC(Cc1ccncc1)C(O)=NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583341.4877446,
+   "files": [
+    "8EWE_X0E__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "02cc6dcc-72cf-4ec1-8f69-2cb5eb192a68": {
+   "key": "8EWE_X0E:chiralflip",
+   "pair": "8EWE_X0E",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](Cc1ccncc1)C(=O)NCc1ccc2-c3cccc[n]3->[Ir+]34([c]5ccccc5-c5ccc6ccccc6[n]->35)([c]3ccccc3-c3ccc5ccccc5[n]->43)<-[n]2c1",
+   "submitted": 1789583344.5039685,
+   "files": [
+    "8EWE_X0E__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "7e532bed-3c84-4010-b131-4275a1fe9677": {
+   "key": "3T3S_9PL:taut0",
+   "pair": "3T3S_9PL",
+   "kind": "taut0",
+   "smiles": "CCC1=C(O)OC[C@@H]1Cc1cncn1C",
+   "submitted": 1789583346.4925175,
+   "files": [
+    "3T3S_9PL__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "d1dd170c-18ed-401f-9c44-78dab8b709cc": {
+   "key": "3T3S_9PL:taut1",
+   "pair": "3T3S_9PL",
+   "kind": "taut1",
+   "smiles": "CCC1C(=O)OC[C@@H]1Cc1cncn1C",
+   "submitted": 1789583348.1982946,
+   "files": [
+    "3T3S_9PL__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "599eef8e-3a17-42ef-b742-ca4a44a9c5e7": {
+   "key": "3T3S_9PL:chiralflip",
+   "pair": "3T3S_9PL",
+   "kind": "chiralflip",
+   "smiles": "CC[C@H]1C(=O)OC[C@@H]1Cc1cncn1C",
+   "submitted": 1789583350.1275213,
+   "files": [
+    "3T3S_9PL__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "5156f324-d359-4beb-8833-a7c5a6d97751": {
+   "key": "9COV_A1A4S:taut0",
+   "pair": "9COV_A1A4S",
+   "kind": "taut0",
+   "smiles": "O=C(NCCCc1cccnc1)C(Cc1ccccc1)SC[C@H](Cc1c[nH]c2ccccc12)N=C(O)c1cccnc1",
+   "submitted": 1789583351.957638,
+   "files": [
+    "9COV_A1A4S__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "b117576c-0d36-4f01-8476-6c97dad52934": {
+   "key": "9COV_A1A4S:taut1",
+   "pair": "9COV_A1A4S",
+   "kind": "taut1",
+   "smiles": "O=C(N[C@H](CSC(Cc1ccccc1)=C(O)NCCCc1cccnc1)Cc1c[nH]c2ccccc12)c1cccnc1",
+   "submitted": 1789583354.329764,
+   "files": [
+    "9COV_A1A4S__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "bf62747d-aba6-4a69-a535-5f80ff73560e": {
+   "key": "9COV_A1A4S:taut2",
+   "pair": "9COV_A1A4S",
+   "kind": "taut2",
+   "smiles": "O=C(N[C@H](CSC(Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1c[nH]c2ccccc12)c1cccnc1",
+   "submitted": 1789583356.3307772,
+   "files": [
+    "9COV_A1A4S__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "3e9ab248-4b10-4142-8168-63a7d39547af": {
+   "key": "9COV_A1A4S:chiralflip",
+   "pair": "9COV_A1A4S",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@H](CS[C@H]([C@@H2]c1ccccc1)C(=O)NCCCc1cccnc1)Cc1c[nH]c2ccccc12)c1cccnc1",
+   "submitted": 1789583358.3915215,
+   "files": [
+    "9COV_A1A4S__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "ecee57d6-b975-4d46-9f10-07170e1e901d": {
+   "key": "9NNI_A1BZC:taut1",
+   "pair": "9NNI_A1BZC",
+   "kind": "taut1",
+   "smiles": "OC(=C1CC1)n1ccc2c(-c3cnco3)cc(C(F)(F)F)cc21",
+   "submitted": 1789583360.6888099,
+   "files": [
+    "9NNI_A1BZC__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "7bf2779d-4727-4707-874e-ff8565e1dae2": {
+   "key": "4K9W_7AW:taut0",
+   "pair": "4K9W_7AW",
+   "kind": "taut0",
+   "smiles": "CCC[C@@H](CC[C@H](Cc1ccccc1)N=C(O)C(N=C(O)N(C)CC1=CSC(=C(C)C)N1)C(C)C)N=C(O)OCc1cncs1",
+   "submitted": 1789583362.599826,
+   "files": [
+    "4K9W_7AW__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "24d930a9-9332-4599-9138-1e294ddf86d0": {
+   "key": "4K9W_7AW:taut1",
+   "pair": "4K9W_7AW",
+   "kind": "taut1",
+   "smiles": "CCC[C@@H](CC[C@H](Cc1ccccc1)N=C(O)C(N=C(O)N(C)CC1=CSC(=C(C)C)N1)C(C)C)NC(=O)OCc1cncs1",
+   "submitted": 1789583364.3448477,
+   "files": [
+    "4K9W_7AW__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "b9f02d0d-e757-417e-bea9-847d5b5c055e": {
+   "key": "4K9W_7AW:taut2",
+   "pair": "4K9W_7AW",
+   "kind": "taut2",
+   "smiles": "CCC[C@@H](CC[C@H](Cc1ccccc1)N=C(O)C(N=C(O)N(C)Cc1csc(C(C)C)n1)C(C)C)N=C(O)OCc1cncs1",
+   "submitted": 1789583367.103801,
+   "files": [
+    "4K9W_7AW__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "bbb6527a-5166-4f4a-a6a4-90bbdc15c90b": {
+   "key": "4K9W_7AW:chiralflip",
+   "pair": "4K9W_7AW",
+   "kind": "chiralflip",
+   "smiles": "CCC[C@H](CC[C@H](Cc1ccccc1)NC(=O)[C@@H](NC(=O)N(C)Cc1csc(C(C)C)n1)C(C)C)NC(=O)OCc1cncs1",
+   "submitted": 1789583369.078962,
+   "files": [
+    "4K9W_7AW__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "23a35bde-3ebe-4958-886b-e8d1468c7b01": {
+   "key": "5O4K_9KE:taut1",
+   "pair": "5O4K_9KE",
+   "kind": "taut1",
+   "smiles": "OC1=CN(CCCn2ccnc2)CCN1Cc1ccc(Cl)cc1",
+   "submitted": 1789583371.158803,
+   "files": [
+    "5O4K_9KE__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "a1e48d92-3ec7-498f-95b2-a76711a7b702": {
+   "key": "2V0M_KLN:taut0",
+   "pair": "2V0M_KLN",
+   "kind": "taut0",
+   "smiles": "C=C(O)N1CCN(c2ccc(OC[C@@H]3CO[C@@](Cn4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583373.0034614,
+   "files": [
+    "2V0M_KLN__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "70ab8ba6-ff37-49ac-88e0-41ab3418944b": {
+   "key": "2V0M_KLN:chiralflip",
+   "pair": "2V0M_KLN",
+   "kind": "chiralflip",
+   "smiles": "CC(=O)N1CCN(c2ccc(OC[C@@H]3CO[C@@]([C@@H2]n4ccnc4)(c4ccc(Cl)cc4Cl)O3)cc2)CC1",
+   "submitted": 1789583374.785512,
+   "files": [
+    "2V0M_KLN__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "c94d951b-e56f-4f15-afd3-188b3de5a59d": {
+   "key": "7UF9_NH0:taut0",
+   "pair": "7UF9_NH0",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)=C(O)NCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583376.8390906,
+   "files": [
+    "7UF9_NH0__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "91ad33d9-88a8-47ef-88b3-09c94cd72bbd": {
+   "key": "7UF9_NH0:taut1",
+   "pair": "7UF9_NH0",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(=O)NCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583379.1185517,
+   "files": [
+    "7UF9_NH0__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "b0345dca-9853-425a-a9c1-f95460ce3d9a": {
+   "key": "7UF9_NH0:taut2",
+   "pair": "7UF9_NH0",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(O)=NCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583380.9108021,
+   "files": [
+    "7UF9_NH0__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "08258970-bc94-43bf-9c86-04bba3d3ad85": {
+   "key": "7UF9_NH0:chiralflip",
+   "pair": "7UF9_NH0",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CS[C@H](Cc1ccccc1)C(=O)NCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583383.0141695,
+   "files": [
+    "7UF9_NH0__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "6e3c9ed2-6b0c-4669-af36-0b4d984a0915": {
+   "key": "7KVQ_X7D:taut0",
+   "pair": "7KVQ_X7D",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)=C(O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583385.558384,
+   "files": [
+    "7KVQ_X7D__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "c8e92687-139f-426d-adea-f46475c4f4eb": {
+   "key": "7KVQ_X7D:taut1",
+   "pair": "7KVQ_X7D",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583387.9835784,
+   "files": [
+    "7KVQ_X7D__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "382d6f17-ab60-4944-9b1b-0e275ca5888b": {
+   "key": "7KVQ_X7D:taut2",
+   "pair": "7KVQ_X7D",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(O)=NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583389.805348,
+   "files": [
+    "7KVQ_X7D__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "dab416a3-b0e0-4c36-9ac7-99be4e833df1": {
+   "key": "7KVQ_X7D:chiralflip",
+   "pair": "7KVQ_X7D",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CS[C@@H](Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583391.5402634,
+   "files": [
+    "7KVQ_X7D__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "763a9354-a074-41ea-8f10-9c2f80e669a3": {
+   "key": "7KVO_X6S:taut0",
+   "pair": "7KVO_X6S",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)=C(O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583393.8025959,
+   "files": [
+    "7KVO_X6S__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "7bb2545d-0524-46e1-99c7-a678d377a3ef": {
+   "key": "7KVO_X6S:taut1",
+   "pair": "7KVO_X6S",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583395.489695,
+   "files": [
+    "7KVO_X6S__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "c7497836-8325-493c-a53b-2606d4a8cd0f": {
+   "key": "7KVO_X6S:taut2",
+   "pair": "7KVO_X6S",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(O)=NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583397.514541,
+   "files": [
+    "7KVO_X6S__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "98a385ec-a0c5-46f6-9357-92f73ea7a475": {
+   "key": "7KVO_X6S:chiralflip",
+   "pair": "7KVO_X6S",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CS[C@H](Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583399.1703355,
+   "files": [
+    "7KVO_X6S__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "b8bbe556-f3aa-44ab-b5fd-9bd854324da7": {
+   "key": "4G3J_VNT:taut1",
+   "pair": "4G3J_VNT",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1cncn1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3ccccc3)o2)cc1",
+   "submitted": 1789583400.9299319,
+   "files": [
+    "4G3J_VNT__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "b99c5c67-7122-49c8-962e-ba6fbc1903e9": {
+   "key": "4G3J_VNT:chiralflip",
+   "pair": "4G3J_VNT",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1cncn1)c1ccc(Cl)cc1Cl)c1ccc(-c2nnc(-c3ccccc3)o2)[c@@H]c1",
+   "submitted": 1789583402.7243357,
+   "files": [
+    "4G3J_VNT__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "ff032894-339e-4047-97e7-8b443cab201e": {
+   "key": "6Q2T_PJM:taut1",
+   "pair": "6Q2T_PJM",
+   "kind": "taut1",
+   "smiles": "OC(=N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)cc2)cc1Cl)c1ccc(-c2nnc(-c3cc(F)cc(-c4ncncc4F)c3)o2)cc1",
+   "submitted": 1789583404.6193962,
+   "files": [
+    "6Q2T_PJM__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "25761977-8dbb-43ef-bf1a-dc0aca143e34": {
+   "key": "6Q2T_PJM:chiralflip",
+   "pair": "6Q2T_PJM",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@@H](Cn1ccnc1)c1ccc(-c2ccc(F)cc2)cc1Cl)c1ccc(-[c@@]2nnc(-c3cc(F)cc(-c4ncncc4F)c3)o2)cc1",
+   "submitted": 1789583407.9120576,
+   "files": [
+    "6Q2T_PJM__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "ff0fe198-3a06-492a-96b7-9df570d50d90": {
+   "key": "7UFA_NI6:taut0",
+   "pair": "7UFA_NI6",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)=C(O)NCCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583409.5622013,
+   "files": [
+    "7UFA_NI6__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "4a1a9926-d0a9-47cd-abb7-0e01d35907b8": {
+   "key": "7UFA_NI6:taut1",
+   "pair": "7UFA_NI6",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(=O)NCCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583411.576238,
+   "files": [
+    "7UFA_NI6__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "179ce12d-7e52-4f10-96cf-1ad307e263c2": {
+   "key": "7UFA_NI6:taut2",
+   "pair": "7UFA_NI6",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(O)=NCCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583413.2904327,
+   "files": [
+    "7UFA_NI6__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "7888ae4b-4f20-415a-99a4-59a4b2fdf87e": {
+   "key": "7UFA_NI6:chiralflip",
+   "pair": "7UFA_NI6",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CS[C@H](Cc1ccccc1)C(=O)NCCCc1ccncc1)Cc1ccccc1",
+   "submitted": 1789583414.8957248,
+   "files": [
+    "7UFA_NI6__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "dd6d01e7-cedc-44eb-abd4-88012e53e8bc": {
+   "key": "5FSA_X2N:chiralflip",
+   "pair": "5FSA_X2N",
+   "kind": "chiralflip",
+   "smiles": "CC[C@H]([C@H](C)O)n1ncn(-c2ccc(N3CCN(c4ccc(OC[C@@H]5CO[C@@](Cn6cncn6)(c6ccc(F)cc6F)C5)cc4)CC3)cc2)c1=O",
+   "submitted": 1789583416.9878757,
+   "files": [
+    "5FSA_X2N__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "e82621a8-716f-473b-ba14-63d1bf8f19c1": {
+   "key": "7KVN_X6V:taut0",
+   "pair": "7KVN_X6V",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)=C(O)NCCCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583419.0642073,
+   "files": [
+    "7KVN_X6V__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "99140afc-737c-441d-98d8-7fd1d6431bde": {
+   "key": "7KVN_X6V:taut1",
+   "pair": "7KVN_X6V",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583420.8010674,
+   "files": [
+    "7KVN_X6V__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "62e83476-dfbf-4b8f-9ea5-9545c0ef3c5e": {
+   "key": "7KVN_X6V:taut2",
+   "pair": "7KVN_X6V",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CSC(Cc1ccccc1)C(O)=NCCCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583422.6479454,
+   "files": [
+    "7KVN_X6V__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "da104cd3-f0d6-43d6-bf8c-a72bd88fbb40": {
+   "key": "7KVN_X6V:chiralflip",
+   "pair": "7KVN_X6V",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CS[C@H](Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1c[nH]c2ccccc12",
+   "submitted": 1789583424.2197108,
+   "files": [
+    "7KVN_X6V__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "c3bd88d4-f64c-405c-8a45-bd8e2232df79": {
+   "key": "7KVS_X74:taut0",
+   "pair": "7KVS_X74",
+   "kind": "taut0",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CSC(Cc1ccccc1)=C(O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583426.313941,
+   "files": [
+    "7KVS_X74__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "e4370565-9753-43cc-865c-a4bdaf6d183e": {
+   "key": "7KVS_X74:taut1",
+   "pair": "7KVS_X74",
+   "kind": "taut1",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CSC(Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583428.9750488,
+   "files": [
+    "7KVS_X74__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "390712ff-7c90-41a1-9bad-1a3ce6a0027c": {
+   "key": "7KVS_X74:taut2",
+   "pair": "7KVS_X74",
+   "kind": "taut2",
+   "smiles": "CC(C)(C)OC(=O)N[C@@H](CSC(Cc1ccccc1)C(O)=NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583430.7435381,
+   "files": [
+    "7KVS_X74__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "dfdbf035-0a3e-4bcf-8afe-270764cbedce": {
+   "key": "7KVS_X74:chiralflip",
+   "pair": "7KVS_X74",
+   "kind": "chiralflip",
+   "smiles": "CC(C)(C)OC(=O)N[C@H](CS[C@H](Cc1ccccc1)C(=O)NCCCc1cccnc1)Cc1cccc2ccccc12",
+   "submitted": 1789583432.521514,
+   "files": [
+    "7KVS_X74__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "afe13018-8a15-4297-9d4e-aa1f6abaacc5": {
+   "key": "4UVR_J5Y:taut0",
+   "pair": "4UVR_J5Y",
+   "kind": "taut0",
+   "smiles": "Cc1ccc(Cl)cc1N1CCN(c2ccc(C(=O)NC(Cc3c[nH]c4ccccc34)=C(O)N=c3cc[nH]cc3)c(F)c2)CC1",
+   "submitted": 1789583434.205478,
+   "files": [
+    "4UVR_J5Y__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "e1cf2a51-f0e0-4e28-8025-b523362556f9": {
+   "key": "4UVR_J5Y:taut1",
+   "pair": "4UVR_J5Y",
+   "kind": "taut1",
+   "smiles": "Cc1ccc(Cl)cc1N1CCN(c2ccc(C(=O)NC(Cc3c[nH]c4ccccc34)=C(O)Nc3ccncc3)c(F)c2)CC1",
+   "submitted": 1789583436.3020346,
+   "files": [
+    "4UVR_J5Y__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "eda5d75c-9b54-4c0f-979e-6805289522cd": {
+   "key": "4UVR_J5Y:taut2",
+   "pair": "4UVR_J5Y",
+   "kind": "taut2",
+   "smiles": "Cc1ccc(Cl)cc1N1CCN(c2ccc(C(=O)NC(Cc3c[nH]c4ccccc34)C(=O)N=c3cc[nH]cc3)c(F)c2)CC1",
+   "submitted": 1789583438.1364114,
+   "files": [
+    "4UVR_J5Y__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "bd85c40a-3897-45ba-b33e-09b023c198ba": {
+   "key": "4UVR_J5Y:chiralflip",
+   "pair": "4UVR_J5Y",
+   "kind": "chiralflip",
+   "smiles": "Cc1ccc(Cl)cc1N1CCN(c2ccc(C(=O)N[C@H](Cc3c[n@@H]c4ccccc34)C(=O)Nc3ccncc3)c(F)c2)CC1",
+   "submitted": 1789583440.4620712,
+   "files": [
+    "4UVR_J5Y__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "c133d218-f5b2-41b5-8d0a-a2ce9404f5e5": {
+   "key": "3JUS_ECL:chiralflip",
+   "pair": "3JUS_ECL",
+   "kind": "chiralflip",
+   "smiles": "Clc1ccc(CO[C@@H]([C@@H2]n2ccnc2)c2ccc(Cl)cc2Cl)cc1",
+   "submitted": 1789583442.4527125,
+   "files": [
+    "3JUS_ECL__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "d6f6b98f-954d-4b9a-a383-f7a08d6971bb": {
+   "key": "6XZ8_O4T:chiralflip",
+   "pair": "6XZ8_O4T",
+   "kind": "chiralflip",
+   "smiles": "C[C@H](NS(C)(=O)=O)c1cncc(N2C(=O)c3ccc(Cl)cc3C2(C)C)c1",
+   "submitted": 1789583444.4240062,
+   "files": [
+    "6XZ8_O4T__rchiralflips0.cif"
+   ],
+   "done": true
+  },
+  "e7780bdb-81b2-42ee-89a5-d2163579c862": {
+   "key": "4COH_T9H:taut0",
+   "pair": "4COH_T9H",
+   "kind": "taut0",
+   "smiles": "O=C(N=c1cc[nH]cc1)C(Cc1c[nH]c2ccccc12)N=C(O)c1ccc(N2CCN(S(=O)(=O)c3cccs3)CC2)cc1F",
+   "submitted": 1789583446.3145893,
+   "files": [
+    "4COH_T9H__rtaut0s0.cif"
+   ],
+   "done": true
+  },
+  "8a084979-6982-4341-8eec-65cb78eae808": {
+   "key": "4COH_T9H:taut1",
+   "pair": "4COH_T9H",
+   "kind": "taut1",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)N=c1cc[nH]cc1)c1ccc(N2CCN(S(=O)(=O)c3cccs3)CC2)cc1F",
+   "submitted": 1789583448.4715776,
+   "files": [
+    "4COH_T9H__rtaut1s0.cif"
+   ],
+   "done": true
+  },
+  "d0791d2c-3a1b-4001-83de-389c5c310a94": {
+   "key": "4COH_T9H:taut2",
+   "pair": "4COH_T9H",
+   "kind": "taut2",
+   "smiles": "O=C(NC(Cc1c[nH]c2ccccc12)=C(O)Nc1ccncc1)c1ccc(N2CCN(S(=O)(=O)c3cccs3)CC2)cc1F",
+   "submitted": 1789583451.2280674,
+   "files": [
+    "4COH_T9H__rtaut2s0.cif"
+   ],
+   "done": true
+  },
+  "139ec7ed-216f-4605-97e7-5bdca6aa002b": {
+   "key": "4COH_T9H:chiralflip",
+   "pair": "4COH_T9H",
+   "kind": "chiralflip",
+   "smiles": "O=C(N[C@H](Cc1c[nH]c2c[c@@H]ccc12)C(=O)Nc1ccncc1)c1ccc(N2CCN(S(=O)(=O)c3cccs3)CC2)cc1F",
+   "submitted": 1789583453.07031,
+   "files": [
+    "4COH_T9H__rchiralflips0.cif"
+   ],
+   "done": true
+  }
+ }
+}
