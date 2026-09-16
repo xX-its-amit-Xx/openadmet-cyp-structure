@@ -137,3 +137,33 @@ by chemistry, not by compute — which is why no amount of further folding fixes
 
 Kept as an option only in the combined arm, where it also failed to beat the sweep alone
 (+0.0441 vs +0.0413), consistent with the standing "more references is not better" result.
+
+
+### B9 — deflated significance (finance). **SHIPPED as a reporting change, 2026-09-16.**
+
+An audit of our own headline, not a new feature. With ~30 selector variants tested against
+one null, the best of them is partly chosen *by* that search, so a single-trial p-value
+overstates it. Quant finance formalised this for Sharpe ratios; the same correction applies
+here. 489 pairs / 87 proteins / 6,314 poses, 20,000 null draws.
+
+Observed gain of the shipped selector: **+0.0372**.
+
+| N trials | p95 of max-of-N | p99 of max-of-N | p(best of N ≥ observed) |
+|---|---|---|---|
+| 1 | +0.0057 | +0.0095 | 0.0000 |
+| 10 | +0.0107 | +0.0134 | 0.0000 |
+| **30** | **+0.0130** | **+0.0157** | **0.0000** |
+| 100 | +0.0156 | +0.0171 | 0.0000 |
+
+**It survives.** At 100 trials the p99 bar is +0.0171 and the selector is at +0.0372 —
+more than double. The result is not an artifact of how many things we tried.
+
+**The secondary finding is the better one.** The max-of-30 p95 comes out at **+0.0130**,
+essentially FINDING 007's noise floor of **+0.0138** — which was derived completely
+differently, as the 95th percentile of a single random feature on the CYP3A4 set. The two
+routes agreeing to within 0.0008 means the repo's working rule ("anything under +0.020 is
+noise") has been an *implicit multiple-comparisons correction* all along, and a
+well-calibrated one. That is worth knowing: the rule of thumb is not conservative
+folklore, it is approximately the right formal bar for ~30 trials.
+
+Ships as a reporting change: quote the N=30 row alongside any future selector claim.
