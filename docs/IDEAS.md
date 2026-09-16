@@ -36,7 +36,7 @@ The brief: raid finance, health, cyber and art for method shapes, not metaphors.
 
 | # | source domain | transplanted idea | why it is not just a metaphor | kill criterion | status |
 |---|---|---|---|---|---|
-| B1 | **Finance — portfolio variance** | We pick the single best pose (top-1). Portfolio theory says the best *expected* asset is not the best *risk-adjusted* choice. Select the pose with the best agreement-to-variance ratio rather than best agreement. | Our selector already scores by mean Chamfer distance; adding the *variance* of that distance across reference poses is one line and has never been tested. Directly attacks the catastrophe-detector mechanism. | Must beat −z(xeng) alone by > +0.020 on held-out P450 proteins. | **open — cheapest real test on the list** |
+| B1 | **Finance — portfolio variance** | Select on the agreement-to-variance ratio rather than agreement alone. | Must beat −z(xeng) by > +0.020 held out. | **measured-dead 2026-09-16** |
 | B2 | **Finance — market-making / adverse selection** | Poses where the reference engines *disagree most* are where selection is most valuable. Spend more sampling budget only on high-disagreement ligands instead of uniformly. | Gain tracks pool catastrophe rate (FINDING 012), so budget should follow disagreement. Makes drop-day compute allocation adaptive. | Must beat uniform allocation at matched total job count. | open |
 | B3 | **Cyber — differential fuzzing** | Two implementations that should agree, don't → the disagreement localises the bug. Feed the *same* ligand through engines with deliberately perturbed inputs (protonation, tautomer, chirality flip) and treat disagreement as a pose-quality signal. | This is cross-engine agreement generalised from "different engine" to "different input". Input perturbation is free; engine diversity is not. | Must produce a selector beating +0.0381. | open |
 | B4 | **Cyber — canary / honeypot** | Insert known-answer decoy ligands into every batch. If the engine places a decoy wrongly, distrust that whole batch. | We have 87 crystal ground truths; salting them into production batches gives per-batch quality telemetry for free. Would have caught the determinism collapse days earlier. | Ships if it detects a seeded regression; it is monitoring, not a scorer. | open |
@@ -61,3 +61,41 @@ Status: the P450 superfamily set (FINDING 012, 87 proteins / 491 pairs / crystal
 truth) is step 1 and 2 already built. What is **missing** is the chemical-similarity
 matching: our splits are leave-one-TARGET-out, not similarity-matched to the challenge's
 train/test split. See `docs/TODO_similarity_matched_splits.md`.
+
+
+---
+
+## Measured and closed
+
+### B1 — portfolio variance (finance). **DEAD, 2026-09-16.**
+
+489 pairs / 87 proteins / 6,314 poses, frozen sweep reference, zero new jobs.
+
+| variant | selected | gain |
+|---|---|---|
+| **mean — the incumbent** | 0.7317 | **+0.0343** |
+| median | 0.7325 | +0.0351 |
+| mean − 0.5·std (risk-*seeking*) | 0.7321 | +0.0347 |
+| mean + 0.5·std | 0.7319 | +0.0345 |
+| mean / std (Sharpe-like) | 0.7308 | +0.0334 |
+| mean + 1.0·std | 0.7299 | +0.0325 |
+| max (worst-case / minimax) | 0.7281 | +0.0308 |
+| **std alone** | 0.6291 | **−0.0682** |
+
+The criterion was +0.0543 (incumbent +0.020). The best variant reaches +0.0351, beating
+the incumbent by **+0.0008** — two orders below the noise floor.
+
+**Why it fails, which is the part worth keeping.** `std alone` is strongly *negative*:
+spread across reference poses is not a quality signal here at all, so there is no risk
+dimension for a risk-adjusted score to trade against. Every variant that mixes in std
+lands within ±0.002 of the plain mean, which is what you see when the added term carries
+no information rather than the wrong information.
+
+Two small orderings, both inside the noise and stated only as direction: median ≥ mean ≥
+max. Robustness to a single outlier reference may help a little; committing to the
+worst case hurts a little. Neither is worth a change.
+
+The analogy failed at the level of the mapping, not the arithmetic. In a portfolio,
+variance is *risk borne by the holder*; here, variance across reference poses is just
+disagreement among opinions, and the catastrophe detector already extracts what that
+disagreement is worth through the mean.
