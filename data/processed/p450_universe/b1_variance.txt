@@ -1,0 +1,15 @@
+6314 poses, 489 pairs, 87 proteins
+
+random baseline 0.6974   null p99 +0.0058
+
+  variant                           selected      gain
+  mean  (INCUMBENT, ships today)    0.7317   +0.0343  << CLEARS +0.020
+  mean / std   (Sharpe-like)        0.7308   +0.0334
+  mean + 1.0 std  (risk-penalised)  0.7299   +0.0325
+  mean + 0.5 std                    0.7319   +0.0345
+  mean - 0.5 std  (risk-SEEKING)    0.7321   +0.0347
+  std alone                         0.6291   -0.0682
+  median  (robust to one outlier ref)0.7325   +0.0351
+  max     (worst-case / minimax)    0.7281   +0.0308
+
+kill criterion: must beat the incumbent by > +0.020. Incumbent gain +0.0343, so a variant needs +0.0543.
