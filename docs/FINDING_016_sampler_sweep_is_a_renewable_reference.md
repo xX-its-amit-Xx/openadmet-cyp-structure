@@ -130,3 +130,40 @@ the third trap in `docs/README.md`, met for a third time. Judge on the metric th
 
 The pool-expansion result is untouched: as a pool member the sweep is still −0.0038, and
 FINDING 013 still holds twice over.
+
+---
+
+## Reference depth saturates at 4 — the within-pair test, at last
+
+FINDING 011 set the threshold at ">= 4 independent reference poses" and nothing ever
+tested whether *more* than 4 helps. It could not be tested: replicates went deterministic
+(FINDING 015), and the between-pair split that looked like an answer was confounded —
+deep-reference pairs had random baseline 0.7651 against 0.7035, i.e. they were simply
+easier pairs, and the catastrophe-detector mechanism predicts no gain where there are no
+catastrophes.
+
+Four more sampler settings (`5x200, 7x200, 3x150, 3x300`) make it testable within-pair.
+Same 487 pairs, same pool, same everything; only the reference depth differs:
+
+| reference | median depth | pairs at depth>=4 | random | selected | gain |
+|---|---|---|---|---|---|
+| 4 settings | 4 | 479 / 490 | 0.6975 | 0.7290 | **+0.0315** |
+| 8 settings | 8 | **490 / 490** | 0.6975 | 0.7319 | **+0.0345** |
+
+**Delta: +0.0030.** The noise floor is +0.0138 at the 95th percentile and this pool's null
+p99 is ~+0.0100. So doubling the reference is **not measurably better**.
+
+### What this settles
+
+- **Buy exactly 4 settings.** Eight costs twice the jobs for a difference indistinguishable
+  from zero. On drop day that halves the reference budget with no expected loss.
+- **FINDING 011's threshold of 4 is the right number, not a lower bound.** It is where the
+  curve flattens, which is a stronger statement than "at least 4 works".
+- **One real gain, and it is coverage, not quality:** every pair now clears depth 4
+  (479 → 490). The 11 stragglers were the ones `build_xeng_feature --skip-thin` was
+  dropping, so they get the feature back. That is worth the second sweep once, as a
+  one-off, but not as a standing policy.
+
+This is the third time on this track that a "more is better" instinct has measured flat or
+negative — more engines (FINDING 011), more pool depth (015), now more reference depth.
+The pattern is consistent enough to plan around: **diversity has a knee, and it is early.**

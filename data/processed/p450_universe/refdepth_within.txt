@@ -1,0 +1,10 @@
+matched pairs: 490   median deduped reference depth: 4 -> 8
+pairs reaching depth>=4:  479 -> 490
+
+reference                     pairs  proteins   random  selected     gain
+4 sweep settings                487        87   0.6975    0.7290  +0.0315
+8 sweep settings                487        87   0.6975    0.7319  +0.0345
+
+SAME pairs, same pool, only reference DEPTH differs: +0.0030
+FINDING 011 set the threshold at >=4 independent reference poses.
+This is the first within-pair test of whether MORE than 4 buys anything.
