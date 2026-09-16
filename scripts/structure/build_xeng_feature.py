@@ -95,6 +95,27 @@ def main() -> int:
         # num_recycles=1 is excluded because it measured -0.0596 against the default -
         # the one setting that degrades rather than diversifies (FINDING 016).
         root = Path(a.ref_sweep)
+        frozen_sweep = DATA_PROCESSED / "reference_set_p450_sweep.npz"
+        # An archived sweep leaves empty directories behind, and an empty directory still
+        # passes exists() - the same trap that would have built an EMPTY reference set
+        # from the archived engine pools. Check for actual poses, and fall back to the
+        # frozen copy (1.1 MB, round-trip verified) rather than to nothing.
+        if not any(root.glob("*/*.cif")) and frozen_sweep.exists():
+            ref = X.load_reference(frozen_sweep)
+            print(f"sweep poses absent; using frozen {frozen_sweep.name} "
+                  f"({len(ref)} ligands)")
+            depth = X.reference_depth(ref)
+            print(f"reference depth: {  {k: v for k, v in depth.items() if k != 'note'} }")
+            thin = [k for k, v in ref.items() if len(v) < a.min_depth]
+            if thin and a.skip_thin:
+                for k in thin:
+                    ref.pop(k)
+                print(f"skipping {len(thin)} ligands below depth {a.min_depth}")
+            elif thin and not a.force:
+                print(f"REFUSING: {len(thin)} ligands below depth {a.min_depth}; "
+                      "pass --skip-thin to build for the rest")
+                return 2
+            return _emit(a, ref, P, X)
         ref = {}
         for dirp in sorted(root.glob("*")):
             if not dirp.is_dir():
@@ -157,6 +178,10 @@ def main() -> int:
               "ligands and let these fall back.")
         return 2
 
+    return _emit(a, ref, P, X)
+
+
+def _emit(a, ref, P, X) -> int:
     rows = []
     # The val87b pool names its directories <LIG>__<arm>__<n>; the P450 and sweep pools
     # name them <PAIR> with poses nested under an engine subdirectory. Hardcoding the
