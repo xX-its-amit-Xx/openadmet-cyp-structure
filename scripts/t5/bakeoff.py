@@ -188,7 +188,11 @@ def cmd_submit(limit: int | None) -> dict:
     n = 0
     for iso in ISOFORMS:
         rec = st["msa"].get(iso, {})
-        if str(rec.get("status", "")).upper() != "SUCCESS":
+        # The API returns "JOBSTATUS.SUCCESS", not "SUCCESS". An equality check here
+        # silently skipped a ready MSA and reported "submitted: 0" as if there were
+        # nothing to do - which is the worst way to fail, because it looks like success.
+        # p450_campaign uses `"SUCCESS" not in status` for exactly this reason.
+        if "SUCCESS" not in str(rec.get("status", "")).upper():
             print(f"  {iso}: MSA not ready ({rec.get('status')}) - skipping")
             continue
         msa = s.load_job(rec["job_id"])
