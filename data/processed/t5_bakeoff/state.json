@@ -21,7 +21,10 @@
    "done": true,
    "files": [
     "ZDVHZKHFMHUZDU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9376,
+   "ptm": 0.9562,
+   "iptm": 0.9329
   },
   "e9a72481-356a-4bfb-b09a-ccf4c2818144": {
    "key": "CYP3A4:QCPPGXUAWUBFAE",
@@ -32,7 +35,10 @@
    "done": true,
    "files": [
     "QCPPGXUAWUBFAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9336,
+   "ptm": 0.9537,
+   "iptm": 0.9286
   },
   "09904747-3adb-43cc-90fa-c5a8cc7fcd57": {
    "key": "CYP3A4:SBNKFTQSBPKMBZ",
@@ -43,7 +49,10 @@
    "done": true,
    "files": [
     "SBNKFTQSBPKMBZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9776,
+   "ptm": 0.9679,
+   "iptm": 0.9801
   },
   "a89d435c-3684-4bc8-a65c-a128aa4619fa": {
    "key": "CYP3A4:BZAIRDCOXHAADH",
@@ -54,7 +63,10 @@
    "done": true,
    "files": [
     "BZAIRDCOXHAADH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9798,
+   "ptm": 0.9638,
+   "iptm": 0.9838
   },
   "d379f982-db3a-48b4-b78e-af1d041189bc": {
    "key": "CYP3A4:NJTPBFZBPRMEJR",
@@ -65,7 +77,10 @@
    "done": true,
    "files": [
     "NJTPBFZBPRMEJR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9378,
+   "ptm": 0.9533,
+   "iptm": 0.9339
   },
   "5e609ac8-1b4c-4210-bb2d-7c12d6284f40": {
    "key": "CYP3A4:CNIIGCLFLJGOGP",
@@ -76,7 +91,10 @@
    "done": true,
    "files": [
     "CNIIGCLFLJGOGP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9495,
+   "ptm": 0.9612,
+   "iptm": 0.9466
   },
   "0cc1312e-0f5c-4295-b11b-e82e6a54ad65": {
    "key": "CYP3A4:UIEGYIFDVIDYHB",
@@ -87,7 +105,10 @@
    "done": true,
    "files": [
     "UIEGYIFDVIDYHB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9691,
+   "ptm": 0.96,
+   "iptm": 0.9714
   },
   "43fe3e79-8f01-40ee-88b7-378c9610aca1": {
    "key": "CYP3A4:SEBMTIQKRHYNIT",
@@ -98,7 +119,10 @@
    "done": true,
    "files": [
     "SEBMTIQKRHYNIT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9348,
+   "ptm": 0.9536,
+   "iptm": 0.93
   },
   "738cdfd2-4aff-433a-b0f4-366b5ffa3b80": {
    "key": "CYP3A4:HIUVKVDQFXDZHU",
@@ -109,7 +133,10 @@
    "done": true,
    "files": [
     "HIUVKVDQFXDZHU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.947,
+   "ptm": 0.9608,
+   "iptm": 0.9435
   },
   "3ae61bd2-6b74-4787-93ee-34af2a44d87c": {
    "key": "CYP3A4:WTTPTXHWBCVSAE",
@@ -120,7 +147,10 @@
    "done": true,
    "files": [
     "WTTPTXHWBCVSAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9422,
+   "ptm": 0.9605,
+   "iptm": 0.9376
   },
   "b315056c-d90c-4007-8cc5-e26315f4f1c8": {
    "key": "CYP3A4:BRZANEXCSZCZCI",
@@ -131,7 +161,10 @@
    "done": true,
    "files": [
     "BRZANEXCSZCZCI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9518,
+   "ptm": 0.9587,
+   "iptm": 0.95
   },
   "9ace4da1-563f-407f-82c0-9bb296dc9f73": {
    "key": "CYP3A4:VYZSNRUMPKDNLT",
@@ -142,7 +175,10 @@
    "done": true,
    "files": [
     "VYZSNRUMPKDNLT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9368,
+   "ptm": 0.9543,
+   "iptm": 0.9325
   },
   "c7cc80ce-9a93-4e20-881a-94122c625cd6": {
    "key": "CYP3A4:IROJCVZEMVZADB",
@@ -153,7 +189,10 @@
    "done": true,
    "files": [
     "IROJCVZEMVZADB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9579,
+   "ptm": 0.9602,
+   "iptm": 0.9574
   },
   "0163bae0-635e-4f99-bd68-ab09233d233a": {
    "key": "CYP3A4:AGOOMVXOHLHTCM",
@@ -164,7 +203,10 @@
    "done": true,
    "files": [
     "AGOOMVXOHLHTCM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9401,
+   "ptm": 0.956,
+   "iptm": 0.9361
   },
   "cb513a93-33bb-40c0-a3aa-ca4f0ad35c1a": {
    "key": "CYP3A4:YCHNKCQNPQJYSD",
@@ -175,7 +217,10 @@
    "done": true,
    "files": [
     "YCHNKCQNPQJYSD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9586,
+   "ptm": 0.9614,
+   "iptm": 0.9579
   },
   "0eee1cb4-3002-48a8-938f-0a4bad09b9f8": {
    "key": "CYP3A4:HQIRNZOQPUAHHV",
@@ -186,7 +231,10 @@
    "done": true,
    "files": [
     "HQIRNZOQPUAHHV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9431,
+   "ptm": 0.9587,
+   "iptm": 0.9392
   },
   "c13d4b5e-a983-4821-8366-4c775ec2ccbb": {
    "key": "CYP3A4:LZAPOHZTKRQZKM",
@@ -197,7 +245,10 @@
    "done": true,
    "files": [
     "LZAPOHZTKRQZKM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9372,
+   "ptm": 0.9547,
+   "iptm": 0.9328
   },
   "08e68412-5ca5-4fbc-8282-89780d7d71ec": {
    "key": "CYP3A4:FQTOHOCJEYDRRG",
@@ -208,7 +259,10 @@
    "done": true,
    "files": [
     "FQTOHOCJEYDRRG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9386,
+   "ptm": 0.9555,
+   "iptm": 0.9344
   },
   "904a2388-06ef-4b83-a093-b732b3cdfc7e": {
    "key": "CYP3A4:OCSVTGWIMRELRH",
@@ -219,7 +273,10 @@
    "done": true,
    "files": [
     "OCSVTGWIMRELRH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9405,
+   "ptm": 0.9574,
+   "iptm": 0.9362
   },
   "87d3bb99-e844-4576-94cd-7e1286c61f3b": {
    "key": "CYP3A4:REYFJDPCWQRWAA",
@@ -230,7 +287,10 @@
    "done": true,
    "files": [
     "REYFJDPCWQRWAA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9451,
+   "ptm": 0.9621,
+   "iptm": 0.9409
   },
   "9218c7d2-a9bf-48e0-a260-02a466b24e1a": {
    "key": "CYP3A4:SMRUWTFDCWAZON",
@@ -241,7 +301,10 @@
    "done": true,
    "files": [
     "SMRUWTFDCWAZON__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9369,
+   "ptm": 0.9543,
+   "iptm": 0.9326
   },
   "49e8daa3-c00d-45bb-9ce3-221d828fd7ce": {
    "key": "CYP3A4:WPBCUTZPCFFBTO",
@@ -252,7 +315,10 @@
    "done": true,
    "files": [
     "WPBCUTZPCFFBTO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9325,
+   "ptm": 0.9539,
+   "iptm": 0.9271
   },
   "ca6d3ffe-e390-441b-a91c-8e6a94aff9b6": {
    "key": "CYP3A4:HUCPMSPYTPCDKA",
@@ -263,7 +329,10 @@
    "done": true,
    "files": [
     "HUCPMSPYTPCDKA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.941,
+   "ptm": 0.9572,
+   "iptm": 0.937
   },
   "746a790d-2c65-4b9c-a93d-9b95139a759a": {
    "key": "CYP3A4:JGTLGAGKPNYMRY",
@@ -274,7 +343,10 @@
    "done": true,
    "files": [
     "JGTLGAGKPNYMRY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9772,
+   "ptm": 0.9648,
+   "iptm": 0.9803
   },
   "0189b5b5-0c4f-49d4-a020-f368d84cc52e": {
    "key": "CYP3A4:DMSGWBYWZFAVFS",
@@ -285,7 +357,10 @@
    "done": true,
    "files": [
     "DMSGWBYWZFAVFS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9436,
+   "ptm": 0.9589,
+   "iptm": 0.9398
   },
   "5cfbd66c-4567-48dd-9b49-ca1e02bff820": {
    "key": "CYP3A4:CRUWCZSXWRLWRA",
@@ -296,7 +371,10 @@
    "done": true,
    "files": [
     "CRUWCZSXWRLWRA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9645,
+   "ptm": 0.9616,
+   "iptm": 0.9652
   },
   "f71aae52-8397-4ac8-81e2-8b5880cdca12": {
    "key": "CYP3A4:HZCMYVGOGDKMPW",
@@ -307,7 +385,10 @@
    "done": true,
    "files": [
     "HZCMYVGOGDKMPW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9355,
+   "ptm": 0.954,
+   "iptm": 0.9309
   },
   "9802cf32-9215-406e-bf56-a11fa44d594c": {
    "key": "CYP3A4:JURKNVYFZMSNLP",
@@ -318,7 +399,10 @@
    "done": true,
    "files": [
     "JURKNVYFZMSNLP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9318,
+   "ptm": 0.9504,
+   "iptm": 0.9272
   },
   "1dab14c6-f2c0-4006-abd8-b2929b756027": {
    "key": "CYP3A4:XYCMOTOFHFTUIU",
@@ -329,7 +413,10 @@
    "done": true,
    "files": [
     "XYCMOTOFHFTUIU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9397,
+   "ptm": 0.9549,
+   "iptm": 0.9359
   },
   "c92c8644-30d9-40fc-af85-0bfa1bb46fb4": {
    "key": "CYP3A4:KOGLKBKCAXGATQ",
@@ -340,7 +427,10 @@
    "done": true,
    "files": [
     "KOGLKBKCAXGATQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9547,
+   "ptm": 0.9598,
+   "iptm": 0.9535
   },
   "ce0a5b59-b7cd-452b-95f4-b2df2eae67f0": {
    "key": "CYP3A4:YLJREFDVOIBQDA",
@@ -351,7 +441,10 @@
    "done": true,
    "files": [
     "YLJREFDVOIBQDA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9707,
+   "ptm": 0.9655,
+   "iptm": 0.972
   },
   "ea89b6fb-6ce9-4cab-b4a2-3cd85d78d13b": {
    "key": "CYP3A4:OSEWFKGKUJEEFD",
@@ -362,7 +455,10 @@
    "done": true,
    "files": [
     "OSEWFKGKUJEEFD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9425,
+   "ptm": 0.9586,
+   "iptm": 0.9384
   },
   "fdbb8c74-d00e-422f-9731-0feec5fccbcb": {
    "key": "CYP3A4:SLZARXHZTPOCTN",
@@ -373,7 +469,10 @@
    "done": true,
    "files": [
     "SLZARXHZTPOCTN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.981,
+   "ptm": 0.9648,
+   "iptm": 0.9851
   },
   "2d2a7ef3-98ca-4168-adba-733e42129a32": {
    "key": "CYP3A4:IHLDXAAKKIDUFM",
@@ -384,7 +483,10 @@
    "done": true,
    "files": [
     "IHLDXAAKKIDUFM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9399,
+   "ptm": 0.9558,
+   "iptm": 0.9359
   },
   "1bd67331-1aaa-42bf-8a86-ce6a5f4b56d3": {
    "key": "CYP3A4:VAHWRSZAURKYGM",
@@ -395,7 +497,10 @@
    "done": true,
    "files": [
     "VAHWRSZAURKYGM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9409,
+   "ptm": 0.9577,
+   "iptm": 0.9367
   },
   "c50fab9b-f1b5-45eb-acc3-e29d3f9c7d7d": {
    "key": "CYP3A4:JLHUMJNCGJZPJK",
@@ -406,7 +511,10 @@
    "done": true,
    "files": [
     "JLHUMJNCGJZPJK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9404,
+   "ptm": 0.9571,
+   "iptm": 0.9362
   },
   "28d51afa-ba9d-4e0c-a188-43c4669ac881": {
    "key": "CYP3A4:RRLUAXBCRMRKGJ",
@@ -417,7 +525,10 @@
    "done": true,
    "files": [
     "RRLUAXBCRMRKGJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9389,
+   "ptm": 0.9548,
+   "iptm": 0.935
   },
   "2aad23b4-5412-4d68-8a4b-f25451ed8a94": {
    "key": "CYP3A4:CMRWALMKNZNEAF",
@@ -428,7 +539,10 @@
    "done": true,
    "files": [
     "CMRWALMKNZNEAF__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9516,
+   "ptm": 0.9575,
+   "iptm": 0.9501
   },
   "77571c37-1bec-4b1f-91d9-322278dc941c": {
    "key": "CYP3A4:OIJNGNQKPRJCLT",
@@ -439,7 +553,10 @@
    "done": true,
    "files": [
     "OIJNGNQKPRJCLT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9662,
+   "ptm": 0.9615,
+   "iptm": 0.9674
   },
   "65990102-436b-476c-9e94-ce9925fffab4": {
    "key": "CYP3A4:POFHNBYWRJBGAM",
@@ -450,7 +567,10 @@
    "done": true,
    "files": [
     "POFHNBYWRJBGAM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9642,
+   "ptm": 0.9636,
+   "iptm": 0.9644
   },
   "cab1deef-2606-44d6-aae2-f5cc8daa03f0": {
    "key": "CYP3A4:BPSIMDRRYLTHLE",
@@ -461,7 +581,10 @@
    "done": true,
    "files": [
     "BPSIMDRRYLTHLE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9571,
+   "ptm": 0.9562,
+   "iptm": 0.9573
   },
   "3701e415-191a-49ff-9e98-0aee5e2eb063": {
    "key": "CYP3A4:AAFSKRHBWOQJCV",
@@ -472,7 +595,10 @@
    "done": true,
    "files": [
     "AAFSKRHBWOQJCV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9382,
+   "ptm": 0.9566,
+   "iptm": 0.9336
   },
   "353a7a25-db3d-4ccc-99e8-de7736853472": {
    "key": "CYP3A4:RKIRNVHTEYUZIG",
@@ -483,7 +609,10 @@
    "done": true,
    "files": [
     "RKIRNVHTEYUZIG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9335,
+   "ptm": 0.953,
+   "iptm": 0.9287
   },
   "56ae61b7-2387-4f95-a136-2df9f8530f51": {
    "key": "CYP3A4:LVHWZRNQJDKLTI",
@@ -494,7 +623,10 @@
    "done": true,
    "files": [
     "LVHWZRNQJDKLTI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9358,
+   "ptm": 0.9549,
+   "iptm": 0.931
   },
   "d24f8fa1-6320-4906-a1b0-bb2d182ecf82": {
    "key": "CYP3A4:KJNTUBDFKPAUOJ",
@@ -505,7 +637,10 @@
    "done": true,
    "files": [
     "KJNTUBDFKPAUOJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9393,
+   "ptm": 0.9566,
+   "iptm": 0.935
   },
   "ab5947de-2705-49e2-88e1-5dae63706f8b": {
    "key": "CYP3A4:CVTSUVYINOOTTN",
@@ -516,7 +651,10 @@
    "done": true,
    "files": [
     "CVTSUVYINOOTTN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9737,
+   "ptm": 0.9629,
+   "iptm": 0.9764
   },
   "02b6ac70-18cb-40a1-a214-efba18a0730c": {
    "key": "CYP3A4:VNRPFJXBODKBRZ",
@@ -527,7 +665,10 @@
    "done": true,
    "files": [
     "VNRPFJXBODKBRZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.95,
+   "ptm": 0.9596,
+   "iptm": 0.9477
   },
   "88ad34bc-7465-49a2-8afb-8e9c9de2cc0e": {
    "key": "CYP3A4:OVCDSSHSILBFBN",
@@ -538,7 +679,10 @@
    "done": true,
    "files": [
     "OVCDSSHSILBFBN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9392,
+   "ptm": 0.9562,
+   "iptm": 0.935
   },
   "43840a38-e790-46d8-a95e-f8de7597feda": {
    "key": "CYP3A4:QUDSFKIXQFFIOI",
@@ -549,7 +693,10 @@
    "done": true,
    "files": [
     "QUDSFKIXQFFIOI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9419,
+   "ptm": 0.957,
+   "iptm": 0.9381
   },
   "40c6d5b0-2b2d-46c5-8c94-f71a69c6074f": {
    "key": "CYP3A4:STKPDYXEWHQTCA",
@@ -560,7 +707,10 @@
    "done": true,
    "files": [
     "STKPDYXEWHQTCA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9361,
+   "ptm": 0.9534,
+   "iptm": 0.9318
   },
   "914826de-a1fd-4c08-b7c6-7122bad625b3": {
    "key": "CYP3A4:FJUHYDGFHVCIQR",
@@ -571,7 +721,10 @@
    "done": true,
    "files": [
     "FJUHYDGFHVCIQR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9734,
+   "ptm": 0.9657,
+   "iptm": 0.9753
   },
   "2b9ffdfb-6d15-4fb2-8e65-e72feacd1f53": {
    "key": "CYP3A4:FRTQFAFJPFTPEO",
@@ -582,7 +735,10 @@
    "done": true,
    "files": [
     "FRTQFAFJPFTPEO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9489,
+   "ptm": 0.9627,
+   "iptm": 0.9455
   },
   "c4a92bde-a7ce-49e5-af52-fea014acef41": {
    "key": "CYP3A4:CPTSFZUKPHDTEW",
@@ -593,7 +749,10 @@
    "done": true,
    "files": [
     "CPTSFZUKPHDTEW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9641,
+   "ptm": 0.9606,
+   "iptm": 0.965
   },
   "308507c6-4bc7-4aac-ac5e-901402ba14b8": {
    "key": "CYP3A4:WAFLWFBYNRXLIA",
@@ -604,7 +763,10 @@
    "done": true,
    "files": [
     "WAFLWFBYNRXLIA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9515,
+   "ptm": 0.9596,
+   "iptm": 0.9495
   },
   "cad51ff6-9e2f-432a-92c9-8956be240974": {
    "key": "CYP3A4:WEMDNGXFLHBHKC",
@@ -615,7 +777,10 @@
    "done": true,
    "files": [
     "WEMDNGXFLHBHKC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9359,
+   "ptm": 0.9562,
+   "iptm": 0.9309
   },
   "eed36045-23b5-4ccd-a516-c7f8da98b1ea": {
    "key": "CYP3A4:KSABBJQXOFJFMB",
@@ -626,7 +791,10 @@
    "done": true,
    "files": [
     "KSABBJQXOFJFMB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9527,
+   "ptm": 0.9581,
+   "iptm": 0.9514
   },
   "4f32ac74-6992-482c-af6e-da694f420c65": {
    "key": "CYP3A4:MCMWQUUFOTYOLS",
@@ -637,7 +805,10 @@
    "done": true,
    "files": [
     "MCMWQUUFOTYOLS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9452,
+   "ptm": 0.9593,
+   "iptm": 0.9416
   },
   "3a65a44d-90ee-43a3-920c-0bcad7871b4b": {
    "key": "CYP3A4:LECNWKBRWUMOOE",
@@ -648,7 +819,10 @@
    "done": true,
    "files": [
     "LECNWKBRWUMOOE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9386,
+   "ptm": 0.9593,
+   "iptm": 0.9335
   },
   "46df4ac4-4ae8-48af-971d-2188cab41843": {
    "key": "CYP3A4:OLLKSWQPCSWOKP",
@@ -659,7 +833,10 @@
    "done": true,
    "files": [
     "OLLKSWQPCSWOKP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9502,
+   "ptm": 0.9553,
+   "iptm": 0.9489
   },
   "313b313c-c260-47ad-812a-53aefbefe720": {
    "key": "CYP3A4:KDWINTKNCFXETQ",
@@ -670,7 +847,10 @@
    "done": true,
    "files": [
     "KDWINTKNCFXETQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.956,
+   "ptm": 0.9633,
+   "iptm": 0.9542
   },
   "b9013bbf-fd01-444f-9467-edbae9dad4c8": {
    "key": "CYP3A4:PJEMYXKINDARDB",
@@ -681,7 +861,10 @@
    "done": true,
    "files": [
     "PJEMYXKINDARDB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9421,
+   "ptm": 0.9574,
+   "iptm": 0.9383
   },
   "78341090-5147-409f-ab27-f6471aebabe0": {
    "key": "CYP3A4:LEQOABJBJQUSIJ",
@@ -692,7 +875,10 @@
    "done": true,
    "files": [
     "LEQOABJBJQUSIJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9319,
+   "ptm": 0.9532,
+   "iptm": 0.9266
   },
   "d7336a3f-915c-458c-b7ee-f67ebfb7cc31": {
    "key": "CYP3A4:YKJMLSDPNOJKOB",
@@ -703,7 +889,10 @@
    "done": true,
    "files": [
     "YKJMLSDPNOJKOB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9402,
+   "ptm": 0.9583,
+   "iptm": 0.9357
   },
   "de942f5b-3317-408f-ad08-dc1f870381c5": {
    "key": "CYP3A4:YCKQLOFLKFDRSW",
@@ -714,7 +903,10 @@
    "done": true,
    "files": [
     "YCKQLOFLKFDRSW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.946,
+   "ptm": 0.96,
+   "iptm": 0.9425
   },
   "bc03bbed-a5bf-4acb-a3e1-31ddfbb592c1": {
    "key": "CYP3A4:QHBKNLPLROKUGS",
@@ -725,7 +917,10 @@
    "done": true,
    "files": [
     "QHBKNLPLROKUGS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9309,
+   "ptm": 0.9514,
+   "iptm": 0.9258
   },
   "a18a8d8d-7266-44a3-a3d6-6ffef5efe266": {
    "key": "CYP3A4:SSMSBSWKLKKXGG",
@@ -736,7 +931,10 @@
    "done": true,
    "files": [
     "SSMSBSWKLKKXGG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9459,
+   "ptm": 0.9599,
+   "iptm": 0.9425
   },
   "02c2a156-64e1-4444-bf11-2acb6aa01e59": {
    "key": "CYP3A4:LMBJRHSTZKEVBI",
@@ -747,7 +945,10 @@
    "done": true,
    "files": [
     "LMBJRHSTZKEVBI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9563,
+   "ptm": 0.9612,
+   "iptm": 0.9551
   },
   "60d1b0ba-b932-44b7-8f45-abc14a172977": {
    "key": "CYP3A4:RMUCZJUITONUFY",
@@ -758,7 +959,10 @@
    "done": true,
    "files": [
     "RMUCZJUITONUFY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9778,
+   "ptm": 0.9668,
+   "iptm": 0.9806
   },
   "b51f809c-1015-4b56-a268-7e0eed7717f1": {
    "key": "CYP3A4:RLGQACBPNDBWTB",
@@ -769,7 +973,10 @@
    "done": true,
    "files": [
     "RLGQACBPNDBWTB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9306,
+   "ptm": 0.9487,
+   "iptm": 0.9261
   },
   "e6f18e68-c980-44dc-9a23-a12bf62960e6": {
    "key": "CYP3A4:DYSXHEQZHLDEEV",
@@ -780,7 +987,10 @@
    "done": true,
    "files": [
     "DYSXHEQZHLDEEV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9743,
+   "ptm": 0.9629,
+   "iptm": 0.9771
   },
   "d0457f47-6d75-4a37-ba6c-9fa4a1b16287": {
    "key": "CYP3A4:CBRQOHPCDLQLPJ",
@@ -791,7 +1001,10 @@
    "done": true,
    "files": [
     "CBRQOHPCDLQLPJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9667,
+   "ptm": 0.9627,
+   "iptm": 0.9677
   },
   "ce5b0543-37db-4db5-bd4e-a5207e0a3500": {
    "key": "CYP3A4:DUADTXCVWFPPIL",
@@ -802,7 +1015,10 @@
    "done": true,
    "files": [
     "DUADTXCVWFPPIL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9595,
+   "ptm": 0.9594,
+   "iptm": 0.9595
   },
   "f4ded0aa-14fb-49d8-83df-f1ce3c6024d4": {
    "key": "CYP3A4:YDRIIVMAQGIRPU",
@@ -813,7 +1029,10 @@
    "done": true,
    "files": [
     "YDRIIVMAQGIRPU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9335,
+   "ptm": 0.9535,
+   "iptm": 0.9285
   },
   "1e25fe51-3462-4fb1-a393-7692e7d775da": {
    "key": "CYP3A4:ABZDANIGSGUPSQ",
@@ -824,7 +1043,10 @@
    "done": true,
    "files": [
     "ABZDANIGSGUPSQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9415,
+   "ptm": 0.9571,
+   "iptm": 0.9376
   },
   "110e2d6c-bddd-4c63-9aaa-5cab3be2a4e2": {
    "key": "CYP3A4:PQPGOORJZHZVIF",
@@ -835,7 +1057,10 @@
    "done": true,
    "files": [
     "PQPGOORJZHZVIF__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9364,
+   "ptm": 0.9548,
+   "iptm": 0.9317
   },
   "2ec99ccd-8fb4-4f45-9388-86cf65f83b77": {
    "key": "CYP3A4:GRIDBZHPCALFNO",
@@ -846,7 +1071,10 @@
    "done": true,
    "files": [
     "GRIDBZHPCALFNO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9383,
+   "ptm": 0.9572,
+   "iptm": 0.9336
   },
   "33f856b1-f408-49b0-b0be-a88db7df138b": {
    "key": "CYP3A4:VTQXUFDARAXXEL",
@@ -857,7 +1085,10 @@
    "done": true,
    "files": [
     "VTQXUFDARAXXEL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9386,
+   "ptm": 0.9567,
+   "iptm": 0.9341
   },
   "d0585ddd-6092-49c1-b516-63391d66c66b": {
    "key": "CYP3A4:FKTKOBGQSYLSJM",
@@ -868,7 +1099,10 @@
    "done": true,
    "files": [
     "FKTKOBGQSYLSJM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9432,
+   "ptm": 0.9595,
+   "iptm": 0.9391
   },
   "3be98a00-eeb6-41cd-9717-8d50ed87bf9a": {
    "key": "CYP3A4:JUDIGWCSUCRCTM",
@@ -879,7 +1113,10 @@
    "done": true,
    "files": [
     "JUDIGWCSUCRCTM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9428,
+   "ptm": 0.958,
+   "iptm": 0.939
   },
   "c1628d41-c68d-4f4e-b096-8bebc00f40cb": {
    "key": "CYP3A4:GFMXIBGNFZXSSH",
@@ -890,7 +1127,10 @@
    "done": true,
    "files": [
     "GFMXIBGNFZXSSH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9544,
+   "ptm": 0.9597,
+   "iptm": 0.953
   },
   "96f6f2cf-f0e4-4491-9fa2-9034e233a444": {
    "key": "CYP3A4:YMJWYDKEGLKYSU",
@@ -901,7 +1141,10 @@
    "done": true,
    "files": [
     "YMJWYDKEGLKYSU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9435,
+   "ptm": 0.959,
+   "iptm": 0.9396
   },
   "eecba557-4004-44c9-ac7b-c9af1b9030e4": {
    "key": "CYP3A4:XIQVNETUBQGFHX",
@@ -912,7 +1155,10 @@
    "done": true,
    "files": [
     "XIQVNETUBQGFHX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9411,
+   "ptm": 0.9559,
+   "iptm": 0.9374
   },
   "1c613e75-a309-4875-96bb-0e31b76690b4": {
    "key": "CYP3A4:ZQWNBUUGCZZBQG",
@@ -923,7 +1169,10 @@
    "done": true,
    "files": [
     "ZQWNBUUGCZZBQG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9635,
+   "ptm": 0.9605,
+   "iptm": 0.9642
   },
   "75e981f0-d11c-4b65-b7b0-ea7c63219002": {
    "key": "CYP3A4:LZRKSMFOPBHIJC",
@@ -934,7 +1183,10 @@
    "done": true,
    "files": [
     "LZRKSMFOPBHIJC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9659,
+   "ptm": 0.9597,
+   "iptm": 0.9675
   },
   "65b2c6a9-457c-4e27-bad5-5b97550bc664": {
    "key": "CYP3A4:QNTOHWMVHLRHJK",
@@ -945,7 +1197,10 @@
    "done": true,
    "files": [
     "QNTOHWMVHLRHJK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9393,
+   "ptm": 0.9564,
+   "iptm": 0.935
   },
   "6262c017-97f3-43d0-b37d-4cecb41fcc35": {
    "key": "CYP3A4:QUBDEYFKIBCNDL",
@@ -956,7 +1211,10 @@
    "done": true,
    "files": [
     "QUBDEYFKIBCNDL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9407,
+   "ptm": 0.9587,
+   "iptm": 0.9363
   },
   "eba30a23-4cb0-4df9-a48f-518441faf7c9": {
    "key": "CYP3A4:HOKIEOIBMAMYDU",
@@ -967,7 +1225,10 @@
    "done": true,
    "files": [
     "HOKIEOIBMAMYDU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9595,
+   "ptm": 0.96,
+   "iptm": 0.9594
   },
   "33ad85ad-4971-4df8-b2de-49a7c09e327f": {
    "key": "CYP3A4:LJQLDSDTAXHWQQ",
@@ -978,7 +1239,10 @@
    "done": true,
    "files": [
     "LJQLDSDTAXHWQQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9599,
+   "ptm": 0.9646,
+   "iptm": 0.9587
   },
   "3cbc608d-6edd-403c-83a6-c58e8f8516de": {
    "key": "CYP3A4:QTSLUEVVUAILQN",
@@ -989,7 +1253,10 @@
    "done": true,
    "files": [
     "QTSLUEVVUAILQN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9322,
+   "ptm": 0.9531,
+   "iptm": 0.927
   },
   "f0dd41bc-0088-4460-a2ba-787077e2a6b2": {
    "key": "CYP3A4:PXEMWOAWSRNDKZ",
@@ -1000,7 +1267,10 @@
    "done": true,
    "files": [
     "PXEMWOAWSRNDKZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9505,
+   "ptm": 0.9573,
+   "iptm": 0.9488
   },
   "c0347bb5-f4ce-41b5-b68f-269fd7a51cc9": {
    "key": "CYP3A4:XGALLCVXEZPNRQ",
@@ -1011,7 +1281,10 @@
    "done": true,
    "files": [
     "XGALLCVXEZPNRQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9577,
+   "ptm": 0.9598,
+   "iptm": 0.9572
   },
   "81653f61-bdbe-46c8-b2d8-ef9d2b323cbf": {
    "key": "CYP3A4:LFMRMWJSYPUVLX",
@@ -1022,7 +1295,10 @@
    "done": true,
    "files": [
     "LFMRMWJSYPUVLX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9351,
+   "ptm": 0.9554,
+   "iptm": 0.93
   },
   "bdec504c-e0e3-4ddf-bcf8-31eb760867fd": {
    "key": "CYP3A4:NWLUCHZBIHVDPU",
@@ -1033,7 +1309,10 @@
    "done": true,
    "files": [
     "NWLUCHZBIHVDPU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9529,
+   "ptm": 0.956,
+   "iptm": 0.9521
   },
   "d85a5c55-f396-4641-aeeb-3401e24a1cb1": {
    "key": "CYP3A4:RUVLBPWZPKTFQY",
@@ -1044,7 +1323,10 @@
    "done": true,
    "files": [
     "RUVLBPWZPKTFQY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9336,
+   "ptm": 0.9544,
+   "iptm": 0.9284
   },
   "a680c79d-0f74-4b65-b4e1-18c7466a4267": {
    "key": "CYP3A4:GJSIXZKKNDJEAL",
@@ -1055,7 +1337,10 @@
    "done": true,
    "files": [
     "GJSIXZKKNDJEAL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9337,
+   "ptm": 0.9531,
+   "iptm": 0.9289
   },
   "31c2e883-5d4f-4cae-ba50-b086722a4689": {
    "key": "CYP3A4:IVLDPMHWGKSBBD",
@@ -1066,7 +1351,10 @@
    "done": true,
    "files": [
     "IVLDPMHWGKSBBD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9426,
+   "ptm": 0.9588,
+   "iptm": 0.9386
   },
   "082595d1-0f46-4e54-aa75-d5895487bb6f": {
    "key": "CYP3A4:QGVJVDSSUBWUGO",
@@ -1077,7 +1365,10 @@
    "done": true,
    "files": [
     "QGVJVDSSUBWUGO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9492,
+   "ptm": 0.9576,
+   "iptm": 0.9471
   },
   "6d86231f-4f84-47c0-8ddf-edbd41bd997d": {
    "key": "CYP3A4:NUJZSEZNBAAEBL",
@@ -1088,7 +1379,10 @@
    "done": true,
    "files": [
     "NUJZSEZNBAAEBL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9338,
+   "ptm": 0.9535,
+   "iptm": 0.9289
   },
   "5a21376d-cd31-49d6-864f-1d9df20c4c5e": {
    "key": "CYP3A4:UXPCXNWXWKQOER",
@@ -1099,7 +1393,10 @@
    "done": true,
    "files": [
     "UXPCXNWXWKQOER__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9404,
+   "ptm": 0.9577,
+   "iptm": 0.936
   },
   "06d9f6a6-ea00-4b9b-9433-44fe78ec4117": {
    "key": "CYP3A4:LTUCBBUWUBLJCT",
@@ -1110,7 +1407,10 @@
    "done": true,
    "files": [
     "LTUCBBUWUBLJCT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9361,
+   "ptm": 0.9566,
+   "iptm": 0.9309
   },
   "297fa5ad-322f-4461-bcba-f9df1b42df38": {
    "key": "CYP3A4:QVQOHIBPHPVPPB",
@@ -1121,7 +1421,10 @@
    "done": true,
    "files": [
     "QVQOHIBPHPVPPB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9305,
+   "ptm": 0.9526,
+   "iptm": 0.925
   },
   "8dc90f2a-3581-443d-a5d7-d873486c5cfc": {
    "key": "CYP3A4:ASFKKFRSMGBFRO",
@@ -1132,7 +1435,10 @@
    "done": true,
    "files": [
     "ASFKKFRSMGBFRO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9345,
+   "ptm": 0.9546,
+   "iptm": 0.9294
   },
   "a7f2d0d5-51a8-4670-914d-6ed47279b82c": {
    "key": "CYP3A4:GWDOIAFYMZHEGB",
@@ -1143,7 +1449,10 @@
    "done": true,
    "files": [
     "GWDOIAFYMZHEGB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9576,
+   "ptm": 0.9575,
+   "iptm": 0.9576
   },
   "d59530c7-88f6-4201-a253-5e476ef79766": {
    "key": "CYP3A4:HLRHRWSRSVLASR",
@@ -1154,7 +1463,10 @@
    "done": true,
    "files": [
     "HLRHRWSRSVLASR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9326,
+   "ptm": 0.9529,
+   "iptm": 0.9275
   },
   "b04812a5-e758-4282-8c05-042535cba5cd": {
    "key": "CYP3A4:WCXXKBXIMXJSNI",
@@ -1165,7 +1477,10 @@
    "done": true,
    "files": [
     "WCXXKBXIMXJSNI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9348,
+   "ptm": 0.9541,
+   "iptm": 0.93
   },
   "54e5b715-2ce2-4105-b47d-c7f5da2e40ee": {
    "key": "CYP3A4:OLYONISXYQGNEZ",
@@ -1176,7 +1491,10 @@
    "done": true,
    "files": [
     "OLYONISXYQGNEZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9387,
+   "ptm": 0.9563,
+   "iptm": 0.9343
   },
   "9bdd922a-8400-4729-a7c1-fdf46e917ae0": {
    "key": "CYP3A4:CIFMMEDLNIKOGG",
@@ -1187,7 +1505,10 @@
    "done": true,
    "files": [
     "CIFMMEDLNIKOGG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9298,
+   "ptm": 0.9524,
+   "iptm": 0.9241
   },
   "fbf93f18-8a24-4009-a0ff-b182a50ba4d4": {
    "key": "CYP3A4:UMIKRLLTVSCTOK",
@@ -1198,7 +1519,10 @@
    "done": true,
    "files": [
     "UMIKRLLTVSCTOK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9471,
+   "ptm": 0.962,
+   "iptm": 0.9434
   },
   "4d3d592e-6b41-4226-b13b-91cd14f56d9c": {
    "key": "CYP3A4:MXOSBTWGOGZZER",
@@ -1209,7 +1533,10 @@
    "done": true,
    "files": [
     "MXOSBTWGOGZZER__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9349,
+   "ptm": 0.9529,
+   "iptm": 0.9305
   },
   "20646075-a906-4371-9c2d-f54138028dae": {
    "key": "CYP3A4:PNZYMSWQEYPOPA",
@@ -1220,7 +1547,10 @@
    "done": true,
    "files": [
     "PNZYMSWQEYPOPA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9386,
+   "ptm": 0.9543,
+   "iptm": 0.9347
   },
   "0a09b6a7-e1a2-4144-9944-e8a9037dc18e": {
    "key": "CYP3A4:GPKJTRJOBQGKQK",
@@ -1231,7 +1561,10 @@
    "done": true,
    "files": [
     "GPKJTRJOBQGKQK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9363,
+   "ptm": 0.9543,
+   "iptm": 0.9318
   },
   "4e423b81-d869-41bb-81a8-7009e534a740": {
    "key": "CYP3A4:ROQPQFXWBJCFRO",
@@ -1242,7 +1575,10 @@
    "done": true,
    "files": [
     "ROQPQFXWBJCFRO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.939,
+   "ptm": 0.9567,
+   "iptm": 0.9346
   },
   "3213b4ed-4a38-4bb3-9993-a3c2e21a56e2": {
    "key": "CYP3A4:BIJKXSIAIACXNV",
@@ -1253,7 +1589,10 @@
    "done": true,
    "files": [
     "BIJKXSIAIACXNV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9541,
+   "ptm": 0.9581,
+   "iptm": 0.9531
   },
   "2526c0be-5807-4116-b8f4-627a56c767e6": {
    "key": "CYP3A4:NOCBHRIGICTARN",
@@ -1264,7 +1603,10 @@
    "done": true,
    "files": [
     "NOCBHRIGICTARN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9569,
+   "ptm": 0.9595,
+   "iptm": 0.9562
   },
   "adbff4c8-3511-4d2f-a48c-acf4db45264e": {
    "key": "CYP3A4:GQMDVEHOCDKMQP",
@@ -1275,7 +1617,10 @@
    "done": true,
    "files": [
     "GQMDVEHOCDKMQP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9315,
+   "ptm": 0.9502,
+   "iptm": 0.9269
   },
   "f37a91fb-2595-46f8-87f9-971ab5c50d65": {
    "key": "CYP3A4:PUUICPNYFPCHEE",
@@ -1286,7 +1631,10 @@
    "done": true,
    "files": [
     "PUUICPNYFPCHEE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9401,
+   "ptm": 0.959,
+   "iptm": 0.9353
   },
   "49f5efe6-6723-41c5-9d11-4687faa2c3d3": {
    "key": "CYP3A4:PZBMCIRQTJSXEM",
@@ -1297,7 +1645,10 @@
    "done": true,
    "files": [
     "PZBMCIRQTJSXEM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9269,
+   "ptm": 0.9474,
+   "iptm": 0.9218
   },
   "19c54f52-9723-4ff8-a65a-93950234fee9": {
    "key": "CYP3A4:QAROPJJFLVXWSM",
@@ -1308,7 +1659,10 @@
    "done": true,
    "files": [
     "QAROPJJFLVXWSM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9393,
+   "ptm": 0.9566,
+   "iptm": 0.935
   },
   "497843a7-7774-4e03-b9b9-12fc8d2c087a": {
    "key": "CYP3A4:NOKWLBSHOIIUFJ",
@@ -1319,7 +1673,10 @@
    "done": true,
    "files": [
     "NOKWLBSHOIIUFJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9371,
+   "ptm": 0.9548,
+   "iptm": 0.9327
   },
   "44494a5e-641a-4829-97d5-e144d44f2191": {
    "key": "CYP3A4:ZMJICQIEQSJNIT",
@@ -1330,7 +1687,10 @@
    "done": true,
    "files": [
     "ZMJICQIEQSJNIT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.978,
+   "ptm": 0.9647,
+   "iptm": 0.9813
   },
   "7ab27a4f-0f13-45a7-bc5c-4aaaf0dfeadf": {
    "key": "CYP3A4:LPRYCBITNRSRNR",
@@ -1341,7 +1701,10 @@
    "done": true,
    "files": [
     "LPRYCBITNRSRNR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9659,
+   "ptm": 0.9594,
+   "iptm": 0.9675
   },
   "a8f71665-b957-493c-9cf4-f5c3284c5f41": {
    "key": "CYP3A4:BRWOHQLXDDQIIN",
@@ -1352,7 +1715,10 @@
    "done": true,
    "files": [
     "BRWOHQLXDDQIIN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9619,
+   "ptm": 0.9597,
+   "iptm": 0.9624
   },
   "1f46073c-4fec-4543-9de8-6366171a7bcc": {
    "key": "CYP3A4:OXQOIQHDEIKJRI",
@@ -1363,7 +1729,10 @@
    "done": true,
    "files": [
     "OXQOIQHDEIKJRI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9342,
+   "ptm": 0.9545,
+   "iptm": 0.9292
   },
   "42ed487b-4739-4cae-9e04-0e63b5bb5914": {
    "key": "CYP3A4:UBAYQRWMNBZFGL",
@@ -1374,7 +1743,10 @@
    "done": true,
    "files": [
     "UBAYQRWMNBZFGL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.94,
+   "ptm": 0.9564,
+   "iptm": 0.9359
   },
   "ecccce55-70d3-489e-89ff-7db1a6a4ba67": {
    "key": "CYP3A4:XVEOZZDPTYFUNW",
@@ -1385,7 +1757,10 @@
    "done": true,
    "files": [
     "XVEOZZDPTYFUNW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9432,
+   "ptm": 0.9583,
+   "iptm": 0.9394
   },
   "f0d73b72-43ae-4d2c-a5f8-1b67ec5e7a3f": {
    "key": "CYP3A4:OTSKWPLKWNHXNG",
@@ -1396,7 +1771,10 @@
    "done": true,
    "files": [
     "OTSKWPLKWNHXNG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9321,
+   "ptm": 0.9519,
+   "iptm": 0.9271
   },
   "42f6b982-d53d-49f4-be32-beee614eea56": {
    "key": "CYP3A4:YQKLTNOXGTYSOG",
@@ -1407,7 +1785,10 @@
    "done": true,
    "files": [
     "YQKLTNOXGTYSOG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9601,
+   "ptm": 0.9603,
+   "iptm": 0.96
   },
   "94b184c5-ef25-4ad7-95ca-537f282a3cff": {
    "key": "CYP3A4:ZGVBQHVFIPSHHN",
@@ -1418,7 +1799,10 @@
    "done": true,
    "files": [
     "ZGVBQHVFIPSHHN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9531,
+   "ptm": 0.9587,
+   "iptm": 0.9517
   },
   "c29c13b6-0ae3-4490-987c-cf208b7cdf56": {
    "key": "CYP3A4:SGKBXHPHSYQSKW",
@@ -1429,7 +1813,10 @@
    "done": true,
    "files": [
     "SGKBXHPHSYQSKW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9551,
+   "ptm": 0.9594,
+   "iptm": 0.954
   },
   "3e5eaa60-99f4-4fb3-8e91-b03a89ea0dd8": {
    "key": "CYP3A4:ABUNSDMPQVALBH",
@@ -1440,7 +1827,10 @@
    "done": true,
    "files": [
     "ABUNSDMPQVALBH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9277,
+   "ptm": 0.9527,
+   "iptm": 0.9214
   },
   "11d87245-22e9-470a-8280-32fcb2162b84": {
    "key": "CYP3A4:KQWVGAQCBXYSBL",
@@ -1451,7 +1841,10 @@
    "done": true,
    "files": [
     "KQWVGAQCBXYSBL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9407,
+   "ptm": 0.9586,
+   "iptm": 0.9362
   },
   "1877ee35-e727-4d22-a0c7-77ae8d440795": {
    "key": "CYP3A4:OPUUOMNWXYQDMA",
@@ -1462,7 +1855,10 @@
    "done": true,
    "files": [
     "OPUUOMNWXYQDMA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9413,
+   "ptm": 0.9556,
+   "iptm": 0.9377
   },
   "9b333c48-de25-409d-9417-dd7eced8c760": {
    "key": "CYP3A4:YGQRUXKHKRRRPX",
@@ -1473,7 +1869,10 @@
    "done": true,
    "files": [
     "YGQRUXKHKRRRPX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9668,
+   "ptm": 0.9612,
+   "iptm": 0.9682
   },
   "53e778db-de0b-4523-be6c-99b59bdc9a40": {
    "key": "CYP3A4:LLUZHZALVKLRDA",
@@ -1484,7 +1883,10 @@
    "done": true,
    "files": [
     "LLUZHZALVKLRDA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9393,
+   "ptm": 0.957,
+   "iptm": 0.9348
   },
   "d02b4f68-32e5-4a59-a63b-4acbd0e18d3f": {
    "key": "CYP3A4:AIZGQFSORPYZAE",
@@ -1495,7 +1897,10 @@
    "done": true,
    "files": [
     "AIZGQFSORPYZAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9499,
+   "ptm": 0.9575,
+   "iptm": 0.948
   },
   "1eb216a5-4022-46be-abfe-b4983860a377": {
    "key": "CYP3A4:LBCJOUUDNYKSSR",
@@ -1506,7 +1911,10 @@
    "done": true,
    "files": [
     "LBCJOUUDNYKSSR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.952,
+   "ptm": 0.9621,
+   "iptm": 0.9494
   },
   "62f6e1ae-3167-4061-9fa5-9698bad16680": {
    "key": "CYP3A4:HANYAPMMDGMJBS",
@@ -1517,7 +1925,10 @@
    "done": true,
    "files": [
     "HANYAPMMDGMJBS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9515,
+   "ptm": 0.9591,
+   "iptm": 0.9496
   },
   "223c6f3b-02de-4948-8330-f6a70b5dcabf": {
    "key": "CYP3A4:RAJNREHOKVVGSQ",
@@ -1528,7 +1939,10 @@
    "done": true,
    "files": [
     "RAJNREHOKVVGSQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9807,
+   "ptm": 0.9631,
+   "iptm": 0.9851
   },
   "f40d3d55-c3ad-4480-a896-09a9b2bb6b8b": {
    "key": "CYP3A4:ZMADJKCDAFJXQB",
@@ -1539,7 +1953,10 @@
    "done": true,
    "files": [
     "ZMADJKCDAFJXQB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9342,
+   "ptm": 0.9537,
+   "iptm": 0.9293
   },
   "b45ed213-f7bb-4463-9153-e6cf6dff3242": {
    "key": "CYP3A4:SQUDKELOJLLRRO",
@@ -1550,7 +1967,10 @@
    "done": true,
    "files": [
     "SQUDKELOJLLRRO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9371,
+   "ptm": 0.9562,
+   "iptm": 0.9324
   },
   "839848f2-6290-48a8-a7fa-32d3cf7cb20c": {
    "key": "CYP3A4:FKQSJZQWYQETSO",
@@ -1561,7 +1981,10 @@
    "done": true,
    "files": [
     "FKQSJZQWYQETSO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.946,
+   "ptm": 0.9566,
+   "iptm": 0.9433
   },
   "b137830f-5806-4640-b3c8-9b50c2427069": {
    "key": "CYP3A4:WROCZHPTMZEAPU",
@@ -1572,7 +1995,10 @@
    "done": true,
    "files": [
     "WROCZHPTMZEAPU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9334,
+   "ptm": 0.9544,
+   "iptm": 0.9281
   },
   "3d342e79-af9c-4161-9c1c-22dbf35747c6": {
    "key": "CYP3A4:JAKRBEYEQJYSGS",
@@ -1583,7 +2009,10 @@
    "done": true,
    "files": [
     "JAKRBEYEQJYSGS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9386,
+   "ptm": 0.9551,
+   "iptm": 0.9344
   },
   "6184b5bb-7e6c-4943-ba08-7e7260e42f56": {
    "key": "CYP3A4:NQHRLOVRIMNNFT",
@@ -1594,7 +2023,10 @@
    "done": true,
    "files": [
     "NQHRLOVRIMNNFT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9407,
+   "ptm": 0.9563,
+   "iptm": 0.9368
   },
   "bcdcfc7c-6097-49f6-b5f9-5e45293b48ce": {
    "key": "CYP3A4:BJPQOWBRTLGZDQ",
@@ -1605,7 +2037,10 @@
    "done": true,
    "files": [
     "BJPQOWBRTLGZDQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.948,
+   "ptm": 0.9616,
+   "iptm": 0.9447
   },
   "c3d31845-3ada-4576-9692-c79b50015885": {
    "key": "CYP3A4:QCFAHERSFSXCNA",
@@ -1616,7 +2051,10 @@
    "done": true,
    "files": [
     "QCFAHERSFSXCNA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9663,
+   "ptm": 0.9606,
+   "iptm": 0.9677
   },
   "1b63b7d4-474f-4233-b1cc-c7bb3017911d": {
    "key": "CYP3A4:LXFHBEHWOYNRSS",
@@ -1627,7 +2065,10 @@
    "done": true,
    "files": [
     "LXFHBEHWOYNRSS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9637,
+   "ptm": 0.9607,
+   "iptm": 0.9645
   },
   "e846aa57-9223-4ef0-afa3-c4522e7d9d0d": {
    "key": "CYP3A4:PUJGNFDSNPSMAP",
@@ -1638,7 +2079,10 @@
    "done": true,
    "files": [
     "PUJGNFDSNPSMAP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9403,
+   "ptm": 0.956,
+   "iptm": 0.9364
   },
   "b97beef6-1adf-4dd5-b105-80c72383e30d": {
    "key": "CYP3A4:RBFWRWJCOIIAOK",
@@ -1649,7 +2093,10 @@
    "done": true,
    "files": [
     "RBFWRWJCOIIAOK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.953,
+   "ptm": 0.9574,
+   "iptm": 0.9519
   },
   "13b15cc1-610c-4502-88dc-f29198e2a795": {
    "key": "CYP3A4:YENIUINOCHUVDI",
@@ -1660,7 +2107,10 @@
    "done": true,
    "files": [
     "YENIUINOCHUVDI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9381,
+   "ptm": 0.9555,
+   "iptm": 0.9338
   },
   "c7d4612c-3fcf-4fba-9d0d-1998a9d605bd": {
    "key": "CYP3A4:PURKAOJPTOLRMP",
@@ -1671,7 +2121,10 @@
    "done": true,
    "files": [
     "PURKAOJPTOLRMP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9256,
+   "ptm": 0.9484,
+   "iptm": 0.9199
   },
   "231f9bd1-5f63-4875-ae85-db1b01211ab3": {
    "key": "CYP3A4:OMISETSBIRJDGV",
@@ -1682,7 +2135,10 @@
    "done": true,
    "files": [
     "OMISETSBIRJDGV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9354,
+   "ptm": 0.954,
+   "iptm": 0.9307
   },
   "fbf8ff4a-3308-4412-bdff-cc59f761351f": {
    "key": "CYP3A4:MYJKWLXJAYNIMV",
@@ -1693,7 +2149,10 @@
    "done": true,
    "files": [
     "MYJKWLXJAYNIMV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9769,
+   "ptm": 0.9626,
+   "iptm": 0.9805
   },
   "2037006b-3c36-4ab4-bcff-1d1828282094": {
    "key": "CYP3A4:UIUOCURODLIUQA",
@@ -1704,7 +2163,10 @@
    "done": true,
    "files": [
     "UIUOCURODLIUQA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.938,
+   "ptm": 0.956,
+   "iptm": 0.9335
   },
   "dc7c6729-6d34-4a16-9c81-010f9bc73b46": {
    "key": "CYP3A4:MLQRNUKEFWJQOH",
@@ -1715,7 +2177,10 @@
    "done": true,
    "files": [
     "MLQRNUKEFWJQOH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9372,
+   "ptm": 0.9546,
+   "iptm": 0.9329
   },
   "772b34ac-5db9-4729-a77f-363814557793": {
    "key": "CYP3A4:NXBAEKZVCZWXNN",
@@ -1726,7 +2191,10 @@
    "done": true,
    "files": [
     "NXBAEKZVCZWXNN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9545,
+   "ptm": 0.9575,
+   "iptm": 0.9537
   },
   "0e741774-d186-4541-89e7-fe1cd4357fdd": {
    "key": "CYP3A4:DZNPQDPYYZENCJ",
@@ -1737,7 +2205,10 @@
    "done": true,
    "files": [
     "DZNPQDPYYZENCJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.943,
+   "ptm": 0.9562,
+   "iptm": 0.9397
   },
   "7085c8a0-251c-47c1-81fc-b2e5dd445887": {
    "key": "CYP3A4:XLCKGMINJOIRBQ",
@@ -1748,7 +2219,10 @@
    "done": true,
    "files": [
     "XLCKGMINJOIRBQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.935,
+   "ptm": 0.9556,
+   "iptm": 0.9298
   },
   "5e2afeca-6eec-4966-a9c9-c2ea0fc8c9c7": {
    "key": "CYP3A4:IVWQVUXCCLQHJG",
@@ -1759,7 +2233,10 @@
    "done": true,
    "files": [
     "IVWQVUXCCLQHJG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9444,
+   "ptm": 0.9614,
+   "iptm": 0.9402
   },
   "9fe33f2e-11be-4ae1-a433-080369de9b31": {
    "key": "CYP3A4:BAELEBQZHOCHBQ",
@@ -1770,7 +2247,10 @@
    "done": true,
    "files": [
     "BAELEBQZHOCHBQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9363,
+   "ptm": 0.9557,
+   "iptm": 0.9315
   },
   "70be308d-6a99-40e2-a62e-be8fbacfe801": {
    "key": "CYP3A4:PFNJCNWOBAUXCO",
@@ -1781,7 +2261,10 @@
    "done": true,
    "files": [
     "PFNJCNWOBAUXCO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9609,
+   "ptm": 0.9596,
+   "iptm": 0.9613
   },
   "c1fe437a-4949-413e-aa1c-cac408299d8b": {
    "key": "CYP3A4:DHQWOWWYSIXUOX",
@@ -1792,7 +2275,10 @@
    "done": true,
    "files": [
     "DHQWOWWYSIXUOX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9556,
+   "ptm": 0.9562,
+   "iptm": 0.9554
   },
   "fef71aad-70a0-44fb-8fc2-32fd6d658ebd": {
    "key": "CYP3A4:BBTVLMOJYYJLAN",
@@ -1803,7 +2289,10 @@
    "done": true,
    "files": [
     "BBTVLMOJYYJLAN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9556,
+   "ptm": 0.9609,
+   "iptm": 0.9543
   },
   "25d9b282-3b42-43b5-a9bd-1424d52e0bb6": {
    "key": "CYP3A4:QRRRJMGDMNQYJZ",
@@ -1814,7 +2303,10 @@
    "done": true,
    "files": [
     "QRRRJMGDMNQYJZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9341,
+   "ptm": 0.9542,
+   "iptm": 0.929
   },
   "1ae96078-536b-4843-86a1-52feccbe9343": {
    "key": "CYP3A4:AVWOIDVOWIXTBD",
@@ -1825,7 +2317,10 @@
    "done": true,
    "files": [
     "AVWOIDVOWIXTBD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9809,
+   "ptm": 0.9657,
+   "iptm": 0.9846
   },
   "22176d16-f6f1-481b-a4ee-877ef52fd667": {
    "key": "CYP3A4:ATFFWNIHJPKPHE",
@@ -1836,7 +2331,10 @@
    "done": true,
    "files": [
     "ATFFWNIHJPKPHE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9509,
+   "ptm": 0.9556,
+   "iptm": 0.9497
   },
   "34b3bf77-4def-4da3-a26f-746d1f46845d": {
    "key": "CYP3A4:XRIJHBOHQGKBGS",
@@ -1847,7 +2345,10 @@
    "done": true,
    "files": [
     "XRIJHBOHQGKBGS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9608,
+   "ptm": 0.9617,
+   "iptm": 0.9605
   },
   "d1fc5d09-f2ca-4751-8e22-0b8857aa0b8a": {
    "key": "CYP3A4:LKTDMFRMVOXKKC",
@@ -1858,7 +2359,10 @@
    "done": true,
    "files": [
     "LKTDMFRMVOXKKC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.941,
+   "ptm": 0.9541,
+   "iptm": 0.9377
   },
   "838525b1-9b18-49a9-b0b9-efdfe14305c7": {
    "key": "CYP3A4:XMGORMGYUQDAAL",
@@ -1869,7 +2373,10 @@
    "done": true,
    "files": [
     "XMGORMGYUQDAAL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.965,
+   "ptm": 0.9598,
+   "iptm": 0.9663
   },
   "a824d5f4-c814-4a77-a298-20fb31e4e325": {
    "key": "CYP3A4:TUAAGFPRMDBTHV",
@@ -1880,7 +2387,10 @@
    "done": true,
    "files": [
     "TUAAGFPRMDBTHV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9697,
+   "ptm": 0.9634,
+   "iptm": 0.9713
   },
   "ef99af16-6be4-4608-8f55-5270319d4e29": {
    "key": "CYP3A4:RZTAMFZIAATZDJ",
@@ -1891,7 +2401,10 @@
    "done": true,
    "files": [
     "RZTAMFZIAATZDJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9378,
+   "ptm": 0.955,
+   "iptm": 0.9336
   },
   "c92acc0d-c6fa-46b1-83de-6e117b74aad3": {
    "key": "CYP3A4:FQQWSTJGVMFWSP",
@@ -1902,7 +2415,10 @@
    "done": true,
    "files": [
     "FQQWSTJGVMFWSP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9457,
+   "ptm": 0.9584,
+   "iptm": 0.9426
   },
   "cbbe2fc2-f794-4b65-9420-b36655b8e130": {
    "key": "CYP3A4:AWXBLKSFTZTHJW",
@@ -1913,7 +2429,10 @@
    "done": true,
    "files": [
     "AWXBLKSFTZTHJW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9544,
+   "ptm": 0.9567,
+   "iptm": 0.9538
   },
   "ba6030a5-c295-4fca-aab2-fb8a181a88a5": {
    "key": "CYP3A4:ZNZJGCOJFHWZII",
@@ -1924,7 +2443,10 @@
    "done": true,
    "files": [
     "ZNZJGCOJFHWZII__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9661,
+   "ptm": 0.9625,
+   "iptm": 0.9669
   },
   "6ba7c303-c14a-439b-8989-bdec8b297357": {
    "key": "CYP3A4:GOFAIWOMBJIHPT",
@@ -1935,7 +2457,10 @@
    "done": true,
    "files": [
     "GOFAIWOMBJIHPT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9319,
+   "ptm": 0.951,
+   "iptm": 0.9271
   },
   "24333d42-c8d2-40ee-95d0-29571e9f3852": {
    "key": "CYP3A4:PNKNFDXFPAAKRY",
@@ -1946,7 +2471,10 @@
    "done": true,
    "files": [
     "PNKNFDXFPAAKRY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9561,
+   "ptm": 0.9602,
+   "iptm": 0.9551
   },
   "df1c935a-0b7b-4459-a5de-dd3978927398": {
    "key": "CYP3A4:VHRWMNXPYKUVDY",
@@ -1957,7 +2485,10 @@
    "done": true,
    "files": [
     "VHRWMNXPYKUVDY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9767,
+   "ptm": 0.9615,
+   "iptm": 0.9805
   },
   "ee137837-b8ed-4c54-9382-d987d13aa9d4": {
    "key": "CYP3A4:UFNHVBKKZASTOU",
@@ -1968,7 +2499,10 @@
    "done": true,
    "files": [
     "UFNHVBKKZASTOU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9495,
+   "ptm": 0.9599,
+   "iptm": 0.9469
   },
   "c9895640-4038-421f-a48f-e5c8d726af6d": {
    "key": "CYP3A4:YFWYLSQWPNJHAE",
@@ -1979,7 +2513,10 @@
    "done": true,
    "files": [
     "YFWYLSQWPNJHAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9397,
+   "ptm": 0.9576,
+   "iptm": 0.9353
   },
   "9f79aa7a-02c3-4cea-b9ed-b48bac3684f7": {
    "key": "CYP3A4:IEXQMLIWZWKXBA",
@@ -1990,7 +2527,10 @@
    "done": true,
    "files": [
     "IEXQMLIWZWKXBA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9615,
+   "ptm": 0.9562,
+   "iptm": 0.9628
   },
   "bfdb179d-1316-4982-94ca-6325f5acfa2e": {
    "key": "CYP3A4:GGSBXNSPXLOOHI",
@@ -2001,7 +2541,10 @@
    "done": true,
    "files": [
     "GGSBXNSPXLOOHI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9573,
+   "ptm": 0.9616,
+   "iptm": 0.9562
   },
   "e23681aa-cc4e-43c4-8905-e1dff1c50087": {
    "key": "CYP3A4:LEPILDQORMQWAC",
@@ -2012,7 +2555,10 @@
    "done": true,
    "files": [
     "LEPILDQORMQWAC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9346,
+   "ptm": 0.9539,
+   "iptm": 0.9297
   },
   "d6c6441d-0b99-4033-8398-9009c829583c": {
    "key": "CYP3A4:XEMCUDAQPISXBU",
@@ -2023,7 +2569,10 @@
    "done": true,
    "files": [
     "XEMCUDAQPISXBU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9321,
+   "ptm": 0.952,
+   "iptm": 0.9272
   },
   "af5495e1-21e9-452b-8c28-9269bb57c587": {
    "key": "CYP3A4:TTWYKBFGEGAEDK",
@@ -2034,7 +2583,10 @@
    "done": true,
    "files": [
     "TTWYKBFGEGAEDK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9301,
+   "ptm": 0.9505,
+   "iptm": 0.925
   },
   "33283ebc-b73c-4fe0-a986-4e80c515fc31": {
    "key": "CYP3A4:XHXKXOXLVFVKSG",
@@ -2045,7 +2597,10 @@
    "done": true,
    "files": [
     "XHXKXOXLVFVKSG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9773,
+   "ptm": 0.964,
+   "iptm": 0.9806
   },
   "c21db856-b998-4fd3-9fea-95c861fcdbdf": {
    "key": "CYP3A4:HZGBJLLJFPERLR",
@@ -2056,7 +2611,10 @@
    "done": true,
    "files": [
     "HZGBJLLJFPERLR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.97,
+   "ptm": 0.9638,
+   "iptm": 0.9716
   },
   "294f3032-1bae-4c38-9cf0-b8edbf3ed333": {
    "key": "CYP3A4:HGKKBSCYJACRCO",
@@ -2067,7 +2625,10 @@
    "done": true,
    "files": [
     "HGKKBSCYJACRCO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.928,
+   "ptm": 0.9505,
+   "iptm": 0.9223
   },
   "e5f3e28d-ddda-401a-9037-b85ea7d6fa89": {
    "key": "CYP3A4:STXKQWKWKKEVLS",
@@ -2078,7 +2639,10 @@
    "done": true,
    "files": [
     "STXKQWKWKKEVLS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9403,
+   "ptm": 0.9567,
+   "iptm": 0.9362
   },
   "13acf6c2-970b-498f-a45d-c355a0fc829b": {
    "key": "CYP3A4:BJPFWDUUOUASTR",
@@ -2089,7 +2653,10 @@
    "done": true,
    "files": [
     "BJPFWDUUOUASTR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9515,
+   "ptm": 0.9561,
+   "iptm": 0.9503
   },
   "c2ce7b33-0883-4898-b393-216ae709a087": {
    "key": "CYP3A4:AMGUHAQZHHPZGU",
@@ -2100,7 +2667,10 @@
    "done": true,
    "files": [
     "AMGUHAQZHHPZGU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9572,
+   "ptm": 0.9605,
+   "iptm": 0.9563
   },
   "b2541c2e-2eb1-4e56-be47-97f73ebebb76": {
    "key": "CYP3A4:WUJHRFRBGPBFFB",
@@ -2111,7 +2681,10 @@
    "done": true,
    "files": [
     "WUJHRFRBGPBFFB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9388,
+   "ptm": 0.9569,
+   "iptm": 0.9343
   },
   "115b07ce-182b-499c-9e9a-92306d74a712": {
    "key": "CYP3A4:DPCRFIMDLMABSP",
@@ -2122,7 +2695,10 @@
    "done": true,
    "files": [
     "DPCRFIMDLMABSP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.983,
+   "ptm": 0.9603,
+   "iptm": 0.9887
   },
   "16630e6c-9f5b-42b6-b8b4-73dedd04bedf": {
    "key": "CYP3A4:YLVWRHXAIJGXAY",
@@ -2133,7 +2709,10 @@
    "done": true,
    "files": [
     "YLVWRHXAIJGXAY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9617,
+   "ptm": 0.9597,
+   "iptm": 0.9622
   },
   "090e1ce2-1435-4b65-89dc-4d32447db91a": {
    "key": "CYP3A4:DTKNSZIBMSDKHW",
@@ -2144,7 +2723,10 @@
    "done": true,
    "files": [
     "DTKNSZIBMSDKHW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9432,
+   "ptm": 0.9594,
+   "iptm": 0.9392
   },
   "61773c92-7b0d-4c2e-b886-7c8555998d77": {
    "key": "CYP3A4:FGUQAYRHKXYOTM",
@@ -2155,7 +2737,10 @@
    "done": true,
    "files": [
     "FGUQAYRHKXYOTM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9761,
+   "ptm": 0.9616,
+   "iptm": 0.9797
   },
   "49c71bea-2886-4e35-af37-bdecb91b0476": {
    "key": "CYP3A4:RSCLWXNTTOQEDX",
@@ -2166,7 +2751,10 @@
    "done": true,
    "files": [
     "RSCLWXNTTOQEDX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9811,
+   "ptm": 0.9646,
+   "iptm": 0.9852
   },
   "f20b6bab-7629-4966-b799-9d7af3fedcd3": {
    "key": "CYP3A4:FKWGYVQNEUUREI",
@@ -2177,7 +2765,10 @@
    "done": true,
    "files": [
     "FKWGYVQNEUUREI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9655,
+   "ptm": 0.9618,
+   "iptm": 0.9665
   },
   "2f049ca6-a300-4744-86bc-cadd03a48ea0": {
    "key": "CYP3A4:ZCFOZFFAVPLQDU",
@@ -2188,7 +2779,10 @@
    "done": true,
    "files": [
     "ZCFOZFFAVPLQDU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9514,
+   "ptm": 0.9597,
+   "iptm": 0.9493
   },
   "3ff0bcf7-08a0-4caa-be8c-0d7ff02f655f": {
    "key": "CYP3A4:LGYSCTIZOHPFJD",
@@ -2199,7 +2793,10 @@
    "done": true,
    "files": [
     "LGYSCTIZOHPFJD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9721,
+   "ptm": 0.9599,
+   "iptm": 0.9751
   },
   "fe3508b8-85e8-4b7b-8550-844672bb8e21": {
    "key": "CYP3A4:ULSVLCNUYFBDCA",
@@ -2210,7 +2807,10 @@
    "done": true,
    "files": [
     "ULSVLCNUYFBDCA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9743,
+   "ptm": 0.9593,
+   "iptm": 0.9781
   },
   "1be5a76a-4fca-432a-abd3-2013f4dbed03": {
    "key": "CYP2D6:ZDVHZKHFMHUZDU",
@@ -2221,7 +2821,10 @@
    "done": true,
    "files": [
     "ZDVHZKHFMHUZDU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9676,
+   "ptm": 0.944,
+   "iptm": 0.9734
   },
   "80e84b63-03bd-4c71-8df3-600471eb2756": {
    "key": "CYP2D6:QCPPGXUAWUBFAE",
@@ -2232,7 +2835,10 @@
    "done": true,
    "files": [
     "QCPPGXUAWUBFAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9615,
+   "ptm": 0.9483,
+   "iptm": 0.9648
   },
   "e9cc6b0b-2414-4f42-a802-723e67b308e7": {
    "key": "CYP2D6:SBNKFTQSBPKMBZ",
@@ -2243,7 +2849,10 @@
    "done": true,
    "files": [
     "SBNKFTQSBPKMBZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9368,
+   "ptm": 0.9481,
+   "iptm": 0.9339
   },
   "de78f14c-b9a2-40ff-84fd-df8d9a20c61a": {
    "key": "CYP2D6:BZAIRDCOXHAADH",
@@ -2254,7 +2863,10 @@
    "done": true,
    "files": [
     "BZAIRDCOXHAADH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9565,
+   "ptm": 0.9457,
+   "iptm": 0.9592
   },
   "65702d24-9e2a-49bd-af0f-3067799f0c17": {
    "key": "CYP2D6:NJTPBFZBPRMEJR",
@@ -2265,7 +2877,10 @@
    "done": true,
    "files": [
     "NJTPBFZBPRMEJR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.951,
+   "ptm": 0.9476,
+   "iptm": 0.9519
   },
   "ea75e51f-4d78-4754-bfef-085f8b23f0b9": {
    "key": "CYP2D6:CNIIGCLFLJGOGP",
@@ -2276,7 +2891,10 @@
    "done": true,
    "files": [
     "CNIIGCLFLJGOGP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9745,
+   "ptm": 0.9502,
+   "iptm": 0.9806
   },
   "579be431-3d2e-4227-9398-7b4a93c2f3f2": {
    "key": "CYP2D6:UIEGYIFDVIDYHB",
@@ -2287,7 +2905,10 @@
    "done": true,
    "files": [
     "UIEGYIFDVIDYHB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9703,
+   "ptm": 0.946,
+   "iptm": 0.9764
   },
   "fa320c4c-0cd3-4275-aed9-3b75b09a3355": {
    "key": "CYP2D6:SEBMTIQKRHYNIT",
@@ -2298,7 +2919,10 @@
    "done": true,
    "files": [
     "SEBMTIQKRHYNIT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9735,
+   "ptm": 0.9482,
+   "iptm": 0.9798
   },
   "6caf75d4-a86f-4918-9719-e303075ac4bb": {
    "key": "CYP2D6:HIUVKVDQFXDZHU",
@@ -2309,7 +2933,10 @@
    "done": true,
    "files": [
     "HIUVKVDQFXDZHU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9585,
+   "ptm": 0.9433,
+   "iptm": 0.9623
   },
   "2ef5fd5e-c493-4f8f-8fe7-33f52c30fbb2": {
    "key": "CYP2D6:WTTPTXHWBCVSAE",
@@ -2320,7 +2947,10 @@
    "done": true,
    "files": [
     "WTTPTXHWBCVSAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9422,
+   "ptm": 0.9456,
+   "iptm": 0.9414
   },
   "40e273e1-1c1f-43b1-ac27-06a25df59e2e": {
    "key": "CYP2D6:BRZANEXCSZCZCI",
@@ -2331,7 +2961,10 @@
    "done": true,
    "files": [
     "BRZANEXCSZCZCI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9533,
+   "ptm": 0.9422,
+   "iptm": 0.9561
   },
   "d7530228-4978-48ec-96c5-8ccbe931e741": {
    "key": "CYP2D6:VYZSNRUMPKDNLT",
@@ -2342,7 +2975,10 @@
    "done": true,
    "files": [
     "VYZSNRUMPKDNLT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9333,
+   "ptm": 0.9395,
+   "iptm": 0.9317
   },
   "e61bf91c-d683-474e-94fb-c8ef3dc45fe3": {
    "key": "CYP2D6:IROJCVZEMVZADB",
@@ -2353,7 +2989,10 @@
    "done": true,
    "files": [
     "IROJCVZEMVZADB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9693,
+   "ptm": 0.9506,
+   "iptm": 0.974
   },
   "5285d3e2-6e33-4107-9181-f5ae634aa599": {
    "key": "CYP2D6:AGOOMVXOHLHTCM",
@@ -2364,7 +3003,10 @@
    "done": true,
    "files": [
     "AGOOMVXOHLHTCM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9576,
+   "ptm": 0.9468,
+   "iptm": 0.9603
   },
   "86b12a49-5f6e-4e47-a864-3b60207f4cda": {
    "key": "CYP2D6:YCHNKCQNPQJYSD",
@@ -2375,7 +3017,10 @@
    "done": true,
    "files": [
     "YCHNKCQNPQJYSD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9439,
+   "ptm": 0.9486,
+   "iptm": 0.9428
   },
   "149d3321-32e2-40b0-89ca-59bf48c2e596": {
    "key": "CYP2D6:HQIRNZOQPUAHHV",
@@ -2386,7 +3031,10 @@
    "done": true,
    "files": [
     "HQIRNZOQPUAHHV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9702,
+   "ptm": 0.9492,
+   "iptm": 0.9754
   },
   "3c5f7bdc-70fa-4784-9ef5-6554f1568511": {
    "key": "CYP2D6:LZAPOHZTKRQZKM",
@@ -2397,7 +3045,10 @@
    "done": true,
    "files": [
     "LZAPOHZTKRQZKM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9168,
+   "ptm": 0.9355,
+   "iptm": 0.9121
   },
   "8c2f9cbe-ba33-45ea-8a3c-0300f2a035c8": {
    "key": "CYP2D6:FQTOHOCJEYDRRG",
@@ -2408,7 +3059,10 @@
    "done": true,
    "files": [
     "FQTOHOCJEYDRRG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9286,
+   "ptm": 0.9446,
+   "iptm": 0.9246
   },
   "5283583f-9507-4c38-9a00-47f2d0233ad6": {
    "key": "CYP2D6:OCSVTGWIMRELRH",
@@ -2419,7 +3073,10 @@
    "done": true,
    "files": [
     "OCSVTGWIMRELRH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9379,
+   "ptm": 0.9414,
+   "iptm": 0.9371
   },
   "b1ff3dc3-660a-4047-a04c-d0d5d20eacac": {
    "key": "CYP2D6:REYFJDPCWQRWAA",
@@ -2430,7 +3087,10 @@
    "done": true,
    "files": [
     "REYFJDPCWQRWAA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9549,
+   "ptm": 0.9441,
+   "iptm": 0.9576
   },
   "92884d67-7f58-46e2-a34c-2593d105497f": {
    "key": "CYP2D6:SMRUWTFDCWAZON",
@@ -2441,7 +3101,10 @@
    "done": true,
    "files": [
     "SMRUWTFDCWAZON__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9435,
+   "ptm": 0.9425,
+   "iptm": 0.9437
   },
   "c5457c92-da33-43a7-a7b4-9c3f398b0058": {
    "key": "CYP2D6:WPBCUTZPCFFBTO",
@@ -2452,7 +3115,10 @@
    "done": true,
    "files": [
     "WPBCUTZPCFFBTO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9254,
+   "ptm": 0.9402,
+   "iptm": 0.9217
   },
   "64910569-d3a9-4ed2-840b-41465ba5c4af": {
    "key": "CYP2D6:HUCPMSPYTPCDKA",
@@ -2463,7 +3129,10 @@
    "done": true,
    "files": [
     "HUCPMSPYTPCDKA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9646,
+   "ptm": 0.9485,
+   "iptm": 0.9686
   },
   "410f8dba-2168-4c56-8018-ba94d2ad4866": {
    "key": "CYP2D6:JGTLGAGKPNYMRY",
@@ -2474,7 +3143,10 @@
    "done": true,
    "files": [
     "JGTLGAGKPNYMRY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9702,
+   "ptm": 0.9514,
+   "iptm": 0.9749
   },
   "b951ee7c-e4df-4210-89b6-5ac6f268f7fc": {
    "key": "CYP2D6:DMSGWBYWZFAVFS",
@@ -2485,7 +3157,10 @@
    "done": true,
    "files": [
     "DMSGWBYWZFAVFS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9405,
+   "ptm": 0.9436,
+   "iptm": 0.9397
   },
   "3f42a17d-72a6-4a36-8735-fee75b49c5d0": {
    "key": "CYP2D6:CRUWCZSXWRLWRA",
@@ -2496,7 +3171,10 @@
    "done": true,
    "files": [
     "CRUWCZSXWRLWRA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.97,
+   "ptm": 0.9499,
+   "iptm": 0.975
   },
   "f264396d-661a-418a-be21-a2622df4d9c6": {
    "key": "CYP2D6:HZCMYVGOGDKMPW",
@@ -2507,7 +3185,10 @@
    "done": true,
    "files": [
     "HZCMYVGOGDKMPW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9701,
+   "ptm": 0.9499,
+   "iptm": 0.9752
   },
   "019c9509-e4b5-429b-99be-126d478ccbdc": {
    "key": "CYP2D6:JURKNVYFZMSNLP",
@@ -2518,7 +3199,10 @@
    "done": true,
    "files": [
     "JURKNVYFZMSNLP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9527,
+   "ptm": 0.9492,
+   "iptm": 0.9536
   },
   "962b7c99-0a0b-4506-aa85-8edbdd5cac14": {
    "key": "CYP2D6:XYCMOTOFHFTUIU",
@@ -2529,7 +3213,10 @@
    "done": true,
    "files": [
     "XYCMOTOFHFTUIU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9759,
+   "ptm": 0.9518,
+   "iptm": 0.982
   },
   "0dd677b3-9da3-4976-a462-c38cf5f035da": {
    "key": "CYP2D6:KOGLKBKCAXGATQ",
@@ -2540,7 +3227,10 @@
    "done": true,
    "files": [
     "KOGLKBKCAXGATQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9655,
+   "ptm": 0.9448,
+   "iptm": 0.9706
   },
   "1d68e0f9-2193-42c5-9842-b417bec2f963": {
    "key": "CYP2D6:YLJREFDVOIBQDA",
@@ -2551,7 +3241,10 @@
    "done": true,
    "files": [
     "YLJREFDVOIBQDA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9494,
+   "ptm": 0.9427,
+   "iptm": 0.9511
   },
   "dd71964c-28db-48b5-bbc4-c7194c0ba765": {
    "key": "CYP2D6:OSEWFKGKUJEEFD",
@@ -2562,7 +3255,10 @@
    "done": true,
    "files": [
     "OSEWFKGKUJEEFD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9394,
+   "ptm": 0.9435,
+   "iptm": 0.9384
   },
   "b623cc15-3369-4d0a-9a66-abab9ecc3302": {
    "key": "CYP2D6:SLZARXHZTPOCTN",
@@ -2573,7 +3269,10 @@
    "done": true,
    "files": [
     "SLZARXHZTPOCTN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9739,
+   "ptm": 0.9492,
+   "iptm": 0.9801
   },
   "12b0b69e-7f19-4348-9407-d975ba4bab71": {
    "key": "CYP2D6:IHLDXAAKKIDUFM",
@@ -2584,7 +3283,10 @@
    "done": true,
    "files": [
     "IHLDXAAKKIDUFM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9762,
+   "ptm": 0.9577,
+   "iptm": 0.9808
   },
   "c3ad37f3-5002-4062-8d58-c020be7b745b": {
    "key": "CYP2D6:VAHWRSZAURKYGM",
@@ -2595,7 +3297,10 @@
    "done": true,
    "files": [
     "VAHWRSZAURKYGM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9334,
+   "ptm": 0.9407,
+   "iptm": 0.9316
   },
   "16c04d9a-8102-4e8a-835f-47559ca8d124": {
    "key": "CYP2D6:JLHUMJNCGJZPJK",
@@ -2606,7 +3311,10 @@
    "done": true,
    "files": [
     "JLHUMJNCGJZPJK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9453,
+   "ptm": 0.9425,
+   "iptm": 0.9459
   },
   "ebc52c92-1aa8-4082-ab89-33764d0684bb": {
    "key": "CYP2D6:RRLUAXBCRMRKGJ",
@@ -2617,7 +3325,10 @@
    "done": true,
    "files": [
     "RRLUAXBCRMRKGJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9281,
+   "ptm": 0.9438,
+   "iptm": 0.9242
   },
   "d62490a4-4af7-4710-81e2-9325f7930092": {
    "key": "CYP2D6:CMRWALMKNZNEAF",
@@ -2628,7 +3339,10 @@
    "done": true,
    "files": [
     "CMRWALMKNZNEAF__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9675,
+   "ptm": 0.9497,
+   "iptm": 0.972
   },
   "0aa6c195-bc0c-4986-9498-6c71195852cf": {
    "key": "CYP2D6:OIJNGNQKPRJCLT",
@@ -2639,7 +3353,10 @@
    "done": true,
    "files": [
     "OIJNGNQKPRJCLT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9546,
+   "ptm": 0.9449,
+   "iptm": 0.957
   },
   "f06dad7f-e79f-4e93-b3d6-d218561b06e5": {
    "key": "CYP2D6:POFHNBYWRJBGAM",
@@ -2650,7 +3367,10 @@
    "done": true,
    "files": [
     "POFHNBYWRJBGAM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9436,
+   "ptm": 0.9464,
+   "iptm": 0.9429
   },
   "93e58a4a-1a85-409f-8e41-5918e104c960": {
    "key": "CYP2D6:BPSIMDRRYLTHLE",
@@ -2661,7 +3381,10 @@
    "done": true,
    "files": [
     "BPSIMDRRYLTHLE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9367,
+   "ptm": 0.9428,
+   "iptm": 0.9352
   },
   "dcffbc85-7b18-4f13-aae2-8d7f1db5ba65": {
    "key": "CYP2D6:AAFSKRHBWOQJCV",
@@ -2672,7 +3395,10 @@
    "done": true,
    "files": [
     "AAFSKRHBWOQJCV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.945,
+   "ptm": 0.9432,
+   "iptm": 0.9454
   },
   "2189f0cf-7320-44cd-839b-7eb40cc991ed": {
    "key": "CYP2D6:RKIRNVHTEYUZIG",
@@ -2683,7 +3409,10 @@
    "done": true,
    "files": [
     "RKIRNVHTEYUZIG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.954,
+   "ptm": 0.9509,
+   "iptm": 0.9547
   },
   "8dbe989f-87a9-4616-821e-b04a5e0e33db": {
    "key": "CYP2D6:LVHWZRNQJDKLTI",
@@ -2694,7 +3423,10 @@
    "done": true,
    "files": [
     "LVHWZRNQJDKLTI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9276,
+   "ptm": 0.9402,
+   "iptm": 0.9245
   },
   "495fcde3-9b7c-474b-a243-fe722d73a081": {
    "key": "CYP2D6:KJNTUBDFKPAUOJ",
@@ -2705,7 +3437,10 @@
    "done": true,
    "files": [
     "KJNTUBDFKPAUOJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9508,
+   "ptm": 0.9491,
+   "iptm": 0.9513
   },
   "c58d5d23-9829-4f4e-839a-cba6d084561f": {
    "key": "CYP2D6:CVTSUVYINOOTTN",
@@ -2716,7 +3451,10 @@
    "done": true,
    "files": [
     "CVTSUVYINOOTTN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9586,
+   "ptm": 0.9431,
+   "iptm": 0.9625
   },
   "d70aea14-3d33-4804-96dc-90724a868716": {
    "key": "CYP2D6:VNRPFJXBODKBRZ",
@@ -2727,7 +3465,10 @@
    "done": true,
    "files": [
     "VNRPFJXBODKBRZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9334,
+   "ptm": 0.9389,
+   "iptm": 0.9321
   },
   "dfdf708a-83fc-4439-9cee-315629531ee3": {
    "key": "CYP2D6:OVCDSSHSILBFBN",
@@ -2738,7 +3479,10 @@
    "done": true,
    "files": [
     "OVCDSSHSILBFBN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9421,
+   "ptm": 0.9428,
+   "iptm": 0.942
   },
   "5215129a-ac7d-4ab4-ad35-a910754477bb": {
    "key": "CYP2D6:QUDSFKIXQFFIOI",
@@ -2749,7 +3493,10 @@
    "done": true,
    "files": [
     "QUDSFKIXQFFIOI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9602,
+   "ptm": 0.951,
+   "iptm": 0.9625
   },
   "0da23426-d828-48f0-98cd-611299dc3359": {
    "key": "CYP2D6:STKPDYXEWHQTCA",
@@ -2760,7 +3507,10 @@
    "done": true,
    "files": [
     "STKPDYXEWHQTCA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9419,
+   "ptm": 0.9427,
+   "iptm": 0.9417
   },
   "a230302a-db70-4c2b-88e5-74935634df5b": {
    "key": "CYP2D6:FJUHYDGFHVCIQR",
@@ -2771,7 +3521,10 @@
    "done": true,
    "files": [
     "FJUHYDGFHVCIQR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9616,
+   "ptm": 0.9489,
+   "iptm": 0.9648
   },
   "c2d9a80c-abf1-48a5-8274-bd447fee25a0": {
    "key": "CYP2D6:FRTQFAFJPFTPEO",
@@ -2782,7 +3535,10 @@
    "done": true,
    "files": [
     "FRTQFAFJPFTPEO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9688,
+   "ptm": 0.9498,
+   "iptm": 0.9735
   },
   "c0cafcd8-c1c1-4632-86db-bfddb8563c12": {
    "key": "CYP2D6:CPTSFZUKPHDTEW",
@@ -2793,7 +3549,10 @@
    "done": true,
    "files": [
     "CPTSFZUKPHDTEW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9757,
+   "ptm": 0.9536,
+   "iptm": 0.9813
   },
   "f930c2ab-3de3-4aed-b79b-b3097b3260ca": {
    "key": "CYP2D6:WAFLWFBYNRXLIA",
@@ -2804,7 +3563,10 @@
    "done": true,
    "files": [
     "WAFLWFBYNRXLIA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9579,
+   "ptm": 0.9461,
+   "iptm": 0.9609
   },
   "0f46a1ab-67e4-46aa-981b-de3fd0b7ea64": {
    "key": "CYP2D6:WEMDNGXFLHBHKC",
@@ -2815,7 +3577,10 @@
    "done": true,
    "files": [
     "WEMDNGXFLHBHKC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9273,
+   "ptm": 0.9396,
+   "iptm": 0.9242
   },
   "2f330f6a-1231-400a-9097-3a231ffc702a": {
    "key": "CYP2D6:KSABBJQXOFJFMB",
@@ -2826,7 +3591,10 @@
    "done": true,
    "files": [
     "KSABBJQXOFJFMB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9271,
+   "ptm": 0.941,
+   "iptm": 0.9236
   },
   "4d040468-d98e-4130-8aba-50268626d81b": {
    "key": "CYP2D6:MCMWQUUFOTYOLS",
@@ -2837,7 +3605,10 @@
    "done": true,
    "files": [
     "MCMWQUUFOTYOLS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.976,
+   "ptm": 0.9493,
+   "iptm": 0.9827
   },
   "b9b97042-56ae-419a-ad96-c491b6c78ec6": {
    "key": "CYP2D6:LECNWKBRWUMOOE",
@@ -2848,7 +3619,10 @@
    "done": true,
    "files": [
     "LECNWKBRWUMOOE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9771,
+   "ptm": 0.9498,
+   "iptm": 0.984
   },
   "bcbf199b-1531-452c-8f8a-d5b361f0cb13": {
    "key": "CYP2D6:OLLKSWQPCSWOKP",
@@ -2859,7 +3633,10 @@
    "done": true,
    "files": [
     "OLLKSWQPCSWOKP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9366,
+   "ptm": 0.9437,
+   "iptm": 0.9348
   },
   "6ee7ffb5-7b26-4bad-a254-d47c0696b8af": {
    "key": "CYP2D6:KDWINTKNCFXETQ",
@@ -2870,7 +3647,10 @@
    "done": true,
    "files": [
     "KDWINTKNCFXETQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9263,
+   "ptm": 0.9408,
+   "iptm": 0.9227
   },
   "b56b69de-b3fe-41b6-a258-ad5758485f22": {
    "key": "CYP2D6:PJEMYXKINDARDB",
@@ -2881,7 +3661,10 @@
    "done": true,
    "files": [
     "PJEMYXKINDARDB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9239,
+   "ptm": 0.9375,
+   "iptm": 0.9205
   },
   "c1d538e8-fa65-4728-9313-5f75eea5ec05": {
    "key": "CYP2D6:LEQOABJBJQUSIJ",
@@ -2892,7 +3675,10 @@
    "done": true,
    "files": [
     "LEQOABJBJQUSIJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9605,
+   "ptm": 0.9472,
+   "iptm": 0.9638
   },
   "cf138945-7219-42ec-8f7f-d16c2697b206": {
    "key": "CYP2D6:YKJMLSDPNOJKOB",
@@ -2903,7 +3689,10 @@
    "done": true,
    "files": [
     "YKJMLSDPNOJKOB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9337,
+   "ptm": 0.94,
+   "iptm": 0.9321
   },
   "32faddb7-da49-46bf-b4b1-a229cb8bf004": {
    "key": "CYP2D6:YCKQLOFLKFDRSW",
@@ -2914,7 +3703,10 @@
    "done": true,
    "files": [
     "YCKQLOFLKFDRSW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.973,
+   "ptm": 0.9477,
+   "iptm": 0.9793
   },
   "a815ce7e-eb39-48e7-b329-f0efc9ede7c2": {
    "key": "CYP2D6:QHBKNLPLROKUGS",
@@ -2925,7 +3717,10 @@
    "done": true,
    "files": [
     "QHBKNLPLROKUGS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9655,
+   "ptm": 0.9485,
+   "iptm": 0.9697
   },
   "2384b91c-51c9-4781-8d29-6147673416fa": {
    "key": "CYP2D6:SSMSBSWKLKKXGG",
@@ -2936,7 +3731,10 @@
    "done": true,
    "files": [
     "SSMSBSWKLKKXGG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9642,
+   "ptm": 0.9469,
+   "iptm": 0.9685
   },
   "b8aac845-e5db-4521-a751-3ac47e64a51a": {
    "key": "CYP2D6:LMBJRHSTZKEVBI",
@@ -2947,7 +3745,10 @@
    "done": true,
    "files": [
     "LMBJRHSTZKEVBI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9744,
+   "ptm": 0.9491,
+   "iptm": 0.9807
   },
   "7f400a30-2024-4867-a993-a57404c59972": {
    "key": "CYP2D6:RMUCZJUITONUFY",
@@ -2958,7 +3759,10 @@
    "done": true,
    "files": [
     "RMUCZJUITONUFY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9793,
+   "ptm": 0.9513,
+   "iptm": 0.9864
   },
   "cf8b066a-a087-4e9d-9ac2-c48ae5f02acf": {
    "key": "CYP2D6:RLGQACBPNDBWTB",
@@ -2969,7 +3773,10 @@
    "done": true,
    "files": [
     "RLGQACBPNDBWTB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9164,
+   "ptm": 0.9354,
+   "iptm": 0.9116
   },
   "b984bda4-c758-4b01-9770-32b46d06199f": {
    "key": "CYP2D6:DYSXHEQZHLDEEV",
@@ -2980,7 +3787,10 @@
    "done": true,
    "files": [
     "DYSXHEQZHLDEEV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9461,
+   "ptm": 0.9449,
+   "iptm": 0.9464
   },
   "fc3a7cb3-2a97-4281-b754-6c0c2001b05d": {
    "key": "CYP2D6:CBRQOHPCDLQLPJ",
@@ -2991,7 +3801,10 @@
    "done": true,
    "files": [
     "CBRQOHPCDLQLPJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9496,
+   "ptm": 0.9455,
+   "iptm": 0.9507
   },
   "e07db947-555f-42ab-bc41-ae7ced16f957": {
    "key": "CYP2D6:DUADTXCVWFPPIL",
@@ -3002,7 +3815,10 @@
    "done": true,
    "files": [
     "DUADTXCVWFPPIL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9422,
+   "ptm": 0.9411,
+   "iptm": 0.9425
   },
   "44f09394-fc3f-4fa0-a3b3-912dcfd2bf38": {
    "key": "CYP2D6:YDRIIVMAQGIRPU",
@@ -3013,7 +3829,10 @@
    "done": true,
    "files": [
     "YDRIIVMAQGIRPU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9451,
+   "ptm": 0.9446,
+   "iptm": 0.9452
   },
   "39f87760-69fd-43a3-abff-64fdf489a821": {
    "key": "CYP2D6:ABZDANIGSGUPSQ",
@@ -3024,7 +3843,10 @@
    "done": true,
    "files": [
     "ABZDANIGSGUPSQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.94,
+   "ptm": 0.9443,
+   "iptm": 0.9389
   },
   "6cae58dd-aebf-4c2c-9862-fba0cd95f174": {
    "key": "CYP2D6:PQPGOORJZHZVIF",
@@ -3035,7 +3857,10 @@
    "done": true,
    "files": [
     "PQPGOORJZHZVIF__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9251,
+   "ptm": 0.9373,
+   "iptm": 0.9221
   },
   "da0c3d8d-65fa-4c41-9101-e3be051f06e9": {
    "key": "CYP2D6:GRIDBZHPCALFNO",
@@ -3046,7 +3871,10 @@
    "done": true,
    "files": [
     "GRIDBZHPCALFNO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9408,
+   "ptm": 0.9391,
+   "iptm": 0.9412
   },
   "64fba774-c73c-47e8-8b9a-0da21f71029c": {
    "key": "CYP2D6:VTQXUFDARAXXEL",
@@ -3057,7 +3885,10 @@
    "done": true,
    "files": [
     "VTQXUFDARAXXEL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.948,
+   "ptm": 0.9444,
+   "iptm": 0.949
   },
   "2f46297e-3332-492b-97c6-e76a9c348349": {
    "key": "CYP2D6:FKTKOBGQSYLSJM",
@@ -3068,7 +3899,10 @@
    "done": true,
    "files": [
     "FKTKOBGQSYLSJM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9563,
+   "ptm": 0.9445,
+   "iptm": 0.9593
   },
   "ce53095f-2233-4346-918d-08d5218b4cba": {
    "key": "CYP2D6:JUDIGWCSUCRCTM",
@@ -3079,7 +3913,10 @@
    "done": true,
    "files": [
     "JUDIGWCSUCRCTM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9477,
+   "ptm": 0.9458,
+   "iptm": 0.9482
   },
   "9aea9033-a2bc-4a50-a521-6c10c9c645b2": {
    "key": "CYP2D6:GFMXIBGNFZXSSH",
@@ -3090,7 +3927,10 @@
    "done": true,
    "files": [
     "GFMXIBGNFZXSSH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9329,
+   "ptm": 0.9382,
+   "iptm": 0.9316
   },
   "f38c67ce-b127-48ad-aa97-5d32d50bcd85": {
    "key": "CYP2D6:YMJWYDKEGLKYSU",
@@ -3101,7 +3941,10 @@
    "done": true,
    "files": [
     "YMJWYDKEGLKYSU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9272,
+   "ptm": 0.9396,
+   "iptm": 0.924
   },
   "26afca9e-d2a4-4750-8f10-063845123b61": {
    "key": "CYP2D6:XIQVNETUBQGFHX",
@@ -3112,7 +3955,10 @@
    "done": true,
    "files": [
     "XIQVNETUBQGFHX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9495,
+   "ptm": 0.9532,
+   "iptm": 0.9485
   },
   "4c291896-f367-45a1-a674-bcf2c892a2c1": {
    "key": "CYP2D6:ZQWNBUUGCZZBQG",
@@ -3123,7 +3969,10 @@
    "done": true,
    "files": [
     "ZQWNBUUGCZZBQG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.969,
+   "ptm": 0.9475,
+   "iptm": 0.9743
   },
   "f9dbbb5a-6888-4c74-b962-4afe3938b2d2": {
    "key": "CYP2D6:LZRKSMFOPBHIJC",
@@ -3134,7 +3983,10 @@
    "done": true,
    "files": [
     "LZRKSMFOPBHIJC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9624,
+   "ptm": 0.9488,
+   "iptm": 0.9658
   },
   "61081b80-af90-4a2e-8a81-a269afbd0e2c": {
    "key": "CYP2D6:QNTOHWMVHLRHJK",
@@ -3145,7 +3997,10 @@
    "done": true,
    "files": [
     "QNTOHWMVHLRHJK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9425,
+   "ptm": 0.9518,
+   "iptm": 0.9402
   },
   "fd99548b-21c1-43f1-b860-0ba80f785c91": {
    "key": "CYP2D6:QUBDEYFKIBCNDL",
@@ -3156,7 +4011,10 @@
    "done": true,
    "files": [
     "QUBDEYFKIBCNDL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9378,
+   "ptm": 0.9429,
+   "iptm": 0.9366
   },
   "a2b0136f-82d9-4da9-899b-9bb372ffa453": {
    "key": "CYP2D6:HOKIEOIBMAMYDU",
@@ -3167,7 +4025,10 @@
    "done": true,
    "files": [
     "HOKIEOIBMAMYDU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9432,
+   "ptm": 0.9417,
+   "iptm": 0.9436
   },
   "7df1feae-3391-40c3-a575-b1799137755f": {
    "key": "CYP2D6:LJQLDSDTAXHWQQ",
@@ -3178,7 +4039,10 @@
    "done": true,
    "files": [
     "LJQLDSDTAXHWQQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9635,
+   "ptm": 0.952,
+   "iptm": 0.9663
   },
   "6957c697-bbb8-49df-a8e3-2931e62b8750": {
    "key": "CYP2D6:QTSLUEVVUAILQN",
@@ -3189,7 +4053,10 @@
    "done": true,
    "files": [
     "QTSLUEVVUAILQN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9421,
+   "ptm": 0.9442,
+   "iptm": 0.9416
   },
   "748bb172-efd2-4a29-b162-1eb3285f65aa": {
    "key": "CYP2D6:PXEMWOAWSRNDKZ",
@@ -3200,7 +4067,10 @@
    "done": true,
    "files": [
     "PXEMWOAWSRNDKZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9759,
+   "ptm": 0.9462,
+   "iptm": 0.9833
   },
   "2e352340-3b9d-4ac3-af5b-caa5a747422a": {
    "key": "CYP2D6:XGALLCVXEZPNRQ",
@@ -3211,7 +4081,10 @@
    "done": true,
    "files": [
     "XGALLCVXEZPNRQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9111,
+   "ptm": 0.9345,
+   "iptm": 0.9052
   },
   "318e39ac-b3b7-49f3-850c-ff7968e7276a": {
    "key": "CYP2D6:LFMRMWJSYPUVLX",
@@ -3222,7 +4095,10 @@
    "done": true,
    "files": [
     "LFMRMWJSYPUVLX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9745,
+   "ptm": 0.9515,
+   "iptm": 0.9802
   },
   "623761d2-2a0b-4acc-85e3-d149e6edfa21": {
    "key": "CYP2D6:NWLUCHZBIHVDPU",
@@ -3233,7 +4109,10 @@
    "done": true,
    "files": [
     "NWLUCHZBIHVDPU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9551,
+   "ptm": 0.9418,
+   "iptm": 0.9584
   },
   "46ad43a6-1732-47f0-8760-10866fe99adb": {
    "key": "CYP2D6:RUVLBPWZPKTFQY",
@@ -3244,7 +4123,10 @@
    "done": true,
    "files": [
     "RUVLBPWZPKTFQY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9422,
+   "ptm": 0.9418,
+   "iptm": 0.9423
   },
   "574ac7d7-b56c-4543-ac38-73b439dbc06a": {
    "key": "CYP2D6:GJSIXZKKNDJEAL",
@@ -3255,7 +4137,10 @@
    "done": true,
    "files": [
     "GJSIXZKKNDJEAL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9574,
+   "ptm": 0.9492,
+   "iptm": 0.9594
   },
   "c713914b-abd6-4953-86a3-8876bfaf6c8b": {
    "key": "CYP2D6:IVLDPMHWGKSBBD",
@@ -3266,7 +4151,10 @@
    "done": true,
    "files": [
     "IVLDPMHWGKSBBD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9593,
+   "ptm": 0.9523,
+   "iptm": 0.9611
   },
   "ec07ff69-9e9f-4891-b07d-39ee1c549125": {
    "key": "CYP2D6:QGVJVDSSUBWUGO",
@@ -3277,7 +4165,10 @@
    "done": true,
    "files": [
     "QGVJVDSSUBWUGO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.971,
+   "ptm": 0.9504,
+   "iptm": 0.9762
   },
   "6baa743e-1042-4b77-9b4a-fe588b4649df": {
    "key": "CYP2D6:NUJZSEZNBAAEBL",
@@ -3288,7 +4179,10 @@
    "done": true,
    "files": [
     "NUJZSEZNBAAEBL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9451,
+   "ptm": 0.9473,
+   "iptm": 0.9445
   },
   "59326108-6860-41be-a68b-7fa079078c83": {
    "key": "CYP2D6:UXPCXNWXWKQOER",
@@ -3299,7 +4193,10 @@
    "done": true,
    "files": [
     "UXPCXNWXWKQOER__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9407,
+   "ptm": 0.9442,
+   "iptm": 0.9399
   },
   "6acfff40-3416-4e94-8632-7cc680c8f8ec": {
    "key": "CYP2D6:LTUCBBUWUBLJCT",
@@ -3310,7 +4207,10 @@
    "done": true,
    "files": [
     "LTUCBBUWUBLJCT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9455,
+   "ptm": 0.9458,
+   "iptm": 0.9454
   },
   "b32de370-2094-4c77-b463-d680796feef5": {
    "key": "CYP2D6:QVQOHIBPHPVPPB",
@@ -3321,7 +4221,10 @@
    "done": true,
    "files": [
     "QVQOHIBPHPVPPB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9575,
+   "ptm": 0.947,
+   "iptm": 0.9601
   },
   "3d26a376-82ab-4e6c-9a22-2c82a93ac222": {
    "key": "CYP2D6:ASFKKFRSMGBFRO",
@@ -3332,7 +4235,10 @@
    "done": true,
    "files": [
     "ASFKKFRSMGBFRO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9305,
+   "ptm": 0.9406,
+   "iptm": 0.9279
   },
   "15a2d7bb-ee59-49cb-b5f5-b95d2b4413b8": {
    "key": "CYP2D6:GWDOIAFYMZHEGB",
@@ -3343,7 +4249,10 @@
    "done": true,
    "files": [
     "GWDOIAFYMZHEGB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9723,
+   "ptm": 0.95,
+   "iptm": 0.9778
   },
   "58836e29-5a46-422c-9f53-57863917765f": {
    "key": "CYP2D6:HLRHRWSRSVLASR",
@@ -3354,7 +4263,10 @@
    "done": true,
    "files": [
     "HLRHRWSRSVLASR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9147,
+   "ptm": 0.9362,
+   "iptm": 0.9093
   },
   "19ec2aa8-5501-4db9-81ed-14e62331a580": {
    "key": "CYP2D6:WCXXKBXIMXJSNI",
@@ -3365,7 +4277,10 @@
    "done": true,
    "files": [
     "WCXXKBXIMXJSNI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9324,
+   "ptm": 0.9425,
+   "iptm": 0.9298
   },
   "940b9458-afcb-42fb-a0c5-15f84b0e1074": {
    "key": "CYP2D6:OLYONISXYQGNEZ",
@@ -3376,7 +4291,10 @@
    "done": true,
    "files": [
     "OLYONISXYQGNEZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.971,
+   "ptm": 0.9459,
+   "iptm": 0.9773
   },
   "527cc69d-b58e-473c-a0ab-a3b10c5ceaee": {
    "key": "CYP2D6:CIFMMEDLNIKOGG",
@@ -3387,7 +4305,10 @@
    "done": true,
    "files": [
     "CIFMMEDLNIKOGG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.934,
+   "ptm": 0.9438,
+   "iptm": 0.9315
   },
   "bcbb0663-6061-4ae8-a105-3c8827a90fb5": {
    "key": "CYP2D6:UMIKRLLTVSCTOK",
@@ -3398,7 +4319,10 @@
    "done": true,
    "files": [
     "UMIKRLLTVSCTOK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9511,
+   "ptm": 0.9519,
+   "iptm": 0.9509
   },
   "3be5880b-abb5-4e42-9756-fc8bed5a12f1": {
    "key": "CYP2D6:MXOSBTWGOGZZER",
@@ -3409,7 +4333,10 @@
    "done": true,
    "files": [
     "MXOSBTWGOGZZER__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9403,
+   "ptm": 0.9432,
+   "iptm": 0.9395
   },
   "5bea6b45-6ae4-4e31-8f7b-42a4baaf3909": {
    "key": "CYP2D6:PNZYMSWQEYPOPA",
@@ -3420,7 +4347,10 @@
    "done": true,
    "files": [
     "PNZYMSWQEYPOPA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9503,
+   "ptm": 0.9491,
+   "iptm": 0.9506
   },
   "e7b86451-98d1-437a-abe3-5795cb9f45fc": {
    "key": "CYP2D6:GPKJTRJOBQGKQK",
@@ -3431,7 +4361,10 @@
    "done": true,
    "files": [
     "GPKJTRJOBQGKQK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9792,
+   "ptm": 0.9512,
+   "iptm": 0.9863
   },
   "ce32feda-3fd0-4f7e-b77b-59a59e6ab836": {
    "key": "CYP2D6:ROQPQFXWBJCFRO",
@@ -3442,7 +4375,10 @@
    "done": true,
    "files": [
     "ROQPQFXWBJCFRO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9434,
+   "ptm": 0.9462,
+   "iptm": 0.9427
   },
   "b6ff9c41-51f8-491f-8174-01902a300eaa": {
    "key": "CYP2D6:BIJKXSIAIACXNV",
@@ -3453,7 +4389,10 @@
    "done": true,
    "files": [
     "BIJKXSIAIACXNV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9609,
+   "ptm": 0.9432,
+   "iptm": 0.9653
   },
   "98ad60c1-0b9f-4f75-80d5-4d8972e10b09": {
    "key": "CYP2D6:NOCBHRIGICTARN",
@@ -3464,7 +4403,10 @@
    "done": true,
    "files": [
     "NOCBHRIGICTARN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9744,
+   "ptm": 0.9531,
+   "iptm": 0.9798
   },
   "35ab40c7-7487-42db-8325-2bd36722d67e": {
    "key": "CYP2D6:GQMDVEHOCDKMQP",
@@ -3475,7 +4417,10 @@
    "done": true,
    "files": [
     "GQMDVEHOCDKMQP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9194,
+   "ptm": 0.9407,
+   "iptm": 0.9141
   },
   "4222ddab-dd1d-4d41-bc08-0c2f8cc62cfd": {
    "key": "CYP2D6:PUUICPNYFPCHEE",
@@ -3486,7 +4431,10 @@
    "done": true,
    "files": [
     "PUUICPNYFPCHEE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.942,
+   "ptm": 0.942,
+   "iptm": 0.942
   },
   "1101ee1b-e902-4a6f-911c-7b46f634690a": {
    "key": "CYP2D6:PZBMCIRQTJSXEM",
@@ -3497,7 +4445,10 @@
    "done": true,
    "files": [
     "PZBMCIRQTJSXEM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9092,
+   "ptm": 0.9329,
+   "iptm": 0.9033
   },
   "9cd74d7d-bd2e-4d11-ba58-cf4627912af7": {
    "key": "CYP2D6:QAROPJJFLVXWSM",
@@ -3508,7 +4459,10 @@
    "done": true,
    "files": [
     "QAROPJJFLVXWSM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9694,
+   "ptm": 0.9523,
+   "iptm": 0.9737
   },
   "3d33d449-d44f-49e3-80a3-5b52d6926f0f": {
    "key": "CYP2D6:NOKWLBSHOIIUFJ",
@@ -3519,7 +4473,10 @@
    "done": true,
    "files": [
     "NOKWLBSHOIIUFJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9203,
+   "ptm": 0.9401,
+   "iptm": 0.9154
   },
   "a9130cb5-d239-48d6-90e9-43a02e4699c9": {
    "key": "CYP2D6:ZMJICQIEQSJNIT",
@@ -3530,7 +4487,10 @@
    "done": true,
    "files": [
     "ZMJICQIEQSJNIT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9499,
+   "ptm": 0.9414,
+   "iptm": 0.952
   },
   "47fe6eac-c735-44d9-8f66-c3eae500d4ea": {
    "key": "CYP2D6:LPRYCBITNRSRNR",
@@ -3541,7 +4501,10 @@
    "done": true,
    "files": [
     "LPRYCBITNRSRNR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9266,
+   "ptm": 0.9394,
+   "iptm": 0.9234
   },
   "1d069ed7-3fc2-4315-9acc-cf9658d16e94": {
    "key": "CYP2D6:BRWOHQLXDDQIIN",
@@ -3552,7 +4515,10 @@
    "done": true,
    "files": [
     "BRWOHQLXDDQIIN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9729,
+   "ptm": 0.9519,
+   "iptm": 0.9781
   },
   "14594cb2-3448-415f-a65b-a435d79e4f30": {
    "key": "CYP2D6:OXQOIQHDEIKJRI",
@@ -3563,7 +4529,10 @@
    "done": true,
    "files": [
     "OXQOIQHDEIKJRI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9676,
+   "ptm": 0.9492,
+   "iptm": 0.9721
   },
   "c0c34f3e-1a19-45f8-a4b1-5bc0e148a405": {
    "key": "CYP2D6:UBAYQRWMNBZFGL",
@@ -3574,7 +4543,10 @@
    "done": true,
    "files": [
     "UBAYQRWMNBZFGL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9519,
+   "ptm": 0.9456,
+   "iptm": 0.9535
   },
   "5ef63016-c2bf-4daf-a8c6-2d671100cbfa": {
    "key": "CYP2D6:XVEOZZDPTYFUNW",
@@ -3585,7 +4557,10 @@
    "done": true,
    "files": [
     "XVEOZZDPTYFUNW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9545,
+   "ptm": 0.9469,
+   "iptm": 0.9564
   },
   "3fe64fbb-a08c-4ff7-bf2a-5ba60d13884a": {
    "key": "CYP2D6:OTSKWPLKWNHXNG",
@@ -3596,7 +4571,10 @@
    "done": true,
    "files": [
     "OTSKWPLKWNHXNG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9413,
+   "ptm": 0.944,
+   "iptm": 0.9406
   },
   "98c3a39f-0769-496e-8e09-99fb0882737d": {
    "key": "CYP2D6:YQKLTNOXGTYSOG",
@@ -3607,7 +4585,10 @@
    "done": true,
    "files": [
     "YQKLTNOXGTYSOG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9673,
+   "ptm": 0.9453,
+   "iptm": 0.9728
   },
   "5e5989f4-80ed-4412-b05e-13e97f53e5b8": {
    "key": "CYP2D6:ZGVBQHVFIPSHHN",
@@ -3618,7 +4599,10 @@
    "done": true,
    "files": [
     "ZGVBQHVFIPSHHN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9606,
+   "ptm": 0.9496,
+   "iptm": 0.9633
   },
   "7bbb6719-e86a-47db-abe9-d80e26e37a32": {
    "key": "CYP2D6:SGKBXHPHSYQSKW",
@@ -3629,7 +4613,10 @@
    "done": true,
    "files": [
     "SGKBXHPHSYQSKW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9309,
+   "ptm": 0.9402,
+   "iptm": 0.9285
   },
   "9aa44b31-0212-4381-ba44-9b5079072b6d": {
    "key": "CYP2D6:ABUNSDMPQVALBH",
@@ -3640,7 +4627,10 @@
    "done": true,
    "files": [
     "ABUNSDMPQVALBH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.903,
+   "ptm": 0.9334,
+   "iptm": 0.8954
   },
   "200f57f7-a993-4ec0-b3fd-0752784cf687": {
    "key": "CYP2D6:KQWVGAQCBXYSBL",
@@ -3651,7 +4641,10 @@
    "done": true,
    "files": [
     "KQWVGAQCBXYSBL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9541,
+   "ptm": 0.9488,
+   "iptm": 0.9554
   },
   "74d58ec8-40e3-4973-9885-33cb59cbab87": {
    "key": "CYP2D6:OPUUOMNWXYQDMA",
@@ -3662,7 +4655,10 @@
    "done": true,
    "files": [
     "OPUUOMNWXYQDMA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9231,
+   "ptm": 0.9358,
+   "iptm": 0.9199
   },
   "251dffa7-f953-4487-bfc3-228af2ff4f1b": {
    "key": "CYP2D6:YGQRUXKHKRRRPX",
@@ -3673,7 +4669,10 @@
    "done": true,
    "files": [
     "YGQRUXKHKRRRPX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9713,
+   "ptm": 0.947,
+   "iptm": 0.9773
   },
   "d6872df8-7562-4d93-adba-0a65115e0884": {
    "key": "CYP2D6:LLUZHZALVKLRDA",
@@ -3684,7 +4683,10 @@
    "done": true,
    "files": [
     "LLUZHZALVKLRDA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9324,
+   "ptm": 0.9445,
+   "iptm": 0.9293
   },
   "c18de8ea-3ae7-43e0-b439-2ff31317d093": {
    "key": "CYP2D6:AIZGQFSORPYZAE",
@@ -3695,7 +4697,10 @@
    "done": true,
    "files": [
     "AIZGQFSORPYZAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9109,
+   "ptm": 0.937,
+   "iptm": 0.9044
   },
   "057169c9-244f-4a01-986b-880dac32e132": {
    "key": "CYP2D6:LBCJOUUDNYKSSR",
@@ -3706,7 +4711,10 @@
    "done": true,
    "files": [
     "LBCJOUUDNYKSSR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9173,
+   "ptm": 0.937,
+   "iptm": 0.9123
   },
   "6df5048a-8b8e-4c4a-bfc3-f7c4d201354f": {
    "key": "CYP2D6:HANYAPMMDGMJBS",
@@ -3717,7 +4725,10 @@
    "done": true,
    "files": [
     "HANYAPMMDGMJBS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9575,
+   "ptm": 0.9463,
+   "iptm": 0.9603
   },
   "192d9fe5-137f-47f6-b790-813caa60c18c": {
    "key": "CYP2D6:RAJNREHOKVVGSQ",
@@ -3728,7 +4739,10 @@
    "done": true,
    "files": [
     "RAJNREHOKVVGSQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9776,
+   "ptm": 0.9539,
+   "iptm": 0.9836
   },
   "0f86fc2a-d41e-43f6-9a4c-7bb6278f46ee": {
    "key": "CYP2D6:ZMADJKCDAFJXQB",
@@ -3739,7 +4753,10 @@
    "done": true,
    "files": [
     "ZMADJKCDAFJXQB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9341,
+   "ptm": 0.9422,
+   "iptm": 0.932
   },
   "eae5fca2-7200-4268-809c-03f8275b0f50": {
    "key": "CYP2D6:SQUDKELOJLLRRO",
@@ -3750,7 +4767,10 @@
    "done": true,
    "files": [
     "SQUDKELOJLLRRO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9304,
+   "ptm": 0.939,
+   "iptm": 0.9283
   },
   "2714af23-df9c-4b64-9f98-a1dd21e0ec71": {
    "key": "CYP2D6:FKQSJZQWYQETSO",
@@ -3761,7 +4781,10 @@
    "done": true,
    "files": [
     "FKQSJZQWYQETSO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9373,
+   "ptm": 0.9446,
+   "iptm": 0.9354
   },
   "6edb375e-20a3-43be-a4f4-1af0287b04e0": {
    "key": "CYP2D6:WROCZHPTMZEAPU",
@@ -3772,7 +4795,10 @@
    "done": true,
    "files": [
     "WROCZHPTMZEAPU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9796,
+   "ptm": 0.9528,
+   "iptm": 0.9863
   },
   "a9ef0551-f09e-4b00-b4a9-ccd85821a4d9": {
    "key": "CYP2D6:JAKRBEYEQJYSGS",
@@ -3783,7 +4809,10 @@
    "done": true,
    "files": [
     "JAKRBEYEQJYSGS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.959,
+   "ptm": 0.9476,
+   "iptm": 0.9619
   },
   "5594293f-3c4a-48b0-a9de-60b1aa18c4f4": {
    "key": "CYP2D6:NQHRLOVRIMNNFT",
@@ -3794,7 +4823,10 @@
    "done": true,
    "files": [
     "NQHRLOVRIMNNFT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.944,
+   "ptm": 0.9458,
+   "iptm": 0.9435
   },
   "64420af0-9db4-4af0-9d5b-7257d47dfcc7": {
    "key": "CYP2D6:BJPQOWBRTLGZDQ",
@@ -3805,7 +4837,10 @@
    "done": true,
    "files": [
     "BJPQOWBRTLGZDQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9424,
+   "ptm": 0.9433,
+   "iptm": 0.9422
   },
   "574fd5bd-b4e8-459e-8b5c-6209520527a4": {
    "key": "CYP2D6:QCFAHERSFSXCNA",
@@ -3816,7 +4851,10 @@
    "done": true,
    "files": [
     "QCFAHERSFSXCNA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.963,
+   "ptm": 0.9458,
+   "iptm": 0.9673
   },
   "85bca33a-5c04-4497-a7f0-04cbd469e4b1": {
    "key": "CYP2D6:LXFHBEHWOYNRSS",
@@ -3827,7 +4865,10 @@
    "done": true,
    "files": [
     "LXFHBEHWOYNRSS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9493,
+   "ptm": 0.9464,
+   "iptm": 0.95
   },
   "b745c28b-3558-4ce3-9f1f-7189f5bd59af": {
    "key": "CYP2D6:PUJGNFDSNPSMAP",
@@ -3838,7 +4879,10 @@
    "done": true,
    "files": [
     "PUJGNFDSNPSMAP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9553,
+   "ptm": 0.9449,
+   "iptm": 0.9579
   },
   "26194502-710a-407f-a4ca-097a597e2b3f": {
    "key": "CYP2D6:RBFWRWJCOIIAOK",
@@ -3849,7 +4893,10 @@
    "done": true,
    "files": [
     "RBFWRWJCOIIAOK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9592,
+   "ptm": 0.9456,
+   "iptm": 0.9626
   },
   "b3fe002b-661b-4c0b-9297-ad62692c6f34": {
    "key": "CYP2D6:YENIUINOCHUVDI",
@@ -3860,7 +4907,10 @@
    "done": true,
    "files": [
     "YENIUINOCHUVDI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9262,
+   "ptm": 0.938,
+   "iptm": 0.9232
   },
   "4b4ff6ac-92bf-478b-86ee-77abb4ff4689": {
    "key": "CYP2D6:PURKAOJPTOLRMP",
@@ -3871,7 +4921,10 @@
    "done": true,
    "files": [
     "PURKAOJPTOLRMP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9613,
+   "ptm": 0.9453,
+   "iptm": 0.9653
   },
   "73b61355-d377-477c-ae7d-8892806fc53b": {
    "key": "CYP2D6:OMISETSBIRJDGV",
@@ -3882,7 +4935,10 @@
    "done": true,
    "files": [
     "OMISETSBIRJDGV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9689,
+   "ptm": 0.9476,
+   "iptm": 0.9743
   },
   "a5f967e5-11e8-494d-b376-a61ce1ac6f98": {
    "key": "CYP2D6:MYJKWLXJAYNIMV",
@@ -3893,7 +4949,10 @@
    "done": true,
    "files": [
     "MYJKWLXJAYNIMV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9733,
+   "ptm": 0.9495,
+   "iptm": 0.9792
   },
   "3c970844-1171-40fd-a8c2-c76be93d5be4": {
    "key": "CYP2D6:UIUOCURODLIUQA",
@@ -3904,7 +4963,10 @@
    "done": true,
    "files": [
     "UIUOCURODLIUQA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9576,
+   "ptm": 0.9435,
+   "iptm": 0.9611
   },
   "2a83e76b-4c1d-4549-a92b-fab4730b484f": {
    "key": "CYP2D6:MLQRNUKEFWJQOH",
@@ -3915,7 +4977,10 @@
    "done": true,
    "files": [
     "MLQRNUKEFWJQOH__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9591,
+   "ptm": 0.9462,
+   "iptm": 0.9623
   },
   "385a2cc1-03fa-44f7-858e-9ecdbe1f4100": {
    "key": "CYP2D6:NXBAEKZVCZWXNN",
@@ -3926,7 +4991,10 @@
    "done": true,
    "files": [
     "NXBAEKZVCZWXNN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9636,
+   "ptm": 0.9463,
+   "iptm": 0.9679
   },
   "4531131b-f6b8-400d-a347-077398326f32": {
    "key": "CYP2D6:DZNPQDPYYZENCJ",
@@ -3937,7 +5005,10 @@
    "done": true,
    "files": [
     "DZNPQDPYYZENCJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9361,
+   "ptm": 0.9398,
+   "iptm": 0.9352
   },
   "3596b0da-7b9f-4224-b95d-055230980af0": {
    "key": "CYP2D6:XLCKGMINJOIRBQ",
@@ -3948,7 +5019,10 @@
    "done": true,
    "files": [
     "XLCKGMINJOIRBQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9413,
+   "ptm": 0.9403,
+   "iptm": 0.9415
   },
   "0e78d0cc-a198-40f1-a707-e5ace05b2ee6": {
    "key": "CYP2D6:IVWQVUXCCLQHJG",
@@ -3959,7 +5033,10 @@
    "done": true,
    "files": [
     "IVWQVUXCCLQHJG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.947,
+   "ptm": 0.9473,
+   "iptm": 0.9469
   },
   "bc3f92de-1d64-475d-9305-2397f2feca63": {
    "key": "CYP2D6:BAELEBQZHOCHBQ",
@@ -3970,7 +5047,10 @@
    "done": true,
    "files": [
     "BAELEBQZHOCHBQ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9324,
+   "ptm": 0.9398,
+   "iptm": 0.9305
   },
   "f9170463-5686-44a5-ab65-cb71ec309aad": {
    "key": "CYP2D6:PFNJCNWOBAUXCO",
@@ -3981,7 +5061,10 @@
    "done": true,
    "files": [
     "PFNJCNWOBAUXCO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9324,
+   "ptm": 0.9396,
+   "iptm": 0.9306
   },
   "1f546bcc-8cbe-4636-9c41-02310d1f713d": {
    "key": "CYP2D6:DHQWOWWYSIXUOX",
@@ -3992,7 +5075,10 @@
    "done": true,
    "files": [
     "DHQWOWWYSIXUOX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9569,
+   "ptm": 0.9444,
+   "iptm": 0.96
   },
   "377daa75-bb4d-4eb7-be50-79458bd764e0": {
    "key": "CYP2D6:BBTVLMOJYYJLAN",
@@ -4003,7 +5089,10 @@
    "done": true,
    "files": [
     "BBTVLMOJYYJLAN__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9676,
+   "ptm": 0.9495,
+   "iptm": 0.9721
   },
   "b559f43f-856e-4df9-a790-54c59f81051f": {
    "key": "CYP2D6:QRRRJMGDMNQYJZ",
@@ -4014,7 +5103,10 @@
    "done": true,
    "files": [
     "QRRRJMGDMNQYJZ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9574,
+   "ptm": 0.9444,
+   "iptm": 0.9606
   },
   "3e4abb35-c73f-41b3-a71a-939aac26ccf7": {
    "key": "CYP2D6:AVWOIDVOWIXTBD",
@@ -4025,7 +5117,10 @@
    "done": true,
    "files": [
     "AVWOIDVOWIXTBD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9436,
+   "ptm": 0.9423,
+   "iptm": 0.9439
   },
   "6885bd0c-cf92-4a69-b5b5-e75c06658244": {
    "key": "CYP2D6:ATFFWNIHJPKPHE",
@@ -4036,7 +5131,10 @@
    "done": true,
    "files": [
     "ATFFWNIHJPKPHE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9129,
+   "ptm": 0.9392,
+   "iptm": 0.9063
   },
   "355bbd10-f3bf-4e32-89e7-a3965e444059": {
    "key": "CYP2D6:XRIJHBOHQGKBGS",
@@ -4047,7 +5145,10 @@
    "done": true,
    "files": [
     "XRIJHBOHQGKBGS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9389,
+   "ptm": 0.9401,
+   "iptm": 0.9386
   },
   "964dbaa7-60dc-47b9-998e-5ae07bc33a25": {
    "key": "CYP2D6:LKTDMFRMVOXKKC",
@@ -4058,7 +5159,10 @@
    "done": true,
    "files": [
     "LKTDMFRMVOXKKC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9539,
+   "ptm": 0.9431,
+   "iptm": 0.9566
   },
   "2d040292-ce5c-44b9-aeef-706140ebe004": {
    "key": "CYP2D6:XMGORMGYUQDAAL",
@@ -4069,7 +5173,10 @@
    "done": true,
    "files": [
     "XMGORMGYUQDAAL__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9649,
+   "ptm": 0.9524,
+   "iptm": 0.968
   },
   "2c91593d-cb8b-4af9-a482-c983da39493a": {
    "key": "CYP2D6:TUAAGFPRMDBTHV",
@@ -4080,7 +5187,10 @@
    "done": true,
    "files": [
     "TUAAGFPRMDBTHV__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9473,
+   "ptm": 0.9494,
+   "iptm": 0.9468
   },
   "8c9ec530-7007-4b15-8e07-0db2d4637635": {
    "key": "CYP2D6:RZTAMFZIAATZDJ",
@@ -4091,7 +5201,10 @@
    "done": true,
    "files": [
     "RZTAMFZIAATZDJ__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9455,
+   "ptm": 0.9436,
+   "iptm": 0.946
   },
   "7dcdab6c-6006-4b86-9d69-1f08ba2847c0": {
    "key": "CYP2D6:FQQWSTJGVMFWSP",
@@ -4102,7 +5215,10 @@
    "done": true,
    "files": [
     "FQQWSTJGVMFWSP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.934,
+   "ptm": 0.9401,
+   "iptm": 0.9325
   },
   "ab5fbc24-a9c6-475c-8235-2f8dd2546171": {
    "key": "CYP2D6:AWXBLKSFTZTHJW",
@@ -4113,7 +5229,10 @@
    "done": true,
    "files": [
     "AWXBLKSFTZTHJW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9363,
+   "ptm": 0.9428,
+   "iptm": 0.9347
   },
   "28c7a306-b966-4450-b604-497dc8d6289d": {
    "key": "CYP2D6:ZNZJGCOJFHWZII",
@@ -4124,7 +5243,10 @@
    "done": true,
    "files": [
     "ZNZJGCOJFHWZII__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9581,
+   "ptm": 0.9443,
+   "iptm": 0.9616
   },
   "49d87ce9-c89f-4907-8750-7e313700897f": {
    "key": "CYP2D6:GOFAIWOMBJIHPT",
@@ -4135,7 +5257,10 @@
    "done": true,
    "files": [
     "GOFAIWOMBJIHPT__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9113,
+   "ptm": 0.9343,
+   "iptm": 0.9056
   },
   "139ddb1a-e39c-4ec4-943d-a1e4002a722b": {
    "key": "CYP2D6:PNKNFDXFPAAKRY",
@@ -4146,7 +5271,10 @@
    "done": true,
    "files": [
     "PNKNFDXFPAAKRY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9328,
+   "ptm": 0.9407,
+   "iptm": 0.9309
   },
   "5cdbc9fc-1168-45f1-9e8b-c1b15f32d74c": {
    "key": "CYP2D6:VHRWMNXPYKUVDY",
@@ -4157,7 +5285,10 @@
    "done": true,
    "files": [
     "VHRWMNXPYKUVDY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9781,
+   "ptm": 0.957,
+   "iptm": 0.9833
   },
   "fc9ce3e6-b86c-40d1-bae2-07217397f9bc": {
    "key": "CYP2D6:UFNHVBKKZASTOU",
@@ -4168,7 +5299,10 @@
    "done": true,
    "files": [
     "UFNHVBKKZASTOU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9743,
+   "ptm": 0.9497,
+   "iptm": 0.9805
   },
   "99cb4c92-c167-4c22-bfef-1a2c1c4c0826": {
    "key": "CYP2D6:YFWYLSQWPNJHAE",
@@ -4179,7 +5313,10 @@
    "done": true,
    "files": [
     "YFWYLSQWPNJHAE__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9387,
+   "ptm": 0.9404,
+   "iptm": 0.9383
   },
   "de84713d-b299-41c9-8ecc-74cf88dad32c": {
    "key": "CYP2D6:IEXQMLIWZWKXBA",
@@ -4190,7 +5327,10 @@
    "done": true,
    "files": [
     "IEXQMLIWZWKXBA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9591,
+   "ptm": 0.9464,
+   "iptm": 0.9623
   },
   "55868908-4778-41bb-afa4-8db9d98ec361": {
    "key": "CYP2D6:GGSBXNSPXLOOHI",
@@ -4201,7 +5341,10 @@
    "done": true,
    "files": [
     "GGSBXNSPXLOOHI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9635,
+   "ptm": 0.9452,
+   "iptm": 0.9681
   },
   "83d3c698-fae5-48be-b3e6-57b55f7701a4": {
    "key": "CYP2D6:LEPILDQORMQWAC",
@@ -4212,7 +5355,10 @@
    "done": true,
    "files": [
     "LEPILDQORMQWAC__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9165,
+   "ptm": 0.939,
+   "iptm": 0.9108
   },
   "681794da-7768-4d23-8b42-b5c457d78071": {
    "key": "CYP2D6:XEMCUDAQPISXBU",
@@ -4223,7 +5369,10 @@
    "done": true,
    "files": [
     "XEMCUDAQPISXBU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.951,
+   "ptm": 0.9413,
+   "iptm": 0.9534
   },
   "3236b2e7-6ac1-46fc-95d0-5b9d76297175": {
    "key": "CYP2D6:TTWYKBFGEGAEDK",
@@ -4234,7 +5383,10 @@
    "done": true,
    "files": [
     "TTWYKBFGEGAEDK__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9559,
+   "ptm": 0.9503,
+   "iptm": 0.9573
   },
   "aefa3d94-a9e0-438e-8733-325f20016b1c": {
    "key": "CYP2D6:XHXKXOXLVFVKSG",
@@ -4245,7 +5397,10 @@
    "done": true,
    "files": [
     "XHXKXOXLVFVKSG__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9718,
+   "ptm": 0.9522,
+   "iptm": 0.9766
   },
   "f13ea31a-6fd3-427f-9663-1ac4f6c7a60d": {
    "key": "CYP2D6:HZGBJLLJFPERLR",
@@ -4256,7 +5411,10 @@
    "done": true,
    "files": [
     "HZGBJLLJFPERLR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9762,
+   "ptm": 0.9533,
+   "iptm": 0.9819
   },
   "a8ae7d19-8d22-43c4-a80f-2179e3363fff": {
    "key": "CYP2D6:HGKKBSCYJACRCO",
@@ -4267,7 +5425,10 @@
    "done": true,
    "files": [
     "HGKKBSCYJACRCO__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9445,
+   "ptm": 0.9448,
+   "iptm": 0.9444
   },
   "a54205cd-789f-4d91-99d7-193e4650748c": {
    "key": "CYP2D6:STXKQWKWKKEVLS",
@@ -4278,7 +5439,10 @@
    "done": true,
    "files": [
     "STXKQWKWKKEVLS__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9462,
+   "ptm": 0.9468,
+   "iptm": 0.9461
   },
   "2f63e844-4f91-4413-9fa3-c55cc755a858": {
    "key": "CYP2D6:BJPFWDUUOUASTR",
@@ -4289,7 +5453,10 @@
    "done": true,
    "files": [
     "BJPFWDUUOUASTR__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9525,
+   "ptm": 0.9467,
+   "iptm": 0.9539
   },
   "44b178e2-b565-400d-b76a-a03033b3a7d9": {
    "key": "CYP2D6:AMGUHAQZHHPZGU",
@@ -4300,7 +5467,10 @@
    "done": true,
    "files": [
     "AMGUHAQZHHPZGU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9758,
+   "ptm": 0.9481,
+   "iptm": 0.9828
   },
   "3620ab34-df40-4668-b2d2-72528a8f8dbb": {
    "key": "CYP2D6:WUJHRFRBGPBFFB",
@@ -4311,7 +5481,10 @@
    "done": true,
    "files": [
     "WUJHRFRBGPBFFB__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9548,
+   "ptm": 0.9472,
+   "iptm": 0.9567
   },
   "a5fedb1d-eaeb-4c8e-a454-bfd2ae3437ce": {
    "key": "CYP2D6:DPCRFIMDLMABSP",
@@ -4322,7 +5495,10 @@
    "done": true,
    "files": [
     "DPCRFIMDLMABSP__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9632,
+   "ptm": 0.9459,
+   "iptm": 0.9675
   },
   "7c11ecdb-2ae9-45cb-aefe-21b3d9a7924d": {
    "key": "CYP2D6:YLVWRHXAIJGXAY",
@@ -4333,7 +5509,10 @@
    "done": true,
    "files": [
     "YLVWRHXAIJGXAY__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9566,
+   "ptm": 0.9473,
+   "iptm": 0.9589
   },
   "e04c855e-2471-4460-a0bf-a2a123fabda3": {
    "key": "CYP2D6:DTKNSZIBMSDKHW",
@@ -4344,7 +5523,10 @@
    "done": true,
    "files": [
     "DTKNSZIBMSDKHW__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9256,
+   "ptm": 0.9444,
+   "iptm": 0.9209
   },
   "b556c281-c0f5-4bf5-9a6c-72a6626e12e3": {
    "key": "CYP2D6:FGUQAYRHKXYOTM",
@@ -4355,7 +5537,10 @@
    "done": true,
    "files": [
     "FGUQAYRHKXYOTM__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9462,
+   "ptm": 0.9428,
+   "iptm": 0.9471
   },
   "95c3bdb6-3ac4-413f-b29a-37bf3d04dad6": {
    "key": "CYP2D6:RSCLWXNTTOQEDX",
@@ -4366,7 +5551,10 @@
    "done": true,
    "files": [
     "RSCLWXNTTOQEDX__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9549,
+   "ptm": 0.9421,
+   "iptm": 0.958
   },
   "7194ac72-1cbc-4fdf-9010-33199da98515": {
    "key": "CYP2D6:FKWGYVQNEUUREI",
@@ -4377,7 +5565,10 @@
    "done": true,
    "files": [
     "FKWGYVQNEUUREI__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9736,
+   "ptm": 0.9512,
+   "iptm": 0.9792
   },
   "bc61617b-4916-4963-aece-1090ef002403": {
    "key": "CYP2D6:ZCFOZFFAVPLQDU",
@@ -4388,7 +5579,10 @@
    "done": true,
    "files": [
     "ZCFOZFFAVPLQDU__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.955,
+   "ptm": 0.9475,
+   "iptm": 0.9569
   },
   "4da65898-1fa8-48ec-b0aa-5ad5904f51c2": {
    "key": "CYP2D6:LGYSCTIZOHPFJD",
@@ -4399,7 +5593,10 @@
    "done": true,
    "files": [
     "LGYSCTIZOHPFJD__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9593,
+   "ptm": 0.9443,
+   "iptm": 0.963
   },
   "e3e5f93f-27c0-4147-8c25-d41a5fa8e6b7": {
    "key": "CYP2D6:ULSVLCNUYFBDCA",
@@ -4410,7 +5607,10 @@
    "done": true,
    "files": [
     "ULSVLCNUYFBDCA__rt5s0.cif"
-   ]
+   ],
+   "confidence": 0.9775,
+   "ptm": 0.9557,
+   "iptm": 0.9829
   }
  },
  "compounds": "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\t5_bakeoff\\compounds.csv"

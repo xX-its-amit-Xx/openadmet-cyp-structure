@@ -52,7 +52,7 @@ def main() -> int:
     for job_id, rec in st["folds"].items():
         ik, iso = rec["inchikey_block"], rec["isoform"]
         completed = rec.get("done") is True
-        path, conf, valid, why = "", None, None, ""
+        path, conf, valid, why = "", rec.get("confidence"), None, ""
         geo_fields = {}
         if completed:
             files = rec.get("files") or []
@@ -84,7 +84,12 @@ def main() -> int:
             "isoform": iso,
             "method": METHOD,
             "structure_path": path,
-            "confidence": conf,          # this engine returns none per-pose here
+            # protenix_v2 DOES return confidence (ranking_score/ptm/iptm/plddt). An
+            # earlier version of this file left the column null with the note "this
+            # engine returns none", conflating "not useful for ranking" - which is
+            # measured and true - with "not available", which is false. They are
+            # different claims and only one of them was checked.
+            "confidence": conf,
             "predicted_affinity": None,  # not produced by co-folding; T6/activity model
             "completed": completed,
             "valid": valid,
