@@ -1,0 +1,14 @@
+{
+ "crystal": {
+  "atoms": 2083,
+  "src": "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\reference\\rcsb\\8SO1.cif"
+ },
+ "good": {
+  "atoms": 2227,
+  "src": "D:\\cyp_scratch\\val87b_unsteered\\CFF__unsteered__s1\\input_model_0.cif"
+ },
+ "bad": {
+  "atoms": 2227,
+  "src": "D:\\cyp_scratch\\val87b_unsteered\\CFF__unsteered__s1\\input_model_17.cif"
+ }
+}
