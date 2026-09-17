@@ -51,6 +51,10 @@ def main() -> int:
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--pairs", type=int, default=4)
+    ap.add_argument("--settings", default=None,
+                    help="comma-separated <recycles>x<steps>, e.g. '5x200,7x200'. "
+                         "Defaults to the four validated settings. recycles must "
+                         "be >= 2: num_recycles=1 measured -0.0596 (FINDING 016).")
     ap.add_argument("--engine", default="protenix_v2")
     ap.add_argument("--out", default=str(UNI / "diversity_probe"))
     a = ap.parse_args()
@@ -71,14 +75,25 @@ def main() -> int:
         cs = cs[~cs.pair.isin(skip)]
         print(f"skipping {before - len(cs)} pairs {a.engine} cannot fold")
     cs = cs.head(a.pairs)
-    print(f"probing {len(cs)} pairs x {len(SETTINGS)} settings on {a.engine}\n")
+    settings = SETTINGS
+    if a.settings:
+        settings = []
+        for tok in a.settings.split(","):
+            rec, steps = tok.strip().lower().split("x")
+            rec, steps = int(rec), int(steps)
+            if rec < 2:
+                print(f"refusing {tok!r}: num_recycles < 2 degrades by -0.0596 against "
+                      "the default, it does not diversify (FINDING 016)")
+                return 2
+            settings.append((rec, steps))
+    print(f"probing {len(cs)} pairs x {len(settings)} settings on {a.engine}\n")
 
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     futs = []
     for r in cs.itertuples():
         msa = s.load_job(st["msa"][r.target_key]["job_id"])
-        for rec, steps in SETTINGS:
+        for rec, steps in settings:
             f = getattr(s.fold, a.engine).fold(
                 sequences=[build_complex(r.sequence, r.smiles, msa)],
                 diffusion_samples=1, num_recycles=rec, num_steps=steps)
@@ -154,13 +169,13 @@ def main() -> int:
         return 2
     verdict = [len(X._dedupe(list(got[p_].values()))) for p_ in usable]
     med = float(np.median(verdict))
-    print(f"median distinct placements across {len(SETTINGS)} settings: {med:.1f}")
+    print(f"median distinct placements across {len(settings)} settings: {med:.1f}")
     if med <= 1:
         print("VERDICT: num_recycles / num_steps do NOT diversify either. "
               "No replicate-style lever remains on this venue.")
     else:
         print(f"VERDICT: these knobs DO diversify - {med:.1f} distinct from "
-              f"{len(SETTINGS)} settings. This is a usable depth lever.")
+              f"{len(settings)} settings. This is a usable depth lever.")
     return 0
 
 

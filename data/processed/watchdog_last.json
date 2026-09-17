@@ -1,5 +1,5 @@
 {
-  "checked": "2026-09-15 08:24:03",
+  "checked": "2026-09-17 00:24:09",
   "dry_run": true,
   "max_age_hours": 8.0,
   "owned_apps_running": 0,
@@ -45,9 +45,9 @@
   },
   "modal_cap_fraction": 0.541,
   "disk": {
-    "free_C_gb": 10.96,
-    "free_D_gb": 6.16,
-    "rclone_vfs_cache_gb": 0.0,
+    "free_C_gb": 9.97,
+    "free_D_gb": 2.31,
+    "rclone_vfs_cache_gb": 5.51,
     "warning": "rclone VFS cache is unbounded (no --vfs-cache-max-size); never write bulk data through O:\\ \u2014 use storage.push()"
   }
 }
