@@ -10,3 +10,9 @@ data/processed/p450_universe/*.jsonl
 data/processed/openprotein/op1/
 data/processed/p450_universe/poses/
 data/processed/p450_universe/entry_meta.json
+
+# atomic-save temp files: _save writes campaign.json.tmp<pid> then os.replace()s it.
+# A crash between those two steps leaves one behind, and `git add -A` swept 20 into the
+# repo before anyone noticed. They are never worth committing.
+*.json.tmp*
+*.json.prev
