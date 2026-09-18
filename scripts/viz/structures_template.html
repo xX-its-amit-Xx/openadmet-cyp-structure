@@ -1,0 +1,387 @@
+<title>Pose Inspector</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#129516;</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/3dmol@2.4.2/build/3Dmol-min.js"></script>
+<style>
+/* Palette inherited from the campaign dashboard (site/index.html) so this page belongs to
+   it rather than arriving in its own visual identity. Deliberately single-theme dark. */
+:root{--bg:#0b0b12;--panel:#171821;--panel2:#202233;--ink:#f7f1db;--muted:#b8b2a2;
+--cyan:#00e5ff;--pink:#ff3d81;--green:#50fa7b;--yellow:#ffe66d;--orange:#ff9f1c;
+--red:#ff5a5f;--line:#3f4256}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Trebuchet MS","Segoe UI",sans-serif;line-height:1.55;
+  background-image:radial-gradient(circle at 1px 1px,#15161f 1px,transparent 0);
+  background-size:18px 18px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:18px;padding-block:26px 70px}
+.kicker{font-family:Consolas,monospace;color:var(--cyan);letter-spacing:2px;
+  text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(22px,4vw,30px);margin:6px 0;text-transform:uppercase;letter-spacing:1px;
+  text-wrap:balance}
+h2{font-size:16px;margin:30px 0 10px;font-family:Consolas,monospace;color:var(--cyan);
+  letter-spacing:1px;text-transform:uppercase}
+h3{margin:0 0 6px;font-size:14px}
+p{color:var(--muted);max-width:78ch}
+a{color:var(--cyan)}
+.status{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--yellow);
+  border-radius:6px;padding:12px 16px;margin:14px 0;color:var(--ink);font-size:14px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  background:var(--panel)}
+.seg button{appearance:none;border:0;background:transparent;color:var(--muted);cursor:pointer;
+  font:12px/1 Consolas,monospace;padding:8px 13px;letter-spacing:1px;text-transform:uppercase}
+.seg button[aria-pressed="true"]{background:var(--cyan);color:#06121a}
+.seg button:focus-visible{outline:2px solid var(--pink);outline-offset:-2px}
+.console{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.95fr);gap:12px;
+  margin-top:14px}
+@media(max-width:900px){.console{grid-template-columns:1fr}}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.viewrow{display:grid;gap:1px;background:var(--line)}
+.viewrow.split{grid-template-columns:1fr 1fr}
+@media(max-width:640px){.viewrow.split{grid-template-columns:1fr}}
+.vp{position:relative;height:400px;background:#0d0e16;min-width:0}
+.vp .tag{position:absolute;top:9px;left:12px;z-index:3;font-family:Consolas,monospace;
+  font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);
+  pointer-events:none}
+.vp .score{position:absolute;bottom:9px;left:12px;z-index:3;pointer-events:none;
+  font-family:Consolas,monospace;font-size:11.5px;color:var(--muted)}
+.vp .score b{font-size:22px;display:block;line-height:1.1}
+.rail{display:flex;flex-direction:column;gap:10px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.ctl{display:flex;flex-direction:column;gap:8px}
+label.tog{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer}
+label.tog input{accent-color:var(--cyan);width:14px;height:14px;margin:0}
+button.act{appearance:none;border:1px solid var(--line);background:var(--panel2);color:var(--ink);
+  border-radius:6px;padding:8px 11px;font:12px/1 Consolas,monospace;cursor:pointer}
+button.act:hover{border-color:var(--cyan)}
+button.act:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+button.act.primary{background:var(--cyan);color:#06121a;border-color:var(--cyan);font-weight:bold}
+.rowb{display:flex;gap:8px}.rowb button{flex:1}
+.slider{width:100%;accent-color:var(--cyan)}
+.readout{display:grid;grid-template-columns:1fr auto;gap:3px 10px;font-family:Consolas,monospace;
+  font-size:11.5px;font-variant-numeric:tabular-nums}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0;text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:11px;color:var(--muted);margin-top:9px;
+  font-family:Consolas,monospace}
+.legend i{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:4px}
+.tiles{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 16px;
+  min-width:150px;flex:1}
+.tile b{display:block;font-size:26px;font-family:Consolas,monospace;color:var(--cyan);line-height:1.1}
+.tile span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.tile em{display:block;font-size:11.5px;color:var(--muted);font-style:normal;margin-top:6px;
+  border-top:1px solid var(--line);padding-top:6px;line-height:1.45}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:11px/1.4 Consolas,monospace;letter-spacing:1px;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.num{font-family:Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap;
+  color:var(--yellow)}
+.badge{font-family:Consolas,monospace;font-size:10px;padding:2px 7px;border-radius:10px;
+  border:1px solid var(--line);text-transform:uppercase;white-space:nowrap}
+.b-stands{color:var(--green);border-color:var(--green)}
+.b-retracted{color:var(--orange);border-color:var(--orange)}
+.b-rejected{color:var(--red);border-color:var(--red)}
+.b-src{color:var(--pink);border-color:var(--pink)}
+details{border-top:1px solid var(--line);padding:11px 0}
+details summary{cursor:pointer;font-weight:bold;font-size:13.5px;list-style:none;display:flex;
+  gap:8px;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"[+]";font-family:Consolas,monospace;color:var(--cyan)}
+details[open] summary::before{content:"[-]"}
+details .body{padding-top:8px;color:var(--muted);font-size:13.5px;max-width:78ch}
+[data-depth="1"] .lvl2,[data-depth="1"] .lvl3{display:none}
+[data-depth="2"] .lvl3{display:none}
+.foot{margin-top:32px;font-family:Consolas,monospace;font-size:11px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:12px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap" id="root" data-depth="1">
+<span class="kicker">openadmet // structure track // pose inspector</span>
+<h1>Right place, wrong way round</h1>
+<p style="font-family:Consolas,monospace;font-size:12px"><a href="/">&larr; campaign dashboard</a></p>
+
+<p>Caffeine bound to CYP3A4. Below: the crystal structure and two predictions of it &mdash;
+same molecule, same model, same settings, same batch. One is essentially correct, one is
+wrong, and <b style="color:var(--ink)">the model cannot tell you which</b>.</p>
+
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0 4px">
+  <span class="kicker">detail</span>
+  <div class="seg" role="group" aria-label="Level of detail">
+    <button id="d1" aria-pressed="true">orientation</button>
+    <button id="d2" aria-pressed="false">practitioner</button>
+    <button id="d3" aria-pressed="false">full record</button>
+  </div>
+  <span style="font-family:Consolas,monospace;font-size:11px;color:var(--muted)"
+        id="depthNote">plain language, no jargon</span>
+</div>
+
+<div class="console">
+  <div class="stage">
+    <div class="viewrow" id="viewrow">
+      <div class="vp" id="vpA"><span class="tag" id="tagA">overlay &middot; drag to rotate</span>
+        <div class="score" id="scoreA"></div></div>
+      <div class="vp" id="vpB" hidden><span class="tag">worst pose in batch</span>
+        <div class="score" id="scoreB"></div></div>
+    </div>
+  </div>
+  <div class="rail">
+    <div class="card"><h3>Show</h3><div class="ctl">
+      <label class="tog"><input type="checkbox" id="cShowCrystal" checked> crystal truth (8SO1)</label>
+      <label class="tog"><input type="checkbox" id="cShowGood" checked> prediction &mdash; best</label>
+      <label class="tog"><input type="checkbox" id="cShowBad" checked> prediction &mdash; worst</label>
+      <label class="tog"><input type="checkbox" id="cProtein" checked> protein backbone</label>
+      <label class="tog"><input type="checkbox" id="cPocket"> pocket residues</label>
+      <label class="tog"><input type="checkbox" id="cHeme" checked> heme + iron</label>
+      <label class="tog"><input type="checkbox" id="cAxial"> Cys442 thiolate</label>
+    </div></div>
+    <div class="card"><h3>Move</h3><div class="ctl">
+      <div class="rowb"><button class="act" id="bSplit">side by side</button>
+        <button class="act" id="bSpin">spin</button></div>
+      <button class="act primary" id="bMorph">animate the error &rarr;</button>
+      <input class="slider" id="sMorph" type="range" min="0" max="100" value="0"
+             aria-label="Morph from crystal pose to predicted pose">
+      <div style="font-family:Consolas,monospace;font-size:11px;color:var(--muted)"
+           id="morphLabel">crystal &#9656; prediction &middot; 0%</div>
+      <button class="act" id="bReset">reset view</button>
+    </div></div>
+    <div class="card"><h3>Measured</h3><dl class="readout" id="readout"></dl>
+      <div class="legend">
+        <span><i style="background:var(--muted)"></i>crystal</span>
+        <span><i style="background:var(--green)"></i>best</span>
+        <span><i style="background:var(--red)"></i>worst</span>
+        <span><i style="background:var(--pink)"></i>heme</span>
+        <span><i style="background:var(--orange)"></i>Fe</span>
+      </div></div>
+  </div>
+</div>
+
+<div class="status"><b>Both predictions put caffeine in the right pocket.</b> Their centres
+sit 0.38 &Aring; and 0.53 &Aring; from the crystal &mdash; a rounding error apart. One scores
+0.908 and the other 0.320, because the molecule is <b>turned the wrong way</b> inside the
+site. Generation is not the bottleneck; choosing between what was generated is.
+<span class="lvl2 lvl3"> Boltz's own confidence ranks these at chance (within-ligand
+&rho; = &minus;0.033), so picking the most confident pose is <b>worse than random</b>.</span></div>
+
+<h2>Why this pocket defeats co-folding</h2>
+<div class="tiles">
+  <div class="tile"><b>6th</b><span>the only free coordination site</span>
+    <em>Iron already holds four pyrrole nitrogens and the Cys442 thiolate. Ligand density on
+    the proximal face is physically impossible, whatever the model reports.</em></div>
+  <div class="tile"><b>2.20 &Aring;</b><span>median Fe&ndash;donor in crystals</span>
+    <em>1.94 / 2.20 / 2.38 &Aring; at p5/p50/p95 over 116 deposited CYP3A4 entries. 83 of 101
+    unique ligands coordinate the iron directly.</em></div>
+  <div class="tile"><b>F/G</b><span>the loop that moves</span>
+    <em>OpenADMET's cryoEM work names F/G-loop remodelling as why co-folding does poorly
+    here &mdash; the region left unmodelled in many X-ray structures.</em></div>
+</div>
+
+<details class="lvl2 lvl3" open><summary>Type II inhibition, in one paragraph</summary>
+  <div class="body">An sp2 nitrogen &mdash; imidazole, triazole, pyridine &mdash; donates its
+  lone pair into the iron's empty d<sub>z&sup2;</sub> orbital at about 2.0&ndash;2.3 &Aring;.
+  A dative bond with a hard directional requirement, not a soft contact, and the single most
+  CYP-specific signal available to a scorer. Caffeine is not a Type II binder, which is why
+  its closest approach here is 3.3&ndash;3.7 &Aring; rather than 2.2 &Aring;.</div></details>
+<details class="lvl3"><summary>What we tried at the iron, and why it failed</summary>
+  <div class="body">Forcing the Fe&rarr;donor contact during generation is a null: oracle
+  &minus;0.0023, selected &minus;0.0278. About 84% of poses already land inside any reasonable
+  coordination window, so an acceptance test on it is nearly inert &mdash; it moved selection
+  by &minus;0.0002. Coordination is real signal as a <em>scorer</em> (+0.14 LDDT-PLI for
+  coordinating poses) and useless as a <em>filter</em>. On the challenge compounds, though,
+  only 41% / 28.5% coordinate &mdash; there it has real variance, which is the opposite of
+  what our own crystal-set finding would have predicted.</div></details>
+
+<h2>Campaign record</h2>
+<p>Sixteen findings, most of them negative. The noise floor here is
+<b style="color:var(--yellow)">+0.0138</b>; anything under +0.020 is indistinguishable from
+a random feature. Verified against a formal multiple-comparisons correction &mdash; the two
+routes agree to 0.0008.</p>
+<div class="tblwrap"><table>
+  <thead><tr><th>#</th><th>finding</th><th>number</th><th>status</th></tr></thead>
+  <tbody id="findings"></tbody></table></div>
+
+<h2 class="lvl2 lvl3">Ideas borrowed from other fields</h2>
+<div class="tblwrap lvl2 lvl3"><table>
+  <thead><tr><th>from</th><th>idea</th><th>outcome</th></tr></thead>
+  <tbody id="ideas"></tbody></table></div>
+
+<div class="foot" id="foot"></div>
+</div>
+
+<script>
+const DATA = /*__DATA__*/;
+const root = document.getElementById('root');
+const notes = {1:'plain language, no jargon',2:'numbers and mechanism',
+               3:'everything, including what failed'};
+[['d1',1],['d2',2],['d3',3]].forEach(function(pair){
+  document.getElementById(pair[0]).addEventListener('click',function(){
+    root.dataset.depth = pair[1];
+    ['d1','d2','d3'].forEach(function(x,i){
+      document.getElementById(x).setAttribute('aria-pressed', i+1===pair[1]); });
+    document.getElementById('depthNote').textContent = notes[pair[1]];
+  });
+});
+
+const FIND = [
+ ['001','Selection, not generation, is the bottleneck','oracle 0.6975 vs selected 0.5706','stands'],
+ ['011','Cross-engine agreement selects &mdash; this ships','+0.0381 vs incumbent +0.0265','stands'],
+ ['012','Generalises to 81 held-out P450 proteins','+0.0357, p=0.0, 26/30 positive','stands'],
+ ['013','Union pool adds oracle selection cannot reach','+0.0375 added, &minus;0.0017 captured','stands'],
+ ['015','Both engines went deterministic','0 of 489 pairs improved','stands'],
+ ['016','Sampler sweep is a renewable reference','4 distinct poses from 4 settings','stands'],
+ ['016b','Reference depth saturates at 4','8 settings buy only +0.0030','stands'],
+ ['T5','BU acceptance gate, 400 complexes','100% completed, 91.5&ndash;97.0% valid','stands'],
+ ['E','Model confidence ranks poses at chance','&rho; &minus;0.033 / &minus;0.092','stands'],
+ ['007','Random feature scores +0.0138 at 95th pct','the noise floor','stands'],
+ ['014','QM scorer, tiers 1 and 2','constant on 85% of ligands','rejected'],
+ ['&mdash;','&quot;&minus;zm &minus; zx&quot; looked best at n=63','+0.0305 &rarr; +0.0183','retracted'],
+ ['&mdash;','&quot;Checkpoint diversity beats replicate count&quot;','rested on one data point','retracted']
+];
+document.getElementById('findings').innerHTML = FIND.map(function(r){
+  return '<tr><td class="num">'+r[0]+'</td><td>'+r[1]+'</td><td class="num">'+r[2]
+       + '</td><td><span class="badge b-'+r[3]+'">'+r[3]+'</span></td></tr>'; }).join('');
+
+const IDEAS = [
+ ['finance','Score by agreement-to-<em>variance</em> ratio, not agreement alone',
+  '<b style="color:var(--red)">dead</b> &mdash; best variant beats the incumbent by +0.0008; std alone is &minus;0.0682, so there is no risk dimension to trade against'],
+ ['cyber','Differential fuzzing: perturb the <em>input</em> (tautomers), not the engine',
+  '<b style="color:var(--orange)">blocked by chemistry</b> &mdash; tautomer reference depth is median 1 and &ge;4 is needed. No budget fixes that'],
+ ['art','Pentimenti: read the denoising <em>trajectory</em>, not the endpoint',
+  '<b style="color:var(--red)">dead</b> &mdash; the API exposes no intermediates'],
+ ['finance','Deflate the gain by the number of trials, as quant does for Sharpe',
+  '<b style="color:var(--green)">shipped</b> &mdash; survives at N=100, and the max-of-30 null reproduces our +0.0138 floor to 0.0008'],
+ ['cyber','Canary ligands with known answers salted into every batch',
+  'open &mdash; would have caught the determinism collapse days earlier'],
+ ['health','Failed folds are censored observations, not missing data','open']
+];
+document.getElementById('ideas').innerHTML = IDEAS.map(function(r){
+  return '<tr><td><span class="badge b-src">'+r[0]+'</span></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';
+}).join('');
+
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+var vA=null, vB=null, spinning=false, split=false, morphModel=null;
+var morphTag='bad';
+
+function paint(v, which){
+  v.removeAllModels(); v.removeAllShapes(); v.removeAllLabels();
+  if(v===vA){ morphModel=null; }
+  var show={crystal:document.getElementById('cShowCrystal').checked,
+            good:document.getElementById('cShowGood').checked,
+            bad:document.getElementById('cShowBad').checked};
+  if(which){ show.crystal=(which==='crystal'||which==='pair');
+             show.good=(which==='good'||which==='pair');
+             show.bad=(which==='bad'); }
+  var wantProt=document.getElementById('cProtein').checked;
+  var wantPocket=document.getElementById('cPocket').checked;
+  var wantHeme=document.getElementById('cHeme').checked;
+  var wantAxial=document.getElementById('cAxial').checked;
+  var first=true;
+  ['crystal','good','bad'].forEach(function(tag){
+    if(!show[tag]) return;
+    var m=v.addModel(DATA.pdb[tag],'pdb');
+    var c = tag==='crystal'?css('--muted') : (tag==='good'?css('--green'):css('--red'));
+    if(wantProt && first){
+      m.setStyle({atom:'CA'},{cartoon:{color:css('--line'),opacity:.5,thickness:.2}});
+      first=false;
+    }
+    if(wantHeme){
+      m.setStyle({resn:'HEM'},{stick:{radius:.13,color:css('--pink')}});
+      m.setStyle({resn:'HEM',atom:'FE'},{sphere:{radius:.5,color:css('--orange')}});
+    }
+    m.setStyle({resn:'CFF'},{stick:{radius:.2,color:c},sphere:{radius:.3,color:c,opacity:.92}});
+    if(wantPocket){
+      m.setStyle({resi:DATA.pocket},{stick:{radius:.08,color:css('--line'),opacity:.8}});
+    }
+    if(wantAxial){
+      m.setStyle({resi:DATA.axialCys,atom:'SG'},{sphere:{radius:.34,color:css('--yellow')}});
+    }
+  });
+  v.zoomTo({resn:'CFF'}); v.zoom(0.55); v.render();
+}
+
+function ensureMorph(){
+  var f=DATA.morph[morphTag];
+  if(!f) return null;
+  if(morphModel) return morphModel;
+  morphModel = vA.addModel(f.pdb,'pdb');
+  return morphModel;
+}
+
+/* Atom i of the morph model is atom i of BOTH exported frames: the generator wrote the
+   ligand-only PDB in the same order as the coordinate arrays, through the symmetry-aware
+   mapping, so no re-keying is needed and the interpolation is chemically meaningful. */
+function morph(pct){
+  var f=DATA.morph[morphTag];
+  document.getElementById('morphLabel').textContent =
+    f ? ('crystal ▸ worst pose · '+pct+'%') : 'morph unavailable';
+  if(!f) return;
+  var m=ensureMorph();
+  if(!m) return;
+  var t=pct/100, atoms=m.selectedAtoms({});
+  for(var i=0;i<atoms.length && i<f.from.length;i++){
+    atoms[i].x = f.from[i][0] + (f.to[i][0]-f.from[i][0])*t;
+    atoms[i].y = f.from[i][1] + (f.to[i][1]-f.from[i][1])*t;
+    atoms[i].z = f.from[i][2] + (f.to[i][2]-f.from[i][2])*t;
+  }
+  m.setStyle({},{stick:{radius:.22,color:css('--red')},
+                 sphere:{radius:.34,color:css('--red')}});
+  vA.render();
+}
+
+function boot(){
+  var cfg={backgroundColor:'rgba(0,0,0,0)',antialias:true};
+  vA=$3Dmol.createViewer(document.getElementById('vpA'),cfg);
+  vB=$3Dmol.createViewer(document.getElementById('vpB'),cfg);
+  paint(vA,null); paint(vB,'bad');
+  document.getElementById('scoreA').innerHTML =
+    '<b style="color:'+css('--green')+'">'+DATA.scores.good.lddt+'</b>best in batch · BiSyRMSD '
+    + DATA.scores.good.rmsd + ' Å';
+  document.getElementById('scoreB').innerHTML =
+    '<b style="color:'+css('--red')+'">'+DATA.scores.bad.lddt+'</b>worst in batch · BiSyRMSD '
+    + DATA.scores.bad.rmsd + ' Å';
+  document.getElementById('readout').innerHTML =
+     '<dt>LDDT-PLI best</dt><dd style="color:'+css('--green')+'">'+DATA.scores.good.lddt+'</dd>'
+    +'<dt>LDDT-PLI worst</dt><dd style="color:'+css('--red')+'">'+DATA.scores.bad.lddt+'</dd>'
+    +'<dt>BiSyRMSD best</dt><dd>'+DATA.scores.good.rmsd+' Å</dd>'
+    +'<dt>BiSyRMSD worst</dt><dd>'+DATA.scores.bad.rmsd+' Å</dd>'
+    +'<dt>centre offset best</dt><dd>0.38 Å</dd>'
+    +'<dt>centre offset worst</dt><dd>0.53 Å</dd>'
+    +'<dt>backbone RMSD</dt><dd>0.43–0.70 Å</dd>'
+    +'<dt>Cα superposed</dt><dd>467</dd>';
+  document.getElementById('foot').textContent =
+    'real structures · crystal 8SO1 plus two Boltz-2 predictions, superposed on 467 Cα'
+    + ' · scores use symmetry-aware ligand atom mapping · poses public at'
+    + ' huggingface.co/datasets/xX-its-amit-Xx/cyp-cofold-poses';
+}
+
+['cShowCrystal','cShowGood','cShowBad','cProtein','cPocket','cHeme','cAxial'].forEach(function(id){
+  document.getElementById(id).addEventListener('change',function(){
+    paint(vA, split?'pair':null); if(split) paint(vB,'bad');
+  });
+});
+document.getElementById('bSplit').addEventListener('click',function(){
+  split=!split;
+  document.getElementById('viewrow').classList.toggle('split',split);
+  document.getElementById('vpB').hidden=!split;
+  document.getElementById('tagA').textContent =
+    split ? 'crystal + best pose' : 'overlay · drag to rotate';
+  setTimeout(function(){ vA.resize(); vB.resize();
+    paint(vA, split?'pair':null); paint(vB,'bad'); },30);
+});
+document.getElementById('bSpin').addEventListener('click',function(){
+  spinning=!spinning; vA.spin(spinning?'y':false); if(split) vB.spin(spinning?'y':false);
+});
+document.getElementById('bReset').addEventListener('click',function(){
+  paint(vA, split?'pair':null); if(split) paint(vB,'bad');
+});
+document.getElementById('sMorph').addEventListener('input',function(e){ morph(+e.target.value); });
+document.getElementById('bMorph').addEventListener('click',function(){
+  var s=document.getElementById('sMorph'), v=0;
+  function step(){ v+=2; s.value=v; morph(v); if(v<100) requestAnimationFrame(step); }
+  s.value=0; step();
+});
+
+if(window.$3Dmol) boot(); else window.addEventListener('load', boot);
+</script>
