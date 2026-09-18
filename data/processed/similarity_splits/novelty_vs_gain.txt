@@ -1,0 +1,13 @@
+366 ligands | NN similarity within the P450 set: median 0.651, p5 0.208, p95 1.000
+challenge test-set NN median for comparison: 0.587
+
+ligand novelty (NN to rest)     pairs   random  selected     gain
+most novel  NN < 0.45             134   0.6684    0.6911  +0.0227
+0.45 - 0.60  (challenge band)      82   0.7361    0.7788  +0.0427
+0.60 - 0.80                       163   0.7286    0.7686  +0.0400
+least novel NN >= 0.80            110   0.6399    0.6912  +0.0513
+ALL                               489   0.6934    0.7317  +0.0383
+
+If the gain is flat across bands, the selector does not care about chemical
+novelty - which is what a catastrophe detector should look like, since it keys on
+pool disagreement rather than on recognising the molecule.
