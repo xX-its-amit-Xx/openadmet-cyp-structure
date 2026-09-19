@@ -174,3 +174,25 @@ finetune_arms/  4 split CSVs
 
 GPU verified through Slurm on `gyorilab`: `cuda avail True`, `NVIDIA H200 NVL`,
 `bf16 True`. The PXR campaign never reached a running GPU job; this one has.
+
+### The checkpoint is a full training checkpoint, not an inference export
+
+Verified on a GPU node, 2026-09-19:
+
+```
+top-level keys: epoch, global_step, pytorch-lightning_version, state_dict,
+                loops, callbacks, optimizer_states, lr_schedulers
+tensors: 5102          parameters: 521.0M
+hyper_parameters: atom_s, atom_z, token_s, token_z, num_bins, training_args,
+                  validation_args, embedder_args, msa_args, pairformer_args,
+                  score_model_args, diffusion_process_args
+```
+
+`optimizer_states`, `lr_schedulers` and `loops` survive in the released file, so training
+state was not stripped. `hyper_parameters.training_args` means the original training
+configuration is **recoverable rather than guessed** - which matters because the PXR
+attempt's three OpenFold3 configs specified no learning rate at all and nobody could say
+afterwards what had actually been run.
+
+Combined with `Boltz2.training_step` and `configure_optimizers` shipping in the package,
+every piece needed to resume or adapt training is present. Nothing here requires a fork.
