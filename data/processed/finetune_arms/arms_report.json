@@ -1,0 +1,62 @@
+{
+ "arm1_promiscuous": {
+  "pairs": 255,
+  "ligands": 161,
+  "proteins": 50,
+  "scaffolds": 119,
+  "train": 204,
+  "test": 51,
+  "held_out_scaffold_clusters": 19,
+  "novelty": {
+   "median_nn": 0.6591,
+   "mean_nn": 0.6744,
+   "vs_challenge_median": 0.0721
+  },
+  "mean_best_lddt": 0.7807
+ },
+ "arm2_family": {
+  "pairs": 491,
+  "ligands": 366,
+  "proteins": 87,
+  "scaffolds": 237,
+  "train": 393,
+  "test": 98,
+  "held_out_scaffold_clusters": 58,
+  "novelty": {
+   "median_nn": 0.4833,
+   "mean_nn": 0.5392,
+   "vs_challenge_median": -0.1037
+  },
+  "mean_best_lddt": 0.7925
+ },
+ "arm3_cyp3a4_only": {
+  "pairs": 107,
+  "ligands": 97,
+  "proteins": 1,
+  "scaffolds": 79,
+  "train": 86,
+  "test": 21,
+  "held_out_scaffold_clusters": 17,
+  "novelty": {
+   "median_nn": 0.7581,
+   "mean_nn": 0.6295,
+   "vs_challenge_median": 0.1711
+  },
+  "mean_best_lddt": 0.6537
+ },
+ "arm4_mix": {
+  "pairs": 406,
+  "ligands": 296,
+  "proteins": 50,
+  "scaffolds": 203,
+  "train": 317,
+  "test": 89,
+  "held_out_scaffold_clusters": 29,
+  "novelty": {
+   "median_nn": 0.5357,
+   "mean_nn": 0.5184,
+   "vs_challenge_median": -0.0513
+  },
+  "mean_best_lddt": 0.7873
+ }
+}
