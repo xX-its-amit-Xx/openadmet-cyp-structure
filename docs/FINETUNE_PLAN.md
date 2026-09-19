@@ -196,3 +196,45 @@ afterwards what had actually been run.
 
 Combined with `Boltz2.training_step` and `configure_optimizers` shipping in the package,
 every piece needed to resume or adapt training is present. Nothing here requires a fork.
+
+### The actual pretraining recipe, recovered from the checkpoint
+
+Not guessed from another paper's defaults — read out of `hyper_parameters.training_args`:
+
+| parameter | pretrain value |
+|---|---|
+| `max_lr` | **1e-3** |
+| `base_lr` | 0.0 |
+| `lr_scheduler` | `af3` |
+| `lr_warmup_no_steps` | 1000 |
+| `lr_start_decay_after_n_steps` | 50000 |
+| `weight_decay` | 0.003 (excluded on norm/bias) |
+| adam β1 / β2 / eps | 0.9 / 0.95 / 1e-8 |
+| `diffusion_loss_weight` | **4.0** |
+| `confidence_loss_weight` | 0.3 |
+| `distogram_loss_weight` | 0.03 |
+| `affinity_loss_weight` | 0.003 |
+| `recycling_steps` | 3 |
+| `diffusion_multiplicity` | 32 |
+| stopped at | epoch 37, global_step 23,750 |
+
+Two things follow.
+
+**The low-N LR is now relative to reality.** Apheris's 3e-4 is 0.3× this model's true
+pretrain LR, and warmup drops 1000 → 50. The plan's table assumed a 1.8e-3 pretrain
+default; the real value is 1e-3, so the intended reduction is milder than it looked.
+
+**The loss we need is already the dominant term.** `diffusion_loss_weight` 4.0 governs
+coordinates and outweighs confidence (0.3) and distogram (0.03) by more than an order of
+magnitude. Our failure mode is ligand *orientation* — a coordinate error — so the gradient
+signal is pointed at the right thing without reweighting. The plan's instinct to "put the
+objective weight on the interface" is already satisfied by the stock configuration, and
+changing it would be tuning against a recipe that produced a working model.
+
+### Data path
+
+Boltz ships its own mmCIF parser (`data/parse/mmcif.py`, `mmcif_with_constraints.py`) and
+`Manifest` / `Record` as JSON-serialisable types. So the 506 crystal structures convert
+through **Boltz's own parser**, not a reimplementation — which matters because a mismatch
+between how training data is parsed and how inference parses it would degrade the
+fine-tune silently rather than failing.
