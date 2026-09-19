@@ -119,3 +119,58 @@ runway if the earlier gates pass.
   ligand-free state despite a ligand present. That is precisely the CYP3A4 pocket-expansion
   problem, so it is a plausible thing for fine-tuning to fix, and equally a plausible thing
   for it to fail at.
+
+---
+
+## CORRECTION, 2026-09-19 — Boltz-2 training code IS released
+
+The "Known risks" section above says:
+
+> **Boltz-2 training code is not released.** `docs/training.md` upstream still reads
+> "Coming soon updated training information for Boltz-2!", and the fine-tune issues are
+> unanswered. The LoRA route depends on third-party forks built against Boltz-1.
+
+**That is no longer true.** `pip install boltz` (2.2.1, on PyPI) ships the full training
+stack inside the package:
+
+| component | location |
+|---|---|
+| `Boltz2(LightningModule)` | `boltz/model/models/boltz2.py:40` |
+| `training_step` | `boltz2.py:793` |
+| `validation_step` | `boltz2.py:1002` |
+| `configure_optimizers` | `boltz2.py:1132` |
+| `BoltzTrainingDataModule` | `boltz/data/module/trainingv2.py:467` |
+| `TrainingDataset` / `ValidationDataset` | `trainingv2.py:168 / 317` |
+| losses, optimisers | `boltz/model/loss/`, `boltz/model/optim/` |
+
+The only thing absent is a `train` subcommand — `boltz/main.py` registers `predict` and
+nothing else. So fine-tuning needs a script that wires `BoltzTrainingDataModule` to
+`Boltz2` and calls `pl.Trainer.fit`, which is ordinary Lightning work, **not** a
+third-party fork and **not** a fallback to OpenFold3.
+
+### Why this is a materially better position than the plan assumed
+
+We fine-tune **the same architecture that generated our 16,500-pose corpus**. A gain
+transfers directly to the pool we already have and to the cross-engine reference built on
+it, instead of requiring a new engine whose poses would have to be re-validated from
+scratch. The plan's step 4 ("full OpenFold3 low-N fine-tune, only if step 3 shows signal")
+can stay closed unless Boltz fails.
+
+The LoRA precedent still applies and is still the first configuration to try: IntFold's
+per-layer LoRA on a frozen base captured 4 of 5 held-out CDK2 conformations while keeping
+35 of 35 on the common state — a measured no-catastrophic-forgetting result on exactly this
+shape of single-family adaptation.
+
+### Environment, as actually built
+
+On `/scratch/shenoy.am/cyp-finetune`, all offline:
+
+```
+env/          micromamba-built Python 3.11.16, torch 2.5.1+cu121
+msa/          185 a3m, 1009 MB          <- the PXR blocker, closed
+rcsb/         506 crystal mmCIF, 516 MB
+finetune_arms/  4 split CSVs
+```
+
+GPU verified through Slurm on `gyorilab`: `cuda avail True`, `NVIDIA H200 NVL`,
+`bf16 True`. The PXR campaign never reached a running GPU job; this one has.
