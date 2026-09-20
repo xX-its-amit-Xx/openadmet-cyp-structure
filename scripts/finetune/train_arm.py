@@ -50,15 +50,20 @@ def main() -> int:
     ap.add_argument("--lr", type=float, default=3e-4)      # 0.3x the 1e-3 pretrain LR
     ap.add_argument("--warmup", type=int, default=50)      # vs 1000 in pretraining
     ap.add_argument("--accum", type=int, default=4)
+    ap.add_argument("--clip", type=float, default=10.0)
+    ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument("--max-tokens", type=int, default=512)
+    ap.add_argument("--max-atoms", type=int, default=4096)
     ap.add_argument("--dry-run", action="store_true",
                     help="build everything and report shapes without stepping the optimiser")
     a = ap.parse_args()
 
+    from boltz.data.types import Manifest
+
     ck = ROOT / "boltz_cache" / "boltz2_conf.ckpt"
-    manifest = ROOT / "records" / a.arm / "manifest.json"
-    recs = json.loads(manifest.read_text())
-    train = [r for r in recs if r["split"] == "train"]
-    test = [r for r in recs if r["split"] == "test"]
+    arm_dir = ROOT / "records" / a.arm
+    train = Manifest.load(arm_dir / "manifest_train.json").records
+    test = Manifest.load(arm_dir / "manifest_test.json").records
     print(f"arm={a.arm}  train={len(train)}  test={len(test)}", flush=True)
 
     # Load the checkpoint's own hyper_parameters so the model is constructed exactly as it
@@ -71,11 +76,18 @@ def main() -> int:
     print("diffusion_loss_weight:", hp.get("training_args", {}).get("diffusion_loss_weight"),
           flush=True)
 
-    # override only the low-N knobs, leave loss weights and architecture untouched
-    ta = dict(hp.get("training_args", {}))
-    ta["max_lr"] = a.lr
-    ta["lr_warmup_no_steps"] = a.warmup
-    hp["training_args"] = ta
+    # Override only the low-N knobs, leave loss weights and architecture untouched.
+    # This has to be passed to load_from_checkpoint as a kwarg: mutating the dict read
+    # out of the file changes nothing, because Lightning re-reads hyper_parameters from
+    # the checkpoint itself. An earlier version edited `hp` and trained at 1e-3.
+    ta = hp.get("training_args")
+    try:
+        ta.max_lr = a.lr
+        ta.lr_warmup_no_steps = a.warmup
+    except (AttributeError, TypeError):
+        ta = dict(ta)
+        ta["max_lr"] = a.lr
+        ta["lr_warmup_no_steps"] = a.warmup
 
     # Construct through boltz's OWN loading path, exactly as main.py:1314 does.
     #
@@ -117,20 +129,80 @@ def main() -> int:
         pairformer_args=asdict(pairformer_args),
         msa_args=asdict(msa_args),
         steering_args=asdict(steering_args),
+        training_args=ta,
     )
+    # `validate_structure` is a constructor argument of Boltz2 that is never assigned to
+    # self, so `Boltz2.setup()` raises AttributeError on the first non-predict stage -
+    # i.e. the released model cannot enter a training loop as shipped. (Same shape as
+    # trainingv2.py being Boltz-1's: the training path was not exercised on release.)
+    # Setting it False both fixes the attribute and is what we want: boltz's internal
+    # validators report their own metrics, and our gate is LDDT-PLI from cypstruct.pose.
+    model.validate_structure = False
+
     n_par = sum(p_.numel() for p_ in model.parameters())
     print(f"model loaded strict=True: {n_par/1e6:.1f}M params", flush=True)
+    print("effective max_lr:", model.training_args.get("max_lr"), flush=True)
+
+    sys.path.insert(0, str(ROOT))
+    from boltz2_data import Boltz2FinetuneDataModule
+
+    dm = Boltz2FinetuneDataModule(
+        arm_dir=arm_dir,
+        msa_dir=ROOT / "msa_npz",
+        mol_dir=ROOT / "boltz_cache" / "mols",
+        batch_size=1,
+        num_workers=a.workers,
+        max_tokens=a.max_tokens,
+        max_atoms=a.max_atoms,
+    )
 
     if a.dry_run:
+        dm.setup()
+        batch = next(iter(dm.train_dataloader()))
+        shapes = {k: tuple(v.shape) for k, v in list(batch.items())
+                  if hasattr(v, "shape")}
         print(json.dumps({
             "arm": a.arm, "train": len(train), "test": len(test),
             "params_M": round(n_par / 1e6, 1),
             "lr": a.lr, "warmup": a.warmup, "steps": a.steps,
-            "status": "DRY RUN - model constructs and weights load; no optimiser step taken",
+            "batch_keys": len(shapes),
+            "coords": shapes.get("coords"),
+            "token_index": shapes.get("token_index"),
+            "msa": shapes.get("msa"),
+            "status": "DRY RUN - weights load and one real batch featurizes; no optimiser step",
         }, indent=2))
         return 0
 
-    print("full training path not yet wired - run with --dry-run", flush=True)
+    import pytorch_lightning as pl
+    from pytorch_lightning.callbacks import ModelCheckpoint
+    from pytorch_lightning.loggers import CSVLogger
+
+    out = ROOT / "runs" / a.arm
+    out.mkdir(parents=True, exist_ok=True)
+
+    # Lightning validation is OFF on purpose. Boltz2.validation_step dispatches through
+    # `self.validator_mapper[batch["idx_dataset"]]`, boltz's own validation harness, which
+    # reports its internal metrics - not LDDT-PLI against our crystal set. The gate this
+    # project pre-registered is held-out LDDT-PLI measured by cypstruct.pose, computed by
+    # running inference from the saved checkpoint. Wiring a validator that reports a
+    # different number than the gate is how a run looks healthy and fails the gate.
+    trainer = pl.Trainer(
+        accelerator="gpu", devices=1, precision="bf16-mixed",
+        max_steps=a.steps, accumulate_grad_batches=a.accum,
+        limit_val_batches=0, num_sanity_val_steps=0,
+        gradient_clip_val=a.clip,
+        log_every_n_steps=1,
+        logger=CSVLogger(str(out), name="csv"),
+        callbacks=[ModelCheckpoint(dirpath=str(out), save_last=True,
+                                   every_n_train_steps=max(a.steps // 4, 1),
+                                   save_top_k=-1, filename="step{step}")],
+        enable_progress_bar=True,
+    )
+    trainer.fit(model, datamodule=dm)
+    print(json.dumps({
+        "arm": a.arm, "steps": a.steps, "out": str(out),
+        "status": "TRAINED",
+    }, indent=2))
     return 0
 
 
