@@ -444,3 +444,75 @@ The honest scale number also got smaller: RNA3DB's 15,441 chains collapse to **1
 structurally independent components**. The whole RNA corpus fits in under 100 GB unless we
 build MSAs, which adds 933 GB for NCBI nt — and at 142 independent components, it is hard
 to argue the MSAs are worth 933 GB.
+
+
+---
+
+## Revision 7 — 2026-09-20, correcting Revision 3
+
+### AlphaGenome is out entirely, not merely non-commercial
+
+Revision 3 listed **AlphaGenome-PyTorch as recommended model #2** and described the
+licence issue as a restriction on training. That was too soft, and the recommendation is
+**withdrawn**.
+
+AlphaGenome's Model Terms state its outputs "should not be used for the training of other
+machine learning models." A JEPA head trained on AlphaGenome embeddings is exactly that.
+So it is unusable as a feature source *and* as a distillation target — the two ways we
+would plausibly have used it. It survives only as an **external comparator**: we may
+compare against its published numbers, not build on its outputs.
+
+Revised DNA shortlist:
+
+| slot | model | licence | dims |
+|---|---|---|---|
+| 1 | **Evo 2 7B** (`arcinstitute/evo2_7b`) | Apache-2.0 | 4096 @1 Mb ctx |
+| 2 | **borzoi-pytorch** (`johahi/borzoi-replicate-*`) — port claims exact parity | CC-BY-4.0 | ~1920 @32 bp |
+| 2b | **Enformer** | CC-BY-4.0 | 3072 @128 bp |
+| 3 | **ModernGENA-large** | open | — |
+
+### The methodological finding, which matters more than the model list
+
+**GUE and the Nucleotide Transformer benchmark share roughly half their datasets. BEND,
+DART-Eval and LRB are largely ENCODE again.**
+
+> Scoring well on three suites is one result reported three times.
+
+This is the same disease as leaky splits, one level up: not leakage between train and
+test, but leakage between *benchmarks*, so apparent independent confirmation is
+correlated by construction. It generalises beyond genomics and belongs in this project's
+standing rules — we already require difficulty-matched benchmarks (FINDING 022) and
+honest splits (Revision 2); add **provenance-disjoint benchmarks** to that list.
+
+Before claiming a result holds "across N benchmarks", check how many distinct datasets
+those N actually contain.
+
+### Sizes, now measured rather than estimated
+
+| resource | size | verdict |
+|---|---|---|
+| ENCODE narrowPeaks: TF 71.0 GB · histone 44 GB · DNase 9 GB · ATAC 7 GB | ~131 GB | **peaks only** |
+| ENCODE bigWigs | 43 TB | no |
+| all of ENCODE | 1.71 PB | no |
+| **SCREEN cCRE V4** — 2,348,854 elements | **129 MB** | best value-per-byte in the survey |
+| HT-SELEX Jolma 2013 | 10.76 GB | yes if we go this way |
+| HT-SELEX Yin methyl | 507.7 GB | no |
+| Codebook GHT-SELEX (2026) — raw 235.7 GB / **peaks 73.3 MB** | peaks | best new TF-DNA resource since 2017; real genomic flanks |
+
+### A judgment call for the user, not for me
+
+**Roadmap Epigenomics (1.2 TB) sits on a single unmirrored server behind a dead domain.**
+The agent's recommendation is "mirror now or lose it."
+
+I am not doing that unilaterally. It is 1.2 TB of a *shared* 1.5 PB university filesystem,
+spent on data this project has no use for — DNA contributes essentially no interaction
+supervision (Revision 3), and epigenomics contributes none at all. Preserving it may
+well be a public good, but it is a public good at someone else's expense and it is not
+our call to make quietly. Flagged for the user to decide.
+
+### New blockers
+
+DART-Eval requires a Synapse DUA — worth noting that **its task 5 is the only
+held-out-population variant test found anywhere in the survey**, which is exactly the
+kind of honest evaluation this program keeps saying it wants. Enformer/Borzoi training
+buckets are requester-pays (~$600 for 5 TB) and unnecessary.
