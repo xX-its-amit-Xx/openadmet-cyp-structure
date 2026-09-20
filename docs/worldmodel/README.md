@@ -358,3 +358,89 @@ R-BIND 2.0 (URL dead; data only in paywalled ACS supporting information), Inforn
 (signed licence), PDBbind registration, OpenFold3 HF gate, RIBOSPAN-10K (on request),
 AlphaFold3 (non-redistributable). Given the 48-structure ceiling above, **none of the
 RNA-specific ones are worth chasing.**
+
+
+---
+
+## Revision 5 — 2026-09-20, the CYP3A4 causal decomposition
+
+Full argument in `CYP3A4_EVOLUTION.md` (~11,300 words, DOIs/PDB IDs/UniProt throughout,
+inferences explicitly tagged). What it changes here:
+
+### The convergence worth noting
+
+Its structural conclusion — **"the iron anchor is saturated and uninformative;
+discrimination lives under the F/G roof"** — is the same claim this repo reached
+empirically and independently, twice: FINDING 008 (anchor-local features all fail;
+recalibrating the coordination window moved selection by -0.0002) and FINDING 019
+(unbonded predictions already reproduce crystal Fe geometry, so an explicit heme bond is
+a null at p = 0.43).
+
+One route is pose measurement on 85 held-out complexes; the other is comparative genomics
+and mutagenesis literature. They agree. That is the strongest support any claim in this
+project currently has, and it says: **stop working on the anchor.**
+
+### Selection tuned regioselectivity, not breadth
+
+The three sites under selection across the whole phylogeny are **codons 437, 478 and
+479**, on the cavity floor — and mutagenesis shows they change **where the substrate gets
+oxidised, not how tightly it binds**. Two lineage-specific bursts dominate (CYP3A7 at the
+hominoid stem, omega = infinity on 15.5 nonsynonymous / 0 synonymous, simultaneous with
+its restriction to fetal liver; human CYP3A4 after the chimp split, 6.0/0.0) against a
+background where 89% of sites are purifying.
+
+The standard "CYP3A expanded to detoxify plant secondary metabolites" story is therefore
+**not supported by the selection signal** — nothing in it demonstrably tuned promiscuity.
+CYP3A4 is also under hard physiological constraint: the single point mutation **I301T
+causes a Mendelian disease** (vitamin D-dependent rickets type 3, doi:10.1111/febs.70277)
+via novel 11-alpha-hydroxylated vitamin D metabolites. The "drug enzyme" framing is a
+modern accident of which molecules we happen to hand it.
+
+### The pocket, as an inference
+
+Built to hold a **rigid, membrane-partitioned, mostly apolar 300-600 Da molecule loosely
+enough to oxidise it at several positions**, polar end tethered at the rim
+(Ser119 / Arg212 / Thr224 / backbone amides), entrance opening *sideways into the bilayer*
+through a one-way F-F' gate.
+
+Chemical space it should accept but that has never been assayed: sulfated lipid
+conjugates, endocannabinoid and oxylipin chemistry, beyond-rule-of-5 macrocycles and
+PROTACs, and **two-ligand pairs where a co-binder converts an uncoupled non-substrate into
+a productive one** - a drug-drug interaction class with no standard assay.
+
+### Two facts with direct operational consequences
+
+1. **Ligands *increase* CYP3A4's global dynamics** (HDX-MS,
+   doi:10.1016/j.jinorgbio.2023.112211) rather than rigidifying it on binding. Any scoring
+   function assuming induced-fit rigidification has the sign wrong.
+2. **All 122 CYP3A4 PDB entries are X-ray. There is no cryo-EM CYP3A4 structure.** That is
+   exactly the gap the OpenADMET release fills, so the challenge references are not merely
+   new data, they are the first of their kind for this target.
+
+### Multi-occupancy: checked, and it is rare
+
+See `FINDING_W001_multicopy_check.md`. 5 of 87 validation entries hold more than one copy
+of the query ligand (max 3). Three of the four real cases rank in the bottom ten of 87 by
+pool oracle - and the fourth, caffeine with three copies, ranks fourth. n = 4. Logged as a
+hypothesis with a defined test, not as a result.
+
+---
+
+## Revision 6 — 2026-09-20, revised RNA reconnaissance
+
+Two items that change the build, both verified in source rather than inferred:
+
+**1. Boltz-2 already does RNA, and already writes embeddings.** `entity_type: rna` plus
+`--write_embeddings` are both shipped (`main.py:1038`, `writer.py:250`,
+`schema.py:1021`). So the cross-modal pair-representation test in Revision 4 needs **one
+model we already run**, not a second predictor and an adapter. RhoFold+ becomes a
+cross-check rather than a dependency, and the whole idea gets testable this week.
+
+**2. A free blind test set, if we act now.** **CASP17 releases coordinates for 52 RNA
+targets on 2026-11-29.** Freezing a PDB training cutoff *today* buys an uncontaminated
+blind evaluation for nothing. Costs one line in a manifest now; cannot be recovered later.
+
+The honest scale number also got smaller: RNA3DB's 15,441 chains collapse to **142
+structurally independent components**. The whole RNA corpus fits in under 100 GB unless we
+build MSAs, which adds 933 GB for NCBI nt — and at 142 independent components, it is hard
+to argue the MSAs are worth 933 GB.

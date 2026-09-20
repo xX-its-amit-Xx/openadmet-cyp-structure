@@ -26,9 +26,12 @@ abundant (**58.6 M RNAcentral sequences**), structure is scarce (**10,399 PDB en
 honest tally; the short version is **101** RNA–ligand pairs with both a structure and a measured
 affinity, **~2,500** RNA–ligand affinity measurements in aggregated form worldwide, and **48**
 non-redundant drug-like RNA–ligand co-structures ever solved — against PDBbind's ~20,000 and
-BindingDB's 3.2 M. The one place RNA is *data-rich* is chemical probing: **Ribonanza's ~2 M
-experimentally probed sequences** have no protein analogue, and only one small model (11 M
-parameters) has ever been trained on them.
+BindingDB's 3.2 M. The one place RNA is *data-rich* is chemical probing: Ribonanza's
+**167,671 dual-channel profiles** (the honest figure — the headline "2 M sequences" is a 12×
+overstatement) have no protein analogue, and only one 11 M-parameter model has ever trained on
+them. And the structural ceiling is harder than the entry count suggests: after RNA3DB's
+structural de-duplication, 15,441 RNA chains collapse to **142 independent components**. Every
+RNA split should be budgeted on 142, not on 10,399.
 
 ---
 
@@ -227,55 +230,165 @@ mode is not free. **Budget MSA staging as its own task, or restrict the pool to 
 
 ## 4. RNA structure and sequence data at scale
 
-Counts pulled live on **2026-09-20** from the resource's own release notes or FTP listing, or
-from the RCSB Search API, unless marked otherwise.
+All counts pulled live on **2026-09-20** from the resource's own API / FTP / file headers, not
+from search snippets. Where two definitions of "RNA-only" disagree (protein-free vs
+protein-and-DNA-free) both numbers are given.
 
-| Resource | Ver / date | URL | Open? | License | Size (exact counts) | Format | DL GB | Use in shared space |
-|---|---|---|---|---|---|---|---|---|
-| **RNAcentral** | **release 27, 2026-07-20** | [rnacentral.org](https://rnacentral.org/) · [FTP](https://ftp.ebi.ac.uk/pub/databases/RNAcentral/current_release/) | yes, no registration | **CC0** | **58,558,809 unique ncRNA sequences; 266,374,326 cross-refs; 59 expert databases** | FASTA, JSON, TSV, Postgres dumps | **10.0** (`rnacentral_active.fasta.gz`), +1.2 inactive, +11 species-specific | ⭐ The pretraining corpus every RNA LM in §1 was trained on. Stage once to `/scratch`; embed a deduplicated subset, not all 58 M |
-| **Rfam** | **15.1, January 2026** | [rfam.org](https://rfam.org/) · [FTP](https://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/) | yes | **CC0** | **4,227 families** with seed alignments, consensus SS and covariance models | Stockholm, CM, MySQL | seeds <0.5; full-region hits ~10s | Family labels are the only broad functional annotation RNA has. Use as the **held-out split key** — leave-one-family-out is RNA's analogue of leave-one-target-out |
-| **PDB — RNA-containing** | live | [RCSB search API](https://search.rcsb.org) | yes | **CC0** | **10,399 entries** with ≥1 RNA entity; **2,375 RNA-only**; **8,024 protein–RNA**; 574 RNA-only entries released since 2023 | mmCIF | ~40 for the RNA subset | Ground truth for every structural claim. **Everything in §6 is a re-cut of this** |
-| **RNA3DB** | **2026-01-05 full release** | [marcellszi/rna3db](https://github.com/marcellszi/rna3db) | yes, GitHub releases | **MIT** | Non-redundant clustering of all PDB RNA chains with **pre-built train/test splits**, plus Infernal cmscan results for every chain | mmCIF + JSON | **2.15** (`rna3db-mmcifs.tar.xz`), 0.088 cmscans, 0.007 jsons | ⭐ **The split we should use.** Someone has already defended a non-redundant RNA structural split by sequence *and* Infernal homology. Do not reinvent it — this repo's rules demand honest gating, and RNA3DB is the honest RNA split |
-| **RNAsolo / RNAsolo2** | live | [rnasolo.cs.put.poznan.pl](https://rnasolo.cs.put.poznan.pl/) | yes | not stated on the front page | Cleaned PDB-derived RNA 3D structures, organised by **BGSU equivalence class**, with resolution-cutoff and redundancy-filtered subsets | PDB, mmCIF, extracted chains | ~GB | Convenient pre-cleaned download of the same PDB data. ⚠️ **Not independent of the PDB** — it is a cleaning layer. Front page returns almost no text to automated fetchers; check the version by hand |
-| **BGSU RNA Structure Atlas / RNA3DHub** | live, weekly | [rna.bgsu.edu/rna3dhub](http://rna.bgsu.edu/rna3dhub/) | yes | academic | Representative sets and non-redundant lists by resolution; **RNA 3D Motif Atlas** (internal-loop and hairpin-loop motif groups) | lists + coords | small | The canonical **equivalence-class** definition. Use BGSU classes (or RNA3DB clusters) whenever reporting a "non-redundant" RNA number — otherwise the number is inflated |
-| **bpRNA / bpRNA-1m** | 1.0 | [bprna.cgrb.oregonstate.edu](https://bprna.cgrb.oregonstate.edu/) | yes | academic | **102,318 sequences** = CRW 55,600 + Rfam 43,273 + PDB 669 + tmRNA 728 + SRP 959 + tRNA 623 + RNase P 466. Annotated: 2,075,928 stems, 708,144 hairpins, 538,670 internal loops, 517,672 bulges, 317,046 multiloops, **57,686 pseudoknots** | dbn/ST | <1 | Standard secondary-structure corpus. ⚠️ **Only 669 of the 102,318 come from experimental 3D structures** — the rest are covariance-model predictions from Rfam/CRW. A "100 k structure dataset" that is really ~700 experimental structures plus comparative-sequence inference |
-| **bpRNA-1m(90)** | 1.0 | same | yes | academic | 90%-identity-filtered subset (~28 k) | dbn | <1 | The version to use; the unfiltered one leaks between train and test |
-| **bpRNA-new** | 2021 | via SPOT-RNA2 / UFold papers | yes | academic | Rfam families **added after** bpRNA-1m — built specifically as a cross-family generalisation test | dbn | <1 | ⭐ The only SS test set that is family-disjoint from training. Use it, not ArchiveII |
-| **ArchiveII / RNAStralign** | 2010s | via ML papers | yes | academic | ArchiveII ~3,975 sequences, 10 families; RNAStralign ~37,000, 8 families | ct | <1 | ⚠️ **Massively redundant and family-overlapping with every training set.** Near-perfect scores here are memorisation. Per kill criterion 3, an uninformative benchmark |
-| **Ribonanza** | Das lab, bioRxiv 2024 / Kaggle 2023 | [paper](https://www.biorxiv.org/content/10.1101/2024.02.24.581671v2) · [DataPrepRibonanzaKaggle2023](https://github.com/DasLab/DataPrepRibonanzaKaggle2023) | yes | competition + open data | **Chemical mapping on ~2 million diverse RNA sequences** (Eterna + crowdsourced). Kaggle train: **214,831 sequences** with a 2A3 or DMS profile at SNR>1.0; **Ribonanza+ post-competition: 494,111** at SNR>1.0; +563 k noisy (SNR<1); RibonanzaNet trained on **2.1 M** | parquet/CSV reactivity profiles | ~10s of GB | ⭐⭐ **The single most valuable RNA dataset for a world model.** It is *experimental* per-nucleotide structure signal at a scale nothing else in RNA approaches — 2 M sequences vs 2,375 RNA-only PDB entries. 2A3 and DMS are two chemical probes reporting nucleotide flexibility/accessibility |
-| **RMDB (RNA Mapping Database)** | live | [rmdb.stanford.edu](https://rmdb.stanford.edu/) | yes | open | The long-tail SHAPE/DMS/chemical-mapping archive that predates Ribonanza; hundreds of entries, thousands of constructs | RDAT | <1 | Older and much smaller than Ribonanza; use for probe/condition diversity, not scale |
-| **OpenKnot / Eterna** | ongoing | Das lab / Eterna | yes | open | Pseudoknot-focused crowdsourced chemical mapping, layered on the Ribonanza pipeline | same | — | ⚠️ **Not independent of Ribonanza** — same platform, same lab, overlapping libraries |
-| **CASP15 / CASP16 RNA targets** | 2022 / 2024 | [CASP16 NA assessment](https://pmc.ncbi.nlm.nih.gov/articles/PMC12248019/) · [prot.70072](https://doi.org/10.1002/prot.70072) | yes | open | CASP16: **42 nucleic-acid targets, 65 groups, 46 labs**; CASP15 had 12 RNA targets | PDB | tiny | The only genuinely blind RNA structural evaluation. **Tiny — 42 targets.** Any claim of "beating CASP" rests on a handful of structures |
-| **RNA-Puzzles** | rounds I–V | [rnapuzzles.org](https://www.rnapuzzles.org/) | yes | open | Low tens of targets per round | PDB | tiny | Same caveat as CASP |
-| **MSA resources: rMSA / RNAcmap3 / Infernal+nt** | — | [RNAcmap3 server](https://aigene.cloudbastion.cn/#/rna-msm) | tool open; DBs are the cost | — | rMSA needs **~2 TB**; RNAcmap3 needs blastn vs `nt` (151 GB) + Infernal vs Rfam | a3m/Stockholm | 0.15–2 TB | **Budget as its own task.** GPU nodes have no internet; MSAs must be built on a login node and staged |
-| **GtRNAdb / SILVA / CRW** | live | various | yes | mostly academic | tRNA and rRNA specialist corpora, already largely inside RNAcentral | FASTA/alignment | 1–20 | ⚠️ Mostly **redundant with RNAcentral**, which aggregates 59 expert databases including these |
+### 4.1 Three-dimensional structure — one dataset wearing four hats
 
-### Notes on §4
+| Resource | Ver / date | Exact size | Open? License | Format | DL GB | URL | Use |
+|---|---|---|---|---|---|---|---|
+| **RCSB PDB** (source of truth) | live | **260,089** total entries; **10,399** RNA-containing; **2,375** protein-free / **2,300** protein-and-DNA-free; **8,024** protein+RNA; **22,231** any nucleic acid; **21,491** RNA polymer entities; **28,668** RNA chains; 5,035 RNA entries ≤3.0 Å; 5,292 RNA entries by cryo-EM | yes, **CC0** | mmCIF / BinaryCIF | ~90 (full archive gz) | [search.rcsb.org](https://search.rcsb.org/rcsbsearch/v2/query) | The only experimental 3D signal in this entire document |
+| **BGSU RNA 3D Hub / NR list** | **release 4.57, 2026-09-16** | **22,688 IFEs**; 8 resolution cutoffs (1.5→20 Å) | yes, free | CSV | <0.01 | [rna.bgsu.edu/rna3dhub/nrlist](https://rna.bgsu.edu/rna3dhub/nrlist) | ⭐ The canonical **de-duplication key**. Use its equivalence classes as the split unit — do not invent your own |
+| **BGSU RNA 3D Motif Atlas** | **v4.14**, repset 2026-09-09 | IL **412 groups / 3,180 instances**; HL **256 / 2,117**; J3 157 / 462; J4 71; J5 37; J6 8; J7 4 | yes, free | unit-ID CSV | <0.01 | [rna.bgsu.edu/rna3dhub/motifs](https://rna.bgsu.edu/rna3dhub/motifs) | A discrete 3D-motif vocabulary — a natural supervised target for a structure tokenizer. ⚠️ **tiny: ~5.8 k loop instances total** |
+| **RNAsolo 2.0** | BGSU 4.57 (2026-09-17), Rfam 15.1, **PDB snapshot 2025-10-25** | **22,540** BGSU-derived structures; **16,804** Rfam-classified; **5,123** representative; **155** Rfam families; **2,688** prepackaged benchmark ZIPs | yes; licence not stated (PDB-derived → CC0) | PDB, mmCIF, FASTA, dot-bracket, torsion angles | ~2 | [rnasolo.cs.put.poznan.pl](https://rnasolo.cs.put.poznan.pl/) · API `/api/statistics/version/` | Best "clean RNA-only coordinates **plus matched 1D/2D/torsion**" source — multimodal by construction. ⚠️ **its PDB snapshot is 11 months stale**; front page is a JS SPA and returns nothing to fetchers |
+| **RNA3DB** | **2026-01-05 full release** | **26,532 parsed chains → 15,441 filtered → 3,157 unique sequences → 2,199 clusters → 142 structurally dissimilar components.** Split: train 91 comp / 1,539 clust / **13,451 chains**; test 51 / 660 / **1,990**; ⚠️ **valid set is EMPTY**. Length min/med/max 32 / 121 / 19,000 nt | yes, **MIT** | mmCIF + JSON + Infernal cmscans | **2.15** mmcifs, 0.088 cmscans, 0.007 jsons | [marcellszi/rna3db](https://github.com/marcellszi/rna3db) | ⭐⭐ **The split to train on.** The only one that dissimilarity-clusters by *structure*, not just sequence |
+| **RNA-Puzzles** | PZ1–PZ39 + PZ74, PZ79 (Apr 2026) | `standardized_dataset` = rp01–rp21 + rp24 | yes; toolkit [NAR 2019](https://doi.org/10.1093/nar/gkz1108) | PDB + eval tools | <1 | [rnapuzzles.org](https://www.rnapuzzles.org/) · [standardized_dataset](https://github.com/RNA-Puzzles/standardized_dataset) (`raw_dataset` is **404**) | Human-expert baseline poses. ~40 targets — a hard eval, not training scale |
+| **CASP15 RNA** | 2022 | **13** RNA targets (R1107–R1190) | yes | PDB + all group predictions | ~1 | [targetlist](https://predictioncenter.org/casp15/targetlist.cgi) | Blind-eval calibration |
+| **CASP16 RNA** | 2024; assessed 2026 | **52** RNA target IDs listed; assessment covers **35 RNA monomers + 11 RNA multimers + 18 NA–protein hybrids = 42 NA targets**, 65 groups / 46 labs | yes | PDB + predictions | ~1 | [download area](https://predictioncenter.org/download_area/CASP16/) · [prot.70072](https://doi.org/10.1002/prot.70072) | ⚠️ **No prediction of a previously-unseen natural RNA exceeded TM 0.8.** The three that passed all had a template at TM>0.6 **and** a deep MSA (Neff>2000) |
+| **CASP17 RNA** ⚡ | **2026, LIVE** | **52** RNA target IDs (R2301–R2457) already posted as sequences. Prediction season closed **2026-09-11**; **coordinates public 2026-11-29** | will be | — | — | [casp17 targetlist](https://predictioncenter.org/casp17/targetlist.cgi) | ⭐ **A genuinely unseen blind set lands in ~10 weeks, free.** Freeze a PDB training cutoff now (e.g. ≤2026-04-30) and it is ours for nothing |
 
-**The scale asymmetry, stated plainly.**
+### 4.2 Sequence, family and alignment
 
-| layer | RNA | protein (for reference) |
+| Resource | Ver / date | Exact size | License | DL size | URL | Use |
+|---|---|---|---|---|---|---|
+| **RNAcentral** | **release 27, 2026-07-20** | **58,558,809 unique sequences; 266,374,326 cross-references; 59 expert databases** | CC0 / EMBL-EBI terms | **10 GB** active FASTA; 11 GB species-specific (+2.5 GB .ssi); 1.2 GB inactive; 2.5 GB id_mapping | [FTP release notes](https://ftp.ebi.ac.uk/pub/databases/RNAcentral/current_release/release_notes.txt) | ⭐ The pretraining corpus behind every RNA LM in §1. **A superset** — it already contains Rfam, GtRNAdb, SILVA and PDB entries |
+| **RNAcentral on HuggingFace** | release-27 | **46,210,324 rows**, **17.46 GB** parquet | as above | 17.5 | [RNAcentral/release-27](https://huggingface.co/datasets/RNAcentral/release-27) | Drop-in pretraining shards; no FTP staging needed |
+| **multimolecule/rnacentral** | — | 6,291,456 rows, 2.47 GB, plus .512/.1024/.2048/.4096/.8192 length buckets | AGPL wrapper | 2.5 | [multimolecule](https://huggingface.co/multimolecule) | Length-bucketed subsample. ⚠️ **~11% of RNAcentral, not the whole thing** |
+| **Rfam** | **15.1, Jan 2026** (15.0 was 09/2024) | **4,227 families; 151 clans; 10,545,171 full regions** (9,540,790 in 15.0; ~3.0 M in 14.x); **109,390 seed sequences** | **CC0** | Rfam.seed.gz **5.7 MB**; Rfam.cm.gz **44 MB**; Rfam.full_region.gz **120 MB**; genseq 1.4 GB; rfamseq 1.0 GB; full alignments up to **701 MB for RF00001 alone** | [FTP CURRENT](https://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/) | ⭐ The only resource spanning sequence **and** structure: consensus SS + covariance models. **Seed (109 k) is the curated part; the 10.5 M full regions are Infernal hits, not curation** |
+| **multimolecule/rfam** | — | **20,051,822 rows**, 726 MB parquet | AGPL wrapper | 0.73 | [multimolecule](https://huggingface.co/multimolecule) | Rfam full regions, ready to stream |
+| **SILVA** | **SSU 144 (2026-08-14)**; LSU 138.2 (2024) | SSU Parc **15,439,037**; SSU Ref NR99 **905,628**; LSU Parc **1,312,521**; LSU NR99 **95,279** aligned rRNA sequences | ⚠️ **CC-BY 4.0, explicitly academic AND commercial** — the widely repeated "non-commercial" claim is **out of date** | SSUParc 2.96 GB; SSURef_NR99 324 MB; SSURef 2.02 GB | [ftp.arb-silva.de/current](https://ftp.arb-silva.de/current/) | Deepest rRNA alignments = the richest covariation signal that exists — and the single largest source of redundancy in every 2D benchmark |
+| **GtRNAdb** | Release 22, Sep 2024 (**stale**) | 242,068 bacterial + 10,476 archaeal + 178,889 eukaryotic tRNA genes ≈ **431 k** across 4,867 genomes | not stated | <1 | [gtrnadb.ucsc.edu](https://gtrnadb.ucsc.edu/) | tRNA is the one family with near-exhaustive coverage and a known fold — a good anchor family. **Already inside RNAcentral** |
+| **NCBI `nt`** | 2026-09-19 | **383 volumes, 932.7 GB compressed** | public domain | **~933 GB** | [ftp.ncbi.nlm.nih.gov/blast/db](https://ftp.ncbi.nlm.nih.gov/blast/db/) | Only needed to build MSAs ourselves |
+| **rMSA / RNAcmap / RNAcmap2** | live / 2023 | pipelines, not datasets | open | — | [pylelab/rMSA](https://github.com/pylelab/rMSA) · [jaswindersingh2/RNAcmap](https://github.com/jaswindersingh2/RNAcmap) (the often-cited `pylelab/RNAcmap` and `sysu-yanglab/RNAcmap` are **404**) | ⚠️ **No precomputed public RNA MSA corpus exists anywhere.** This is a real gap and a real compute cost |
+| **CRW** | — | ~55,600 structures (as ingested by bpRNA) | — | — | ⚠️ `crw-site.chemistry.gatech.edu` is **DEAD**; [rna.ccbb.utexas.edu](https://www.rna.ccbb.utexas.edu/) is up | Effectively reachable only *through* bpRNA-1m now |
+
+### 4.3 Chemical probing — where RNA is actually data-rich
+
+| Resource | Ver / yr | Exact size | Open? Gated? | DL | URL | Use |
+|---|---|---|---|---|---|---|
+| **Ribonanza** (Das/Eterna) | bioRxiv 2024.02.24.581671 — ⚠️ **still a preprint as of 2026-09-20** | **~2,000,000 sequences; ~400 M nucleotide measurements — but only 80 M at acceptable S/N.** Kaggle train ≈ 800,000 sequences; **214,831** have ≥1 profile at S/N>1; **167,671 have BOTH 2A3 and DMS at S/N>1** (139,725 train / 27,946 val). Private LB reserved 1,000,000. Post-competition "Ribonanza+": **494,111** at S/N>1. Pseudo-label set 1,907,619. Plus 70,000 legacy RMDB profiles | data CC-BY via PMC, but ⚠️ **CSVs are on Kaggle → account + competition-rules acceptance** | ~10 GB | [PMC10925082](https://pmc.ncbi.nlm.nih.gov/articles/PMC10925082/) · [Kaggle](https://www.kaggle.com/competitions/stanford-ribonanza-rna-folding) | ⭐⭐ The largest RNA functional readout in existence and the best "structure-adjacent" continuous label for sequences with **no** 3D structure |
+| Ribonanza sub-libraries | 2023–24 | **15k** virus-window library; **PK50 / PK90** (Eterna OpenKnot pseudoknot pilots, 50/90 nt inserts, 4 and 3 replicates); **Positives240**; **DasLabBigLib-1M / -2-1M**; SL5-M2seq; RYOS/OpenVaccine | mixed | — | [DataPrepRibonanzaKaggle2023](https://github.com/DasLab/DataPrepRibonanzaKaggle2023) | **PK50/PK90 are the only decent pseudoknot supervision at scale** |
+| **`DasLab/pdb_map`** ⭐ | live | tooling that **joins PDB 3D coordinates to 2A3/DMS RDAT reactivity** | open | small | [DasLab/pdb_map](https://github.com/DasLab/pdb_map) | ⭐⭐ **The most directly useful artifact in this whole section**: it builds paired (3D coordinates ⊗ chemical reactivity) records — literally shared-embedding training pairs |
+| **RibonanzaNet2** ⚡ | repo live, **no preprint DOI yet** | trained on **~3.6 M sequences** after S/N>1; `Ribonanza2A_Genscript.v0.1.0.hdf5`; 9 blocks, d=256, pair 64 | MIT | — | [Shujun-He/RibonanzaNet2](https://github.com/Shujun-He/RibonanzaNet2) | Current SOTA reactivity encoder. ⚠️ **`Shujun-He/RibonanzaNet-3D` is a 404** — the 3D line is the Kaggle competition / RNAPro |
+| **Kaggle "Stanford RNA 3D Folding"** | 2025 | C1′-coordinate prediction, ≤40 native structures × 5 models per target, TM-score metric | ⚠️ Kaggle-gated | — | [k1_tools](https://github.com/DasLab/k1_tools) | The 3D successor competition |
+| **RMDB** | live | **1,024 entries; 4,556,825 RNA constructs; 520,709,190 data points** | data **CC0**, site CC-BY-SA | small | [rmdb.stanford.edu](https://rmdb.stanford.edu/) | Legacy SHAPE/DMS/CMCT/1M7/mutate-and-map. ⚠️ the 4.5 M "constructs" figure is dominated by a few big libraries |
+| **EternaBench** | 2022 | eternabench-cm **13,553** rows; eternabench-switch **11,246** | open | ~0.005 | [eternagame/EternaBench](https://github.com/eternagame/EternaBench) (`DasLab/EternaBench` is 404) | Thermodynamic/ensemble benchmark — calibrates a probabilistic 2D head |
+| **OpenKnot** | pilot + rounds 1–3 | feeds PK50/PK90 into Ribonanza | open | — | [OpenKnotScore](https://github.com/eternagame/OpenKnotScore) | ⚠️ **Not independent of Ribonanza** — a scoring metric, not a standalone corpus |
+| **TerminatorJ/RNA_chemical_ribonanza** | — | **335,616 rows, 308 MB parquet** | open, **no Kaggle account** | 0.31 | [HF dataset](https://huggingface.co/datasets/TerminatorJ/RNA_chemical_ribonanza) | ⚠️ Third-party ungated route into Ribonanza reactivity — **verify checksums against RMDB/SRA before trusting it** |
+
+### 4.4 Secondary-structure benchmarks — all small, all leaky
+
+| Resource | Yr | Exact size | DL | URL | Note |
+|---|---|---|---|---|---|
+| **bpRNA-1m** | 2018 | **102,318** = CRW **55,600** + Rfam **43,273** + tmRNA 728 + SRP 959 + tRNA 623 + RNase P 466 + **PDB 669** | ⚠️ full zip **53.3 GiB**; **`dbnFiles.zip` is 45.2 MB** | [download.php](https://bprna.cgrb.oregonstate.edu/download.php) | ⚠️⚠️ **The 53 GiB is almost entirely PDF/JPG diagrams. The actual structures are 45 MB.** And **only 669 of 102,318 (0.65%) are experimental** — the rest are comparative-analysis annotations |
+| **bpRNA-1m(90)** | 2018 | **28,370** | 3.75 GiB zip | same | The 90%-identity filter removes **72%** of the set |
+| **bpRNA-TS0 / TR0 / VL0** | 2019 | the SPOT-RNA split everyone quotes | <0.01 | [multimolecule](https://huggingface.co/multimolecule) | — |
+| **bpRNA-new** | Rfam 14.2-derived | **5,401** | 0.0004 | HF | ⭐ The cross-family generalisation set — use this, not ArchiveII |
+| **ArchiveII** | 2016 | **3,975** sequences, 10 families | 5.5 MB | ⚠️ canonical Rochester URL is **404**; use [marcellszi/dl-rna releases](https://github.com/marcellszi/dl-rna/releases) or HF `multimolecule/archiveii` | Massively redundant |
+| **RNAStralign** | 2017 | **37,149** rows, 1.7 MB | 0.002 | HF `multimolecule/rnastralign` | Massively redundant |
+| **Rivas set** | — | 4,188 rows | 0.0006 | HF `multimolecule/rivas` | — |
+| **CASP-RNA (HF)** | — | **12 rows** | tiny | HF `multimolecule/casp-rna` | ⚠️ Literally 12 structures |
+| **Szikszai et al.** ⚡ | **RNA 32(4):428–442, Apr 2026**, [10.1261/rna.080846.125](https://doi.org/10.1261/rna.080846.125), PMC12990807, CC-BY | New PDB-derived benchmark on RNA3DB; maps ArchiveII and bpRNA-1m families onto Rfam 15.0 and quantifies the overlap | — | [marcellszi/dl-rna](https://github.com/marcellszi/dl-rna) | ⭐ **Read before choosing any 2D benchmark.** DL methods do **not** beat thermodynamic methods on non-homologous test sets; SPOT-RNA's F1 drops materially once overlaps are removed; ~34% of bpRNA-1m has no Rfam homolog at E<0.001. Money quote: *"a data set based on Rfam can only contain 4,178 relatively unique secondary structures."* |
+
+### 4.5 Other ML-ready corpora
+
+| Resource | Yr | Size | License | URL |
+|---|---|---|---|---|
+| **Marks-lab/RNAgym** | 2025-05 | **2,668,740 rows, 637 MB** | **CC-BY-4.0** | [HF](https://huggingface.co/datasets/Marks-lab/RNAgym) — fitness/DMS assays (ribozymes, tRNA, mRNA), **not structure** |
+| **genbio-ai/rna-downstream-tasks** | — | 1,244,218 rows, 425 MB | see card | HF |
+| **luiswyss/rnaglib** | — | 2,560 rows | see card | HF — RNA 2.5D graphs **with ligand-binding sites** (ties §4 to §6) |
+| **houlab/rna-junctions-db** | — | 21,841 rows, 163 MB | see card | HF |
+
+### Notes on §4 — the ones that change decisions
+
+**R1 — RNAsolo, BGSU NR, RNA3DB and "PDB RNA" are one dataset wearing four hats.** All derive
+from the same ~10,399 entries / 28,668 chains. Stacking them buys **zero** new structures; it
+buys different cleaning and splitting conventions. Use **RNA3DB** for splits, **RNAsolo** for
+cleaned multimodal files, **BGSU NR 4.57** for the de-dup key. Cite the PDB entry count once.
+
+**R2 — the redundancy collapse is 109×, and it is the real ceiling.** RNA3DB:
+**15,441 chains → 3,157 unique sequences → 2,199 clusters → 142 structurally dissimilar
+components.** Any headline of "21,000 RNA structures" is really **~142 independent things**.
+Budget evaluation splits on 142. This is the same lesson as this repo's n=87 ceiling in
+FINDING 007, one modality over.
+
+**R3 — "bpRNA-1m has 102,318 structures" is the most misleading number in the field.** 55,600
+(54%) come from CRW, overwhelmingly rRNA — one or two real structures with thousands of
+homologs. **669 entries (0.65%) are experimental.** The rest is comparative-analysis annotation,
+not measurement. And the 53 GiB download is mostly diagrams.
+
+**R4 — "Ribonanza: two million sequences" → the usable number is 167,671.** 400 M nucleotide
+measurements, only 80 M at acceptable S/N; 214,831 sequences with one good channel; **167,671
+with both 2A3 and DMS at S/N>1.** A 12× haircut from the headline. And reactivity is **not** a
+structure label — it is a per-nucleotide scalar correlated with pairing. Use it as a weak or
+auxiliary head, never as ground truth.
+
+**R5 — RNAsolo's PDB snapshot is 11 months stale** (`pdb_ver: 2025-10-25` while
+`bgsu_ver: 4.57, 2026-09-17`). Accidentally convenient as a CASP17 holdout, dangerous if you
+assume it is current.
+
+**R6 — registration gates.** Kaggle (Ribonanza, OpenVaccine, Stanford RNA 3D Folding) needs an
+account **and** per-competition rules acceptance — not scriptable without a token. Everything
+else here is ungated: Rfam (CC0), RNAcentral, PDB (CC0), RNA3DB (MIT), RMDB (CC0), RNAgym
+(CC-BY-4.0), **SILVA (now CC-BY-4.0, commercial use allowed)**.
+
+**R7 — dead or moved URLs that will otherwise cost a day.** `rna.urmc.rochester.edu/pub/archiveII.tar.gz`
+404 · `crw-site.chemistry.gatech.edu` no response · `RNA-Puzzles/raw_dataset` 404 ·
+`pylelab/RNAcmap` and `sysu-yanglab/RNAcmap` 404 · `Shujun-He/RibonanzaNet-3D` 404 ·
+`DasLab/EternaBench` 404 · `rmdb.stanford.edu/repository/` 404 · RNAsolo's homepage is a JS SPA
+(use `/api/statistics/version/`).
+
+**R8 — no precomputed public RNA MSA corpus exists.** rMSA and RNAcmap are *pipelines*; running
+them means holding **`nt` (933 GB)** plus Rfam CMs and spending hours of Infernal per sequence.
+CASP16's own conclusion — that the only successes had **Neff > 2000** — means MSAs are
+load-bearing, so this is a first-class compute task. Exactly the failure mode that cost the PXR
+campaign ~12 days.
+
+**R9 — benchmark leakage is documented, not hypothetical.** Szikszai et al. (RNA 2026) show
+ArchiveII and bpRNA-1m families map onto Rfam clans and that F1 drops once overlaps are excluded.
+**A 2D number reported on TS0 or ArchiveII without family-level exclusion is not a
+generalisation number** — kill criterion 3 applies directly.
+
+**R10 — CASP17 is a free uncontaminated holdout, for ~10 weeks only.** Season closed 2026-09-11;
+52 RNA target IDs are public as sequences; **coordinates land 2026-11-29**. Freeze a PDB training
+cutoff today and we get a genuine blind set at zero cost. ⚠️ Conversely, **do not let any 2026
+PDB deposition leak into training.**
+
+### Download budget — 298 TB scratch is never the binding constraint
+
+| tier | contents | total |
+|---|---|---|
+| **Core (take all of it)** | RNA3DB 2.25 · RNAsolo ~2 · BGSU CSVs <0.05 · Rfam seed+CM+full_region 0.17 · **bpRNA dbn+st+fasta 0.27** (not the 53 GiB zip) · ArchiveII/RNAStralign/bpRNA-new/EternaBench <0.02 · CASP15/16 ~2 | **≈ 7 GB** |
+| **Pretraining** | RNAcentral 10 (or HF parquet 17.5) · multimolecule/rfam 0.73 · RNAgym 0.64 · Ribonanza ~10 | **≈ 30 GB** |
+| **Optional bulk** | SILVA SSU Parc 2.96 + SSURef 2.02 · Rfam genseq+rfamseq 2.4 · Rfam full alignments ~50 | **≈ 60 GB** |
+| **Only if we build MSAs ourselves** | NCBI `nt` **933 GB** | **≈ 1 TB** |
+
+**Everything except `nt` fits in under 100 GB.** Kill criterion 4 (the 10 TB cap) is not remotely
+threatened by the RNA arm — *unless* we commit to MSAs, which is a ~1 TB plus multi-day-CPU
+decision that should be made explicitly.
+
+### The scale asymmetry, stated plainly
+
+| layer | RNA | protein (reference) |
 |---|---|---|
 | sequences | **58.6 M** (RNAcentral r27) | ~250 M (UniRef100) |
 | families | **4,227** (Rfam 15.1) | ~20,000 (Pfam) |
-| experimental 3D structures | **10,399 entries / 2,375 RNA-only** | ~230,000 |
-| *measured* per-nucleotide structure signal | **~2 M sequences** (Ribonanza) | no direct analogue |
+| experimental 3D entries | **10,399 / 2,375 RNA-only** | ~230,000 |
+| **structurally independent** 3D units | **142** (RNA3DB components) | thousands of folds |
+| measured per-nucleotide structure signal | **167,671 dual-channel profiles** (Ribonanza, usable) | no direct analogue |
 
-RNA's sequence layer is within an order of magnitude of protein's. Its **structure layer is two
-orders of magnitude smaller.** Ribonanza is the one place where RNA has *more* experimental data
-than protein does in kind — and it is exactly the layer no RNA LM except RibonanzaNet trains on.
-**That gap is an opportunity, not a footnote.**
+RNA's sequence layer is within an order of magnitude of protein's. Its structure layer is two to
+three orders smaller, and after honest de-duplication it is **142 things**. Ribonanza is the one
+layer where RNA has more experimental data *in kind* than protein does — and only one 11 M-parameter
+model has ever trained on it. **That asymmetry is the opportunity in the RNA arm, not a footnote.**
 
-**Redundancy, explicitly.** PDB → RNAsolo → BGSU/RNA3DHub → RNA3DB → HARIBOSS → RNAmigos2 →
-fpocketR are **one dataset presented seven ways.** Cite the PDB entry count once; cite everything
-downstream as a *curation* of it. Similarly, bpRNA-1m's 102,318 "structures" are 669 experimental
-ones plus ~101,600 comparative-sequence inferences, and GtRNAdb/SILVA/CRW are already inside
-RNAcentral.
-
-**Total acquisition footprint for everything above: well under 1 TB** (RNAcentral 10 GB, Rfam
-seeds <1 GB, PDB RNA subset ~40 GB, RNA3DB 2.2 GB, Ribonanza tens of GB, bpRNA <1 GB) — **unless**
-MSA databases are staged, which alone costs 0.15–2 TB. Kill criterion 4 (10 TB cap) is not
-threatened by the RNA arm except through MSAs.
+**One-line acquisition recommendation.** Anchor 3D on **RNA3DB components** (142 hard split units,
+MIT, 2.15 GB), anchor 1D on **RNAcentral R27** (58.6 M, CC0), bridge them with **Rfam 15.1**
+covariance models and seed alignments — the only resource spanning both — and use **Ribonanza's
+167,671 dual-channel profiles** plus **`DasLab/pdb_map`** (which already joins PDB coordinates to
+2A3/DMS reactivity) as the paired supervision that ties chemistry into the same space. Hold out
+**CASP17 RNA** and freeze the PDB cutoff today.
 
 ---
 
@@ -494,12 +607,13 @@ gluing an RNA vector to a ligand vector and calling it a shared space.
 
 | # | Step | Cost | What it decides |
 |---|---|---|---|
+| 0 | **Freeze a PDB training cutoff TODAY (e.g. ≤2026-04-30).** CASP17's 52 RNA targets closed on 2026-09-11 and coordinates go public **2026-11-29** | minutes | Costs nothing now and buys a genuinely blind RNA test set in 10 weeks. Skip it and every 2026 deposition silently contaminates training — the exact failure mode Szikszai 2026 documents for the 2D benchmarks |
 | 1 | **Test LucaOne and ATOMICA as the null hypothesis.** LucaOne is already a joint DNA+RNA+protein space. ATOMICA is already one interface-embedding space over eight complex types including protein–RNA, protein–DNA and nucleic-acid–small-molecule, trained on 2,037,972 complexes, ungated, code MIT / weights CC-BY-4.0, **and it ships finetuned HEM and HEC ligand models** | ~2 days | Whether the artifact we are proposing to build already exists. **This is the single highest-value experiment in the whole RNA arm — and its heme head lands directly on this repo's CYP3A4 problem, not only on RNA.** If ATOMICA's interface embedding already separates binders at a heme site, the program's framing changes |
 | 2 | **Read RNAPro's gating module.** NVIDIA × Das Lab fused a *frozen* RibonanzaNet2 into a Protenix Pairformer by learned gating — i.e. someone shipped the frozen-encoder→co-folder adapter we intend to design | hours | The adapter design, for free, from people who trained it |
 | 3 | **Extract Boltz-2 `s` and `z` for RNA systems** with the shipped `--write_embeddings` flag. `z` is joint by construction — protein × ligand × pose — which is exactly what survives the fingerprint critique. **Verified in source on 2026-09-20:** the flag is declared at `src/boltz/main.py:1038`; `src/boltz/data/write/writer.py:250` writes `embeddings_<id>.npz` when `"s"` and `"z"` are in the prediction; and `src/boltz/data/parse/schema.py:1021` accepts `entity_type` in `{protein, dna, rna, ligand}`. **So RNA + ligand + embeddings works today with no patch** | days | Whether `z` behaves on RNA as it does on protein. **Nobody has published this** |
 | 4 | **Zero-shot transfer test on the 48-complex drug-like RNA set + 69 RNAmigos2 held-out clusters.** Freeze the protein-trained space; rank RNA ligands | days | Whether the shared space transfers across the protein/RNA boundary at all. A clean positive *or* negative, cheap either way |
 | 5 | **Embed RNAcentral subsets with RiNALMo-giga + RNA-FM + RibonanzaNet** and check whether the three spaces agree (CKA / Procrustes) | ~3 GPU-days | Whether RNA LMs have converged. Per §1, the benchmarks say they have not, so expect disagreement — and disagreement is a usable ensemble signal (cf. this repo's FINDING 011, where cross-engine agreement was the only selector that beat random) |
-| 6 | **Ribonanza as the RNA pretraining signal.** 2 M experimentally probed sequences is the one RNA data layer that is *larger* than its protein analogue | weeks | Whether grounding in measured chemistry beats grounding in co-evolution. RibonanzaNet is 11 M params — there is obvious headroom |
+| 6 | **Ribonanza as the RNA pretraining signal** — **167,671 dual-channel profiles** (the honest number; the headline "2 M" is a 12× overstatement, §4 R4), paired to 3D via `DasLab/pdb_map` | weeks | Whether grounding in measured chemistry beats grounding in co-evolution. RibonanzaNet is 11 M params — there is obvious headroom |
 
 **What we will not do:** build an RNA-native affinity regressor (§6: n≈1,480, imbalanced), stage
 a 2 TB MSA database (§3), or depend on AlphaFold3, HelixFold3, Chai-2 or Inforna (licence or
@@ -527,9 +641,10 @@ Ordered by how much it costs us.
 | 6 | **AlphaFold3 parameters** | Non-commercial, **by Google form, no redistribution, no derived-weight sharing** | Probably a firm *no* — the licence forbids exactly what a shared embedding model implies. Confirm we exclude it |
 | 7 | **CodonBERT** | Paper is behind **Genome Research SSO**; weights sit on a **Sanofi CDN under a bespoke, non-standard model licence** separate from the code licence. Architecture specs in §1 are therefore unverified | Institutional access to *Genome Research*, and a read of the model licence before we use the weights |
 | 8 | **MultiMolecule AGPL-3.0** | The most convenient dependency in this document — ~25 RNA models behind one HF API, no flash-attn, no Paddle — **redistributes every checkpoint under AGPL-3.0**, which is *more restrictive than the originals* (RNA-FM MIT, RiNALMo CC-BY-4.0, RNA-MSM MIT) | A legal call: AGPL is fine for internal research; if anything is ever served or shipped, we must pull original weights from Zenodo/GitHub instead. **Same hazard applies to NuFold (GPL-3.0)** |
-| 9 | **POSTAR3 reachability** | 1,499 CLIP-seq datasets / 348 RBPs / 7 species / ~50 M binding sites — the broadest and **only multi-species** CLIP compendium. `http://postar.ncrnalab.org` is HTTP-only and redirects to a bare IP (`111.198.139.65`) that **refused HTTPS** on 2026-09-20 | Someone to open it in a browser and confirm it is alive; if it is dead, ENCORI is the fallback (but is largely the same reprocessed GEO data) |
-| 10 | **Paywalled papers hit during this survey** | ACS (both R-BIND papers), Wiley (ROBIN/*Angew.*), RSC, PNAS direct, *J. Mol. Biol.* (R-SIM), *Proteins* (CASP16 assessments — PMC has abstract only), *Genome Research* (CodonBERT) | Institutional access, or accept the PMC/preprint mirrors already used above |
-| 11 | **Web budget** | This session exhausted its **200-call WebSearch budget**. Several cells remain marked *unverified*: trRosettaRNA2 parameter count and rep dims, exact param counts for AF3/Boltz/Chai/OpenFold3, RNAPro and OpenFold3 download sizes, RiboSphere model and codebook size, RNAsolo's current release number, liveness of the legacy aptamer databases, and whether RNAdecoyDB's data is actually downloadable | Raise `CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`, or accept the flagged gaps |
+| 9 | **Kaggle account + competition-rules acceptance** | The **Ribonanza** reactivity CSVs (the largest RNA functional dataset in existence, §4.3), plus OpenVaccine/RYOS and the Stanford RNA 3D Folding data, live behind Kaggle. Not scriptable without a token, and each competition's rules must be accepted individually. An ungated third-party HF mirror exists (`TerminatorJ/RNA_chemical_ribonanza`, 335,616 rows, 308 MB) but its provenance is unverified | A Kaggle account and API token on the cluster, or a decision to accept the unverified mirror |
+| 10 | **POSTAR3 reachability** | 1,499 CLIP-seq datasets / 348 RBPs / 7 species / ~50 M binding sites — the broadest and **only multi-species** CLIP compendium. `http://postar.ncrnalab.org` is HTTP-only and redirects to a bare IP (`111.198.139.65`) that **refused HTTPS** on 2026-09-20 | Someone to open it in a browser and confirm it is alive; if it is dead, ENCORI is the fallback (but is largely the same reprocessed GEO data) |
+| 11 | **Paywalled papers hit during this survey** | ACS (both R-BIND papers), Wiley (ROBIN/*Angew.*), RSC, PNAS direct, *J. Mol. Biol.* (R-SIM), *Proteins* (CASP16 assessments — PMC has abstract only), *Genome Research* (CodonBERT) | Institutional access, or accept the PMC/preprint mirrors already used above |
+| 12 | **Web budget** | This session exhausted its **200-call WebSearch budget**. Several cells remain marked *unverified*: trRosettaRNA2 parameter count and rep dims, exact param counts for AF3/Boltz/Chai/OpenFold3, RNAPro and OpenFold3 download sizes, RiboSphere model and codebook size, liveness of the legacy aptamer databases (UTexas/AptamerBase/RNAapt3D/AptaDB), whether a RibonanzaNet2 preprint exists, and whether RNAdecoyDB's data is actually downloadable | Raise `CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`, or accept the flagged gaps |
 
 ### Not blocked, but decide before acquiring
 
