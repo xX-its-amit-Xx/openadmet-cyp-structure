@@ -1,3 +1,9 @@
+> **REVISED 2026-09-20 by FINDING 021.** Every absolute LDDT-PLI below is wrong: a
+> residue-numbering offset in the scorer zeroed the targets whose crystals do not
+> number from 1. The CONCLUSION stands and the effect is ~3x larger than stated —
+> true deltas **−0.0135 / −0.0369 / −0.0301** at 87 / 174 / 350 steps (p to 6.6e-08),
+> against a true base of **0.8110**, not 0.3477. Read FINDING 021 first.
+
 # FINDING 018 — Fine-tuning Boltz-2 on arm4_mix is a small, consistent NEGATIVE
 
 **Date:** 2026-09-20 · **Status:** measured, one arm, one dose · **Verdict so far:** negative

@@ -1,3 +1,9 @@
+> **REVISED 2026-09-20 by FINDING 021.** The LDDT-PLI numbers below are wrong (scorer
+> numbering bug). The null STANDS and is cleaner: **Δ −0.0069 at p = 0.43** against a
+> true base of **0.8110**. The coordination measurement never used residue numbering
+> and is unaffected. STRUCK: the closing claim that catastrophes are rotations about a
+> correct anchor — there are no catastrophes. Read FINDING 021 first.
+
 # FINDING 019 — The heme bond is a null, because coordination was never broken
 
 **Date:** 2026-09-20 · **Status:** measured, 84 paired held-out pairs · **Verdict:** null
