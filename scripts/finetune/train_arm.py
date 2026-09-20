@@ -159,6 +159,12 @@ def main() -> int:
         # grad_norm identical to grad_norm_confidence_module.
         structure_prediction_training=True,
         checkpoint_diffusion_conditioning=True,
+        # Log every step, not every 50. training_step logs inside
+        # `if not (global_step % log_loss_every_steps)`, and Lightning then re-emits the
+        # cached value on every later row - so the default made six steps look like six
+        # identical losses and a grad_norm of exactly 0.0 (training_log runs before
+        # backward, so step 0 legitimately has no gradient yet). Both were artefacts.
+        log_loss_every_steps=1,
     )
     # `validate_structure` is a constructor argument of Boltz2 that is never assigned to
     # self, so `Boltz2.setup()` raises AttributeError on the first non-predict stage -
