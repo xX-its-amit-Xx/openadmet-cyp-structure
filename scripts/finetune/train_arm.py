@@ -54,6 +54,8 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--max-tokens", type=int, default=512)
     ap.add_argument("--max-atoms", type=int, default=4096)
+    ap.add_argument("--diffusion-multiplicity", type=int, default=0,
+                    help="override the pretrain value (32); lower it if a step OOMs")
     ap.add_argument("--dry-run", action="store_true",
                     help="build everything and report shapes without stepping the optimiser")
     a = ap.parse_args()
@@ -88,6 +90,11 @@ def main() -> int:
         ta = dict(ta)
         ta["max_lr"] = a.lr
         ta["lr_warmup_no_steps"] = a.warmup
+    if a.diffusion_multiplicity:
+        try:
+            ta.diffusion_multiplicity = a.diffusion_multiplicity
+        except (AttributeError, TypeError):
+            ta["diffusion_multiplicity"] = a.diffusion_multiplicity
 
     # Construct through boltz's OWN loading path, exactly as main.py:1314 does.
     #
@@ -130,6 +137,16 @@ def main() -> int:
         msa_args=asdict(msa_args),
         steering_args=asdict(steering_args),
         training_args=ta,
+        # THE CHECKPOINT STORES structure_prediction_training=False. boltz2_conf.ckpt is
+        # the *confidence* training stage, and Boltz2.__init__ acts on that flag by
+        # setting requires_grad=False on everything outside confidence_module /
+        # affinity_module / out_token_feat_update. Inherit it and the run trains only the
+        # confidence head - the one signal this repo has measured as useless for ranking
+        # poses (rho -0.092, FINDING 011) - while training_step also skips the distogram
+        # and diffusion losses entirely, so diffusion_loss_weight 4.0 never applies.
+        # A 4-step run did exactly this and exited 0: param_norm_structure_module 0.0,
+        # grad_norm identical to grad_norm_confidence_module.
+        structure_prediction_training=True,
     )
     # `validate_structure` is a constructor argument of Boltz2 that is never assigned to
     # self, so `Boltz2.setup()` raises AttributeError on the first non-predict stage -
@@ -140,8 +157,22 @@ def main() -> int:
     model.validate_structure = False
 
     n_par = sum(p_.numel() for p_ in model.parameters())
+    trainable = {}
+    for name, p_ in model.named_parameters():
+        if p_.requires_grad:
+            trainable[name.split(".")[0]] = trainable.get(name.split(".")[0], 0) + p_.numel()
     print(f"model loaded strict=True: {n_par/1e6:.1f}M params", flush=True)
     print("effective max_lr:", model.training_args.get("max_lr"), flush=True)
+    print("trainable by module (M):",
+          {k: round(v / 1e6, 1) for k, v in sorted(trainable.items(), key=lambda kv: -kv[1])},
+          flush=True)
+
+    # A run that trains only the confidence head exits 0 and looks fine. Refuse to start
+    # one by accident: the structure trunk must be receiving gradient.
+    if not any(k in trainable for k in ("structure_module", "pairformer_module")):
+        msg = ("structure trunk is frozen - this would fine-tune the confidence head "
+               "only. Check structure_prediction_training.")
+        raise SystemExit(msg)
 
     sys.path.insert(0, str(ROOT))
     from boltz2_data import Boltz2FinetuneDataModule
