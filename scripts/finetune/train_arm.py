@@ -156,6 +156,28 @@ def main() -> int:
     # validators report their own metrics, and our gate is LDDT-PLI from cypstruct.pose.
     model.validate_structure = False
 
+    # The checkpoint's diffusion_loss_args carry `add_bond_loss`, which the installed
+    # AtomDiffusion.compute_loss no longer accepts. training_step splats these as **kwargs
+    # inside a try/except that prints and returns None, so EVERY batch was skipped while
+    # the run exited 0 with a full progress bar. Version drift between a released
+    # checkpoint's stored args and the installed package, hidden by a broad except.
+    #
+    # Dropping unknown keys is only safe when they are inactive, so this refuses rather
+    # than guesses: add_bond_loss is False in the released checkpoint, and the remaining
+    # five keys match the installed signature exactly.
+    import inspect
+
+    allowed = set(inspect.signature(model.structure_module.compute_loss).parameters)
+    stored = dict(model.diffusion_loss_args)
+    dropped = {k: v for k, v in stored.items() if k not in allowed}
+    if any(bool(v) for v in dropped.values()):
+        msg = ("diffusion_loss_args has ACTIVE keys the installed compute_loss does not "
+               f"accept: {dropped}. Dropping them would change the objective.")
+        raise SystemExit(msg)
+    if dropped:
+        print("dropped inactive diffusion_loss_args:", dropped, flush=True)
+    model.diffusion_loss_args = {k: v for k, v in stored.items() if k in allowed}
+
     n_par = sum(p_.numel() for p_ in model.parameters())
     trainable = {}
     for name, p_ in model.named_parameters():
