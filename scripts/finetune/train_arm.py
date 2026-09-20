@@ -77,55 +77,49 @@ def main() -> int:
     ta["lr_warmup_no_steps"] = a.warmup
     hp["training_args"] = ta
 
-    import inspect
-
-    from boltz.model.models.boltz2 import Boltz2
-    from boltz.model.modules.diffusionv2 import AtomDiffusion
-
-    # The RELEASED checkpoint was trained with a different boltz version than the one on
-    # PyPI: its diffusion_process_args carry `mse_rotational_alignment` and
-    # `step_scale_random`, which 2.2.1's AtomDiffusion.__init__ does not accept, and which
-    # appear NOWHERE in 2.2.1's source. Dropping them changes nothing about how this
-    # version behaves - the code never reads them - but passing them is a hard TypeError.
+    # Construct through boltz's OWN loading path, exactly as main.py:1314 does.
     #
-    # Filter against the real signature rather than hardcoding a drop-list, so a future
-    # version that adds parameters back keeps them automatically.
-    def fit_kwargs(d: dict, fn) -> tuple[dict, list[str]]:
-        allowed = set(inspect.signature(fn).parameters)
-        keep = {k: v for k, v in d.items() if k in allowed}
-        dropped = sorted(set(d) - set(keep))
-        return keep, dropped
+    # My first attempt filtered the checkpoint's hyper_parameters into the constructor by
+    # hand. That produced 128 missing pairformer tensors and a 506.8M-vs-521.0M parameter
+    # gap which looked like a version mismatch, and was not: boltz overrides the stale
+    # stored args with FRESH dataclass defaults from the installed version, rather than
+    # replaying what the checkpoint recorded. Feeding the old values back is what broke it.
+    #
+    # strict=True is the point. It is a real assertion that every tensor loads - stronger
+    # and simpler than the load-fraction heuristic I was using, which passed at 0.9755 on
+    # a model that was quietly wrong.
+    from dataclasses import asdict
 
-    dpa, dropped = fit_kwargs(dict(hp.get("diffusion_process_args", {})),
-                              AtomDiffusion.__init__)
-    if dropped:
-        print(f"dropped {len(dropped)} diffusion args unknown to this boltz: {dropped}",
-              flush=True)
-    hp["diffusion_process_args"] = dpa
+    from boltz.main import (
+        Boltz2DiffusionParams,
+        BoltzSteeringParams,
+        MSAModuleArgs,
+        PairformerArgsV2,
+    )
+    from boltz.model.models.boltz2 import Boltz2
 
-    kw, dropped_top = fit_kwargs(hp, Boltz2.__init__)
-    if dropped_top:
-        print(f"dropped {len(dropped_top)} top-level args: {dropped_top}", flush=True)
-    model = Boltz2(**kw)
+    diffusion_params = Boltz2DiffusionParams()
+    pairformer_args = PairformerArgsV2()
+    msa_args = MSAModuleArgs(subsample_msa=True, num_subsampled_msa=1024,
+                             use_paired_feature=True)
+    steering_args = BoltzSteeringParams()
+    steering_args.fk_steering = False
+    steering_args.physical_guidance_update = False
 
-    # strict=False is required across the version gap, but a silent partial load would
-    # train a randomly-initialised model and look fine. Report the counts.
-    res = model.load_state_dict(sd["state_dict"], strict=False)
-    missing, unexpected = list(res.missing_keys), list(res.unexpected_keys)
-    n_par = sum(p.numel() for p in model.parameters())
-    n_train = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"model built: {n_par/1e6:.1f}M params, {n_train/1e6:.1f}M trainable", flush=True)
-    print(f"weight load: missing={len(missing)} unexpected={len(unexpected)}", flush=True)
-    if missing[:3]:
-        print("  first missing:", missing[:3], flush=True)
-    if unexpected[:3]:
-        print("  first unexpected:", unexpected[:3], flush=True)
-    frac = 1 - len(missing) / max(len(list(model.state_dict())), 1)
-    print(f"  fraction of model tensors filled from checkpoint: {frac:.4f}", flush=True)
-    if frac < 0.95:
-        print("REFUSING: more than 5% of the model did not load. Training this would be "
-              "training a partly-random model that reports a plausible loss.", flush=True)
-        return 2
+    model = Boltz2.load_from_checkpoint(
+        str(ck),
+        strict=True,
+        map_location="cpu",
+        diffusion_process_args=asdict(diffusion_params),
+        ema=False,
+        use_kernels=False,          # pure-PyTorch path; the kernel needs cuequivariance,
+                                    # and installing that upgraded torch and broke boltz
+        pairformer_args=asdict(pairformer_args),
+        msa_args=asdict(msa_args),
+        steering_args=asdict(steering_args),
+    )
+    n_par = sum(p_.numel() for p_ in model.parameters())
+    print(f"model loaded strict=True: {n_par/1e6:.1f}M params", flush=True)
 
     if a.dry_run:
         print(json.dumps({
