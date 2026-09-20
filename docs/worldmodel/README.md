@@ -231,3 +231,56 @@ Proceeding **MIT/Apache-only** until told otherwise. Excluded on that basis: ESM
 ESM-3, Ankh/Ankh3, MACE-OFF, Chai-1 local weights, ProtJEPA, Top-DTI, DTIAM (all NC);
 TransformerCPI2.0 (GPL-2.0); HyperAttentionDTI (no licence at all). MIT substitutes exist
 for every one of these.
+
+---
+
+## Revision 3 — 2026-09-20, after the DNA reconnaissance
+
+### Volume is not the constraint. Supervision density is.
+
+The whole useful DNA corpus is **under 200 GB**, and the part that actually teaches
+*interaction* is far smaller than that:
+
+| modality | non-redundant interaction complexes |
+|---|---|
+| protein–ligand (HiQBind) | **>30,000** over >18,000 PDB entries |
+| protein–DNA (PDB, 30% identity clusters) | **3,027** — from 10,733 raw entries |
+| protein–protein with ΔΔG (SKEMPI) | 345 unique structures, everything else is mutations of those |
+
+So the implicit "give it everything" arm has a problem the breadth conceals: **DNA and RNA
+contribute enormous *sequence* corpora and almost no *supervised interaction* signal.**
+8.8 Tbp of genome against ~10⁻⁹ supervision density. Adding them may improve
+representation pretraining; it will not add pairs to learn binding from.
+
+That does not kill the implicit arm — it reframes what it can possibly be testing. It is
+a representation-transfer experiment, not a data-scaling one, and it should be reported
+as such.
+
+### The prior art we should read before writing any code
+
+**JEPA-DNA (NVIDIA, arXiv 2602.17162)** ran a JEPA objective across five DNA backbones,
+with **Apache-2.0 code and checkpoints**. That is the closest existing thing to what this
+program proposes, in the open, on a permissive licence. Studying it is cheaper than
+rediscovering it and it is the natural template for the masked-within-entity half of the
+design. (It still does not do partner prediction — see Revision 2 — so the gap stands.)
+
+### Model shortlist, MIT/Apache only
+
+| model | licence | size | dim | note |
+|---|---|---|---|---|
+| **Evo 2 7B** (`arcinstitute/evo2_7b`) | Apache-2.0, ungated | 13.8 GB | 4096 | 1 Mb context; bf16 without Transformer Engine. The 40B is 82.2 GB and will not fit |
+| **AlphaGenome-PyTorch** (`gtca/alphagenome_pytorch`) | open reimpl. | 450M | 3072 @128 bp | 40.8 GB peak on one H200, plain torch |
+| **ModernGENA-large** | open | 377M | — | pure `transformers`; the one that works first try on torch 2.5.1 |
+
+### A licence trap worth naming
+
+**AlphaGenome's own weights are non-commercial *and restrict training on its outputs*.**
+Not merely "don't sell the model" — a restriction that propagates into anything we train
+on predictions it produced. Excluded under the MIT/Apache default, and worth remembering
+as a class of term that does not show up in a headline licence label. The open PyTorch
+reimplementation is the route if we want that architecture.
+
+### Blocked, needs the user
+
+AlphaGenome gate, NTv3 gate, AlphaFold3 weights application. BioLiP2 / DeepPBS / GraphBind
+returned 403 or bad TLS from this network. ProNAB bulk may need an email.

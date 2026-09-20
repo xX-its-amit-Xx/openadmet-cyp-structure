@@ -14,15 +14,24 @@ not a footnote.
 ## 0. The short version
 
 - **Evo 2 7B** is the default DNA encoder: Apache-2.0, ungated, 13.8 GB, 1 Mb context,
-  single-nucleotide, and the only large model that runs bf16 on one GPU *without*
-  Transformer Engine. Its 40B sibling does not fit an 80 GB H200 in bf16.
-- **NTv3 (650M, 1 Mb, single-nucleotide)** is technically the best-matched encoder and is
-  **gated behind a non-commercial licence** — see *BLOCKED*.
-- **JEPA-DNA (NVIDIA, 2026)** already did the exact thing this program proposes, for DNA,
-  and released weights. Read it before writing any JEPA head.
-- Structure data is the scarce half. Protein–DNA co-crystals are ~10⁴ complexes, not 10⁶;
-  everything else in section 2 is either the same PDB rewrapped or is *binding* data
-  (motifs, ChIP, SELEX) that carries no coordinates.
+  single-nucleotide, 4096-d, and the only large model that runs bf16 on one GPU *without*
+  Transformer Engine. The 40B is 82.2 GB and does **not** fit an 80 GB H200 in bf16.
+- **AlphaGenome's weights are downloadable now — it is no longer API-only** — and there is
+  a validated PyTorch port with an explicit `encode()` giving (B, 1024, 3072) at 128 bp
+  over 1 Mb, running in 40.8 GB on one H200 with **no exotic kernels**. It is
+  non-commercial, and the terms restrict training on its outputs.
+- **NTv3 (650M, 1 Mb, single-nucleotide, 1536-d)** is the best-matched encoder in the table
+  and is **gated behind a non-commercial licence** — see *BLOCKED*.
+- **JEPA-DNA (NVIDIA, 2026)** already ran the exact experiment this program proposes, on
+  the DNA axis, across five backbones, and released code and checkpoints. Read it before
+  writing any JEPA head. The checkpoints are demo-scale; the *recipe* is the value.
+- **The structural half is tiny and that is the load-bearing finding.** 10,733 protein–DNA
+  PDB entries → **3,027 non-redundant clusters at 30% identity**, total download **4.32 GB**.
+  Everything else in section 3 — NAKB, DNAproDB, BioLiP2, twelve PDNA benchmarks — is the
+  same PDB coordinates re-wrapped. Against 8.8 Tbp of sequence corpus that is a ratio near
+  10⁻⁹.
+- **A complete, useful DNA corpus is under 200 GB**, against a 298 TB scratch and the
+  README's 10 TB cap. Data volume is not the constraint on this arm; supervision density is.
 
 ---
 
@@ -280,17 +289,322 @@ shared space; "channel" = an auxiliary vector concatenated to an encoder's outpu
 | 53–54 | Geneformer, scGPT | Different space (genes, not bases). Only relevant if the world model gains an expression tower. |
 | 55 | DART-Eval | Benchmark. The difficulty-matched split that keeps us honest per README kill-criterion 3. |
 
+---
 
-*(pending)*
+## 3. DNA structure data at scale
+
+Every count below was **queried live against the RCSB Search API on 2026-09-20**, and
+every size marked *(measured)* was obtained by sampling real files, not quoted from a
+paper. Two of us ran the PDB queries independently and got identical numbers.
+
+### 3.1 The ceiling, measured
+
+| quantity | count | how |
+|---|---|---|
+| PDB experimental entries | **259,693** (holdings list: 260,089 IDs) | rcsb.org/stats |
+| entries with **DNA** | **13,578** | `polymer_entity_count_DNA ≥ 1` |
+| entries with **protein *and* DNA** | **10,733** | `count_DNA ≥ 1 AND count_protein ≥ 1` |
+| ↳ X-ray / cryo-EM / NMR | **6,978 / 3,584 / 145** | method facet |
+| ↳ polymer **entities** (chains) in those | **57,382** — 5.3× the entry count | `return_type: polymer_entity` |
+| ↳ **non-redundant protein clusters @30% id** | **3,027** | seq-cluster facet over 34,740 protein entities |
+| entries with DNA and **no** protein | **2,845** | `count_protein == 0` |
+| protein + RNA | 8,024 | |
+| all NA-containing entries | **22,364** | |
+
+Reproduce with a POST to `https://search.rcsb.org/rcsbsearch/v2/query`:
+
+```json
+{"query":{"type":"group","logical_operator":"and","nodes":[
+ {"type":"terminal","service":"text","parameters":{"attribute":"rcsb_entry_info.polymer_entity_count_DNA","operator":"greater_or_equal","value":1}},
+ {"type":"terminal","service":"text","parameters":{"attribute":"rcsb_entry_info.polymer_entity_count_protein","operator":"greater_or_equal","value":1}}]},
+ "return_type":"entry","request_options":{"return_counts":true}}
+```
+
+**The honest N is 3,027, not 10,733.** That is the leave-one-target-out budget for
+protein–DNA — the same order of magnitude as the 185 targets in this repo's P450
+universe, not the "tens of thousands" the raw entry count suggests. Against 8.8 trillion
+bases of sequence corpus that is a ratio near 10⁻⁹: **the DNA arm is
+structure-supervision-starved by four or five orders of magnitude.** This is the single
+strongest argument for the frozen-encoder + light-head design the README already commits
+to, and against anything that wants to learn DNA structure end to end.
+
+### 3.2 Table
+
+| # | Dataset | Ver | Yr | URL | Open? | License | Records | Size | Use in the shared space |
+|---|---|---|---|---|---|---|---|---|---|
+| D1 | **PDB protein–DNA subset** | live | 2026 | [search.rcsb.org](https://search.rcsb.org) → per-ID `files.rcsb.org/download/<id>.cif.gz` | yes | **CC0** | **10,733 entries / 3,027 clusters** | **4.32 GB gz *(measured*, 59-entry sample @393 KB); ~15–20 GB uncompressed** | The whole structural protein–DNA universe. Interface contact maps = the only true geometric supervision for a DNA↔protein link. |
+| D2 | **PDB DNA-only** | live | 2026 | same | yes | CC0 | **2,845** (2,770 with no RNA either) | <1 GB | Sequence→shape targets: groove width, roll/twist/propeller from sequence alone. |
+| D3 | Full PDB mmCIF archive | weekly | 2026 | `rsync://rsync.rcsb.org` :33444 · [wwPDB FTP sites](https://www.wwpdb.org/ftp/pdb-ftp-sites) | yes | CC0 | 260,089 | **~85 GB gz *(measured*, 249-entry sample)**; whole `ftp_data` tree ~787 GB | Don't mirror. Pull the 13,578 NA IDs. FTP is dead; HTTPS + rsync only. |
+| D4 | PDB **NextGen Archive** | since 2023-02 | 2026 | `rsync://rsync-nextgen.rcsb.org` | yes | CC0 | same entries | **~103 GB** | mmCIF with UniProt/Pfam/SCOP/CATH mappings baked in. **Adds annotation, not coordinates** — the RCSB GraphQL API gives the same mappings for free. |
+| D5 | **NAKB** (successor to the **NDB**) | 2024→ | 2026-09-16 | [nakb.org](https://nakb.org) · [NAR 52:D245](https://academic.oup.com/nar/article/52/D1/D245/7416380) | yes, no registration | open | 22,417 NA structures | **annotation dump = 6.9 MB JSON *(measured*)** | ⚠️ **The NDB was retired July 2023**; `ndbserver.rutgers.edu` 302s to nakb.org. Its 22,417 vs our 22,364 is a **0.24% difference** — it *is* the PDB. Worth exactly 7 MB: NA conformational class, entity typing, plus ideal A/B/Z fiber models. |
+| D6 | **DNAproDB** | **2.0**, NAR 53:D396 | 2025, dump **2026-09-19** | [dnaprodb.usc.edu](https://dnaprodb.usc.edu) · [`dnaprodb2.tar.gz`](https://dnaprodb.usc.edu/data/dnaprodb2.tar.gz) · [pipeline](https://github.com/dnaprodb/dnaprodb-pipeline) | yes, no registration | **CC-BY-NC** (data); pipeline GPL-3.0 | **6,731 structures** (weekly auto-update) | **0.94 GB *(measured*)**; legacy v1.2 `.7z` **187 MB *(measured*)** | **The best derived layer over D1**: per-residue/per-nucleotide H-bonds incl. water-mediated, groove of contact, base-pair geometry, SASA. ⚠️ Its own page claims "several GB" for v1.2; it is 187 MB. **Run the pipeline yourself on predicted poses** so crystal and prediction get identical labels — that is what turns interface features into a *loss* rather than a metric. |
+| D7 | **BioLiP2** | NAR 52:D404 | 2024, weekly | `zhanggroup.org/BioLiP/` · mirror `aideepmed.com/BioLiP/` | yes | BSD (code), data free | 385,160 protein chains / 781,684 chain–ligand interactions; **DNA 36,784** | ~GB, TSV per ligand type | ⚠️ **403s to non-browser clients.** The canonical residue-level binding-site labels — and the source almost every benchmark below quietly re-extracts. "36,784 DNA" is **chain–ligand pairs, not complexes.** |
+| D8 | **DeepPBS dataset** | 2024 | Nat Methods 21:1674 | [figshare 25678053](https://doi.org/10.6084/m9.figshare.25678053) · [GH](https://github.com/timkartar/DeepPBS) | yes (figshare 403s to bots; browser OK) | BSD-3 | cross-family protein–DNA + measured specificity | not stated | **The only curated structure → binding-specificity (PWM) supervision.** Ideal auxiliary head: embed complex → predict PWM. |
+| D9 | **ProNAB** | NAR 50:D1528 | 2021, **frozen Feb 2023** | [web.iitm.ac.in/bioinfo2/pronab](https://web.iitm.ac.in/bioinfo2/pronab/) | yes, `#download` | not stated ⚠️ | **20,219**: **14,606 protein–DNA** + 5,323 protein–RNA + 161 hybrid; 1,027 unique NA-binding proteins, lit. 1979–2021 | small (tabular Kd / ΔG) | **The affinity labels — the actual JEPA regression target.** Join to PDB by UniProt + sequence. Stale since Feb 2023. |
+| D10 | **Deep DNAshape** | Nat Commun 15:1243 | 2024 | [GH](https://github.com/JinsenLi/deepDNAshape) · [server](https://deepdnashape.usc.edu/) | yes | **BSD-3** | 13 shape features + fluctuations, arbitrary flanks, MD-trained | repo 61 MB incl. weights | **Strictly better than DNAshapeR.** Differentiable per-bp geometry for *any* sequence — lets the DNA branch be trained at genome scale rather than on 13.5k PDB entries. |
+| D11 | DNAshapeR / DNAshape | 2013/16 | — | [rohslab.usc.edu/DNAshape](https://rohslab.usc.edu/DNAshape/) · Bioconductor | yes | GPL-2 | pentamer MC lookup: MGW, HelT, ProT, Roll | <10 MB | Cheap input channel. Superseded by D10. |
+| D12 | **BIGNASim** | NAR 44:D272 | 2016, **frozen** | [mmb.irbbarcelona.org/BigNASim](https://mmb.irbbarcelona.org/BigNASim/) | yes, browsable | — | MD trajectories: B-DNA (ABC/parmbsc0/bsc1), Z-, A-DNA, G-loops, quadruplexes, triplexes, + DNA–protein; 100 ns–10 µs | TB-scale, not published | The only large source of DNA conformational **ensembles** — a flexibility/entropy target the static PDB cannot give. Paper is 10 years old. |
+| D13 | **DSSR-G4DB** | live, **2026-09-16** | 2026 | [g4.x3dna-dssr.org](https://g4.x3dna-dssr.org/DSSR-G4DB.html) | browsable; no bulk file | — | **608 G4-containing PDB entries**, DSSR-annotated | tiny | The cleanest non-duplex-DNA set. **Critical edge cases** so the DNA branch isn't a pure B-form-duplex memoriser. |
+| D14 | **ONQUADRO** | NAR 50:D253 | 2022 | [onquadro.cs.put.poznan.pl](https://onquadro.cs.put.poznan.pl/) | yes | — | experimental quadruplexes, tetrads, geometric descriptors | small | Same role as D13, with per-tetrad geometry. |
+| D15 | **non-B DB** / **non-B_gfa** | 2011 / pushed **2026-06-22** | — | [nonb-abcc.ncifcrf.gov](https://nonb-abcc.ncifcrf.gov/) · [GH](https://github.com/abcsFrederick/non-B_gfa) | yes | MIT (tool) | Z-DNA, G4, inverted/mirror repeats, cruciform, triplex, STRs, genome-wide | genome-scale GFF / small tool | ⚠️ **The database serves data built in June 2012.** Run the *tool* on a current genome instead. |
+| D16 | PDNA-224 / -316 / -335 / -543 / -960, DNA-573/-129/-181, TransBind bundle | 2008–2024 | — | [ULDNA](https://github.com/yiheng-zhu/ULDNA) · [GraphSite](https://github.com/biomed-AI/GraphSite) · [Zenodo 10215073](https://zenodo.org/records/10215073) | yes | MIT / CC-BY-4.0 | 224–960 chains each | TransBind bundle **2.3 GB** (easiest one-stop) | Residue-level DNA-binding benchmarks. See the redundancy warning below. |
+| D17 | **NPIDB** | 2013/16 | — | `npidb.belozersky.msu.ru` | — | — | — | — | ❌ **DEAD** — redirect loop → "temporarily unavailable" (checked 2026-09-20). |
+| D18 | **PDIdb** | BMC Bioinf 11:262 | 2010 | `melolab.org/pdidb/` | — | — | 922 complexes ≤2.5 Å | — | ❌ **DEAD** — TCP connect refused (checked 2026-09-20). Survives only inside republishing papers. |
+| D19 | **G4RNA** | 2015 | — | — | — | — | — | — | ❌ **DEAD** — both hostnames fail. Use G4Atlas or G4Bank. |
+| D20 | *"hmmDB"* | — | — | — | — | — | — | — | ⚠️ **Could not verify that any such protein–DNA structural database exists.** Every search resolves to HMMER / HMM-profile *methods* papers. Flagged rather than invented. |
+
+### 3.3 What the structure predictors trained on — and the split we should inherit
+
+| Model | NA training data | PDB cutoff | Public split | License |
+|---|---|---|---|---|
+| **RoseTTAFold2NA** | RF2 protein data + all RNA/protein–RNA/protein–DNA in the PDB; 60:40 sampling | **2020-05** | described (224 complexes / 116 clusters) but **no split file** | code MIT; weights 1.1 GB. ⚠️ needs **~480 GB of sequence DBs** (UniRef30 46 GB + BFD 272 GB + nt 151 GB + RNAcentral 12 GB) |
+| **AlphaFold3** | PDB + RNA distillation (Rfam/RNAcentral) + **protein–DNA distillation from JASPAR 2022 × SELEX (Jolma 2015, Yin 2017)** | **2021-09-30** | eval set = 8,856 complexes 2022-05-01→2023-01-12 | weights gated, non-commercial, application required |
+| **Boltz-2** | PDB + **protein–DNA distillation built like AF3: JASPAR 2024 CORE × two SELEX sets, 10 ssDNA motifs per PFM + reverse complement, kept if PDE≤2.0 / iPDE≤1.0 / ipTM≥0.7, *no sequence clustering***. DNA–protein sampling weight **0.045** — the largest distillation modality after AFDB | train **2023-06-01**; validation to 2024-01-01, 398 structures, rule "retain all structures containing RNA or DNA entities" | procedure documented (App. A.1.5); files not shipped | **MIT, code + weights** |
+| **Chai-1** | PDB + distillation | not extracted | no | **Apache-2.0, code *and* weights** — the most permissive of the four |
+| Protenix / v2 | AF3 reproduction, weighted-PDB recipe | follows AF3 | pipeline documented | open |
+
+**CASP is not a usable blind DNA set.** CASP15 (2022) was RNA-only. CASP16 (2024) had 42
+NA targets: **35 RNA monomers, 1 DNA monomer, 11 RNA multimers, 18 NA–protein complexes**.
+The assessors' own verdict: *"prediction accuracy for nucleic acid complexes was generally
+poor unless 3D templates were available."* So **across CASP15+16 there is one blind DNA
+monomer and 18 hybrid complexes** — we will be building our own held-out set from a
+post-2024 PDB cutoff, which is fine, because 2024–2026 depositions are absent from every
+published benchmark.
+
+### 3.4 Skeptic's ledger
+
+1. **There is essentially ONE protein–DNA structural dataset in the world: the PDB.**
+   NAKB (0.24% apart, 7 MB of extra annotation), DNAproDB (a filtered subset + derived
+   features), BioLiP2 (a re-extraction), NPIDB, PDIdb and all twelve PDNA/DNA-*n*
+   benchmarks are re-wraps of it. **Budget one 4.3 GB download and one feature pipeline,
+   not twelve datasets.**
+2. **Per-chain vs per-complex inflates everything ~5×.** 10,733 entries → 57,382 polymer
+   entities. BioLiP2's "36,784 DNA" is chain–ligand *pairs*. Never quote entity counts as
+   structure counts. (This repo has a memory note for exactly this class of error.)
+3. **The residue-level benchmarks are nested and stale.** PDNA-224 (2008) ⊂ PDNA-316
+   (2011) ⊂ PDNA-543 (2014) by construction — they are the same chains binned by release
+   date. Cross-testing between them **leaks**. DNA-573 cuts at 2016-01-06. None of them
+   sees the **3,584 cryo-EM protein–DNA structures that are 33% of the field today** and
+   are where nucleosomes, replisomes, CRISPR and transcription complexes live.
+4. **Four resources are dead or zombie**: NPIDB (dead), PDIdb (dead), G4RNA (dead),
+   non-B DB (serving 2012 data), ProNAB (frozen Feb 2023). Do not design around them.
+5. **Beware AF3/Boltz-2 DNA pseudo-labels.** Both distil protein–DNA from **JASPAR ×
+   SELEX**. Using their outputs as labels re-ingests JASPAR-derived *synthetic* DNA, not
+   experimental structure — and Boltz-2 explicitly skipped the sequence clustering AF3
+   applied, so that synthetic set is redundancy-heavy. A "structural" signal that traces
+   back to a PWM is not independent evidence.
+6. **Published size claims are unreliable.** DNAproDB says "several GB"; the file is
+   187 MB. Every size above with *(measured)* was checked.
+
+### 3.5 Practical minimum build
+
+- `rsync`/HTTP the **10,733-ID protein–DNA subset — 4.3 GB, ~30 minutes.**
+- Add the **NAKB annotation JSON (7 MB)** for NA conformational class. Skip NextGen
+  (103 GB) — use the RCSB GraphQL API for UniProt/Pfam mappings.
+- Run the **DNAproDB pipeline (GPL-3.0)** on crystal *and* predicted structures so
+  interface labels are computed identically for both.
+- Cluster at 30% → **3,027 folds**; hold out whole clusters, never entries.
+- Auxiliary heads: DeepPBS (structure→PWM), ProNAB (structure→ΔG/Kd, 14,606 protein–DNA),
+  Deep DNAshape (sequence→13 geometric features, distillable at genome scale).
+- Edge cases so the DNA branch isn't a B-form memoriser: DSSR-G4DB's 608 G4 entries,
+  ONQUADRO, BIGNASim ensembles.
+- Held-out test: PDB entries released after each model's cutoff (Boltz-2 2023-06-01,
+  AF3 2021-09-30, RF2NA 2020-05) plus the 18 CASP16 NA–protein targets.
+
+**Total structural acquisition: well under 10 GB.**
 
 ---
 
 ## 4. Functional-genomics / binding data at scale
 
-*(pending)*
+No coordinates here — these are *binding and activity* readouts. They are three to four
+orders of magnitude larger than section 3 and are where the DNA arm's data volume
+actually comes from.
+
+**Counts marked ✓ were queried live against the ENCODE portal API on 2026-09-20.**
+
+### 4.1 Table
+
+| # | Dataset | Ver | Yr | URL | Open? | License | Records | Size | Use in the shared space |
+|---|---|---|---|---|---|---|---|---|---|
+| E1 | **ENCODE** | ENCODE4 | 2026 | [encodeproject.org](https://www.encodeproject.org) | yes, no registration | **fully open** | **27,043 released experiments** ✓ — of which **TF ChIP-seq 5,002** ✓, **histone ChIP-seq 3,832** ✓, **DNase-seq 3,490** ✓, **ATAC-seq 559** ✓ | narrowPeak BEDs for all TF ChIP: **~20–50 GB**; bigWigs: **~10–30 TB**; FASTQ: **petabyte-scale** | The primary DNA-side supervision. **Pull peaks, not signal.** Peak BEDs give (sequence window, bound/unbound, which TF) triples — the exact form a partner-prediction JEPA head consumes. |
+| E2 | **ENCODE SCREEN / cCRE Registry** | **V4** | 2026 | [screen.wenglab.org](https://screen.wenglab.org/) | yes | open | **2,348,854 human cCREs / 1,888 cell types** ✓ (1,718,669 enhancers, 47,532 promoters); **926,843 mouse / 366 cell types** | **129.1 MB human, 50.6 MB mouse** ✓ | A ready-made regulatory-element vocabulary — the candidate set for "what binds here". Tiny and high-value. |
+| E3 | **JASPAR** | **2026 (11th release)** | 2026 | [jaspar.elixir.no](https://jaspar.elixir.no/downloads/) | yes | **CC-BY-4.0** | ~2–3k CORE profiles (non-redundant + redundant variants) | **<100 MB** | The cheapest possible DNA-side "label": a PWM per TF. Use as a *baseline* the learned embedding must beat, not as a feature. |
+| E4 | **HOCOMOCO** | **v14** | 2023/24 | [hocomoco14.autosome.org](https://hocomoco14.autosome.org/) | yes | **WTFPL** ("treat as CC-BY") | **1,595 models**; 1,107 human + 809 mouse TFs | <100 MB | Same role as E3, better coverage. ⚠️ built from **ChIP-Seq (via GTRD) + HT-SELEX + GHT-SELEX + SMiLE-Seq + PBM** — i.e. it is a *meta-analysis of E1/E5/E7*, not independent data. |
+| E5 | **HT-SELEX (Jolma 2013)** | — | 2013 | [ENA `PRJEB3289`](https://www.ebi.ac.uk/ena/browser/view/PRJEB3289) — "DNA-binding specificities of human transcription factors" ✓ | yes | ENA open | ~500 human TFs, hundreds of millions of reads | raw FASTQ **~10² GB** (est.) | The only high-throughput assay giving a *quantitative binding curve per TF over random sequence space*. Ideal JEPA training signal: (TF, sequence) → enrichment. |
+| E6 | **HT-SELEX / methyl-HT-SELEX (Yin 2017), GHT-SELEX (Codebook, 2024–25)** | — | 2017–25 | GEO/ENA (per-paper accessions) | yes | open | ~540 TFs (Yin); ~hundreds more (Codebook) | ~10² GB | Adds methylation-conditioned specificity — a dimension no motif DB carries. |
+| E7 | **CIS-BP** | **v3.10, 2026-04-26** ✓ | 2026 | [cisbp.ccbr.utoronto.ca](https://cisbp.ccbr.utoronto.ca/) | yes | not stated ⚠️ | **13,030 motifs; 169,272 TFs — but only 4,989 from direct experiment** ✓; 741 species; 321 DBD families | <1 GB | ⚠️ **The 169k figure is 97% inferred by DBD similarity, not measured.** Use the 4,989 direct set; treat the rest as a prior, never as a label. |
+| E8 | **UniPROBE (PBM)** | — | 2015+ | [uniprobe.org](http://the_brain.bwh.harvard.edu/uniprobe/) | yes | academic | ~700 TFs | <10 GB | Orthogonal assay (universal PBM). Small, and substantially absorbed into E4/E7. |
+| E9 | **ReMap** | **2022 (4th)** | 2022 | [remap.univ-amu.fr](https://remap.univ-amu.fr/) | yes | ⚠️ **CC-BY-NC-4.0** | **1,210 regulators, 8,103 ChIP-seq datasets, 182M peaks** ✓ | ~10–30 GB BED | Broader than ENCODE alone. ⚠️ **Assembled from GEO + ENCODE + ENA** — ENCODE is a *subset*, so ReMap ∪ ENCODE double-counts. Pick one as primary. |
+| E10 | **ChIP-Atlas** / GTRD / Cistrome DB | ongoing | 2024–26 | [chip-atlas.org](https://chip-atlas.org/) · gtrd.biouml.org · cistrome.org | yes | **ChIP-Atlas CC-BY-4.0** ✓ (permissive — unlike ReMap) | ChIP-Atlas: **433,000 ChIP-seq/ATAC-seq/Bisulfite-seq experiments** ✓ | 10–100 GB peaks | ⚠️ **These three plus E9 are four reprocessings of the same public GEO/SRA deposits.** Their union is not 4× the data. HOCOMOCO's ChIP input comes from GTRD, closing the loop. Choose **one** aggregator. |
+| E11 | **4D Nucleome (Hi-C, Micro-C)** | ongoing | 2026 | [data.4dnucleome.org](https://data.4dnucleome.org/) | yes, free | open (coordinated-publication courtesy) | Hi-C, Micro-C, chromatin tracing, microscopy | 10–100 TB if taken whole | 3D *genome* contact, not molecular structure. Relevant only if we add the Orca/Akita contact modality. **Low priority** — it does not touch protein–DNA interfaces. |
+| E12 | **MPRA / reporter assays** (Sharpr-MPRA, lentiMPRA, Agarwal 2025, Gosai 2024) | — | 2016–25 | GEO per-paper | yes | open | 10⁵–10⁶ sequences each | 1–50 GB | Direct sequence→activity labels at scale. The best *quantitative* regression target available for a DNA tower. |
+| E13 | **FANTOM5 CAGE / Roadmap / GTEx** | — | 2014–24 | fantom.gsc.riken.jp · gtexportal.org | yes | open (GTEx needs dbGaP for individual-level) | 10³ samples | 10–100 GB (summary) | These are Enformer's and Borzoi's *training targets*. Redundant if we use those models frozen. Needed only if we retrain. |
+| E14 | **OpenGenome2** | — | 2025 | [HF](https://huggingface.co/datasets/arcinstitute/opengenome2) | yes, ungated | **Apache-2.0** | **8.8 trillion bp**; GTDB v220, IMG/PR, IMG/VR, MGD, NCBI, Ensembl, RNAcentral, Rfam, EPD | **5.52 TB** ✓ | Evo 2's pretraining corpus. We do **not** need it to use Evo 2 frozen — and at 5.52 TB it eats half the README's 10 TB acquisition cap. Pull only if we fine-tune. |
+| E15 | **NT downstream-task benchmark (revised)** | — | 2024 | [HF](https://huggingface.co/datasets/InstaDeepAI/nucleotide_transformer_downstream_tasks_revised) | yes | not stated ⚠️ | **532,064 rows, 18 tasks**, chromosome-held-out ✓ | **591 MB** ✓ | The standard evaluation. Chromosome-held-out splits make it a legitimate difficulty-matched test per README kill-criterion 3. |
+| E16 | **Genomic Benchmarks** | — | 2023 | [HF `katarinagresova/Genomic_Benchmarks_*`](https://huggingface.co/datasets/katarinagresova/Genomic_Benchmarks_human_enhancers_cohn) | yes | not stated ⚠️ | e.g. human_enhancers_cohn **27,791 rows** ✓ | **6.65 MB** per task ✓ | ⚠️ **Too small to distinguish models.** At 7 MB and ~28k examples, differences between strong DNA FMs here are inside the noise — the same trap as this repo's +0.0138 selector noise floor. Report it, don't decide on it. |
+| E17 | **GUE**, **BEND**, **DART-Eval**, **GenBench**, **NABench** | — | 2023–25 | [DART-Eval](https://github.com/kundajelab/DART-Eval) · [NABench](https://arxiv.org/abs/2511.02888) | yes | varies | 20–60 tasks each | <10 GB each | Overlapping benchmark suites — GUE and the NT suite share tasks. **DART-Eval is the one with a real negative result**; use it as the honest gate. |
+| E18 | **ClinVar (non-coding) / gnomAD** | ongoing | 2026 | ncbi.nlm.nih.gov/clinvar · gnomad.broadinstitute.org | yes | open | 10⁶ / 10⁸ variants | 1–500 GB | Zero-shot variant-effect evaluation for a frozen DNA encoder — the one task where DNA LMs demonstrably hold up. |
+
+### 4.2 Notes
+
+- **The big redundancy, stated plainly.** ENCODE (E1) → GEO/SRA → reprocessed four times
+  as ReMap, ChIP-Atlas, GTRD and Cistrome (E9, E10) → meta-analysed into HOCOMOCO (E4)
+  and CIS-BP (E7). Taking all of them is not more data; it is the same experiments at
+  five levels of processing, with correlated errors. **Take ENCODE peaks as primary and
+  exactly one aggregator for coverage beyond it — and make that aggregator ChIP-Atlas
+  (CC-BY-4.0, 433k experiments) rather than ReMap (CC-BY-NC-4.0, 8,103 datasets):
+  more data, no licence problem.** That alone cuts the acquisition budget
+  by most of an order of magnitude.
+- **Licences to watch on the data side.** ReMap is **CC-BY-NC-4.0**, which is the only
+  non-commercial restriction in this whole section — ENCODE, JASPAR, HOCOMOCO and the PDB
+  are all clean. If ReMap's NC terms matter, ChIP-Atlas or GTRD covers the same ground.
+- **CIS-BP's headline number is inflated ~34×.** 169,272 TFs with a motif, of which
+  **4,989** come from a direct experiment. Everything else is inferred from DNA-binding-
+  domain similarity. Quoting 169k as "TFs with known specificity" would be the exact
+  too-clean-number failure this repo has a memory note about.
+- **Size reality check against the README's 10 TB cap.** ENCODE peak BEDs (~tens of GB),
+  JASPAR/HOCOMOCO/CIS-BP (<2 GB total), HT-SELEX raw (~hundreds of GB), the PDB NA subset
+  (single-digit GB), the benchmarks (<10 GB). **A complete, useful DNA corpus is well
+  under 1 TB.** The only things that would blow the cap are OpenGenome2 (5.52 TB), ENCODE
+  bigWigs (10–30 TB) and 4DN (10–100 TB) — and we need none of the three to run frozen
+  encoders. Acquire none of them in wave 2.
+
+---
+
+## 5. Recommendation
+
+**Models — take three, not fifteen.**
+
+1. **Evo 2 7B** (`arcinstitute/evo2_7b`, Apache-2.0, 13.8 GB, 1 Mb ctx, 4096-d). The
+   evolutionary-constraint tower. Budget a day for the environment: the repo wants torch
+   2.6/2.7 + flash-attn 2.8 + `vortex`, and we have 2.5.1. The 7B is the only size that
+   runs bf16 without Transformer Engine.
+2. **AlphaGenome via the PyTorch port** (`gtca/alphagenome_pytorch`, 450M, 3072-d @128 bp,
+   1 Mb, **40.8 GB peak on one H200**). The function tower. Plain torch, no exotic kernels,
+   `encode()` hands back (B, 1024, 3072) directly. Non-commercial — see BLOCKED.
+3. **ModernGENA-large** (`AIRI-Institute/moderngena-large`, 377M). The cheap one that will
+   actually run on our stack on the first try, pretrained TSS-centred on 443 vertebrate
+   genomes. Use it to get the pipeline working before spending H200 hours on Evo 2.
+
+Permissive fallback if non-commercial is ruled out: **Evo 2 + Enformer (CC-BY-4.0) +
+borzoi-pytorch (CC-BY-4.0)**. Still a good stack.
+
+**Datasets — three, and they are small.**
+
+1. **PDB protein–DNA subset — 10,733 entries, 4.32 GB, CC0.** 3,027 non-redundant clusters
+   after 30% clustering. Plus DNAproDB 2.0 (0.94 GB) for precomputed interface geometry.
+2. **ENCODE TF ChIP-seq peak BEDs — 5,002 released experiments, tens of GB, fully open.**
+   Peaks only. Not bigWigs, not FASTQ.
+3. **HT-SELEX (`PRJEB3289` + Yin 2017 + Codebook GHT-SELEX) — ~10² GB.** The only
+   quantitative (TF, sequence) → enrichment signal, which is the exact shape a
+   partner-prediction JEPA head consumes.
+
+**Total under 200 GB against a 298 TB scratch and a 10 TB cap.** Data volume is not the
+constraint on the DNA arm; supervision *density* is.
+
+**Alignment with README revision 1.** The protein/ligand reconnaissance found that
+concatenating unimodal encoders loses to a count fingerprint, and that what survives is a
+*jointly computed* representation (Boltz-2's `z`). The same discipline applies here, and
+the DNA arm has an exactly analogous trivial control: **a k-mer count vector**. Before any
+DNA embedding is believed, it must beat k-mer counts + LightGBM on a
+leave-one-target-cluster-out split. Per section 1.2, published benchmarking already says
+general-purpose DNA LMs lose to specialised models on gene expression and QTLs — so this
+control is not a formality.
 
 ---
 
 ## BLOCKED — needs the user
 
-*(pending)*
+Ordered by cost if it stays blocked. All are obtainable; none is a technical problem.
+
+### B1. AlphaGenome weights — accept the terms (one click), *and* make a licensing decision
+`google/alphagenome-all-folds` is **gated**: log in, complete the fields, Accept. Licence
+is the **AlphaGenome Model Terms — non-commercial only**, and the scope is unusually broad:
+
+> fine-tuned derivatives inherit the identical non-commercial terms, **and training a new
+> model on AlphaGenome's outputs or predictions is itself restricted.**
+
+That second clause reaches this program directly: a JEPA head trained on AlphaGenome
+embeddings is a restricted derivative. For an academic project that is fine — but it must
+be a decision, not a discovery.
+
+*Honest note on a laundering hazard:* the community port `gtca/alphagenome_pytorch`
+carries the same weights and is **not** HF-gated. Downloading from the mirror does not
+change what the terms permit. Use the official gate.
+
+### B2. NTv3 — accept the gate (one click)
+Every `InstaDeepAI/NTv3_*` repo is **gated** behind a **custom non-commercial licence**
+("Licensed Models are only available under this License for Non-Commercial Purposes").
+One acceptance covers the collection. It is the only open 1-Mb single-nucleotide 1536-d
+encoder, and the `_post` checkpoints carry ~16,000 functional tracks across 24 species.
+Worth having even if we end up not using it.
+
+### B3. AlphaFold3 weights — a written application, not a click
+Gated, non-commercial, **requires an application to Google DeepMind with institutional
+details**; turnaround is days to weeks. Only needed if we want AF3 as a protein–DNA
+structure source. **Boltz-2 (MIT) and Chai-1 (Apache-2.0, code *and* weights) do the same
+job with no gate**, so this is optional — start the application only if there is a
+specific reason AF3 must be in the comparison.
+
+### B4. Three downloads that block on bot-detection, not on permission
+None of these needs an account; they need a browser or a `curl` with a real UA.
+- **BioLiP2** — `zhanggroup.org/BioLiP/` returns **HTTP 403** to non-browser clients.
+  Mirror: `aideepmed.com/BioLiP/`.
+- **DeepPBS dataset** — figshare DOI `10.6084/m9.figshare.25678053` **403s to bots**;
+  downloads fine from a browser. This is our best structure→PWM supervision.
+- **GraphBind benchmark sets** — `csbio.sjtu.edu.cn` serves a **bad TLS certificate**;
+  `curl -k` works, or use the GraphSite GitHub mirror (MIT).
+
+### B5. ProNAB bulk file — possibly an email
+`web.iitm.ac.in/bioinfo2/pronab/` exposes a `#download` anchor, but one read of the page
+says *"If you would like to access the entire dataset, please contact us."* **14,606
+protein–DNA affinity measurements** is the actual regression target for a binding JEPA, so
+if the anchor does not yield the full table, one email to the IIT-Madras group is worth
+sending. Note it has not been updated since **February 2023**.
+
+### B6. The licensing policy call — a decision only the user can make
+If the program must stay commercially clean, these all drop out: AlphaGenome **and
+anything trained on its outputs**, NTv3, every Nucleotide Transformer (v1/v2/SegmentNT/
+ChatNT are CC-BY-NC-SA-4.0, and *share-alike* arguably reaches derived embeddings), Sei,
+DeepSEA/Beluga/ExPecto, Orca, GET, the NVIDIA JEPA-DNA checkpoints, **ReMap
+(CC-BY-NC-4.0)** and **DNAproDB data (CC-BY-NC)**.
+
+What survives clean: **Evo 2, Enformer, borzoi-pytorch/Flashzoi, Caduceus, HyenaDNA,
+PlantCaduceus, ModernGENA, gLM2, GenomeOcean, ChromBPNet, DeepPBS, Deep DNAshape, the
+PDB (CC0), ENCODE, JASPAR (CC-BY-4.0), HOCOMOCO (WTFPL).** That is a complete stack.
+Knowing which one we are building is worth more than any individual model.
+
+### B7. Two environment limits that cost this survey coverage
+- **`CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION` was exhausted at 200/200** partway through.
+  Everything after that point was done by direct HTTP fetch against canonical URLs, which
+  is why most numbers here are *measured* rather than quoted — but it did cost breadth.
+  Not covered for lack of search: **Delphi**, DeepBind/BindSpace, Kipoi model-zoo
+  liveness, and protein–DNA co-embedding models.
+- **The concurrent-subagent cap** was hit while fanning out. Raising both would close
+  those gaps in one pass.
+
+---
+
+## Provenance
+
+Compiled 2026-09-20 by the DNA/genomics lead plus two parallel reconnaissance agents
+(structure data; regulatory models). Conventions used throughout:
+
+- **✓** = queried live today against a primary API (RCSB Search, ENCODE portal,
+  HuggingFace config/file listings), not recalled from training.
+- ***(measured)*** = file size obtained by sampling real files, not quoted from a paper.
+- **⚠️** = unverified, stale, inflated, or licence-ambiguous.
+- **❌** = dead, or incompatible with the torch-2.5.1 / no-`cuequivariance` stack.
+
+Numbers without a mark are quoted from the cited source and were not independently
+checked. The PDB counts in §3.1 were derived twice, independently, and agreed exactly.
+
+**Known gaps.** The session's WebSearch budget was exhausted at 200/200 partway through;
+the remainder was direct HTTP. Not covered for want of search breadth: **Delphi**,
+DeepBind / BindSpace / ProBound model zoos (`proboundmodels.org` does not resolve),
+Kipoi model-zoo liveness, and dedicated protein–DNA *co-embedding* models. §4 (functional
+genomics) is the least independently cross-checked section — its ENCODE, JASPAR,
+HOCOMOCO, CIS-BP, ReMap, ChIP-Atlas and SCREEN figures were fetched directly and carry ✓,
+but the HT-SELEX and MPRA size estimates are order-of-magnitude, marked (est.), and should
+be measured before any acquisition is budgeted against them.
