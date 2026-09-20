@@ -83,11 +83,17 @@ Against the alternative: **cross-engine consensus selection gains +0.0381** on C
 
 ## Addendum — the dose-response closes it
 
-| dose | mean LDDT-PLI | Δ vs base | median Δ | ft wins | p | catastrophes <0.1 | successes >0.5 |
-|---|---|---|---|---|---|---|---|
-| base | 0.3477 | — | — | — | — | 39 / 85 | 23 / 85 |
-| 87 steps | 0.3438 | **−0.0038** | −0.0025 | 15/85 | 9.8e-05 | 39 | 24 |
-| 350 steps | 0.3352 | **−0.0125** | −0.0007 | 15/85 | 1.4e-05 | 38 | 23 |
+| dose | mean LDDT-PLI | Δ vs base | ft wins | p | catastrophes <0.1 | successes >0.5 |
+|---|---|---|---|---|---|---|
+| base | 0.3477 | — | — | — | 39 / 85 | 23 / 85 |
+| 87 steps | 0.3438 | **−0.0038** | 15/85 | 9.8e-05 | 39 | 24 |
+| 174 steps | 0.3339 | **−0.0138** | 14/85 | 4.1e-07 | 39 | 23 |
+| 350 steps | 0.3352 | **−0.0125** | 15/85 | 1.4e-05 | 38 | 23 |
+
+Four doses. The damage rises to about **−0.013 by 174 steps and then plateaus** (174 and
+350 are within noise of each other), and the catastrophe count reads **39, 39, 39, 38**
+with successes at **23, 24, 23, 23**. Not one pose crosses between the two modes at any
+amount of training.
 
 **Monotonic damage, and no dose reclassifies anything.** More training is strictly worse,
 and at every dose the catastrophe count sits at 38–39 and the success count at 23–24.
