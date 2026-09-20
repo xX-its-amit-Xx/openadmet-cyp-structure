@@ -22,7 +22,13 @@ if [ "$CKPT" = "base" ]; then
     CKPT=boltz_cache/boltz2_conf.ckpt
     TAG=base
 else
-    TAG=ft
+    # TAG is derived from the checkpoint FILENAME, not a constant. It used to be the
+    # literal "ft", which meant two different training checkpoints wrote to the same
+    # output directory and silently overwrote each other - submitting a dose-response
+    # series would have produced one result set wearing three labels.
+    #   last.ckpt -> ft_last ; stepstep=87.ckpt -> ft_step87
+    BASE=$(basename "$CKPT" .ckpt)
+    TAG=ft_$(echo "$BASE" | sed 's/stepstep=/step/; s/[^A-Za-z0-9_]/_/g')
 fi
 
 OUT=holdout_out/${ARM}_${TAG}
