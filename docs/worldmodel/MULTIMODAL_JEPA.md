@@ -95,6 +95,13 @@ already-bound complex** (`atomica.data.process_pdbs`). It embeds a *pose*. It ca
 a protein plus a SMILES and say whether or how they bind, because the 8 Å interface is
 only definable once a pose exists. Consequences:
 
+- ⚠️ **FALSIFIED 2026-09-20, see `EXPERIMENT_atomica_selector.md`.** It was run on all 1,740
+  CYP3A4 poses, both with and without the heme in the receptor. Best feature +0.0148 against
+  random (below the +0.0138 noise floor), incumbent +0.0395; the denoising heads select
+  *worse* than random in their own objective's direction; the HEM checkpoint is a
+  ligand-free pocket classifier and ranks at chance. The ablation below fired: 30° rigid
+  rotation of the ligand is detected at **AUC ≈ 0.96** while real prediction error is
+  ranked at ρ ≈ 0.08. The bullet as originally written is kept below for the reasoning.
 - ✅ **Directly usable as a pose scorer.** Embed the interface of each Boltz/Protenix
   CYP3A4 pose and use the embedding (or a light head on it) as a selection feature. This
   is a drop-in candidate against `cypstruct.xengine.select()`'s +0.0381 and, unlike Boltz
