@@ -284,3 +284,77 @@ reimplementation is the route if we want that architecture.
 
 AlphaGenome gate, NTv3 gate, AlphaFold3 weights application. BioLiP2 / DeepPBS / GraphBind
 returned 403 or bad TLS from this network. ProNAB bulk may need an email.
+
+---
+
+## Revision 4 — 2026-09-20, after the RNA reconnaissance
+
+### RNA–small-molecule binding data does not exist, and that is now measured
+
+| quantity | count |
+|---|---|
+| aggregated RNA–small-molecule measurements worldwide (R-SIM) | ~2,500 |
+| usable Kd | 1,480 |
+| with a structure | **101** |
+| non-redundant drug-like co-structures ever solved | **48** |
+
+And nearly all of it is the same PDB entries and the same R-BIND/Inforna extract re-cut
+under new names. So RNA joins DNA: enormous sequence corpora, essentially **zero**
+ligand-binding supervision. Forty-eight complexes is not a modality, it is a footnote.
+
+The "train on every modality's affinity data" framing is therefore settled: for *ligand
+binding*, protein–ligand is not one modality among several, it is ~99% of the evidence
+that exists anywhere.
+
+### The architecture the recon actually found
+
+Here is the thing worth keeping. **RhoFold+ exposes `c_s = 384` and `c_z = 128` — exactly
+Boltz-2's trunk dimensions.** That is not luck; both follow the AlphaFold-style
+single/pair convention. Which means:
+
+> The shared space should be built by aligning **pair representations from structure
+> predictors**, not by aligning sequence-model embeddings.
+
+Every one of those pair representations is joint by construction — protein × ligand ×
+pose for Boltz-2, RNA × RNA × geometry for RhoFold+ — which is precisely the property
+that survives the fingerprint critique in Revision 2. And they already live in a common
+dimensionality, so one projection head serves both rather than a bespoke adapter per
+modality.
+
+This is a concrete, cheap, falsifiable version of what the program set out to do, and it
+came out of the evidence rather than being assumed at the start.
+
+Supporting facts: **RiNALMo-giga is 1280-d, matching ESM-2-650M**, so the sequence side is
+symmetric too if we want it. **ATOMICA ships finetuned HEM/HEC heme checkpoints** —
+independently confirmed by two reconnaissance lines, and CYP3A4 is a heme protein.
+
+### Prior art to read before designing anything
+
+**RNAPro (NVIDIA × Das Lab, 2026)** is already a frozen RNA foundation model gated into a
+Protenix co-folder — i.e. someone has built the "frozen foundation model feeds a structure
+predictor" design and published what happened. Alongside JEPA-DNA (Revision 3), that is
+two of the three legs of this program already standing in the open literature.
+
+### Shortlist additions, MIT/Apache-compatible
+
+| model | licence | size | dims | note |
+|---|---|---|---|---|
+| RiNALMo-giga | CC-BY-4.0 | 2.60 GB | 1280 | original repo pins `flash-attn==2.3.2`; use the MultiMolecule rewrap (plain PyTorch) |
+| RhoFold+ | Apache-2.0 | 0.51 GB | s 384 / z 128 | same convention as Boltz-2 |
+| RNAcentral r27 | CC0 | 10 GB | — | 58,558,809 sequences |
+| RNA3DB (2026-01-05) | MIT | 2.15 GB | — | ships defensible non-redundant splits |
+| Ribonanza | open | — | — | chemical mapping on ~2 M sequences; the one RNA layer richer than its protein analogue |
+
+### A legal call that needs making
+
+**MultiMolecule is AGPL-3.0.** That is not the usual non-commercial annoyance — AGPL is
+viral across a network boundary, so serving a model through it can oblige us to release
+our own source. Using it to *produce embeddings offline* is a different matter from
+shipping it in anything. Flagged rather than decided.
+
+### Blocked, needs the user
+
+R-BIND 2.0 (URL dead; data only in paywalled ACS supporting information), Inforna 2.0
+(signed licence), PDBbind registration, OpenFold3 HF gate, RIBOSPAN-10K (on request),
+AlphaFold3 (non-redistributable). Given the 48-structure ceiling above, **none of the
+RNA-specific ones are worth chasing.**
