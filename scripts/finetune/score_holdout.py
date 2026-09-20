@@ -41,10 +41,19 @@ def main() -> int:  # noqa: PLR0915
     ap.add_argument("--tag", default="base", help="base | ft")
     a = ap.parse_args()
 
-    preds = ROOT / "holdout_out" / f"{a.arm}_{a.tag}" / f"boltz_results_{a.arm}" / "predictions"
-    if not preds.exists():
-        msg = f"no predictions at {preds}"
+    # boltz names its results directory after the INPUT yaml directory's basename, which
+    # is not the arm name once variants exist (arm4_mix_bonded -> boltz_results_arm4_mix_bonded).
+    # Globbing it rather than reconstructing the name avoids a scorer that silently
+    # reports "no predictions" for 420 files that are sitting right there.
+    root = ROOT / "holdout_out" / f"{a.arm}_{a.tag}"
+    cands = sorted(root.glob("boltz_results_*/predictions"))
+    if not cands:
+        msg = f"no predictions under {root} (looked for boltz_results_*/predictions)"
         raise SystemExit(msg)
+    if len(cands) > 1:
+        msg = f"ambiguous: {len(cands)} results dirs under {root}: {[str(c) for c in cands]}"
+        raise SystemExit(msg)
+    preds = cands[0]
 
     df = pd.read_csv(ROOT / "finetune_arms" / f"{a.arm}.csv")
     rows = {f"{r.pdb}_{r.id}": r for r in df.itertuples()}
