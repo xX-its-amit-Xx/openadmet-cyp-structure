@@ -54,8 +54,8 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--max-tokens", type=int, default=512)
     ap.add_argument("--max-atoms", type=int, default=4096)
-    ap.add_argument("--diffusion-multiplicity", type=int, default=0,
-                    help="override the pretrain value (32); lower it if a step OOMs")
+    ap.add_argument("--diffusion-multiplicity", type=int, default=1,
+                    help="pretrain used 32; see the note in main() for why 1 is forced")
     ap.add_argument("--dry-run", action="store_true",
                     help="build everything and report shapes without stepping the optimiser")
     a = ap.parse_args()
@@ -90,6 +90,13 @@ def main() -> int:
         ta = dict(ta)
         ta["max_lr"] = a.lr
         ta["lr_warmup_no_steps"] = a.warmup
+    # diffusion_multiplicity 1, NOT the stored 32. forward() reshapes feats["coords"] to
+    # (B*multiplicity, L, 3) for the diffusion loss, and the confidence branch then asserts
+    # coords.shape[0] == 1 - so anything above 1 makes every batch raise "Validation is not
+    # supported for batch sizes=N" and return None. Since confidence cannot be switched off
+    # either (see below), 1 is the only self-consistent setting in the released code.
+    # The cost is gradient variance, which accumulate_grad_batches buys back; the benefit
+    # is that the memory freed lets the crop stay large enough to hold the whole pocket.
     if a.diffusion_multiplicity:
         try:
             ta.diffusion_multiplicity = a.diffusion_multiplicity
@@ -118,9 +125,13 @@ def main() -> int:
     from boltz.model.models.boltz2 import Boltz2
 
     diffusion_params = Boltz2DiffusionParams()
-    pairformer_args = PairformerArgsV2()
+    # Activation checkpointing on both trunks. Inference leaves these False because it
+    # runs under no_grad and stores nothing; training a 64-block pairformer does, and the
+    # triangular-multiplication activations alone OOM a 140 GB H200 at 384 tokens. This
+    # trades recompute for memory and changes no numbers.
+    pairformer_args = PairformerArgsV2(activation_checkpointing=True)
     msa_args = MSAModuleArgs(subsample_msa=True, num_subsampled_msa=1024,
-                             use_paired_feature=True)
+                             use_paired_feature=True, activation_checkpointing=True)
     steering_args = BoltzSteeringParams()
     steering_args.fk_steering = False
     steering_args.physical_guidance_update = False
@@ -147,6 +158,7 @@ def main() -> int:
         # A 4-step run did exactly this and exited 0: param_norm_structure_module 0.0,
         # grad_norm identical to grad_norm_confidence_module.
         structure_prediction_training=True,
+        checkpoint_diffusion_conditioning=True,
     )
     # `validate_structure` is a constructor argument of Boltz2 that is never assigned to
     # self, so `Boltz2.setup()` raises AttributeError on the first non-predict stage -
@@ -155,6 +167,14 @@ def main() -> int:
     # Setting it False both fixes the attribute and is what we want: boltz's internal
     # validators report their own metrics, and our gate is LDDT-PLI from cypstruct.pose.
     model.validate_structure = False
+
+    # Confidence stays ON, and that is forced by an upstream coupling rather than by
+    # preference. forward() builds `diffusion_conditioning` under the gate
+    # `(not self.training) or self.confidence_prediction`, but the structure-training
+    # branch further down uses that variable unconditionally - so training the trunk with
+    # confidence off raises UnboundLocalError on the first batch. Confidence contributes
+    # at weight 0.3 against diffusion's 4.0, so it is a rounding error on the objective
+    # we care about, and the head is not what we gate on (FINDING 011: rho -0.092).
 
     # The checkpoint's diffusion_loss_args carry `add_bond_loss`, which the installed
     # AtomDiffusion.compute_loss no longer accepts. training_step splats these as **kwargs
