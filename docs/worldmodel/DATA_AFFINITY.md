@@ -191,3 +191,64 @@ Storage note per CLAUDE.md: everything above except the ChEMBL dump and HiQBind 
 | **EnzyExtractDB commercial use** | Data is CC BY-NC 4.0 (inherited Elsevier/Wiley TDM terms) | Nothing obtainable — the restriction is structural | n/a; academic use is fine |
 | **Papyrus 2024.1 exact target/compound counts** | Zenodo record does not state them; marked [?] above | Download the 14 GB core TSVs and count | Free to resolve, just needs the download |
 | **BindingDB's CYP slice** | Not separately counted this pass | One query against the BindingDB UniProt-P08684 endpoint | Free to resolve |
+
+---
+
+## Acquisition log
+
+Run 2026-09-20 by the acquisition worker. Destination `/scratch/shenoy.am/worldmodel/raw/<source>/`
+on the Explorer cluster (login node; `/scratch` had 281 TB free). Nothing was written to the local
+Windows box. Machine-readable manifest with per-file byte counts, sha256 digests, integrity-check
+results and licence strings: `/scratch/shenoy.am/worldmodel/manifests/affinity.json`.
+Integrity log: `/scratch/shenoy.am/worldmodel/logs/verify.txt`.
+
+**Total landed: 17,223,934,462 bytes (17.22 GB) across 8 sources.**
+
+### Landed
+
+| Source | Version | Bytes | Integrity | Licence recorded |
+|---|---|---:|---|---|
+| ChEMBL | 37 (2026-05-01), `chembl_37_sqlite.tar.gz` | 5,764,252,857 | gzip OK, sha256 `33c20374…` | CC BY-SA 3.0 |
+| BindingDB | 202609 full TSV + UniProt/CID/FASTA maps | 626,536,048 (zip 593,578,299) | zip CRC OK, member `BindingDB_All.tsv` = 8,984,698,089 B | CC BY 4.0 (ChEMBL-derived rows stay CC BY-SA 3.0) |
+| HiQBind | figshare 27430305 v3 + 3 metadata CSVs + README | 8,086,620,521 (tar 8,069,662,941) | gzip OK; **figshare md5 `b6668cc3…` matched** | **CC BY 4.0** (figshare record) + MIT code |
+| BioLiP2 | snapshot served 2026-09-20 (`BioLiP.txt.gz`, `_nr`, readme) | 93,033,675 | gzip OK | free download, code BSD |
+| CatPred-DB | git HEAD, cloned 2026-09-20 | 481,567,782 (≈96 MB data, rest `.git`) | no git-lfs pointers; all CSVs real | CC BY 4.0 data + MIT code |
+| BRENDA | 2026.1 (2026-03-04) textfile + JSON + README | 158,272,202 | gzip OK (71.59 / 79.35 MB as advertised) | CC BY 4.0, accepted at download |
+| SKEMPI | 2.0 CSV + `SKEMPI2_PDBs.tgz` | 32,088,394 | csv 1,602,208 B; tgz gzip OK | CC BY 4.0 |
+| Papyrus | 2024.1 (05.7), Zenodo 13787634, **core only** | 1,981,685,750 | all `.xz` / `.zip` OK | CC BY-SA 4.0 |
+
+Papyrus core = the two combined bioactivity TSVs (with/without stereochemistry), the `05.7++`
+high-quality subset, the protein-target table, the 2D SD set, README and additional files. The
+~820 GB of precomputed descriptor releases (mordred, CDDD, ECFP6, E3FP, ProDEC, UniRep) were
+deliberately skipped.
+
+### Licence-hygiene check performed at acquisition
+
+The downloaded `BioLiP.txt.gz` has **989,058 rows**, of which 81 carry a hand-curated affinity,
+25,976 a Binding MOAD affinity, 19,329 a BindingDB affinity — and **0 carry a PDBbind-CN affinity**
+(column 16 is empty throughout). The January-2025 removal of the 24,809 PDBbind-CN records is
+present in this snapshot, so this copy of BioLiP2 is PDBbind-CN clean. That is the one contamination
+route §7 warns about, and it is closed for this corpus.
+
+PDBbind, PDBbind+, CASF-2016 and `jglaser/binding_affinity` were **not** downloaded, by design.
+
+### Failed / blocked
+
+| Item | What happened | To unblock |
+|---|---|---|
+| **SAIR** (`sair.parquet` labels) | HuggingFace dataset is `gated: auto`. `resolve/main/sair.parquet` returns **HTTP 401** with no token; no HF token exists on this box or on Explorer | Accept the dataset terms once on huggingface.co with the user's account, then put the token in `HF_TOKEN` on Explorer. The parquet is ~1 GB; the 812 GB of Boltz-1x structures stay excluded |
+| **ProNAB** | No bulk file is served anywhere on the site. The full dataset is gated behind `php_download_form.php`, which asks for name, email, designation and organisation and is answered by the maintainers out of band. Not submitted — it needs the user's own identity and consent. Licence is also unstated | Amit fills the request form at `web.iitm.ac.in/bioinfo2/pronab/` (#download) and asks the maintainers to state a licence in writing |
+| **EnzyExtractDB** | Not attempted. Data is CC BY-NC 4.0 (inherited Elsevier/Wiley TDM terms) | Nothing to unblock — the restriction is structural. Academic use only; flagged rather than downloaded |
+
+### Two traps hit during this run, recorded so they are not re-learned
+
+1. **BRENDA's "click to accept the licence" is a POST whose `dlfile` value is the button's element
+   id, not the filename.** `POST /download.php` with `dlfile=dl-textfile` (or `dl-json`, `dl-readme`)
+   and `accept-license=1`. Posting the filename returns the HTML page with a 200 and a `.tar.gz`
+   extension — a 14 KB "archive" that is really the download page. `file` caught it.
+2. **The Explorer login node's memory cgroup SIGKILLs long reads of multi-GB archives.**
+   `unzip -t` on the 593 MB BindingDB zip (9 GB member) died with exit 137, and a streaming
+   `unzip -p | wc -c` stopped silently at 1,020,592,128 of 8,984,698,089 bytes while reporting
+   success. Both look exactly like a corrupt download. The archive is fine: a 24 GB Slurm job on
+   `short` read every byte and the CRC passed. **Verify large archives in a batch job, not on the
+   login node**, and never trust a stream that ends early with exit 0.
