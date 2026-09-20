@@ -292,3 +292,67 @@ constructing `Boltz2(**filtered_kwargs)` by hand. Lightning's own loader reports
 Lesson for the trainer: **build the model through boltz's own loading path**, not by
 filtering hyper_parameters into the constructor. The checkpoint and the package agree with
 each other; they disagreed with me.
+
+---
+
+## Addendum 2026-09-20 — the released Boltz-2 cannot train as shipped
+
+Wiring the data path turned up six defects, five of them silent. Recording them because
+each one produces a run that *completes* and is worthless, which is the expensive kind.
+
+**1. `trainingv2.py` is Boltz-1's trainer wearing a v2 name.** It imports `BoltzFeaturizer`
+and the v1 `Structure`. `Boltz2Featurizer` is referenced by exactly one file in the entire
+package — `inferencev2.py`. Handing v1 features to `Boltz2.training_step` does not raise.
+The training path in `scripts/finetune/boltz2_data.py` is therefore built from the
+*inference* v2 path — the one the released weights were exported against — with
+`training=True` and a cropper added.
+
+**2. `self.validate_structure` is never assigned.** `Boltz2.__init__` takes
+`validate_structure` as an argument and uses it in four methods, but never stores it, so
+`setup()` raises `AttributeError` the moment `stage != "predict"`. The released model
+cannot enter a Lightning training loop without a patch. Same shape as (1): the training
+path was not exercised on release.
+
+**3. Symmetry correction raises on every batch, and the handler hides it.**
+`training_step` routes ground truth through `minimum_lddt_symmetry_coords`, which reads
+three ragged symmetry keys out of the batch. Without `compute_symmetries=True` every batch
+throws, `training_step` returns `None`, and the run finishes with a full progress bar and
+no gradient. Worse, the handler prints `batch['pdb_id']` — a key nothing in the released
+pipeline puts there — so the real error is replaced by a `KeyError`.
+
+**4. `collate` exempts its ragged keys by name.** The v2 featurizer emits at least one
+ragged key that is not on the six-name list, so the worker dies with `'list' object has no
+attribute 'shape'`. Replaced with a type check, which is the same rule and cannot go stale.
+
+**5. Two incompatible RNG APIs in one item.** `BoltzCropper` calls `random.randint(n)` —
+legacy `RandomState`. `Boltz2Featurizer` expects a `Generator`. One seed, two objects.
+
+**6. Our own: `MOLDIR` pointed at `mols/mols`,** which survived the earlier flattening as
+an *empty directory*, so `.exists()` stayed `True` and the parser got a mol dir with
+nothing in it. 28 structures lost. An existence check on a directory is not a check that
+it has contents; the check is now `any(MOLDIR.glob("*.pkl"))`.
+
+### Data path, as built
+
+    a3m (185)  --make_msa_npz-->  msa_npz/<target_key>.npz     185/185, 0 failures
+    mmCIF      --make_records-->  records/<arm>/structures/<pdb>.npz + manifest*.json
+
+**Splits are per-PDB, not per-pair.** `build_arms.py` splits ligand pairs, but one npz
+holds every ligand in the entry — a PDB with one train pair and one test pair would put
+the held-out ligand's coordinates into training. Any PDB touching test goes to test whole.
+On arm4_mix this demoted 0 pairs, but the guard stays.
+
+arm4_mix: 406 pairs → 404 PDBs → **388 parsed, 303 train / 85 test, 0 records without an
+MSA**. The 16 failures are CCD components (`A1Axx`) newer than boltz's cached dictionary.
+
+First real batch: 78 feature tensors, `coords [1,1,4096,3]`, `msa [1,1024,512]` — the MSA
+depth confirms the a3m conversion actually reaches the model rather than defaulting to
+single-sequence.
+
+### Validation is deliberately OFF in Lightning
+
+`Boltz2.validation_step` dispatches through `self.validator_mapper[batch["idx_dataset"]]`,
+boltz's own harness, which reports its internal metrics. The gate this project
+pre-registered is held-out **LDDT-PLI measured by `cypstruct.pose`**. A validator that
+reports a different number than the gate is how a run looks healthy and fails the gate.
+Held-out scoring runs as a separate inference pass from the saved checkpoint.
