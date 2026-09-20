@@ -34,12 +34,55 @@ sys.path.insert(0, str(ROOT / "src"))
 def main() -> int:  # noqa: PLR0915
     import pandas as pd
 
-    from cypstruct.pose import best_ligand_mapping, bisy_rmsd, lddt_pli, load_structure
+    from cypstruct.pose import (
+        Complex,
+        best_ligand_mapping,
+        bisy_rmsd,
+        lddt_pli,
+        load_structure,
+    )
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--arm", default="arm4_mix")
     ap.add_argument("--tag", default="base", help="base | ft")
+    ap.add_argument("--min-identity", type=float, default=0.80,
+                    help="flag a pair whose best offset still disagrees this much")
     a = ap.parse_args()
+
+    def shift(cx, k):
+        """Renumber a Complex's protein residues by k, coordinates untouched."""
+        return Complex(
+            name=cx.name, prot_xyz=cx.prot_xyz,
+            prot_key=[(c, r + k, at) for (c, r, at) in cx.prot_key],
+            prot_res={(c, r + k): n for (c, r), n in cx.prot_res.items()},
+            lig_xyz=cx.lig_xyz, lig_elem=cx.lig_elem, lig_name=cx.lig_name,
+            lig_chain=cx.lig_chain, fe=cx.fe, heme_xyz=cx.heme_xyz,
+            heme_atom=cx.heme_atom, heme_elem=cx.heme_elem, axial_sg=cx.axial_sg)
+
+    def best_offset(mdl, ref):
+        """The renumbering that maximises residue-NAME agreement with the reference.
+
+        THIS IS NOT COSMETIC. lddt_pli pairs protein atoms by residue number. Boltz
+        numbers its output 1..N from the input sequence; a crystal uses auth numbering,
+        which for CYP3A4 starts near 29. Where those disagree, every contact is compared
+        against the WRONG residue and the score collapses to exactly 0.0 - silently, and
+        only for the targets whose offset happens to be large.
+
+        Measured on this set: 3NA0_2DC went 0.000 -> 0.986 at offset +43, 3DSJ_243
+        0.000 -> 0.941 at +27, 3NXU_RIT 0.003 -> 0.755 at +22. Pairs that were already
+        aligned come back at offset 0 and are unchanged, which is the control.
+
+        Matching on residue names rather than coordinates keeps this superposition-free
+        and cannot manufacture agreement: a wrong offset scores near-zero identity.
+        """
+        rres = {r: n for (c, r), n in ref.prot_res.items()}
+        mres = {r: n for (c, r), n in mdl.prot_res.items()}
+        best, bk = -1, 0
+        for k in range(-80, 81):
+            agree = sum(1 for r, n in mres.items() if rres.get(r + k) == n)
+            if agree > best:
+                best, bk = agree, k
+        return bk, (best / max(len(mres), 1))
 
     # boltz names its results directory after the INPUT yaml directory's basename, which
     # is not the arm name once variants exist (arm4_mix_bonded -> boltz_results_arm4_mix_bonded).
@@ -75,9 +118,15 @@ def main() -> int:  # noqa: PLR0915
             continue
 
         lddts, rmsds = [], []
+        offset = ident = None
         for cif in sorted(d.glob("*_model_*.cif")):
             try:
                 mdl = load_structure(cif)
+                if offset is None:
+                    # One offset per pair, from the first model: the numbering is a
+                    # property of the input sequence, not of the diffusion sample.
+                    offset, ident = best_offset(mdl, ref)
+                mdl = shift(mdl, offset)
                 perm = best_ligand_mapping(str(r.smiles), mdl, ref)
                 lddts.append(float(lddt_pli(mdl, ref, lig_perm=perm)))
                 rmsds.append(float(bisy_rmsd(mdl, ref, lig_perm=perm)))
@@ -91,6 +140,9 @@ def main() -> int:  # noqa: PLR0915
             continue
         out[d.name] = {
             "pdb": r.pdb, "ligand": str(r.id), "n_samples": len(lddts),
+            # Recorded so a bad alignment is visible in the output rather than being
+            # absorbed into a low score.
+            "resnum_offset": offset, "seq_identity_at_offset": round(ident or 0.0, 3),
             "lddt_pli": lddts, "bisy_rmsd": rmsds,
             # sample_0 is "no selection"; best is the pool oracle. Never quote one alone.
             "lddt_sample0": lddts[0], "lddt_best": max(lddts),
@@ -104,12 +156,16 @@ def main() -> int:  # noqa: PLR0915
     dst.write_text(json.dumps(out, indent=1))
 
     import statistics as st
+    low = [k for k, v in out.items() if v["seq_identity_at_offset"] < a.min_identity]
     vals0 = [v["lddt_sample0"] for v in out.values()]
     valsb = [v["lddt_best"] for v in out.values()]
     print(json.dumps({
         "arm": a.arm, "tag": a.tag, "pairs_scored": done, "pairs_failed": failed,
         "mean_lddt_sample0": round(st.mean(vals0), 4) if vals0 else None,
         "mean_lddt_best_of_n": round(st.mean(valsb), 4) if valsb else None,
+        "pairs_below_min_identity": len(low),
+        "low_identity_ids": sorted(low)[:10],
+        "median_resnum_offset": st.median([v["resnum_offset"] for v in out.values()]) if out else None,
         "reasons": dict(sorted(reasons.items(), key=lambda kv: -kv[1])[:4]),
         "out": str(dst),
     }, indent=2))
