@@ -268,3 +268,27 @@ Any future install here passes those constraints, because a CUDA-adjacent packag
 rewrite the framework underneath a working stack and report success while doing it. And a
 missing *optional* accelerator is not a blocker — check for a fallback flag before
 installing anything to satisfy an ImportError.
+
+### Inference verified: the released checkpoint runs on the PyPI package
+
+```
+boltz predict t.yaml --cache ./boltz_cache --use_msa_server --no_kernels
+  Number of failed examples: 0
+  t_out/boltz_results_t/predictions/t/t_model_0.cif
+  7 s on an H200
+```
+
+**`--no_kernels` is the whole fix.** `main.py:1321` sets `use_kernels=not no_kernels`, so
+the CLI turns kernels ON by default while the module default is `False`. The
+`ModuleNotFoundError: cuequivariance_torch` was one flag, never a missing dependency — and
+chasing it is what upgraded torch and broke the environment.
+
+**This also retires the version-gap worry.** Three ticks were spent on 128 missing
+`pairformer_module.layers.N.attention.norm_s.*` tensors and a 506.8M-vs-521.0M parameter
+gap, which looked like a genuine architecture mismatch. It was not: those were artifacts of
+constructing `Boltz2(**filtered_kwargs)` by hand. Lightning's own loader reports only
+`v2.5.0.post0` vs `v2.5.0`. The supported path works; the hand-rolled one was the problem.
+
+Lesson for the trainer: **build the model through boltz's own loading path**, not by
+filtering hyper_parameters into the constructor. The checkpoint and the package agree with
+each other; they disagreed with me.
