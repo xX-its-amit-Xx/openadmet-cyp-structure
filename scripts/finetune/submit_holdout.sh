@@ -37,4 +37,12 @@ srun ./env/bin/boltz predict "holdout_yaml/${ARM}" \
     --output_format mmcif \
     --diffusion_samples 5 \
     --num_workers 4 \
+    --no_kernels \
     --override
+# --no_kernels is REQUIRED here, not an optimisation. `boltz predict` sets
+# use_kernels = not no_kernels, so it defaults to the cuequivariance path, and this env
+# still carries cuequivariance-*-cu12 0.11.1 wheels left over from the torch-downgrade
+# incident - built against a torch we rolled back, so the ops backend import fails.
+# Both holdout jobs died in under 70 seconds on exactly that. The pure-PyTorch fallback
+# is also what train_arm.py uses (use_kernels=False), so this keeps inference on the
+# same code path the weights were fine-tuned through.
