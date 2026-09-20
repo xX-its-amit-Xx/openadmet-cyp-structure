@@ -1,3 +1,11 @@
+> # RETRACTED IN FULL — 2026-09-20, by FINDING 021.
+> Every premise below is an artifact of a residue-numbering offset in the scorer: the
+> bimodal split, the 39 catastrophes, the 10.9 Å / 0.74 Å partition, the
+> "deterministic per-target failure", the ligand-size and sequence-length predictors
+> (they predicted which CRYSTALS are numbered oddly), and the conclusion that selection
+> had no headroom. True base mean **0.8110**, catastrophes **1/84**, 15-pose oracle
+> headroom **+0.0632**. Kept only as a record of the error. Read FINDING 021.
+
 # FINDING 020 — The held-out catastrophes are not selectable, and three explanations for them are dead
 
 **Date:** 2026-09-20 · **Status:** measured on 84–85 held-out P450 pairs · **Verdict:** a hard capability floor, not a selection gap
