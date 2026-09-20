@@ -238,3 +238,33 @@ Boltz ships its own mmCIF parser (`data/parse/mmcif.py`, `mmcif_with_constraints
 through **Boltz's own parser**, not a reimplementation — which matters because a mismatch
 between how training data is parsed and how inference parses it would degrade the
 fine-tune silently rather than failing.
+
+### Incident: a pip install silently replaced torch, and the dependency was never needed
+
+Boltz inference failed with `ModuleNotFoundError: cuequivariance_torch`, raised from
+`kernel_triangular_mult`. I installed the package. That was wrong twice over.
+
+**It broke the environment.** `pip install cuequivariance-torch` pulled a CUDA 13 stack and
+**upgraded torch 2.5.1+cu121 → 2.14.0+cu130**, after which boltz would not import at all.
+The stack I had verified against an H200 was replaced by a resolver decision I never asked
+for and did not check.
+
+**And it was unnecessary.** `boltz/model/layers/triangular_mult.py` takes
+`use_kernels: bool = False` on `forward`, with a pure-PyTorch path behind it. The kernel is
+an optimisation. The correct fix was to leave kernels off, not to satisfy the import.
+
+Recovery: `pip install --force-reinstall torch==2.5.1 --index-url .../cu121`, then
+re-verified on a GPU node rather than trusting the import — `cuda avail True`, `NVIDIA
+H200 NVL`, `use_kernels default: False`.
+
+**Rule going forward:** this environment is pinned in `VERIFIED_VERSIONS.txt`:
+
+```
+boltz==2.2.1   torch==2.5.1+cu121   numpy==1.26.4   pytorch-lightning==2.5.0
+gemmi==0.6.5   pandas==3.0.6        scipy==1.13.1   rdkit==2026.3.6
+```
+
+Any future install here passes those constraints, because a CUDA-adjacent package can
+rewrite the framework underneath a working stack and report success while doing it. And a
+missing *optional* accelerator is not a blocker — check for a fallback flag before
+installing anything to satisfy an ImportError.
