@@ -356,3 +356,30 @@ boltz's own harness, which reports its internal metrics. The gate this project
 pre-registered is held-out **LDDT-PLI measured by `cypstruct.pose`**. A validator that
 reports a different number than the gate is how a run looks healthy and fails the gate.
 Held-out scoring runs as a separate inference pass from the saved checkpoint.
+
+### Capacity, measured 2026-09-20 — the campaign is serial
+
+`gyorilab` is one node, `d4079`, with four H200s. Three of them are held by another user's
+interactive `bash` sessions, running 3 and 9 days respectively. That leaves **one GPU**.
+
+A held-out control submitted alongside training went `PD / Resources` with an estimated
+start three weeks out — past both the interim and final deadlines. Slurm's estimate is
+pessimistic, but the constraint is real and is not something to fix by killing another
+user's work.
+
+So the campaign runs **serially, with dependencies**, not in parallel:
+
+    sbatch submit_arm.sh arm4_mix 350                          # ~3.7 h
+    sbatch --dependency=afterany:<train> submit_holdout.sh arm4_mix base
+    sbatch --dependency=afterany:<base>  submit_holdout.sh arm4_mix <ckpt>
+
+`afterany`, not `afterok`: the base control does not depend on training succeeding, and a
+failed train should not silently cancel the control that would have explained it.
+
+Budget at one GPU: ~3.7 h per arm plus two ~2 h inference passes ≈ **8 h per arm**, so all
+four arms are roughly a day and a half of wall clock. That is affordable, but it means
+arm4_mix has to be the one that runs first — it is the novelty-matched arm (NN 0.536
+against the challenge's 0.587), so it is the only one whose held-out number transfers.
+
+Second venue: `ssh discovery` fails host-key verification from this box, so it is not
+available without a key the user would need to accept. Not pursued.
