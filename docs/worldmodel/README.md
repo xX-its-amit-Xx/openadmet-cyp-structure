@@ -92,3 +92,142 @@ structures, the embedding space as it forms. Merged into the Vercel dashboard.
 
 Findings land in `docs/worldmodel/*.md`, one file per domain, written by the agent that
 did the work. This file is the index and the argument; those are the evidence.
+
+---
+
+## Revision 1 — 2026-09-20, after the protein/ligand reconnaissance
+
+**The naive shared space is already falsified in the literature.** Separate unimodal
+encoders, concatenated or attention-fused — the classical PCM architecture — loses to a
+count fingerprint:
+
+| evidence | result |
+|---|---|
+| 25 models × 25 datasets, scaffold split (arXiv 2508.06199) | **ECFP mean rank 7.52**; MoLFormer 9.50, Mol2Vec 10.36, Uni-Mol2 13.32, GraphMVP 14.64 |
+| 62,820-model study (Nat Commun) | fingerprints competitive or better |
+| 132-dataset peptide study | fingerprints beat ESM-2 and ProtT5 |
+| Volkov 2022 | interaction descriptors add nothing over ligand-only |
+| Graber 2025 (Nat MI) | ~49% of CASF-2016 leaks from PDBbind; **ligand-only matches structure-based DL** |
+| TDC ADMET audit 2026 | only fingerprint + boosting entries reproduced |
+
+So the program is redirected before it is built, not after.
+
+### What survives, and why
+
+`boltz predict --write_embeddings` is a shipped flag (`boltz/main.py:1038`). It writes
+`embeddings_<id>.npz` containing `s [n, 384]` and `z [n, n, 128]`.
+
+**`z` is a function of protein × ligand × pose.** That is categorically different from
+gluing a protein vector to a ligand vector: the fingerprint critique applies to models
+whose joint representation is assembled *after* the fact, and `z` is joint by
+construction, computed by a network trained to place atoms in space. It is MIT, it runs
+on the torch 2.5.1 stack we already validated, and it falls out of inference runs we
+are already paying for.
+
+`cuequivariance` is an *optional* extra of boltz, not a requirement — consistent with
+what we found the hard way during fine-tuning.
+
+### The pre-registered first experiment
+
+> Can the Boltz-2 pair representation predict CYP3A4 affinity better than a fingerprint?
+
+- **Signal:** pooled `z` from a Boltz-2 pose, plus `s`.
+- **Control that must be beaten:** count-ECFP4 + LightGBM.
+- **Two further controls, both mandatory:** a **ligand-only** model (catches the shortcut
+  where target features carry everything) and a **nearest-neighbour-by-Tanimoto**
+  predictor (catches memorisation).
+- **Split:** target-cluster-held-out, never random. Report the ligand-free baseline
+  alongside every number.
+- **Kill:** if pooled `z` does not beat count-ECFP4 on a target-held-out split, the
+  shared-space premise is dead and we say so.
+
+This is days of work, not months, and it tests the load-bearing assumption first.
+
+### Operational notes worth not rediscovering
+
+- **MoLFormer-XL must be called with `deterministic_eval=True`** or its embeddings differ
+  between calls — a silent corruption of exactly the kind this project keeps hitting.
+- `z` is ~128 MB per pose. **Pool at write time**, never store raw.
+- `HF_HOME` must point into `/scratch`; the model shortlist alone is ~30 GB and local
+  disk has 20 GB.
+- Dead ends confirmed: GearNet (TorchDrug pins Python <3.11), ESM-IF1 (torch-scatter),
+  SMI-TED (2021 CUDA kernels), UMA/OMol25 (fairchem will not install on torch 2.5.1).
+- Non-commercial licences to avoid unless the user says otherwise: ESM C 600M, ESM-3,
+  Ankh/Ankh3, MACE-OFF, Chai-1 local weights. MIT substitutes exist for all of them.
+
+---
+
+## Revision 2 — 2026-09-20, after the multimodal/JEPA reconnaissance
+
+Three independent reconnaissance lines now agree, which is worth more than any one of them.
+
+### The convergent finding: joint-by-construction, or nothing
+
+| source | finding |
+|---|---|
+| protein/ligand recon | learned molecular embeddings lose to count-ECFP4 across 25×25 scaffold-split benchmarks |
+| multimodal recon | two leak-controlled ablations find protein LM embeddings contribute **~nothing**; a 21-token residue vocabulary *beats* ESM-2 on strict tiers |
+| multimodal recon | AI-Bind: shuffling **all** SMILES *and* sequences moved AUROC 0.86 → 0.84 — the model was not learning the pairing at all |
+| multimodal recon | DUD-E ligand-only vs receptor-ligand features correlate at **R² = 0.98** |
+
+A shared space assembled by concatenating frozen unimodal encoders is the architecture
+all of that evidence indicts. Two representations escape the critique because they are
+**joint by construction** — computed by a network that had to place atoms in space:
+
+1. **Boltz-2's pair representation** `z [n,n,128]`, a function of protein × ligand × pose,
+   free from runs we already pay for.
+2. **ATOMICA's interface graph** — atoms within 8 Å of the partner, both sides, one
+   SE(3)-equivariant graph with explicit *intermolecular* edges.
+
+Everything else in the program is downstream of testing these two.
+
+### The split trap, quantified
+
+| model | random split | honest split |
+|---|---|---|
+| Papyrus PCM | r = 0.79 | r = 0.42 (temporal) |
+| DrugBAN | 0.960 | 0.575 (cluster) |
+
+**And the method ranking flips.** A random-split comparison does not merely inflate every
+number, it reorders which approach looks best. Any result in this program computed on a
+random split is not a weak result, it is a meaningless one.
+
+### What does not exist yet
+
+Bio-JEPA is real and recent — Mol-JEPA (Boehringer; 14 modalities including Boltz-2
+embeddings; benchmarks on PXR, our sibling target), ProtJEPA, JEPA-DNA, Cell-JEPA and
+others, nearly all inside 12 months. **But every one masks *within* a single entity.
+Nobody predicts a binding partner's embedding from a target's.** The object described at
+the top of this file does not exist in the literature.
+
+That is either a real gap or a silent graveyard. Treat it as unproven either way, and
+note Mol-JEPA's own Wilcoxon test favours a *tabular baseline* 47% to 38%.
+
+### ATOMICA: usable today, with a mandatory ablation
+
+ATOMICA embeds an **already-bound interface**, so it cannot answer "what should bind
+here" — there is no unbound encoder to query. It *can* score poses, and CYP3A4 is a heme
+protein while ATOMICA-Ligand ships a heme checkpoint. Its headline result is wet-lab:
+5 of 6 predicted proteins confirmed heme binding.
+
+The catch, and the reason the ablation is not optional: **86% of its pretraining corpus is
+CSD small-molecule crystal packing**, and it was trained by denoising rotations and
+translations. It may be a crystallinity detector. So it is scored against native poses
+*and* deliberately rotated ones; if it separates rotated decoys easily but cannot rank
+real prediction errors, that is the finding.
+
+**Launched 2026-09-20** against the existing 3,360-pose CYP3A4 pool. No new data.
+
+### Scope decision
+
+With one contended H200 between now and 2026-11-03 we can afford a leak-controlled
+baseline **or** a JEPA prototype, not both. **The baseline goes first**, because without
+it no JEPA number is interpretable — and because three separate lines of evidence say the
+baseline may simply win.
+
+### Licence default (override if wrong)
+
+Proceeding **MIT/Apache-only** until told otherwise. Excluded on that basis: ESM C 600M,
+ESM-3, Ankh/Ankh3, MACE-OFF, Chai-1 local weights, ProtJEPA, Top-DTI, DTIAM (all NC);
+TransformerCPI2.0 (GPL-2.0); HyperAttentionDTI (no licence at all). MIT substitutes exist
+for every one of these.
