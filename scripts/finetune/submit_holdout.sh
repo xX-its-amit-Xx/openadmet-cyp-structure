@@ -16,6 +16,11 @@
 set -euo pipefail
 ARM=${1:-arm4_mix}
 CKPT=${2:-base}
+# Optional third argument selects a VARIANT of the input YAMLs - e.g. "bonded" reads
+# holdout_yaml/<arm>_bonded and tags the output <tag>_bonded. The variant is part of the
+# output name for the same reason the checkpoint is: two input sets writing to one
+# directory silently overwrite each other and produce one result wearing two labels.
+VARIANT=${3:-}
 cd /scratch/shenoy.am/cyp-finetune
 
 if [ "$CKPT" = "base" ]; then
@@ -31,12 +36,19 @@ else
     TAG=ft_$(echo "$BASE" | sed 's/stepstep=/step/; s/[^A-Za-z0-9_]/_/g')
 fi
 
+if [ -n "$VARIANT" ]; then
+    YAMLDIR=holdout_yaml/${ARM}_${VARIANT}
+    TAG=${TAG}_${VARIANT}
+else
+    YAMLDIR=holdout_yaml/${ARM}
+fi
+
 OUT=holdout_out/${ARM}_${TAG}
 mkdir -p "$OUT"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 # --cache points at the local boltz_cache so nothing reaches for the network: GPU nodes
 # here have no direct internet, and a silent download attempt just hangs the job.
-srun ./env/bin/boltz predict "holdout_yaml/${ARM}" \
+srun ./env/bin/boltz predict "$YAMLDIR" \
     --checkpoint "$CKPT" \
     --cache boltz_cache \
     --out_dir "$OUT" \
