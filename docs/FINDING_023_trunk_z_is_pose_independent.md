@@ -148,3 +148,63 @@ What caught it was not reading the code again. It was that the within-ligand rho
 **−0.201 with only 27.6% of ligands positive** — a feature that anti-correlates that
 consistently is a correctly-signed feature being read backwards. Reporting the selected
 mean alone would have produced a confident, wrong, and very publishable-looking result.
+
+
+---
+
+## Addendum 2 — the first addendum overcorrected. The original verdict was right.
+
+Addendum 1 claimed the like-for-like comparison was +0.0170 for consensus against +0.0316
+for the z read, and concluded "the z feature wins". **That substituted an invalid
+reference set for a valid one and called the result like-for-like.**
+
+The +0.0170 was cross-engine consensus computed with the *four Boltz seeds as each
+other's references* — which FINDING 011 explicitly says is not the selector. The deployed
+selector scores against a **frozen reference set built from independent engines**. Running
+that, on exactly these poses:
+
+| | frozen independent references |
+|---|---|
+| reference depth | 87 of 87 ligands, min 6 / median 7 / max 12, **all ≥ 4** |
+| poses scored | 1,740 over 87 ligands |
+| pool oracle | 0.6931 |
+| random | 0.5757 |
+| **XENG (deployed, no fitted parameters)** | **0.6140 — gain +0.0383** |
+| within-ligand rho | −0.231, correct direction on 71.3% |
+| null (2,000 draws) | p95 +0.0139, p99 +0.0199, **p = 0.0000** |
+
+### The complete ranking, one pool, one truth table, identical tie-breaking
+
+| selector | gain | fitted? |
+|---|---|---|
+| **XENG, frozen independent references** | **+0.0383** | no |
+| `gbm_LOO_z_conf_all` | +0.0316 | yes (LOO ridge/GBM) |
+| geometric consensus, same-engine seeds | +0.0170 | no |
+| scalar `boltz_confidence_score` | +0.0141 | no |
+| null floor | +0.0139 (p95) | — |
+
+**The original verdict stands.** The incumbent beats the fitted z-confidence read on the
+same poses, while fitting nothing — and it replicates almost exactly on a pool it was
+never tuned on (+0.0383 here against +0.0395 before, which is the strongest evidence yet
+that FINDING 011 is real rather than a fit to its own validation set).
+
+### What I got wrong, and the general form of it
+
+I corrected a *valid* comparison by substituting a *degraded* version of the incumbent —
+same-engine references instead of independent ones — and labelled the substitute
+"like-for-like" because it ran on the same poses. Running on the same poses is not the
+same as being the same method. The reference set is part of the selector, not part of the
+data.
+
+The tell was available and I did not act on it: the same-engine consensus scored +0.0170
+against a p95 null of +0.0139, i.e. *barely above its own noise floor*, while the method
+it was standing in for had been measured at +0.0395 across 81 proteins. A stand-in that
+lands on the noise floor is not a stand-in.
+
+### Still open
+
+The combination question is unchanged and now sharper: XENG (+0.0383, rho −0.231) and
+the z-confidence read (+0.0316, rho +0.209) are both real, and the second is *free* —
+`z` falls out of a run already being paid for, while XENG needs poses from other engines.
+If they are complementary, the combination is worth more than either. Testing it needs
+per-pose z scores, which `analyse.py` currently computes internally and does not emit.
