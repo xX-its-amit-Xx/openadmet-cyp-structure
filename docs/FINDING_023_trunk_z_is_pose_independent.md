@@ -91,3 +91,60 @@ such a constant score, so without this the null would have looked like a small p
    a co-folder has to come from the diffusion or confidence path. The trunk is the wrong
    tap, and "it is a big tensor from a structure model" is not an argument that it knows
    about the structure.
+
+
+---
+
+## Addendum — the comparison in this finding was not like-for-like
+
+The verdict above said the fitted z-confidence selector (+0.0316) "still loses to the
+incumbent at +0.0395". That +0.0395 was measured on a **different pool**, and the
+comparison does not hold once both are computed on the same one.
+
+Geometric cross-engine consensus, run with `cypstruct.xengine`'s `in_heme_frame` and
+`chamfer` unchanged, on **this** 20-pose pool (1,740 poses, 87 ligands, all merged):
+
+| | value |
+|---|---|
+| pool oracle | 0.6931 |
+| random | 0.5757 |
+| **geometric consensus** | **0.5927 (+0.0170)** |
+| within-ligand rho | −0.201, correct direction on **72.4%** of ligands |
+| permutation null (2,000 draws) | p95 +0.0139, p99 +0.0199 |
+| p(null ≥ observed) | **0.0195** |
+
+So on the same pool, **+0.0170 for consensus against +0.0316 for the z-confidence read.**
+The z feature wins, and the consensus barely clears its own 95th-percentile null.
+
+### Why consensus collapses here, and why that is not a refutation of FINDING 011
+
+This pool is **four seeds of one engine**, not four engines. FINDING 011 is explicit that
+the selector needs *"≥ 4 GENUINELY independent reference poses"*, and same-engine
+replicates are not independent — FINDING 015 went further and found both OpenProtein
+engines deterministic, so replicate depth was already known to be thin.
+
+That is exactly what +0.0170 with 72.4% directional accuracy looks like: the mechanism
+still points the right way, but with correlated references it has little to work with.
+
+### The corrected statement
+
+- Against a **same-engine** pool, the fitted z-confidence read is the better selector
+  (+0.0316 vs +0.0170).
+- The **deployed** incumbent at +0.0395 uses genuinely independent engine references, and
+  remains ahead of both — but it buys that with extra generation compute the z feature
+  does not need, since `z` falls out of a run we already pay for.
+- Everything else in this finding stands: the **trunk** representation is pose-independent
+  and is a null (−0.0047, rho 0.011), and the working feature is a confidence read.
+
+### A sign error, caught by a control rather than by inspection
+
+The first computation of the consensus number used `max()` over the consensus score and
+returned **−0.0598** — a large negative. The score is a *distance*, so lower is better,
+and `max()` selects the worst pose in every pool. `CLAUDE.md` lesson 2 warns about this
+exact failure ("PDE and PAE are *errors*, so a raw `max()` picks the worst pose") and it
+still happened.
+
+What caught it was not reading the code again. It was that the within-ligand rho came back
+**−0.201 with only 27.6% of ligands positive** — a feature that anti-correlates that
+consistently is a correctly-signed feature being read backwards. Reporting the selected
+mean alone would have produced a confident, wrong, and very publishable-looking result.
