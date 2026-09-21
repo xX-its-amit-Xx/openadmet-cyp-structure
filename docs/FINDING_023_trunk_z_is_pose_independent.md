@@ -208,3 +208,50 @@ the z-confidence read (+0.0316, rho +0.209) are both real, and the second is *fr
 `z` falls out of a run already being paid for, while XENG needs poses from other engines.
 If they are complementary, the combination is worth more than either. Testing it needs
 per-pose z scores, which `analyse.py` currently computes internally and does not emit.
+
+
+---
+
+## Addendum 3 — the combination is a null. The line closes with the incumbent unchanged.
+
+XENG and the z-confidence read have opposite-signed within-ligand correlations and only
++0.182 rho between them, so combining them looked promising. On the headline numbers it
+was: rank-average +0.0431 against XENG's +0.0383, with a broad weight plateau rather than
+a tuned spike.
+
+**Paired over the 87 ligands, it is not a result.**
+
+| | |
+|---|---|
+| XENG alone | 0.6140 |
+| rank-average combination | 0.6187 |
+| paired difference | **+0.0047** |
+| bootstrap 95% CI (20,000 draws) | **[−0.0079, +0.0167]** |
+| P(difference ≤ 0) | 0.227 |
+| Wilcoxon p | **0.38** |
+| ligands improved / worse / tied | **33 / 28 / 26** |
+
+33 against 28 is a coin flip. The confidence interval crosses zero comfortably.
+
+### Why this needed its own test
+
+The +0.0139 figure this project uses as a noise floor is the 95th percentile of a gain
+**versus random selection**. It is the right reference for "does this feature beat
+picking a pose at random" and the *wrong* reference for "does selector A beat selector
+B". A +0.0048 difference sails past the first bar and dies at the second, and reporting
+it against the first would have been a real-looking result built on the wrong null.
+
+### What the whole z line now says
+
+| step | outcome |
+|---|---|
+| trunk pair representation `z` | **null** — pose-to-pose spread 1e-8, it is the same tensor for every pose |
+| z-confidence read, fitted LOO | +0.0271 to +0.0316 — real, but a richer read of confidence |
+| combination with XENG | **null** — +0.0047, p = 0.38 |
+| **incumbent** | **unchanged at +0.0383 on this pool**, nothing fitted |
+
+Three interventions, one mechanism each, and the shipped selector survives all of them.
+That is the fourth consecutive line (fine-tuning, heme bond, ATOMICA, now embeddings)
+where the honest answer was "the incumbent still wins", and the incumbent has now
+replicated at +0.0395, +0.0357 and +0.0383 on three different pools without being
+retuned once.
