@@ -1,0 +1,93 @@
+# FINDING 023 — Boltz-2's trunk pair representation cannot rank poses, because it does not depend on the pose
+
+**Date:** 2026-09-20 · **Status:** measured, 87 ligands x 20 poses, all controls clean · **Verdict:** the premise was wrong
+
+## The premise, and why it was wrong
+
+`docs/worldmodel/README.md` Revision 2 argued that the literature's case against learned
+embeddings — that they lose to count-ECFP4 — does not apply to Boltz-2's pair
+representation `z`, because **"`z` is a function of protein x ligand x pose"** and is
+therefore joint by construction rather than assembled after the fact.
+
+That sentence is false. Boltz-2's trunk runs **once per input, before diffusion
+sampling.** Its pair representation is a function of protein x ligand and nothing else,
+so it is *identical across every pose of the same ligand*. A feature that is constant
+within a ligand cannot choose between that ligand's poses, however rich it is.
+
+The measurement says exactly that:
+
+| feature | selected | gain | within-rho | frac ligands positive |
+|---|---|---|---|---|
+| `z_trunk_static` (ridge) | 0.5710 | **-0.0047** | **0.011** | 0.506 |
+| `z_trunk_static` (medoid) | 0.5705 | -0.0052 | -0.042 | 0.391 |
+| ECFP4 ligand-only *control* | 0.5737 | -0.0020 | **0.000** | 0.000 |
+
+The trunk representation lands on the ligand-only control, because it **is** a
+ligand-only feature.
+
+## What does carry signal, and what it actually is
+
+| selector | selected | gain | rho | frac pos | p |
+|---|---|---|---|---|---|
+| `gbm_LOO_z_conf_all` | 0.6074 | **+0.0316** | 0.209 | 0.759 | <1e-4 |
+| `gbm_LOO_z_trunk_contactgated` | 0.6071 | +0.0314 | 0.241 | 0.713 | <1e-4 |
+| `ridge_LOO_z_conf_all_wcenter` | 0.6072 | +0.0315 | 0.191 | 0.667 | <1e-4 |
+| `boltz_confidence_score` alone | 0.5899 | +0.0141 | 0.088 | 0.644 | 0.046 |
+| **incumbent cross-engine (reference)** | **0.6164** | **+0.0395** | -0.258 | 0.759 | — |
+| best **unsupervised** z medoid | 0.5892 | +0.0134 | 0.153 | 0.713 | 0.055 |
+
+Two things follow.
+
+**The working features are pose-dependent reads, not the trunk.** `z_conf_*` comes from
+the confidence module, which *does* see sampled coordinates. `z_trunk_contactgated` is
+the trunk representation gated by the pose's actual contacts — the gating is what
+reintroduces pose dependence. Remove the pose dependence (`z_trunk_static`) and the
+signal vanishes entirely.
+
+**So this is a richer read of confidence, not a new signal.** The scalar
+`boltz_confidence_score` gives +0.0141 on this pool; a 128-dimensional learned read of
+the same module gives +0.0316. A real improvement over the scalar — and still **below
+the parameter-free incumbent at +0.0395.**
+
+## The comparison is worse than the numbers suggest
+
+Every `z` selector above is **fitted** — ridge or gradient boosting, leave-one-ligand-out
+over these 87 ligands. The incumbent has **zero fitted parameters**. A fitted selector
+that loses to an unfitted one has lost twice.
+
+The like-for-like comparison is the unsupervised medoid, and it does not clear
+significance: best +0.0134 at **p = 0.055**.
+
+## Controls, all clean
+
+| control | gain | rho | p | reads as |
+|---|---|---|---|---|
+| ECFP4 ligand-only | -0.0020 | 0.000 | 0.60 | no within-ligand information, by construction |
+| `z_conf` shuffled within ligand | +0.0107 | -0.011 | 0.10 | destroying the pose-to-feature pairing kills it |
+| random noise, matched dim | +0.0091 / -0.0096 | ~0 | 0.14 / 0.87 | floor is where it should be |
+| `boltz_iptm`, `boltz_ligand_iptm` | -0.0000 | -0.03 | 0.52 | exactly chance |
+| `boltz_complex_ipde` | -0.0100 | -0.047 | 0.88 | worse than random, as previously measured |
+
+The ECFP4 control is what validates the split: its within-ligand rho is *exactly* 0.000
+because it is constant within a ligand. On a random-row split it would have looked
+predictive by memorising ligand identity; leave-one-ligand-out reduces it to nothing,
+which is the correct answer.
+
+A methodological note worth keeping: **ties were broken at random over 64 draws.** A
+constant score would otherwise always select `_model_0`, the highest-confidence sample,
+and report Boltz confidence's number under another name. `z_trunk_static` is precisely
+such a constant score, so without this the null would have looked like a small positive.
+
+## What survives
+
+1. **The shared-embedding premise, as stated, is dead for pose selection.** The
+   representation argued to be joint-by-construction is not, and the thing that does work
+   is a confidence read that loses to a parameter-free geometric consensus.
+2. **One open question, cheap to answer:** the fitted z-confidence selector (+0.0316,
+   rho +0.209) and the incumbent (+0.0395, rho -0.258) have *opposite-signed* within-ligand
+   correlations while agreeing on the same 75.9% of ligands. Whether they are
+   complementary or redundant is a combination test on data already on disk.
+3. **For the world model more broadly:** a genuinely pose-aware joint representation from
+   a co-folder has to come from the diffusion or confidence path. The trunk is the wrong
+   tap, and "it is a big tensor from a structure model" is not an argument that it knows
+   about the structure.
