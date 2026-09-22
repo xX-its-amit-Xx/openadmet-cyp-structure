@@ -1,25 +1,16 @@
 {
-  "checked": "2026-09-17 00:24:09",
+  "checked": "2026-09-22 19:48:19",
   "dry_run": true,
   "max_age_hours": 8.0,
+  "modal_error": "could not list modal apps: [WinError 2] The system cannot find the file specified",
   "owned_apps_running": 0,
   "runaways": [],
   "idle_ephemeral_shells": [],
   "stale_ledger_rows": [],
   "modal_usd": {
-    "ok": true,
-    "period": "this month",
-    "total_usd": 37.58,
-    "by_app": {
-      "cyp-cofold-boltz": 29.84,
-      "cyp-cofold-chai": 7.61,
-      "cyp-qm-tier1": 0.13,
-      "cyp-qm-probe": 0.0
-    },
-    "cap_usd": 25.0,
-    "over_cap": true
+    "ok": false,
+    "error": "FileNotFoundError: [WinError 2] The system cannot find the file specified"
   },
-  "ALERT_usd": "Modal billed $37.58 this month against a $25.00 self-imposed cap. GPU launches are blocked until the workspace limit is raised or credits reset.",
   "spend": {
     "modal": {
       "month": "2026-09",
@@ -45,9 +36,9 @@
   },
   "modal_cap_fraction": 0.541,
   "disk": {
-    "free_C_gb": 9.97,
-    "free_D_gb": 2.31,
-    "rclone_vfs_cache_gb": 5.51,
+    "free_C_gb": 19.96,
+    "free_D_gb": 13.05,
+    "rclone_vfs_cache_gb": 0.0,
     "warning": "rclone VFS cache is unbounded (no --vfs-cache-max-size); never write bulk data through O:\\ \u2014 use storage.push()"
   }
 }

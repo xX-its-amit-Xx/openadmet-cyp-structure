@@ -1,6 +1,14 @@
 {
  "STRUCTURE_TRACK_LIVE": "False",
- "STRUCTURE_DATASET_SIZE": "184",
- "dataset_last_modified": null,
- "dataset_files": []
+ "STRUCTURE_DATASET_SIZE": "20",
+ "dataset_last_modified": "2026-08-27T23:16:39.000Z",
+ "dataset_files": [
+  ".gitattributes",
+  "README.md",
+  "cyp-challenge-TEST-BLINDED.csv",
+  "cyp-challenge-TRAIN_Emax.csv",
+  "cyp-challenge-TRAIN_TDI.csv",
+  "cyp-challenge-TRAIN_inhibition.csv",
+  "cyp-challenge-single-concentration-TRAIN.csv"
+ ]
 }
