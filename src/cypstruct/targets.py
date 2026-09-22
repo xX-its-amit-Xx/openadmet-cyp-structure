@@ -34,6 +34,7 @@ whatever structure is loaded rather than trusting the index blindly.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from pathlib import Path
 
 import requests
@@ -192,7 +193,30 @@ def rcsb_holo_structures(isoform: str = PRIMARY, limit: int = 200) -> list[str]:
     }
     r = requests.post(_RCSB_SEARCH, json=query, timeout=60)
     r.raise_for_status()
-    return sorted(r.json().get("result_set", []))
+    payload = r.json()
+    ids = sorted(payload.get("result_set", []))
+    # RCSB reports how many entries matched; a silently truncated page would shrink
+    # the reference set without any error, which is the same failure mode as a stale
+    # hardcoded list this function exists to avoid.
+    total = payload.get("total_count")
+    if total is not None and len(ids) < total:
+        raise RuntimeError(
+            f"RCSB returned {len(ids)} of {total} entries for {acc}; raise `limit` "
+            f"(currently {limit}) rather than proceeding with a truncated set")
+    return ids
+
+
+def rcsb_missing_from(cached: Iterable[str], isoform: str = PRIMARY) -> list[str]:
+    """Entries RCSB has for this isoform that a cached/derived set does not.
+
+    Measured 2026-09-22: a derived harvest held 107 entries while the live query
+    returned 122, and all six apo structures were among the fifteen missing - which
+    made an answerable question ("are apo templates informative?") look untestable.
+    The live query was never the problem; reading a cached list was. Call this before
+    concluding anything is absent from the archive.
+    """
+    have = {str(x).upper()[:4] for x in cached}
+    return [i for i in rcsb_holo_structures(isoform) if i.upper()[:4] not in have]
 
 
 def fetch_cif(pdb_id: str, dest: Path | None = None) -> Path:
