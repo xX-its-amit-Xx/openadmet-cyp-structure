@@ -1,0 +1,1985 @@
+{
+ "n_entries_queried": 122,
+ "n_downloaded_now": 0,
+ "downloaded": [],
+ "apo_ids": [
+  "1TQN",
+  "1W0E",
+  "4I3Q",
+  "5VCC",
+  "5VCD",
+  "9GK1"
+ ],
+ "n_apo": 6,
+ "n_holo": 116,
+ "entries": {
+  "1TQN": {
+   "het": [
+    "HEM"
+   ],
+   "non_ignored_het": [],
+   "apo": true,
+   "resolution": 2.05,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": null
+  },
+  "1W0E": {
+   "het": [
+    "HEM"
+   ],
+   "non_ignored_het": [],
+   "apo": true,
+   "resolution": 2.8,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": null
+  },
+  "1W0F": {
+   "het": [
+    "HEM",
+    "STR"
+   ],
+   "non_ignored_het": [
+    "STR"
+   ],
+   "apo": false,
+   "resolution": 2.65,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "STR",
+    "dist_to_nearest_Fe_A": 17.04
+   }
+  },
+  "1W0G": {
+   "het": [
+    "HEM",
+    "MYT"
+   ],
+   "non_ignored_het": [
+    "MYT"
+   ],
+   "apo": false,
+   "resolution": 2.73,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "MYT",
+    "dist_to_nearest_Fe_A": 2.27
+   }
+  },
+  "2J0D": {
+   "het": [
+    "ERY",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "ERY"
+   ],
+   "apo": false,
+   "resolution": 2.75,
+   "spacegroup": "C 2 2 21",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "ERY",
+    "dist_to_nearest_Fe_A": 4.49
+   }
+  },
+  "2V0M": {
+   "het": [
+    "HEM",
+    "KLN"
+   ],
+   "non_ignored_het": [
+    "KLN"
+   ],
+   "apo": false,
+   "resolution": 2.8,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "KLN",
+    "dist_to_nearest_Fe_A": 2.06
+   }
+  },
+  "3NXU": {
+   "het": [
+    "DMS",
+    "HEM",
+    "RIT"
+   ],
+   "non_ignored_het": [
+    "RIT"
+   ],
+   "apo": false,
+   "resolution": 2.0,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "RIT",
+    "dist_to_nearest_Fe_A": 2.22
+   }
+  },
+  "3TJS": {
+   "het": [
+    "D0R",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "D0R"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "D0R",
+    "dist_to_nearest_Fe_A": 2.11
+   }
+  },
+  "3UA1": {
+   "het": [
+    "08Y",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "08Y"
+   ],
+   "apo": false,
+   "resolution": 2.15,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "08Y",
+    "dist_to_nearest_Fe_A": 3.65
+   }
+  },
+  "4D6Z": {
+   "het": [
+    "GOL",
+    "HEM",
+    "IMD",
+    "PK9"
+   ],
+   "non_ignored_het": [
+    "PK9"
+   ],
+   "apo": false,
+   "resolution": 1.93,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "IMD",
+    "dist_to_nearest_Fe_A": 2.42
+   }
+  },
+  "4D75": {
+   "het": [
+    "HEM",
+    "PK9"
+   ],
+   "non_ignored_het": [
+    "PK9"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "PK9",
+    "dist_to_nearest_Fe_A": 2.38
+   }
+  },
+  "4D78": {
+   "het": [
+    "GOL",
+    "HEM",
+    "J9K"
+   ],
+   "non_ignored_het": [
+    "J9K"
+   ],
+   "apo": false,
+   "resolution": 2.8,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "J9K",
+    "dist_to_nearest_Fe_A": 2.12
+   }
+  },
+  "4D7D": {
+   "het": [
+    "HEM",
+    "PKT"
+   ],
+   "non_ignored_het": [
+    "PKT"
+   ],
+   "apo": false,
+   "resolution": 2.76,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "PKT",
+    "dist_to_nearest_Fe_A": 2.01
+   }
+  },
+  "4I3Q": {
+   "het": [
+    "HEM"
+   ],
+   "non_ignored_het": [],
+   "apo": true,
+   "resolution": 2.602,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": null
+  },
+  "4I4G": {
+   "het": [
+    "HEM",
+    "Z8Z"
+   ],
+   "non_ignored_het": [
+    "Z8Z"
+   ],
+   "apo": false,
+   "resolution": 2.718,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "Z8Z",
+    "dist_to_nearest_Fe_A": 2.1
+   }
+  },
+  "4I4H": {
+   "het": [
+    "HEM",
+    "Z9Z"
+   ],
+   "non_ignored_het": [
+    "Z9Z"
+   ],
+   "apo": false,
+   "resolution": 2.9,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "Z9Z",
+    "dist_to_nearest_Fe_A": 2.14
+   }
+  },
+  "4K9T": {
+   "het": [
+    "1RD",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "1RD"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "1RD",
+    "dist_to_nearest_Fe_A": 2.17
+   }
+  },
+  "4K9U": {
+   "het": [
+    "5AW",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "5AW"
+   ],
+   "apo": false,
+   "resolution": 2.85,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "5AW",
+    "dist_to_nearest_Fe_A": 2.35
+   }
+  },
+  "4K9V": {
+   "het": [
+    "6AW",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "6AW"
+   ],
+   "apo": false,
+   "resolution": 2.6,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "6AW",
+    "dist_to_nearest_Fe_A": 2.1
+   }
+  },
+  "4K9W": {
+   "het": [
+    "7AW",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "7AW"
+   ],
+   "apo": false,
+   "resolution": 2.399,
+   "spacegroup": "P 31",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "7AW",
+    "dist_to_nearest_Fe_A": 2.06
+   }
+  },
+  "4K9X": {
+   "het": [
+    "8AW",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "8AW"
+   ],
+   "apo": false,
+   "resolution": 2.76,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "8AW",
+    "dist_to_nearest_Fe_A": 1.97
+   }
+  },
+  "4NY4": {
+   "het": [
+    "2QH",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "2QH"
+   ],
+   "apo": false,
+   "resolution": 2.95,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "2QH",
+    "dist_to_nearest_Fe_A": 2.58
+   }
+  },
+  "5A1P": {
+   "het": [
+    "CIT",
+    "HEM",
+    "STR"
+   ],
+   "non_ignored_het": [
+    "STR"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "STR",
+    "dist_to_nearest_Fe_A": 17.07
+   }
+  },
+  "5A1R": {
+   "het": [
+    "HEM",
+    "STR"
+   ],
+   "non_ignored_het": [
+    "STR"
+   ],
+   "apo": false,
+   "resolution": 2.45,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "STR",
+    "dist_to_nearest_Fe_A": 17.19
+   }
+  },
+  "5G5J": {
+   "het": [
+    "HEM",
+    "MF8"
+   ],
+   "non_ignored_het": [
+    "MF8"
+   ],
+   "apo": false,
+   "resolution": 2.6,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "MF8",
+    "dist_to_nearest_Fe_A": 4.08
+   }
+  },
+  "5TE8": {
+   "het": [
+    "08J",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "08J"
+   ],
+   "apo": false,
+   "resolution": 2.7,
+   "spacegroup": "P 21 21 21",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "08J",
+    "dist_to_nearest_Fe_A": 3.02
+   }
+  },
+  "5VC0": {
+   "het": [
+    "HEM",
+    "RIT"
+   ],
+   "non_ignored_het": [
+    "RIT"
+   ],
+   "apo": false,
+   "resolution": 2.7,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "RIT",
+    "dist_to_nearest_Fe_A": 2.16
+   }
+  },
+  "5VCC": {
+   "het": [
+    "EDO",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [],
+   "apo": true,
+   "resolution": 1.7,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "GOL",
+    "dist_to_nearest_Fe_A": 4.41
+   }
+  },
+  "5VCD": {
+   "het": [
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [],
+   "apo": true,
+   "resolution": 1.95,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "GOL",
+    "dist_to_nearest_Fe_A": 4.58
+   }
+  },
+  "5VCE": {
+   "het": [
+    "HEM",
+    "RIT"
+   ],
+   "non_ignored_het": [
+    "RIT"
+   ],
+   "apo": false,
+   "resolution": 2.2,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "RIT",
+    "dist_to_nearest_Fe_A": 1.96
+   }
+  },
+  "5VCG": {
+   "het": [
+    "08Y",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "08Y"
+   ],
+   "apo": false,
+   "resolution": 2.2,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "08Y",
+    "dist_to_nearest_Fe_A": 3.46
+   }
+  },
+  "6BCZ": {
+   "het": [
+    "D7Y",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "D7Y"
+   ],
+   "apo": false,
+   "resolution": 2.23,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "D7Y",
+    "dist_to_nearest_Fe_A": 2.28
+   }
+  },
+  "6BD5": {
+   "het": [
+    "D7M",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "D7M"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "D7M",
+    "dist_to_nearest_Fe_A": 2.26
+   }
+  },
+  "6BD6": {
+   "het": [
+    "80K",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "80K"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "80K",
+    "dist_to_nearest_Fe_A": 2.23
+   }
+  },
+  "6BD7": {
+   "het": [
+    "D7J",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "D7J"
+   ],
+   "apo": false,
+   "resolution": 2.42,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "D7J",
+    "dist_to_nearest_Fe_A": 2.21
+   }
+  },
+  "6BD8": {
+   "het": [
+    "D81",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "D81"
+   ],
+   "apo": false,
+   "resolution": 2.38,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "D81",
+    "dist_to_nearest_Fe_A": 2.13
+   }
+  },
+  "6BDH": {
+   "het": [
+    "DEV",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "DEV"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "DEV",
+    "dist_to_nearest_Fe_A": 2.37
+   }
+  },
+  "6BDI": {
+   "het": [
+    "DEJ",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "DEJ"
+   ],
+   "apo": false,
+   "resolution": 2.57,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "DEJ",
+    "dist_to_nearest_Fe_A": 2.27
+   }
+  },
+  "6BDK": {
+   "het": [
+    "DJ1",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "DJ1"
+   ],
+   "apo": false,
+   "resolution": 2.67,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "DJ1",
+    "dist_to_nearest_Fe_A": 2.37
+   }
+  },
+  "6BDM": {
+   "het": [
+    "HEM",
+    "Y83"
+   ],
+   "non_ignored_het": [
+    "Y83"
+   ],
+   "apo": false,
+   "resolution": 2.6,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "Y83",
+    "dist_to_nearest_Fe_A": 2.21
+   }
+  },
+  "6DA2": {
+   "het": [
+    "G0D",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G0D"
+   ],
+   "apo": false,
+   "resolution": 2.65,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G0D",
+    "dist_to_nearest_Fe_A": 2.38
+   }
+  },
+  "6DA3": {
+   "het": [
+    "G0D",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G0D"
+   ],
+   "apo": false,
+   "resolution": 2.37,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G0D",
+    "dist_to_nearest_Fe_A": 2.26
+   }
+  },
+  "6DA5": {
+   "het": [
+    "G1J",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G1J"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G1J",
+    "dist_to_nearest_Fe_A": 2.22
+   }
+  },
+  "6DA8": {
+   "het": [
+    "G0J",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G0J"
+   ],
+   "apo": false,
+   "resolution": 2.802,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G0J",
+    "dist_to_nearest_Fe_A": 2.4
+   }
+  },
+  "6DAA": {
+   "het": [
+    "G0M",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G0M"
+   ],
+   "apo": false,
+   "resolution": 2.15,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G0M",
+    "dist_to_nearest_Fe_A": 2.25
+   }
+  },
+  "6DAB": {
+   "het": [
+    "G0V",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G0V"
+   ],
+   "apo": false,
+   "resolution": 2.35,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G0V",
+    "dist_to_nearest_Fe_A": 2.21
+   }
+  },
+  "6DAC": {
+   "het": [
+    "FZV",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "FZV"
+   ],
+   "apo": false,
+   "resolution": 2.55,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "FZV",
+    "dist_to_nearest_Fe_A": 2.45
+   }
+  },
+  "6DAG": {
+   "het": [
+    "G0Y",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G0Y"
+   ],
+   "apo": false,
+   "resolution": 2.8,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G0Y",
+    "dist_to_nearest_Fe_A": 2.25
+   }
+  },
+  "6DAJ": {
+   "het": [
+    "FZV",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "FZV"
+   ],
+   "apo": false,
+   "resolution": 2.45,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "FZV",
+    "dist_to_nearest_Fe_A": 2.31
+   }
+  },
+  "6DAL": {
+   "het": [
+    "G1D",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "G1D"
+   ],
+   "apo": false,
+   "resolution": 2.65,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "G1D",
+    "dist_to_nearest_Fe_A": 2.25
+   }
+  },
+  "6MA6": {
+   "het": [
+    "EDO",
+    "GOL",
+    "HEM",
+    "MYT"
+   ],
+   "non_ignored_het": [
+    "MYT"
+   ],
+   "apo": false,
+   "resolution": 2.182,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "MYT",
+    "dist_to_nearest_Fe_A": 2.31
+   }
+  },
+  "6MA7": {
+   "het": [
+    "DMS",
+    "EDO",
+    "HEM",
+    "TPF"
+   ],
+   "non_ignored_het": [
+    "TPF"
+   ],
+   "apo": false,
+   "resolution": 2.09,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "TPF",
+    "dist_to_nearest_Fe_A": 2.2
+   }
+  },
+  "6MA8": {
+   "het": [
+    "DMS",
+    "EDO",
+    "GOL",
+    "HEM",
+    "PMF"
+   ],
+   "non_ignored_het": [
+    "PMF"
+   ],
+   "apo": false,
+   "resolution": 1.83,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "PMF",
+    "dist_to_nearest_Fe_A": 4.84
+   }
+  },
+  "6OO9": {
+   "het": [
+    "DMS",
+    "EDO",
+    "HEM",
+    "MWV"
+   ],
+   "non_ignored_het": [
+    "MWV"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "MWV",
+    "dist_to_nearest_Fe_A": 3.76
+   }
+  },
+  "6OOA": {
+   "het": [
+    "GOL",
+    "HEM",
+    "MWY"
+   ],
+   "non_ignored_het": [
+    "MWY"
+   ],
+   "apo": false,
+   "resolution": 2.52,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "MWY",
+    "dist_to_nearest_Fe_A": 4.27
+   }
+  },
+  "6OOB": {
+   "het": [
+    "HEM",
+    "MWS"
+   ],
+   "non_ignored_het": [
+    "MWS"
+   ],
+   "apo": false,
+   "resolution": 2.202,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "MWS",
+    "dist_to_nearest_Fe_A": 5.17
+   }
+  },
+  "6UNE": {
+   "het": [
+    "HEM",
+    "QES"
+   ],
+   "non_ignored_het": [
+    "QES"
+   ],
+   "apo": false,
+   "resolution": 2.55,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QES",
+    "dist_to_nearest_Fe_A": 2.34
+   }
+  },
+  "6UNG": {
+   "het": [
+    "HEM",
+    "QEP"
+   ],
+   "non_ignored_het": [
+    "QEP"
+   ],
+   "apo": false,
+   "resolution": 2.3,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QEP",
+    "dist_to_nearest_Fe_A": 2.2
+   }
+  },
+  "6UNH": {
+   "het": [
+    "HEM",
+    "QEA"
+   ],
+   "non_ignored_het": [
+    "QEA"
+   ],
+   "apo": false,
+   "resolution": 2.72,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QEA",
+    "dist_to_nearest_Fe_A": 2.32
+   }
+  },
+  "6UNI": {
+   "het": [
+    "HEM",
+    "QDV"
+   ],
+   "non_ignored_het": [
+    "QDV"
+   ],
+   "apo": false,
+   "resolution": 2.602,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QDV",
+    "dist_to_nearest_Fe_A": 2.4
+   }
+  },
+  "6UNJ": {
+   "het": [
+    "HEM",
+    "QDY"
+   ],
+   "non_ignored_het": [
+    "QDY"
+   ],
+   "apo": false,
+   "resolution": 2.6,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QDY",
+    "dist_to_nearest_Fe_A": 2.82
+   }
+  },
+  "6UNK": {
+   "het": [
+    "HEM",
+    "QE4"
+   ],
+   "non_ignored_het": [
+    "QE4"
+   ],
+   "apo": false,
+   "resolution": 2.75,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QE4",
+    "dist_to_nearest_Fe_A": 2.37
+   }
+  },
+  "6UNL": {
+   "het": [
+    "HEM",
+    "QDJ"
+   ],
+   "non_ignored_het": [
+    "QDJ"
+   ],
+   "apo": false,
+   "resolution": 2.55,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QDJ",
+    "dist_to_nearest_Fe_A": 2.4
+   }
+  },
+  "6UNM": {
+   "het": [
+    "HEM",
+    "QDP"
+   ],
+   "non_ignored_het": [
+    "QDP"
+   ],
+   "apo": false,
+   "resolution": 2.83,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "QDP",
+    "dist_to_nearest_Fe_A": 2.3
+   }
+  },
+  "7KS8": {
+   "het": [
+    "GOL",
+    "HEM",
+    "X8S"
+   ],
+   "non_ignored_het": [
+    "X8S"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X8S",
+    "dist_to_nearest_Fe_A": 3.91
+   }
+  },
+  "7KSA": {
+   "het": [
+    "HEM",
+    "X8P"
+   ],
+   "non_ignored_het": [
+    "X8P"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X8P",
+    "dist_to_nearest_Fe_A": 2.35
+   }
+  },
+  "7KVH": {
+   "het": [
+    "HEM",
+    "X5Y"
+   ],
+   "non_ignored_het": [
+    "X5Y"
+   ],
+   "apo": false,
+   "resolution": 2.791,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X5Y",
+    "dist_to_nearest_Fe_A": 2.11
+   }
+  },
+  "7KVI": {
+   "het": [
+    "GOL",
+    "HEM",
+    "X7P"
+   ],
+   "non_ignored_het": [
+    "X7P"
+   ],
+   "apo": false,
+   "resolution": 2.55,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X7P",
+    "dist_to_nearest_Fe_A": 2.2
+   }
+  },
+  "7KVJ": {
+   "het": [
+    "HEM",
+    "X7M"
+   ],
+   "non_ignored_het": [
+    "X7M"
+   ],
+   "apo": false,
+   "resolution": 2.65,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X7M",
+    "dist_to_nearest_Fe_A": 2.18
+   }
+  },
+  "7KVK": {
+   "het": [
+    "EDO",
+    "GOL",
+    "HEM",
+    "SO4",
+    "X7J"
+   ],
+   "non_ignored_het": [
+    "X7J"
+   ],
+   "apo": false,
+   "resolution": 2.55,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X7J",
+    "dist_to_nearest_Fe_A": 2.15
+   }
+  },
+  "7KVM": {
+   "het": [
+    "HEM",
+    "X71"
+   ],
+   "non_ignored_het": [
+    "X71"
+   ],
+   "apo": false,
+   "resolution": 2.75,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X71",
+    "dist_to_nearest_Fe_A": 2.11
+   }
+  },
+  "7KVN": {
+   "het": [
+    "HEM",
+    "X6V"
+   ],
+   "non_ignored_het": [
+    "X6V"
+   ],
+   "apo": false,
+   "resolution": 2.7,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X6V",
+    "dist_to_nearest_Fe_A": 2.08
+   }
+  },
+  "7KVO": {
+   "het": [
+    "HEM",
+    "SO4",
+    "X6S"
+   ],
+   "non_ignored_het": [
+    "X6S"
+   ],
+   "apo": false,
+   "resolution": 2.65,
+   "spacegroup": "I 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X6S",
+    "dist_to_nearest_Fe_A": 2.07
+   }
+  },
+  "7KVP": {
+   "het": [
+    "HEM",
+    "X6J"
+   ],
+   "non_ignored_het": [
+    "X6J"
+   ],
+   "apo": false,
+   "resolution": 2.75,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X6J",
+    "dist_to_nearest_Fe_A": 2.23
+   }
+  },
+  "7KVQ": {
+   "het": [
+    "EDO",
+    "GOL",
+    "HEM",
+    "SO4",
+    "X7D"
+   ],
+   "non_ignored_het": [
+    "X7D"
+   ],
+   "apo": false,
+   "resolution": 2.75,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X7D",
+    "dist_to_nearest_Fe_A": 2.07
+   }
+  },
+  "7KVS": {
+   "het": [
+    "EDO",
+    "GOL",
+    "HEM",
+    "SO4",
+    "X74"
+   ],
+   "non_ignored_het": [
+    "X74"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X74",
+    "dist_to_nearest_Fe_A": 2.08
+   }
+  },
+  "7LXL": {
+   "het": [
+    "HEM",
+    "YNV"
+   ],
+   "non_ignored_het": [
+    "YNV"
+   ],
+   "apo": false,
+   "resolution": 2.75,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "YNV",
+    "dist_to_nearest_Fe_A": 3.73
+   }
+  },
+  "7UAY": {
+   "het": [
+    "HEM",
+    "O39"
+   ],
+   "non_ignored_het": [
+    "O39"
+   ],
+   "apo": false,
+   "resolution": 2.78,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "O39",
+    "dist_to_nearest_Fe_A": 2.29
+   }
+  },
+  "7UAZ": {
+   "het": [
+    "HEM",
+    "O3L"
+   ],
+   "non_ignored_het": [
+    "O3L"
+   ],
+   "apo": false,
+   "resolution": 2.65,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "O3L",
+    "dist_to_nearest_Fe_A": 2.04
+   }
+  },
+  "7UF9": {
+   "het": [
+    "HEM",
+    "NH0"
+   ],
+   "non_ignored_het": [
+    "NH0"
+   ],
+   "apo": false,
+   "resolution": 2.45,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "NH0",
+    "dist_to_nearest_Fe_A": 2.06
+   }
+  },
+  "7UFA": {
+   "het": [
+    "HEM",
+    "NI6"
+   ],
+   "non_ignored_het": [
+    "NI6"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "NI6",
+    "dist_to_nearest_Fe_A": 2.08
+   }
+  },
+  "7UFB": {
+   "het": [
+    "HEM",
+    "NJ0"
+   ],
+   "non_ignored_het": [
+    "NJ0"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "NJ0",
+    "dist_to_nearest_Fe_A": 2.29
+   }
+  },
+  "7UFC": {
+   "het": [
+    "HEM",
+    "NJO"
+   ],
+   "non_ignored_het": [
+    "NJO"
+   ],
+   "apo": false,
+   "resolution": 2.35,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "NJO",
+    "dist_to_nearest_Fe_A": 2.1
+   }
+  },
+  "7UFD": {
+   "het": [
+    "HEM",
+    "T0K"
+   ],
+   "non_ignored_het": [
+    "T0K"
+   ],
+   "apo": false,
+   "resolution": 2.9,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "T0K",
+    "dist_to_nearest_Fe_A": 2.04
+   }
+  },
+  "7UFE": {
+   "het": [
+    "GOL",
+    "HEM",
+    "NXR"
+   ],
+   "non_ignored_het": [
+    "NXR"
+   ],
+   "apo": false,
+   "resolution": 2.4,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "NXR",
+    "dist_to_nearest_Fe_A": 2.16
+   }
+  },
+  "7UFF": {
+   "het": [
+    "HEM",
+    "NYF",
+    "PO4"
+   ],
+   "non_ignored_het": [
+    "NYF"
+   ],
+   "apo": false,
+   "resolution": 2.7,
+   "spacegroup": "C 1 2 1",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "NYF",
+    "dist_to_nearest_Fe_A": 2.21
+   }
+  },
+  "8DYC": {
+   "het": [
+    "GOL",
+    "HEM",
+    "UC7"
+   ],
+   "non_ignored_het": [
+    "UC7"
+   ],
+   "apo": false,
+   "resolution": 2.4,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "GOL",
+    "dist_to_nearest_Fe_A": 4.66
+   }
+  },
+  "8EWD": {
+   "het": [
+    "HEM",
+    "WZN"
+   ],
+   "non_ignored_het": [
+    "WZN"
+   ],
+   "apo": false,
+   "resolution": 2.2,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "WZN",
+    "dist_to_nearest_Fe_A": 1.88
+   }
+  },
+  "8EWE": {
+   "het": [
+    "HEM",
+    "X0E"
+   ],
+   "non_ignored_het": [
+    "X0E"
+   ],
+   "apo": false,
+   "resolution": 2.3,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X0E",
+    "dist_to_nearest_Fe_A": 2.05
+   }
+  },
+  "8EWL": {
+   "het": [
+    "HEM",
+    "X1C"
+   ],
+   "non_ignored_het": [
+    "X1C"
+   ],
+   "apo": false,
+   "resolution": 2.35,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X1C",
+    "dist_to_nearest_Fe_A": 1.94
+   }
+  },
+  "8EWM": {
+   "het": [
+    "HEM",
+    "X1I"
+   ],
+   "non_ignored_het": [
+    "X1I"
+   ],
+   "apo": false,
+   "resolution": 2.3,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X1I",
+    "dist_to_nearest_Fe_A": 1.93
+   }
+  },
+  "8EWN": {
+   "het": [
+    "HEM",
+    "X1O"
+   ],
+   "non_ignored_het": [
+    "X1O"
+   ],
+   "apo": false,
+   "resolution": 2.1,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X1O",
+    "dist_to_nearest_Fe_A": 1.76
+   }
+  },
+  "8EWP": {
+   "het": [
+    "HEM",
+    "X2Q"
+   ],
+   "non_ignored_het": [
+    "X2Q"
+   ],
+   "apo": false,
+   "resolution": 2.4,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X2Q",
+    "dist_to_nearest_Fe_A": 1.87
+   }
+  },
+  "8EWQ": {
+   "het": [
+    "HEM",
+    "X2B"
+   ],
+   "non_ignored_het": [
+    "X2B"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X2B",
+    "dist_to_nearest_Fe_A": 2.2
+   }
+  },
+  "8EWR": {
+   "het": [
+    "HEM",
+    "WZN"
+   ],
+   "non_ignored_het": [
+    "WZN"
+   ],
+   "apo": false,
+   "resolution": 2.2,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "WZN",
+    "dist_to_nearest_Fe_A": 2.25
+   }
+  },
+  "8EWS": {
+   "het": [
+    "HEM",
+    "X2Q"
+   ],
+   "non_ignored_het": [
+    "X2Q"
+   ],
+   "apo": false,
+   "resolution": 2.15,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X2Q",
+    "dist_to_nearest_Fe_A": 1.94
+   }
+  },
+  "8EXB": {
+   "het": [
+    "HEM",
+    "X4E"
+   ],
+   "non_ignored_het": [
+    "X4E"
+   ],
+   "apo": false,
+   "resolution": 2.05,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "X4E",
+    "dist_to_nearest_Fe_A": 1.84
+   }
+  },
+  "8SO1": {
+   "het": [
+    "CFF",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "CFF"
+   ],
+   "apo": false,
+   "resolution": 2.05,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "CFF",
+    "dist_to_nearest_Fe_A": 3.68
+   }
+  },
+  "8SO2": {
+   "het": [
+    "CFF",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "CFF"
+   ],
+   "apo": false,
+   "resolution": 2.15,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "CFF",
+    "dist_to_nearest_Fe_A": 3.4
+   }
+  },
+  "8SPD": {
+   "het": [
+    "CL6",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "CL6"
+   ],
+   "apo": false,
+   "resolution": 2.9,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "CL6",
+    "dist_to_nearest_Fe_A": 1.94
+   }
+  },
+  "9BBB": {
+   "het": [
+    "A1APA",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1APA"
+   ],
+   "apo": false,
+   "resolution": 2.5,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1APA",
+    "dist_to_nearest_Fe_A": 2.14
+   }
+  },
+  "9BV5": {
+   "het": [
+    "A1ASV",
+    "EDO",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1ASV"
+   ],
+   "apo": false,
+   "resolution": 2.71,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1ASV",
+    "dist_to_nearest_Fe_A": 2.21
+   }
+  },
+  "9BV6": {
+   "het": [
+    "A1ASU",
+    "HEM",
+    "PG0"
+   ],
+   "non_ignored_het": [
+    "A1ASU",
+    "PG0"
+   ],
+   "apo": false,
+   "resolution": 3.1,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1ASU",
+    "dist_to_nearest_Fe_A": 2.21
+   }
+  },
+  "9BV7": {
+   "het": [
+    "A1AST",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1AST"
+   ],
+   "apo": false,
+   "resolution": 3.21,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1AST",
+    "dist_to_nearest_Fe_A": 2.23
+   }
+  },
+  "9BV8": {
+   "het": [
+    "A1ASS",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1ASS"
+   ],
+   "apo": false,
+   "resolution": 3.0,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1ASS",
+    "dist_to_nearest_Fe_A": 2.22
+   }
+  },
+  "9BV9": {
+   "het": [
+    "A1ASR",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1ASR"
+   ],
+   "apo": false,
+   "resolution": 2.95,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1ASR",
+    "dist_to_nearest_Fe_A": 2.25
+   }
+  },
+  "9BVA": {
+   "het": [
+    "A1ASQ",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1ASQ"
+   ],
+   "apo": false,
+   "resolution": 3.02,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1ASQ",
+    "dist_to_nearest_Fe_A": 2.2
+   }
+  },
+  "9BVB": {
+   "het": [
+    "A1ASP",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1ASP"
+   ],
+   "apo": false,
+   "resolution": 3.0,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1ASP",
+    "dist_to_nearest_Fe_A": 2.22
+   }
+  },
+  "9BVC": {
+   "het": [
+    "A1ASO",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1ASO"
+   ],
+   "apo": false,
+   "resolution": 2.8,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1ASO",
+    "dist_to_nearest_Fe_A": 2.23
+   }
+  },
+  "9COR": {
+   "het": [
+    "A1A07",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A07"
+   ],
+   "apo": false,
+   "resolution": 2.55,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A07",
+    "dist_to_nearest_Fe_A": 2.13
+   }
+  },
+  "9COS": {
+   "het": [
+    "A1A06",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A06"
+   ],
+   "apo": false,
+   "resolution": 2.75,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A06",
+    "dist_to_nearest_Fe_A": 2.19
+   }
+  },
+  "9COT": {
+   "het": [
+    "A1A08",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A08"
+   ],
+   "apo": false,
+   "resolution": 2.81,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A08",
+    "dist_to_nearest_Fe_A": 2.19
+   }
+  },
+  "9COU": {
+   "het": [
+    "A1A4U",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A4U"
+   ],
+   "apo": false,
+   "resolution": 2.81,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A4U",
+    "dist_to_nearest_Fe_A": 2.2
+   }
+  },
+  "9COV": {
+   "het": [
+    "A1A4S",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A4S"
+   ],
+   "apo": false,
+   "resolution": 2.6,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A4S",
+    "dist_to_nearest_Fe_A": 2.06
+   }
+  },
+  "9COW": {
+   "het": [
+    "A1A4V",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A4V"
+   ],
+   "apo": false,
+   "resolution": 2.3,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A4V",
+    "dist_to_nearest_Fe_A": 2.19
+   }
+  },
+  "9COX": {
+   "het": [
+    "A1A4K",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A4K"
+   ],
+   "apo": false,
+   "resolution": 2.72,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A4K",
+    "dist_to_nearest_Fe_A": 2.22
+   }
+  },
+  "9COY": {
+   "het": [
+    "A1A4T",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1A4T"
+   ],
+   "apo": false,
+   "resolution": 2.65,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1A4T",
+    "dist_to_nearest_Fe_A": 2.15
+   }
+  },
+  "9GK1": {
+   "het": [
+    "HEM"
+   ],
+   "non_ignored_het": [],
+   "apo": true,
+   "resolution": 2.95,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": null
+  },
+  "9MS1": {
+   "het": [
+    "A1BNX",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1BNX"
+   ],
+   "apo": false,
+   "resolution": 3.4,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1BNX",
+    "dist_to_nearest_Fe_A": 2.36
+   }
+  },
+  "9PLJ": {
+   "het": [
+    "HEM",
+    "TCI"
+   ],
+   "non_ignored_het": [
+    "TCI"
+   ],
+   "apo": false,
+   "resolution": 2.72,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "TCI",
+    "dist_to_nearest_Fe_A": 4.14
+   }
+  },
+  "9PLK": {
+   "het": [
+    "A1CIW",
+    "GOL",
+    "HEM"
+   ],
+   "non_ignored_het": [
+    "A1CIW"
+   ],
+   "apo": false,
+   "resolution": 2.25,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "A1CIW",
+    "dist_to_nearest_Fe_A": 4.67
+   }
+  },
+  "9YK4": {
+   "het": [
+    "EDO",
+    "GOL",
+    "HEM",
+    "IMD",
+    "PG4"
+   ],
+   "non_ignored_het": [
+    "PG4"
+   ],
+   "apo": false,
+   "resolution": 1.78,
+   "spacegroup": "I 2 2 2",
+   "closest_non_HEM_het_to_Fe": {
+    "code": "IMD",
+    "dist_to_nearest_Fe_A": 2.15
+   }
+  }
+ }
+}
