@@ -1,5 +1,5 @@
 {
-  "checked": "2026-09-22 19:48:19",
+  "checked": "2026-09-22 21:09:17",
   "dry_run": true,
   "max_age_hours": 8.0,
   "modal_error": "could not list modal apps: [WinError 2] The system cannot find the file specified",
@@ -36,8 +36,8 @@
   },
   "modal_cap_fraction": 0.541,
   "disk": {
-    "free_C_gb": 19.96,
-    "free_D_gb": 13.05,
+    "free_C_gb": 21.59,
+    "free_D_gb": 12.94,
     "rclone_vfs_cache_gb": 0.0,
     "warning": "rclone VFS cache is unbounded (no --vfs-cache-max-size); never write bulk data through O:\\ \u2014 use storage.push()"
   }
