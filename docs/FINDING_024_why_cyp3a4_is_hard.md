@@ -289,6 +289,15 @@ remaining channel — MSA content — is the one axis already measured to be irr
 
 ### R1. Split the cross-engine score into translation and rotation. Zero GPU.
 
+> **RUN, AND CLOSED — see FINDING 026.** The orientation-only term is the strongest single
+> unfitted term measured in this project (+0.0424 vs random, ρ = −0.241, correct on 75.9%
+> of ligands) and it does **not** beat the incumbent paired: +0.0041, Wilcoxon p = 0.61,
+> Holm p = 1.00, same pose selected on 49 of 87 ligands. The mechanism claim below is
+> refuted: within-ligand ρ(mix, ori) = **+0.879** against ρ(mix, cen) = +0.667, so the
+> Chamfer was already ranking by orientation, and the centroid term is not a passenger —
+> `cen` alone scores **+0.0309**, 81% of the incumbent's whole gain. Consensus agreement
+> and error-against-truth are different quantities.
+
 **Mechanism, measured:** the incumbent `cypstruct.xengine.xeng_score` is a Chamfer distance
 in the heme frame, so it is dominated by *where* the ligand is. On CYP3A4 the centroid is
 already right to 1.07 Å with no systematic direction, while the rotation is wrong by 30°.
