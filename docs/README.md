@@ -1,6 +1,6 @@
 # Findings index
 
-Seventeen findings, most of them negative. Read them in this order if you are arriving cold;
+Eighteen findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
 ## Start here
@@ -11,6 +11,7 @@ the numbering is chronological, not logical.
 | **011** | **Cross-engine agreement selects: +0.0381**, beating the incumbent's +0.0265. No fitted parameters. This is what ships | stands |
 | **012** | It **generalises** — positive on 13 of 16 held-out P450 proteins — and it is a **catastrophe detector**, so its payoff is predictable from pool quality | stands |
 | **024** | **CYP3A4 fails by ROTATION (30°) in a pocket the model builds right (0.73 Å)** — protein accuracy does not predict ligand accuracy here (ρ=+0.03) where it does everywhere else (ρ=+0.51). Kills templates, b5 and orthologs | stands |
+| **027** | **The model's pocket excludes the true pose** — the crystal ligand clashes below 2.2 Å inside the co-folded protein on **71%** of poses, while **0 of 87** crystals violate that cutoff in their own protein. Only 2% of orientations fit; 31 of 41 failures are unreachable by any rigid rotation | stands |
 | **RUNBOOK** | what to run, in order, with each step's trap attached | live |
 
 ## The shape of the whole problem
@@ -28,6 +29,7 @@ work. That is not a slogan, it is ~30 measured features:
 | 014 | QM scorer tier-1 donor prior; then classical interaction energy | both fail the gate |
 | 025 | **the whole CYP3A4 physics scorer above the iron** — Ser119/Arg106/Arg212/Asp214/Thr224 anchors, the Phe roof, F/G engagement, MMFF strain (34 terms) | every term null; the fitted ensemble (+0.0252) lands on its own 200-draw null's **maximum**, loses to the incumbent and fails the complementarity gate |
 | 026 | splitting the shipped Chamfer into translation + orientation (R1 of 024) | orientation alone is the strongest single unfitted term (+0.0424) and still **ties the incumbent paired** (+0.0041, p = 0.61); translation alone is *not* a passenger (+0.0309) |
+| 027 | expanding the pool with 1.78 M rigid ligand rotations inside the model's own protein | oracle **+0.0108**, selection **−0.0145**; within-ligand ρ *improved* −0.258 → −0.390 while top-1 got worse. The incumbent rejected **99.83%** of the injected poses |
 
 **Read 007 before proposing any new feature.** It is the arithmetic that makes "promising"
 a meaningless word here.

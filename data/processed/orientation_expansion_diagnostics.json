@@ -1,0 +1,27 @@
+{
+ "n_poses": 1740,
+ "ligand_radius_of_gyration_median": 4.779023480774566,
+ "grid_half_spacing_deg": 11.215,
+ "rmsd_implied_by_grid_half_spacing": 0.9339471047526214,
+ "crystal_ligand_vs_own_crystal_protein": {
+  "n": 87,
+  "min": 2.222768993845289,
+  "p1": 2.2336683686384373,
+  "median": 2.7025121646349715,
+  "frac_below_2.2A": 0.0
+ },
+ "predicted_pose_in_own_protein": {
+  "median": 2.571488543529023,
+  "p5": 2.2431875647582014,
+  "frac_below_2.2A": 0.03793103448275862
+ },
+ "crystal_ligand_in_MODEL_protein_in_place": {
+  "median": 1.4161888754889882,
+  "frac_below_2.2A": 0.7120689655172414
+ },
+ "crystal_ligand_in_MODEL_protein_at_predicted_centroid": {
+  "median": 1.5531642208882628,
+  "frac_below_2.2A": 0.7551724137931034
+ },
+ "centroid_offset_median": 1.0790254375141912
+}
