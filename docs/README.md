@@ -26,6 +26,7 @@ work. That is not a slogan, it is ~30 measured features:
 | 007 | **the noise floor**: a random feature scores +0.0138 at the 95th pct | anything under +0.020 is noise |
 | 010 | occupancy / orientation priors from 747 crystal poses | null (+0.0018, +0.0008) |
 | 014 | QM scorer tier-1 donor prior; then classical interaction energy | both fail the gate |
+| 025 | **the whole CYP3A4 physics scorer above the iron** — Ser119/Arg106/Arg212/Asp214/Thr224 anchors, the Phe roof, F/G engagement, MMFF strain (34 terms) | every term null; the fitted ensemble (+0.0252) lands on its own 200-draw null's **maximum**, loses to the incumbent and fails the complementarity gate |
 | 026 | splitting the shipped Chamfer into translation + orientation (R1 of 024) | orientation alone is the strongest single unfitted term (+0.0424) and still **ties the incumbent paired** (+0.0041, p = 0.61); translation alone is *not* a passenger (+0.0309) |
 
 **Read 007 before proposing any new feature.** It is the arithmetic that makes "promising"

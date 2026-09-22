@@ -1,0 +1,43 @@
+{
+  "set": "holdout",
+  "poses": 425,
+  "fg_depth (lower is better)": {
+    "ligands": 85,
+    "oracle": 0.8599,
+    "random": 0.7947,
+    "selected": 0.7896,
+    "gain": -0.0051,
+    "rho": 0.023,
+    "frac_rho_pos": 0.482,
+    "beats_random_frac": 0.482,
+    "p_wilcoxon": 0.642778985392834,
+    "null_p95": 0.0211,
+    "p_permutation": 0.6705
+  },
+  "fe_centroid_dist (lower is better)": {
+    "ligands": 85,
+    "oracle": 0.8599,
+    "random": 0.7947,
+    "selected": 0.8355,
+    "gain": 0.0408,
+    "rho": 0.138,
+    "frac_rho_pos": 0.602,
+    "beats_random_frac": 0.576,
+    "p_wilcoxon": 0.0025338530473509556,
+    "null_p95": 0.0211,
+    "p_permutation": 0.0
+  },
+  "fe_min_dist (lower is better)": {
+    "ligands": 85,
+    "oracle": 0.8599,
+    "random": 0.7947,
+    "selected": 0.8238,
+    "gain": 0.0291,
+    "rho": 0.133,
+    "frac_rho_pos": 0.578,
+    "beats_random_frac": 0.576,
+    "p_wilcoxon": 0.05983248864934673,
+    "null_p95": 0.0207,
+    "p_permutation": 0.006
+  }
+}
