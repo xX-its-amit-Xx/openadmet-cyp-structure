@@ -1,0 +1,230 @@
+{
+ "what": "median pairwise side-chain heavy-atom RMSD (A) between two different ligands' structures, after superposing that residue's own N/CA/C",
+ "n_residues": 27,
+ "n_structures": 87,
+ "model_median_A": 0.077,
+ "crystal_median_A": 0.723,
+ "model_p90_A": 0.5506000000000004,
+ "crystal_p90_A": 1.8224000000000005,
+ "residues_model_more_variable": 2,
+ "residues_crystal_more_variable": 25,
+ "wilcoxon_p": 5.5283308029174805e-06,
+ "per_residue": [
+  {
+   "resnum": 212,
+   "resname": "ARG",
+   "n_model": 87,
+   "n_crystal": 50,
+   "median_pairwise_sc_rmsd_model": 1.886,
+   "median_pairwise_sc_rmsd_crystal": 3.709
+  },
+  {
+   "resnum": 108,
+   "resname": "PHE",
+   "n_model": 87,
+   "n_crystal": 86,
+   "median_pairwise_sc_rmsd_model": 3.708,
+   "median_pairwise_sc_rmsd_crystal": 3.102
+  },
+  {
+   "resnum": 213,
+   "resname": "PHE",
+   "n_model": 87,
+   "n_crystal": 53,
+   "median_pairwise_sc_rmsd_model": 0.274,
+   "median_pairwise_sc_rmsd_crystal": 1.979
+  },
+  {
+   "resnum": 210,
+   "resname": "LEU",
+   "n_model": 87,
+   "n_crystal": 63,
+   "median_pairwise_sc_rmsd_model": 0.166,
+   "median_pairwise_sc_rmsd_crystal": 1.718
+  },
+  {
+   "resnum": 482,
+   "resname": "LEU",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.096,
+   "median_pairwise_sc_rmsd_crystal": 1.7
+  },
+  {
+   "resnum": 211,
+   "resname": "LEU",
+   "n_model": 87,
+   "n_crystal": 51,
+   "median_pairwise_sc_rmsd_model": 0.06,
+   "median_pairwise_sc_rmsd_crystal": 1.537
+  },
+  {
+   "resnum": 301,
+   "resname": "ILE",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.251,
+   "median_pairwise_sc_rmsd_crystal": 1.156
+  },
+  {
+   "resnum": 106,
+   "resname": "ARG",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.232,
+   "median_pairwise_sc_rmsd_crystal": 1.093
+  },
+  {
+   "resnum": 215,
+   "resname": "PHE",
+   "n_model": 87,
+   "n_crystal": 57,
+   "median_pairwise_sc_rmsd_model": 0.178,
+   "median_pairwise_sc_rmsd_crystal": 1.006
+  },
+  {
+   "resnum": 241,
+   "resname": "PHE",
+   "n_model": 87,
+   "n_crystal": 82,
+   "median_pairwise_sc_rmsd_model": 0.259,
+   "median_pairwise_sc_rmsd_crystal": 0.886
+  },
+  {
+   "resnum": 57,
+   "resname": "PHE",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.145,
+   "median_pairwise_sc_rmsd_crystal": 0.833
+  },
+  {
+   "resnum": 304,
+   "resname": "PHE",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.469,
+   "median_pairwise_sc_rmsd_crystal": 0.793
+  },
+  {
+   "resnum": 372,
+   "resname": "ARG",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.072,
+   "median_pairwise_sc_rmsd_crystal": 0.758
+  },
+  {
+   "resnum": 220,
+   "resname": "PHE",
+   "n_model": 87,
+   "n_crystal": 86,
+   "median_pairwise_sc_rmsd_model": 0.077,
+   "median_pairwise_sc_rmsd_crystal": 0.723
+  },
+  {
+   "resnum": 371,
+   "resname": "MET",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.085,
+   "median_pairwise_sc_rmsd_crystal": 0.696
+  },
+  {
+   "resnum": 224,
+   "resname": "THR",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.022,
+   "median_pairwise_sc_rmsd_crystal": 0.605
+  },
+  {
+   "resnum": 105,
+   "resname": "ARG",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.064,
+   "median_pairwise_sc_rmsd_crystal": 0.484
+  },
+  {
+   "resnum": 369,
+   "resname": "ILE",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.036,
+   "median_pairwise_sc_rmsd_crystal": 0.46
+  },
+  {
+   "resnum": 120,
+   "resname": "ILE",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.027,
+   "median_pairwise_sc_rmsd_crystal": 0.432
+  },
+  {
+   "resnum": 373,
+   "resname": "LEU",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.028,
+   "median_pairwise_sc_rmsd_crystal": 0.409
+  },
+  {
+   "resnum": 107,
+   "resname": "PRO",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.673,
+   "median_pairwise_sc_rmsd_crystal": 0.384
+  },
+  {
+   "resnum": 374,
+   "resname": "GLU",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.046,
+   "median_pairwise_sc_rmsd_crystal": 0.378
+  },
+  {
+   "resnum": 309,
+   "resname": "THR",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.07,
+   "median_pairwise_sc_rmsd_crystal": 0.35
+  },
+  {
+   "resnum": 114,
+   "resname": "MET",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.057,
+   "median_pairwise_sc_rmsd_crystal": 0.312
+  },
+  {
+   "resnum": 300,
+   "resname": "ILE",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.028,
+   "median_pairwise_sc_rmsd_crystal": 0.247
+  },
+  {
+   "resnum": 442,
+   "resname": "CYS",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.012,
+   "median_pairwise_sc_rmsd_crystal": 0.238
+  },
+  {
+   "resnum": 119,
+   "resname": "SER",
+   "n_model": 87,
+   "n_crystal": 87,
+   "median_pairwise_sc_rmsd_model": 0.027,
+   "median_pairwise_sc_rmsd_crystal": 0.234
+  }
+ ]
+}
