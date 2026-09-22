@@ -989,6 +989,312 @@ def cmd_plasticity() -> None:
 
 
 # --------------------------------------------------------------------------
+# stage 2c — the template ceiling over the LESION, 210-216 (addendum)
+# --------------------------------------------------------------------------
+
+LESION = list(range(210, 217))     # the span Q4 named; fixed before this stage was run
+
+
+def _entry_chain(path, want_chains):
+    """One chain per deposited entry: the listed auth chain with the most residues.
+
+    Two chains of the same crystal are not two opinions, so an entry contributes once.
+    """
+    import gemmi
+    st = gemmi.read_structure(str(path))
+    st.setup_entities()
+    st.remove_alternative_conformations()
+    st.remove_hydrogens()
+    best, bestn = None, -1
+    for ch in st[0]:
+        if want_chains and ch.name not in want_chains:
+            continue
+        n = sum(1 for r in ch
+                if (gemmi.find_tabulated_residue(r.name.strip().upper()) or None)
+                and gemmi.find_tabulated_residue(r.name.strip().upper()).is_amino_acid())
+        if n > bestn:
+            best, bestn = ch, n
+    if best is None or bestn < 200:
+        return None
+    ca, occ, bf = {}, {}, {}
+    for r in best:
+        info = gemmi.find_tabulated_residue(r.name.strip().upper())
+        if not (info and info.is_amino_acid()):
+            continue
+        for at in r:
+            if at.name.strip() == "CA":
+                ca[r.seqid.num] = np.array([at.pos.x, at.pos.y, at.pos.z])
+                occ[r.seqid.num] = float(at.occ)
+                bf[r.seqid.num] = float(at.b_iso)
+    bbcb = {}
+    for r in best:
+        info = gemmi.find_tabulated_residue(r.name.strip().upper())
+        if not (info and info.is_amino_acid()) or r.seqid.num not in LESION:
+            continue
+        for at in r:
+            nm = at.name.strip()
+            if nm in ("N", "CA", "C", "O", "CB"):
+                bbcb[(r.seqid.num, nm)] = np.array([at.pos.x, at.pos.y, at.pos.z])
+    res = float("nan")
+    try:
+        res = float(st.resolution)
+    except Exception:
+        pass
+    return dict(ca=ca, occ=occ, b=bf, bbcb=bbcb, chain=best.name,
+                resolution=res, spacegroup=str(st.spacegroup_hm))
+
+
+def cmd_templates() -> None:
+    """The measurement FINDING 028 named as deciding whether holo templates come back.
+
+    A blind template can only ever be as good as one deposited crystal is at predicting
+    another. So: over residues 210-216 ALONE, superpose two deposited CYP3A4 entries on
+    the ligand-free rigid core and measure the CA deviation in the span. If that spread
+    is not clearly below the model's own error there, a template cannot help in the
+    lesion and FINDING 024's dismissal stands unqualified.
+
+    Decision rule, fixed before any number was read (see the addendum's preamble):
+    LICENSED only if the holo-holo DIFFERENT-ligand spread is clearly below the model's
+    median AND p90 error over the same span.
+    """
+    import pandas as pd
+    from cypstruct import pose as P
+    from cypstruct.targets import IGNORE_HET
+
+    meta = json.loads((REPO / "data" / "processed" / "p450_universe"
+                       / "entry_meta.json").read_text())
+    rcsb = REPO / "data" / "reference" / "rcsb"
+
+    entries = {}
+    for pid, v in meta.items():
+        accs = {a.get("reference_database_accession")
+                for pe in (v.get("polymer_entities") or [])
+                for a in (pe.get("rcsb_polymer_entity_align") or [])}
+        if "P08684" not in accs:
+            continue
+        cif = rcsb / f"{pid}.cif"
+        if not cif.exists():
+            continue
+        chains = [c for pe in (v.get("polymer_entities") or [])
+                  for c in (pe.get("rcsb_polymer_entity_container_identifiers", {})
+                            .get("auth_asym_ids") or [])]
+        ligs = set()
+        for ne in (v.get("nonpolymer_entities") or []):
+            cid = (ne.get("nonpolymer_comp", {}).get("chem_comp", {}) or {}).get("id")
+            if cid and cid.upper() not in IGNORE_HET and cid.upper() != "HEM":
+                ligs.add(cid.upper())
+        e = _entry_chain(cif, set(chains))
+        if e is None:
+            continue
+        e["ligands"] = sorted(ligs)
+        e["apo"] = not ligs
+        entries[pid] = e
+    ids = sorted(entries)
+
+    # ---- FIRST: is the span even modelled? -------------------------------
+    cov = {p: sum(1 for r in LESION if r in entries[p]["ca"]) for p in ids}
+    full = [p for p in ids if cov[p] == len(LESION)]
+    part = [p for p in ids if 4 <= cov[p] < len(LESION)]
+    none_ = [p for p in ids if cov[p] == 0]
+    modelled = {
+        "n_entries": len(ids),
+        "span": f"{LESION[0]}-{LESION[-1]}",
+        "fully_modelled": len(full), "frac_fully_modelled": len(full) / len(ids),
+        "partially_modelled_4_to_6": len(part),
+        "completely_absent": len(none_),
+        "per_residue_modelled_frac": {
+            str(r): round(float(np.mean([r in entries[p]["ca"] for p in ids])), 3)
+            for r in LESION},
+        "apo_entries": int(sum(entries[p]["apo"] for p in ids)),
+        "holo_entries": int(sum(not entries[p]["apo"] for p in ids)),
+        "apo_fully_modelled": int(sum(entries[p]["apo"] for p in full)),
+        "median_CA_B_in_span": float(np.median(
+            [entries[p]["b"][r] for p in full for r in LESION])),
+        "min_CA_occupancy_in_span": float(min(
+            entries[p]["occ"][r] for p in full for r in LESION)),
+        "distinct_space_groups": len({entries[p]["spacegroup"] for p in ids}),
+        "space_group_counts": {k: int(v) for k, v in
+                               pd.Series([entries[p]["spacegroup"] for p in ids])
+                               .value_counts().items()},
+        "resolution_median": float(np.nanmedian([entries[p]["resolution"] for p in ids])),
+        "resolution_range": [float(np.nanmin([entries[p]["resolution"] for p in ids])),
+                             float(np.nanmax([entries[p]["resolution"] for p in ids]))],
+        "distinct_ligand_codes": len({tuple(entries[p]["ligands"]) for p in ids}),
+    }
+
+    # ---- the crystal-to-crystal spread ------------------------------------
+    rows = []
+    for i in range(len(full)):
+        for j in range(i + 1, len(full)):
+            a, b = entries[full[i]], entries[full[j]]
+            sh = sorted(set(a["ca"]) & set(b["ca"]) & CORE)
+            if len(sh) < 50:
+                continue
+            R, t, fit = P.kabsch(np.array([a["ca"][k] for k in sh]),
+                                 np.array([b["ca"][k] for k in sh]))
+            d = np.array([np.linalg.norm(a["ca"][r] @ R.T + t - b["ca"][r])
+                          for r in LESION])
+            if a["apo"] and b["apo"]:
+                s = "apo-apo"
+            elif a["apo"] or b["apo"]:
+                s = "apo-holo"
+            elif set(a["ligands"]) & set(b["ligands"]):
+                s = "holo-holo same ligand"
+            else:
+                s = "holo-holo different ligand"
+            rows.append(dict(a=full[i], b=full[j], stratum=s, core_fit=fit,
+                             rms=float(np.sqrt((d ** 2).mean())), max=float(d.max()),
+                             same_sg=a["spacegroup"] == b["spacegroup"],
+                             same_res=abs((a["resolution"] or 0) -
+                                          (b["resolution"] or 0)) < 0.05))
+    cc = pd.DataFrame(rows)
+    cc.to_csv(REPO / "data" / "processed" / "template_ceiling_pairs.csv", index=False)
+
+    def block(frame):
+        if not len(frame):
+            return None
+        q = frame["rms"]
+        return {"n_pairs": int(len(frame)), "median_A": float(q.median()),
+                "p25_A": float(q.quantile(.25)), "p75_A": float(q.quantile(.75)),
+                "p90_A": float(q.quantile(.90)), "max_A": float(q.max()),
+                "frac_over_1A": float((q > 1.0).mean()),
+                "frac_over_2A": float((q > 2.0).mean()),
+                "median_core_fit_A": float(frame.core_fit.median())}
+
+    spread = {s: block(cc[cc.stratum == s]) for s in sorted(cc.stratum.unique())}
+    spread["ALL pairs"] = block(cc)
+    hh = cc[cc.stratum == "holo-holo different ligand"]
+    spread["holo-holo different ligand, CROSS space group only"] = block(
+        hh[~hh.same_sg])
+
+    # Is the spread one broad distribution or several discrete loop states? Descriptive,
+    # not a decision: an entry's median deviation to every OTHER entry, then split at
+    # 1 A. The cut is descriptive and the whole distribution is in the CSV.
+    med = {e: float(pd.concat([cc[cc.a == e]["rms"], cc[cc.b == e]["rms"]]).median())
+           for e in full}
+    major = sorted([e for e, v in med.items() if v < 1.0])
+    minor = sorted([e for e, v in med.items() if v >= 3.0])
+    within = cc[cc.a.isin(major) & cc.b.isin(major)]
+    states = {
+        "entries_with_span": len(full),
+        "majority_cluster_n": len(major),
+        "within_majority_median_A": float(within["rms"].median()),
+        "within_majority_p90_A": float(within["rms"].quantile(.90)),
+        "minority_conformers_n": len(minor), "minority_conformers": minor,
+        "intermediate_n": len(full) - len(major) - len(minor),
+        "note": "a blind template cannot know which state the query is in, and "
+                "selecting inside the majority cluster is not available blind",
+    }
+
+    # ---- the model's own error over the SAME span, same frame -------------
+    lig = pd.read_csv(REPO / "data" / "processed" / "validation_ligands.csv")
+    have = {p.name.split("__")[0] for p in POOL.iterdir() if p.is_dir()}
+    mrows, nspan_full = [], []
+    for r in lig.itertuples():
+        if r.id not in have:
+            continue
+        ref, _c, _ch = load_reference(r.pdb, r.id)
+        if ref is None:
+            continue
+        rn = {k: v for (_c2, k), v in ref.ca().items()}
+        span = [x for x in LESION if x in rn]
+        nspan_full.append(len(span) == len(LESION))
+        if len(span) < 4:
+            mrows.append(dict(ligand=r.id, pdb=r.pdb, n_span=len(span), rms=np.nan))
+            continue
+        for cif in sorted((POOL / f"{r.id}__unsteered__s1").glob("input_model_*.cif")):
+            m = P.load_structure(cif)
+            m, _o, _i = renumber_to_reference(m, ref)
+            mn = {k: v for (_c2, k), v in m.ca().items()}
+            shc = sorted(set(mn) & set(rn) & CORE)
+            R, t, _f = P.kabsch(np.array([mn[k] for k in shc]),
+                                np.array([rn[k] for k in shc]))
+            d = np.array([np.linalg.norm(mn[x] @ R.T + t - rn[x])
+                          for x in span if x in mn])
+            mrows.append(dict(ligand=r.id, pdb=r.pdb, sample=cif.stem,
+                              n_span=len(d), rms=float(np.sqrt((d ** 2).mean()))))
+    md = pd.DataFrame(mrows)
+
+    mq = md.rms.dropna()
+    model = {"n_poses": int(len(mq)),
+             "n_validation_crystals": int(len(nspan_full)),
+             "n_validation_crystals_span_FULLY_modelled": int(sum(nspan_full)),
+             "n_pairs_with_span_modelled": int(md.dropna(subset=["rms"]).ligand.nunique()),
+             "median_A": float(mq.median()), "p90_A": float(mq.quantile(.90)),
+             "frac_over_1A": float((mq > 1.0).mean()),
+             "frac_over_2A": float((mq > 2.0).mean())}
+
+    # ---- the seven unrescuable ligands ------------------------------------
+    hard7 = ["1RD", "5AW", "A1A4T", "ERY", "MWY", "QEP", "X7P"]
+    seven = []
+    for lg in hard7:
+        r = lig[lig.id == lg]
+        if not len(r):
+            continue
+        r = r.iloc[0]
+        ref, _c, _ch = load_reference(r.pdb, lg)
+        rn = {k: v for (_c2, k), v in ref.ca().items()}
+        L = np.asarray(ref.lig_xyz, float)
+        best, clears = None, 0
+        tried = 0
+        for p in full:
+            if p.upper() == str(r.pdb).upper():
+                continue
+            e = entries[p]
+            sh = sorted(set(e["ca"]) & set(rn) & CORE)
+            if len(sh) < 50:
+                continue
+            R, t, _f = P.kabsch(np.array([e["ca"][k] for k in sh]),
+                                np.array([rn[k] for k in sh]))
+            pts = np.array([v @ R.T + t for v in e["bbcb"].values()])
+            if not len(pts):
+                continue
+            tried += 1
+            dmin = float(np.linalg.norm(pts[:, None, :] - L[None, :, :],
+                                        axis=2).min())
+            clears += int(dmin >= PREREG["clash_cut_A"])
+            if best is None or dmin > best[1]:
+                best = (p, dmin)
+        # the control: the query's OWN crystal, same atoms
+        own = np.array([v for k, v in
+                        ((kk, vv) for kk, vv in _entry_chain(
+                            REPO / "data" / "reference" / "rcsb" / f"{r.pdb}.cif",
+                            None)["bbcb"].items())])
+        own_min = (float(np.linalg.norm(own[:, None, :] - L[None, :, :], axis=2).min())
+                   if len(own) else None)
+        seven.append(dict(ligand=lg, pdb=str(r.pdb),
+                          own_span_fully_modelled=bool(str(r.pdb).upper() in med),
+                          own_median_dev_to_other_entries_A=(
+                              round(med[str(r.pdb).upper()], 2)
+                              if str(r.pdb).upper() in med else None),
+                          donors_tested=tried,
+                          donors_clearing=clears,
+                          frac_clearing=(clears / tried) if tried else None,
+                          best_donor=(best[0] if best else None),
+                          best_donor_min_contact_A=(round(best[1], 2) if best else None),
+                          own_crystal_min_contact_A=(round(own_min, 2) if own_min
+                                                     else None)))
+
+    out = {
+        "what": "template ceiling over the lesion: how well one deposited CYP3A4 "
+                "crystal predicts another's CA over residues 210-216, after "
+                "superposition on CYP3A4_RIGID_CORE",
+        "decision_rule_fixed_in_advance":
+            "LICENSED only if the holo-holo DIFFERENT-ligand spread is clearly below "
+            "the model's median AND p90 error over the same span; comparable or worse "
+            "means templates are refuted in the lesion too",
+        "modelled_first": modelled,
+        "crystal_to_crystal_spread": spread,
+        "conformational_states": states,
+        "model_error_same_span_same_frame": model,
+        "seven_unrescuable": seven,
+    }
+    (REPO / "data" / "processed" / "template_ceiling_lesion.json").write_text(
+        json.dumps(out, indent=1))
+    print(json.dumps(out, indent=1))
+
+
+# --------------------------------------------------------------------------
 # stage 3 — Q4, the repack scan
 # --------------------------------------------------------------------------
 
@@ -1367,7 +1673,8 @@ def cmd_repack(workers: int) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["measure", "analyse", "plasticity", "repack"])
+    ap.add_argument("stage", choices=["measure", "analyse", "plasticity",
+                                      "templates", "repack"])
     ap.add_argument("--workers", type=int, default=12)
     ap.add_argument("--limit", type=int, default=None)
     a = ap.parse_args()
@@ -1377,6 +1684,8 @@ def main() -> None:
         cmd_analyse()
     elif a.stage == "plasticity":
         cmd_plasticity()
+    elif a.stage == "templates":
+        cmd_templates()
     else:
         cmd_repack(a.workers)
 

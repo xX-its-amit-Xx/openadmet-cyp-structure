@@ -1,0 +1,216 @@
+{
+ "what": "template ceiling over the lesion: how well one deposited CYP3A4 crystal predicts another's CA over residues 210-216, after superposition on CYP3A4_RIGID_CORE",
+ "decision_rule_fixed_in_advance": "LICENSED only if the holo-holo DIFFERENT-ligand spread is clearly below the model's median AND p90 error over the same span; comparable or worse means templates are refuted in the lesion too",
+ "modelled_first": {
+  "n_entries": 107,
+  "span": "210-216",
+  "fully_modelled": 54,
+  "frac_fully_modelled": 0.5046728971962616,
+  "partially_modelled_4_to_6": 10,
+  "completely_absent": 17,
+  "per_residue_modelled_frac": {
+   "210": 0.729,
+   "211": 0.589,
+   "212": 0.533,
+   "213": 0.57,
+   "214": 0.607,
+   "215": 0.636,
+   "216": 0.682
+  },
+  "apo_entries": 0,
+  "holo_entries": 107,
+  "apo_fully_modelled": 0,
+  "median_CA_B_in_span": 104.67499923706055,
+  "min_CA_occupancy_in_span": 1.0,
+  "distinct_space_groups": 6,
+  "space_group_counts": {
+   "I 2 2 2": 92,
+   "C 1 2 1": 11,
+   "C 2 2 21": 1,
+   "P 31": 1,
+   "P 21 21 21": 1,
+   "I 1 2 1": 1
+  },
+  "resolution_median": 2.55,
+  "resolution_range": [
+   1.78,
+   3.1
+  ],
+  "distinct_ligand_codes": 98
+ },
+ "crystal_to_crystal_spread": {
+  "holo-holo different ligand": {
+   "n_pairs": 1424,
+   "median_A": 4.246692322751846,
+   "p25_A": 0.7000241640814447,
+   "p75_A": 4.740531166784395,
+   "p90_A": 7.202110012196066,
+   "max_A": 9.758672022978043,
+   "frac_over_1A": 0.6474719101123596,
+   "frac_over_2A": 0.5835674157303371,
+   "median_core_fit_A": 0.5599212557344692
+  },
+  "holo-holo same ligand": {
+   "n_pairs": 7,
+   "median_A": 0.777914883653279,
+   "p25_A": 0.4806414893154154,
+   "p75_A": 2.6267572839986157,
+   "p90_A": 4.512472747455706,
+   "max_A": 4.794647614678294,
+   "frac_over_1A": 0.2857142857142857,
+   "frac_over_2A": 0.2857142857142857,
+   "median_core_fit_A": 0.3862078971428631
+  },
+  "ALL pairs": {
+   "n_pairs": 1431,
+   "median_A": 4.2464063319704515,
+   "p25_A": 0.6994490930775272,
+   "p75_A": 4.73995877972702,
+   "p90_A": 7.20010717811716,
+   "max_A": 9.758672022978043,
+   "frac_over_1A": 0.6457023060796646,
+   "frac_over_2A": 0.5821104122990916,
+   "median_core_fit_A": 0.5594913054017697
+  },
+  "holo-holo different ligand, CROSS space group only": {
+   "n_pairs": 532,
+   "median_A": 4.424433829733434,
+   "p25_A": 4.235580934015158,
+   "p75_A": 4.739809334028911,
+   "p90_A": 7.404286012656601,
+   "max_A": 9.758672022978043,
+   "frac_over_1A": 0.9417293233082706,
+   "frac_over_2A": 0.881578947368421,
+   "median_core_fit_A": 0.8230630420021907
+  }
+ },
+ "conformational_states": {
+  "entries_with_span": 54,
+  "majority_cluster_n": 27,
+  "within_majority_median_A": 0.5255230971094759,
+  "within_majority_p90_A": 0.7840092576594981,
+  "minority_conformers_n": 22,
+  "minority_conformers": [
+   "3NXU",
+   "4D78",
+   "4D7D",
+   "4I4G",
+   "4I4H",
+   "4K9T",
+   "4K9W",
+   "5TE8",
+   "5VC0",
+   "6UNJ",
+   "7KVH",
+   "7KVK",
+   "7KVN",
+   "7KVO",
+   "7KVQ",
+   "7KVS",
+   "7UFA",
+   "7UFE",
+   "7UFF",
+   "8EWS",
+   "8EXB",
+   "8SPD"
+  ],
+  "intermediate_n": 5,
+  "note": "a blind template cannot know which state the query is in, and selecting inside the majority cluster is not available blind"
+ },
+ "model_error_same_span_same_frame": {
+  "n_poses": 1160,
+  "n_validation_crystals": 87,
+  "n_validation_crystals_span_FULLY_modelled": 48,
+  "n_pairs_with_span_modelled": 58,
+  "median_A": 1.027656404184119,
+  "p90_A": 4.977035743196172,
+  "frac_over_1A": 0.5025862068965518,
+  "frac_over_2A": 0.4517241379310345
+ },
+ "seven_unrescuable": [
+  {
+   "ligand": "1RD",
+   "pdb": "4K9T",
+   "own_span_fully_modelled": true,
+   "own_median_dev_to_other_entries_A": 4.51,
+   "donors_tested": 53,
+   "donors_clearing": 5,
+   "frac_clearing": 0.09433962264150944,
+   "best_donor": "8EXB",
+   "best_donor_min_contact_A": 4.53,
+   "own_crystal_min_contact_A": 2.55
+  },
+  {
+   "ligand": "5AW",
+   "pdb": "4K9U",
+   "own_span_fully_modelled": false,
+   "own_median_dev_to_other_entries_A": null,
+   "donors_tested": 54,
+   "donors_clearing": 0,
+   "frac_clearing": 0.0,
+   "best_donor": "5VCE",
+   "best_donor_min_contact_A": 0.99,
+   "own_crystal_min_contact_A": 8.52
+  },
+  {
+   "ligand": "A1A4T",
+   "pdb": "9COY",
+   "own_span_fully_modelled": false,
+   "own_median_dev_to_other_entries_A": null,
+   "donors_tested": 54,
+   "donors_clearing": 3,
+   "frac_clearing": 0.05555555555555555,
+   "best_donor": "8EWS",
+   "best_donor_min_contact_A": 4.72,
+   "own_crystal_min_contact_A": null
+  },
+  {
+   "ligand": "ERY",
+   "pdb": "2J0D",
+   "own_span_fully_modelled": false,
+   "own_median_dev_to_other_entries_A": null,
+   "donors_tested": 54,
+   "donors_clearing": 0,
+   "frac_clearing": 0.0,
+   "best_donor": "8EXB",
+   "best_donor_min_contact_A": 2.12,
+   "own_crystal_min_contact_A": 4.59
+  },
+  {
+   "ligand": "MWY",
+   "pdb": "6OOA",
+   "own_span_fully_modelled": false,
+   "own_median_dev_to_other_entries_A": null,
+   "donors_tested": 54,
+   "donors_clearing": 6,
+   "frac_clearing": 0.1111111111111111,
+   "best_donor": "7UFA",
+   "best_donor_min_contact_A": 2.75,
+   "own_crystal_min_contact_A": 3.32
+  },
+  {
+   "ligand": "QEP",
+   "pdb": "6UNG",
+   "own_span_fully_modelled": false,
+   "own_median_dev_to_other_entries_A": null,
+   "donors_tested": 54,
+   "donors_clearing": 22,
+   "frac_clearing": 0.4074074074074074,
+   "best_donor": "8EWS",
+   "best_donor_min_contact_A": 5.88,
+   "own_crystal_min_contact_A": 3.71
+  },
+  {
+   "ligand": "X7P",
+   "pdb": "7KVI",
+   "own_span_fully_modelled": false,
+   "own_median_dev_to_other_entries_A": null,
+   "donors_tested": 54,
+   "donors_clearing": 21,
+   "frac_clearing": 0.3888888888888889,
+   "best_donor": "8EXB",
+   "best_donor_min_contact_A": 7.17,
+   "own_crystal_min_contact_A": 8.85
+  }
+ ]
+}
