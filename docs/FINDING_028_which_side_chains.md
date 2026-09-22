@@ -666,3 +666,285 @@ numbers pre-registered.
 **Method note worth keeping.** The bimodality was the tell. A median of 4.25 Å with an IQR
 of 0.70–4.74 Å is not a spread, it is two populations, and reporting the median alone would
 have described a distribution that no pair of crystals actually occupies.
+
+---
+
+# Addendum 2, 2026-09-22 — the APO template, the caveat the first addendum left open. **Refuted like the holo ones**
+
+The first addendum refuted **holo** templates over 210–216 but could not test apo ones:
+the 107-entry harvest contained **zero** apo CYP3A4 structures, so FINDING 024's separate
+claim — that the only always-legal blind template is an **apo** structure — was recorded
+as untested rather than refuted. That caveat was published on the dashboard and is now
+closed. **It closes the same way.**
+
+**Decision rule, fixed before any number was read** (in the script's docstring and echoed
+into the output JSON as `prereg`): *an apo template is LICENSED only if its CA deviation
+over 210–216 against the 87 validation crystals is below **the model** — median < 1.03 Å
+**and** p90 < 4.98 Å. The bar is the model, not the holo templates. Beating the 4.25 Å
+holo–holo spread is **not** sufficient and is not a win.*
+
+Run: `python scripts/structure/apo_template_ceiling.py` →
+`data/processed/apo_template_ceiling.json`, `apo_entry_classification.json`,
+`apo_template_pairs.csv`, `apo_clearance.csv`, `apo_model_span_error.csv`. The span, the
+rigid-core frame, the per-entry chain reader, the crystal loader, FINDING 021's
+renumbering and the 2.2 Å clearance cutoff are **imported** from
+`side_chain_diagnosis.py`, not rewritten, so these numbers are commensurable with the
+first addendum by construction.
+
+## Finding the apo entries
+
+A live RCSB query for UniProt **P08684** returns **122** entries — 15 more than the
+107-entry harvest, which is why the first addendum saw none. All 122 mmCIFs were
+**already on disk** in `data/reference/rcsb`; **0 new downloads** were needed and nothing
+was deleted.
+
+**Rule used:** an entry is apo when its only non-water heteroatom components are **HEM**
+and members of `cypstruct.targets.IGNORE_HET` (buffers and cryoprotectants). To stop a
+cryoprotectant hiding in the pocket, the closest non-HEM het atom to the heme Fe is
+reported for every entry alongside the call.
+
+| | |
+|---|---|
+| deposited P08684 entries | **122** |
+| **apo** | **6** — 1TQN, 1W0E, 4I3Q, 5VCC, 5VCD, 9GK1 |
+| holo | 116 |
+| all six outside the 107-entry harvest | yes — which confirms the first addendum's "0 apo" |
+| space group | **all six `I 2 2 2`**, the archive's dominant form |
+| resolution | 1.70 / 1.95 / 2.05 / 2.60 / 2.80 / 2.95 Å |
+
+**The two calls worth seeing.** **9YK4** (1.78 Å) looks ligand-free by chemical-component
+name but carries **imidazole 2.15 Å from the Fe** — an axial ligand, catalogued in
+`IGNORE_HET` — plus tetraethylene glycol at 5.07 Å. Its pocket is occupied; it is **not**
+apo. **5VCC and 5VCD** are counted apo and carry **glycerol 4.41 / 4.58 Å from the Fe**;
+the distance is reported rather than argued away, so a reader can discount those two. The
+conclusion below does not depend on either call — all six apo entries give the same answer
+to within 0.37 Å.
+
+## First, as instructed: do the apo entries model the span?
+
+**All six model all seven of 210–216.** This is the opposite of the holo archive, where
+only 54 of 107 do.
+
+| entry | res. | 210–216 modelled | CA B-factors 210→216 (Å²) | median CA B | min CA occ | names |
+|---|---|---|---|---|---|---|
+| **5VCC** | 1.70 | **7 / 7** | 35.6 38.2 36.5 33.0 30.8 28.0 30.7 | **33.0** | 1.0 | ✓ |
+| **1TQN** | 2.05 | **7 / 7** | 41.9 41.4 38.7 34.1 32.9 31.8 29.8 | **34.1** | 1.0 | ✓ |
+| **1W0E** | 2.80 | **7 / 7** | 47.5 45.9 45.9 37.5 35.9 37.1 42.1 | **42.1** | 1.0 | ✓ |
+| **5VCD** | 1.95 | **7 / 7** | 50.4 48.7 55.0 49.7 47.2 51.4 42.6 | **49.7** | 1.0 | ✓ |
+| **4I3Q** | 2.60 | **7 / 7** | 96.1 99.2 92.8 74.0 72.9 75.3 71.9 | **75.3** | 1.0 | ✓ |
+| **9GK1** | 2.95 | **7 / 7** | 126.9 122.6 117.2 108.6 106.5 102.7 105.7 | **108.6** | 1.0 | ✓ |
+
+Against the holo archive's **50.5% fully modelled, median CA B 104.7 Å²**, the apo
+entries are *better* determined in the lesion: 6 of 6 complete, four of six at median
+B 33–50 Å². **So "the crystal does not contain it" — which was most of the answer for
+holo templates — is not available here.** The apo entries do contain the loop. The
+question is forced onto the geometry, which is where it should be.
+
+**Numbering trap, checked before any geometry was trusted.** Every one of the six reads
+**Leu210-Leu211-Arg212-Phe213-Asp214-Phe215-Leu216**, and so do all **87** validation
+crystals: **0 mismatches in 93 structures**. FINDING 021's trap is not what is happening
+here.
+
+## Q1 — how well does an apo structure predict the holo F/G span?
+
+Each donor superposed onto each of the 87 validation crystals on `CYP3A4_RIGID_CORE`; CA
+deviation over 210–216 alone, in that superposition. **Median core fit 0.556 Å**, matching
+the first addendum's 0.56 Å.
+
+**Every filter, with counts:**
+
+| | |
+|---|---|
+| donors | **6 apo** + **61 holo** with the span fully modelled |
+| pairs attempted | 5,782 |
+| dropped, query models < 4 of the span | **1,943** (29 of 87 queries) |
+| dropped, < 50 shared rigid-core CAs | **0** |
+| pairs used | **3,839** — 348 apo, 3,491 holo |
+| validation crystals modelling all seven | **48 of 87** |
+
+| donor set | n | median | IQR | **p90** | max | > 1 Å | > 2 Å |
+|---|---|---|---|---|---|---|---|
+| **apo → holo query** | **348** | **1.08 Å** | 0.53–4.62 | **5.15 Å** | 7.42 Å | 51.1% | 46.6% |
+| holo → holo query, *same pairing* | 3,491 | 4.25 Å | 0.70–4.69 | 7.07 Å | 10.33 Å | 66.0% | 59.7% |
+| **the MODEL, recomputed here** | **1,160** | **1.028 Å** | 0.47–4.35 | **4.977 Å** | 7.43 Å | **50.3%** | **45.2%** |
+
+The model row is not quoted from the first addendum; it is **recomputed in this script**,
+on the same 58 scorable queries, and lands on **1.0277 Å / 4.977 Å / 50.3% / 45.2%**
+against that addendum's **1.03 / 4.98 / 50.3% / 45.2%**. That reproduction is what makes
+the comparison below a comparison rather than a lookalike.
+
+**Against the rule fixed in advance, apo fails both legs.** 1.084 Å > 1.03 Å on the
+median; 5.154 Å > 4.98 Å on the p90. It is a near-tie, not a win, and the rule was written
+as "below the model on both" precisely so a near-tie could not be talked into one.
+
+### It is not one unlucky donor, and no donor rescues it
+
+| donor | median | p90 | > 2 Å |
+|---|---|---|---|
+| 4I3Q | **0.963 Å** ✓ | 5.010 Å ✗ | 46.55% |
+| 1W0E | 1.043 Å ✗ | 5.113 Å ✗ | 46.55% |
+| 5VCD | 1.120 Å ✗ | 4.9805 Å ✗ | 46.55% |
+| 5VCC | 1.164 Å ✗ | 4.995 Å ✗ | 46.55% |
+| 9GK1 | 1.163 Å ✗ | 5.042 Å ✗ | 46.55% |
+| 1TQN | 1.199 Å ✗ | 5.113 Å ✗ | 46.55% |
+| **oracle: best apo donor per query** | **0.901 Å** | **4.966 Å** | 46.55% |
+
+**Not one of the six is below the model on both statistics.** 4I3Q clears the median and
+misses the p90; 5VCD ties the p90 to four decimals and misses the median. Picking 4I3Q
+*after* seeing this table is `loo-sign-selection-fakes-negatives` run forwards — it is
+recorded, and it is not a licence. Even the **oracle** — the best of the six chosen per
+query, which is not available blind — lands at 0.901 Å / 4.966 Å, i.e. **level with the
+model, not above it.**
+
+### The head-to-head, per query
+
+Paired, on the 58 queries both can be scored on:
+
+| | |
+|---|---|
+| queries where **the model** is closer to the truth | **46 of 58** |
+| queries where **apo** is closer | **12 of 58** |
+| median (apo − model) | **+0.131 Å**, in the model's favour |
+| binomial p | **8.2e-06** |
+| Wilcoxon p | **4.9e-08** |
+
+The model is better than an apo template on this span, and significantly so.
+
+### Why — the mechanism: **the six apo entries are one conformation**
+
+Every donor returned `frac_over_2A` of exactly **0.4655**. A number that clean is the tell,
+so it was checked rather than reported.
+
+| | |
+|---|---|
+| apo–apo pairs (15) over 210–216 | median **0.330 Å**, max **0.477 Å**, **0%** over 1 Å |
+| I-helix control on those pairs | 0.28 Å |
+| per query, range across the six donors | median **0.21 Å**, max **0.37 Å** |
+| queries where the six agree within 0.5 Å | **58 of 58** |
+
+And the 58 scorable queries then split in two, not into a spread:
+
+| | |
+|---|---|
+| queries where **every** apo donor is under 1 Å | **27** |
+| queries where **every** apo donor is over 2 Å | **27** (4.3–7.3 Å) |
+| intermediate | 4 |
+
+0.4655 is 27/58. The identical fractions are **explained** — the apo entries are a single
+loop conformer, so they succeed and fail on the same queries — not a filter that never
+fires.
+
+**This is the answer in one sentence.** The F/G loop has at least two populated states
+4–8 Å apart, roughly half the archive in each, and **all six apo structures sit in the
+same one**. On the 27 queries that share that state an apo template is excellent
+(0.3–0.9 Å, better than the model); on the 27 that do not it is 4.3–7.3 Å wrong, and
+nothing about being apo tells you which you are facing. **A single conformation cannot
+cover a two-state loop**, and crystallising without a ligand does not give you the other
+state — it picks one.
+
+## Controls — every one fired, with counts
+
+| control | required | measured |
+|---|---|---|
+| **numbering (FINDING 021)** | L210-L211-R212-F213-D214-F215-L216 | **0 mismatches in 93 structures** (6 apo + 87 validation) |
+| **I-helix 300–320, same superposition** | 0.4–1.3 Å even where the lesion is 3–12 Å | all 3,839 pairs: median **0.605 Å**, max 1.63 Å, **0%** over 2 Å |
+| … on the 2,148 pairs with lesion > 3 Å | " | median **0.884 Å**, **86.6%** inside 0.4–1.3 Å |
+| … on the **150 apo** pairs with lesion > 3 Å | " | median **1.08 Å**, max **1.40 Å**, **89.3%** inside |
+| … on the model's 1,160 rows | " | median **0.40 Å**, max 1.06 Å |
+| **reproduces the model bar** | 1.03 / 4.98 from the first addendum | **1.0277 / 4.977**, 50.3% / 45.2% |
+| **reproduces the holo–holo spread** in a new pairing | ≈ 4.25 Å | **4.25 Å** median, 3,491 pairs |
+| **core-CA sufficiency** | no pair scored on a thin frame | **0** pairs dropped; median fit 0.556 Å |
+| **own-crystal clearance** | the truth must clear its own ligand | 48 queries, median **4.11 Å**, min **2.55 Å**, **0%** below 2.2 Å |
+
+The named examples, in the form the first addendum used: **1W0E vs 8SPD** — lesion
+**7.42 Å**, I-helix **0.52 Å**, core fit 0.50 Å. **1W0E vs 5TE8** — lesion **7.31 Å**,
+I-helix **0.54 Å**. The rest of the protein superposes; this loop does not. The
+superposition is right and the biology is the discrepancy.
+
+The control is not vacuous in the other direction either: **13.4%** of the > 3 Å pairs put
+the I-helix slightly above 1.3 Å (max 1.63 Å), all of them holo pairs with a poorer core
+fit. A window nothing ever violated would be the thing to distrust.
+
+## Q2 — would an apo 210–216 backbone + CB admit the crystal ligand?
+
+Same a-priori test as the first addendum: superpose the donor on the rigid core, graft its
+210–216 **backbone + CB** into the query frame, and require ≥ **2.2 Å** to the query's
+crystal ligand.
+
+| | |
+|---|---|
+| grafts tested (6 donors × 87 queries) | **522** |
+| grafts clearing 2.2 Å | **406 (77.8%)**, median min contact 3.27 Å |
+| ligands with ≥ 1 clearing apo donor | **70 of 87** |
+| **ligands with NO clearing apo donor** | **17 of 87** |
+| ligands where all six clear | 64 |
+| **control — the query's OWN span vs its own ligand** (48 fully modelled) | median **4.11 Å**, min **2.55 Å**, **0%** below the cut |
+
+The control is the point: a *correct* 210–216 always admits the ligand it was solved with,
+so 2.2 Å is calibrated rather than arbitrary. Split by which state the query is in:
+
+| query's loop state | ligands | grafts clearing | ligands with no clearing donor |
+|---|---|---|---|
+| in the apo state (apo span dev < 1 Å) | 27 | 92.6% | 2 |
+| in a different state (> 2 Å) | 27 | 83.3% | 4 |
+| span not scorable (< 4 residues) | 29 | **55.7%** | **11** |
+
+### The seven unrescuable ligands: **0 of 42**
+
+| ligand | its PDB | own span modelled | apo donors clearing | best donor | best contact | own crystal |
+|---|---|---|---|---|---|---|
+| **QEP** | 6UNG | 4 / 7 | **0 / 6** | 4I3Q | **2.18 Å** | 3.71 Å |
+| **X7P** | 7KVI | 1 / 7 | **0 / 6** | 5VCC | 1.04 Å | 8.85 Å |
+| **ERY** | 2J0D | 4 / 7 | **0 / 6** | 1TQN | 0.95 Å | 4.59 Å |
+| **5AW** | 4K9U | 1 / 7 | **0 / 6** | 9GK1 | 0.87 Å | 8.52 Å |
+| **1RD** | 4K9T | **7 / 7** | **0 / 6** | 5VCC | 0.70 Å | 2.55 Å |
+| **A1A4T** | 9COY | 0 / 7 | **0 / 6** | 9GK1 | 0.62 Å | — |
+| **MWY** | 6OOA | 1 / 7 | **0 / 6** | 5VCC | 0.42 Å | 3.32 Å |
+
+**Not one of the 42 apo grafts admits the ligand of any of the seven.** This is *worse*
+than the holo donors on exactly the cases that need it: the first addendum found holo
+donors clearing for five of the seven (up to 40.7% of donors, best contacts 4.5–7.2 Å),
+while apo clears for **none**, with a best contact of 2.18 Å that misses the cut.
+
+Two rows carry the mechanism. **1RD** models all seven of its own span and is a minority
+conformer — the apo donors are **4.58 Å** away from it and clear its ligand by 0.70 Å.
+**QEP** is the opposite, and more instructive: the apo span reproduces QEP's crystal
+backbone to **0.64 Å**, the best agreement among the seven — and still fails, at 2.18 Å
+where QEP's own crystal gives 3.71 Å. **A sub-ångström backbone difference is enough to
+fail the clearance test**, which is the quantitative content of "the lesion is a CB and
+main-chain problem": it has no tolerance to spend.
+
+## Verdict
+
+**REFUTED, like the holo templates, and for a different reason.** Holo templates failed
+because half the archive does not model 210–216 and those that do disagree by 4.25 Å.
+**Apo templates fail although all six model the span, at better B-factors than the holo
+archive.** They fail because:
+
+1. Against the bar fixed in advance they are **1.084 Å / 5.154 Å** against the model's
+   **1.028 Å / 4.977 Å** — worse on both legs, and worse on **46 of 58** queries
+   individually (p = 4.9e-08).
+2. All six occupy **one** loop conformation (apo–apo 0.33 Å median, 0.48 Å max). They are
+   excellent on the 27 queries in that state and 4.3–7.3 Å wrong on the 27 that are not,
+   and being apo carries no signal about which is which.
+3. On the seven ligands the repack scan cannot rescue, **0 of 42 apo grafts** admit the
+   crystal ligand — worse than holo donors on the same seven.
+
+**FINDING 024's "the only always-legal blind template is an apo structure" is now tested
+and refuted.** It is always *legal*; it is not *informative*. The dashboard caveat is
+closed: templating over the F/G lesion is dead in both flavours, and this document's
+withdrawn partial reversal of 024 stays withdrawn, now without the untested qualifier.
+
+**What survives is unchanged, and slightly sharpened.** The useful object is still the
+**ensemble** of observed 210–216 conformations used as alternative receptors to be scored,
+not a prior to condition on — and the apo entries are worth exactly **one** member of that
+ensemble, not six, because they are one conformation. The first addendum's warning applies
+in full: every pool expansion on this target so far has raised the oracle and lowered
+selection, so it is a ceiling measurement with both numbers pre-registered, or nothing.
+
+**Method note worth keeping.** *Six independent donors returning `frac_over_2A = 0.4655`
+to four decimals was the tell, and chasing it produced the finding.* The suspicion was a
+stuck filter; the reality was that the six apo structures are one conformer and therefore
+fail on the identical 27 queries. `too-clean-numbers-are-the-tell` held — but what it
+pointed at was the mechanism, not a bug, and the only way to know which was to measure the
+apo–apo spread and the per-query range instead of reporting the table.

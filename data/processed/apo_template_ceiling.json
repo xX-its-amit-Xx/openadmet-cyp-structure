@@ -1,0 +1,728 @@
+{
+ "what": "can an APO CYP3A4 crystal supply the holo 210-216 backbone the model gets wrong? The caveat FINDING 028's first addendum left open.",
+ "prereg": {
+  "span": [
+   210,
+   216
+  ],
+  "frame": "CYP3A4_RIGID_CORE (ligand-free, declared in targets.py)",
+  "min_core_CA_shared": 50,
+  "min_span_residues": 4,
+  "clash_cut_A": 2.2,
+  "bar_is_the_model": {
+   "median_A": 1.03,
+   "p90_A": 4.98
+  },
+  "holo_holo_reference_not_the_bar": {
+   "median_A": 4.25,
+   "p90_A": 7.2
+  },
+  "decision_rule": "LICENSED only if the apo->holo spread over 210-216 is below the MODEL on BOTH median (<1.03 A) and p90 (<4.98 A). Beating the 4.25 A holo-holo spread is not sufficient and is not a win.",
+  "apo_definition": "UniProt P08684 entry whose only non-water heteroatom components are HEM and members of cypstruct.targets.IGNORE_HET (buffer/cryoprotectant). Reported alongside the closest non-HEM het atom to the heme Fe, so a cryoprotectant sitting in the pocket cannot hide.",
+  "control_I_helix": {
+   "span": [
+    300,
+    320
+   ],
+   "required_range_A": [
+    0.4,
+    1.3
+   ]
+  }
+ },
+ "apo_discovery": {
+  "n_entries_queried": 122,
+  "n_downloaded_now": 0,
+  "downloaded": [],
+  "apo_ids": [
+   "1TQN",
+   "1W0E",
+   "4I3Q",
+   "5VCC",
+   "5VCD",
+   "9GK1"
+  ],
+  "n_apo": 6,
+  "n_holo": 116
+ },
+ "apo_span_audit": [
+  {
+   "pdb": "1TQN",
+   "chain": "A",
+   "resolution": 2.05,
+   "spacegroup": "I 2 2 2",
+   "span_residues_modelled": 7,
+   "modelled": [
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216
+   ],
+   "missing": [],
+   "CA_B_factors": {
+    "210": 41.9,
+    "211": 41.4,
+    "212": 38.7,
+    "213": 34.1,
+    "214": 32.9,
+    "215": 31.8,
+    "216": 29.8
+   },
+   "median_CA_B": 34.1,
+   "min_CA_occupancy": 1.0,
+   "residue_names": {
+    "210": "LEU",
+    "211": "LEU",
+    "212": "ARG",
+    "213": "PHE",
+    "214": "ASP",
+    "215": "PHE",
+    "216": "LEU"
+   },
+   "residue_names_match_L210_L211_R212_F213_D214_F215_L216": true,
+   "closest_non_HEM_het_to_Fe": null
+  },
+  {
+   "pdb": "1W0E",
+   "chain": "A",
+   "resolution": 2.8,
+   "spacegroup": "I 2 2 2",
+   "span_residues_modelled": 7,
+   "modelled": [
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216
+   ],
+   "missing": [],
+   "CA_B_factors": {
+    "210": 47.5,
+    "211": 45.9,
+    "212": 45.9,
+    "213": 37.5,
+    "214": 35.9,
+    "215": 37.1,
+    "216": 42.1
+   },
+   "median_CA_B": 42.1,
+   "min_CA_occupancy": 1.0,
+   "residue_names": {
+    "210": "LEU",
+    "211": "LEU",
+    "212": "ARG",
+    "213": "PHE",
+    "214": "ASP",
+    "215": "PHE",
+    "216": "LEU"
+   },
+   "residue_names_match_L210_L211_R212_F213_D214_F215_L216": true,
+   "closest_non_HEM_het_to_Fe": null
+  },
+  {
+   "pdb": "4I3Q",
+   "chain": "A",
+   "resolution": 2.6,
+   "spacegroup": "I 2 2 2",
+   "span_residues_modelled": 7,
+   "modelled": [
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216
+   ],
+   "missing": [],
+   "CA_B_factors": {
+    "210": 96.1,
+    "211": 99.2,
+    "212": 92.8,
+    "213": 74.0,
+    "214": 72.9,
+    "215": 75.3,
+    "216": 71.9
+   },
+   "median_CA_B": 75.3,
+   "min_CA_occupancy": 1.0,
+   "residue_names": {
+    "210": "LEU",
+    "211": "LEU",
+    "212": "ARG",
+    "213": "PHE",
+    "214": "ASP",
+    "215": "PHE",
+    "216": "LEU"
+   },
+   "residue_names_match_L210_L211_R212_F213_D214_F215_L216": true,
+   "closest_non_HEM_het_to_Fe": null
+  },
+  {
+   "pdb": "5VCC",
+   "chain": "A",
+   "resolution": 1.7,
+   "spacegroup": "I 2 2 2",
+   "span_residues_modelled": 7,
+   "modelled": [
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216
+   ],
+   "missing": [],
+   "CA_B_factors": {
+    "210": 35.6,
+    "211": 38.2,
+    "212": 36.5,
+    "213": 33.0,
+    "214": 30.8,
+    "215": 28.0,
+    "216": 30.7
+   },
+   "median_CA_B": 33.0,
+   "min_CA_occupancy": 1.0,
+   "residue_names": {
+    "210": "LEU",
+    "211": "LEU",
+    "212": "ARG",
+    "213": "PHE",
+    "214": "ASP",
+    "215": "PHE",
+    "216": "LEU"
+   },
+   "residue_names_match_L210_L211_R212_F213_D214_F215_L216": true,
+   "closest_non_HEM_het_to_Fe": {
+    "code": "GOL",
+    "dist_to_nearest_Fe_A": 4.41
+   }
+  },
+  {
+   "pdb": "5VCD",
+   "chain": "A",
+   "resolution": 1.95,
+   "spacegroup": "I 2 2 2",
+   "span_residues_modelled": 7,
+   "modelled": [
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216
+   ],
+   "missing": [],
+   "CA_B_factors": {
+    "210": 50.4,
+    "211": 48.7,
+    "212": 55.0,
+    "213": 49.7,
+    "214": 47.2,
+    "215": 51.4,
+    "216": 42.6
+   },
+   "median_CA_B": 49.7,
+   "min_CA_occupancy": 1.0,
+   "residue_names": {
+    "210": "LEU",
+    "211": "LEU",
+    "212": "ARG",
+    "213": "PHE",
+    "214": "ASP",
+    "215": "PHE",
+    "216": "LEU"
+   },
+   "residue_names_match_L210_L211_R212_F213_D214_F215_L216": true,
+   "closest_non_HEM_het_to_Fe": {
+    "code": "GOL",
+    "dist_to_nearest_Fe_A": 4.58
+   }
+  },
+  {
+   "pdb": "9GK1",
+   "chain": "A",
+   "resolution": 2.95,
+   "spacegroup": "I 2 2 2",
+   "span_residues_modelled": 7,
+   "modelled": [
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216
+   ],
+   "missing": [],
+   "CA_B_factors": {
+    "210": 126.9,
+    "211": 122.6,
+    "212": 117.2,
+    "213": 108.6,
+    "214": 106.5,
+    "215": 102.7,
+    "216": 105.7
+   },
+   "median_CA_B": 108.6,
+   "min_CA_occupancy": 1.0,
+   "residue_names": {
+    "210": "LEU",
+    "211": "LEU",
+    "212": "ARG",
+    "213": "PHE",
+    "214": "ASP",
+    "215": "PHE",
+    "216": "LEU"
+   },
+   "residue_names_match_L210_L211_R212_F213_D214_F215_L216": true,
+   "closest_non_HEM_het_to_Fe": null
+  }
+ ],
+ "C_numbering_mismatches_apo": [],
+ "n_apo_modelling_the_span": 6,
+ "apo_modelling_the_span": [
+  "1TQN",
+  "1W0E",
+  "4I3Q",
+  "5VCC",
+  "5VCD",
+  "9GK1"
+ ],
+ "filters": {
+  "pairs_attempted": 5782,
+  "dropped_core_CA_under_50": 0,
+  "dropped_span_under_4_residues": 1943,
+  "pairs_used": 3839,
+  "apo_pairs_used": 348,
+  "holo_pairs_used": 3491,
+  "queries_with_span_fully_modelled": 48,
+  "queries_with_span_under_4_residues": 29,
+  "C_numbering_mismatches_validation_crystals": []
+ },
+ "Q1_spread_over_210_216": {
+  "apo_to_holo_query": {
+   "n": 348,
+   "median_A": 1.0843984753097151,
+   "p25_A": 0.5281300673404307,
+   "p75_A": 4.615318224624782,
+   "p90_A": 5.153951773873582,
+   "max_A": 7.418033978323064,
+   "frac_over_1A": 0.5114942528735632,
+   "frac_over_2A": 0.46551724137931033
+  },
+  "holo_to_holo_query_SAME_pairing": {
+   "n": 3491,
+   "median_A": 4.2464063319704515,
+   "p25_A": 0.7039809113307656,
+   "p75_A": 4.685950317099405,
+   "p90_A": 7.073354965862958,
+   "max_A": 10.325942175994458,
+   "frac_over_1A": 0.6596963620739044,
+   "frac_over_2A": 0.5972500716127184
+  },
+  "per_apo_donor": {
+   "1TQN": {
+    "n": 58,
+    "median_A": 1.1993033905857393,
+    "p25_A": 0.5855811362186356,
+    "p75_A": 4.691522105572567,
+    "p90_A": 5.113253979968147,
+    "max_A": 7.283154967094178,
+    "frac_over_1A": 0.5344827586206896,
+    "frac_over_2A": 0.46551724137931033
+   },
+   "1W0E": {
+    "n": 58,
+    "median_A": 1.0434706613800064,
+    "p25_A": 0.49460182035171885,
+    "p75_A": 4.718266720885795,
+    "p90_A": 5.112773831938649,
+    "max_A": 7.418033978323064,
+    "frac_over_1A": 0.5172413793103449,
+    "frac_over_2A": 0.46551724137931033
+   },
+   "4I3Q": {
+    "n": 58,
+    "median_A": 0.9634980840326973,
+    "p25_A": 0.5653898865808457,
+    "p75_A": 4.505526007951477,
+    "p90_A": 5.009952262754113,
+    "max_A": 7.375010312728305,
+    "frac_over_1A": 0.46551724137931033,
+    "frac_over_2A": 0.46551724137931033
+   },
+   "5VCC": {
+    "n": 58,
+    "median_A": 1.1636127757979713,
+    "p25_A": 0.48165469993748916,
+    "p75_A": 4.517271218431432,
+    "p90_A": 4.995453990105381,
+    "max_A": 7.2637426050480505,
+    "frac_over_1A": 0.5172413793103449,
+    "frac_over_2A": 0.46551724137931033
+   },
+   "5VCD": {
+    "n": 58,
+    "median_A": 1.1197553267159943,
+    "p25_A": 0.515223521557706,
+    "p75_A": 4.560737120421341,
+    "p90_A": 4.980452289182346,
+    "max_A": 7.230892631134349,
+    "frac_over_1A": 0.5172413793103449,
+    "frac_over_2A": 0.46551724137931033
+   },
+   "9GK1": {
+    "n": 58,
+    "median_A": 1.162526632873142,
+    "p25_A": 0.5332600424042676,
+    "p75_A": 4.593475384658275,
+    "p90_A": 5.0419823573056135,
+    "max_A": 7.407674233626836,
+    "frac_over_1A": 0.5172413793103449,
+    "frac_over_2A": 0.46551724137931033
+   }
+  },
+  "best_single_apo_donor_by_median": [
+   "4I3Q",
+   0.9634980840326973
+  ],
+  "oracle_best_apo_donor_per_query": {
+   "n": 58,
+   "median_A": 0.9009736176498317,
+   "p25_A": 0.43832255028108974,
+   "p75_A": 4.492602347251849,
+   "p90_A": 4.965963200770768,
+   "max_A": 7.230892631134349,
+   "frac_over_1A": 0.46551724137931033,
+   "frac_over_2A": 0.46551724137931033
+  },
+  "note_oracle": "the per-query minimum is NOT available blind; reported only to show the ceiling of apo templating even with an oracle donor",
+  "median_core_fit_A": 0.5562710534990458,
+  "apo_are_one_conformation": {
+   "apo_apo_pairs": 15,
+   "apo_apo_span_spread": {
+    "n": 15,
+    "median_A": 0.33027828196363485,
+    "p25_A": 0.27149519315594733,
+    "p75_A": 0.4048119769547759,
+    "p90_A": 0.44708782452291684,
+    "max_A": 0.47679580584069786,
+    "frac_over_1A": 0.0,
+    "frac_over_2A": 0.0
+   },
+   "apo_apo_I_helix_control": {
+    "n": 15,
+    "median_A": 0.28038412261784074,
+    "p25_A": 0.2588793750760173,
+    "p75_A": 0.31759949157946604,
+    "p90_A": 0.34666701656525684,
+    "max_A": 0.3763266195537828,
+    "frac_over_1A": 0.0,
+    "frac_over_2A": 0.0
+   },
+   "per_query_range_across_the_6_apo_donors": {
+    "n": 58,
+    "median_A": 0.21369323923677702,
+    "p25_A": 0.1757173577478764,
+    "p75_A": 0.2652566838706578,
+    "p90_A": 0.31990540535887163,
+    "max_A": 0.3747199685904916,
+    "frac_over_1A": 0.0,
+    "frac_over_2A": 0.0
+   },
+   "queries_where_all_6_agree_within_0.5A": 58,
+   "n_queries": 58,
+   "queries_where_EVERY_apo_donor_is_under_1A": 27,
+   "queries_where_EVERY_apo_donor_is_over_2A": 27,
+   "queries_intermediate": 4,
+   "note": "identical frac_over_2A across donors is explained, not a filter that never fires: the apo entries are one conformer, so they succeed and fail on the same queries"
+  },
+  "per_query_apo_median": {
+   "PG4": 0.32,
+   "NJ0": 0.33,
+   "PK9": 0.33,
+   "CFF": 0.33,
+   "MWV": 0.34,
+   "D7M": 0.4,
+   "08Y": 0.41,
+   "DEJ": 0.43,
+   "MWS": 0.44,
+   "A1ASS": 0.46,
+   "D7Y": 0.47,
+   "MF8": 0.47,
+   "DJ1": 0.49,
+   "TCI": 0.5,
+   "MYT": 0.54,
+   "QEA": 0.55,
+   "D7J": 0.57,
+   "A1ASV": 0.57,
+   "QEP": 0.64,
+   "A1ASQ": 0.65,
+   "A1ASP": 0.68,
+   "A1ASR": 0.69,
+   "D81": 0.8,
+   "A1AST": 0.82,
+   "A1ASO": 0.84,
+   "NJO": 0.9,
+   "QES": 0.94,
+   "T0K": 0.95,
+   "6AW": 1.11,
+   "2QH": 1.18,
+   "80K": 1.2,
+   "FZV": 2.45,
+   "Y83": 2.91,
+   "PKT": 4.34,
+   "X6S": 4.37,
+   "X74": 4.41,
+   "X7D": 4.41,
+   "NXR": 4.47,
+   "X7J": 4.48,
+   "NYF": 4.49,
+   "QDY": 4.51,
+   "Z9Z": 4.56,
+   "RIT": 4.57,
+   "1RD": 4.58,
+   "7AW": 4.61,
+   "X6V": 4.65,
+   "J9K": 4.69,
+   "8AW": 4.82,
+   "PG0": 4.83,
+   "A1ASU": 4.83,
+   "X5Y": 4.87,
+   "A1CIW": 4.95,
+   "KLN": 5.21,
+   "Z8Z": 5.25,
+   "ERY": 6.08,
+   "NI6": 7.15,
+   "08J": 7.2,
+   "CL6": 7.33
+  },
+  "model_recomputed_here": {
+   "n": 1160,
+   "median_A": 1.027656404184119,
+   "p25_A": 0.46781946474548175,
+   "p75_A": 4.353399191745643,
+   "p90_A": 4.977035743196172,
+   "max_A": 7.4300263534067374,
+   "frac_over_1A": 0.5025862068965518,
+   "frac_over_2A": 0.4517241379310345
+  },
+  "head_to_head_per_query": {
+   "n_queries": 58,
+   "queries_where_apo_beats_the_model": 12,
+   "queries_where_the_model_beats_apo": 46,
+   "median_apo_minus_model_A": 0.13078586356632915,
+   "apo_median_of_per_query_medians_A": 1.1405790772522146,
+   "model_median_of_per_query_medians_A": 1.0308708954637482,
+   "binomial_p_apo_better": 8.219663963332515e-06,
+   "wilcoxon_p": 4.911521302487728e-08,
+   "note": "a per-query paired comparison, not two pooled distributions"
+  }
+ },
+ "C_I_helix_control": {
+  "all_pairs_I_helix_rms": {
+   "n": 3839,
+   "median_A": 0.6049751123906904,
+   "p25_A": 0.38421183729543357,
+   "p75_A": 0.9461073451913025,
+   "p90_A": 1.1402011273873514,
+   "max_A": 1.6278307765892202,
+   "frac_over_1A": 0.2034383954154728,
+   "frac_over_2A": 0.0
+  },
+  "pairs_with_lesion_over_3A": 2148,
+  "I_helix_on_those": {
+   "n": 2148,
+   "median_A": 0.8841782328297398,
+   "p25_A": 0.6038499255773033,
+   "p75_A": 1.0783174182180062,
+   "p90_A": 1.2285614946264336,
+   "max_A": 1.6278307765892202,
+   "frac_over_1A": 0.35195530726256985,
+   "frac_over_2A": 0.0
+  },
+  "frac_of_those_inside_0.4_1.3A": 0.8659217877094972,
+  "worst_examples": [
+   {
+    "donor": "5TE8",
+    "query": "8AW/4K9X",
+    "kind": "holo",
+    "lesion_rms_A": 10.33,
+    "I_helix_rms_A": 1.28,
+    "core_fit_A": 0.99
+   },
+   {
+    "donor": "4I4G",
+    "query": "08J/5TE8",
+    "kind": "holo",
+    "lesion_rms_A": 9.88,
+    "I_helix_rms_A": 1.3,
+    "core_fit_A": 1.14
+   },
+   {
+    "donor": "5VC0",
+    "query": "08J/5TE8",
+    "kind": "holo",
+    "lesion_rms_A": 9.83,
+    "I_helix_rms_A": 1.5,
+    "core_fit_A": 1.34
+   },
+   {
+    "donor": "4D78",
+    "query": "08J/5TE8",
+    "kind": "holo",
+    "lesion_rms_A": 9.82,
+    "I_helix_rms_A": 1.17,
+    "core_fit_A": 0.96
+   },
+   {
+    "donor": "5TE8",
+    "query": "KLN/2V0M",
+    "kind": "holo",
+    "lesion_rms_A": 9.79,
+    "I_helix_rms_A": 1.39,
+    "core_fit_A": 1.05
+   },
+   {
+    "donor": "5TE8",
+    "query": "Z8Z/4I4G",
+    "kind": "holo",
+    "lesion_rms_A": 9.76,
+    "I_helix_rms_A": 1.29,
+    "core_fit_A": 1.01
+   }
+  ],
+  "apo_pairs_with_lesion_over_3A": 150
+ },
+ "Q2_clearance": {
+  "cutoff_A": 2.2,
+  "n_query_ligands": 87,
+  "n_apo_donors": 6,
+  "grafts_tested": 522,
+  "grafts_clearing": 406,
+  "frac_grafts_clearing": 0.7777777777777778,
+  "ligands_with_at_least_one_clearing_apo_donor": 70,
+  "ligands_with_NO_clearing_apo_donor": 17,
+  "ligands_all_apo_donors_clear": 64,
+  "median_min_contact_A": 3.2694996372998633,
+  "CONTROL_own_crystal_span_vs_own_ligand": {
+   "n": 73,
+   "median_A": 4.590675440498925,
+   "min_A": 2.550771843971936,
+   "frac_below_cut": 0.0,
+   "note": "the query's OWN deposited 210-216 backbone+CB against its own ligand; this is the number a correct span must beat. It is only meaningful where the query models the span, so it is stratified."
+  },
+  "CONTROL_own_crystal_span_FULLY_MODELLED_ONLY": {
+   "n": 48,
+   "median_A": 4.107626278469955,
+   "min_A": 2.550771843971936,
+   "frac_below_cut": 0.0
+  },
+  "by_loop_state_of_the_query": {
+   "query in the apo state (apo span dev < 1 A)": {
+    "n_ligands": 27,
+    "frac_grafts_clearing": 0.9259259259259259,
+    "ligands_with_no_clearing_donor": 2
+   },
+   "query in a different state (apo span dev > 2 A)": {
+    "n_ligands": 27,
+    "frac_grafts_clearing": 0.8333333333333334,
+    "ligands_with_no_clearing_donor": 4
+   },
+   "query span not scorable (< 4 residues modelled)": {
+    "n_ligands": 29,
+    "frac_grafts_clearing": 0.5574712643678161,
+    "ligands_with_no_clearing_donor": 11
+   }
+  },
+  "seven_unrescuable": [
+   {
+    "ligand": "5AW",
+    "pdb": "4K9U",
+    "own_span_residues_modelled": 1,
+    "donors_tested": 6,
+    "donors_clearing": 0,
+    "best_donor": "9GK1",
+    "best_min_contact_A": 0.87,
+    "own_crystal_min_contact_A": 8.52
+   },
+   {
+    "ligand": "ERY",
+    "pdb": "2J0D",
+    "own_span_residues_modelled": 4,
+    "donors_tested": 6,
+    "donors_clearing": 0,
+    "best_donor": "1TQN",
+    "best_min_contact_A": 0.95,
+    "own_crystal_min_contact_A": 4.59
+   },
+   {
+    "ligand": "A1A4T",
+    "pdb": "9COY",
+    "own_span_residues_modelled": 0,
+    "donors_tested": 6,
+    "donors_clearing": 0,
+    "best_donor": "9GK1",
+    "best_min_contact_A": 0.62,
+    "own_crystal_min_contact_A": null
+   },
+   {
+    "ligand": "1RD",
+    "pdb": "4K9T",
+    "own_span_residues_modelled": 7,
+    "donors_tested": 6,
+    "donors_clearing": 0,
+    "best_donor": "5VCC",
+    "best_min_contact_A": 0.7,
+    "own_crystal_min_contact_A": 2.55
+   },
+   {
+    "ligand": "MWY",
+    "pdb": "6OOA",
+    "own_span_residues_modelled": 1,
+    "donors_tested": 6,
+    "donors_clearing": 0,
+    "best_donor": "5VCC",
+    "best_min_contact_A": 0.42,
+    "own_crystal_min_contact_A": 3.32
+   },
+   {
+    "ligand": "X7P",
+    "pdb": "7KVI",
+    "own_span_residues_modelled": 1,
+    "donors_tested": 6,
+    "donors_clearing": 0,
+    "best_donor": "5VCC",
+    "best_min_contact_A": 1.04,
+    "own_crystal_min_contact_A": 8.85
+   },
+   {
+    "ligand": "QEP",
+    "pdb": "6UNG",
+    "own_span_residues_modelled": 4,
+    "donors_tested": 6,
+    "donors_clearing": 0,
+    "best_donor": "4I3Q",
+    "best_min_contact_A": 2.18,
+    "own_crystal_min_contact_A": 3.71
+   }
+  ]
+ },
+ "verdict": {
+  "apo_median_A": 1.0843984753097151,
+  "apo_p90_A": 5.153951773873582,
+  "model_median_A": 1.03,
+  "model_p90_A": 4.98,
+  "licensed": false,
+  "statement": "REFUTED -- an apo template does not predict 210-216 better than the model, which is the bar that was fixed in advance"
+ }
+}
