@@ -1,6 +1,6 @@
 # Findings index
 
-Sixteen findings, most of them negative. Read them in this order if you are arriving cold;
+Seventeen findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
 ## Start here
@@ -10,6 +10,7 @@ the numbering is chronological, not logical.
 | **001** | Selection, not generation, is the bottleneck — pool oracle 0.6975 vs selection 0.5706, and Boltz's own confidence ranks poses *worse* than random | stands |
 | **011** | **Cross-engine agreement selects: +0.0381**, beating the incumbent's +0.0265. No fitted parameters. This is what ships | stands |
 | **012** | It **generalises** — positive on 13 of 16 held-out P450 proteins — and it is a **catastrophe detector**, so its payoff is predictable from pool quality | stands |
+| **024** | **CYP3A4 fails by ROTATION (30°) in a pocket the model builds right (0.73 Å)** — protein accuracy does not predict ligand accuracy here (ρ=+0.03) where it does everywhere else (ρ=+0.51). Kills templates, b5 and orthologs | stands |
 | **RUNBOOK** | what to run, in order, with each step's trap attached | live |
 
 ## The shape of the whole problem
