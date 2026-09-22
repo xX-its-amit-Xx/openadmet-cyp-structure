@@ -147,6 +147,22 @@ def main() -> int:
     print(f"  dataset last modified    = {now.get('dataset_last_modified')}")
     print(f"  dataset files            = {len(now.get('dataset_files', []))}")
 
+    print("\nREFERENCE COVERAGE")
+    # A derived harvest once held 107 CYP3A4 entries while RCSB had 122, and all six
+    # apo structures were in the gap - which made an answerable question look
+    # untestable for a day. Cheap to check, expensive to miss.
+    try:
+        from cypstruct.targets import rcsb_missing_from
+        from cypstruct.paths import REFERENCE
+        cached = [q.stem for q in (REFERENCE / "rcsb").glob("*.cif")]
+        missing = rcsb_missing_from(cached)
+        if missing:
+            print(f"  !! {len(missing)} RCSB entries not cached: {missing[:10]}")
+        else:
+            print(f"  [ok] all live RCSB CYP3A4 entries cached ({len(cached)} cif on disk)")
+    except Exception as exc:                      # never fail the tick on a network blip
+        print(f"  [skip] could not check RCSB coverage: {exc}")
+
     print("\nREADINESS")
     rows = readiness()
     for name, ok, detail in rows:
