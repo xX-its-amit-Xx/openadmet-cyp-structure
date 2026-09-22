@@ -508,3 +508,161 @@ opposite ways.
 - **The Glu chi2 correction.** The brief asked for Glu chi2 modulo 180; Glu's degenerate
   torsion is chi3. Implementing what was asked would have wrapped a non-degenerate angle
   and silently halved every Glu chi2 deviation.
+
+---
+
+# Addendum, 2026-09-22 — the template ceiling over the lesion. **Refuted there too**
+
+The body of this finding said holo templates come back on the table only if one deposited
+CYP3A4 crystal predicts another's **210–216** better than the model does, and named that as
+the deciding measurement. It has now been run. **It does not.** FINDING 024's dismissal of
+holo templating stands unqualified, and the partial reversal proposed above is withdrawn.
+
+**Decision rule, fixed before the numbers were read** (recorded in the `templates` stage's
+docstring and echoed into the output JSON): *licensed only if the holo–holo
+different-ligand spread over 210–216 is clearly below the model's **median and p90** error
+over the same span; comparable or worse refutes it.*
+
+Run: `python scripts/structure/side_chain_diagnosis.py templates` →
+`data/processed/template_ceiling_lesion.json`, `template_ceiling_pairs.csv`. 107 deposited
+CYP3A4 (P08684) entries, all already in `data/reference/rcsb`, no new downloads. One chain
+per entry — two chains of one crystal are not two opinions.
+
+## First, as instructed: is the span even modelled?
+
+| | |
+|---|---|
+| deposited CYP3A4 entries used | **107** |
+| **all seven of 210–216 modelled** | **54 (50.5%)** |
+| 4–6 of 7 modelled | 10 |
+| **none of the span modelled** | **17** |
+| median CA B-factor inside the span | **104.7 Å²** (against 81.8 Å² for pocket side chains generally) |
+| minimum CA occupancy inside the span | 1.0 |
+
+Per residue: 210 **72.9%**, 211 58.9%, **212 53.3%**, 213 57.0%, 214 60.7%, 215 63.6%,
+216 68.2%. **Arg212 and Phe213 — the second- and fifth-largest blockers — are missing from
+nearly half of all deposited CYP3A4 structures.**
+
+That is already most of the answer. **A template cannot carry what the crystal does not
+contain**, and on a coin-flip of entries it contains nothing here. It also means every
+spread below is computed on the *better half* of the archive and is therefore optimistic.
+
+The same audit on the 87 validation crystals: **48 of 87 model all seven**, 58 model at
+least four. The F/G placement of 29 of 87 pairs cannot be scored at all.
+
+## Independence of the entries
+
+| | |
+|---|---|
+| distinct space groups | 6 — but **92 of 107 are `I 2 2 2`** |
+| others | `C 1 2 1` 11, and one each of `C 2 2 21`, `P 31`, `P 21 21 21`, `I 1 2 1` |
+| resolution | median **2.55 Å**, range 1.78–3.10 Å |
+| distinct ligand-code sets | 98 of 107 |
+| **apo entries in this harvest** | **0** |
+
+Two things follow. The archive is **one crystal form with a long tail**, so the spread
+below is *not* inflated by crystal-packing diversity — if anything it is suppressed by the
+lack of it. And **there are no apo entries here at all**: 1TQN and 1W0E are not in the
+P450-universe harvest, so FINDING 024's "the only always-legal template is apo" could not
+be tested and the **apo–apo** and **apo–holo** strata below are empty rather than small.
+
+## The three stratified spreads
+
+CA deviation over residues 210–216 after superposing two entries on `CYP3A4_RIGID_CORE`
+(ligand-free; median core fit **0.56 Å**), over all 1,431 pairs of the 54 fully-modelled
+entries:
+
+| stratum | pairs | median | IQR | **p90** | max | > 1 Å | > 2 Å |
+|---|---|---|---|---|---|---|---|
+| apo–apo | **0** | — | — | — | — | — | — |
+| apo–holo | **0** | — | — | — | — | — | — |
+| holo–holo, **same** ligand | 7 | 0.78 Å | 0.48–2.63 | 4.51 Å | 4.79 Å | 28.6% | 28.6% |
+| **holo–holo, DIFFERENT ligand** | **1,424** | **4.25 Å** | 0.70–4.74 | **7.20 Å** | 9.76 Å | **64.7%** | **58.4%** |
+| … of those, cross-space-group only | 532 | 4.42 Å | 4.24–4.74 | 7.40 Å | 9.76 Å | 94.2% | 88.2% |
+| all pairs | 1,431 | 4.25 Å | 0.70–4.74 | 7.20 Å | 9.76 Å | 64.6% | 58.2% |
+
+**Against the model, measured over the same seven residues in the same frame:**
+
+| | median | p90 | > 1 Å | > 2 Å |
+|---|---|---|---|---|
+| **model vs its own query crystal** (1,160 poses, 58 pairs) | **1.03 Å** | **4.98 Å** | 50.3% | 45.2% |
+| **crystal vs a different-ligand crystal** (1,424 pairs) | **4.25 Å** | **7.20 Å** | 64.7% | 58.4% |
+
+**A blind deposited template is 4.1× worse at the median and 1.4× worse at the p90 than
+what Boltz-2 already produces, at exactly the residues that do the blocking.** This is
+FINDING 024's whole-pocket argument (model 0.73 Å against crystal-to-crystal 1.00 Å)
+repeated in the lesion, where it is far more extreme, not less.
+
+### The spread is real, not a numbering artifact
+
+The distribution is strongly bimodal, so it was checked rather than reported:
+
+- **Numbering is identical across entries** — every entry examined reads
+  Leu210-Leu211-Arg212-Phe213-Asp214-Phe215-Leu216. This is FINDING 021's trap and it is
+  not what is happening here.
+- **In the same superposition, a control span moves normally.** For pairs showing 3–12 Å
+  in the lesion, the I-helix (300–320) agrees to **0.4–1.3 Å**: 5TE8 vs 1W0G, lesion
+  per-residue 3.5 / 3.1 / 6.9 / 5.5 / 5.3 / 8.9 / **11.8 Å**, I-helix **0.60 Å**; 7UFA vs
+  9BV5, lesion 7.1 / 8.5 / 8.5 / 7.2 / 6.3 / 5.9 / 4.9 Å, I-helix **0.60 Å**. The rest of
+  the protein superposes; this loop does not.
+- The bimodality is **discrete loop states**, not a few outliers. Scoring each entry by its
+  median deviation to every other entry: **27 of 54 form a tight majority cluster** (within
+  it, median **0.53 Å**, p90 **0.78 Å**), **22 are minority conformers ≥ 3 Å** from the
+  median other entry (3NXU, 4D78, 4D7D, 4I4G, 4I4H, 4K9T, 4K9W, 5TE8, 5VC0, 6UNJ, 7KVH,
+  7KVK, 7KVN, 7KVO, 7KVQ, 7KVS, 7UFA, 7UFE, 7UFF, 8EWS, 8EXB, 8SPD), and 5 are intermediate.
+
+**The one number that could have rescued templates is 0.53 Å — and it is unavailable.**
+Inside the majority cluster a crystal predicts another crystal's F/G loop to 0.53 Å, twice
+as well as the model. But that cluster is **half** the fully-modelled entries and **a
+quarter of the archive**, and choosing it requires knowing which state the query is in,
+which is the prediction. Blind, you draw from the whole set, and the whole set is 4.25 Å.
+
+## The seven unrescuable ligands specifically
+
+For each, every fully-modelled entry was superposed onto the query crystal by rigid core
+and asked whether **its** 210–216 backbone + CB would clear the query's crystal ligand to
+2.2 Å:
+
+| ligand | its PDB | own span fully modelled? | donors clearing | best donor | best contact |
+|---|---|---|---|---|---|
+| **5AW** | 4K9U | no | **0 / 54** | 5VCE | 0.99 Å |
+| **ERY** | 2J0D | no | **0 / 54** | 8EXB | 2.12 Å |
+| A1A4T | 9COY | no | 3 / 54 (5.6%) | 8EWS | 4.72 Å |
+| **1RD** | 4K9T | **yes — a minority conformer, 4.51 Å from the median entry** | 5 / 53 (9.4%) | 8EXB | 4.53 Å |
+| MWY | 6OOA | no | 6 / 54 (11.1%) | 7UFA | 2.75 Å |
+| X7P | 7KVI | no | 21 / 54 (38.9%) | 8EXB | 7.17 Å |
+| QEP | 6UNG | no | 22 / 54 (40.7%) | 8EWS | 5.88 Å |
+
+For two of the seven, **not one deposited CYP3A4 structure** has an F/G loop that would
+admit their ligand. For three more, fewer than 12% would. And **six of the seven do not
+model 210–216 in their own deposition**, so even a hypothetical oracle template has no
+ground truth to be graded against on those cases; the one that does is in the minority
+state that only 22 of 54 entries share.
+
+## Verdict
+
+**REFUTED in the lesion too.** A blind holo template over 210–216 is worse than the model
+at the median (4.25 Å against 1.03 Å) and at the p90 (7.20 Å against 4.98 Å), is absent
+from half the archive, and would fail to admit the true ligand for the specific pairs that
+need it. The pre-registered rule required "clearly below" on both statistics; the
+measurement came back 4× above on one and 1.4× above on the other.
+
+**FINDING 024's dismissal of holo templates stands unqualified**, and the partial reversal
+this document proposed is withdrawn. The reversal was reasoned from the right mechanism —
+the lesion needs backbone and CB, which is exactly what a template carries — and was wrong
+on the empirical premise that any crystal knows where this loop goes. **None of them do.**
+
+**What survives.** The F/G loop is a discrete multi-state element with at least two
+populated conformations 4–8 Å apart, half the archive in one of them, and the model
+predicting it to 1.03 Å median. That is not a template problem, it is an **ensemble**
+problem: the useful object is not "the right crystal" but the *set* of observed 210–216
+conformations, used as alternative receptors to be scored rather than as a prior to
+condition on. That is a different experiment with a different failure mode, and it inherits
+FINDING 027's warning in full — 22 minority conformers × a repack of the six named blockers
+is a far larger pool, and every pool expansion on this target so far has raised the oracle
+and lowered selection. It should be run, if at all, as a **ceiling** measurement with both
+numbers pre-registered.
+
+**Method note worth keeping.** The bimodality was the tell. A median of 4.25 Å with an IQR
+of 0.70–4.74 Å is not a spread, it is two populations, and reporting the median alone would
+have described a distribution that no pair of crystals actually occupies.
