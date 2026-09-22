@@ -1,0 +1,43 @@
+{
+  "set": "cyp3a4",
+  "poses": 1740,
+  "fg_depth (lower is better)": {
+    "ligands": 87,
+    "oracle": 0.6931,
+    "random": 0.5757,
+    "selected": 0.5708,
+    "gain": -0.0049,
+    "rho": 0.106,
+    "frac_rho_pos": 0.609,
+    "beats_random_frac": 0.471,
+    "p_wilcoxon": 0.9023135444924012,
+    "null_p95": 0.014,
+    "p_permutation": 0.7165
+  },
+  "fe_centroid_dist (lower is better)": {
+    "ligands": 87,
+    "oracle": 0.6931,
+    "random": 0.5757,
+    "selected": 0.577,
+    "gain": 0.0013,
+    "rho": 0.022,
+    "frac_rho_pos": 0.552,
+    "beats_random_frac": 0.437,
+    "p_wilcoxon": 0.44363910883263447,
+    "null_p95": 0.0142,
+    "p_permutation": 0.4385
+  },
+  "fe_min_dist (lower is better)": {
+    "ligands": 87,
+    "oracle": 0.6931,
+    "random": 0.5757,
+    "selected": 0.5797,
+    "gain": 0.004,
+    "rho": 0.088,
+    "frac_rho_pos": 0.621,
+    "beats_random_frac": 0.529,
+    "p_wilcoxon": 0.4849619155258311,
+    "null_p95": 0.0135,
+    "p_permutation": 0.322
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "oracle": 0.6931,
+  "random": 0.5757,
+  "physics": 0.601,
+  "incumbent": 0.614,
+  "shuffle_within_ligand": {
+    "reps": 5,
+    "mean": 0.577,
+    "gains": [
+      -0.0159,
+      0.0064,
+      0.001,
+      0.0125,
+      0.0022
+    ],
+    "mean_gain": 0.0012
+  },
+  "complementarity": {
+    "pearson_r": -0.047,
+    "pearson_p": 0.6627852730122145,
+    "spearman_r": 0.046,
+    "spearman_p": 0.6705749411135495,
+    "physics_beats_incumbent_frac": 0.483,
+    "physics_vs_incumbent_wilcoxon_p": 0.709784020404614,
+    "both_selectors_agree_rho": 0.834
+  },
+  "tail_rescue": {
+    "k=10": 0.603,
+    "k=20": 0.5991,
+    "k=30": 0.6022
+  },
+  "seed_stability": {
+    "selected": [
+      0.601,
+      0.601,
+      0.601,
+      0.601,
+      0.601
+    ],
+    "gains": [
+      0.0253,
+      0.0253,
+      0.0253,
+      0.0253,
+      0.0253
+    ],
+    "sd": 0.0
+  }
+}
