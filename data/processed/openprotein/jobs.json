@@ -7486,5 +7486,251 @@
     "done": true
    }
   ]
+ },
+ "refdepth/protenix_v2": {
+  "engine": "protenix_v2",
+  "tag": "refdepth",
+  "samples": 5,
+  "batches": [
+   {
+    "job_id": "f0dd2065-312a-4b50-a786-3e9d717fb37d",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 5,
+    "submitted": 1790151901.4157898,
+    "done": true
+   },
+   {
+    "job_id": "d5041057-0772-4469-8761-d70b47e450b1",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 5,
+    "submitted": 1790151906.3259196,
+    "done": true
+   },
+   {
+    "job_id": "00e75ab3-5145-4621-b845-12b87109e2fe",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 5,
+    "submitted": 1790151911.774897,
+    "done": true
+   },
+   {
+    "job_id": "312883e0-e6a9-4048-94a7-28558ab44e17",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 5,
+    "submitted": 1790151916.200563,
+    "done": true
+   },
+   {
+    "job_id": "8732bc7e-9294-42ae-888e-36a78caa648b",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 5,
+    "submitted": 1790151921.1069558,
+    "done": true
+   },
+   {
+    "job_id": "a6651d16-1894-4e02-8a12-2abe317535b7",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 5,
+    "submitted": 1790151925.7749152,
+    "done": true
+   },
+   {
+    "job_id": "69eed43e-da97-4cf8-b291-39536d8c31fe",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 3,
+    "setting": "3x400",
+    "samples": 5,
+    "submitted": 1790151931.86074,
+    "done": true
+   },
+   {
+    "job_id": "6e3f95dc-3108-49fd-a418-d4f81336795d",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 3,
+    "setting": "3x400",
+    "samples": 5,
+    "submitted": 1790151936.595007,
+    "done": "failed"
+   }
+  ]
+ },
+ "refdepth/protenix": {
+  "engine": "protenix",
+  "tag": "refdepth",
+  "samples": 5,
+  "batches": [
+   {
+    "job_id": "365681e0-2ba4-49f6-8672-adb016a740c2",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 5,
+    "submitted": 1790151947.5414503,
+    "done": true
+   },
+   {
+    "job_id": "7cf571d6-c3b6-42a8-a634-d80d9a1bcb9d",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 5,
+    "submitted": 1790151952.694941,
+    "done": true
+   },
+   {
+    "job_id": "f9b828c3-847c-4697-8f5a-6ae0fb49cdfc",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 5,
+    "submitted": 1790151957.7718506,
+    "done": true
+   },
+   {
+    "job_id": "eb6375f4-e2bd-4064-a530-f0fc4af41611",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 5,
+    "submitted": 1790151963.2076616,
+    "done": true
+   },
+   {
+    "job_id": "efa71801-1eee-46e3-8846-201f6c1e78d6",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 5,
+    "submitted": 1790151968.630219,
+    "done": true
+   },
+   {
+    "job_id": "dd688034-c19a-47a9-b11e-deefc085a708",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 5,
+    "submitted": 1790151973.0539794,
+    "done": true
+   },
+   {
+    "job_id": "c4caa831-50b4-4e64-ac82-aaf0818b3c05",
+    "ligands": [
+     "A1ASV",
+     "8AW",
+     "KLN",
+     "T0K",
+     "QDJ"
+    ],
+    "rep": 3,
+    "setting": "3x400",
+    "samples": 5,
+    "submitted": 1790151978.30807,
+    "done": true
+   },
+   {
+    "job_id": "f6864d82-6acd-476f-b692-44a2fbbbc3ab",
+    "ligands": [
+     "A1APA",
+     "PG0",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 3,
+    "setting": "3x400",
+    "samples": 5,
+    "submitted": 1790151984.8826778,
+    "done": true
+   }
+  ]
  }
 }

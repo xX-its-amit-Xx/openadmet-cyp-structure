@@ -1,0 +1,237 @@
+{
+ "jobs": {
+  "f0dd2065-312a-4b50-a786-3e9d717fb37d": {
+   "key": "refdepth/protenix_v2",
+   "rep": 0,
+   "setting": "3x200",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151901.4157898,
+   "terminal_at": 1790152507.6200855,
+   "status": "SUCCESS"
+  },
+  "d5041057-0772-4469-8761-d70b47e450b1": {
+   "key": "refdepth/protenix_v2",
+   "rep": 0,
+   "setting": "3x200",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151906.3259196,
+   "terminal_at": 1790152507.8311605,
+   "status": "SUCCESS"
+  },
+  "00e75ab3-5145-4621-b845-12b87109e2fe": {
+   "key": "refdepth/protenix_v2",
+   "rep": 1,
+   "setting": "10x200",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151911.774897,
+   "terminal_at": 1790152761.8293438,
+   "status": "SUCCESS"
+  },
+  "312883e0-e6a9-4048-94a7-28558ab44e17": {
+   "key": "refdepth/protenix_v2",
+   "rep": 1,
+   "setting": "10x200",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151916.200563,
+   "terminal_at": 1790152855.4239714,
+   "status": "SUCCESS"
+  },
+  "8732bc7e-9294-42ae-888e-36a78caa648b": {
+   "key": "refdepth/protenix_v2",
+   "rep": 2,
+   "setting": "3x50",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151921.1069558,
+   "terminal_at": 1790152916.8492346,
+   "status": "SUCCESS"
+  },
+  "a6651d16-1894-4e02-8a12-2abe317535b7": {
+   "key": "refdepth/protenix_v2",
+   "rep": 2,
+   "setting": "3x50",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151925.7749152,
+   "terminal_at": 1790152947.5544932,
+   "status": "SUCCESS"
+  },
+  "69eed43e-da97-4cf8-b291-39536d8c31fe": {
+   "key": "refdepth/protenix_v2",
+   "rep": 3,
+   "setting": "3x400",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151931.86074,
+   "terminal_at": 1790153168.6667972,
+   "status": "SUCCESS"
+  },
+  "6e3f95dc-3108-49fd-a418-d4f81336795d": {
+   "key": "refdepth/protenix_v2",
+   "rep": 3,
+   "setting": "3x400",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151936.595007,
+   "terminal_at": 1790153440.641333,
+   "status": "FAILURE"
+  },
+  "365681e0-2ba4-49f6-8672-adb016a740c2": {
+   "key": "refdepth/protenix",
+   "rep": 0,
+   "setting": "3x200",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151947.5414503,
+   "terminal_at": 1790152304.2695363,
+   "status": "SUCCESS"
+  },
+  "7cf571d6-c3b6-42a8-a634-d80d9a1bcb9d": {
+   "key": "refdepth/protenix",
+   "rep": 0,
+   "setting": "3x200",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151952.694941,
+   "terminal_at": 1790152337.0067594,
+   "status": "SUCCESS"
+  },
+  "f9b828c3-847c-4697-8f5a-6ae0fb49cdfc": {
+   "key": "refdepth/protenix",
+   "rep": 1,
+   "setting": "10x200",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151957.7718506,
+   "terminal_at": 1790152476.742043,
+   "status": "SUCCESS"
+  },
+  "eb6375f4-e2bd-4064-a530-f0fc4af41611": {
+   "key": "refdepth/protenix",
+   "rep": 1,
+   "setting": "10x200",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151963.2076616,
+   "terminal_at": 1790152436.638957,
+   "status": "SUCCESS"
+  },
+  "efa71801-1eee-46e3-8846-201f6c1e78d6": {
+   "key": "refdepth/protenix",
+   "rep": 2,
+   "setting": "3x50",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151968.630219,
+   "terminal_at": 1790152541.7181222,
+   "status": "SUCCESS"
+  },
+  "dd688034-c19a-47a9-b11e-deefc085a708": {
+   "key": "refdepth/protenix",
+   "rep": 2,
+   "setting": "3x50",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151973.0539794,
+   "terminal_at": 1790152541.9154835,
+   "status": "SUCCESS"
+  },
+  "c4caa831-50b4-4e64-ac82-aaf0818b3c05": {
+   "key": "refdepth/protenix",
+   "rep": 3,
+   "setting": "3x400",
+   "ligands": [
+    "A1ASV",
+    "8AW",
+    "KLN",
+    "T0K",
+    "QDJ"
+   ],
+   "submitted": 1790151978.30807,
+   "terminal_at": 1790152699.638052,
+   "status": "SUCCESS"
+  },
+  "f6864d82-6acd-476f-b692-44a2fbbbc3ab": {
+   "key": "refdepth/protenix",
+   "rep": 3,
+   "setting": "3x400",
+   "ligands": [
+    "A1APA",
+    "PG0",
+    "MWS",
+    "ERY"
+   ],
+   "submitted": 1790151984.8826778,
+   "terminal_at": 1790152793.9349248,
+   "status": "SUCCESS"
+  }
+ },
+ "last_poll": 1790153440.641352
+}

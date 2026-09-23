@@ -1,0 +1,10 @@
+ligand,poses_returned,after_same_wave,after_same_md5,depth,dropped_coords,min_pairwise_chamfer,median_pairwise_chamfer,max_pairwise_chamfer,id,smiles,pred_mode,n_heavy,n_rot,mw,tercile,slot
+8AW,40,8,8,8,0,0.351,0.605,0.838,8AW,CC[C@H](C)C(=O)N[C@H](CC[C@H](Cc1ccccc1)NC(=O)OCc2cncs2)Cc3ccccc3,type_II,35,13,493.7,small,small/typeII/max_rot
+A1APA,35,7,7,7,0,0.395,0.871,1.038,A1APA,CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](CCN2CCOCC2)C(=O)N[C@H](CC[C@H](Cc3ccccc3)NC(=O)OCc4cncs4)Cc5ccccc5,type_II,54,19,776.0,large,large/typeII/max_rot
+A1ASV,40,8,8,8,0,0.288,0.528,0.957,A1ASV,CC(C)(C)C(=O)Nc1cc(ccc1n2ccnc2)C(F)(F)F,type_II,22,2,311.3,small,small/typeII/min_rot
+ERY,35,7,7,7,0,0.486,0.954,1.191,ERY,CC[C@@H]1[C@@]([C@@H]([C@H](C(=O)[C@@H](C[C@@]([C@@H]([C@H]([C@@H]([C@H](C(=O)O1)C)O[C@H]2C[C@@]([C@H]([C@@H](O2)C)O)(C)OC)C)O[C@H]3[C@@H]([C@H](C[C@H](O3)C)N(C)C)O)(C)O)C)C)O)(C)O,type_I,51,7,733.9,large,typeI/max_heavy
+KLN,40,8,8,8,0,0.672,1.032,1.383,KLN,CC(=O)N1CCN(CC1)c2ccc(cc2)OC[C@@H]3CO[C@@](O3)(Cn4ccnc4)c5ccc(cc5Cl)Cl,type_II,36,7,531.4,medium,medium/typeII/min_rot
+MWS,35,7,7,7,0,0.342,0.659,0.876,MWS,C/C(=C/COc1c2ccoc2cc3c1C=CC(=O)O3)/CC[C@@H](C(C)(C)O)O,type_I,27,7,372.4,small,typeI/median_heavy
+PG0,35,7,7,7,0,0.516,0.955,15.667,PG0,COCCOCCO,type_I,8,5,120.1,small,typeI/min_heavy
+QDJ,40,8,8,8,0,0.44,0.933,1.646,QDJ,CC(C)(C)OC(=O)N[C@H](Cc1cccc2c1cccc2)CS[C@@H](Cc3cccc4c3cccc4)C(=O)NCc5cccnc5,type_II,44,11,605.8,large,large/typeII/min_rot
+T0K,40,8,8,8,0,0.403,1.016,1.627,T0K,c1ccc(cc1)C[C@@H](CS[C@@H](Cc2ccccc2)C(=O)NCCc3cccnc3)NC(=O)CCc4cccnc4,type_II,40,15,552.7,medium,medium/typeII/max_rot

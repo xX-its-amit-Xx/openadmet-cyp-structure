@@ -448,5 +448,34 @@
    "replicates": 30,
    "probe": false
   }
+ },
+ {
+  "run_id": "refdepth_sweep_1790188000",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 16,
+  "est_gpu_hours": 0.32,
+  "started": 1790153654.8224285,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "FINDING 038 reference-depth yield | 9 ligands x 4 sampler settings x 2 Protenix checkpoints, batch 5 | 15 of 16 SUCCESS, 1 internal server error (protenix_v2 3x400); 25.7 min wall clock",
+  "meta": {
+   "n_jobs": 16,
+   "engines": [
+    "protenix_v2",
+    "protenix"
+   ],
+   "settings": [
+    "3x200",
+    "10x200",
+    "3x50",
+    "3x400"
+   ],
+   "ligands": 9,
+   "batch": 5,
+   "samples": 5
+  },
+  "ended": 1790153654.823953
  }
 ]

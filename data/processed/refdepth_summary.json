@@ -1,0 +1,64 @@
+{
+ "filters": {
+  "files_seen": 340,
+  "dropped_same_wave": 272,
+  "dropped_same_md5": 0,
+  "dropped_same_coords": 0,
+  "unreadable": 0,
+  "no_heme_frame": 0,
+  "unparseable_name": 0,
+  "not_in_csv": 0
+ },
+ "positive_controls": {
+  "md5_on_exact_copy": true,
+  "coords_on_identical_vec": true,
+  "coords_on_header_only_change": true,
+  "coords_keeps_genuinely_distinct": true,
+  "same_wave_on_duplicate_samples": true
+ },
+ "rate": {
+  "n_ligands": 9,
+  "frac_ge4": 1.0,
+  "frac_ge6": 1.0,
+  "median_depth": 8.0,
+  "min_depth": 7,
+  "max_depth": 8
+ },
+ "chemistry": {
+  "depth~n_heavy": {
+   "rho": -0.087,
+   "p": 0.8247
+  },
+  "median_pairwise_chamfer~n_heavy": {
+   "rho": 0.217,
+   "p": 0.5755
+  },
+  "depth~n_rot": {
+   "rho": 0.088,
+   "p": 0.8217
+  },
+  "median_pairwise_chamfer~n_rot": {
+   "rho": 0.102,
+   "p": 0.7946
+  },
+  "depth~mode": {
+   "type_I_mean": 7.0,
+   "type_II_mean": 7.833,
+   "mwu_p": 0.0369,
+   "n_I": 3,
+   "n_II": 6
+  },
+  "median_pairwise_chamfer~mode": {
+   "type_I_mean": 0.856,
+   "type_II_mean": 0.831,
+   "mwu_p": 0.9048,
+   "n_I": 3,
+   "n_II": 6
+  }
+ },
+ "pairwise_chamfer_all": {
+  "n": 224,
+  "min": 0.288,
+  "median": 0.831
+ }
+}

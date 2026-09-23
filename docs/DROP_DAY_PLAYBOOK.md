@@ -15,7 +15,10 @@ unrunnable on a blind set; seven are now closed and the whole sequence below §1
 (`python scripts/ops/blind_rehearsal.py run`, 2026-09-23). Unblinded, it reproduced the
 board to four decimals — selected **0.6164**, oracle **0.6975**, random **0.5769**, gain
 **+0.0395**, ρ **−0.2582**, correct sign **75.86%** — and picked the **same pose on 87 of
-87** ligands as the crystal-dependent path. What remains is in §9, and it is one item.
+87** ligands as the crystal-dependent path. **All eight gaps are now closed:** G6, the
+reference-pose volume, was measured on 2026-09-23 (FINDING 038) — 9 of 9 ligands clear
+depth 4 *and* depth 6, and the remaining risk is a 6.25% per-job failure rate, not
+chemistry. §9 now carries the recommended sweep and the schedule.
 
 ---
 
@@ -114,11 +117,15 @@ do not exist for new ligands — they must be generated. See §9 G6; this is the
 
 ```bash
 # one submission WAVE per sampler setting - waves are the unit of independence, and
-# --replicates is byte-identical on both engines (FINDING 015/016/034)
+# --replicates is byte-identical on both engines (FINDING 015/016/034).
+# SHUFFLE THE CSV FIRST: --batch packs in file order, so an ordered csv aligns job
+# boundaries with strata and one failed job can take out a whole class (FINDING 038).
 python scripts/cofold/openprotein_cofold.py submit --engine protenix_v2 \
-    --csv data/processed/test_ligands.csv --tag drop --sweep 3x200,10x200,3x50,3x400
+    --csv data/processed/test_ligands.csv --tag drop \
+    --sweep 3x200,10x200,3x50 --batch 5 --samples 1
 python scripts/cofold/openprotein_cofold.py submit --engine protenix \
-    --csv data/processed/test_ligands.csv --tag drop --sweep 3x200,10x200,3x50,3x400
+    --csv data/processed/test_ligands.csv --tag drop \
+    --sweep 3x200,10x200,3x50 --batch 5 --samples 1
 python scripts/cofold/openprotein_cofold.py collect --engine protenix_v2 --tag drop
 python scripts/cofold/openprotein_cofold.py collect --engine protenix    --tag drop
 
@@ -665,8 +672,8 @@ new cryoEM structures **first**, before any cross-model metric (RUNBOOK Step 4).
 A code audit on **2026-09-23** found eight gaps that between them made the path above
 unrunnable on a blind test set: `readiness.py` printed a sequence that routed through
 Modal (over cap) and assumed crystals existed, and the runbook claimed a `plan --csv` flag
-that did not exist. **Seven are now closed and exercised. One remains, and it is the one
-that needs a network and a queue.**
+that did not exist. **All eight are now closed and exercised.** G6 — the one that needed a
+network and a queue — was measured the same day (FINDING 038) and is below.
 
 The acceptance test is in the repo and is re-runnable:
 
@@ -702,37 +709,94 @@ pool mean, which is 67.8%. Both are in `blind_rehearsal.json`.
 
 ---
 
-### ⚠ G6 — reference poses for NEW ligands. **Wired and probed; the longest pole remains.**
+### G6 — reference poses for NEW ligands. **MEASURED. No longer the longest pole.**
 
-The machinery is now wired, its refusals are exercised, and the generator was run **live**
-on OpenProtein end to end — `submit --sweep 3x200,10x200` → `collect` → `refset` on one
-ligand (tag `g6probe`, 2026-09-23). What is *not* done is the volume: the blind set has
-**no reference until jobs are run for it**, `reference_set_cyp3a4.npz` covers only the 87
-validation ligands, and two OpenProtein waves took ~12 minutes wall-clock for one ligand.
+**FINDING 038, 2026-09-23** replaced the one-ligand probe with the real thing: 9 validation
+ligands, stratified in advance by heavy-atom tercile, rotatable-bond extremes and
+prediction-side binding mode (3 of the 13 Type I), run through the shipped `submit --sweep`
+(4 settings) → `collect` → `refset` on **both** Protenix checkpoints. **16 jobs, 25.7 min
+wall clock, $0.**
 
-**The probe answered the question that was open.** Two sampler settings on a CYP3A4 ligand
-returned two **genuinely distinct** poses — max per-atom displacement **3.07 Å**, Chamfer
-in the heme frame **0.872 Å**, 2 distinct after the 0.05 Å dedupe. So `num_recycles` does
-diversify here, not only on the P450-universe pairs FINDING 016 measured. **n = 1 ligand,
-2 settings** — it removes the worry that the lever is dead on this target; it does not
-establish that four settings × two engines reliably clears depth 4 on every ligand.
-`refset` on that probe refused at depth 2, exit 2, as designed.
+**The rate: 9 of 9 = 100% clear depth 4, and 9 of 9 = 100% clear depth 6.** Median depth
+**8**, minimum **7**, maximum **8**. `refset` wrote the `.npz` with `below_min_depth: []`.
 
-* `openprotein_cofold.py submit --sweep 3x200,10x200,3x50,3x400` submits **one wave per
-  sampler setting**, records the setting beside the wave index, and refuses to reuse a
-  wave index at a different setting (two settings counted as one replicate is exactly the
-  T7 error). `--replicates` is kept but is dead: byte-identical on both engines at any
-  count (FINDING 015/034). Four settings gave 4 distinct placements in FINDING 016 — which
-  is the depth-4 minimum, with no margin.
-* `openprotein_cofold.py refset` freezes the waves into an `.npz`, applying the three
-  filters in §Step 4 and **exiting 2** with the ligand names if any is below depth 4.
-* **Still unverified: whether four settings × two engines clears depth 4 on EVERY test
-  ligand.** The probe above says the lever is live on CYP3A4 chemistry; it does not say it
-  is live on all of it. Budget a probe wave on a handful of test ligands before the full
-  submission, and read `refset`'s `below_min_depth` list before committing to a schedule.
-* **Budget:** ~12 min wall-clock for 2 waves × 1 ligand at `--batch 1`. `--batch 4` puts
-  four complexes in one job, so the wall-clock driver is waves, not ligands — but each
-  wave is a separate submission and the queue is shared.
+**The mechanism, which is what makes this schedulable:**
+
+> **depth = (engines) × (sampler settings), minus one per failed job containing the ligand.**
+
+There is **no attrition from duplication at all**. 340 files → 272 dropped as same-wave
+(FINDING 009, 4 of every 5 files discarded unread) → **`dropped_same_md5` = 0** and
+**`dropped_same_coords` = 0**. Both zeros are real, not dead code: five positive controls
+were run and all five fired (exact byte copy, identical vector, +1e-4 Å header-only change,
++5.0 Å genuinely distinct kept as 2, 272 same-wave). Because every wave is a *different*
+sampler setting, FINDING 015's per-configuration determinism never gets a chance to bite.
+Minimum pairwise Chamfer anywhere in the set is **0.288 Å** against a 0.05 Å tolerance —
+~6× clear, not marginal passes.
+
+**Depth does NOT depend on chemistry.** ρ(depth, n_heavy) = −0.087 (p = 0.82),
+ρ(depth, n_rot) = +0.088 (p = 0.82), and pose spread is null on both plus mode (p = 0.90).
+The apparent Type I deficit (7.00 vs 7.83, MWU p = 0.037) is **entirely** the one failed
+job — see the trap below. Type I ligands are **not** harder to reference, so this does
+*not* compound with FINDING 033's worse Type I pool.
+
+**RECOMMENDED SWEEP — 2 engines × 3 settings, `--sweep 3x200,10x200,3x50`, `--batch 5`,
+`--samples 1`.** Measured by re-deduping every sub-configuration of the poses on disk:
+
+| sweep | jobs / 9 ligands | min depth | frac ≥4 | frac ≥6 |
+|---|---|---|---|---|
+| 2 eng × 1 setting | 4 | 1–2 | 0.00 | 0.00 |
+| 2 eng × 2 settings | 8 | **4** | **1.00** | 0.00 |
+| **2 eng × 3 settings** | **12** | **6** | **1.00** | **1.00** |
+| 2 eng × 4 settings | 16 | 7 | 1.00 | 1.00 |
+| 1 eng (protenix) × 4 | 8 | 4 | 1.00 | 0.00 |
+| 1 eng (protenix_v2) × 4 | 8 | 3 | 0.56 | 0.00 |
+
+Two settings is the **arithmetic** minimum — depth exactly 4, the refusal threshold with
+**zero margin**. Three is the **viable** minimum: depth 6 survives one job failure
+(6 → 5 ≥ 4) and it drops `3×400`, the slowest setting on both engines and the only one
+that failed. The fourth setting is slack, not baseline: +33% jobs, +8 min, depth 6 → 8.
+**A single engine cannot do the job.** (Every `0.56` and every low `min depth` in the grid
+is the same four ligands from the one failed job, not a weak setting.)
+
+**⚠ THE 6.25% JOB FAILURE, AND WHY `submit` CANNOT RECOVER FROM IT.** 1 of 16 jobs died
+with an opaque `internal server error` after 24.7 min at `progress_counter=75`. **`submit`
+will not resubmit it**: its resume set is `{(rep, ligand) for every batch}` with **no check
+of `b["done"]`**, verified — all 4 lost ligand-waves are still marked claimed, so re-running
+the identical command buys nothing. **Recover with a FRESH wave at a NEW setting**
+(`--sweep 3x400` or `5x200`), never by repeating the command. This is the reason the
+recommendation carries margin instead of sitting on depth 4.
+
+**⚠ SHUFFLE THE TEST CSV BEFORE SUBMITTING.** `--batch` packs the CSV in **file order**, so
+an ordered CSV aligns job boundaries with strata. Here the stratified CSV put all three
+Type I picks in chunk 2 — and chunk 2 was the job that failed, taking out **3 of 3** Type I
+ligands at once. One line prevents a single failure from destroying a whole class.
+
+**Cost model — `jobs = 6 × ceil(N/5)` at the recommended sweep.** Concurrency measured at
+**≥16 jobs with no queueing penalty**; above that unmeasured, so the schedule is a band
+(lower = slowest single wave, 17.4 min; upper = serialised in blocks of 16 at ~18 min).
+
+| test set | jobs (3 settings) | jobs (4 settings) | wall clock, optimistic → conservative |
+|---|---|---|---|
+| 20 ligands | 24 | 32 | ~20 min → ~36 min |
+| 50 ligands | 60 | 80 | ~20 min → ~1 h 12 m |
+| 100 ligands | 120 | 160 | ~20 min → **~2 h 25 m** |
+
+Add ~5 min for `collect`, **under 1 min** for `refset` (2.9 s for 340 files). All fit the
+2,000/month cap with **610 already spent**. **Even the conservative column is far shorter
+than Step 2's pool generation (~6.6 min/ligand × 100 = 11 h), so reference depth is no
+longer the schedule risk.**
+
+**Use `--samples 1`, not the default 20.** 80% of downloaded files were discarded unread —
+`diffusion_samples` does not sample the ligand (FINDING 009) and `refset` keeps one file
+per (engine, wave). At `--samples 20` on 100 ligands that is ~5 GB downloaded to keep
+~250 MB, onto a D: drive with 12 GB free.
+
+Still true, and unchanged:
+
+* `submit --sweep` records the setting beside the wave index and **refuses to reuse a wave
+  index at a different setting** (two settings counted as one replicate is the T7 error).
+  `--replicates` is kept but dead: byte-identical on both engines at any count (015/034).
+* `refset` freezes the waves into an `.npz` and **exits 2** naming any ligand below depth 4.
 * **If depth cannot be reached:** `refset --allow-thin`, then `build_xeng_feature
   --skip-thin`, then `build_submission --blind`, which names every fallback. Measured cost
   shape, from thinning 10 of 87 to depth 1: those 10 all got a different pose, the other
@@ -741,6 +805,9 @@ establish that four settings × two engines reliably clears depth 4 on every lig
   inside noise — do not read a single small stratum as the effect).
 * **More engines is NOT better** (+0.0380 for two Protenix checkpoints, +0.0178 adding
   esmfold2), and **never add a reference engine to the POOL** (FINDING 013/016).
+* **Not claimed by 038:** that 8 reference poses select better than 4. It measures supply,
+  not value. n = 9, all CYP3A4, all known to fold; the 6.25% failure rate is **one
+  observation** (95% CI ≈ 0.2–30%).
 
 ---
 
@@ -873,10 +940,13 @@ in 035, 036 and 037 independently — selected 0.6164, oracle 0.6975, random 0.5
    never `srun`. **A FAILED state may be a complete run — check four signals.**
 4. `collect --tag drop`, and check `missing_ligands` / `uniform_depth`. **Do not run
    `score`** — it refuses a blind tag, by design.
-5. Buy reference poses for the new ligands: `openprotein_cofold.py submit --sweep
-   3x200,10x200,3x50,3x400` on **both** Protenix checkpoints, `collect`, then `refset`
-   (§9 G6 — the only open item). `refset` and `build_xeng_feature` both **refuse below
-   depth 4**; `--allow-thin`/`--skip-thin` rather than force, and **name the fallbacks**.
+5. Buy reference poses for the new ligands: **shuffle the csv**, then
+   `openprotein_cofold.py submit --sweep 3x200,10x200,3x50 --batch 5 --samples 1` on
+   **both** Protenix checkpoints, `collect`, then `refset`. Measured 9 of 9 at depth 6
+   (FINDING 038); `jobs = 6 × ceil(N/5)`, ≤2 h 25 m even at 100 ligands. `refset` and
+   `build_xeng_feature` both **refuse below depth 4**; `--allow-thin`/`--skip-thin` rather
+   than force, and **name the fallbacks**. A failed job needs a FRESH wave index — `submit`
+   marks failed batches as claimed and will skip them.
 6. Type the set: `binding_mode_robustness.py predict --pool <flat dir> --pool-flat`
    (median `fe_donor_dist`, 2.6 Å). Report the composition and pre-announce **~0.51 if
    Type I-rich, ~0.64 if not**. A median inside [2.59, 2.82] Å is flagged, not guessed.
