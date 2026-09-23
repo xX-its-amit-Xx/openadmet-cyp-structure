@@ -425,10 +425,13 @@ def collect(smoke: bool = False) -> dict:
     # Pull with tar-over-ssh (rsync is unusable from this box) and filter to the mmCIFs so
     # the per-pose npz confidence blobs stay on /scratch -- D: has ~13 GB and is not a
     # place to land a pool.
+    # scope the find to THIS sub's output dirs. Pulling all of out/ would sweep the smoke
+    # run's poses into the stratum set (and vice versa) -- the flattening step keys on the
+    # ligand directory name and would not notice.
     r = _bash(
         f"ssh -o BatchMode=yes explorer "
-        f"\"cd {REMOTE_ROOT}/out && find . -name '*_model_*.cif' -print0 "
-        f"| tar czf - --null -T -\" | tar xzf - -C '{_win_to_posix(dest)}'; "
+        f"\"cd {REMOTE_ROOT}/out && find . -path './{sub}_s*' -name '*_model_*.cif' "
+        f"-print0 | tar czf - --null -T -\" | tar xzf - -C '{_win_to_posix(dest)}'; "
         f"echo SSH_RC=${{PIPESTATUS[0]}} TAR_RC=${{PIPESTATUS[1]}}", timeout=7200)
     if "SSH_RC=0 TAR_RC=0" not in r.stdout:
         return {"ok": False, "rc": r.stdout[-200:], "err": r.stderr[-500:]}

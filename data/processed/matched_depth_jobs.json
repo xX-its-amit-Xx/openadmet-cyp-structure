@@ -1,0 +1,24 @@
+{
+ "jobs": [
+  {
+   "job": "10528965",
+   "sub": "smoke",
+   "seed": 7,
+   "samples": 2,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790135331.0502715,
+   "stdout": "10528965\n",
+   "stderr": ""
+  },
+  {
+   "job": "10529025",
+   "sub": "stratum",
+   "seed": 101,
+   "samples": 20,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790135624.4072516,
+   "stdout": "10529025\n",
+   "stderr": ""
+  }
+ ]
+}
