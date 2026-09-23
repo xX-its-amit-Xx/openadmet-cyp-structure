@@ -311,5 +311,119 @@
   "correct_sign_all_depths": 0.838,
   "modal_picks_changed": "2 of 37",
   "verdict": "buys variance reduction, not ranking; nearly free if submitted at t=0"
+ },
+ {
+  "date": "2026-09-23",
+  "what": "DROP RUN: the real 20-ligand blinded structure-track test set, playbook section 1 end to end",
+  "tag": "drop",
+  "n_ligands": 20,
+  "pool": {
+   "venue": "explorer_slurm",
+   "engine": "boltz2-2.2.1 offline, 6979-seq MSA, Cys442SG-hemeFE bond",
+   "jobs": 2,
+   "job_ids": [
+    "10560020",
+    "10560024"
+   ],
+   "failures": 0,
+   "gpus": [
+    "V100-PCIE-32GB",
+    "A100-SXM4-80GB"
+   ],
+   "samples_per_ligand": 20,
+   "poses": 400,
+   "distinct_poses": 400,
+   "poses_per_ligand": 20,
+   "min_ligand_per_min": null,
+   "wall_clock_min": 88.8,
+   "gpu_hours": 2.01,
+   "cost_usd": 0,
+   "frac_poses_coordinated": 0.55,
+   "fe_donor_dist_p": {
+    "p5": 2.115,
+    "p25": 2.17,
+    "p50": 2.351,
+    "p75": 4.987,
+    "p95": 6.576
+   },
+   "s_fe_donor_angle_p50": 171.46
+  },
+  "reference": {
+   "venue": "openprotein",
+   "engines": [
+    "protenix_v2",
+    "protenix"
+   ],
+   "sweep": [
+    "3x200",
+    "10x200",
+    "3x50",
+    "5x200"
+   ],
+   "batch": 5,
+   "samples": 1,
+   "shuffle_seed": 38,
+   "jobs": 32,
+   "failures": 0,
+   "superseded": 0,
+   "complexes": 160,
+   "wall_clock_min": 26.0,
+   "cost_usd": 0,
+   "dropped_same_wave": 0,
+   "dropped_same_md5": 0,
+   "dropped_same_coords": 0,
+   "depth_min": 8,
+   "depth_median": 8,
+   "depth_max": 8,
+   "frac_clearing_depth_4": 1.0,
+   "frac_clearing_depth_8": 1.0,
+   "min_pairwise_chamfer_A": 0.168,
+   "dedupe_tol_A": 0.05,
+   "ligands_below_min_depth": []
+  },
+  "composition_prediction_side": {
+   "type_II": 11,
+   "type_I": 8,
+   "peripheral": 1,
+   "ambiguous": 0,
+   "frac_non_coordinating": 0.45,
+   "validation_frac_non_coordinating": 0.161
+  },
+  "pool_regime": {
+   "within_ligand_xeng_rel_spread_median": 0.34,
+   "anchors": {
+    "0.51": 0.0381,
+    "0.83": 0.1448
+   },
+   "verdict": "tighter than either anchor - expected gain extrapolated, ~+0.02 or less"
+  },
+  "selection": {
+   "rule": "cypstruct.xengine.select() = argmin(xeng), untuned",
+   "argmin_equals_select_on": "20/20",
+   "fell_back": [],
+   "uncovered": []
+  },
+  "expected_absolute_score": {
+   "pool_oracle": "UNAVAILABLE - blind set, stated rather than estimated",
+   "stratum_weighted_random": 0.5382,
+   "stratum_weighted_selected": 0.5782,
+   "stratum_weighted_oracle_reference_only": 0.6807,
+   "pre_announced_band": [
+    0.54,
+    0.58
+   ]
+  },
+  "submission": {
+   "zip": "submissions/02_drop.zip",
+   "files": 20,
+   "bytes": 1527300,
+   "validate": "VALID: all checks passed",
+   "expect_n": 20,
+   "heme": "keep",
+   "lig_residue_errors": 0,
+   "heavy_atom_mismatches": 0,
+   "uploaded": false
+  },
+  "verdict": "both streams clean - 0 failures of 34 jobs; the set is 45% Type I against the validation set's 16%, so expect ~0.54-0.58, not the rehearsal's 0.6164"
  }
 ]

@@ -1,0 +1,247 @@
+{
+ "summary": {
+  "pool": "C:\\cyp_struct\\matched_depth\\poses\\drop_flat",
+  "filters": {
+   "files_seen": 400,
+   "units_seen": 20,
+   "not_in_csv": 0,
+   "unreadable": 0,
+   "zero_ligand_atoms": 0,
+   "no_heme": 0,
+   "no_axial_sg": 0,
+   "no_heme_frame": 0,
+   "empty_file_bytes": 0
+  },
+  "ligands": 20,
+  "poses": 400,
+  "missing_ligands": [],
+  "poses_per_ligand": [
+   20
+  ],
+  "distinct_poses_per_ligand": {
+   "min": 20,
+   "median": 20.0,
+   "max": 20,
+   "n_ligands_below_20": 0
+  },
+  "frac_coordinating_pose_level": 0.55,
+  "fe_donor_dist_pct": {
+   "5": 2.115,
+   "25": 2.17,
+   "50": 2.351,
+   "75": 4.987,
+   "95": 6.576
+  },
+  "s_fe_donor_angle_pct": {
+   "5": 139.33,
+   "25": 151.27,
+   "50": 171.46,
+   "75": 174.33,
+   "95": 175.71
+  },
+  "frac_proximal_mean": NaN,
+  "ligand_atom_count_varies_within_ligand": []
+ },
+ "per_ligand": [
+  {
+   "ligand": "OCNT-2312554",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    24
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.1308
+  },
+  {
+   "ligand": "OCNT-2312966",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    27
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 4.9349
+  },
+  {
+   "ligand": "OCNT-2313038",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    24
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.1669
+  },
+  {
+   "ligand": "OCNT-2313300",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    21
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.1544
+  },
+  {
+   "ligand": "OCNT-2313397",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    25
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.4375
+  },
+  {
+   "ligand": "OCNT-2313429",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    23
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 5.4473
+  },
+  {
+   "ligand": "OCNT-2315379",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    26
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 4.8506
+  },
+  {
+   "ligand": "OCNT-2395328",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    27
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 5.9845
+  },
+  {
+   "ligand": "OCNT-2395342",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    26
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 5.1909
+  },
+  {
+   "ligand": "OCNT-2395415",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    18
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.2479
+  },
+  {
+   "ligand": "OCNT-2395436",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    23
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.1763
+  },
+  {
+   "ligand": "OCNT-2395457",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    21
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.137
+  },
+  {
+   "ligand": "OCNT-2395460",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    25
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 5.2434
+  },
+  {
+   "ligand": "OCNT-2395464",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    21
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.2304
+  },
+  {
+   "ligand": "OCNT-2395503",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    20
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.1234
+  },
+  {
+   "ligand": "OCNT-2395645",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    19
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 6.8688
+  },
+  {
+   "ligand": "OCNT-2395712",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    24
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 4.7479
+  },
+  {
+   "ligand": "OCNT-2395789",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    22
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.1948
+  },
+  {
+   "ligand": "OCNT-2535422",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    21
+   ],
+   "frac_coordinating": 0.0,
+   "fe_donor_median": 4.7668
+  },
+  {
+   "ligand": "OCNT-2535519",
+   "n_poses": 20,
+   "n_distinct_0p05A": 20,
+   "n_lig_atoms": [
+    26
+   ],
+   "frac_coordinating": 1.0,
+   "fe_donor_median": 2.1637
+  }
+ ]
+}

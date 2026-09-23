@@ -8918,5 +8918,501 @@
    }
   ],
   "shuffle_seed": 38
+ },
+ "drop/protenix_v2": {
+  "engine": "protenix_v2",
+  "tag": "drop",
+  "samples": 1,
+  "batches": [
+   {
+    "job_id": "89c570f9-4388-4842-adae-621e3504041c",
+    "ligands": [
+     "OCNT-2313429",
+     "OCNT-2395645",
+     "OCNT-2395415",
+     "OCNT-2395342",
+     "OCNT-2395460"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200395.7696707,
+    "done": true
+   },
+   {
+    "job_id": "c0471097-f47c-4b8c-9b92-8bad97485a16",
+    "ligands": [
+     "OCNT-2313038",
+     "OCNT-2312966",
+     "OCNT-2315379",
+     "OCNT-2395328",
+     "OCNT-2535422"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200402.322007,
+    "done": true
+   },
+   {
+    "job_id": "499aed7f-a064-4a73-9fd8-65226df49405",
+    "ligands": [
+     "OCNT-2313397",
+     "OCNT-2313300",
+     "OCNT-2395712",
+     "OCNT-2395457",
+     "OCNT-2535519"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200408.8793316,
+    "done": true
+   },
+   {
+    "job_id": "a2d4879b-9f03-4980-92f3-8159af0c82d5",
+    "ligands": [
+     "OCNT-2395789",
+     "OCNT-2395503",
+     "OCNT-2312554",
+     "OCNT-2395436",
+     "OCNT-2395464"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200416.046148,
+    "done": true
+   },
+   {
+    "job_id": "fbdd95c4-0360-4caa-8021-1ef04b827d5e",
+    "ligands": [
+     "OCNT-2395436",
+     "OCNT-2535519",
+     "OCNT-2395503",
+     "OCNT-2313300",
+     "OCNT-2315379"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200421.7041352,
+    "done": true
+   },
+   {
+    "job_id": "8f1e0473-1429-4d3e-8a78-d3d21bfebf4b",
+    "ligands": [
+     "OCNT-2312554",
+     "OCNT-2395457",
+     "OCNT-2395328",
+     "OCNT-2395789",
+     "OCNT-2312966"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200428.5830767,
+    "done": true
+   },
+   {
+    "job_id": "dd4ea088-070a-4ab3-b542-a86d310e4f81",
+    "ligands": [
+     "OCNT-2395415",
+     "OCNT-2313038",
+     "OCNT-2313429",
+     "OCNT-2395460",
+     "OCNT-2535422"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200434.9149802,
+    "done": true
+   },
+   {
+    "job_id": "b88e894f-3555-4afb-95ef-01228891a993",
+    "ligands": [
+     "OCNT-2395464",
+     "OCNT-2395342",
+     "OCNT-2313397",
+     "OCNT-2395712",
+     "OCNT-2395645"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200439.971202,
+    "done": true
+   },
+   {
+    "job_id": "9cb34585-25b7-4e3b-8fd8-16d2fdafb15f",
+    "ligands": [
+     "OCNT-2395436",
+     "OCNT-2395415",
+     "OCNT-2312554",
+     "OCNT-2395645",
+     "OCNT-2313429"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200444.938549,
+    "done": true
+   },
+   {
+    "job_id": "ca3ab4a2-ff5d-4799-b904-49965abd1f2a",
+    "ligands": [
+     "OCNT-2395328",
+     "OCNT-2395503",
+     "OCNT-2313300",
+     "OCNT-2395342",
+     "OCNT-2312966"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200449.6653614,
+    "done": true
+   },
+   {
+    "job_id": "220bfe4a-16d4-4654-aae2-cc7101bb18ee",
+    "ligands": [
+     "OCNT-2395460",
+     "OCNT-2313038",
+     "OCNT-2313397",
+     "OCNT-2535422",
+     "OCNT-2535519"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200454.3373544,
+    "done": true
+   },
+   {
+    "job_id": "60ae292b-86d3-4154-ab84-40caeb313b09",
+    "ligands": [
+     "OCNT-2395789",
+     "OCNT-2395457",
+     "OCNT-2395712",
+     "OCNT-2315379",
+     "OCNT-2395464"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200459.248974,
+    "done": true
+   },
+   {
+    "job_id": "b69a2191-0888-4d49-84a1-69d379d7ed87",
+    "ligands": [
+     "OCNT-2535519",
+     "OCNT-2313300",
+     "OCNT-2395457",
+     "OCNT-2395712",
+     "OCNT-2315379"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200464.573313,
+    "done": true
+   },
+   {
+    "job_id": "05c20880-7b85-4abf-926d-47c7bef0cb7e",
+    "ligands": [
+     "OCNT-2395789",
+     "OCNT-2395415",
+     "OCNT-2313429",
+     "OCNT-2395436",
+     "OCNT-2395503"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200469.9305506,
+    "done": true
+   },
+   {
+    "job_id": "fadecd2c-39ad-4703-9460-5d1666a2038f",
+    "ligands": [
+     "OCNT-2313397",
+     "OCNT-2395460",
+     "OCNT-2395328",
+     "OCNT-2535422",
+     "OCNT-2395464"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200474.621791,
+    "done": true
+   },
+   {
+    "job_id": "7ff47ac6-74e3-4b54-addd-336be0a53d51",
+    "ligands": [
+     "OCNT-2395645",
+     "OCNT-2312554",
+     "OCNT-2313038",
+     "OCNT-2312966",
+     "OCNT-2395342"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200479.9401991,
+    "done": true
+   }
+  ],
+  "shuffle_seed": 38
+ },
+ "drop/protenix": {
+  "engine": "protenix",
+  "tag": "drop",
+  "samples": 1,
+  "batches": [
+   {
+    "job_id": "19871db5-368e-42e1-be0f-c56d52254478",
+    "ligands": [
+     "OCNT-2395415",
+     "OCNT-2312554",
+     "OCNT-2395460",
+     "OCNT-2313429",
+     "OCNT-2395436"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200492.055244,
+    "done": true
+   },
+   {
+    "job_id": "b7797a77-a8f2-47ec-ab9e-c5619e3b0f79",
+    "ligands": [
+     "OCNT-2395342",
+     "OCNT-2313038",
+     "OCNT-2395464",
+     "OCNT-2312966",
+     "OCNT-2535422"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200497.615972,
+    "done": true
+   },
+   {
+    "job_id": "0a96b520-eb06-47f9-af4e-82f1ec7ef9bb",
+    "ligands": [
+     "OCNT-2315379",
+     "OCNT-2395503",
+     "OCNT-2395712",
+     "OCNT-2395789",
+     "OCNT-2395645"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200502.640432,
+    "done": true
+   },
+   {
+    "job_id": "a5c68861-bac2-47ac-998c-dc7b324c2048",
+    "ligands": [
+     "OCNT-2395457",
+     "OCNT-2313300",
+     "OCNT-2535519",
+     "OCNT-2313397",
+     "OCNT-2395328"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790200508.4975927,
+    "done": true
+   },
+   {
+    "job_id": "3f2e26df-0a5e-4c19-a7c1-0ace95f7d4c3",
+    "ligands": [
+     "OCNT-2313300",
+     "OCNT-2313429",
+     "OCNT-2312554",
+     "OCNT-2395436",
+     "OCNT-2395789"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200513.0140343,
+    "done": true
+   },
+   {
+    "job_id": "3df3ad7b-20c4-47b1-a760-4b69e0f0f829",
+    "ligands": [
+     "OCNT-2395503",
+     "OCNT-2315379",
+     "OCNT-2312966",
+     "OCNT-2395415",
+     "OCNT-2395328"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200518.4169157,
+    "done": true
+   },
+   {
+    "job_id": "3bb8402e-b5e8-4ae0-9c0d-bce0060e4a3f",
+    "ligands": [
+     "OCNT-2395457",
+     "OCNT-2395460",
+     "OCNT-2395342",
+     "OCNT-2535422",
+     "OCNT-2313397"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200523.5525746,
+    "done": true
+   },
+   {
+    "job_id": "58aaeb0a-f8ca-486f-a228-85da10c12b69",
+    "ligands": [
+     "OCNT-2395464",
+     "OCNT-2395712",
+     "OCNT-2313038",
+     "OCNT-2535519",
+     "OCNT-2395645"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790200529.5780873,
+    "done": true
+   },
+   {
+    "job_id": "e38e7339-d185-494b-9245-0646ef64b0e8",
+    "ligands": [
+     "OCNT-2395645",
+     "OCNT-2535519",
+     "OCNT-2313397",
+     "OCNT-2313300",
+     "OCNT-2395415"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200534.5873656,
+    "done": true
+   },
+   {
+    "job_id": "3e0f39e9-ce83-4e9f-9a8a-7984da01dc2d",
+    "ligands": [
+     "OCNT-2395460",
+     "OCNT-2395712",
+     "OCNT-2395464",
+     "OCNT-2395457",
+     "OCNT-2395328"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200539.7452815,
+    "done": true
+   },
+   {
+    "job_id": "15bc1c19-0b9d-455c-8d4c-ffb8750c84a0",
+    "ligands": [
+     "OCNT-2395436",
+     "OCNT-2395503",
+     "OCNT-2395342",
+     "OCNT-2312554",
+     "OCNT-2395789"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200544.8727386,
+    "done": true
+   },
+   {
+    "job_id": "1066de12-5e6c-4e20-99d6-2af7d07fd967",
+    "ligands": [
+     "OCNT-2313429",
+     "OCNT-2313038",
+     "OCNT-2315379",
+     "OCNT-2535422",
+     "OCNT-2312966"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790200550.5645638,
+    "done": true
+   },
+   {
+    "job_id": "cffd0c81-5327-42b1-8793-8a9d2987312e",
+    "ligands": [
+     "OCNT-2395342",
+     "OCNT-2313397",
+     "OCNT-2395464",
+     "OCNT-2395328",
+     "OCNT-2395436"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200555.7676213,
+    "done": true
+   },
+   {
+    "job_id": "e6769ffb-97fe-41b8-bdcc-9dfa77db5655",
+    "ligands": [
+     "OCNT-2395645",
+     "OCNT-2313038",
+     "OCNT-2395712",
+     "OCNT-2313300",
+     "OCNT-2315379"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200560.5239537,
+    "done": true
+   },
+   {
+    "job_id": "222ec47a-5135-4eb3-a72c-f79a097ed266",
+    "ligands": [
+     "OCNT-2312554",
+     "OCNT-2535519",
+     "OCNT-2395503",
+     "OCNT-2395415",
+     "OCNT-2535422"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200565.5530844,
+    "done": true
+   },
+   {
+    "job_id": "375a527f-9f27-4113-a229-da0fd4fbe32a",
+    "ligands": [
+     "OCNT-2395457",
+     "OCNT-2395789",
+     "OCNT-2395460",
+     "OCNT-2313429",
+     "OCNT-2312966"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790200571.3296807,
+    "done": true
+   }
+  ],
+  "shuffle_seed": 38
  }
 }

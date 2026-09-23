@@ -480,5 +480,58 @@
    "samples": 5
   },
   "ended": 1790153654.823953
+ },
+ {
+  "run_id": "drop_pool_explorer_1790200735",
+  "venue": "explorer",
+  "kind": "boltz2_cofold",
+  "units": 400,
+  "est_gpu_hours": 2.01,
+  "started": 1790200735.86,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": 2.01,
+  "note": "DROP RUN pool | 20 blinded test ligands x 20 samples, 2 round-robin jobs (10560020 V100 01:26:23, 10560024 A100 00:34:24), 0 failures, 400/400 poses",
+  "meta": {
+   "n_jobs": 2,
+   "engine": "boltz2",
+   "samples": 20,
+   "tags": [
+    "dropa",
+    "dropb"
+   ],
+   "partition": "gyorilab,gpu",
+   "seed": 101
+  },
+  "ended": 1790206595.693227
+ },
+ {
+  "run_id": "drop_refset_openprotein_1790200395",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 32,
+  "est_gpu_hours": 0.0,
+  "started": 1790200395.77,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": 0.0,
+  "note": "DROP RUN reference set | 20 ligands x 4 sampler settings x 2 Protenix checkpoints, batch 5, samples 1, shuffle seed 38 | 32 of 32 SUCCESS, 0 failures, 26.0 min wall clock, depth 8 on 20 of 20",
+  "meta": {
+   "n_jobs": 32,
+   "engines": [
+    "protenix_v2",
+    "protenix"
+   ],
+   "settings": [
+    "3x200",
+    "10x200",
+    "3x50",
+    "5x200"
+   ],
+   "ligands": 20,
+   "batch": 5,
+   "samples": 1
+  },
+  "ended": 1790206595.693227
  }
 ]

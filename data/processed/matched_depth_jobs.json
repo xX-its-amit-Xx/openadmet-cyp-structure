@@ -59,6 +59,26 @@
    "submitted_at": 1790157466.8443387,
    "stdout": "10539929\n",
    "stderr": ""
+  },
+  {
+   "job": "10560020",
+   "sub": "dropa",
+   "seed": 101,
+   "samples": 20,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790200735.8599179,
+   "stdout": "10560020\n",
+   "stderr": ""
+  },
+  {
+   "job": "10560024",
+   "sub": "dropb",
+   "seed": 101,
+   "samples": 20,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790200740.7779036,
+   "stdout": "10560024\n",
+   "stderr": ""
   }
  ]
 }
