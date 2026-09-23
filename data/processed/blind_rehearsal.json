@@ -1,0 +1,228 @@
+{
+ "tag": "val87blind",
+ "steps": [
+  {
+   "step": "plan",
+   "rc": 0,
+   "stdout_tail": "{\n  \"mode\": \"val87blind\",\n  \"tag\": \"val87blind\",\n  \"csv\": \"C:\\\\cyp_struct\\\\blind_rehearsal\\\\blind_ligands.csv\",\n  \"filter\": {\n    \"source_csv\": \"C:\\\\cyp_struct\\\\blind_rehearsal\\\\blind_ligands.csv\",\n    \"rule\": \"all ids in the csv\",\n    \"n\": 87\n  },\n  \"yaml_written\": 87,\n  \"ligands\": [\n    \"08J\",\n    \"08Y\",\n    \"1RD\",\n    \"2QH\",\n    \"5AW\",\n    \"6AW\",\n    \"7AW\",\n    \"80K\",\n    \"8AW\",\n    \"A1A06\",\n    \"A1A07\",\n    \"A1A08\",\n    \"A1A4K\",\n    \"A1A4S\",\n    \"A1A4T\",\n    \"A1A4U\",\n    \"A1A4V\",\n    \"A1APA\",\n    \"A1ASO\",\n    \"A1ASP\",\n    \"A1ASQ\",\n    \"A1ASR\",\n    \"A1ASS\",\n    \"A1AST\",\n    \"A1ASU\",\n    \"A1ASV\",\n    \"A1BNX\",\n    \"A1CIW\",\n    \"CFF\",\n    \"CL6\",\n    \"D0R\",\n    \"D7J\",\n    \"D7M\",\n    \"D7Y\",\n    \"D81\",\n    \"DEJ\",\n    \"DEV\",\n    \"DJ1\",\n    \"ERY\",\n    \"FZV\",\n    \"G0D\",\n    \"G0J\",\n    \"G0M\",\n    \"G0V\",\n    \"G1J\",\n    \"J9K\",\n    \"KLN\",\n    \"MF8\",\n    \"MWS\",\n    \"MWV\",\n    \"MWY\",\n    \"MYT\",\n    \"NH0\",\n    \"NI6\",\n    \"NJ0\",\n    \"NJO\",\n    \"NXR\",\n    \"NYF\",\n    \"PG0\",\n    \"PG4\",\n    \"PK9\",\n    \"PKT\",\n    \"QDJ\",\n    \"QDP\",\n    \"QDV\",\n    \"QDY\",\n    \"QE4\",\n    \"QEA\",\n    \"QEP\",\n    \"QES\",\n    \"RIT\",\n    \"T0K\",\n    \"TCI\",\n    \"X5Y\",\n    \"X6J\",\n    \"X6S\",\n    \"X6V\",\n    \"X71\",\n    \"X74\",\n    \"X7D\",\n    \"X7J\",\n    \"X7M\",\n    \"X7P\",\n    \"Y83\",\n    \"YNV\",\n    \"Z8Z\",\n    \"Z9Z\"\n  ],\n  \"skipped\": [],\n  \"dir\": \"C:\\\\cyp_struct\\\\matched_depth\\\\yaml\\\\val87blind\",\n  \"msa_path_in_yaml\": \"/scratch/shenoy.am/cyp-depth/msa/cyp3a4.a3m\",\n  \"blind\": true,\n  \"counts\": null\n}\n",
+   "stderr_tail": ""
+  },
+  {
+   "step": "score_refuses",
+   "rc": 1,
+   "stdout_tail": "",
+   "stderr_tail": "tag 'val87blind' was planned from 'C:\\\\cyp_struct\\\\blind_rehearsal\\\\blind_ligands.csv', which has no `pdb` column: there are no crystals to score against and every ligand would be counted as `no_crystal`, returning zero rows. Run `collect` and build the selection feature from the flat pose directory instead (playbook G2).\n"
+  },
+  {
+   "step": "binding_mode_predict",
+   "rc": 0,
+   "stdout_tail": "{\n \"predict\": {\n  \"rule\": \"median fe_donor_dist over the ligand's OWN poses, cut at COORD_MAX = 2.6 A (FINDING 033 item 1)\",\n  \"filters\": {\n   \"units_seen\": 87,\n   \"not_in_csv\": 0,\n   \"unreadable\": 0,\n   \"no_ligand_atoms\": 0,\n   \"no_heme\": 0,\n   \"no_pose_scored\": 0\n  },\n  \"n_ligands\": 87,\n  \"composition\": {\n   \"type_II\": 73,\n   \"type_I\": 13,\n   \"peripheral\": 1\n  },\n  \"n_ambiguous\": 0,\n  \"ambiguous_ligands\": [],\n  \"ambiguous_band_A\": [\n   2.59,\n   2.82\n  ],\n  \"ligands_with_no_poses\": [],\n  \"expected_absolute_score\": \"Type I-rich sets score nearer 0.51, otherwise nearer 0.64 (playbook section 3) - pre-announce it with the entry\",\n  \"out\": \"C:\\\\cyp_struct\\\\blind_rehearsal\\\\binding_mode_pred.csv\"\n }\n}\n",
+   "stderr_tail": ""
+  },
+  {
+   "step": "build_xeng",
+   "rc": 0,
+   "stdout_tail": "reference: frozen reference_set_cyp3a4.npz (87 ligands)\nreference depth: {'ligands': 87, 'min': 6, 'median': 7.0, 'max': 12, 'at_least_4': 87, 'usable': True}\npool units: 87   without a reference pose (will fall back): 0\n\n1740 poses over 87 ligands -> xeng_val87blind.csv\nbuild_submission.py will now select on this automatically.\n",
+   "stderr_tail": ""
+  },
+  {
+   "step": "build_submission_blind",
+   "rc": 0,
+   "stdout_tail": "selector: FINDING 011/012 cross-engine agreement (+0.0395) via cypstruct.xengine.select()\n87 ligands selected\npool source: local D:\\cyp_scratch\\rehearsal_flat\n  20/87\n  40/87\n  60/87\n  80/87\n\nwrote 87 PDBs -> D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\submissions\\02_blind_rehearsal_val87b.zip\n  errors: 0   files without exactly one LIG residue: 0\n",
+   "stderr_tail": ""
+  },
+  {
+   "step": "validate",
+   "rc": 0,
+   "stdout_tail": "VALID: all checks passed\n",
+   "stderr_tail": ""
+  }
+ ],
+ "step0_blind_csv": {
+  "n": 87,
+  "columns_kept": [
+   "id",
+   "smiles"
+  ],
+  "columns_hidden": [
+   "pdb",
+   "cls",
+   "fe"
+  ],
+  "out": "C:\\cyp_struct\\blind_rehearsal\\blind_ligands.csv"
+ },
+ "step0_flat_pool": {
+  "reused": true,
+  "poses": 1740,
+  "ligands": 87
+ },
+ "failed_steps": [],
+ "score_refused_as_designed": true,
+ "selection": {
+  "tag": "val87blind",
+  "xeng_csv": "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\xeng_val87blind.csv",
+  "rule": "FINDING 011/012 cross-engine agreement (+0.0395) via cypstruct.xengine.select()",
+  "argmin_equals_select": true,
+  "n_xeng_ligands": 87,
+  "n_xeng_poses": 1740,
+  "selected_by_xeng": [
+   "08J",
+   "08Y",
+   "1RD",
+   "2QH",
+   "5AW",
+   "6AW",
+   "7AW",
+   "80K",
+   "8AW",
+   "A1A06",
+   "A1A07",
+   "A1A08",
+   "A1A4K",
+   "A1A4S",
+   "A1A4T",
+   "A1A4U",
+   "A1A4V",
+   "A1APA",
+   "A1ASO",
+   "A1ASP",
+   "A1ASQ",
+   "A1ASR",
+   "A1ASS",
+   "A1AST",
+   "A1ASU",
+   "A1ASV",
+   "A1BNX",
+   "A1CIW",
+   "CFF",
+   "CL6",
+   "D0R",
+   "D7J",
+   "D7M",
+   "D7Y",
+   "D81",
+   "DEJ",
+   "DEV",
+   "DJ1",
+   "ERY",
+   "FZV",
+   "G0D",
+   "G0J",
+   "G0M",
+   "G0V",
+   "G1J",
+   "J9K",
+   "KLN",
+   "MF8",
+   "MWS",
+   "MWV",
+   "MWY",
+   "MYT",
+   "NH0",
+   "NI6",
+   "NJ0",
+   "NJO",
+   "NXR",
+   "NYF",
+   "PG0",
+   "PG4",
+   "PK9",
+   "PKT",
+   "QDJ",
+   "QDP",
+   "QDV",
+   "QDY",
+   "QE4",
+   "QEA",
+   "QEP",
+   "QES",
+   "RIT",
+   "T0K",
+   "TCI",
+   "X5Y",
+   "X6J",
+   "X6S",
+   "X6V",
+   "X71",
+   "X74",
+   "X7D",
+   "X7J",
+   "X7M",
+   "X7P",
+   "Y83",
+   "YNV",
+   "Z8Z",
+   "Z9Z"
+  ],
+  "fell_back": [],
+  "uncovered": [],
+  "requested": 87
+ },
+ "unblind": {
+  "n_ligands": 87,
+  "board_expected": {
+   "selected": 0.6164,
+   "oracle": 0.6975,
+   "random": 0.5769,
+   "gain": 0.0395,
+   "rho": -0.2582,
+   "correct_sign": 0.7586
+  },
+  "board_measured_blind": {
+   "selected": 0.6164,
+   "oracle": 0.6975,
+   "random": 0.5769,
+   "gain": 0.0395,
+   "rho": -0.2582,
+   "correct_sign": 0.7586
+  },
+  "also": {
+   "frac_beating_pool_mean": 0.6782,
+   "n_rho": 87
+  },
+  "matches_board": {
+   "selected": true,
+   "oracle": true,
+   "random": true,
+   "gain": true,
+   "rho": true,
+   "correct_sign": true
+  },
+  "all_six_match": true,
+  "same_pose_as_crystal_path": "87/87",
+  "crystal_path_ligands": 87,
+  "n_exact_zero_lddt": 0,
+  "worst_ligands": [
+   {
+    "ligand": "5AW",
+    "lddt_pli": 0.1893442622950819,
+    "random": 0.1884016393442622,
+    "oracle": 0.2163934426229508
+   },
+   {
+    "ligand": "T0K",
+    "lddt_pli": 0.2308868501529052,
+    "random": 0.23490061162079506,
+    "oracle": 0.2568807339449541
+   },
+   {
+    "ligand": "1RD",
+    "lddt_pli": 0.2446351931330472,
+    "random": 0.28258226037195994,
+    "oracle": 0.4012875536480687
+   },
+   {
+    "ligand": "NJ0",
+    "lddt_pli": 0.2449567723342939,
+    "random": 0.2686239193083573,
+    "oracle": 0.321685878962536
+   },
+   {
+    "ligand": "J9K",
+    "lddt_pli": 0.2617713004484305,
+    "random": 0.27990470852017935,
+    "oracle": 0.3385650224215246
+   }
+  ]
+ }
+}

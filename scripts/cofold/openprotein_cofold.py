@@ -152,8 +152,33 @@ def get_msa(s):
     return msa
 
 
+def parse_sweep(spec: str) -> list[tuple[int, int]]:
+    """`'3x200,10x200,3x50,3x400'` -> [(3,200),(10,200),(3,50),(3,400)].
+
+    Refuses `num_recycles < 2`: FINDING 016 measured `num_recycles=1` at **-0.0596**
+    against the default over 100 pairs - the one setting that degrades rather than
+    diversifies. A reference pose that is simply worse is not an independent opinion.
+    """
+    out: list[tuple[int, int]] = []
+    for tok in spec.split(","):
+        tok = tok.strip().lower()
+        if not tok:
+            continue
+        rec, steps = tok.split("x")
+        rec, steps = int(rec), int(steps)
+        if rec < 2:
+            raise SystemExit(
+                f"refusing sweep setting {tok!r}: num_recycles < 2 measured -0.0596 "
+                "against the default; it degrades rather than diversifies (FINDING 016)")
+        out.append((rec, steps))
+    if len(out) != len(set(out)):
+        raise SystemExit(f"duplicate settings in --sweep {spec!r}: each wave must differ")
+    return out
+
+
 def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
-           batch: int = 4, replicates: int = 1, single_sequence: bool = False) -> dict:
+           batch: int = 4, replicates: int = 1, single_sequence: bool = False,
+           sweep: list[tuple[int, int]] | None = None) -> dict:
     """Submit folds, RECORD THE JOB IDS, and return without waiting.
 
     Three facts about this API, each measured by `op_probe.py` rather than assumed, and
@@ -173,6 +198,16 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
     moves. Two SEPARATE jobs for the same ligand differ by 8.63 A ligand RMSD. So pose
     diversity comes from REPLICATE JOBS, and `replicates` - not `samples` - is the knob
     that builds a pool. A run with samples=20, replicates=1 yields one ligand pose.
+
+    **`--replicates` is now DEAD and `--sweep` replaces it (FINDINGs 015/016/034).** Both
+    OpenProtein engines became deterministic per configuration: a 12->24 replicate doubling
+    moved the oracle on 0 of 489 pairs and replicates 16-29 returned 196 of 196
+    byte-identical. What still varies the output is the SAMPLER, and distinct poses track
+    submission WAVES rather than jobs. `sweep=[(3,200),(10,200),(3,50),(3,400)]` submits
+    one wave per setting, each as its own set of jobs, and records the setting alongside
+    the wave index so `refset` can tell four opinions from four copies. Four settings gave
+    4 distinct placements in FINDING 016 - which is exactly the depth-4 minimum the
+    cross-engine feature refuses below.
     """
     from cypstruct.targets import fetch_sequences
 
@@ -195,13 +230,27 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
     # resubmitting everything or refusing to add depth.
     claimed = {(b.get("rep", 0), sid)
                for b in jobs[key]["batches"] for sid in b["ligands"]}
+    # One wave per sampler setting (the live depth lever), else `replicates` waves at the
+    # default setting (kept so existing call sites and reruns behave exactly as before).
+    waves = ([(i, rec, steps) for i, (rec, steps) in enumerate(sweep)] if sweep
+             else [(rep, 3, 200) for rep in range(replicates)])
+    # A wave index already used at a DIFFERENT setting would be indistinguishable from a
+    # replicate of the first one downstream, since the reference is keyed on (engine, rep).
+    prior = {b["rep"]: b.get("setting") for b in jobs[key]["batches"] if "rep" in b}
     n_sub = 0
-    for rep in range(replicates):
+    for rep, rec, steps in waves:
+        setting = f"{rec}x{steps}"
+        if prior.get(rep) not in (None, setting):
+            raise SystemExit(
+                f"wave {rep} of {key} was already submitted at setting {prior[rep]!r}, "
+                f"not {setting!r}. Waves are the unit of independence - pick a free "
+                f"index (used: {sorted(k for k in prior if prior[k])}) rather than "
+                "reusing one, or the reference set will count two settings as one.")
         todo = [(r.id, r.smiles) for r in df.itertuples()
                 if (rep, r.id) not in claimed]
         if not todo:
             continue
-        print(f"{engine} rep {rep}: {len(todo)} ligands, {samples} samples, "
+        print(f"{engine} wave {rep} ({setting}): {len(todo)} ligands, {samples} samples, "
               f"{batch} per job", flush=True)
         for i in range(0, len(todo), batch):
             chunk = todo[i:i + batch]
@@ -209,19 +258,20 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
             try:
                 fut = model.fold(
                     sequences=[build_complex(seq, smi, msa) for _s, smi in chunk],
-                    diffusion_samples=samples, num_recycles=3)
+                    diffusion_samples=samples, num_recycles=rec, num_steps=steps)
                 jobs[key]["batches"].append(
                     {"job_id": str(fut.job_id), "ligands": sids, "rep": rep,
-                     "samples": samples, "submitted": time.time()})
+                     "setting": setting, "samples": samples, "submitted": time.time()})
                 _save_jobs(jobs)
                 n_sub += 1
-                print(f"  r{rep}[{i//batch+1}] {','.join(sids)} -> {fut.job_id}",
+                print(f"  w{rep}[{i//batch+1}] {','.join(sids)} -> {fut.job_id}",
                       flush=True)
             except Exception as exc:
-                print(f"  r{rep}[{i//batch+1}] SUBMIT-FAIL {sids}: "
+                print(f"  w{rep}[{i//batch+1}] SUBMIT-FAIL {sids}: "
                       f"{type(exc).__name__}: {exc}", flush=True)
             time.sleep(0.6)
-    return {"key": key, "submitted_jobs": n_sub,
+    return {"key": key, "submitted_jobs": n_sub, "waves": [w[0] for w in waves],
+            "settings": {str(w[0]): f"{w[1]}x{w[2]}" for w in waves},
             "total_batches": len(jobs[key]["batches"])}
 
 
@@ -405,9 +455,128 @@ def score_and_correlate(engine: str, tag: str) -> dict:
     }
 
 
+def refset(tag: str, engines: list, out_npz: Path, min_depth: int = 4,
+           ligands_csv: str | None = None, tol: float = 0.05,
+           allow_thin: bool = False) -> dict:
+    """Turn collected OpenProtein waves into the frozen reference set the selector needs.
+
+    **This is the drop-day half of G6, and the loud failure is the point of it.** The
+    shipped selector scores a Boltz pose by its mean Chamfer distance to independent-engine
+    poses of the SAME ligand; `reference_set_cyp3a4.npz` covers only the 87 validation
+    ligands, so a blind set has NO reference until this runs. Below 4 independent poses the
+    feature measured **-0.0055** - it makes selection worse, not weaker - and the only
+    symptom downstream is `build_submission` quietly choosing the FINDING 003 rule at
+    +0.0265 instead of +0.0395. So this REFUSES, by default, rather than writing a thin set.
+
+    Three filters, each counted in the report because a count is the only thing that shows
+    a filter fired (T7/T8):
+
+      1. **one file per (engine, wave)** - within a single job every diffusion sample shares
+         one ligand conformation (FINDING 009), so N models are 1 opinion, not N;
+      2. **md5 of the file bytes** - replicates of a deterministic engine come back
+         byte-identical (FINDING 015: 196 of 196), and historical pools are ~85% duplicates;
+      3. **coordinates in the heme frame at `tol`** - two files can differ in a header and
+         be the same pose. Bytes prove identity; they do not prove difference.
+    """
+    import hashlib
+    import re as _re
+
+    sys.path.insert(0, str(REPO / "src"))
+    from cypstruct import pose as P
+    from cypstruct import xengine as X
+
+    want = None
+    if ligands_csv:
+        df = pd.read_csv(ligands_csv)
+        idc = "structure" if "structure" in df.columns else "id"
+        want = set(df[idc].astype(str))
+
+    fname = _re.compile(r"(.+)__r(\d+)s(\d+)\.cif$")
+    counts = {"files_seen": 0, "unparseable_name": 0, "not_in_csv": 0,
+              "dropped_same_wave": 0, "dropped_same_md5": 0,
+              "dropped_same_coords": 0, "unreadable": 0, "no_heme_frame": 0}
+    picked: dict = {}
+    for eng in engines:
+        d = OUT_ROOT / tag / eng
+        for f in sorted(d.glob("*__r*.cif")):
+            counts["files_seen"] += 1
+            m = fname.match(f.name)
+            if m is None:
+                counts["unparseable_name"] += 1
+                continue
+            lig, wave = m.group(1), int(m.group(2))
+            if want is not None and lig not in want:
+                counts["not_in_csv"] += 1
+                continue
+            key = (eng, wave)
+            if key in picked.get(lig, {}):
+                counts["dropped_same_wave"] += 1     # FINDING 009: samples are not poses
+                continue
+            picked.setdefault(lig, {})[key] = f
+
+    ref: dict = {}
+    per_lig: dict = {}
+    for lig, by in sorted(picked.items()):
+        seen_md5 = set()
+        vs = []
+        for key, f in sorted(by.items()):
+            h = hashlib.md5(f.read_bytes()).hexdigest()
+            if h in seen_md5:
+                counts["dropped_same_md5"] += 1      # FINDING 015 / 034
+                continue
+            seen_md5.add(h)
+            try:
+                v = X.in_heme_frame(P.load_structure(f))
+            except Exception:
+                counts["unreadable"] += 1
+                continue
+            if v is None:
+                counts["no_heme_frame"] += 1
+                continue
+            vs.append(v)
+        n_before = len(vs)
+        vs = X._dedupe(vs, tol=tol)
+        counts["dropped_same_coords"] += n_before - len(vs)
+        if vs:
+            ref[lig] = vs
+        per_lig[lig] = {"waves": len(by), "after_md5": n_before, "depth": len(vs)}
+
+    thin = sorted(k for k, v in per_lig.items() if v["depth"] < min_depth)
+    missing = sorted(want - set(per_lig)) if want else []
+    depth = X.reference_depth(ref) if ref else {"ligands": 0, "usable": False}
+    report = {"tag": tag, "engines": list(engines), "filters": counts,
+              "ligands_with_poses": len(per_lig), "reference_depth": depth,
+              "min_depth": min_depth, "below_min_depth": thin,
+              "no_poses_at_all": missing, "per_ligand": per_lig}
+
+    if (thin or missing) and not allow_thin:
+        print(json.dumps({k: v for k, v in report.items() if k != "per_ligand"},
+                         indent=2, default=str))
+        print("")
+        print("REFUSING to write %s." % out_npz)
+        print("  %d ligand(s) below depth %d: %s" % (len(thin), min_depth, thin[:10]))
+        if missing:
+            print("  %d ligand(s) with no reference pose at all: %s"
+                  % (len(missing), missing[:10]))
+        print("At one reference pose this feature measured -0.0055: a thin reference set")
+        print("does not give a weaker selector, it gives a HARMFUL one, and the only")
+        print("downstream symptom is a silent fall back to FINDING 003 (+0.0265).")
+        print("Buy depth with SAMPLER WAVES - `submit --sweep 3x200,10x200,3x50,3x400`,")
+        print("one wave per setting (FINDING 016). NOT --replicates, which is")
+        print("byte-identical on both engines (FINDING 015).")
+        print("Pass --allow-thin only if you will also pass --skip-thin downstream and")
+        print("REPORT which ligands fell back.")
+        raise SystemExit(2)
+
+    out_npz = Path(out_npz)
+    report["saved"] = X.save_reference(ref, out_npz)
+    report["out"] = str(out_npz)
+    return report
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["models", "submit", "collect", "score"])
+    ap.add_argument("cmd", choices=["models", "submit", "collect", "score", "refset"])
     # protenix_v2 is the default because it is the only engine measured to WORK here:
     # boltz-1, boltz-1x, boltz-2 and rosettafold-3 all fail at runtime on this complex,
     # and alphafold2 warns that it discards ligand chains outright.
@@ -421,6 +590,19 @@ if __name__ == "__main__":
                     help="no MSA; REQUIRED for rosettafold_3, which fails on an uploaded one")
     ap.add_argument("--tag", default="op1")
     ap.add_argument("--csv", default=None, help="ligand csv; defaults to validation set")
+    ap.add_argument("--sweep", default=None,
+                    help="sampler settings as '<recycles>x<steps>,...', one submission "
+                         "WAVE each, e.g. '3x200,10x200,3x50,3x400'. This is the only "
+                         "live depth lever: --replicates is byte-identical on both "
+                         "engines (FINDING 015/016/034).")
+    ap.add_argument("--engines", nargs="+", default=["protenix_v2", "protenix"],
+                    help="refset: engine pools under data/processed/openprotein/<tag>/")
+    ap.add_argument("--out", default=None, help="refset: output .npz")
+    ap.add_argument("--min-depth", type=int, default=4,
+                    help="refset: independent poses per ligand below which it REFUSES")
+    ap.add_argument("--allow-thin", action="store_true",
+                    help="refset: write anyway (then you MUST pass --skip-thin to "
+                         "build_xeng_feature and report the fallbacks)")
     a = ap.parse_args()
 
     if a.cmd == "models":
@@ -428,7 +610,15 @@ if __name__ == "__main__":
     elif a.cmd == "submit":
         print(json.dumps(submit(a.engine, ligand_set(a.n or None, csv=a.csv), a.samples, a.tag,
                                 batch=a.batch, replicates=a.replicates,
-                                single_sequence=a.single_sequence), indent=1)[:800])
+                                single_sequence=a.single_sequence,
+                                sweep=parse_sweep(a.sweep) if a.sweep else None),
+                         indent=1)[:800])
+    elif a.cmd == "refset":
+        out = a.out or str(DATA_PROCESSED / ("reference_set_%s.npz" % a.tag))
+        r = refset(a.tag, a.engines, Path(out), min_depth=a.min_depth,
+                   ligands_csv=a.csv, allow_thin=a.allow_thin)
+        print(json.dumps({k: v for k, v in r.items() if k != "per_ligand"},
+                         indent=2, default=str))
     elif a.cmd == "collect":
         print(json.dumps(collect(a.engine, a.tag), indent=2))
     else:

@@ -30,8 +30,14 @@ import pandas as pd
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "src"))
 
-import modal  # noqa: E402
-
+# `modal` is imported lazily, inside the branch that needs it (G3). At module scope it
+# made this file unimportable on any box without the package - and on drop day Modal is
+# over its spend cap, so the Modal branch is the one that will NOT be taken.
+#
+# This script SCORES against deposited structures, so unlike its two siblings it has no
+# blind mode and cannot get one: `reference_for(pdb, lig)` needs a crystal per ligand
+# (playbook G2). On a blind set run `boltz_depth.py collect` and build the selection
+# feature from the flat pose directory instead.
 from cypstruct import pose as P  # noqa: E402
 from cypstruct.paths import (  # noqa: E402
     DATA_PROCESSED, free_gb, resource_headroom, safe_workers,
@@ -136,6 +142,7 @@ def main() -> None:
 
     ligands = pd.read_csv(a.ligands)
     meta = {r.id: r for r in ligands.itertuples()}
+    import modal
     vol = modal.Volume.from_name("cyp-pool")
 
     job_ids = sorted({e.path.rstrip("/").split("/")[-1] for e in vol.iterdir(f"/{a.tag}")})

@@ -110,6 +110,29 @@ def readiness() -> list[tuple[str, bool, str]]:
         rows.append(("build()/selector exercisable", False,
                      f"{type(exc).__name__}: {exc}"))
 
+    # the BLIND selector is the one drop day uses; the crystal path above cannot run then
+    try:
+        from build_submission import choose_poses_blind
+        bp, brep = choose_poses_blind("val87blind")
+        rows.append(("BLIND selector runs end to end", len(bp) > 0,
+                     f"{len(bp)} ligands, argmin==select "
+                     f"{brep['argmin_equals_select']}"))
+    except Exception as exc:
+        rows.append(("BLIND selector runs end to end", False,
+                     f"{type(exc).__name__}: {exc}"))
+
+    # the acceptance test itself: did the full blind rehearsal reproduce the board?
+    br = DATA_PROCESSED / "blind_rehearsal.json"
+    if br.exists():
+        import json as _json
+        u = _json.loads(br.read_text()).get("unblind", {})
+        rows.append(("blind rehearsal reproduces board", bool(u.get("all_six_match")),
+                     f"{u.get('board_measured_blind')}, same pose "
+                     f"{u.get('same_pose_as_crystal_path')}"))
+    else:
+        rows.append(("blind rehearsal reproduces board", False,
+                     "never run - `python scripts/ops/blind_rehearsal.py run`"))
+
     # the cross-engine feature is what the selector now prefers; absent, it silently
     # falls back to the weaker FINDING 003 rule
     xe = DATA_PROCESSED / "xeng_val87b.csv"
@@ -177,13 +200,23 @@ def main() -> int:
             print(f"  {k}: {old} -> {new}")
         if new_files:
             print(f"  new dataset files: {new_files}")
-        print("\n  Drop-day path:")
+        # This used to print the Modal, crystal-dependent sequence - `detached.py launch`
+        # on a capped account, then three scripts that all key off poses_scored_<tag>.csv.
+        # None of it could run on a blind set. The sequence below is docs/DROP_DAY_PLAYBOOK
+        # section 1, which has been rehearsed end to end (scripts/ops/blind_rehearsal.py).
+        print("\n  Drop-day path (docs/DROP_DAY_PLAYBOOK.md section 1):")
         print("   1. re-read the Space config: the dataset size and id format were")
         print("      placeholders (184, 'x00011-1') taken from PXR")
         print("   2. preflight_parse.py on the new ligands  (CPU, catches schema errors)")
-        print("   3. detached.py launch --engine boltz --arms unsteered")
-        print("   4. collect_and_score -> orientation_features -> test_consensus_selector")
-        print("   5. build_submission.py build, then validate --expect-n <size>")
+        print("   3. boltz_depth.py plan --csv <test csv> --tag drop, then stage/verify/")
+        print("      submit/poll/collect --tag drop      (Explorer; Modal is over cap)")
+        print("      DO NOT run `score`: it needs a crystal per ligand and refuses")
+        print("   4. openprotein_cofold.py submit --sweep 3x200,10x200,3x50,3x400 (x2")
+        print("      engines) -> collect -> refset   (REFUSES below reference depth 4)")
+        print("   5. build_xeng_feature.py --pool <flat dir> --pool-flat --ref-npz ...")
+        print("   6. binding_mode_robustness.py predict --pool <flat dir> --pool-flat")
+        print("   7. build_submission.py build --blind --pool-dir <flat dir> --pool-flat,")
+        print("      then validate --expect-n <size>")
         return 2
 
     print(f"\nno upstream change; {len(rows)-n_bad}/{len(rows)} readiness checks pass")

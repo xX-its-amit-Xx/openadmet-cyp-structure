@@ -54,12 +54,32 @@ ssh explorer 'hostname; squeue -u shenoy.am'
 python scripts/explorer/boltz_depth.py plan            # the 14-ligand stratum
 python scripts/explorer/boltz_depth.py plan --smoke    # one non-stratum ligand
 python scripts/explorer/boltz_depth.py conditioning    # what must match, with hashes
+
+# a blind test set: every id in the csv, under its own tag
+python scripts/explorer/boltz_depth.py plan \
+    --csv data/processed/test_ligands.csv --tag drop
 ```
 
 `plan` does **not** re-implement the YAML. It lifts `build_yaml` out of
 `scripts/cofold/modal_boltz.py` by AST extraction and executes it, so the input is written
-by the same function that wrote the pool being extended. On a blind test set, point it at
-the new ligand CSV; nothing else changes.
+by the same function that wrote the pool being extended.
+
+**On the blind-set flag, and the correction that matters.** This runbook used to say
+"point it at the new ligand CSV; nothing else changes" — **there was no flag to do that**
+until 2026-09-23. `plan` read `validation_ligands.csv` and `binding_mode_labels_cyp3a4.csv`
+and filtered to the 14-ligand predicted-Type-I stratum, so on a test set it would have
+written the wrong inputs for the wrong ligands. `--csv` now takes **every** id in the file
+(the Type-I filter is a property of the FINDING 035 pre-registration, not of the
+generator), and `--tag` names the subdirectory that `stage`, `submit`, `collect` and
+`score` all key off — on both sides. Without `--tag`, every stage behaves exactly as
+before (`stratum`, or `smoke` with `--smoke`). `plan` records what it did in
+`C:/cyp_struct/matched_depth/plans/<tag>.json`, which is where `collect` gets the expected
+ligand list and `score` learns whether the set is blind. Exercised on the 87 validation
+ligands presented as `id,smiles` only: 87/87 YAMLs, 0 skipped.
+
+**`score` now refuses a blind tag** rather than returning zero rows. It needs a `pdb` per
+ligand; without one every ligand landed in `skipped["no_crystal"]` and it wrote an empty
+CSV while exiting 0 (playbook G2).
 
 ### 2. Stage to `/scratch` — from a **login** node
 
@@ -207,11 +227,13 @@ de-risk.
 ## Drop-day sequence
 
 1. `ssh explorer 'sinfo -p gyorilab,gpu -o "%P %t %G"'` — pick the partition list.
-2. Point `plan` at the test-set ligand CSV. The MSA is already staged and the target
-   sequence does not change.
-3. `stage` → `verify` → `submit`. Budget ~1 GPU-hour per 14 ligands × 20 samples; scale
-   linearly and split into several jobs if the set is large, since each is independently
-   resumable.
-4. `poll` on the file count. `collect`, then `score`.
+2. `plan --csv data/processed/test_ligands.csv --tag drop`. The MSA is already staged and
+   the target sequence does not change. Pass the same `--tag` to every stage below.
+3. `stage --tag drop` → `verify` → `submit --tag drop`. Budget ~1 GPU-hour per 14 ligands
+   × 20 samples; scale linearly and split into several jobs if the set is large, since
+   each is independently resumable.
+4. `poll` on the file count. `collect --tag drop` — it now also reports `missing_ligands`
+   and `poses_per_ligand` against the plan, which is check 4 of the four signals.
+   **Do NOT run `score`**: it needs a crystal per ligand and refuses a blind tag.
 5. Label the test ligands prediction-side (`FINDING_033` item 1) before selecting.
 6. Select with `cypstruct.xengine.select()` — unchanged (`FINDING_033` item 2).

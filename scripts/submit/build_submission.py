@@ -49,7 +49,8 @@ import pandas as pd
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "src"))
 
-from cypstruct.paths import DATA_PROCESSED, SUBMISSIONS  # noqa: E402
+from cypstruct.paths import (  # noqa: E402
+    DATA_PROCESSED, SCRATCH, SUBMISSIONS, guard_scratch)
 
 LIG_RESNAME = "LIG"
 
@@ -112,6 +113,108 @@ def choose_poses(tag: str, arm: str = "unsteered") -> dict[str, str]:
     return {lig: g.loc[g._s.idxmax(), "sample"] for lig, g in df.groupby("ligand")}
 
 
+def choose_poses_blind(tag: str, ligands_csv: Path | None = None,
+                       arm: str = "unsteered",
+                       xeng_csv: Path | None = None,
+                       fallback: bool = True) -> tuple[dict, dict]:
+    """Pick one pose per ligand with NOTHING from a crystal. Returns (picks, report).
+
+    `choose_poses` cannot run on a blind set for two independent reasons (playbook G2/G5):
+    it reads `poses_scored_<tag>.csv`, which is produced by scoring against deposited
+    structures, and it raises `SystemExit` without `consensus_features_<tag>_<arm>.csv`,
+    which is produced by a Modal-only script. Neither exists on drop day. This is the same
+    selection rule with the crystal-derived joins removed.
+
+    The rule is unchanged and untuned: `cypstruct.xengine.select()`, i.e. `-z(xeng)` within
+    the ligand, which is `argmin(xeng)` exactly. Board: selected 0.6164, oracle 0.6975,
+    random 0.5769, gain **+0.0395** (FINDINGs 011/035/036/037).
+
+    **Thin ligands are named, never silently degraded.** A ligand missing from
+    `xeng_<tag>.csv` is one `build_xeng_feature --skip-thin` dropped for want of 4
+    independent reference poses. Those fall back to FINDING 003 (contacts + medoid,
+    +0.0265) *if* its two prediction-side feature files exist, and the report says exactly
+    which ligands took which rule - because the difference is 0.013 LDDT-PLI per ligand and
+    the old code path printed nothing at all.
+    """
+    import sys as _sys
+
+    _sys.path.insert(0, str(REPO / "src"))
+    from cypstruct import xengine as X
+
+    xf = Path(xeng_csv) if xeng_csv else DATA_PROCESSED / f"xeng_{tag}.csv"
+    if not xf.exists():
+        raise SystemExit(
+            f"missing {xf}. On a blind set the cross-engine feature is the selector; "
+            "build it with `build_xeng_feature.py --tag "
+            f"{tag} --pool <flat pose dir> --pool-flat --ref-npz <reference .npz>` "
+            "after generating reference poses (`openprotein_cofold.py submit --sweep ...` "
+            "then `refset`). Without it there is no blind selection rule at all.")
+    xe = pd.read_csv(xf).dropna(subset=["xeng"])
+    picks_df = X.select(xe)
+    picks = dict(zip(picks_df.ligand.astype(str), picks_df["sample"].astype(str)))
+
+    # the invariant the playbook asserts in three findings; cheap, so assert it here too
+    argmin = xe.loc[xe.groupby("ligand").xeng.idxmin()]
+    argmin_map = dict(zip(argmin.ligand.astype(str), argmin["sample"].astype(str)))
+    if argmin_map != picks:
+        differ = sorted(k for k in picks if argmin_map.get(k) != picks[k])
+        raise SystemExit(f"argmin(xeng) != xengine.select() on {len(differ)} ligands "
+                         f"({differ[:5]}) - the selector has changed shape, stop.")
+
+    want = None
+    if ligands_csv is not None:
+        d = pd.read_csv(ligands_csv)
+        idc = "structure" if "structure" in d.columns and "id" not in d.columns else "id"
+        want = [str(v) for v in d[idc]]
+
+    report = {"tag": tag, "xeng_csv": str(xf),
+              "rule": "FINDING 011/012 cross-engine agreement (+0.0395) via "
+                      "cypstruct.xengine.select()",
+              "argmin_equals_select": True,
+              "n_xeng_ligands": int(xe.ligand.nunique()),
+              "n_xeng_poses": int(len(xe)),
+              "selected_by_xeng": sorted(picks),
+              "fell_back": [], "uncovered": []}
+
+    if want is None:
+        return picks, report
+
+    thin = [lig for lig in want if lig not in picks]
+    report["requested"] = len(want)
+    if not thin:
+        return picks, report
+
+    # FINDING 003 fallback, both inputs prediction-side (no crystal):
+    #   0.5 * z(n_pocket_residues_touched) - z(mean_rmsd_to_others)
+    of = DATA_PROCESSED / f"orientation_features_{tag}_{arm}.csv"
+    cf = DATA_PROCESSED / f"consensus_features_{tag}_{arm}.csv"
+    if fallback and of.exists() and cf.exists():
+        o = pd.read_csv(of)
+        c = pd.read_csv(cf)
+        f = o.merge(c, on=["ligand", "sample"], how="inner")
+        f = f[f.ligand.astype(str).isin(thin)].dropna(
+            subset=["n_pocket_residues_touched", "mean_rmsd_to_others"])
+        if len(f):
+            def zw(col):
+                g = f.groupby("ligand")[col]
+                return (f[col] - g.transform("mean")) / (g.transform("std") + 1e-9)
+            f = f.assign(_s=0.5 * zw("n_pocket_residues_touched")
+                         - zw("mean_rmsd_to_others"))
+            got = f.loc[f.groupby("ligand")._s.idxmax()]
+            for r in got.itertuples():
+                picks[str(r.ligand)] = str(r.sample)
+                report["fell_back"].append(str(r.ligand))
+    report["fell_back"] = sorted(report["fell_back"])
+    report["uncovered"] = sorted(lig for lig in want if lig not in picks)
+    if report["fell_back"]:
+        print(f"  {len(report['fell_back'])} ligand(s) fell back to FINDING 003 "
+              f"(+0.0265, not +0.0395): {report['fell_back'][:10]}", flush=True)
+    if report["uncovered"]:
+        print(f"  !! {len(report['uncovered'])} ligand(s) have NO pose at all: "
+              f"{report['uncovered'][:10]}", flush=True)
+    return picks, report
+
+
 def to_submission_pdb(cif_path: Path, out_pdb: Path, heme: str = "keep") -> dict:
     """Write a single-model PDB with the query ligand renamed to `LIG`.
 
@@ -156,12 +259,21 @@ def to_submission_pdb(cif_path: Path, out_pdb: Path, heme: str = "keep") -> dict
 
 
 def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
-          profile: str | None) -> None:
+          profile: str | None, blind: bool = False,
+          ligands_csv: Path | None = None, pool_flat: bool = False) -> None:
     import os
     import shutil
     import tempfile
 
-    picks = choose_poses(tag, arm)
+    blind_report = None
+    if blind:
+        picks, blind_report = choose_poses_blind(tag, ligands_csv, arm)
+        print(f"selector: {blind_report['rule']}", flush=True)
+        if pool_dir is None:
+            raise SystemExit("--blind needs --pool-dir: there is no Modal volume for a "
+                             "blind set and Modal is over its spend cap anyway")
+    else:
+        picks = choose_poses(tag, arm)
     print(f"{len(picks)} ligands selected", flush=True)
 
     # A LOCAL pool must work without Modal. `pool_dir` was a dead parameter - build()
@@ -178,7 +290,11 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
     else:
         pool_dir = Path(pool_dir)
         print(f"pool source: local {pool_dir}", flush=True)
-    tmp = Path(tempfile.mkdtemp(prefix="cypsub_", dir="D:/cyp_scratch"))
+    # T9/G8: this used to be hardcoded to D:/cyp_scratch, on the drive with ~12 GB free
+    # and the one the repo itself lives on. SCRATCH is C:/cyp_struct and guard_scratch
+    # raises BEFORE the first write rather than wedging the box at 0 bytes.
+    guard_scratch(2.0)
+    tmp = Path(tempfile.mkdtemp(prefix="cypsub_", dir=str(SCRATCH)))
     reports = {}
     try:
         staged = tmp / "pdb"
@@ -193,9 +309,16 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
                 else:
                     # accept both pool layouts: <pool>/<LIG>__<arm>__s1/<sample>.cif as
                     # the Modal volume is organised, and a flat <pool>/<sample>.cif
+                    # Explorer's `collect` writes a FLAT directory whose file stems
+                    # already carry the ligand (<lig>__s<seed>_m<k>.cif); the Modal
+                    # volume nests by job. Both are accepted, and a flat pool whose
+                    # stems are bare sample names still resolves by the second candidate.
                     cands = [pool_dir / job / f"{sample}.cif",
                              pool_dir / f"{sample}.cif",
-                             pool_dir / lig / f"{sample}.cif"]
+                             pool_dir / lig / f"{sample}.cif",
+                             pool_dir / f"{lig}__{sample}.cif"]
+                    if pool_flat:
+                        cands = [c for c in cands if c.parent == pool_dir]
                     hit = next((c for c in cands if c.exists()), None)
                     if hit is None:
                         raise FileNotFoundError(
@@ -228,7 +351,8 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
             print("   first multi/zero-LIG:", list(multi.items())[:3])
         (DATA_PROCESSED / f"submission_report_{tag}.json").write_text(
             json.dumps({"tag": tag, "heme": heme, "n": len(pdbs),
-                        "reports": reports}, indent=1))
+                        "blind": bool(blind), "selection": blind_report,
+                        "picks": picks, "reports": reports}, indent=1))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
@@ -262,7 +386,8 @@ def validate(zip_path: Path, ligands_csv: Path, expect_n: int | None = None) -> 
             errs.append(f"{len(extra)} unexpected structures, first: {extra[:5]}")
 
         import tempfile
-        with tempfile.TemporaryDirectory(dir="D:/cyp_scratch") as td:
+        guard_scratch(1.0)
+        with tempfile.TemporaryDirectory(dir=str(SCRATCH)) as td:
             for n in names:
                 sid = Path(n).stem
                 p = Path(td) / f"{sid}.pdb"
@@ -322,9 +447,17 @@ if __name__ == "__main__":
     ap.add_argument("--profile", default=None)
     ap.add_argument("--pool-dir", default=None,
                     help="read poses from a local directory instead of the Modal volume")
+    ap.add_argument("--blind", action="store_true",
+                    help="select with cypstruct.xengine.select() over xeng_<tag>.csv "
+                         "alone - no crystals, no Modal-derived feature files. This is "
+                         "the drop-day path (playbook G5).")
+    ap.add_argument("--pool-flat", action="store_true",
+                    help="--pool-dir is a flat directory of <LIG>__<sample>.cif")
     a = ap.parse_args()
     if a.cmd == "build":
         build(a.tag, a.arm, Path(a.out), a.heme,
-              Path(a.pool_dir) if a.pool_dir else None, a.profile)
+              Path(a.pool_dir) if a.pool_dir else None, a.profile,
+              blind=a.blind, ligands_csv=Path(a.ligands) if a.blind else None,
+              pool_flat=a.pool_flat)
     else:
         raise SystemExit(validate(Path(a.zip or a.out), Path(a.ligands), a.expect_n))

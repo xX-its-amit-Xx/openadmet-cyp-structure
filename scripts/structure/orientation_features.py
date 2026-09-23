@@ -50,8 +50,9 @@ import pandas as pd
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "src"))
 
-import modal  # noqa: E402
-
+# `modal` is imported lazily, inside the branch that needs it (G3). At module scope it
+# made this file unimportable on any box without the package - and on drop day Modal is
+# over its spend cap, so the Modal branch is the one that will NOT be taken.
 from cypstruct import pose as P  # noqa: E402
 from cypstruct.paths import DATA_PROCESSED, free_gb, safe_workers  # noqa: E402
 from cypstruct.qmscore import geometry as G  # noqa: E402
@@ -69,6 +70,32 @@ def scratch_root() -> Path:
     c = Path("C:/cyp_scratch")
     c.mkdir(parents=True, exist_ok=True)
     return c
+
+
+def _wanted(csv: str) -> set:
+    d = pd.read_csv(csv)
+    idc = "structure" if "structure" in d.columns and "id" not in d.columns else "id"
+    return {str(v) for v in d[idc]}
+
+
+def _local_units(pool: Path) -> list:
+    """Unit names in a local pool: per-ligand directories, else ligand stems if flat."""
+    dirs = [d.name for d in sorted(pool.glob("*")) if d.is_dir()
+            and any(d.glob("*.cif"))]
+    if dirs:
+        return dirs
+    return sorted({f.name.split("__")[0] for f in pool.glob("*.cif")})
+
+
+def _local_files(pool: Path, unit: str) -> list:
+    d = pool / unit
+    if d.is_dir():
+        return sorted(d.glob("*.cif"))
+    lig = unit.split("__")[0]
+    d = pool / lig
+    if d.is_dir():
+        return sorted(d.glob("*.cif"))
+    return sorted(pool.glob(f"{lig}__*.cif"))
 
 
 def pose_features(model: P.Complex) -> dict:
@@ -136,6 +163,16 @@ def main() -> None:
     ap.add_argument("--tag", default="val87b")
     ap.add_argument("--arm", default="unsteered")
     ap.add_argument("--workers", type=int, default=5)
+    ap.add_argument("--pool-dir", default=None,
+                    help="read poses from a LOCAL directory instead of the Modal volume. "
+                         "Accepts <pool>/<LIG>__<arm>__s1/*.cif, <pool>/<LIG>/*.cif and a "
+                         "flat <pool>/<LIG>__*.cif.")
+    ap.add_argument("--ligands", default=None,
+                    help="ligand csv. With --pool-dir this replaces poses_scored_<tag>, "
+                         "which needs crystals and so cannot exist on a blind set.")
+    ap.add_argument("--no-eval", action="store_true",
+                    help="write the feature csv and stop. The evaluation below scores "
+                         "against crystals and is meaningless blind.")
     a = ap.parse_args()
 
     cache = DATA_PROCESSED / f"orientation_features_{a.tag}_{a.arm}.csv"
@@ -143,10 +180,21 @@ def main() -> None:
         print(f"using cached {cache}", flush=True)
         feats = pd.read_csv(cache)
     else:
-        scored = pd.read_csv(DATA_PROCESSED / f"poses_scored_{a.tag}.csv")
-        scored = scored[scored.arm == a.arm]
-        jobs = sorted({f"{r.ligand}__{a.arm}__s1" for r in scored.itertuples()})
-        vol = modal.Volume.from_name("cyp-pool")
+        vol = None
+        local = Path(a.pool_dir) if a.pool_dir else None
+        if local is not None:
+            jobs = sorted(_local_units(local))
+        else:
+            scored = pd.read_csv(DATA_PROCESSED / f"poses_scored_{a.tag}.csv")
+            scored = scored[scored.arm == a.arm]
+            jobs = sorted({f"{r.ligand}__{a.arm}__s1" for r in scored.itertuples()})
+            import modal
+            vol = modal.Volume.from_name("cyp-pool")
+        if a.ligands:
+            want = _wanted(a.ligands)
+            before = len(jobs)
+            jobs = [j for j in jobs if j.split("__")[0] in want]
+            print(f"ligand filter: {before} -> {len(jobs)}", flush=True)
         root = Path(tempfile.mkdtemp(prefix="cyporient_", dir=str(scratch_root())))
         nw = safe_workers(a.workers, ram_per_worker_gb=1.0)
         print(f"{len(jobs)} jobs, {nw} worker(s)", flush=True)
@@ -157,14 +205,18 @@ def main() -> None:
             lig_id = job.split("__")[0]
             w = root / job
             w.mkdir(parents=True, exist_ok=True)
-            local: list[dict] = []
+            out_rows: list[dict] = []
             try:
-                for e in vol.iterdir(f"/{a.tag}/{job}"):
-                    fn = e.path.split("/")[-1]
-                    if fn.endswith(".cif"):
-                        (w / fn).write_bytes(b"".join(vol.read_file(e.path)))
+                if vol is None:
+                    files = _local_files(local, job)
+                else:
+                    for e in vol.iterdir(f"/{a.tag}/{job}"):
+                        fn = e.path.split("/")[-1]
+                        if fn.endswith(".cif"):
+                            (w / fn).write_bytes(b"".join(vol.read_file(e.path)))
+                    files = sorted(w.glob("*.cif"))
                 fps, recs = [], []
-                for cif in sorted(w.glob("*.cif")):
+                for cif in files:
                     try:
                         m = P.load_structure(cif)
                     except Exception:
@@ -185,12 +237,12 @@ def main() -> None:
                     mean_jac = np.nanmean(jac, axis=1)
                     for i, r in enumerate(recs):
                         r["contact_consensus"] = float(mean_jac[i])
-                local = recs
+                out_rows = recs
             except Exception:
-                local = []
+                out_rows = []
             finally:
                 shutil.rmtree(w, ignore_errors=True)
-            return local
+            return out_rows
 
         try:
             with ThreadPoolExecutor(max_workers=nw) as ex:
@@ -209,7 +261,13 @@ def main() -> None:
         print(f"-> {cache}", flush=True)
 
     # --- evaluate, WITHIN LIGAND ------------------------------------------
-    scored = pd.read_csv(DATA_PROCESSED / f"poses_scored_{a.tag}.csv")
+    sc_path = DATA_PROCESSED / f"poses_scored_{a.tag}.csv"
+    if a.no_eval or not sc_path.exists():
+        print(f"\n{len(feats)} poses over {feats.ligand.nunique()} ligands; evaluation "
+              f"skipped ({'--no-eval' if a.no_eval else f'no {sc_path.name}'}). "
+              "The features are the deliverable on a blind set.", flush=True)
+        return
+    scored = pd.read_csv(sc_path)
     scored = scored[scored.arm == a.arm]
     df = scored.merge(feats, on=["ligand", "sample"], how="inner")
     print(f"\nmerged {len(df)} poses over {df.ligand.nunique()} ligands", flush=True)

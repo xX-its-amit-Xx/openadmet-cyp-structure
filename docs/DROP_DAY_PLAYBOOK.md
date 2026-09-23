@@ -9,8 +9,13 @@ measured, it says **not measured** — do not fill the gap under deadline pressu
 `2026-08-27T23:16:39Z` · 7 files, none of them a structure set. `20` replaced the earlier
 `184` PXR placeholder but is still marked TODO upstream — **re-read it on the day.**
 
-**Read before executing:** §9 (what does not exist yet). Five pieces of the path that
-`readiness.py` prints are stale or blind-incompatible. Budget an hour for §9, not zero.
+**Read before executing:** §9. It used to list eight gaps that made the printed path
+unrunnable on a blind set; seven are now closed and the whole sequence below §1 has been
+**rehearsed end to end on the 87 validation ligands with their crystals hidden**
+(`python scripts/ops/blind_rehearsal.py run`, 2026-09-23). Unblinded, it reproduced the
+board to four decimals — selected **0.6164**, oracle **0.6975**, random **0.5769**, gain
+**+0.0395**, ρ **−0.2582**, correct sign **75.86%** — and picked the **same pose on 87 of
+87** ligands as the crystal-dependent path. What remains is in §9, and it is one item.
 
 ---
 
@@ -54,14 +59,20 @@ python scripts/cofold/preflight_parse.py \
 
 ```bash
 ssh explorer 'sinfo -p gyorilab,gpu -o "%P %t %G"'      # pick the partition list
-python scripts/explorer/boltz_depth.py plan             # ⚠ see §9 G1 — needs the test CSV wired in
+python scripts/explorer/boltz_depth.py plan --csv data/processed/test_ligands.csv --tag drop
 python scripts/explorer/boltz_depth.py conditioning     # prints the hashes that must match
-python scripts/explorer/boltz_depth.py stage            # from a LOGIN node
+python scripts/explorer/boltz_depth.py stage  --tag drop    # from a LOGIN node
 python scripts/explorer/boltz_depth.py push             # sbatch templates, CRLF stripped
 python scripts/explorer/boltz_depth.py verify           # inside a job, not on the login node
-python scripts/explorer/boltz_depth.py submit --seed 101 --samples 20 --partition gyorilab,gpu
+python scripts/explorer/boltz_depth.py submit --tag drop --seed 101 --samples 20 \
+    --partition gyorilab,gpu
 python scripts/explorer/boltz_depth.py poll
 ```
+
+* `--csv` takes **every** id in the file; the 14-ligand Type-I filter is the FINDING 035
+  pre-registration and applies only when `--csv` is absent. `--tag` flows through
+  `plan`/`stage`/`submit`/`collect`/`score` on both sides and defaults to `stratum`, so an
+  existing campaign is untouched.
 
 * **Done:** `poll` reports `n_ligands × 20` mmCIFs on disk and boltz's own log says
   `Number of failed examples: 0`.
@@ -80,16 +91,20 @@ python scripts/explorer/boltz_depth.py poll
 ### Step 3 — collect
 
 ```bash
-python scripts/explorer/boltz_depth.py collect
+python scripts/explorer/boltz_depth.py collect --tag drop
 ```
 
-* **Done:** a flat directory of `<ligand>__s<seed>_m<k>.cif` under `POSE_DIR/stratum_flat`.
+* **Done:** a flat directory of `<ligand>__s<seed>_m<k>.cif` under `POSE_DIR/drop_flat`.
   Confidence `.npz` blobs stay on `/scratch` — D: has ~12 GB and is not a place to land a
   pool.
-* **Check:** per-ligand counts in the returned JSON, and that the remote `find` was scoped
-  to `./<sub>_s*` so a smoke run's poses were not swept in (RUNBOOK_explorer_boltz failure 8).
-* **DO NOT run `boltz_depth.py score`.** It requires a crystal per ligand and will skip
-  every blind ligand as `no_crystal`, returning zero rows (§9 G2).
+* **Check:** the returned JSON now carries `planned`, `missing_ligands`,
+  `poses_per_ligand` and `uniform_depth` against the plan manifest — that is check 4 of
+  Step 2's four signals, and a file count alone never was. Also that the remote `find` was
+  scoped to `./<tag>_s*` so a smoke run's poses were not swept in
+  (RUNBOOK_explorer_boltz failure 8).
+* **DO NOT run `boltz_depth.py score`.** It requires a crystal per ligand. It used to skip
+  every blind ligand as `no_crystal` and return zero rows with exit 0; it now **refuses**
+  a blind tag by name (G2, closed).
 
 ### Step 4 — build the reference set and the selection feature
 
@@ -98,16 +113,36 @@ poses of the SAME ligand from **independent** engines (FINDING 011). Those refer
 do not exist for new ligands — they must be generated. See §9 G6; this is the longest pole.
 
 ```bash
+# one submission WAVE per sampler setting - waves are the unit of independence, and
+# --replicates is byte-identical on both engines (FINDING 015/016/034)
 python scripts/cofold/openprotein_cofold.py submit --engine protenix_v2 \
-    --csv data/processed/test_ligands.csv --tag drop
+    --csv data/processed/test_ligands.csv --tag drop --sweep 3x200,10x200,3x50,3x400
 python scripts/cofold/openprotein_cofold.py submit --engine protenix \
-    --csv data/processed/test_ligands.csv --tag drop
-python scripts/cofold/openprotein_cofold.py collect
+    --csv data/processed/test_ligands.csv --tag drop --sweep 3x200,10x200,3x50,3x400
+python scripts/cofold/openprotein_cofold.py collect --engine protenix_v2 --tag drop
+python scripts/cofold/openprotein_cofold.py collect --engine protenix    --tag drop
+
+# freeze the reference set. This REFUSES below depth 4 and names the ligands.
+python scripts/cofold/openprotein_cofold.py refset --tag drop \
+    --engines protenix_v2 protenix --csv data/processed/test_ligands.csv \
+    --out data/processed/reference_set_drop.npz
+
 python scripts/structure/build_xeng_feature.py --tag drop \
-    --pool <per-ligand pool dir>  --refs protenix_v2 protenix
+    --pool <flat pose dir> --pool-flat --ref-npz data/processed/reference_set_drop.npz
 ```
 
 * **Done:** `data/processed/xeng_drop.csv` with `{ligand, sample, xeng}`.
+* `refset` applies three filters and prints the count for each, because a filter that
+  never fires beats any passing check (T8): **one pose per (engine, wave)** — within a job
+  every diffusion sample shares one ligand conformation (FINDING 009); **md5 of the file
+  bytes** — deterministic engines return byte-identical replicates (FINDING 015);
+  **coordinates in the heme frame at 0.05 Å** — two files can differ in a header and be
+  the same pose. Exercised offline on a constructed pool: 24 files → 6 dropped as
+  same-wave, 9 as same-md5, depth 3, **refused**; and 18 files → 3 same-md5, 3
+  same-coordinates-only, depth 4, written.
+* `--pool-flat` is what Explorer's `collect` produces. Without it `build_xeng_feature`
+  globbed for per-ligand *directories* and read zero poses, reporting it as a `--pattern`
+  problem (G4, closed).
 * **Check — this is the one that decides whether the selector is usable:**
   `build_xeng_feature` prints `reference depth` and **REFUSES below 4 independent poses
   per ligand**. At one reference pose the feature measures **−0.0055**: a thin reference
@@ -131,11 +166,18 @@ python scripts/structure/build_xeng_feature.py --tag drop \
 
 ```bash
 python scripts/ops/pool_diagnostics.py --xeng data/processed/xeng_drop.csv
+
+python scripts/structure/binding_mode_robustness.py predict \
+    --pool <flat pose dir> --pool-flat \
+    --ligands data/processed/test_ligands.csv \
+    --out data/processed/binding_mode_pred_drop.csv
 ```
 
-Plus the prediction-side binding-mode label — **no wired script exists for blind ligands**
-(§9 G7). The rule, from FINDING 033: **median `fe_donor_dist` over that ligand's own poses,
-cut at 2.6 Å**. `cypstruct.qmscore.geometry.compute(...)` returns `fe_donor_dist` per pose.
+The rule, from FINDING 033: **median `fe_donor_dist` over that ligand's own poses, cut at
+2.6 Å**. Needs no crystal. Re-run on the validation pool it reproduces
+`pred_fe_donor_median` to 9e-16 and the crystal agreement to the ligand — **84 of 87 =
+96.6%**, composition 73 Type II / 13 Type I / 1 peripheral, i.e. the 14-ligand
+non-coordinating stratum (G7, closed).
 
 * **Done:** a per-ligand `pred_mode` and the composition (n Type I / n Type II).
 * **Check:** the label is computable from the prediction alone on **84 of 87 = 96.6%**;
@@ -164,13 +206,25 @@ picks = X.select(pd.read_csv("data/processed/xeng_drop.csv"))   # -z(xeng), one 
 ### Step 7 — build the submission
 
 ```bash
-python scripts/submit/build_submission.py build \
-    --tag drop --arm unsteered --pool-dir <flat pose dir> \
+python scripts/submit/build_submission.py build --blind \
+    --tag drop --arm unsteered --pool-dir <flat pose dir> --pool-flat \
+    --ligands data/processed/test_ligands.csv \
     --heme keep --out submissions/02_drop.zip
 ```
 
-* ⚠ `choose_poses()` cannot run blind (§9 G5). Use the §9 G5 bypass, which calls
-  `to_submission_pdb()` directly on the Step 6 picks.
+* **`--blind` is the drop-day path and it is EXERCISED** (G5, closed). It calls
+  `choose_poses_blind()`, which selects with `cypstruct.xengine.select()` over
+  `xeng_<tag>.csv` alone — no `poses_scored_*`, no `consensus_features_*`, nothing from a
+  crystal — asserts `argmin(xeng) == select()` before using either, and writes the picks
+  and the per-ligand rule into `submission_report_<tag>.json`. Run without `--blind`,
+  `build` behaves exactly as before.
+* **Ligands that fell back are NAMED, not absorbed.** A ligand missing from
+  `xeng_<tag>.csv` (one `--skip-thin` dropped) takes the FINDING 003 rule from
+  `orientation_features_*` + `consensus_features_*` — both prediction-side — and the
+  report lists it under `fell_back`; a ligand with no pose at all is listed under
+  `uncovered`. Verified by thinning 10 ligands' reference sets to depth 1: all 10 were
+  named, all 10 got a **different** pose from the one the full feature picks, and the
+  other 77 were **bit-identical** to the full run.
 * **Format — the OFFICIAL spec**, read from the Space's own `submission.py`, not inferred:
   a flat `.zip` of exactly `STRUCTURE_DATASET_SIZE` `.pdb` files, named
   `<compound_id>.pdb`, each a **full protein–ligand complex with the ligand residue named
@@ -608,85 +662,139 @@ new cryoEM structures **first**, before any cross-model metric (RUNBOOK Step 4).
 
 ## 9. What does not exist yet — read before Step 2
 
-These are gaps in the shipped path, found by reading the code on 2026-09-23. Each is small;
-together they are the difference between an hour and a day. **None of the workarounds below
-has been exercised.**
+A code audit on **2026-09-23** found eight gaps that between them made the path above
+unrunnable on a blind test set: `readiness.py` printed a sequence that routed through
+Modal (over cap) and assumed crystals existed, and the runbook claimed a `plan --csv` flag
+that did not exist. **Seven are now closed and exercised. One remains, and it is the one
+that needs a network and a queue.**
 
-**G1 — `boltz_depth.py plan` has no `--csv`.** It reads `validation_ligands.csv` and
-`binding_mode_labels_cyp3a4.csv` and filters to the 14-ligand predicted-Type-I stratum
-(`type_i_ligands()`, `smoke_ligand()`). `RUNBOOK_explorer_boltz` says "point `plan` at the
-test-set ligand CSV; nothing else changes" — **there is no flag to do that.** Add one, or
-stage the test set as `validation_ligands.csv` and make `plan` take all ids. `collect` and
-`score` also key off the fixed `stratum` / `smoke` subdirectory names.
-
-**G2 — `boltz_depth.py score` cannot run blind.** It calls `load_crystal(pdb, lid)` per
-ligand and increments `skipped["no_crystal"]` when there is none — a blind set returns **zero
-rows**. Run `collect` and stop; build features from the flat pose directory instead.
-
-**G3 — the `readiness.py` drop-day path step 4 is stale.** `collect_and_score.py`,
-`orientation_features.py` and `test_consensus_selector.py` all `import modal` at module level,
-read from the `cyp-pool` Modal volume with **no `--pool-dir`**, and all key off
-`poses_scored_<tag>.csv`, which requires crystal ground truth. None of them can run on drop
-day, for two independent reasons. `detached.py launch --engine boltz` (step 3) is also
-Modal-only and Modal is over cap.
-
-**G4 — `build_xeng_feature.py --pool` expects per-ligand DIRECTORIES.** `_emit()` globs
-`<pool>/<pool-glob>` and skips anything that is not a directory. Explorer's `collect` writes a
-**flat** directory of `<ligand>__s<seed>_m<k>.cif`. Reshape first, e.g.
+The acceptance test is in the repo and is re-runnable:
 
 ```bash
-cd <flat_dir> && for f in *.cif; do lig="${f%%__*}"; mkdir -p "../pooldirs/${lig}__drop__s1"; \
-  cp "$f" "../pooldirs/${lig}__drop__s1/"; done
+python scripts/ops/blind_rehearsal.py run      # the full sequence, crystals hidden
+python scripts/ops/blind_rehearsal.py gates    # the REFUSALS, against broken input
 ```
 
-then `--pool ../pooldirs --pool-glob '*__*' --pattern '*.cif'`.
+`run` takes the 87 validation ligands, reduces them to `id,smiles`, re-presents the
+existing Boltz pool in the flat layout Explorer's `collect` writes (hardlinks, not a copy —
+T9), and executes plan → refuse-to-score → type → xeng → select → build → validate through
+the same entry points drop day will use. Then it unblinds. Result, 2026-09-23:
 
-**G5 — `build_submission.choose_poses()` cannot run blind.** It requires
-`poses_scored_<tag>.csv` **and** `consensus_features_<tag>_<arm>.csv` (it raises `SystemExit`
-without the latter), both of which are G3-blocked. **Bypass** — select with
-`cypstruct.xengine.select()` and call the converter directly. UNEXERCISED; test it on
-`val87b` before the day:
+| | expected | blind rehearsal |
+|---|---|---|
+| selected | 0.6164 | **0.6164** |
+| oracle | 0.6975 | **0.6975** |
+| random | 0.5769 | **0.5769** |
+| gain | +0.0395 | **+0.0395** |
+| ρ (within-ligand) | −0.2582 | **−0.2582** |
+| correct sign | 75.86% | **75.86%** |
 
-```python
-import sys, zipfile, pandas as pd
-from pathlib import Path
-sys.path.insert(0, "src"); sys.path.insert(0, "scripts/submit")
-from cypstruct import xengine as X
-from build_submission import to_submission_pdb
+**All six to four decimals, and the same pose on 87 of 87 ligands as the crystal-dependent
+path.** `argmin(xeng) == cypstruct.xengine.select()` is asserted inside
+`choose_poses_blind` before either is used. Zero poses scored exactly 0.0000, which is the
+FINDING 021 numbering control (T1). `validate --expect-n 87` passed; 87 PDBs, 0 errors, 0
+files without exactly one `LIG` residue.
 
-POOL = Path("<flat pose dir>"); OUT = Path("C:/cyp_struct/drop_pdb"); OUT.mkdir(parents=True, exist_ok=True)
-picks = X.select(pd.read_csv("data/processed/xeng_drop.csv"))
-for r in picks.itertuples():
-    rep = to_submission_pdb(POOL / f"{r.sample}.cif", OUT / f"{r.ligand}.pdb", heme="keep")
-    assert rep["n_lig_residues"] == 1, (r.ligand, rep)
-with zipfile.ZipFile("submissions/02_drop.zip", "w", zipfile.ZIP_DEFLATED) as zf:
-    for p in sorted(OUT.glob("*.pdb")): zf.write(p, arcname=p.name)
-```
-
-Then run `build_submission.py validate` on the zip — that half **is** exercised.
-
-**G6 — no reference-pose generator is wired for NEW CYP3A4 ligands.** This is the longest
-pole. `data/processed/reference_set_cyp3a4.npz` is frozen over the **87 validation** ligands
-and will not cover the test set. `diversity_probe.py` (the FINDING 016 sampler sweep, the
-documented drop-day reference route) is hardwired to the P450-universe
-`p450_cofold_set.csv` + `campaign.json` MSA map, with no CYP3A4 path.
-`openprotein_cofold.py` **does** take `--csv`, but hardcodes `num_recycles=3` and exposes no
-sweep. So the available routes are: (a) several **submission waves** of
-`openprotein_cofold.py submit --engine protenix_v2 / protenix` and dedupe (FINDING 034 —
-distinct poses track waves), or (b) extend `diversity_probe.py` to accept a ligand CSV.
-Either way, **check `reference depth` before trusting the feature**, and `--skip-thin` rather
-than force.
-
-**G7 — no prediction-side binding-mode labeller for blind ligands.**
-`binding_mode_robustness.py labels` derives `crystal_mode` and needs crystals. The
-prediction-side half is one line over the pool: `cypstruct.qmscore.geometry.compute(...)`
-gives `fe_donor_dist` per pose; take the **median per ligand** and cut at **2.6 Å**
-(`COORD_MAX`, FINDING 033).
-
-**G8 — two hardcoded `D:/cyp_scratch` temp dirs in `build_submission.py`** (`build()` and
-`validate()`), on a drive with ~12 GB free. The directory exists; watch it.
+*One definition to keep straight, because getting it wrong makes a working pipeline look
+broken:* **"correct sign 75.86%" is the fraction of ligands whose WITHIN-LIGAND ρ has the
+expected negative sign (66 of 87)** — not the fraction of ligands where the pick beat the
+pool mean, which is 67.8%. Both are in `blind_rehearsal.json`.
 
 ---
+
+### ⚠ G6 — reference poses for NEW ligands. **Wired and probed; the longest pole remains.**
+
+The machinery is now wired, its refusals are exercised, and the generator was run **live**
+on OpenProtein end to end — `submit --sweep 3x200,10x200` → `collect` → `refset` on one
+ligand (tag `g6probe`, 2026-09-23). What is *not* done is the volume: the blind set has
+**no reference until jobs are run for it**, `reference_set_cyp3a4.npz` covers only the 87
+validation ligands, and two OpenProtein waves took ~12 minutes wall-clock for one ligand.
+
+**The probe answered the question that was open.** Two sampler settings on a CYP3A4 ligand
+returned two **genuinely distinct** poses — max per-atom displacement **3.07 Å**, Chamfer
+in the heme frame **0.872 Å**, 2 distinct after the 0.05 Å dedupe. So `num_recycles` does
+diversify here, not only on the P450-universe pairs FINDING 016 measured. **n = 1 ligand,
+2 settings** — it removes the worry that the lever is dead on this target; it does not
+establish that four settings × two engines reliably clears depth 4 on every ligand.
+`refset` on that probe refused at depth 2, exit 2, as designed.
+
+* `openprotein_cofold.py submit --sweep 3x200,10x200,3x50,3x400` submits **one wave per
+  sampler setting**, records the setting beside the wave index, and refuses to reuse a
+  wave index at a different setting (two settings counted as one replicate is exactly the
+  T7 error). `--replicates` is kept but is dead: byte-identical on both engines at any
+  count (FINDING 015/034). Four settings gave 4 distinct placements in FINDING 016 — which
+  is the depth-4 minimum, with no margin.
+* `openprotein_cofold.py refset` freezes the waves into an `.npz`, applying the three
+  filters in §Step 4 and **exiting 2** with the ligand names if any is below depth 4.
+* **Still unverified: whether four settings × two engines clears depth 4 on EVERY test
+  ligand.** The probe above says the lever is live on CYP3A4 chemistry; it does not say it
+  is live on all of it. Budget a probe wave on a handful of test ligands before the full
+  submission, and read `refset`'s `below_min_depth` list before committing to a schedule.
+* **Budget:** ~12 min wall-clock for 2 waves × 1 ligand at `--batch 1`. `--batch 4` puts
+  four complexes in one job, so the wall-clock driver is waves, not ligands — but each
+  wave is a separate submission and the queue is shared.
+* **If depth cannot be reached:** `refset --allow-thin`, then `build_xeng_feature
+  --skip-thin`, then `build_submission --blind`, which names every fallback. Measured cost
+  shape, from thinning 10 of 87 to depth 1: those 10 all got a different pose, the other
+  77 were bit-identical, and the population difference between the two rules is 0.0395 −
+  0.0265 ≈ **0.013 LDDT-PLI per fallback ligand** (at n=10 the realised difference was
+  inside noise — do not read a single small stratum as the effect).
+* **More engines is NOT better** (+0.0380 for two Protenix checkpoints, +0.0178 adding
+  esmfold2), and **never add a reference engine to the POOL** (FINDING 013/016).
+
+---
+
+### Closed, with what closed it
+
+**G1 — `plan` had no `--csv`. CLOSED.** `plan --csv <file> --tag <name>` takes every id in
+the file; `--tag` flows through `plan`/`stage`/`submit`/`collect`/`score` on both sides and
+defaults to the historical `stratum`/`smoke`, so an existing campaign is untouched. `plan`
+writes `plans/<tag>.json`; `collect` reads it and now reports `missing_ligands`,
+`poses_per_ligand` and `uniform_depth`. Exercised: 87/87 YAMLs from an `id,smiles` CSV, 0
+skipped; the default `plan` still returns the same 14-ligand stratum.
+
+**G2 — `score` returned zero rows on a blind set. CLOSED.** It refuses a tag whose plan
+CSV has no `pdb` column, naming the CSV, instead of counting every ligand into
+`skipped["no_crystal"]` and exiting 0. Exercised (exit 1, message quoted in
+`blind_rehearsal.json`).
+
+**G3 — three scripts in the printed path imported `modal` at module scope. CLOSED.**
+`collect_and_score.py`, `orientation_features.py` and `test_consensus_selector.py` now
+import it lazily, inside the branch that uses it, and all three import cleanly on a box
+with no `modal` installed (verified). The two prediction-side ones take `--pool-dir`,
+`--ligands` and `--no-eval` and were run against the local pool with no Modal and no
+crystals. `collect_and_score.py` is importable but **has no blind mode and cannot get
+one** — it scores against deposited structures by definition; that is G2, not a bug.
+
+**G4 — `build_xeng_feature --pool` needed per-ligand DIRECTORIES. CLOSED.** `--pool-flat`
+reads Explorer's flat `<lig>__*.cif` directly. The old workaround was a full copy of the
+pool on a disk with ~12 GB free. It also prints `pool units` and how many have no
+reference pose, so a silent zero-row read is no longer possible.
+
+**G5 — `choose_poses()` could not run blind. CLOSED and EXERCISED.** `build --blind` calls
+`choose_poses_blind()`: `xengine.select()` over `xeng_<tag>.csv` alone, the
+`argmin == select` assertion, an explicit FINDING 003 fallback for thin ligands from two
+prediction-side feature files, and `fell_back`/`uncovered` lists in
+`submission_report_<tag>.json`. The ~10-line bypass sketched in the old §9 is superseded —
+it had no fallback and no report.
+
+**G7 — no prediction-side binding-mode labeller. CLOSED.**
+`binding_mode_robustness.py predict --pool <dir> [--pool-flat]`. On the validation pool it
+reproduces the stored `pred_fe_donor_median` to 9e-16 and the 84/87 = 96.6% crystal
+agreement, and gives 73 Type II / 13 Type I / 1 peripheral. It **flags** any ligand whose
+median lands in the empty band **[2.59, 2.82] Å** between the two observed classes rather
+than guessing a side.
+
+**G8 — two hardcoded `D:/cyp_scratch` temp dirs in `build_submission.py`. CLOSED.** Both
+now use `cypstruct.paths.SCRATCH` (`C:/cyp_struct`) behind `guard_scratch()`, which raises
+*before* the first write.
+
+### Still stale, and cheap
+
+`readiness.py`'s printed drop-day path (steps 3–5) still names `detached.py launch`,
+`collect_and_score`, `orientation_features` and `test_consensus_selector` — the Modal,
+crystal-dependent sequence. The correct sequence is §1 of this document. The readiness
+*checks* are sound; only the five printed lines are wrong.
 
 ## 10. Contradictions between findings — resolve before citing
 
@@ -760,17 +868,22 @@ in 035, 036 and 037 independently — selected 0.6164, oracle 0.6975, random 0.5
 
 1. `readiness.py` → exit 2. Re-read the Space config; **the file count gates first**.
 2. `preflight_parse.py` on the test CSV. Organometallics are reported, not dropped.
-3. Generate on **Explorer only**. Stage the MSA on a login node; `verify` in a job;
-   `sbatch`, never `srun`. **A FAILED state may be a complete run — check four signals.**
-4. `collect`. **Do not run `score`.**
-5. Buy reference poses for the new ligands (§9 G6). `build_xeng_feature` **refuses below
-   depth 4**; `--skip-thin` rather than force.
-6. Type the set (median `fe_donor_dist`, 2.6 Å). Report the composition and pre-announce
-   **~0.51 if Type I-rich, ~0.64 if not**.
+3. Generate on **Explorer only**: `plan --csv <test csv> --tag drop`, then every stage
+   with the same `--tag`. Stage the MSA on a login node; `verify` in a job; `sbatch`,
+   never `srun`. **A FAILED state may be a complete run — check four signals.**
+4. `collect --tag drop`, and check `missing_ligands` / `uniform_depth`. **Do not run
+   `score`** — it refuses a blind tag, by design.
+5. Buy reference poses for the new ligands: `openprotein_cofold.py submit --sweep
+   3x200,10x200,3x50,3x400` on **both** Protenix checkpoints, `collect`, then `refset`
+   (§9 G6 — the only open item). `refset` and `build_xeng_feature` both **refuse below
+   depth 4**; `--allow-thin`/`--skip-thin` rather than force, and **name the fallbacks**.
+6. Type the set: `binding_mode_robustness.py predict --pool <flat dir> --pool-flat`
+   (median `fe_donor_dist`, 2.6 Å). Report the composition and pre-announce **~0.51 if
+   Type I-rich, ~0.64 if not**. A median inside [2.59, 2.82] Å is flagged, not guessed.
 7. Select with `cypstruct.xengine.select()`. **Do not tune it. Do not change it on an n=14
    stratum.**
-8. Build the zip: one flat `<id>.pdb` per compound, residue `LIG`, **keep the heme**.
-   `validate --expect-n`.
+8. Build the zip with `build_submission.py build --blind --pool-flat`: one flat
+   `<id>.pdb` per compound, residue `LIG`, **keep the heme**. `validate --expect-n`.
 9. Report the oracle before the selection number, or say it is unavailable.
 10. **If a new idea appears: run the term oracle (§5 rung 2) first. If it cannot clear
     +0.0134 with perfect knowledge, it cannot clear it without.**

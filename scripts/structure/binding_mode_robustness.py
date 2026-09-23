@@ -50,6 +50,11 @@ from cypstruct.paths import DATA_PROCESSED  # noqa: E402
 COORD_MAX = 2.6       # Fe-to-closest-ligand-atom below this = Type II (coordinated)
 OVERHEAD_MAX = 6.5    # closest-atom below this but above COORD_MAX = Type I (active site)
 
+# The empty band between the two observed classes on the validation set (FINDING 033):
+# furthest Type II at 2.59 A, closest Type I at 2.82 A. A prediction-side median landing
+# inside it is FLAGGED, never guessed.
+AMBIG_LO, AMBIG_HI = 2.59, 2.82
+
 N_RANDOM_DRAWS = 300  # the task asks for >= 64
 N_NULL = 4000
 N_BOOT = 10000
@@ -318,6 +323,103 @@ def compare_strata(a: pd.DataFrame, b: pd.DataFrame, na: str, nb: str,
 # ---------------------------------------------------------------------------
 # stage 1 — verify the labels
 # ---------------------------------------------------------------------------
+
+def cmd_predict(pool: str, pool_flat: bool, pattern: str, pool_glob: str,
+                out_csv: str | None, ligands_csv: str | None) -> dict:
+    """Type a ligand set from the PREDICTIONS alone. Needs no crystal (G7).
+
+    The rule is FINDING 033 item 1, unchanged and untuned: the **median `fe_donor_dist`
+    over that ligand's own poses**, cut at `COORD_MAX = 2.6` A. On the validation set it
+    agrees with the crystal on **84 of 87 = 96.6%**, class separation AUC 1.00, with the
+    median fraction of poses coordinating at 1.00 for Type II and 0.00 for Type I.
+
+    `cmd_labels` computes the same column but only as a by-product of reading
+    `poses_scored_*.csv`, which is derived from crystals - so on a blind set it cannot run
+    at all. This reads the pool directly.
+
+    **The ambiguous band is reported, not resolved.** The closest Type I sits 0.244 A
+    beyond the furthest Type II, so a ligand whose median lands inside [2.59, 2.82] A is
+    not labelled by this rule in either direction. It is flagged; it is not guessed.
+    """
+    sys.path.insert(0, str(REPO / "src"))
+    from cypstruct import pose as P
+    from cypstruct.qmscore import geometry as G
+
+    root = Path(pool)
+    if pool_flat:
+        units: dict = {}
+        for f in sorted(root.glob(pattern)):
+            if f.is_file():
+                units.setdefault(f.name.split("__")[0], []).append(f)
+        units = sorted(units.items())
+    else:
+        units = [(d.name.split("__")[0], sorted(d.glob(pattern)))
+                 for d in sorted(root.glob(pool_glob)) if d.is_dir()]
+
+    want = None
+    if ligands_csv:
+        df = pd.read_csv(ligands_csv)
+        idc = "structure" if "structure" in df.columns and "id" not in df.columns else "id"
+        want = set(df[idc].astype(str))
+
+    counts = {"units_seen": len(units), "not_in_csv": 0, "unreadable": 0,
+              "no_ligand_atoms": 0, "no_heme": 0, "no_pose_scored": 0}
+    rows = []
+    for lig, files in units:
+        if want is not None and lig not in want:
+            counts["not_in_csv"] += 1
+            continue
+        ds = []
+        for f in files:
+            try:
+                cx = P.load_structure(f)
+            except Exception:
+                counts["unreadable"] += 1
+                continue
+            if len(cx.lig_xyz) == 0:
+                counts["no_ligand_atoms"] += 1
+                continue
+            if len(cx.heme_xyz) == 0:
+                counts["no_heme"] += 1
+                continue
+            t = G.compute(cx.lig_xyz, cx.lig_elem, cx.prot_xyz,
+                          cx.heme_xyz, cx.heme_atom, cx.axial_sg)
+            ds.append((float(t.fe_donor_dist), bool(t.is_coordinated)))
+        if not ds:
+            counts["no_pose_scored"] += 1
+            continue
+        dd = np.array([d for d, _c in ds], float)
+        med = float(np.nanmedian(dd))
+        rows.append({
+            "id": lig, "n_poses": len(ds),
+            "pred_fe_donor_median": med,
+            "pred_fe_donor_min": float(np.nanmin(dd)),
+            "pred_frac_coordinated": float(np.mean([c for _d, c in ds])),
+            "pred_mode": mode_from_distance(med),
+            # FINDING 033: the observed classes do not touch - furthest Type II 2.59 A,
+            # closest Type I 2.82 A. Inside that gap the rule has no evidence either way.
+            "ambiguous": bool(AMBIG_LO <= med <= AMBIG_HI),
+        })
+    t = pd.DataFrame(rows).sort_values("pred_fe_donor_median")
+    out = Path(out_csv or (DATA_PROCESSED / "binding_mode_pred.csv"))
+    t.to_csv(out, index=False)
+    missing = sorted(want - set(t.id)) if want else []
+    return {
+        "rule": "median fe_donor_dist over the ligand's OWN poses, cut at "
+                f"COORD_MAX = {COORD_MAX} A (FINDING 033 item 1)",
+        "filters": counts,
+        "n_ligands": int(len(t)),
+        "composition": t.pred_mode.value_counts().to_dict(),
+        "n_ambiguous": int(t.ambiguous.sum()) if len(t) else 0,
+        "ambiguous_ligands": t.loc[t.ambiguous, "id"].tolist() if len(t) else [],
+        "ambiguous_band_A": [AMBIG_LO, AMBIG_HI],
+        "ligands_with_no_poses": missing,
+        "expected_absolute_score": (
+            "Type I-rich sets score nearer 0.51, otherwise nearer 0.64 "
+            "(playbook section 3) - pre-announce it with the entry"),
+        "out": str(out),
+    }
+
 
 def cmd_labels() -> dict:
     lig = pd.read_csv(DATA_PROCESSED / "validation_ligands.csv")
@@ -667,11 +769,25 @@ def cmd_p450(force: bool = False) -> dict:
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["labels", "cyp3a4", "p450", "all"])
+    ap.add_argument("cmd", choices=["labels", "predict", "cyp3a4", "p450", "all"])
+    ap.add_argument("--pool", default=None,
+                    help="predict: pose pool to type. Needs no crystal.")
+    ap.add_argument("--pool-flat", action="store_true",
+                    help="predict: --pool is a flat directory of <LIG>__*.cif")
+    ap.add_argument("--pattern", default="*.cif")
+    ap.add_argument("--pool-glob", default="*__*")
+    ap.add_argument("--ligands", default=None,
+                    help="predict: ligand csv, to report any id with no poses at all")
+    ap.add_argument("--out", default=None, help="predict: output csv")
     ap.add_argument("--force", action="store_true", help="recompute the P450 xeng cache")
     a = ap.parse_args()
 
     res = {}
+    if a.cmd == "predict":
+        if not a.pool:
+            raise SystemExit("predict needs --pool")
+        res["predict"] = cmd_predict(a.pool, a.pool_flat, a.pattern, a.pool_glob,
+                                     a.out, a.ligands)
     if a.cmd in ("labels", "all"):
         res["labels"] = cmd_labels()
     if a.cmd in ("cyp3a4", "all"):

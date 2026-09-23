@@ -46,6 +46,21 @@ Usage (each stage is resumable and prints counts):
     python scripts/explorer/boltz_depth.py poll                 # ADVANCING progress, not liveness
     python scripts/explorer/boltz_depth.py collect              # rsync mmCIFs back
     python scripts/explorer/boltz_depth.py score                # LDDT-PLI / BiSyRMSD / xeng
+
+**A BLIND set: `--csv` and `--tag`.** Without them `plan` reads `validation_ligands.csv`
+and filters to the 14-ligand predicted-Type-I stratum, which is the FINDING 035
+pre-registration and not a property of the generator -- on a test set it would silently
+write inputs for the wrong ligands. `--csv` takes every id in the file; `--tag` names the
+subdirectory every stage keys off, on both sides, and defaults to the historical
+`stratum`/`smoke` so an existing campaign is untouched. `plan` writes
+`plans/<tag>.json`, which is where `collect` gets its expected ligand list and `score`
+learns the set has no crystals and refuses:
+
+    python scripts/explorer/boltz_depth.py plan --csv data/processed/test_ligands.csv \\
+        --tag drop
+    python scripts/explorer/boltz_depth.py stage   --tag drop
+    python scripts/explorer/boltz_depth.py submit  --tag drop --seed 101 --samples 20
+    python scripts/explorer/boltz_depth.py collect --tag drop      # then STOP: no `score`
 """
 from __future__ import annotations
 
@@ -223,16 +238,78 @@ def counts() -> dict:
 # plan -- write the YAMLs locally
 # ---------------------------------------------------------------------------
 
-def plan(smoke: bool = False) -> dict:
+PLAN_DIR = LOCAL / "plans"
+
+
+def _tag_for(smoke: bool, tag: str | None) -> str:
+    """The subdirectory every stage keys off.
+
+    Defaults to the two historical names so an existing campaign keeps running against
+    exactly the directories it already wrote: `stratum` and `smoke`. `--tag` is additive.
+    """
+    if tag:
+        if not tag.replace("_", "").replace("-", "").isalnum():
+            raise SystemExit(f"--tag {tag!r} must be alphanumeric (plus - and _): "
+                             "it becomes a directory name on both sides")
+        return tag
+    return "smoke" if smoke else "stratum"
+
+
+def _save_plan(tag: str, rec: dict) -> None:
+    PLAN_DIR.mkdir(parents=True, exist_ok=True)
+    (PLAN_DIR / f"{tag}.json").write_text(json.dumps(rec, indent=1))
+
+
+def _load_plan(tag: str) -> dict | None:
+    f = PLAN_DIR / f"{tag}.json"
+    return json.loads(f.read_text()) if f.exists() else None
+
+
+def _ligand_table(csv: str | None) -> pd.DataFrame:
+    """The ligand table for a tag, blind-set or validation-set alike.
+
+    A blind CSV has `id,smiles` and no `pdb`. That is the whole difference, and it is why
+    `score` cannot run on one (G2) while `plan`/`collect` can.
+    """
+    df = pd.read_csv(csv or (DATA_PROCESSED / "validation_ligands.csv"))
+    idc = "structure" if "structure" in df.columns and "id" not in df.columns else "id"
+    if idc not in df.columns:
+        raise SystemExit(f"{csv}: needs an `id` (or `structure`) column, got "
+                         f"{list(df.columns)}")
+    if "smiles" not in df.columns:
+        raise SystemExit(f"{csv}: needs a `smiles` column, got {list(df.columns)}")
+    df = df.rename(columns={idc: "id"}).astype({"id": str})
+    return df.drop_duplicates("id").reset_index(drop=True)
+
+
+def plan(smoke: bool = False, csv: str | None = None,
+         tag: str | None = None) -> dict:
     from cypstruct.chem import standardize
     from cypstruct.targets import fetch_sequences
 
     build_yaml, _ = _import_build_yaml()
     seq = fetch_sequences()["cyp3a4"]
-    vl = pd.read_csv(DATA_PROCESSED / "validation_ligands.csv").set_index("id")
+    tbl = _ligand_table(csv)
+    vl = tbl.set_index("id")
 
-    ids = [smoke_ligand()] if smoke else sorted(type_i_ligands().id.tolist())
-    out = YAML_DIR / ("smoke" if smoke else "stratum")
+    # `--csv` takes EVERY id in the file. The Type-I filter is a property of the
+    # FINDING 035 pre-registration, not of the generator, and applying it to a blind test
+    # set would silently drop most of the submission. The RUNBOOK claimed "point plan at
+    # the test-set ligand CSV; nothing else changes" long before this flag existed.
+    if csv:
+        if smoke:
+            raise SystemExit("--smoke selects a validation ligand by rule; it is "
+                             "meaningless with --csv. Use --tag to name a small run.")
+        ids = sorted(tbl.id.tolist())
+        filt = {"source_csv": csv, "rule": "all ids in the csv", "n": len(ids)}
+    else:
+        ids = [smoke_ligand()] if smoke else sorted(type_i_ligands().id.tolist())
+        filt = {"source_csv": "validation_ligands.csv",
+                "rule": "smoke ligand" if smoke else
+                        "predicted Type-I stratum (pred_fe_donor_median > 2.6)",
+                "n": len(ids)}
+    sub = _tag_for(smoke, tag)
+    out = YAML_DIR / sub
     out.mkdir(parents=True, exist_ok=True)
     for old in out.glob("*.yaml"):
         old.unlink()
@@ -255,11 +332,14 @@ def plan(smoke: bool = False) -> dict:
         (out / f"{lid}.yaml").write_text(y)
         written.append(lid)
 
-    return {"mode": "smoke" if smoke else "stratum",
-            "yaml_written": len(written), "ligands": written,
-            "skipped": skipped, "dir": str(out),
-            "msa_path_in_yaml": remote_msa,
-            "counts": counts() if not smoke else None}
+    rec = {"mode": sub, "tag": sub, "csv": csv, "filter": filt,
+           "yaml_written": len(written), "ligands": written,
+           "skipped": skipped, "dir": str(out),
+           "msa_path_in_yaml": remote_msa,
+           "blind": csv is not None and "pdb" not in tbl.columns,
+           "counts": (counts() if not smoke and not csv else None)}
+    _save_plan(sub, rec)
+    return rec
 
 
 def conditioning() -> dict:
@@ -292,8 +372,8 @@ def conditioning() -> dict:
 # stage -- push inputs to /scratch from a LOGIN node (which has internet)
 # ---------------------------------------------------------------------------
 
-def stage(smoke: bool = False) -> dict:
-    sub = "smoke" if smoke else "stratum"
+def stage(smoke: bool = False, tag: str | None = None) -> dict:
+    sub = _tag_for(smoke, tag)
     mk = _ssh(f"mkdir -p {REMOTE_ROOT}/msa {REMOTE_ROOT}/yaml/{sub} "
               f"{REMOTE_ROOT}/out {REMOTE_ROOT}/logs && echo OK", timeout=120)
     if "OK" not in mk.stdout:
@@ -375,8 +455,8 @@ def _wait(jid: str, poll: int = 60, limit: int = 120) -> dict:
 # ---------------------------------------------------------------------------
 
 def submit(seed: int, smoke: bool = False, partition: str = "gyorilab,gpu",
-           samples: int | None = None) -> dict:
-    sub = "smoke" if smoke else "stratum"
+           samples: int | None = None, tag: str | None = None) -> dict:
+    sub = _tag_for(smoke, tag)
     n = samples if samples is not None else SAMPLES
     cmd = (f"cd {REMOTE_ROOT} && sbatch --parsable --partition={partition} "
            f"boltz_depth.sbatch {sub} {seed} {n}")
@@ -416,9 +496,9 @@ def tail(jid: str, n: int = 40) -> str:
 # collect
 # ---------------------------------------------------------------------------
 
-def collect(smoke: bool = False) -> dict:
+def collect(smoke: bool = False, tag: str | None = None) -> dict:
     """Pull the predicted mmCIFs back and flatten them to <ligand>__s<seed>_<model>.cif."""
-    sub = "smoke" if smoke else "stratum"
+    sub = _tag_for(smoke, tag)
     dest = POSE_DIR / sub
     dest.mkdir(parents=True, exist_ok=True)
     # boltz writes out/<sub>_s<seed>/boltz_results_<sub>/predictions/<lig>/<lig>_model_k.cif
@@ -452,24 +532,51 @@ def collect(smoke: bool = False) -> dict:
         tgt.write_bytes(f.read_bytes())
         seen[lig] = seen.get(lig, 0) + 1
         n += 1
-    return {"ok": True, "collected": n, "flat_dir": str(flat),
-            "per_ligand": seen, "ligands": len(seen)}
+    pl = _load_plan(sub) or {}
+    planned = pl.get("ligands") or []
+    res = {"ok": True, "tag": sub, "collected": n, "flat_dir": str(flat),
+           "per_ligand": seen, "ligands": len(seen)}
+    if planned:
+        # Check 4 of Step 2: every planned ligand present, at the same depth. A count of
+        # files says nothing about which ligand is missing 20 of them.
+        res["planned"] = len(planned)
+        res["missing_ligands"] = sorted(set(planned) - set(seen))
+        depths = sorted(set(seen.values()))
+        res["poses_per_ligand"] = depths
+        res["uniform_depth"] = len(depths) == 1 and not res["missing_ligands"]
+    return res
 
 
 # ---------------------------------------------------------------------------
 # score -- identical machinery to FINDING 034's scorer, different input dir
 # ---------------------------------------------------------------------------
 
-def score(smoke: bool = False) -> dict:
+def score(smoke: bool = False, tag: str | None = None) -> dict:
+    """Score against crystals. **Cannot run on a blind set** -- see G2.
+
+    Every ligand needs a deposited structure; without one `load_crystal` returns None and
+    the ligand is counted into `skipped["no_crystal"]`, so a blind set returns a CSV with
+    zero rows and a cheerful `ok`. That is the shape of failure this repo keeps paying
+    for, so it is now refused up front rather than reported as an empty success.
+    """
     from cypstruct import pose as P
     from cypstruct import xengine as X
     from cypstruct.qmscore import geometry as G
     from two_ligand_cofold import load_crystal, renumber_to_reference
 
-    sub = "smoke" if smoke else "stratum"
+    sub = _tag_for(smoke, tag)
+    pl = _load_plan(sub) or {}
+    tbl = _ligand_table(pl.get("csv"))
+    if "pdb" not in tbl.columns:
+        raise SystemExit(
+            f"tag {sub!r} was planned from {pl.get('csv')!r}, which has no `pdb` column: "
+            "there are no crystals to score against and every ligand would be counted as "
+            "`no_crystal`, returning zero rows. Run `collect` and build the selection "
+            "feature from the flat pose directory instead (playbook G2).")
     refset = X.load_reference(DATA_PROCESSED / "reference_set_cyp3a4.npz")
-    vl = pd.read_csv(DATA_PROCESSED / "validation_ligands.csv").set_index("id")
-    ids = [smoke_ligand()] if smoke else sorted(type_i_ligands().id.tolist())
+    vl = tbl.set_index("id")
+    ids = pl.get("ligands") or (
+        [smoke_ligand()] if smoke else sorted(type_i_ligands().id.tolist()))
     flat = POSE_DIR / (sub + "_flat")
 
     rows = []
@@ -526,7 +633,12 @@ def score(smoke: bool = False) -> dict:
                 "n_ref_poses": len(refset.get(lid, [])),
             })
     res = pd.DataFrame(rows)
-    out_csv = POSES_CSV if not smoke else DATA_PROCESSED / "matched_depth_smoke_poses.csv"
+    if sub == "stratum":
+        out_csv = POSES_CSV
+    elif sub == "smoke":
+        out_csv = DATA_PROCESSED / "matched_depth_smoke_poses.csv"
+    else:
+        out_csv = DATA_PROCESSED / f"matched_depth_{sub}_poses.csv"
     res.to_csv(out_csv, index=False)
     return {"arm": ARM, "rows": int(len(res)),
             "ligands": int(res.ligand.nunique()) if len(res) else 0,
@@ -546,6 +658,13 @@ def main() -> int:
     ap.add_argument("cmd", choices=["plan", "conditioning", "stage", "push", "verify",
                                     "submit", "poll", "tail", "collect", "score"])
     ap.add_argument("--smoke", action="store_true")
+    ap.add_argument("--csv", default=None,
+                    help="ligand csv (id,smiles) to plan over. Without it, plan keeps "
+                         "its historical behaviour: the 14-ligand predicted-Type-I "
+                         "stratum of validation_ligands.csv.")
+    ap.add_argument("--tag", default=None,
+                    help="subdirectory name used by plan/stage/submit/collect/score on "
+                         "BOTH sides. Defaults to 'stratum' ('smoke' with --smoke).")
     ap.add_argument("--seed", type=int, default=101)
     ap.add_argument("--samples", type=int, default=None)
     ap.add_argument("--job", default=None)
@@ -553,26 +672,26 @@ def main() -> int:
     a = ap.parse_args()
 
     if a.cmd == "plan":
-        out = plan(a.smoke)
+        out = plan(a.smoke, a.csv, a.tag)
     elif a.cmd == "conditioning":
         out = conditioning()
     elif a.cmd == "stage":
-        out = stage(a.smoke)
+        out = stage(a.smoke, a.tag)
     elif a.cmd == "push":
         out = push_sbatch()
     elif a.cmd == "verify":
         out = verify()
     elif a.cmd == "submit":
-        out = submit(a.seed, a.smoke, a.partition, a.samples)
+        out = submit(a.seed, a.smoke, a.partition, a.samples, a.tag)
     elif a.cmd == "poll":
         out = poll(a.job)
     elif a.cmd == "tail":
         print(tail(a.job or ""))
         return 0
     elif a.cmd == "collect":
-        out = collect(a.smoke)
+        out = collect(a.smoke, a.tag)
     else:
-        out = score(a.smoke)
+        out = score(a.smoke, a.tag)
     print(json.dumps(out, indent=2, default=str))
     return 0
 

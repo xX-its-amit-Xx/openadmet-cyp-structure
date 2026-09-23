@@ -1,0 +1,632 @@
+{
+ "tag": "val87blind",
+ "heme": "keep",
+ "n": 87,
+ "blind": true,
+ "selection": {
+  "tag": "val87blind",
+  "xeng_csv": "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\xeng_val87blind.csv",
+  "rule": "FINDING 011/012 cross-engine agreement (+0.0395) via cypstruct.xengine.select()",
+  "argmin_equals_select": true,
+  "n_xeng_ligands": 87,
+  "n_xeng_poses": 1740,
+  "selected_by_xeng": [
+   "08J",
+   "08Y",
+   "1RD",
+   "2QH",
+   "5AW",
+   "6AW",
+   "7AW",
+   "80K",
+   "8AW",
+   "A1A06",
+   "A1A07",
+   "A1A08",
+   "A1A4K",
+   "A1A4S",
+   "A1A4T",
+   "A1A4U",
+   "A1A4V",
+   "A1APA",
+   "A1ASO",
+   "A1ASP",
+   "A1ASQ",
+   "A1ASR",
+   "A1ASS",
+   "A1AST",
+   "A1ASU",
+   "A1ASV",
+   "A1BNX",
+   "A1CIW",
+   "CFF",
+   "CL6",
+   "D0R",
+   "D7J",
+   "D7M",
+   "D7Y",
+   "D81",
+   "DEJ",
+   "DEV",
+   "DJ1",
+   "ERY",
+   "FZV",
+   "G0D",
+   "G0J",
+   "G0M",
+   "G0V",
+   "G1J",
+   "J9K",
+   "KLN",
+   "MF8",
+   "MWS",
+   "MWV",
+   "MWY",
+   "MYT",
+   "NH0",
+   "NI6",
+   "NJ0",
+   "NJO",
+   "NXR",
+   "NYF",
+   "PG0",
+   "PG4",
+   "PK9",
+   "PKT",
+   "QDJ",
+   "QDP",
+   "QDV",
+   "QDY",
+   "QE4",
+   "QEA",
+   "QEP",
+   "QES",
+   "RIT",
+   "T0K",
+   "TCI",
+   "X5Y",
+   "X6J",
+   "X6S",
+   "X6V",
+   "X71",
+   "X74",
+   "X7D",
+   "X7J",
+   "X7M",
+   "X7P",
+   "Y83",
+   "YNV",
+   "Z8Z",
+   "Z9Z"
+  ],
+  "fell_back": [],
+  "uncovered": [],
+  "requested": 87
+ },
+ "picks": {
+  "08J": "08J__input_model_3",
+  "08Y": "08Y__input_model_17",
+  "1RD": "1RD__input_model_1",
+  "2QH": "2QH__input_model_1",
+  "5AW": "5AW__input_model_6",
+  "6AW": "6AW__input_model_9",
+  "7AW": "7AW__input_model_6",
+  "80K": "80K__input_model_10",
+  "8AW": "8AW__input_model_6",
+  "A1A06": "A1A06__input_model_15",
+  "A1A07": "A1A07__input_model_14",
+  "A1A08": "A1A08__input_model_5",
+  "A1A4K": "A1A4K__input_model_16",
+  "A1A4S": "A1A4S__input_model_0",
+  "A1A4T": "A1A4T__input_model_13",
+  "A1A4U": "A1A4U__input_model_2",
+  "A1A4V": "A1A4V__input_model_16",
+  "A1APA": "A1APA__input_model_14",
+  "A1ASO": "A1ASO__input_model_17",
+  "A1ASP": "A1ASP__input_model_5",
+  "A1ASQ": "A1ASQ__input_model_13",
+  "A1ASR": "A1ASR__input_model_10",
+  "A1ASS": "A1ASS__input_model_1",
+  "A1AST": "A1AST__input_model_0",
+  "A1ASU": "A1ASU__input_model_18",
+  "A1ASV": "A1ASV__input_model_5",
+  "A1BNX": "A1BNX__input_model_8",
+  "A1CIW": "A1CIW__input_model_18",
+  "CFF": "CFF__input_model_3",
+  "CL6": "CL6__input_model_2",
+  "D0R": "D0R__input_model_15",
+  "D7J": "D7J__input_model_4",
+  "D7M": "D7M__input_model_7",
+  "D7Y": "D7Y__input_model_11",
+  "D81": "D81__input_model_1",
+  "DEJ": "DEJ__input_model_15",
+  "DEV": "DEV__input_model_18",
+  "DJ1": "DJ1__input_model_12",
+  "ERY": "ERY__input_model_18",
+  "FZV": "FZV__input_model_3",
+  "G0D": "G0D__input_model_8",
+  "G0J": "G0J__input_model_1",
+  "G0M": "G0M__input_model_10",
+  "G0V": "G0V__input_model_19",
+  "G1J": "G1J__input_model_12",
+  "J9K": "J9K__input_model_6",
+  "KLN": "KLN__input_model_14",
+  "MF8": "MF8__input_model_12",
+  "MWS": "MWS__input_model_3",
+  "MWV": "MWV__input_model_8",
+  "MWY": "MWY__input_model_4",
+  "MYT": "MYT__input_model_0",
+  "NH0": "NH0__input_model_8",
+  "NI6": "NI6__input_model_7",
+  "NJ0": "NJ0__input_model_1",
+  "NJO": "NJO__input_model_13",
+  "NXR": "NXR__input_model_10",
+  "NYF": "NYF__input_model_8",
+  "PG0": "PG0__input_model_5",
+  "PG4": "PG4__input_model_5",
+  "PK9": "PK9__input_model_0",
+  "PKT": "PKT__input_model_17",
+  "QDJ": "QDJ__input_model_8",
+  "QDP": "QDP__input_model_4",
+  "QDV": "QDV__input_model_19",
+  "QDY": "QDY__input_model_8",
+  "QE4": "QE4__input_model_5",
+  "QEA": "QEA__input_model_19",
+  "QEP": "QEP__input_model_15",
+  "QES": "QES__input_model_15",
+  "RIT": "RIT__input_model_1",
+  "T0K": "T0K__input_model_0",
+  "TCI": "TCI__input_model_19",
+  "X5Y": "X5Y__input_model_13",
+  "X6J": "X6J__input_model_18",
+  "X6S": "X6S__input_model_18",
+  "X6V": "X6V__input_model_14",
+  "X71": "X71__input_model_11",
+  "X74": "X74__input_model_4",
+  "X7D": "X7D__input_model_4",
+  "X7J": "X7J__input_model_3",
+  "X7M": "X7M__input_model_2",
+  "X7P": "X7P__input_model_11",
+  "Y83": "Y83__input_model_17",
+  "YNV": "YNV__input_model_1",
+  "Z8Z": "Z8Z__input_model_1",
+  "Z9Z": "Z9Z__input_model_3"
+ },
+ "reports": {
+  "08J": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\08J.pdb"
+  },
+  "08Y": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\08Y.pdb"
+  },
+  "1RD": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\1RD.pdb"
+  },
+  "2QH": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\2QH.pdb"
+  },
+  "5AW": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\5AW.pdb"
+  },
+  "6AW": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\6AW.pdb"
+  },
+  "7AW": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\7AW.pdb"
+  },
+  "80K": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\80K.pdb"
+  },
+  "8AW": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\8AW.pdb"
+  },
+  "A1A06": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A06.pdb"
+  },
+  "A1A07": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A07.pdb"
+  },
+  "A1A08": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A08.pdb"
+  },
+  "A1A4K": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A4K.pdb"
+  },
+  "A1A4S": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A4S.pdb"
+  },
+  "A1A4T": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A4T.pdb"
+  },
+  "A1A4U": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A4U.pdb"
+  },
+  "A1A4V": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1A4V.pdb"
+  },
+  "A1APA": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1APA.pdb"
+  },
+  "A1ASO": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1ASO.pdb"
+  },
+  "A1ASP": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1ASP.pdb"
+  },
+  "A1ASQ": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1ASQ.pdb"
+  },
+  "A1ASR": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1ASR.pdb"
+  },
+  "A1ASS": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1ASS.pdb"
+  },
+  "A1AST": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1AST.pdb"
+  },
+  "A1ASU": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1ASU.pdb"
+  },
+  "A1ASV": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1ASV.pdb"
+  },
+  "A1BNX": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1BNX.pdb"
+  },
+  "A1CIW": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\A1CIW.pdb"
+  },
+  "CFF": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\CFF.pdb"
+  },
+  "CL6": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\CL6.pdb"
+  },
+  "D0R": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\D0R.pdb"
+  },
+  "D7J": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\D7J.pdb"
+  },
+  "D7M": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\D7M.pdb"
+  },
+  "D7Y": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\D7Y.pdb"
+  },
+  "D81": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\D81.pdb"
+  },
+  "DEJ": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\DEJ.pdb"
+  },
+  "DEV": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\DEV.pdb"
+  },
+  "DJ1": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\DJ1.pdb"
+  },
+  "ERY": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\ERY.pdb"
+  },
+  "FZV": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\FZV.pdb"
+  },
+  "G0D": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\G0D.pdb"
+  },
+  "G0J": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\G0J.pdb"
+  },
+  "G0M": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\G0M.pdb"
+  },
+  "G0V": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\G0V.pdb"
+  },
+  "G1J": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\G1J.pdb"
+  },
+  "J9K": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\J9K.pdb"
+  },
+  "KLN": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\KLN.pdb"
+  },
+  "MF8": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\MF8.pdb"
+  },
+  "MWS": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\MWS.pdb"
+  },
+  "MWV": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\MWV.pdb"
+  },
+  "MWY": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\MWY.pdb"
+  },
+  "MYT": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\MYT.pdb"
+  },
+  "NH0": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\NH0.pdb"
+  },
+  "NI6": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\NI6.pdb"
+  },
+  "NJ0": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\NJ0.pdb"
+  },
+  "NJO": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\NJO.pdb"
+  },
+  "NXR": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\NXR.pdb"
+  },
+  "NYF": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\NYF.pdb"
+  },
+  "PG0": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\PG0.pdb"
+  },
+  "PG4": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\PG4.pdb"
+  },
+  "PK9": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\PK9.pdb"
+  },
+  "PKT": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\PKT.pdb"
+  },
+  "QDJ": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QDJ.pdb"
+  },
+  "QDP": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QDP.pdb"
+  },
+  "QDV": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QDV.pdb"
+  },
+  "QDY": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QDY.pdb"
+  },
+  "QE4": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QE4.pdb"
+  },
+  "QEA": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QEA.pdb"
+  },
+  "QEP": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QEP.pdb"
+  },
+  "QES": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\QES.pdb"
+  },
+  "RIT": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\RIT.pdb"
+  },
+  "T0K": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\T0K.pdb"
+  },
+  "TCI": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\TCI.pdb"
+  },
+  "X5Y": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X5Y.pdb"
+  },
+  "X6J": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X6J.pdb"
+  },
+  "X6S": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X6S.pdb"
+  },
+  "X6V": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X6V.pdb"
+  },
+  "X71": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X71.pdb"
+  },
+  "X74": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X74.pdb"
+  },
+  "X7D": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X7D.pdb"
+  },
+  "X7J": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X7J.pdb"
+  },
+  "X7M": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X7M.pdb"
+  },
+  "X7P": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\X7P.pdb"
+  },
+  "Y83": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\Y83.pdb"
+  },
+  "YNV": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\YNV.pdb"
+  },
+  "Z8Z": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\Z8Z.pdb"
+  },
+  "Z9Z": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_506h_9f2\\pdb\\Z9Z.pdb"
+  }
+ }
+}

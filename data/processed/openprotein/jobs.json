@@ -7457,5 +7457,34 @@
     "done": true
    }
   ]
+ },
+ "g6probe/protenix_v2": {
+  "engine": "protenix_v2",
+  "tag": "g6probe",
+  "samples": 1,
+  "batches": [
+   {
+    "job_id": "46c468f5-f7d0-453f-8c08-f6197b28ad23",
+    "ligands": [
+     "08J"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790148863.480136,
+    "done": true
+   },
+   {
+    "job_id": "d3ed1d21-e47a-49bd-833b-33ae99507178",
+    "ligands": [
+     "08J"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790148898.4882395,
+    "done": true
+   }
+  ]
  }
 }

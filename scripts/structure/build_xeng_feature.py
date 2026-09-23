@@ -80,7 +80,43 @@ def main() -> int:
                          "build; those ligands fall back to the older selector")
     ap.add_argument("--force", action="store_true",
                     help="write even if the reference set is too shallow (do not)")
+    ap.add_argument("--pool-flat", action="store_true",
+                    help="--pool is a FLAT directory of <LIG>__<rest>.cif rather than a "
+                         "directory of per-ligand directories. This is what Explorer's "
+                         "`boltz_depth.py collect` writes (<lig>__s<seed>_m<k>.cif), and "
+                         "without it _emit() silently reads zero poses.")
+    ap.add_argument("--ref-npz", default=None,
+                    help="use this frozen reference set directly (what "
+                         "`openprotein_cofold.py refset` writes for a blind ligand set). "
+                         "Takes precedence over --refs and --ref-sweep.")
     a = ap.parse_args()
+
+    if a.ref_npz:
+        # The blind drop-day route: the reference was just generated for ligands that have
+        # no historical pool at all, so there is nothing under openprotein/op1 to find.
+        rp = Path(a.ref_npz)
+        if not rp.exists():
+            print(f"--ref-npz {rp} does not exist; generate it with "
+                  "`openprotein_cofold.py refset`")
+            return 1
+        ref = X.load_reference(rp)
+        print(f"reference: frozen {rp.name} ({len(ref)} ligands)")
+        depth = X.reference_depth(ref)
+        print(f"reference depth: {  {k: v for k, v in depth.items() if k != 'note'} }")
+        thin = [k for k, v in ref.items() if len(v) < a.min_depth]
+        if thin and a.skip_thin:
+            for k in thin:
+                ref.pop(k)
+            print(f"skipping {len(thin)} ligands below depth {a.min_depth}: {thin[:10]}")
+        elif thin and not a.force:
+            print(f"REFUSING: {len(thin)} of {len(ref) + 0} ligands below depth "
+                  f"{a.min_depth}: {thin[:10]}")
+            print("At one reference pose this feature measured -0.0055 - it would make")
+            print("selection WORSE, not weaker. Buy depth with sampler WAVES")
+            print("(`openprotein_cofold.py submit --sweep ...`), or pass --skip-thin and")
+            print("REPORT which ligands fell back to FINDING 003.")
+            return 2
+        return _emit(a, ref, P, X)
 
     # Prefer the raw pools; fall back to the frozen reference set if they have been
     # archived. A 2.2 GB pool deduplicates to ~240 KB of actual reference poses, so the
@@ -181,19 +217,42 @@ def main() -> int:
     return _emit(a, ref, P, X)
 
 
+def _pool_units(a):
+    """(ligand, [pose files]) for either pool layout.
+
+    The flat layout is not cosmetic: Explorer's `collect` writes one directory of
+    `<lig>__s<seed>_m<k>.cif`, and `_emit`'s directory glob skips every one of them
+    (`if not dirp.is_dir(): continue`), printing "no poses read from the pool" rather than
+    anything about layout. Reshaping the directory by hand was the documented workaround
+    and it is a copy of the whole pool on a disk with ~12 GB free.
+    """
+    root = Path(a.pool)
+    if a.pool_flat:
+        by: dict = {}
+        for f in sorted(root.glob(a.pattern)):
+            if f.is_file():
+                by.setdefault(f.name.split("__")[0], []).append(f)
+        return sorted(by.items())
+    out = []
+    for dirp in sorted(root.glob(a.pool_glob)):
+        if dirp.is_dir():
+            out.append((dirp.name.split("__")[0], sorted(dirp.glob(a.pattern))))
+    return out
+
+
 def _emit(a, ref, P, X) -> int:
     rows = []
     # The val87b pool names its directories <LIG>__<arm>__<n>; the P450 and sweep pools
     # name them <PAIR> with poses nested under an engine subdirectory. Hardcoding the
     # first layout made the builder silently find zero poses in the second - it printed
     # "no poses read from the pool" rather than anything about layout.
-    for dirp in sorted(Path(a.pool).glob(a.pool_glob)):
-        if not dirp.is_dir():
-            continue
-        lig = dirp.name.split("__")[0]
+    n_units = n_no_ref = 0
+    for lig, files in _pool_units(a):
+        n_units += 1
         if lig not in ref or not ref[lig]:
+            n_no_ref += 1
             continue
-        for f in sorted(dirp.glob(a.pattern)):
+        for f in files:
             try:
                 v = X.in_heme_frame(P.load_structure(f))
             except Exception:
@@ -202,8 +261,11 @@ def _emit(a, ref, P, X) -> int:
                 continue
             rows.append({"ligand": lig, "sample": f.stem,
                          "xeng": X.xeng_score(v, ref[lig])})
+    print(f"pool units: {n_units}   without a reference pose (will fall back): "
+          f"{n_no_ref}")
     if not rows:
-        print("no poses read from the pool - check --pool and --pattern")
+        print("no poses read from the pool - check --pool, --pattern and --pool-flat "
+              "(a flat <LIG>__*.cif directory needs --pool-flat)")
         return 1
 
     df = pd.DataFrame(rows)

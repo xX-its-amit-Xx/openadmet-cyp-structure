@@ -48,8 +48,9 @@ import pandas as pd
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "src"))
 
-import modal  # noqa: E402
-
+# `modal` is imported lazily, inside the branch that needs it (G3). At module scope it
+# made this file unimportable on any box without the package - and on drop day Modal is
+# over its spend cap, so the Modal branch is the one that will NOT be taken.
 from cypstruct import pose as P  # noqa: E402
 from cypstruct.paths import DATA_PROCESSED, free_gb, safe_workers  # noqa: E402
 
@@ -65,6 +66,30 @@ def scratch_root() -> Path:
     c = Path("C:/cyp_scratch")
     c.mkdir(parents=True, exist_ok=True)
     return c
+
+
+def _wanted(csv: str) -> set:
+    d = pd.read_csv(csv)
+    idc = "structure" if "structure" in d.columns and "id" not in d.columns else "id"
+    return {str(v) for v in d[idc]}
+
+
+def _local_units(pool: Path) -> list:
+    dirs = [d.name for d in sorted(pool.glob("*")) if d.is_dir() and any(d.glob("*.cif"))]
+    if dirs:
+        return dirs
+    return sorted({f.name.split("__")[0] for f in pool.glob("*.cif")})
+
+
+def _local_files(pool: Path, unit: str) -> list:
+    d = pool / unit
+    if d.is_dir():
+        return sorted(d.glob("*.cif"))
+    lig = unit.split("__")[0]
+    d = pool / lig
+    if d.is_dir():
+        return sorted(d.glob("*.cif"))
+    return sorted(pool.glob(f"{lig}__*.cif"))
 
 
 def symmetric_rmsd(xa: np.ndarray, ea: list[str], xb: np.ndarray, eb: list[str]) -> float:
@@ -90,15 +115,37 @@ def main() -> None:
     ap.add_argument("--arm", default="unsteered")
     ap.add_argument("--workers", type=int, default=5)
     ap.add_argument("--cluster-cutoff", type=float, default=2.0)
+    ap.add_argument("--pool-dir", default=None,
+                    help="read poses from a LOCAL directory instead of the Modal volume")
+    ap.add_argument("--ligands", default=None,
+                    help="ligand csv; with --pool-dir it replaces poses_scored_<tag>")
+    ap.add_argument("--no-eval", action="store_true",
+                    help="write consensus_features_<tag>_<arm>.csv and stop; the "
+                         "evaluation needs crystals")
     a = ap.parse_args()
 
-    scored = pd.read_csv(DATA_PROCESSED / f"poses_scored_{a.tag}.csv")
-    scored = scored[scored.arm == a.arm]
-    truth = {(r.ligand, r.sample): r.lddt_pli for r in scored.itertuples()}
-    ligands = sorted(scored.ligand.unique())
-    print(f"arm={a.arm}  ligands={len(ligands)}", flush=True)
+    sc_path = DATA_PROCESSED / f"poses_scored_{a.tag}.csv"
+    blind = a.no_eval or not sc_path.exists()
+    local = Path(a.pool_dir) if a.pool_dir else None
+    if blind:
+        truth = {}
+        if a.ligands:
+            ligands = sorted(_wanted(a.ligands))
+        elif local is not None:
+            ligands = sorted({u.split("__")[0] for u in _local_units(local)})
+        else:
+            raise SystemExit("blind run needs --pool-dir and/or --ligands")
+    else:
+        scored = pd.read_csv(sc_path)
+        scored = scored[scored.arm == a.arm]
+        truth = {(r.ligand, r.sample): r.lddt_pli for r in scored.itertuples()}
+        ligands = sorted(scored.ligand.unique())
+    print(f"arm={a.arm}  ligands={len(ligands)}  blind={blind}", flush=True)
 
-    vol = modal.Volume.from_name("cyp-pool")
+    vol = None
+    if local is None:
+        import modal
+        vol = modal.Volume.from_name("cyp-pool")
     root = Path(tempfile.mkdtemp(prefix="cypcons_", dir=str(scratch_root())))
     nw = safe_workers(a.workers, ram_per_worker_gb=1.0)
     print(f"using {nw} worker(s)", flush=True)
@@ -112,13 +159,17 @@ def main() -> None:
         work = root / job
         work.mkdir(parents=True, exist_ok=True)
         try:
-            for e in vol.iterdir(f"/{a.tag}/{job}"):
-                fn = e.path.split("/")[-1]
-                if fn.endswith(".cif"):
-                    (work / fn).write_bytes(b"".join(vol.read_file(e.path)))
+            if vol is None:
+                files = _local_files(local, job)
+            else:
+                for e in vol.iterdir(f"/{a.tag}/{job}"):
+                    fn = e.path.split("/")[-1]
+                    if fn.endswith(".cif"):
+                        (work / fn).write_bytes(b"".join(vol.read_file(e.path)))
+                files = sorted(work.glob("*.cif"))
 
             names, xyz, elems = [], [], None
-            for cif in sorted(work.glob("*.cif")):
+            for cif in files:
                 try:
                     m = P.load_structure(cif)
                 except Exception:
@@ -195,7 +246,17 @@ def main() -> None:
         shutil.rmtree(root, ignore_errors=True)
 
     feats = pd.DataFrame(feature_rows)
-    feats.to_csv(DATA_PROCESSED / f"consensus_features_{a.tag}_{a.arm}.csv", index=False)
+    out_feats = DATA_PROCESSED / f"consensus_features_{a.tag}_{a.arm}.csv"
+    feats.to_csv(out_feats, index=False)
+
+    if blind:
+        # The features ARE the deliverable on a blind set: build_submission's fallback
+        # rule reads this csv plus orientation_features, and neither needs a crystal.
+        # Everything below scores against one and would be vacuous.
+        print(f"\n{len(feats)} poses over "
+              f"{feats.ligand.nunique() if len(feats) else 0} ligands -> "
+              f"{out_feats.name}; evaluation skipped (blind).", flush=True)
+        return
 
     # --- evaluate ----------------------------------------------------------
     def ev(pick_fn, label: str) -> dict:
