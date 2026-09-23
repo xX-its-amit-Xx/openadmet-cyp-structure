@@ -1,0 +1,78 @@
+{
+  "n_rows": 1740,
+  "n_ligands": 87,
+  "strata_sizes": {
+    "type_I_pred": 14,
+    "type_II_pred": 73,
+    "all": 87
+  },
+  "N2_shipped_column": {
+    "selected": 0.6164,
+    "oracle": 0.6975,
+    "random_exact": 0.5769,
+    "gain": 0.0395,
+    "within_ligand_rho": -0.2582,
+    "frac_correct_sign": 0.7586,
+    "expected": {
+      "selected": 0.6164,
+      "oracle": 0.6975,
+      "random_exact": 0.5769,
+      "gain": 0.0395,
+      "within_ligand_rho": -0.2582,
+      "frac_correct_sign": 0.759
+    }
+  },
+  "N2_passes": true,
+  "argmin_shortcut_equals_select": {
+    "shortcut": 0.616391,
+    "select": 0.616391,
+    "equal_to_1e-9": true
+  },
+  "C7_exact_zeros": {
+    "n": 4,
+    "by_ligand": {
+      "PG4": 3,
+      "PG0": 1
+    },
+    "bisy_rmsd": [
+      23.1,
+      25.9,
+      26.9,
+      26.1
+    ],
+    "all_mapped": true,
+    "other_poses_median_lddt": {
+      "PG0": 0.441,
+      "PG4": 0.577
+    }
+  },
+  "pool_diversity": {
+    "median_unique_xeng_per_ligand": 20.0,
+    "min_unique_xeng_per_ligand": 20,
+    "median_within_ligand_sd_lddt": 0.0624,
+    "n_ligands_with_zero_lddt_sd": 0
+  },
+  "strata_at_depth_20": {
+    "type_I_pred": {
+      "n": 14,
+      "random": 0.4597,
+      "oracle": 0.6499,
+      "selected": 0.527,
+      "headroom": 0.1902
+    },
+    "type_II_pred": {
+      "n": 73,
+      "random": 0.5994,
+      "oracle": 0.7066,
+      "selected": 0.6335,
+      "headroom": 0.1072
+    },
+    "all": {
+      "n": 87,
+      "random": 0.5769,
+      "oracle": 0.6975,
+      "selected": 0.6164,
+      "headroom": 0.1206
+    }
+  }
+}

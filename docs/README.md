@@ -1,6 +1,6 @@
 # Findings index
 
-Thirty-three findings, most of them negative. Read them in this order if you are arriving cold;
+Thirty-four findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
 ## Start here
@@ -37,6 +37,7 @@ work. That is not a slogan, it is ~30 measured features:
 | 031 | **co-folding a SECOND COPY of the query ligand** — the biology map's top-ranked partner, the only one with CYP3A4 precedent and the only one touching the F/G roof | the second copy lands in the **active site on 12 of 15** (median 8.8 Å from Fe, reproducing 2V0M's 9.3–9.8 Å unprompted) and **not** the peripheral groove (1 of 15). The first copy gets **worse**: **−0.066 LDDT-PLI**, CI [−0.142, **+0.005**], rotation **+4.5°**, and the damage is concentrated on the 12 whose second copy competes for the cavity (−0.079). An **unrelated** second ligand is worse still (−0.093, and it ejects the query from the heme on 10 of 60 poses). F/G 210–216 moves 0.40 Å against a 0.50 Å bar. **REFUTED** |
 | 032 | **the ligand's INTERNAL CONFORMER** — 024's last untouched term (26% of the error, 1.60 Å), transferred as torsions from the superfamily and, separately, as prior-free ETKDG plausibility | the prior is **sharp** this time (donors agree to **25.0°** where the error to fix is **59.3°**) and it points the **wrong way**: the crystal ranks at the **31st percentile** of its own 20 poses, p = 2.6e-04, and the same happens with a general small-molecule prior. **The torsion ORACLE — the true torsions handed over — is worth only +0.0213 and loses to the incumbent.** Gate failed, no selector built |
 | 033 | **is the shipped selector biased by BINDING MODE?** — the validation set is 83% Type II, so a Type I-rich blind test set would be an unmeasured exposure | **ROBUST**, on the set with the power: family-wide the raw Type II − Type I gap is +0.0318 and **vanishes to −0.0030, CI [−0.0132, +0.0075], once matched on pool headroom**; both strata clear their own nulls at p=0.0000 over 342 pairs. CYP3A4 alone is **underpowered** — n=14, CI [−0.063, +0.050], MDD 0.066. The heme-frame explanation **fails** (partial ρ −0.033). The real exposure is the POOL: Type I random 0.464 vs 0.599 and **oracle 0.649 vs 0.707**. One label was wrong: **73/14, not 72/15** |
+| 034 | **is FINDING 033's own recommendation right — buy DEPTH on the predicted-Type-I ligands?** The rate is real and the purchase is not | **the depth law holds and is steepest here**: Type I converts depth at **+0.0127 selected per doubling** (+0.0333 in the top octave) against Type II's +0.0069, because its oracle climbs **1.8× faster** (+0.0428 vs +0.0242) — while the *fraction* of depth converted is **29.6% vs 28.5%**, identical, and **22.8% vs 22.7%** across two different generators. But the only depth OpenProtein can sell is MSA-less `boltz2` (an uploaded MSA fails server-side), whose ceiling matches and whose average is 0.057 lower; mixed in it adds **+0.0118 oracle and −0.0065 score**, the fifth such case. **REFUTED** as a purchase, **MEASURED** as a law. Also: 30 replicates bought 10.8 distinct poses and replicates **16–29 bought zero** |
 
 **Read 007 before proposing any new feature.** It is the arithmetic that makes "promising"
 a meaningless word here.
@@ -51,6 +52,7 @@ a meaningless word here.
 | 009 | **`diffusion_samples` does not sample the ligand on OpenProtein** — for any engine. Only replicate jobs do, and replicates are not automatically distinct either |
 | 013 | a union pool adds **+0.0375 of oracle that selection cannot reach** — keep a second engine as *reference*, never as a pool member |
 | 016 | **the sampler sweep is a renewable REFERENCE** — `num_recycles`/`num_steps` diversify at 1.2% catastrophic; worthless as a pool expansion (−0.0038, FINDING 013 again). As a reference it is **equal** to esmfold2 in quality (a +0.0078 edge at n=80 reversed to −0.0028 at n=428) but references **59 pairs esmfold2 cannot**, and can be regenerated for any target |
+| 034 | **replicate jobs are not a purchase order for poses** — distinct poses track submission WAVES. 30 replicates -> 10.79 distinct; replicates 16-29 returned 196 of 196 complexes byte-identical to replicate 15; a later wave with the same payload returned a *new* pose shared exactly by all four of its jobs |
 | 015 | **protenix_v2 is deterministic too** — a 12→24 doubling moved the oracle on 0 of 489 pairs. Nominal depth 12 is real depth ~4, and the POOL was never deduped, only the reference |
 
 ## The three traps that cost the most

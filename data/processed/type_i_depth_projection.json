@@ -1,0 +1,48 @@
+{
+  "S_I_now": 0.527,
+  "S_II_now": 0.6335,
+  "type_I_gain_from_depth": -0.0065,
+  "n_I": 14,
+  "n_II": 73,
+  "f=0.0": {
+    "expected_now": 0.6335,
+    "CI_now": [
+      0.5917,
+      0.6734
+    ],
+    "expected_after_depth": 0.6335,
+    "delta": 0.0
+  },
+  "f=0.25": {
+    "expected_now": 0.6069,
+    "CI_now": [
+      0.5707,
+      0.6423
+    ],
+    "expected_after_depth": 0.6053,
+    "delta": -0.0016
+  },
+  "f=0.5": {
+    "expected_now": 0.5803,
+    "CI_now": [
+      0.5385,
+      0.6211
+    ],
+    "expected_after_depth": 0.577,
+    "delta": -0.0032
+  },
+  "f=1.0": {
+    "expected_now": 0.527,
+    "CI_now": [
+      0.455,
+      0.6009
+    ],
+    "expected_after_depth": 0.5205,
+    "delta": -0.0065
+  },
+  "selected_per_doubling": {
+    "type_I_pred": 0.01268,
+    "type_II_pred": 0.00688,
+    "all": 0.00778
+  }
+}

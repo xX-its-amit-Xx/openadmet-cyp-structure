@@ -1,0 +1,261 @@
+{
+  "rungs": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    10,
+    14,
+    20
+  ],
+  "n_draws": 256,
+  "benchmarks": {
+    "selection_per_doubling_FINDING_004": 0.0125,
+    "oracle_per_doubling_FINDING_004": 0.024
+  },
+  "type_I_pred": {
+    "n": 14,
+    "table": {
+      "1": {
+        "oracle": 0.46,
+        "selected": 0.46,
+        "random_empirical": 0.46,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.0003,
+        "null_p95": 0.0473
+      },
+      "2": {
+        "oracle": 0.5058,
+        "selected": 0.4775,
+        "random_empirical": 0.4609,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.0178,
+        "null_p95": 0.0438
+      },
+      "3": {
+        "oracle": 0.528,
+        "selected": 0.4806,
+        "random_empirical": 0.4583,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.0209,
+        "null_p95": 0.0461
+      },
+      "5": {
+        "oracle": 0.5587,
+        "selected": 0.4852,
+        "random_empirical": 0.4592,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.0256,
+        "null_p95": 0.0447
+      },
+      "8": {
+        "oracle": 0.5847,
+        "selected": 0.4897,
+        "random_empirical": 0.459,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.0301,
+        "null_p95": 0.0445
+      },
+      "10": {
+        "oracle": 0.5998,
+        "selected": 0.4937,
+        "random_empirical": 0.4594,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.034,
+        "null_p95": 0.0432
+      },
+      "14": {
+        "oracle": 0.6223,
+        "selected": 0.5054,
+        "random_empirical": 0.4598,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.0457,
+        "null_p95": 0.0459
+      },
+      "20": {
+        "oracle": 0.6499,
+        "selected": 0.527,
+        "random_empirical": 0.4597,
+        "random_exact": 0.4597,
+        "gain_vs_random": 0.0673,
+        "null_p95": 0.0432
+      }
+    },
+    "oracle_per_doubling": 0.04279,
+    "oracle_per_doubling_CI": [
+      0.02837,
+      0.05736
+    ],
+    "selected_per_doubling": 0.01268,
+    "selected_per_doubling_CI": [
+      -0.00036,
+      0.02795
+    ],
+    "random_per_doubling": -0.000111,
+    "random_flat": true
+  },
+  "type_II_pred": {
+    "n": 73,
+    "table": {
+      "1": {
+        "oracle": 0.5988,
+        "selected": 0.5988,
+        "random_empirical": 0.5988,
+        "random_exact": 0.5994,
+        "gain_vs_random": -0.0006,
+        "null_p95": 0.0138
+      },
+      "2": {
+        "oracle": 0.6324,
+        "selected": 0.6123,
+        "random_empirical": 0.5993,
+        "random_exact": 0.5994,
+        "gain_vs_random": 0.013,
+        "null_p95": 0.0137
+      },
+      "3": {
+        "oracle": 0.6473,
+        "selected": 0.617,
+        "random_empirical": 0.5995,
+        "random_exact": 0.5994,
+        "gain_vs_random": 0.0176,
+        "null_p95": 0.0141
+      },
+      "5": {
+        "oracle": 0.6633,
+        "selected": 0.62,
+        "random_empirical": 0.5994,
+        "random_exact": 0.5994,
+        "gain_vs_random": 0.0206,
+        "null_p95": 0.0143
+      },
+      "8": {
+        "oracle": 0.6783,
+        "selected": 0.6227,
+        "random_empirical": 0.5997,
+        "random_exact": 0.5994,
+        "gain_vs_random": 0.0233,
+        "null_p95": 0.014
+      },
+      "10": {
+        "oracle": 0.6848,
+        "selected": 0.6238,
+        "random_empirical": 0.5993,
+        "random_exact": 0.5994,
+        "gain_vs_random": 0.0244,
+        "null_p95": 0.0138
+      },
+      "14": {
+        "oracle": 0.6957,
+        "selected": 0.6269,
+        "random_empirical": 0.5995,
+        "random_exact": 0.5994,
+        "gain_vs_random": 0.0275,
+        "null_p95": 0.0137
+      },
+      "20": {
+        "oracle": 0.7066,
+        "selected": 0.6335,
+        "random_empirical": 0.5994,
+        "random_exact": 0.5994,
+        "gain_vs_random": 0.0342,
+        "null_p95": 0.0141
+      }
+    },
+    "oracle_per_doubling": 0.02416,
+    "oracle_per_doubling_CI": [
+      0.02032,
+      0.0283
+    ],
+    "selected_per_doubling": 0.00688,
+    "selected_per_doubling_CI": [
+      0.0037,
+      0.01039
+    ],
+    "random_per_doubling": 0.000113,
+    "random_flat": true
+  },
+  "all": {
+    "n": 87,
+    "table": {
+      "1": {
+        "oracle": 0.5764,
+        "selected": 0.5764,
+        "random_empirical": 0.5764,
+        "random_exact": 0.5769,
+        "gain_vs_random": -0.0005,
+        "null_p95": 0.0131
+      },
+      "2": {
+        "oracle": 0.612,
+        "selected": 0.5908,
+        "random_empirical": 0.577,
+        "random_exact": 0.5769,
+        "gain_vs_random": 0.0139,
+        "null_p95": 0.0133
+      },
+      "3": {
+        "oracle": 0.6289,
+        "selected": 0.5952,
+        "random_empirical": 0.5771,
+        "random_exact": 0.5769,
+        "gain_vs_random": 0.0183,
+        "null_p95": 0.0131
+      },
+      "5": {
+        "oracle": 0.6464,
+        "selected": 0.5977,
+        "random_empirical": 0.5765,
+        "random_exact": 0.5769,
+        "gain_vs_random": 0.0208,
+        "null_p95": 0.0138
+      },
+      "8": {
+        "oracle": 0.6633,
+        "selected": 0.6003,
+        "random_empirical": 0.5769,
+        "random_exact": 0.5769,
+        "gain_vs_random": 0.0234,
+        "null_p95": 0.0135
+      },
+      "10": {
+        "oracle": 0.6712,
+        "selected": 0.6028,
+        "random_empirical": 0.5768,
+        "random_exact": 0.5769,
+        "gain_vs_random": 0.0259,
+        "null_p95": 0.014
+      },
+      "14": {
+        "oracle": 0.6843,
+        "selected": 0.6076,
+        "random_empirical": 0.5769,
+        "random_exact": 0.5769,
+        "gain_vs_random": 0.0307,
+        "null_p95": 0.014
+      },
+      "20": {
+        "oracle": 0.6975,
+        "selected": 0.6164,
+        "random_empirical": 0.5769,
+        "random_exact": 0.5769,
+        "gain_vs_random": 0.0395,
+        "null_p95": 0.0137
+      }
+    },
+    "oracle_per_doubling": 0.02716,
+    "oracle_per_doubling_CI": [
+      0.02296,
+      0.03165
+    ],
+    "selected_per_doubling": 0.00778,
+    "selected_per_doubling_CI": [
+      0.00426,
+      0.0115
+    ],
+    "random_per_doubling": 5.6e-05,
+    "random_flat": true
+  },
+  "rate_difference_I_minus_II": 0.0058
+}

@@ -394,5 +394,59 @@
    "replicates": 4
   },
   "ended": 1790125210.8772848
+ },
+ {
+  "run_id": "type_i_depth_boltz2_1790131613",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 6,
+  "est_gpu_hours": 0.0,
+  "started": 1790131613.8134692,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "FINDING 034 Type-I depth",
+  "meta": {
+   "n_jobs": 6,
+   "engine": "boltz2",
+   "replicates": 6,
+   "probe": true
+  }
+ },
+ {
+  "run_id": "type_i_depth_boltz2_1790132132",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 58,
+  "est_gpu_hours": 0.0,
+  "started": 1790132132.092082,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "FINDING 034 Type-I depth",
+  "meta": {
+   "n_jobs": 58,
+   "engine": "boltz2",
+   "replicates": 16,
+   "probe": false
+  }
+ },
+ {
+  "run_id": "type_i_depth_boltz2_1790133218",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 56,
+  "est_gpu_hours": 0.0,
+  "started": 1790133218.4543948,
+  "month": "2026-09",
+  "status": "launched",
+  "actual_gpu_hours": null,
+  "note": "FINDING 034 Type-I depth",
+  "meta": {
+   "n_jobs": 56,
+   "engine": "boltz2",
+   "replicates": 30,
+   "probe": false
+  }
  }
 ]
