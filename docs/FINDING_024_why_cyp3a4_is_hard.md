@@ -362,3 +362,23 @@ probe with a pre-registered null, not as a pool change.
   mean excluding CYP3A4 is **0.798** (12 labelled targets), not 0.865.
 - **`why3a4b.py` is a worked example of FINDING 021's trap** and is kept in `/scratch`
   unfixed, next to `why3a4c.py`, for exactly that reason.
+
+---
+
+# Correction, 2026-09-23 — the cavity table's parenthesised scores, and its three denominators
+
+Appended by `FINDING_039`. No measurement changes.
+
+The per-target scores in parentheses in the cavity table — *"Q2IU02 (best target, 0.924)"*,
+*"P11511 aromatase (0.631)"*, *"P20815 CYP3A5 (0.506)"* — are means over **all five samples**
+of the scored held-out pairs. They reproduce exactly (0.9241, 0.6313, 0.5059). They are **not
+comparable line-for-line with `FINDING_022`'s per-target table**, which reports the mean of
+**`lddt_sample0`** and prints 0.931 / 0.863 for the same two targets. Both are correct; only
+aromatase differs materially (0.863 vs 0.631, a 0.232 gap against ≤ 0.007 for every other
+target). `FINDING_022` now carries the matching note. Playbook C5 is closed: **two statistics,
+not a disagreement.**
+
+**One row, three denominators.** The `entries` column counts **crystals in the 406-entry
+cavity set** (CYP3A4 107, aromatase **7**, Q2IU02 48, CYP3A5 3), while the parenthesised score
+is over the **scored test pairs** (CYP3A4 15, aromatase **6**, Q2IU02 27, CYP3A5 **2**), and
+`FINDING_022`'s n is a third. Quote the cavity and the score with their own n attached.

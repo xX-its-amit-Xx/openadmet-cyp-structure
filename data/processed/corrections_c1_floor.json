@@ -1,0 +1,156 @@
+{
+  "control_C_XENG": {
+    "n": 87,
+    "oracle": 0.6975,
+    "selected": 0.6164,
+    "random": 0.5769,
+    "gain": 0.0395,
+    "reproduces": true
+  },
+  "control_C_NUM": {
+    "pool_rows_scoring_exactly_zero": 4,
+    "note": "FINDING 020's signature was 28/85 exact zeros; this pool has none"
+  },
+  "control_boards": {
+    "pool B depth 20": {
+      "n": 14,
+      "oracle": 0.6499,
+      "selected": 0.527,
+      "random": 0.4597,
+      "gain": 0.0673
+    },
+    "pool B depth 40": {
+      "n": 14,
+      "oracle": 0.6595,
+      "selected": 0.5386,
+      "random": 0.4587,
+      "gain": 0.0799
+    },
+    "crystal-side Type I, depth 20": {
+      "n": 14,
+      "oracle": 0.6488,
+      "selected": 0.5055,
+      "random": 0.4644,
+      "gain": 0.0411
+    }
+  },
+  "floors": {
+    "D1 - crystal-side Type I (FINDING 033), pool A depth 20": {
+      "n": 14,
+      "depth": 20,
+      "draws": 2000000,
+      "p95": 0.04306,
+      "p99": 0.0616,
+      "se_of_authoritative_p95": 4e-05,
+      "se_of_a_4000_draw_p95": 0.00088,
+      "sd_of_gain": 0.02727,
+      "quoted": [
+        {
+          "value": 0.0433,
+          "where": "FINDING 033"
+        }
+      ],
+      "ligands": [
+        "08J",
+        "08Y",
+        "A1CIW",
+        "CFF",
+        "ERY",
+        "MF8",
+        "MWS",
+        "MWV",
+        "MWY",
+        "PG0",
+        "PG4",
+        "QDY",
+        "TCI",
+        "YNV"
+      ]
+    },
+    "D2 - prediction-side Type I, pool A depth 20": {
+      "n": 14,
+      "depth": 20,
+      "draws": 2000000,
+      "p95": 0.0449,
+      "p99": 0.06398,
+      "se_of_authoritative_p95": 4e-05,
+      "se_of_a_4000_draw_p95": 0.00092,
+      "sd_of_gain": 0.02812,
+      "quoted": [
+        {
+          "value": 0.0431,
+          "where": "FINDING 034"
+        },
+        {
+          "value": 0.0432,
+          "where": "034 curve"
+        },
+        {
+          "value": 0.0453,
+          "where": "FINDING 035"
+        }
+      ],
+      "ligands": [
+        "08J",
+        "08Y",
+        "A1CIW",
+        "CFF",
+        "D0R",
+        "ERY",
+        "MF8",
+        "MWS",
+        "MWV",
+        "MWY",
+        "PG0",
+        "PG4",
+        "TCI",
+        "YNV"
+      ]
+    },
+    "D3 - prediction-side Type I, augmented pool B depth 40": {
+      "n": 14,
+      "depth": 40,
+      "draws": 2000000,
+      "p95": 0.044,
+      "p99": 0.06377,
+      "se_of_authoritative_p95": 4e-05,
+      "se_of_a_4000_draw_p95": 0.00098,
+      "sd_of_gain": 0.02739,
+      "quoted": [
+        {
+          "value": 0.0456,
+          "where": "FINDING 035"
+        },
+        {
+          "value": 0.0435,
+          "where": "FINDING 036"
+        }
+      ],
+      "ligands": [
+        "08J",
+        "08Y",
+        "A1CIW",
+        "CFF",
+        "D0R",
+        "ERY",
+        "MF8",
+        "MWS",
+        "MWV",
+        "MWY",
+        "PG0",
+        "PG4",
+        "TCI",
+        "YNV"
+      ]
+    }
+  },
+  "sign_test": {
+    "pool_B_depth40_perfect_top2_ceiling": 0.0447,
+    "authoritative_floor_D3_p95": 0.044,
+    "ceiling_minus_floor": 0.0007,
+    "exact_p_of_ceiling_vs_its_own_null": 0.0475,
+    "pool_B_depth20_ceiling": 0.0164,
+    "authoritative_floor_D2_p95": 0.0449,
+    "exact_p_depth20": 0.27983
+  }
+}

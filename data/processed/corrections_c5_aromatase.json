@@ -1,0 +1,59 @@
+{
+  "P08684": {
+    "n": 15,
+    "mean_of_sample0": 0.555,
+    "mean_of_all_5": 0.5526,
+    "finding_022": 0.555,
+    "finding_024": null,
+    "gap": 0.0024
+  },
+  "P11511": {
+    "n": 6,
+    "mean_of_sample0": 0.8629,
+    "mean_of_all_5": 0.6313,
+    "finding_022": 0.863,
+    "finding_024": 0.631,
+    "gap": 0.2316
+  },
+  "P10614": {
+    "n": 5,
+    "mean_of_sample0": 0.9093,
+    "mean_of_all_5": 0.9076,
+    "finding_022": 0.909,
+    "finding_024": null,
+    "gap": 0.0017
+  },
+  "Q2IU02": {
+    "n": 27,
+    "mean_of_sample0": 0.9306,
+    "mean_of_all_5": 0.9241,
+    "finding_022": 0.931,
+    "finding_024": 0.924,
+    "gap": 0.0065
+  },
+  "P20815": {
+    "n": 2,
+    "mean_of_sample0": 0.4758,
+    "mean_of_all_5": 0.5059,
+    "finding_022": null,
+    "finding_024": 0.506,
+    "gap": -0.0301
+  },
+  "_cyp3a4": {
+    "n": 15,
+    "s0": 0.555,
+    "mean5": 0.5526
+  },
+  "_others": {
+    "n": 70,
+    "s0": 0.8648,
+    "mean5": 0.8466
+  },
+  "_cavity_entry_counts_406set": {
+    "P08684": 107,
+    "P11511": 7,
+    "P10614": 6,
+    "Q2IU02": 48,
+    "P20815": 3
+  }
+}

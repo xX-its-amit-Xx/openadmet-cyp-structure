@@ -1,0 +1,57 @@
+{
+  "exact_augment_curve": {
+    "20": 0.527,
+    "21": 0.52924,
+    "22": 0.53129,
+    "23": 0.53318,
+    "24": 0.53489,
+    "25": 0.53642,
+    "26": 0.53778,
+    "27": 0.53897,
+    "28": 0.53998,
+    "29": 0.54082,
+    "30": 0.54149,
+    "31": 0.54198,
+    "32": 0.5423,
+    "33": 0.54244,
+    "34": 0.54241,
+    "35": 0.54221,
+    "36": 0.54183,
+    "37": 0.54128,
+    "38": 0.54055,
+    "39": 0.53965,
+    "40": 0.53858
+  },
+  "augment_peak": {
+    "exact_pool30": 0.54149,
+    "exact_pool40": 0.53858,
+    "exact_diff": 0.00291,
+    "published_pool30": 0.5411,
+    "published_pool40": 0.5386,
+    "published_diff": 0.0025,
+    "exact_curve_is_monotone": false,
+    "se_of_256_draw_mean": 0.00117,
+    "z_of_published_pool30": -0.33
+  },
+  "exact_union_curve": {
+    "1": 0.45871,
+    "2": 0.47851,
+    "5": 0.49255,
+    "10": 0.50712,
+    "20": 0.5293,
+    "25": 0.53621,
+    "30": 0.54018,
+    "35": 0.54103,
+    "38": 0.53997,
+    "39": 0.53934,
+    "40": 0.53858
+  },
+  "union_curve_monotone": false,
+  "union_argmax_depth": 34,
+  "two_baselines": {
+    "deterministic_existing_20": 0.527,
+    "expected_20_of_union_40_exact": 0.5293,
+    "published_deterministic": 0.527,
+    "published_union_subsample": 0.5291
+  }
+}

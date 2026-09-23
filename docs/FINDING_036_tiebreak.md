@@ -421,3 +421,48 @@ python scripts/structure/tiebreak_analysis.py swing      # post-hoc, CFF and 08J
 Heme-frame caches and the pose–reference distance matrices are intermediates and live in
 `C:\Temp\cyp_tiebreak` (1.1 MB), never on `D:`. No inference was run and nothing was
 downloaded.
+
+---
+
+# Correction, 2026-09-23 — §2e and §5 are wrong by a hair: the n = 14 ceiling **clears** its floor
+
+Appended by `FINDING_039`. The body is unchanged. **This is the one published claim in the
+037-era record that changes sign.**
+
+## 1. The floor this finding recomputed is right; the finding it claimed to reproduce is not
+
+§4h reads *"the n = 14 floor reproduces `FINDING_035` (+0.0453)"*. It does not, and it should
+not have been expected to. **+0.0435 here is computed on pool B at depth 40; +0.0453 in 035 is
+computed at depth 20.** Different pools. 035's depth-40 floor is its *other* number, +0.0456.
+
+At 2,000,000 draws, pool B at depth 40 has **p95 +0.04400 · p99 +0.06377** (SE ±0.00004).
+This finding's +0.0435 is **−0.51 sd** of a 4,000-draw estimate from it, 035's +0.0456 is
++1.64 sd, and the ±0.0009 Monte-Carlo error of a 4,000-draw p95 at n = 14 covers the gap.
+`FINDING_039` §1 maps all five published values onto the three populations they belong to.
+
+## 2. What flips
+
+§2e: *"the ceiling still lands **on** the n = 14 floor (+0.0447 against +0.0435), so even
+there nothing is provable."* §5: *"the n = 14 stratum's ceiling (+0.0447 at depth 40) sits
+**on** its floor (+0.0435)."*
+
+**Against the authoritative floor the ceiling is ABOVE it**, by +0.0007, and its exact
+one-sided p against its own null over 2 × 10⁶ draws is **p = 0.0475**. It clears p95 — by a
+hair, and at n = 14. The wording "lands on the floor / nothing is provable" also did not
+follow from this finding's *own* +0.0435, against which +0.0447 is already above; that
+comparison was mis-read here.
+
+**Read §2e and §5 as: the perfect top-2 ceiling on the 14-ligand depth-40 stratum is
+marginally above its own floor, p = 0.0475.**
+
+## 3. What does **not** change — the verdict
+
+| | |
+|---|---|
+| the **stage-1 stop**, which is the finding's actual conclusion | pool A, n = 87: ceiling **+0.0129** against the pooled floor **+0.0134**. Untouched by any of this |
+| the best **realisable** candidate on pool B, §4g | **+0.0392**, still **below** the authoritative +0.0440, CI includes zero, p = 0.263, and it is one ligand |
+| the fifteen-of-sixteen negative configurations | untouched |
+| §5's framing of the stratum as *"quoted, not concluded from"* | still the right framing — a perfect-knowledge ceiling at p = 0.0475 on 14 ligands, which no candidate reaches, is not a prize |
+
+The line stays closed. What is corrected is a **statement about a ceiling**, not the verdict
+it was offered in support of.

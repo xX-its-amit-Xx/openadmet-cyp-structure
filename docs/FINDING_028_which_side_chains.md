@@ -12,6 +12,22 @@ loop**.
 Nothing here is or may become a selection feature: every quantity is computed against the
 crystal. This is diagnosis.
 
+> ### ⚠ Pointer added 2026-09-23 — **one section of this body is dead. Read the addenda.**
+>
+> **"LICENSED, and it reverses a call in FINDING 024 — a holo template is aimed at exactly
+> the F/G lesion"** (below, under *What this licenses*) is **SUPERSEDED and must not be
+> acted on.** This finding named the deciding measurement itself and then ran it:
+>
+> - **Addendum 1 (2026-09-22)** — the holo template ceiling over 210–216. *"It does not.
+>   FINDING 024's dismissal of holo templating stands unqualified, and the partial reversal
+>   proposed above is withdrawn."*
+> - **Addendum 2 (2026-09-22)** — the apo template, the caveat Addendum 1 left open.
+>   **Refuted like the holo ones.**
+>
+> **Templates of every kind are dead.** The addenda are the live text; the LICENSED section
+> is kept because the reasoning that produced it is what repeats. Logged as `C3` in
+> `DROP_DAY_PLAYBOOK.md` §10 and resolved in `FINDING_039`.
+
 ---
 
 ## What was asked

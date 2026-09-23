@@ -379,3 +379,28 @@ failure mode). Item 3 is replaced by:
 | projection | `data/processed/type_i_depth_projection.json` |
 | job ledger | `data/processed/type_i_depth_jobs.json` |
 | the 424 mmCIFs (144 MB) | `C:\cyp_struct\type_i_depth\` — scratch, never `D:` |
+
+---
+
+# Correction, 2026-09-23 — the `+0.0431 / +0.0631` floor is a low Monte-Carlo draw
+
+Appended by `FINDING_039`. The body is unchanged.
+
+**The estimator is right; the stream was low.** The `null_p95 +0.0431 / null_p99 +0.0631`
+reported for the prediction-side Type I stratum, and the `+0.0432` at rung 20 of the depth
+curve, were both replayed from this script's own seed (`default_rng(SEED + 11)`,
+`SEED = 20260922`) and return **+0.0431 / +0.0631 bit-for-bit**. So there is no bug. At
+2,000,000 draws the same population's floor is **p95 +0.04490 · p99 +0.06398** (SE ±0.00004).
+The published value is **−1.96 sd** of a 4,000-draw estimate; the curve's +0.0432 is −1.85 sd.
+A 4,000-draw p95 at n = 14 carries **±0.0009** of Monte-Carlo error, which is the whole of the
+spread between this finding's floor and `FINDING_035`'s +0.0453 on the identical population.
+
+**Every verdict in this finding stands, and one is slightly weaker than printed.** The
+prediction-side gain of **+0.0673** against the authoritative +0.04490 gives an exact
+one-sided **p = 0.0073** (2 × 10⁶ draws) rather than the +0.0063 printed. It still clears its
+own n = 14 floor, and the honest statement in the body — *consistent with the selector working
+on Type I, and still unable to prove it at n = 14* — is unchanged. The depth-curve rungs are
+unaffected: every rung below 20 is below its own floor either way.
+
+**Do not quote this floor against `FINDING_033`'s +0.0433.** That one is the **crystal-side**
+stratum, a different 14 ligands. `FINDING_039` §1 has the mapping.

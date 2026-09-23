@@ -251,3 +251,65 @@ ligand's own ρ, so the chosen sign is anti-correlated with it. `n_hb_backbone` 
 extremely publishable and is entirely an artifact — its raw mean ρ is **+0.0005 on 51% of
 ligands**. Fixing the sign a priori removes it. **Leave-one-out sign selection manufactures
 confident negatives from nulls**, and nothing else in this repo has used it before.
+
+---
+
+# Correction, 2026-09-23 — the post-hoc section: **the measurement stands, the mechanism does not**
+
+Appended by `FINDING_039`. The body is unchanged.
+
+The post-hoc section above explains `fe_centroid_dist` scoring **+0.0408** on the arm4 P450
+holdout by saying that holdout is a pool *"where **39 of 85 pairs are catastrophes**"*, and
+calls that FINDING 012's catastrophe-detector scaling reproducing on a new feature. **The 39
+is the pre-numbering-fix figure, retracted in full by `FINDING_021`.** Re-measured.
+
+## 1. The measurement reproduces exactly, and was never contaminated
+
+`depth_replication.evaluate` was re-run verbatim on the per-pose feature file
+(`zexp/depth_terms_holdout.csv`, recovered from Explorer; no re-scoring, no inference):
+`fg_depth` **−0.0051**, `fe_centroid_dist` **+0.0408** (ρ 0.138, p_perm 0.0005),
+`fe_min_dist` **+0.0291** — the published row, to four decimals. The LDDT column in that file
+matches `scores_arm4_mix_base.json` on **0 mismatches in 425 poses**, and that file is the
+post-fix scoring (61 of 85 pairs at a non-zero residue offset, minimum identity 0.809, none
+below the 0.80 bar). **The +0.0408 is sound.**
+
+## 2. The catastrophes do not exist
+
+| definition | count |
+|---|---|
+| poses < 0.1 | **7 of 425 = 1.6%** |
+| pairs with **any** pose < 0.1 | **2 of 85** |
+| pairs with **all** poses < 0.1 | **1 of 85** |
+| **asserted above** | **39 of 85** |
+
+## 3. The mechanism is not merely unverified — it is refuted, three ways
+
+- A rule that **perfectly avoids every pose below 0.1** and otherwise picks at random is worth
+  **+0.0002** — half a percent of +0.0408.
+- **Delete all 7 catastrophic poses** and re-run the feature on the 418 that remain:
+  **+0.0409** (ρ 0.136, p 0.0010). The gain does not move.
+- **By pair:** the 2 pairs containing a catastrophic pose contribute +0.0011 of the +0.0408;
+  the 83 clean pairs contribute **+0.0396**.
+
+## 4. The obvious replacement fails too, and points the wrong way
+
+If not catastrophes, then FINDING 012's wider claim — gain scales with **pool uncertainty**:
+
+| | headroom (oracle − random) | poses below 0.5 | `fe_centroid_dist` gain |
+|---|---|---|---|
+| arm4 holdout | +0.0652 | 14.6% (62/425) | **+0.0408** |
+| CYP3A4 pool | **+0.1174** | **34.2%** (595/1740) | **+0.0013** |
+
+The CYP3A4 pool is the *more* uncertain of the two on both measures and the feature is worth
+nothing there.
+
+## 5. Verdict on the three options
+
+**The measurement stands and the mechanism does not.** `fe_centroid_dist` really does select
+on the arm4 holdout, at +0.0408 against its own null; **why it does is now unexplained.**
+Strike the sentence *"That is FINDING 012's catastrophe-detector scaling reproducing on a new
+feature"* and the clause *"where 39 of 85 pairs are catastrophes"*. The closing claim that it
+is *"a statement about pool quality, not about CYP3A4 chemistry"* is **not supported** either
+— pool quality runs the other way between these two pools.
+
+Nothing in this repo builds on the +0.0408, and nothing should until it is explained.

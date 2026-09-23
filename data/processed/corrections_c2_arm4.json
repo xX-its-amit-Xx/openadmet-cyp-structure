@@ -1,0 +1,97 @@
+{
+  "reproduction": {
+    "fg_depth": {
+      "ligands": 85,
+      "oracle": 0.8599,
+      "random": 0.7947,
+      "selected": 0.7896,
+      "gain": -0.0051,
+      "rho": 0.023,
+      "frac_rho_pos": 0.482,
+      "beats_random_frac": 0.482,
+      "p_wilcoxon": 0.642778985392834,
+      "null_p95": 0.0211,
+      "p_permutation": 0.6705
+    },
+    "fe_centroid_dist": {
+      "ligands": 85,
+      "oracle": 0.8599,
+      "random": 0.7947,
+      "selected": 0.8355,
+      "gain": 0.0408,
+      "rho": 0.138,
+      "frac_rho_pos": 0.602,
+      "beats_random_frac": 0.576,
+      "p_wilcoxon": 0.0025338530473509556,
+      "null_p95": 0.0211,
+      "p_permutation": 0.0005
+    },
+    "fe_min_dist": {
+      "ligands": 85,
+      "oracle": 0.8599,
+      "random": 0.7947,
+      "selected": 0.8238,
+      "gain": 0.0291,
+      "rho": 0.133,
+      "frac_rho_pos": 0.578,
+      "beats_random_frac": 0.576,
+      "p_wilcoxon": 0.05983248864934673,
+      "null_p95": 0.0211,
+      "p_permutation": 0.0075
+    }
+  },
+  "catastrophe_census": {
+    "pairs": 85,
+    "poses": 425,
+    "poses_below_0_1": 7,
+    "pairs_any_pose_below_0_1": 2,
+    "pairs_all_poses_below_0_1": 1,
+    "pairs_mean_below_0_1": 1,
+    "asserted_in_finding_025": 39,
+    "denominator_in_finding_025": 85
+  },
+  "avoidance_ceiling": {
+    "0.1": 0.0002,
+    "0.2": 0.0076,
+    "0.3": 0.0351,
+    "0.5": 0.041
+  },
+  "decomposition": {
+    "total_gain": 0.0408,
+    "n_pairs_with_catastrophe": 2,
+    "contribution_from_catastrophe_pairs": 0.0011,
+    "n_pairs_clean": 83,
+    "contribution_from_clean_pairs": 0.0396,
+    "mean_gain_catastrophe_pairs": 0.048,
+    "mean_gain_clean_pairs": 0.0406
+  },
+  "catastrophe_free_rerun": {
+    "ligands": 84,
+    "oracle": 0.8702,
+    "random": 0.8045,
+    "selected": 0.8454,
+    "gain": 0.0409,
+    "rho": 0.136,
+    "frac_rho_pos": 0.602,
+    "beats_random_frac": 0.583,
+    "p_wilcoxon": 0.0025714080448965638,
+    "null_p95": 0.0203,
+    "p_permutation": 0.001
+  },
+  "headroom": {
+    "arm4_holdout": 0.0652,
+    "cyp3a4_pool": 0.1174,
+    "cyp3a4_gain": 0.0013,
+    "arm4_gain": 0.0408
+  },
+  "feature_spread": {
+    "arm4_holdout": [
+      0.211,
+      0.511
+    ],
+    "cyp3a4_pool": [
+      0.459,
+      1.765
+    ]
+  }
+}

@@ -73,3 +73,30 @@ co-folding better"; it is "make co-folding better *on this one enzyme*".
   built for it.
 - **Report CYP3A4 numbers separately from family numbers, always.** A mean over 85 P450
   pairs is 0.81 and says nothing about the challenge; the 15 CYP3A4 pairs say 0.555.
+
+---
+
+# Correction, 2026-09-23 — the per-target table reports **sample 0**, not the sample mean
+
+Appended by `FINDING_039`. No number in the body is wrong; the column label is ambiguous and
+it is what made this table look as though it disagreed with `FINDING_024`.
+
+Every figure in the "mean LDDT-PLI" column — 0.5550 for CYP3A4, 0.8648 for every other P450,
+0.863 / 0.909 / 0.931 per target — is the mean of **`lddt_sample0`**, the engine's own rank-0
+pose. It is **not** the mean over the five samples. Both reproduce exactly:
+
+| target | n | **mean of sample 0 (this table)** | mean of all 5 (what `FINDING_024` prints) |
+|---|---|---|---|
+| P08684 CYP3A4 | 15 | **0.5550** | 0.5526 |
+| **P11511 aromatase** | 6 | **0.8629** | **0.6313** |
+| P10614 CYP51A1 | 5 | **0.9093** | 0.9076 |
+| Q2IU02 | 27 | **0.9306** | 0.9241 |
+| every other P450 | 70 | **0.8648** | 0.8466 |
+
+**Aromatase is the one target where the two differ materially** — by **0.232**, against
+≤ 0.007 everywhere else. Boltz-2 puts a very good aromatase pose at rank 0 and much worse
+ones behind it, which is why 024's 0.631 and this table's 0.863 are both right.
+
+**Prefer the all-5 mean for cross-target comparison.** Rank 0 is the engine's own confidence
+ordering, and `FINDING_001` is that this ordering does not rank poses. The headline gap
+survives either way: CYP3A4 0.555 / 0.553 against every other P450 0.865 / 0.847.

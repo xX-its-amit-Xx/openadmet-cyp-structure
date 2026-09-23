@@ -389,3 +389,25 @@ ligands the challenge announcement describes; this is one pose per ligand throug
 | family strata, matched comparison, controls | `data/processed/binding_mode_strata_p450.json` |
 
 No downloads, no inference, no GPU. Intermediates went to `C:\Temp`, never to `D:`.
+
+---
+
+# Correction, 2026-09-23 — the n = 14 floor quoted here is right, and it is **not** the one 034/035/036 quote
+
+Appended by `FINDING_039`. The body is unchanged; this note records what was re-measured.
+
+**The number in this finding is correct.** The `+0.0433 / +0.0622` floor in the Type I column
+is computed on the **crystal-side** Type I stratum (`crystal_mode == type_I`, random baseline
+**0.4644**). Recomputed at 2,000,000 draws, that population's floor is
+**p95 +0.04306 · p99 +0.06160** (SE ±0.00004). The published +0.0433 is **+0.27 sd** of a
+4,000-draw estimate away from it — a good draw.
+
+**It is a different quantity from the one FINDINGs 034, 035 and 036 call "the n = 14 floor".**
+Those use the **prediction-side** stratum, which swaps `D0R` in and `QDY` out and moves the
+random baseline to 0.4597. Its floor is **+0.04490** at depth 20 and **+0.04400** at depth 40.
+Do not cross-quote. `FINDING_039` §1 has the full mapping.
+
+**The verdict is unaffected.** Type I's +0.0411 against the authoritative crystal-side floor
+gives an exact one-sided **p = 0.0581** (2 × 10⁶ draws), against the +0.0595 published here.
+The stratum still does not clear its own floor and the conclusion — *the measurement has no
+resolution at n = 14*, not *the selector fails* — stands exactly as written.

@@ -1,0 +1,29 @@
+{
+  "FINDING 033 crystal-side Type I, depth 20": {
+    "gain": 0.0411,
+    "exact_p": 0.05808,
+    "published_p": 0.0595,
+    "p95": 0.04306,
+    "p99": 0.0616
+  },
+  "FINDING 034 prediction-side Type I, depth 20": {
+    "gain": 0.0673,
+    "exact_p": 0.00734,
+    "published_p": 0.0063,
+    "p95": 0.0449,
+    "p99": 0.06398
+  },
+  "FINDING 035 prediction-side Type I, depth 40": {
+    "gain": 0.0799,
+    "exact_p": 0.00201,
+    "published_p": null,
+    "p95": 0.044,
+    "p99": 0.06377
+  },
+  "FINDING 036 pool-B perfect top-2 ceiling, depth 40": {
+    "gain": 0.0447,
+    "exact_p": 0.0475,
+    "published_p": null,
+    "p95": 0.044
+  }
+}

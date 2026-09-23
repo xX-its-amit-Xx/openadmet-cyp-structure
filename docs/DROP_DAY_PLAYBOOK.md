@@ -923,38 +923,73 @@ crystal-dependent sequence. The correct sequence is §1 of this document. The re
 These are live inconsistencies found while assembling this document. They do not change any
 verdict, but do not quote both sides of one in the same table.
 
-**C1 — the n=14 noise floor is three different numbers.** FINDING 036 says **p95 +0.0435 /
-p99 +0.0623**; FINDING 035 says **+0.0453 / +0.0648** and elsewhere **+0.0456**; FINDING 033
-says **+0.0433** and FINDING 034 **+0.0431**. 036 writes that its number "reproduces"
-035's — it does not, to the digit. This flips a sign in 036 §4c: pool B's ceiling is +0.0447,
-which is *above* +0.0435 and *below* +0.0453. **Use the largest when judging a candidate, and
-recompute on the actual pool anyway (§6).**
+> **Status, 2026-09-23 — `FINDING_039` closed C1, C2, C3, C5 and C8**, each rewritten below
+> with its resolution. **C4, C6, C7 and C9 remain open**; all four are supersessions or
+> reconciliations and none is decision-relevant on drop day. **One published claim changed
+> sign** (FINDING 036 §2e/§5, see C1). Every affected finding carries a dated correction note.
 
-**C2 — FINDING 025 cites a retracted catastrophe count.** Its post-hoc replication section
-says "the holdout, **where 39 of 85 pairs are catastrophes**" — that is the pre-numbering-fix
-figure; FINDING 021 measured the true count at **1/84**. So the stated *explanation* for
-`fe_centroid_dist` scoring +0.0408 on the arm4 holdout rests on a population that does not
-exist. The measurement may still be sound; the attribution to FINDING 012's catastrophe
-scaling is **unverified**. Do not build on it.
+**C1 — RESOLVED. The "n=14 noise floor" is three populations plus Monte-Carlo error.**
+The five quoted values (+0.0431, +0.0433, +0.0435, +0.0453, +0.0456) are **one** estimator —
+*the p95 of the gain from picking one pose per ligand uniformly at random, over that pool's
+mean* — evaluated on **three different sets**, each estimated at 4,000 draws, which carry
+**±0.0009** of slop at n=14. Authoritative, 2,000,000 draws, SE ±0.00004:
 
-**C3 — FINDING 028's body licenses holo templates; its own Addendum 1 withdraws that.**
-The body reads "LICENSED, and it reverses a call in FINDING 024"; Addendum 1 runs the
-deciding measurement and states the partial reversal "is withdrawn" and 024's dismissal
-"stands unqualified"; Addendum 2 removes the last qualifier. **Read the body's LICENSED
-section as dead. The addenda are the live text.** (Captured in §4.)
+| population | **p95** | p99 |
+|---|---|---|
+| **crystal-side** Type I, pool A depth 20 — FINDING 033's | **+0.0431** | +0.0616 |
+| **prediction-side** Type I, pool A depth 20 — 034, 035 `in_stratum` | **+0.0449** | +0.0640 |
+| **prediction-side** Type I, **pool B depth 40** — 035 `augmented`, 036 | **+0.0440** | +0.0638 |
 
-**C4 — FINDING 018 closes all fine-tuning arms; FINDING 022 conditionally reopens one.**
+Crystal-side and prediction-side differ by one ligand (`D0R` in, `QDY` out) — FINDING 034's
+own headline — and the random baseline moves 0.4644 → 0.4597. **Use the floor for the
+population you are on, not "the largest".** Pooled at n=87 it is +0.0137. **Recompute on the
+actual pool (§6), with ≥200,000 draws if a decision turns on it**: inside ±0.003 of a floor a
+4,000-draw comparison is undecided.
+
+**One sign flipped.** FINDING 036 §2e and §5 say pool B's perfect top-2 ceiling **+0.0447**
+"lands **on**" the floor. Against the authoritative **+0.0440** it is **above**, exact
+one-sided **p = 0.0475**. 036's *verdict* is unchanged — its stage-1 stop is the n=87
+measurement (+0.0129 vs +0.0134) and its best realisable pool-B candidate is +0.0392, still
+below the floor. 033's, 034's and 035's floor verdicts all stand (exact p = 0.0581 / 0.0073 /
+0.0020). `FINDING_039` §1.
+
+**C2 — RESOLVED. The measurement stands, the mechanism is refuted, the result is now
+unexplained.** `fe_centroid_dist` scoring **+0.0408** on the arm4 holdout **reproduces to four
+decimals**, and was always computed on post-fix scores (0 LDDT mismatches in 425 poses; 61 of
+85 pairs at a non-zero residue offset, none below the 0.80 identity bar). The post-fix
+catastrophe rate is **1 of 85** pairs / 7 of 425 poses — the 39 does not exist under any
+definition. The attribution to FINDING 012's catastrophe scaling is not merely unverified, it
+is **dead**: a *perfect* catastrophe-avoider is worth **+0.0002**; deleting all 7 catastrophic
+poses leaves the gain at **+0.0409**; 83 clean pairs supply +0.0396 of the +0.0408. The
+fallback account — pool uncertainty — fails and runs backwards (CYP3A4's pool has +0.1174
+headroom and 34.2% sub-0.5 poses against the holdout's +0.0652 and 14.6%, and the feature is
+worth +0.0013 there). **Still do not build on it** — now because nobody can say why it works.
+`FINDING_039` §2.
+
+**C3 — RESOLVED by pointer.** FINDING 028's body section *"LICENSED, and it reverses a call in
+FINDING 024"* is dead: its own Addendum 1 withdraws it and Addendum 2 removes the last
+qualifier. A dated warning box now sits at the **top of 028's body**, so a reader cannot reach
+the superseded claim without passing it. Templates of every kind stay on the DEAD LIST.
+
+**C4 — STILL OPEN (supersession, not conflict). FINDING 018 closes all fine-tuning arms; FINDING 022 conditionally reopens one.**
 018: "arm1_promiscuous, arm2_family and arm3_cyp3a4_only stay built and unused … composition
 cannot rescue a lever that damages the model at its smallest dose", reaffirmed by 021.
 022: "**Re-examine arm3_cyp3a4_only** … worth one run *if* a difficulty-matched holdout can be
 built for it", on a mechanism 022 itself calls "plausible, not demonstrated". **Arms 1 and 2
 are closed; arm 3 is conditionally reopened. It is not a drop-day action.**
 
-**C5 — aromatase's per-target score differs by 0.23 between 022 and 024.** 022 reports
-P11511 at **0.863** (n = 6 pairs); 024's cavity table prints **0.631** (7 entries). Plausibly
-different denominators, unexplained in the text. Do not put both in one table.
+**C5 — RESOLVED. Two statistics on the same six pairs, not a disagreement.** 022's
+per-target column is the mean of **`lddt_sample0`** — the engine's own rank-0 pose — and 024's
+parenthesised scores are the mean over **all five samples**. Both reproduce exactly on five
+targets and both aggregate rows: aromatase **0.8629 / 0.6313**, Q2IU02 0.9306 / 0.9241, CYP3A4
+0.5550 / 0.5526, CYP51A1 0.9093 / 0.9076, CYP3A5 0.4758 / 0.5059. Aromatase is the only target
+where they diverge materially (**0.232**, against ≤0.007 elsewhere): Boltz-2 puts a very good
+aromatase pose at rank 0 and much worse ones behind it. 024's `entries` column is a **third**
+denominator — crystals in the 406-entry cavity set (aromatase 7), not scored pairs (6).
+**Prefer the all-5 mean for cross-target comparison**, because rank 0 is the engine's own
+confidence ordering and FINDING 001 is that it does not rank poses. `FINDING_039` §4.
 
-**C6 — FINDING 037's "a bimodal pool would have more clusters and a larger stake" collides
+**C6 — STILL OPEN (reconciled in 037's own text). FINDING 037's "a bimodal pool would have more clusters and a larger stake" collides
 with its own degeneracy result.** §5a establishes that the cluster oracle is **monotone in
 cluster count by construction**, converging on the full pose oracle at singletons — which is
 why "a single headline number for this ceiling does not exist". The honest quantity is the
@@ -962,18 +997,28 @@ why "a single headline number for this ceiling does not exist". The honest quant
 peaks mid-grid (+0.0158 Chamfer at 0.75 Å, +0.0191 rotation at 15°) and goes negative at the
 loose end. §7 above is worded to that correction.
 
-**C7 — FINDING 035 item 5 recommends the experiment FINDING 036 then kills.** 035: "a
+**C7 — STILL OPEN (supersession, not conflict). FINDING 035 item 5 recommends the experiment FINDING 036 then kills.** 035: "a
 tie-break for the top-2 `xeng` poses is a better-evidenced next experiment than more depth."
 036 measured it and said no. Supersession, not conflict — but 035's submission-time item 5 is
 **stale as written; do not action it.**
 
-**C8 — FINDING 035's own 20-pose baseline is two numbers.** The primary endpoint puts
-selected at depth 20 = 0.5270 (Δ +0.0116); the union subsample curve puts it at 0.5291
-(Δ +0.0095). Different estimators, both quoted as "the" conversion. Also unremarked in 035:
-its selected column **peaks at pool 30 (0.5411) and falls at 40 (0.5386)** — the full
-doubling is worse than the half.
+**C8 — RESOLVED. Two estimands, and the peak is real but is one ligand.** **0.5270** is
+`argmin(xeng)` over **the 20 Modal poses that exist** — deterministic, no draw, recomputed
+exactly. **0.5291** is **E**[`argmin(xeng)` over 20 poses drawn from the **40-pose union**],
+a pool half of which is the new Explorer arm — exact value 0.5293. Different populations, so
+both are right; **the primary endpoint's baseline is 0.5270**, because a purchase is measured
+against the pool that existed before it.
 
-**C9 — FINDING 017's analogue ladder vs FINDING 022's "superfamily benchmarking is nearly
+The non-monotonicity is **real, not Monte-Carlo noise**: computed in closed form, with zero
+sampling error, the augment curve peaks at **pool 33 (0.5424)** and falls to 0.5386 at 40, and
+the union curve peaks at **depth 34 (0.5410)**; every published rung is within ±0.0007 of its
+exact value against a ±0.0012 256-draw SE. The oracle stays monotone. **But it is one
+ligand** — ten of fourteen have no new pose that beats their incumbent on `xeng` and cannot
+move at all; per-ligand the drop is 08J **+0.1721** net of CFF −0.1195. It does **not**
+establish a turning point in depth and is **not** a reason to stop buying it: at n=14 one
+adversarial pose can invert the selected curve while the oracle rises. `FINDING_039` §3.
+
+**C9 — STILL OPEN (reconcilable, unreconciled in the text). FINDING 017's analogue ladder vs FINDING 022's "superfamily benchmarking is nearly
 worthless."** Reconcilable but unreconciled in the text: 017's splits are **chemical** (ligand
 novelty), 022's objection is to **protein** analogues chosen by family similarity. 024 R2
 supplies the replacement criterion 022 lacked (cavity ≥ 600 Å³, target sub-2 Å rate near

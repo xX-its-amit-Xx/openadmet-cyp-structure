@@ -328,3 +328,62 @@ is now testable and the answer is narrower than hoped.
 | smoke poses (`1RD`, non-stratum) | `data/processed/matched_depth_smoke_poses.csv` |
 | job ledger | `data/processed/matched_depth_jobs.json` |
 | the 282 mmCIFs | `C:\cyp_struct\matched_depth\` (local) and `/scratch/shenoy.am/cyp-depth/out/` (Explorer) — never `D:` |
+
+---
+
+# Correction, 2026-09-23 — the two floors here are two populations, and the pool-30 peak is real but is one ligand
+
+Appended by `FINDING_039`. The body is unchanged.
+
+## 1. The floors
+
+This finding prints two, and they are correctly two different quantities:
+
+| printed | population | authoritative (2 × 10⁶ draws, SE ±0.00004) | this finding's error |
+|---|---|---|---|
+| `noise_floor_in_stratum` **+0.0453 / +0.0648** | prediction-side Type I, **depth 20** | **p95 +0.04490 · p99 +0.06398** | +0.44 sd — correct |
+| `noise_floor_augmented` **+0.0456 / +0.0669** | prediction-side Type I, **depth 40** | **p95 +0.04400 · p99 +0.06377** | +1.64 sd — high |
+
+A 4,000-draw p95 at n = 14 has **±0.0009** of Monte-Carlo error. That, and nothing else,
+separates +0.0453 here from `FINDING_034`'s +0.0431 on the *identical* population, and
++0.0456 here from `FINDING_036`'s +0.0435 on the identical population. The depth-40 floor to
+use is **+0.0440**.
+
+**The verdict strengthens.** The augmented gain **+0.0799** against the authoritative +0.0440
+gives an exact one-sided **p = 0.0020** (2 × 10⁶ draws).
+
+## 2. The two 20-pose baselines (playbook C8) — **two estimands, both right**
+
+- **0.5270** — `argmin(xeng)` over **the 20 Modal poses that exist**. Deterministic, no draw.
+  Recomputed exactly: **0.5270**. This is the primary endpoint's baseline and it is the
+  correct one, because a purchase is measured against the pool that existed before it.
+- **0.5291** — **E**[ `argmin(xeng)` over 20 poses drawn from the **40-pose union** ], a pool
+  half of which is the new Explorer arm. Exact closed-form value **0.5293**.
+
+Different populations, so this was never an inconsistency — but the two should not appear in
+one sentence about "the" conversion.
+
+## 3. The selected column peaks at pool 30 and falls at 40 — **real, and it is 08J**
+
+Unremarked in the body. Both curves here are 256-draw Monte Carlo and both are exactly
+computable in closed form. Computed exactly, with **zero sampling error**:
+
+| pool | 20 | 24 | 28 | 30 | **33** | 36 | 38 | **40** |
+|---|---|---|---|---|---|---|---|---|
+| **exact** selected | 0.5270 | 0.5349 | 0.5400 | **0.5415** | **0.5424** | 0.5418 | 0.5406 | **0.5386** |
+| published (256 draws) | 0.5270 | 0.5354 | 0.5393 | 0.5411 | | | | 0.5386 |
+
+The union curve peaks the same way: exact **0.5410 at depth 34**, 0.5386 at 40. Every
+published rung is within ±0.0007 of its exact value against a ±0.0012 256-draw SE. **So the
+non-monotonicity is not noise.** The oracle stays monotone throughout.
+
+**But ten of the fourteen ligands do not move at all** — they have no new pose that beats
+their incumbent on `xeng`, so depth cannot touch them. Exact, pool 30 minus pool 40:
+**08J +0.1721**, CFF −0.1195, YNV −0.0177, PG0 +0.0059, the other ten exactly 0.0000. 08J has
+one new pose that wins on `xeng` and scores **0.1364** where the incumbent scored 0.4806; at
+pool 30 it is drawn half the time, at pool 40 always.
+
+**What it licenses:** at n = 14 a single adversarial pose can invert the selected curve while
+the oracle rises. That is this finding's own thesis at its smallest instance. It does **not**
+establish a turning point in depth, and it is **not** a reason to stop buying depth — it is
+one more reason the depth question cannot be settled on this stratum.
