@@ -1,6 +1,6 @@
 # Findings index
 
-Nineteen findings, most of them negative. Read them in this order if you are arriving cold;
+Thirty-three findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
 ## Start here
@@ -36,6 +36,7 @@ work. That is not a slogan, it is ~30 measured features:
 | 030 | **fragment pose transfer from the P450 superfamily** — score a pose by how well its shared substructure matches where 183 other targets' crystals put that fragment in the heme frame | coverage is fine (522 legal donors per query, CYP3A excluded) and the prior is **empty**: donor fragment centroids scatter **4.48 Å** where the error to fix is 2.5 Å, and the query's own **crystal** ranks at the **56th percentile** of its own 20 predicted poses on the feature. −0.0066 vs random, **−0.0464 paired with only 5 of 84 tied**. Closes pose editing on this prior |
 | 031 | **co-folding a SECOND COPY of the query ligand** — the biology map's top-ranked partner, the only one with CYP3A4 precedent and the only one touching the F/G roof | the second copy lands in the **active site on 12 of 15** (median 8.8 Å from Fe, reproducing 2V0M's 9.3–9.8 Å unprompted) and **not** the peripheral groove (1 of 15). The first copy gets **worse**: **−0.066 LDDT-PLI**, CI [−0.142, **+0.005**], rotation **+4.5°**, and the damage is concentrated on the 12 whose second copy competes for the cavity (−0.079). An **unrelated** second ligand is worse still (−0.093, and it ejects the query from the heme on 10 of 60 poses). F/G 210–216 moves 0.40 Å against a 0.50 Å bar. **REFUTED** |
 | 032 | **the ligand's INTERNAL CONFORMER** — 024's last untouched term (26% of the error, 1.60 Å), transferred as torsions from the superfamily and, separately, as prior-free ETKDG plausibility | the prior is **sharp** this time (donors agree to **25.0°** where the error to fix is **59.3°**) and it points the **wrong way**: the crystal ranks at the **31st percentile** of its own 20 poses, p = 2.6e-04, and the same happens with a general small-molecule prior. **The torsion ORACLE — the true torsions handed over — is worth only +0.0213 and loses to the incumbent.** Gate failed, no selector built |
+| 033 | **is the shipped selector biased by BINDING MODE?** — the validation set is 83% Type II, so a Type I-rich blind test set would be an unmeasured exposure | **ROBUST**, on the set with the power: family-wide the raw Type II − Type I gap is +0.0318 and **vanishes to −0.0030, CI [−0.0132, +0.0075], once matched on pool headroom**; both strata clear their own nulls at p=0.0000 over 342 pairs. CYP3A4 alone is **underpowered** — n=14, CI [−0.063, +0.050], MDD 0.066. The heme-frame explanation **fails** (partial ρ −0.033). The real exposure is the POOL: Type I random 0.464 vs 0.599 and **oracle 0.649 vs 0.707**. One label was wrong: **73/14, not 72/15** |
 
 **Read 007 before proposing any new feature.** It is the arithmetic that makes "promising"
 a meaningless word here.

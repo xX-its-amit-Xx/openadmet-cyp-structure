@@ -1,0 +1,267 @@
+{
+ "controls": {
+  "shipped_select_reproduced": 0.6164,
+  "shipped_gain_vs_empirical_random": 0.0381,
+  "finding_011_full_depth_reference": 0.038,
+  "exact_zero_lddt_rows": 4,
+  "zero_row_audit": [
+   {
+    "ligand": "PG0",
+    "pdb": "9BV6",
+    "n_zero": 1,
+    "n_poses": 20,
+    "bisy_rmsd_of_zeros": [
+     23.08
+    ],
+    "lddt_of_the_other_poses_median": 0.441,
+    "all_mapped": true
+   },
+   {
+    "ligand": "PG4",
+    "pdb": "9YK4",
+    "n_zero": 3,
+    "n_poses": 20,
+    "bisy_rmsd_of_zeros": [
+     25.93,
+     26.87,
+     26.09
+    ],
+    "lddt_of_the_other_poses_median": 0.577,
+    "all_mapped": true
+   }
+  ],
+  "zero_rows_are_numbering": false,
+  "zero_row_verdict": "every zero row's SIBLING poses of the same ligand against the same crystal score 0.44-0.82, so the numbering frame for that pair is correct (FINDING 021 failures are per-PAIR, not per-pose); the zeros carry BiSyRMSD 23-27 A, i.e. genuine ejections"
+ },
+ "strata": {
+  "all": {
+   "stratum": "all",
+   "n_units": 87,
+   "n_poses": 1740,
+   "xeng_mean_chamfer_A": 1.221,
+   "xeng_within_unit_sd_A": 0.289,
+   "random_exact": 0.5769,
+   "random_empirical_300": 0.5783,
+   "oracle": 0.6975,
+   "selected": 0.6164,
+   "gain": 0.0395,
+   "gain_ci95": [
+    0.0232,
+    0.0571
+   ],
+   "gain_sd_per_unit": 0.0802,
+   "headroom_oracle_minus_random": 0.1206,
+   "frac_of_headroom_captured": 0.3275,
+   "within_unit_rho_mean": -0.2582,
+   "frac_rho_correct_sign": 0.7586,
+   "frac_gain_positive": 0.6782,
+   "frac_gain_nonneg": 0.6782,
+   "null_p95": 0.0139,
+   "null_p99": 0.0193,
+   "empirical_p": 0.0,
+   "wilcoxon_p": 3.9e-05,
+   "jackknife_min": 0.036,
+   "jackknife_max": 0.041,
+   "gain_dropping_best_unit": 0.036,
+   "gain_dropping_best_two_units": 0.0326
+  },
+  "type_II": {
+   "stratum": "type_II",
+   "n_units": 73,
+   "n_poses": 1460,
+   "xeng_mean_chamfer_A": 1.084,
+   "xeng_within_unit_sd_A": 0.153,
+   "random_exact": 0.5985,
+   "random_empirical_300": 0.5996,
+   "oracle": 0.7068,
+   "selected": 0.6376,
+   "gain": 0.0392,
+   "gain_ci95": [
+    0.0228,
+    0.0569
+   ],
+   "gain_sd_per_unit": 0.0749,
+   "headroom_oracle_minus_random": 0.1084,
+   "frac_of_headroom_captured": 0.3616,
+   "within_unit_rho_mean": -0.2632,
+   "frac_rho_correct_sign": 0.7671,
+   "frac_gain_positive": 0.7123,
+   "frac_gain_nonneg": 0.7123,
+   "null_p95": 0.0144,
+   "null_p99": 0.0198,
+   "empirical_p": 0.0,
+   "wilcoxon_p": 4.2e-05,
+   "jackknife_min": 0.035,
+   "jackknife_max": 0.041,
+   "gain_dropping_best_unit": 0.035,
+   "gain_dropping_best_two_units": 0.0324
+  },
+  "type_I": {
+   "stratum": "type_I",
+   "n_units": 14,
+   "n_poses": 280,
+   "xeng_mean_chamfer_A": 1.937,
+   "xeng_within_unit_sd_A": 1.0,
+   "random_exact": 0.4644,
+   "random_empirical_300": 0.4675,
+   "oracle": 0.6488,
+   "selected": 0.5055,
+   "gain": 0.0411,
+   "gain_ci95": [
+    -0.0073,
+    0.1012
+   ],
+   "gain_sd_per_unit": 0.1075,
+   "headroom_oracle_minus_random": 0.1843,
+   "frac_of_headroom_captured": 0.223,
+   "within_unit_rho_mean": -0.2319,
+   "frac_rho_correct_sign": 0.7143,
+   "frac_gain_positive": 0.5,
+   "frac_gain_nonneg": 0.5,
+   "null_p95": 0.0433,
+   "null_p99": 0.0622,
+   "empirical_p": 0.0595,
+   "wilcoxon_p": 0.295776,
+   "jackknife_min": 0.0196,
+   "jackknife_max": 0.0493,
+   "gain_dropping_best_unit": 0.0196,
+   "gain_dropping_best_two_units": 0.0048
+  }
+ },
+ "comparison": {
+  "headroom_a": 0.1084,
+  "headroom_b": 0.1843,
+  "frac_headroom_a": 0.3616,
+  "frac_headroom_b": 0.223,
+  "frac_headroom_a_ci95": [
+   0.2265,
+   0.4956
+  ],
+  "frac_headroom_b_ci95": [
+   -0.0453,
+   0.5068
+  ],
+  "frac_headroom_difference_ci95": [
+   -0.1726,
+   0.4375
+  ],
+  "units_with_positive_gain": "52/73 vs 7/14",
+  "fisher_p_on_sign": 0.1316,
+  "a": "type_II",
+  "b": "type_I",
+  "n_a": 73,
+  "n_b": 14,
+  "gain_a": 0.0392,
+  "gain_b": 0.0411,
+  "difference": -0.0019,
+  "difference_ci95": [
+   -0.0634,
+   0.0497
+  ],
+  "ci_width": 0.1131,
+  "welch_p": 0.95,
+  "mannwhitney_p": 0.5597,
+  "permutation_p": 0.9403,
+  "pooled_sd": 0.0807,
+  "min_detectable_difference_80pct_power": 0.066,
+  "observed_over_mdd": 0.029,
+  "headroom_matched": {
+   "n_bins_used": 2,
+   "bins": [
+    {
+     "bin": 0,
+     "n_a": 25,
+     "n_b": 4,
+     "headroom": 0.0422,
+     "gain_a": 0.0043,
+     "gain_b": -0.0061,
+     "difference": 0.0104
+    },
+    {
+     "bin": 2,
+     "n_a": 20,
+     "n_b": 9,
+     "headroom": 0.2259,
+     "gain_a": 0.1086,
+     "gain_b": 0.0722,
+     "difference": 0.0365
+    }
+   ],
+   "matched_difference": 0.0234,
+   "matched_difference_ci95": [
+    -0.0331,
+    0.0918
+   ],
+   "raw_difference": -0.0019
+  }
+ },
+ "frame_hypothesis": {
+  "hypothesis": "the heme frame is defined by a landmark a Type I ligand is not anchored to, so the gain should fall as the ligand sits further from the iron",
+  "gain_vs_crystal_fe_distance_ALL": {
+   "rho": -0.0079,
+   "p": 0.9424,
+   "n": 87
+  },
+  "gain_vs_crystal_fe_distance_TYPE_II_ONLY": {
+   "rho": 0.0491,
+   "p": 0.68,
+   "n": 73
+  },
+  "gain_vs_predicted_fe_distance_ALL": {
+   "rho": 0.0584,
+   "p": 0.5913,
+   "n": 87
+  },
+  "gain_vs_predicted_fe_distance_TYPE_II_ONLY": {
+   "rho": 0.1206,
+   "p": 0.3093,
+   "n": 73
+  },
+  "rho_vs_crystal_fe_distance_ALL": {
+   "rho": 0.0132,
+   "p": 0.9033,
+   "n": 87
+  },
+  "confound_gain_vs_pool_headroom_ALL": {
+   "rho": 0.4403,
+   "p": 0.0,
+   "n": 87
+  },
+  "confound_gain_vs_pool_spread_ALL": {
+   "rho": 0.4467,
+   "p": 0.0,
+   "n": 87
+  },
+  "partial_gain_vs_fe_controlling_headroom_ALL": {
+   "partial_rho": -0.0896,
+   "n": 87,
+   "ci95": [
+    -0.3052,
+    0.1395
+   ],
+   "permutation_p_approx": 0.4005
+  },
+  "partial_gain_vs_fe_controlling_headroom_TYPE_II": {
+   "partial_rho": 0.0327,
+   "n": 73,
+   "ci95": [
+    -0.1991,
+    0.2553
+   ],
+   "permutation_p_approx": 0.7795
+  },
+  "headroom_by_stratum": {
+   "all": 0.1206,
+   "type_II": 0.1084,
+   "type_I": 0.1843
+  },
+  "pool_mean_by_stratum": {
+   "all": 0.5769,
+   "type_II": 0.5985,
+   "type_I": 0.4644
+  }
+ },
+ "out": [
+  "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\binding_mode_per_ligand_cyp3a4.csv"
+ ]
+}

@@ -1,0 +1,303 @@
+{
+ "setup": {
+  "pool": "protenix_v2 (deduped)",
+  "reference": "esmfold2",
+  "poses": 1239,
+  "pairs": 342,
+  "proteins": 66,
+  "non_cyp3a4_proteins": 65,
+  "finding_012_reference_gain": 0.0414
+ },
+ "strata": {
+  "all": {
+   "stratum": "all",
+   "n_units": 342,
+   "n_poses": 1239,
+   "xeng_mean_chamfer_A": 1.573,
+   "xeng_within_unit_sd_A": 1.238,
+   "random_exact": 0.7034,
+   "random_empirical_300": 0.7022,
+   "oracle": 0.7673,
+   "selected": 0.7436,
+   "gain": 0.0402,
+   "gain_ci95": [
+    0.0326,
+    0.0478
+   ],
+   "gain_sd_per_unit": 0.0719,
+   "headroom_oracle_minus_random": 0.0638,
+   "frac_of_headroom_captured": 0.6294,
+   "within_unit_rho_mean": -0.2431,
+   "frac_rho_correct_sign": 0.6657,
+   "frac_gain_positive": 0.6667,
+   "frac_gain_nonneg": 0.6871,
+   "null_p95": 0.0121,
+   "null_p99": 0.0163,
+   "empirical_p": 0.0,
+   "wilcoxon_p": 0.0,
+   "jackknife_min": 0.0396,
+   "jackknife_max": 0.0407,
+   "gain_dropping_best_unit": 0.0396,
+   "gain_dropping_best_two_units": 0.039
+  },
+  "type_II": {
+   "stratum": "type_II",
+   "n_units": 173,
+   "n_poses": 646,
+   "xeng_mean_chamfer_A": 1.839,
+   "xeng_within_unit_sd_A": 1.767,
+   "random_exact": 0.6617,
+   "random_empirical_300": 0.66,
+   "oracle": 0.7475,
+   "selected": 0.7176,
+   "gain": 0.0559,
+   "gain_ci95": [
+    0.044,
+    0.0685
+   ],
+   "gain_sd_per_unit": 0.0814,
+   "headroom_oracle_minus_random": 0.0858,
+   "frac_of_headroom_captured": 0.6512,
+   "within_unit_rho_mean": -0.2305,
+   "frac_rho_correct_sign": 0.6725,
+   "frac_gain_positive": 0.7052,
+   "frac_gain_nonneg": 0.7225,
+   "null_p95": 0.0197,
+   "null_p99": 0.0261,
+   "empirical_p": 0.0,
+   "wilcoxon_p": 0.0,
+   "jackknife_min": 0.0548,
+   "jackknife_max": 0.057,
+   "gain_dropping_best_unit": 0.0548,
+   "gain_dropping_best_two_units": 0.0538
+  },
+  "type_I": {
+   "stratum": "type_I",
+   "n_units": 169,
+   "n_poses": 593,
+   "xeng_mean_chamfer_A": 1.284,
+   "xeng_within_unit_sd_A": 0.696,
+   "random_exact": 0.7461,
+   "random_empirical_300": 0.7453,
+   "oracle": 0.7874,
+   "selected": 0.7702,
+   "gain": 0.0241,
+   "gain_ci95": [
+    0.0159,
+    0.0329
+   ],
+   "gain_sd_per_unit": 0.0566,
+   "headroom_oracle_minus_random": 0.0413,
+   "frac_of_headroom_captured": 0.583,
+   "within_unit_rho_mean": -0.256,
+   "frac_rho_correct_sign": 0.6587,
+   "frac_gain_positive": 0.6272,
+   "frac_gain_nonneg": 0.6509,
+   "null_p95": 0.012,
+   "null_p99": 0.0159,
+   "empirical_p": 0.0,
+   "wilcoxon_p": 1e-06,
+   "jackknife_min": 0.0227,
+   "jackknife_max": 0.025,
+   "gain_dropping_best_unit": 0.0227,
+   "gain_dropping_best_two_units": 0.0215
+  }
+ },
+ "comparisons": {
+  "type_II_vs_type_I": {
+   "headroom_a": 0.0858,
+   "headroom_b": 0.0413,
+   "frac_headroom_a": 0.6512,
+   "frac_headroom_b": 0.583,
+   "frac_headroom_a_ci95": [
+    0.5559,
+    0.7353
+   ],
+   "frac_headroom_b_ci95": [
+    0.4436,
+    0.702
+   ],
+   "frac_headroom_difference_ci95": [
+    -0.0843,
+    0.2337
+   ],
+   "units_with_positive_gain": "122/173 vs 106/169",
+   "fisher_p_on_sign": 0.1369,
+   "a": "type_II",
+   "b": "type_I",
+   "n_a": 173,
+   "n_b": 169,
+   "gain_a": 0.0559,
+   "gain_b": 0.0241,
+   "difference": 0.0318,
+   "difference_ci95": [
+    0.0172,
+    0.0469
+   ],
+   "ci_width": 0.0297,
+   "welch_p": 0.0,
+   "mannwhitney_p": 0.0004,
+   "permutation_p": 0.0,
+   "pooled_sd": 0.0702,
+   "min_detectable_difference_80pct_power": 0.0213,
+   "observed_over_mdd": 1.495,
+   "headroom_matched": {
+    "n_bins_used": 5,
+    "bins": [
+     {
+      "bin": 0,
+      "n_a": 19,
+      "n_b": 50,
+      "headroom": 0.0023,
+      "gain_a": -0.0009,
+      "gain_b": -0.0001,
+      "difference": -0.0008
+     },
+     {
+      "bin": 1,
+      "n_a": 30,
+      "n_b": 38,
+      "headroom": 0.0085,
+      "gain_a": -0.0,
+      "gain_b": -0.0008,
+      "difference": 0.0007
+     },
+     {
+      "bin": 2,
+      "n_a": 33,
+      "n_b": 35,
+      "headroom": 0.0248,
+      "gain_a": -0.0018,
+      "gain_b": 0.0075,
+      "difference": -0.0094
+     },
+     {
+      "bin": 3,
+      "n_a": 37,
+      "n_b": 31,
+      "headroom": 0.0883,
+      "gain_a": 0.0594,
+      "gain_b": 0.0482,
+      "difference": 0.0112
+     },
+     {
+      "bin": 4,
+      "n_a": 54,
+      "n_b": 15,
+      "headroom": 0.1942,
+      "gain_a": 0.1398,
+      "gain_b": 0.1563,
+      "difference": -0.0164
+     }
+    ],
+    "matched_difference": -0.003,
+    "matched_difference_ci95": [
+     -0.0132,
+     0.0075
+    ],
+    "raw_difference": 0.0318
+   }
+  }
+ },
+ "frame_hypothesis": {
+  "gain_vs_crystal_fe_distance_ALL": {
+   "rho": -0.2144,
+   "p": 6.435589325604686e-05,
+   "n": 342
+  },
+  "gain_vs_crystal_fe_distance_TYPE_II_ONLY": {
+   "rho": -0.1273,
+   "p": 0.0951054894310867,
+   "n": 173
+  },
+  "confound_gain_vs_pool_headroom_ALL": {
+   "rho": 0.6495,
+   "p": 2.3410889247100686e-42,
+   "n": 342
+  },
+  "partial_gain_vs_fe_controlling_headroom_ALL": {
+   "partial_rho": -0.033,
+   "n": 342,
+   "ci95": [
+    -0.132,
+    0.0749
+   ],
+   "permutation_p_approx": 0.5435
+  },
+  "partial_gain_vs_fe_controlling_headroom_TYPE_II": {
+   "partial_rho": -0.1378,
+   "n": 173,
+   "ci95": [
+    -0.2731,
+    0.011
+   ],
+   "permutation_p_approx": 0.079
+  },
+  "headroom_by_stratum": {
+   "all": 0.0638,
+   "type_II": 0.0858,
+   "type_I": 0.0413
+  },
+  "pool_mean_by_stratum": {
+   "all": 0.7034,
+   "type_II": 0.6617,
+   "type_I": 0.7461
+  }
+ },
+ "depth_confound": {
+  "reference_depth_by_stratum": {
+   "type_I": 3.55,
+   "type_II": 2.91
+  },
+  "pool_depth_by_stratum": {
+   "type_I": 3.51,
+   "type_II": 3.73
+  }
+ },
+ "within_protein": [
+  {
+   "uniprot": "P00178",
+   "n_typeII": 6,
+   "n_other": 5,
+   "gain_typeII": 0.0513,
+   "gain_other": 0.0713,
+   "difference": -0.02
+  },
+  {
+   "uniprot": "P08684",
+   "n_typeII": 62,
+   "n_other": 9,
+   "gain_typeII": 0.0764,
+   "gain_other": 0.0482,
+   "difference": 0.0282
+  },
+  {
+   "uniprot": "P9WPP1",
+   "n_typeII": 10,
+   "n_other": 5,
+   "gain_typeII": 0.0335,
+   "gain_other": 0.0405,
+   "difference": -0.007
+  },
+  {
+   "uniprot": "P9WPP7",
+   "n_typeII": 3,
+   "n_other": 15,
+   "gain_typeII": 0.04,
+   "gain_other": 0.0096,
+   "difference": 0.0304
+  },
+  {
+   "uniprot": "Q00441",
+   "n_typeII": 3,
+   "n_other": 6,
+   "gain_typeII": 0.0968,
+   "gain_other": 0.0266,
+   "difference": 0.0702
+  }
+ ],
+ "out": [
+  "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\binding_mode_p450_xeng.csv",
+  "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\binding_mode_per_pair_p450.csv"
+ ]
+}

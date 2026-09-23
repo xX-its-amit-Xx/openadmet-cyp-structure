@@ -931,8 +931,9 @@ inhibitors; ritonavir is a strong inhibitor (in combination) *and* a weak induce
 
 **What this licenses for the structure track.** Three things. (i) **The compound panel must not be
 built from Reactome or from the PDB alone.** Reactome models CYP3A4 as purely xenobiotic; the local
-CYP3A4 proxy set is **72 of 87 Type II heme-coordinating ligands and only 15 Type I** (MEASURED from
-`data/processed/poses_scored_val87b.csv`). Both samples are biased away from the endogenous,
+CYP3A4 proxy set is **73 of 87 Type II heme-coordinating ligands and only 14 Type I** (MEASURED from
+`data/processed/poses_scored_val87b.csv`; the split was 72/15 until `FINDING_033` re-derived
+every label from the crystal Fe distance and found PK9/4D6Z coordinating at 2.379 A). Both samples are biased away from the endogenous,
 non-coordinating, lipophilic substrate space — steroids, oxysterols, bile acids, retinoids, PUFA
 amides — which is what the enzyme was built for and which `FINDING_022` implies is where the model is
 least calibrated. The `ranked_compounds` list in the JSON is built to span exactly that gap.
@@ -1139,8 +1140,9 @@ inducer decreases a sensitive index substrate's AUC by **≥80%**, **moderate** 
 (i) **The compound panel should be drawn from the liver hepatocyte programme, not from the PDB.** The
 top co-expression neighbours are urea-cycle, gluconeogenic, apolipoprotein and sterol-transport genes
 (ABCG5/ABCG8 at ranks 3 and 8), which is the chemistry of a pericentral hepatocyte — sterols, bile
-acids, lipids. Against that, the local CYP3A4 structural proxy set is **72 of 87 Type II
-heme-coordinating ligands and only 15 Type I** (MEASURED from `data/processed/poses_scored_val87b.csv`).
+acids, lipids. Against that, the local CYP3A4 structural proxy set is **73 of 87 Type II
+heme-coordinating ligands and only 14 Type I** (MEASURED from `data/processed/poses_scored_val87b.csv`,
+corrected by `FINDING_033`).
 The `ranked_compounds` list is built to cover that gap.
 (ii) **CYP3A5 is the paralog worth docking against, and the reason is now sharper than sequence
 identity.** It is co-expressed in the same liver at 156 TPM, **zonated in the opposite direction**,
@@ -2001,8 +2003,8 @@ substrate, so it is a target for a different question entirely.
 
 **The compound space.** The `ranked_compounds` list in the JSON spans what CYP3A4 actually handles in
 the liver rather than what happens to have been crystallised. The reason is measured: the local
-CYP3A4 structural proxy set is **72 of 87 Type II heme-coordinating ligands and only 15 Type I**
-(from `data/processed/poses_scored_val87b.csv`), and Reactome models CYP3A4 as a purely xenobiotic
+CYP3A4 structural proxy set is **73 of 87 Type II heme-coordinating ligands and only 14 Type I**
+(from `data/processed/poses_scored_val87b.csv`, corrected by `FINDING_033`), and Reactome models CYP3A4 as a purely xenobiotic
 enzyme while UniProt documents cholesterol at five positions, estradiol at four, anandamide
 epoxidation and vitamin D 23/24-hydroxylation with Rhea IDs and experimental evidence. **Both of our
 usual sampling frames are biased away from the endogenous, non-coordinating, lipophilic substrate
