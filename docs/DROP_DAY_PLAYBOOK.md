@@ -118,16 +118,20 @@ do not exist for new ligands — they must be generated. See §9 G6; this is the
 ```bash
 # one submission WAVE per sampler setting - waves are the unit of independence, and
 # --replicates is byte-identical on both engines (FINDING 015/016/034).
-# SHUFFLE THE CSV FIRST: --batch packs in file order, so an ordered csv aligns job
-# boundaries with strata and one failed job can take out a whole class (FINDING 038).
+# The ligand order is SHUFFLED before --batch packing (seed 38, recorded in jobs.json)
+# and --samples now defaults to 1. Both are defaults; you do not do anything.
 python scripts/cofold/openprotein_cofold.py submit --engine protenix_v2 \
     --csv data/processed/test_ligands.csv --tag drop \
-    --sweep 3x200,10x200,3x50 --batch 5 --samples 1
+    --sweep 3x200,10x200,3x50 --batch 5
 python scripts/cofold/openprotein_cofold.py submit --engine protenix \
     --csv data/processed/test_ligands.csv --tag drop \
-    --sweep 3x200,10x200,3x50 --batch 5 --samples 1
+    --sweep 3x200,10x200,3x50 --batch 5
 python scripts/cofold/openprotein_cofold.py collect --engine protenix_v2 --tag drop
 python scripts/cofold/openprotein_cofold.py collect --engine protenix    --tag drop
+
+# IF `collect` REPORTS `"failed": n > 0`: run the IDENTICAL submit command again.
+# That is the whole recovery. It retries the failed work in place, at the same wave
+# index and the same setting, and touches nothing else.
 
 # freeze the reference set. This REFUSES below depth 4 and names the ligands.
 python scripts/cofold/openprotein_cofold.py refset --tag drop \
@@ -147,6 +151,50 @@ python scripts/structure/build_xeng_feature.py --tag drop \
   the same pose. Exercised offline on a constructed pool: 24 files → 6 dropped as
   same-wave, 9 as same-md5, depth 3, **refused**; and 18 files → 3 same-md5, 3
   same-coordinates-only, depth 4, written.
+* **RECOVERING A FAILED JOB — re-run the identical command.** FINDING 038 measured a
+  **1-in-16** job failure (opaque `internal server error` after 24.7 min) and recorded
+  that `submit` could not recover from it: its resume set was `{(rep, ligand) for EVERY
+  batch}` with no check of `b["done"]`, so the lost ligand-waves stayed claimed and the
+  identical command printed "0 ligands". **Fixed 2026-09-23**; FINDING 038's §7 and the
+  "fresh wave at a new setting" advice in its §10 item 4 are superseded by this bullet.
+  The semantics now are:
+  * a batch whose `done` is `"failed"` **releases** its `(wave, ligand)` claims;
+  * a batch that is pending, collected, or already superseded **keeps** them;
+  * anything already **on disk** for that wave keeps them regardless, so a half-landed
+    job resubmits only the half that is missing.
+  So the recovery is: **`collect` first** (a failure is only known once polled), then
+  **re-run the same `submit --sweep ...` command**. It retries **in place at the same
+  wave index and setting** — which is what keeps `refset`'s depth accounting
+  `engines × settings`. Do **not** allocate a fresh wave to recover: reusing a setting at
+  a new index makes `refset` count one opinion as two, and a genuinely new setting
+  changes what the sweep means. Re-run the **same** `--sweep` string, too — wave indices
+  are `enumerate(sweep)` positions, so a shortened sweep shifts them and trips the
+  setting-collision guard (which now says so).
+  * The retry batch records `retry_of` / `retried_ligands`, `submit` returns
+    `claims_released` / `ligand_waves_retried` / `failed_batches_superseded`, and the
+    superseded failure moves out of `collect`'s `failed` count into `superseded` — so
+    `failed` means *outstanding*, not *historical*.
+  * Exercised on FINDING 038's own pool with the failed job reconstructed: 68 poses on
+    disk, depth **7** on `A1APA/PG0/MWS/ERY` and 8 on the rest. Old code: **0 jobs**.
+    New code: **1 job, 4 ligand-waves retried**, and after it lands, depth **8 on 9 of 9**
+    with `below_min_depth: []`. A further re-run submits 0. Pending batches are untouched.
+* **The csv is shuffled for you before `--batch` packing.** `--batch` chunks in order, so
+  an ordered csv aligns job boundaries with strata: in FINDING 038 all three Type I picks
+  sat in chunk 2, chunk 2 was the job that failed, and the result was a Type I "depth
+  deficit" at p = 0.0369 that was pure packing artifact. `submit` now shuffles with a
+  seed derived from `(tag/engine, wave, --shuffle-seed)`, default **38**, recorded in
+  `jobs.json` — so the two engines and the successive waves pack *differently* and a
+  failure cannot take the same stratum out twice. On that 9-ligand csv: file order puts
+  all 3 Type I in one chunk in **4 of 4** waves; seeded, **1 of 4** (9.2% of chunks over
+  200 seeds). The same seed reproduces the same packing exactly. `--no-shuffle` restores
+  file order **for debugging only**.
+* **`--samples` now defaults to 1.** `refset` keeps exactly one file per `(engine, wave)`
+  and always takes the `__r<w>s0.cif` file, so the rest are never read: 340 downloaded →
+  272 discarded unread (**80%**) in FINDING 038, because `diffusion_samples` does not
+  sample the ligand (FINDING 009). Nothing else consumes them — the only other artefact is
+  `confidence_<tag>_<engine>.csv`, which no script in this repo reads. At `--samples 20`
+  over 100 ligands that is ~5 GB fetched to keep ~250 MB on a D: with 12 GB free. Pass
+  `--samples 20` explicitly if you want the confidence block.
 * `--pool-flat` is what Explorer's `collect` produces. Without it `build_xeng_feature`
   globbed for per-ligand *directories* and read zero poses, reporting it as a `--pattern`
   problem (G4, closed).
@@ -758,18 +806,25 @@ that failed. The fourth setting is slack, not baseline: +33% jobs, +8 min, depth
 **A single engine cannot do the job.** (Every `0.56` and every low `min depth` in the grid
 is the same four ligands from the one failed job, not a weak setting.)
 
-**⚠ THE 6.25% JOB FAILURE, AND WHY `submit` CANNOT RECOVER FROM IT.** 1 of 16 jobs died
-with an opaque `internal server error` after 24.7 min at `progress_counter=75`. **`submit`
-will not resubmit it**: its resume set is `{(rep, ligand) for every batch}` with **no check
-of `b["done"]`**, verified — all 4 lost ligand-waves are still marked claimed, so re-running
-the identical command buys nothing. **Recover with a FRESH wave at a NEW setting**
-(`--sweep 3x400` or `5x200`), never by repeating the command. This is the reason the
-recommendation carries margin instead of sitting on depth 4.
+**THE 6.25% JOB FAILURE — `submit` NOW RECOVERS FROM IT (fixed 2026-09-23).** 1 of 16 jobs
+died with an opaque `internal server error` after 24.7 min at `progress_counter=75`. At the
+time `submit` would not resubmit it: its resume set was `{(rep, ligand) for every batch}`
+with **no check of `b["done"]`**, so all 4 lost ligand-waves stayed claimed and re-running
+the identical command bought nothing. FINDING 038 §7 left that unfixed deliberately (it was
+a measurement) and its §10 item 4 advises a fresh wave at a new setting. **Both are now
+superseded:** failed batches release their claims and **re-running the identical command
+IS the recovery**, retried in place at the same wave and setting. Full semantics in Step 4
+above. Do not allocate a fresh wave — that would make `refset` count one opinion as two.
+The 6.25% rate is still the reason the recommendation carries margin: recovery costs
+another ~18 min of wall clock, and depth 6 means you do not have to spend it.
 
-**⚠ SHUFFLE THE TEST CSV BEFORE SUBMITTING.** `--batch` packs the CSV in **file order**, so
-an ordered CSV aligns job boundaries with strata. Here the stratified CSV put all three
-Type I picks in chunk 2 — and chunk 2 was the job that failed, taking out **3 of 3** Type I
-ligands at once. One line prevents a single failure from destroying a whole class.
+**THE CSV IS SHUFFLED FOR YOU BEFORE PACKING (fixed 2026-09-23).** `--batch` packed the CSV
+in **file order**, so an ordered CSV aligned job boundaries with strata. Here the stratified
+CSV put all three Type I picks in chunk 2 — and chunk 2 was the job that failed, taking out
+**3 of 3** Type I ligands at once and manufacturing the p = 0.0369 above. `submit` now
+shuffles per `(tag/engine, wave)` from `--shuffle-seed` (default **38**, recorded in
+`jobs.json`); on this csv that drops "one chunk holds all 3 Type I" from **4 of 4 waves** to
+**1 of 4**. `--no-shuffle` restores file order for debugging.
 
 **Cost model — `jobs = 6 × ceil(N/5)` at the recommended sweep.** Concurrency measured at
 **≥16 jobs with no queueing penalty**; above that unmeasured, so the schedule is a band
@@ -940,13 +995,15 @@ in 035, 036 and 037 independently — selected 0.6164, oracle 0.6975, random 0.5
    never `srun`. **A FAILED state may be a complete run — check four signals.**
 4. `collect --tag drop`, and check `missing_ligands` / `uniform_depth`. **Do not run
    `score`** — it refuses a blind tag, by design.
-5. Buy reference poses for the new ligands: **shuffle the csv**, then
-   `openprotein_cofold.py submit --sweep 3x200,10x200,3x50 --batch 5 --samples 1` on
-   **both** Protenix checkpoints, `collect`, then `refset`. Measured 9 of 9 at depth 6
-   (FINDING 038); `jobs = 6 × ceil(N/5)`, ≤2 h 25 m even at 100 ligands. `refset` and
-   `build_xeng_feature` both **refuse below depth 4**; `--allow-thin`/`--skip-thin` rather
-   than force, and **name the fallbacks**. A failed job needs a FRESH wave index — `submit`
-   marks failed batches as claimed and will skip them.
+5. Buy reference poses for the new ligands:
+   `openprotein_cofold.py submit --sweep 3x200,10x200,3x50 --batch 5` on **both** Protenix
+   checkpoints, `collect`, then `refset`. The csv is shuffled before packing and
+   `--samples` defaults to 1 — both automatic. Measured 9 of 9 at depth 6 (FINDING 038);
+   `jobs = 6 × ceil(N/5)`, ≤2 h 25 m even at 100 ligands. `refset` and `build_xeng_feature`
+   both **refuse below depth 4**; `--allow-thin`/`--skip-thin` rather than force, and
+   **name the fallbacks**. **If `collect` reports `failed > 0`, re-run the IDENTICAL submit
+   command** — failed batches release their claims and are retried in place at the same
+   wave. Never allocate a fresh wave to recover.
 6. Type the set: `binding_mode_robustness.py predict --pool <flat dir> --pool-flat`
    (median `fe_donor_dist`, 2.6 Å). Report the composition and pre-announce **~0.51 if
    Type I-rich, ~0.64 if not**. A median inside [2.59, 2.82] Å is flagged, not guessed.

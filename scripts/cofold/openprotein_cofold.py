@@ -23,15 +23,23 @@ recorded as failing - that was reading a still-RUNNING job as a failure, and it 
 returns a coordinated complex (Fe-ligand 2.28 A against Protenix's 2.43 A). So the decorrelation candidate is
 Protenix, which is at least architecturally distinct from Boltz-2.
 
-    python scripts/cofold/openprotein_cofold.py submit  --samples 20        # returns at once
+    python scripts/cofold/openprotein_cofold.py submit --sweep 3x200,10x200,3x50 --batch 5
     python scripts/cofold/openprotein_cofold.py collect                     # poll, resumable
+    python scripts/cofold/openprotein_cofold.py submit --sweep 3x200,10x200,3x50 --batch 5
+                                              # ^ IDENTICAL command = retry failed jobs
     python scripts/cofold/openprotein_cofold.py score                       # FINDING 005 gate
+
+`--samples` defaults to 1 and the ligand order is shuffled before `--batch` packing; see
+the comments on those two flags, and FINDING 038 for why both are defaults rather than
+options.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import random
+import re
 import sys
 import time
 from pathlib import Path
@@ -176,9 +184,57 @@ def parse_sweep(spec: str) -> list[tuple[int, int]]:
     return out
 
 
+_POSE_NAME = re.compile(r"(.+)__r(\d+)s(\d+)\.cif$")
+
+DEFAULT_SHUFFLE_SEED = 38          # FINDING 038, the run that paid for this
+
+
+def poses_on_disk(out: Path) -> set[tuple[int, str]]:
+    """`{(wave, ligand)}` already written by `collect`, read off the filenames.
+
+    This is the marker `submit`'s docstring always claimed ("already collected to disk")
+    and never actually implemented: the resume set was built from `jobs.json` alone. It
+    matters now that failed batches RELEASE their claims - a batch that half-landed must
+    not resubmit the half that is already a file, because a second file at the same
+    (engine, wave) is dropped by `refset` as `dropped_same_wave` and is pure waste.
+    """
+    found: set[tuple[int, str]] = set()
+    if not out.exists():
+        return found
+    for f in out.glob("*__r*.cif"):
+        m = _POSE_NAME.match(f.name)
+        if m is not None:
+            found.add((int(m.group(2)), m.group(1)))
+    return found
+
+
+def _wave_order(ids: list[str], key: str, rep: int, seed: int | None) -> list[str]:
+    """Deterministic ligand order for one wave's `--batch` packing.
+
+    `--batch` chunks the ligand list in order, so an ORDERED csv aligns job boundaries
+    with strata: FINDING 038's stratified csv emitted its three Type I picks last, they
+    landed together in chunk 2, chunk 2 was the one job of 16 that failed, and all three
+    lost the same wave - an apparent Type I depth deficit at p = 0.0369 that was pure
+    packing artifact. Shuffling makes one job failure spread across chemistry instead of
+    deleting a class of it.
+
+    The seed is derived from `(key, rep, seed)` rather than used raw, so the two engines
+    and the successive waves pack DIFFERENTLY - a failure in `protenix` wave 1 chunk 2
+    then hits a different four ligands than one in `protenix_v2` wave 0 chunk 2. It is
+    still a pure function of the command line, so the same seed reproduces the same
+    packing exactly; `seed=None` (`--no-shuffle`) keeps file order for debugging.
+    """
+    if seed is None:
+        return list(ids)
+    out = list(ids)
+    random.Random(f"{key}|{rep}|{seed}").shuffle(out)
+    return out
+
+
 def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
            batch: int = 4, replicates: int = 1, single_sequence: bool = False,
-           sweep: list[tuple[int, int]] | None = None) -> dict:
+           sweep: list[tuple[int, int]] | None = None,
+           shuffle_seed: int | None = DEFAULT_SHUFFLE_SEED) -> dict:
     """Submit folds, RECORD THE JOB IDS, and return without waiting.
 
     Three facts about this API, each measured by `op_probe.py` rather than assumed, and
@@ -208,6 +264,29 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
     the wave index so `refset` can tell four opinions from four copies. Four settings gave
     4 distinct placements in FINDING 016 - which is exactly the depth-4 minimum the
     cross-engine feature refuses below.
+
+    **RECOVERY SEMANTICS (the FINDING 038 section 7 defect, now fixed).** The resume set
+    used to be `{(rep, ligand) for EVERY batch}` with no check of `b["done"]`, so a failed
+    job - observed at 1 of 16, an opaque internal server error after 24.7 min - kept its
+    ligand waves marked as claimed forever and re-running the identical command printed
+    "0 ligands". Now:
+
+      * a batch whose `done` is `"failed"` **releases** its (wave, ligand) claims;
+      * a batch that is pending, collected, or already superseded keeps them;
+      * anything already ON DISK for that wave keeps them regardless.
+
+    So **re-running the identical `submit` command is the recovery**, and it retries the
+    failed work **in place at the same wave index and the same setting**. That is the
+    accounting-safe choice: a failed job wrote no files, so the retry fills exactly the
+    hole it left and `refset`'s depth stays `engines x settings`. Allocating a FRESH wave
+    index instead would be wrong in both directions - reusing a setting at a new index
+    makes `refset` count one opinion as two, and a genuinely new setting changes what the
+    sweep means. The old failed batch is stamped `superseded` so `collect`'s `failed`
+    count stays about OUTSTANDING failures rather than history.
+
+    Two operator notes: run `collect` first (a failure is only known once it has been
+    polled), and re-run the **same** `--sweep`, because wave indices are `enumerate(sweep)`
+    positions - a shortened sweep shifts them and trips the setting-collision guard below.
     """
     from cypstruct.targets import fetch_sequences
 
@@ -222,14 +301,41 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
     key = f"{tag}/{engine}"
     jobs.setdefault(key, {"engine": engine, "tag": tag, "samples": samples,
                           "batches": []})
+    prev_seed = jobs[key].get("shuffle_seed", "unset")
+    jobs[key]["shuffle_seed"] = shuffle_seed
+    if prev_seed != "unset" and prev_seed != shuffle_seed:
+        print(f"  note: {key} was previously packed with shuffle_seed={prev_seed!r}, now "
+              f"{shuffle_seed!r}; packing of any NEW chunk changes (resume is keyed on "
+              "(wave, ligand) and is unaffected)", flush=True)
     # Resume on two independent markers: a ligand is skipped if it is already collected
-    # to disk OR already sitting in a submitted batch. Only the first would resubmit the
-    # entire in-flight campaign on the next call, which is how you get duplicate work.
+    # to disk OR already sitting in a LIVE submitted batch. Only the first would resubmit
+    # the entire in-flight campaign on the next call, which is how you get duplicate work.
     # Resume is keyed on (replicate, ligand): a ligand is "done" for replicate 3 only if
     # replicate 3 was submitted, so re-running tops the pool up instead of either
     # resubmitting everything or refusing to add depth.
-    claimed = {(b.get("rep", 0), sid)
-               for b in jobs[key]["batches"] for sid in b["ligands"]}
+    #
+    # "LIVE" is the FINDING 038 section 7 fix. A batch marked `done == "failed"` by
+    # `collect` is NOT live and releases its claims, so the identical command retries it
+    # in place at the same wave and setting. Disk wins over every marker: a half-landed
+    # batch resubmits only the half that is missing.
+    on_disk = poses_on_disk(out)
+    live = {(b.get("rep", 0), sid) for b in jobs[key]["batches"]
+            if b.get("done") != "failed" for sid in b["ligands"]}
+    failed_batches = [b for b in jobs[key]["batches"] if b.get("done") == "failed"
+                      and not b.get("superseded")]
+    released = {(b.get("rep", 0), sid) for b in failed_batches
+                for sid in b["ligands"]} - live - on_disk
+    claimed = live | on_disk
+    if failed_batches:
+        print(f"  recovery: {len(failed_batches)} failed batch(es) in {key}; "
+              f"{len(released)} (wave, ligand) claim(s) released for retry in place "
+              f"[{', '.join(f'w{r}:{s}' for r, s in sorted(released))}]", flush=True)
+    # Which failed batch a retried pair came from, so the old record can be retired once
+    # its work is back in flight rather than being double-counted as a failure forever.
+    src_of = {}
+    for b in failed_batches:
+        for sid in b["ligands"]:
+            src_of.setdefault((b.get("rep", 0), sid), b)
     # One wave per sampler setting (the live depth lever), else `replicates` waves at the
     # default setting (kept so existing call sites and reruns behave exactly as before).
     waves = ([(i, rec, steps) for i, (rec, steps) in enumerate(sweep)] if sweep
@@ -237,7 +343,10 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
     # A wave index already used at a DIFFERENT setting would be indistinguishable from a
     # replicate of the first one downstream, since the reference is keyed on (engine, rep).
     prior = {b["rep"]: b.get("setting") for b in jobs[key]["batches"] if "rep" in b}
-    n_sub = 0
+    # str() throughout: `on_disk` can only ever yield strings (they come off filenames),
+    # so a numeric id column would otherwise never match its own collected pose.
+    smi_of = {str(r.id): r.smiles for r in df.itertuples()}
+    n_sub = n_retry = 0
     for rep, rec, steps in waves:
         setting = f"{rec}x{steps}"
         if prior.get(rep) not in (None, setting):
@@ -245,33 +354,65 @@ def submit(engine: str, df: pd.DataFrame, samples: int, tag: str,
                 f"wave {rep} of {key} was already submitted at setting {prior[rep]!r}, "
                 f"not {setting!r}. Waves are the unit of independence - pick a free "
                 f"index (used: {sorted(k for k in prior if prior[k])}) rather than "
-                "reusing one, or the reference set will count two settings as one.")
-        todo = [(r.id, r.smiles) for r in df.itertuples()
-                if (rep, r.id) not in claimed]
+                "reusing one, or the reference set will count two settings as one. "
+                "If you are RECOVERING a failed job, re-run the IDENTICAL --sweep "
+                "instead: failed batches now release their claims and are retried in "
+                "place at the same wave.")
+        # Shuffle first, THEN drop what is claimed, so packing is a pure function of the
+        # csv contents + seed and a retry of 4 ligands does not repack the other 95.
+        order = _wave_order([str(r.id) for r in df.itertuples()], key, rep, shuffle_seed)
+        todo = [(sid, smi_of[sid]) for sid in order if (rep, sid) not in claimed]
         if not todo:
             continue
-        print(f"{engine} wave {rep} ({setting}): {len(todo)} ligands, {samples} samples, "
-              f"{batch} per job", flush=True)
+        n_re = sum(1 for sid, _ in todo if (rep, sid) in released)
+        print(f"{engine} wave {rep} ({setting}): {len(todo)} ligands"
+              f"{f' ({n_re} RETRY)' if n_re else ''}, {samples} samples, "
+              f"{batch} per job, order="
+              f"{'file' if shuffle_seed is None else f'shuffled/{shuffle_seed}'}",
+              flush=True)
         for i in range(0, len(todo), batch):
             chunk = todo[i:i + batch]
             sids = [sid for sid, _ in chunk]
+            retried = [sid for sid in sids if (rep, sid) in released]
             try:
                 fut = model.fold(
                     sequences=[build_complex(seq, smi, msa) for _s, smi in chunk],
                     diffusion_samples=samples, num_recycles=rec, num_steps=steps)
-                jobs[key]["batches"].append(
-                    {"job_id": str(fut.job_id), "ligands": sids, "rep": rep,
-                     "setting": setting, "samples": samples, "submitted": time.time()})
+                rec_b = {"job_id": str(fut.job_id), "ligands": sids, "rep": rep,
+                         "setting": setting, "samples": samples,
+                         "submitted": time.time()}
+                if retried:
+                    rec_b["retry_of"] = sorted(
+                        {src_of[(rep, sid)]["job_id"] for sid in retried})
+                    rec_b["retried_ligands"] = retried
+                    n_retry += len(retried)
+                jobs[key]["batches"].append(rec_b)
                 _save_jobs(jobs)
                 n_sub += 1
-                print(f"  w{rep}[{i//batch+1}] {','.join(sids)} -> {fut.job_id}",
-                      flush=True)
+                print(f"  w{rep}[{i//batch+1}] {','.join(sids)} -> {fut.job_id}"
+                      f"{f'  (retry of {len(retried)})' if retried else ''}", flush=True)
             except Exception as exc:
                 print(f"  w{rep}[{i//batch+1}] SUBMIT-FAIL {sids}: "
                       f"{type(exc).__name__}: {exc}", flush=True)
             time.sleep(0.6)
+    # Retire any failed batch whose every ligand-wave is now either back in flight or on
+    # disk. `collect` then reports `failed` as what is still OUTSTANDING, and `superseded`
+    # separately - a failure that has been retried is not a failure you must act on.
+    still_live = {(b.get("rep", 0), sid) for b in jobs[key]["batches"]
+                  if b.get("done") != "failed" for sid in b["ligands"]}
+    n_superseded = 0
+    for b in failed_batches:
+        if all((b.get("rep", 0), sid) in still_live or (b.get("rep", 0), sid) in on_disk
+               for sid in b["ligands"]):
+            b["superseded"] = True
+            n_superseded += 1
+    if failed_batches:
+        _save_jobs(jobs)
     return {"key": key, "submitted_jobs": n_sub, "waves": [w[0] for w in waves],
             "settings": {str(w[0]): f"{w[1]}x{w[2]}" for w in waves},
+            "shuffle_seed": shuffle_seed,
+            "poses_on_disk": len(on_disk), "claims_released": len(released),
+            "ligand_waves_retried": n_retry, "failed_batches_superseded": n_superseded,
             "total_batches": len(jobs[key]["batches"])}
 
 
@@ -315,14 +456,20 @@ def collect(engine: str, tag: str) -> dict:
     if key not in jobs:
         return {"error": f"no submitted jobs for {key}"}
 
-    n_ok = n_pending = n_fail = 0
+    n_ok = n_pending = n_fail = n_superseded = 0
     conf_rows = []
     for b in jobs[key]["batches"]:
         if b.get("done") is True:
             n_ok += len(b["ligands"])
             continue
         if b.get("done") == "failed":
-            n_fail += len(b["ligands"])
+            # A failure that `submit` has already retried in place is history, not work
+            # outstanding. Counting it in `failed` forever is how the operator reads a
+            # recovered campaign as still broken.
+            if b.get("superseded"):
+                n_superseded += len(b["ligands"])
+            else:
+                n_fail += len(b["ligands"])
             continue
         try:
             fut = s.load_job(b["job_id"])
@@ -384,7 +531,10 @@ def collect(engine: str, tag: str) -> dict:
         out_df.to_csv(cf, index=False)
 
     return {"engine": engine, "tag": tag, "collected": n_ok,
-            "pending": n_pending, "failed": n_fail}
+            "pending": n_pending, "failed": n_fail, "superseded": n_superseded,
+            "retry": ("re-run the IDENTICAL `submit --sweep ...` command: failed batches "
+                      "release their claims and are retried in place at the same wave"
+                      if n_fail else None)}
 
 
 def score_and_correlate(engine: str, tag: str) -> dict:
@@ -561,6 +711,10 @@ def refset(tag: str, engines: list, out_npz: Path, min_depth: int = 4,
         print("At one reference pose this feature measured -0.0055: a thin reference set")
         print("does not give a weaker selector, it gives a HARMFUL one, and the only")
         print("downstream symptom is a silent fall back to FINDING 003 (+0.0265).")
+        print("FIRST check `collect` for `failed > 0`: depth = engines x settings minus")
+        print("one per FAILED job (FINDING 038), and a failed job is recovered by simply")
+        print("re-running the IDENTICAL `submit --sweep ...` command - it retries in place")
+        print("at the same wave. Only if nothing failed is this a depth problem:")
         print("Buy depth with SAMPLER WAVES - `submit --sweep 3x200,10x200,3x50,3x400`,")
         print("one wave per setting (FINDING 016). NOT --replicates, which is")
         print("byte-identical on both engines (FINDING 015).")
@@ -582,8 +736,25 @@ if __name__ == "__main__":
     # and alphafold2 warns that it discards ligand chains outright.
     ap.add_argument("--engine", default="protenix_v2")
     ap.add_argument("--n", type=int, default=0, help="0 = all ligands")
-    ap.add_argument("--samples", type=int, default=20)
+    # Default 1, not 20. VERIFIED on the FINDING 038 pool rather than assumed: `refset`
+    # keeps exactly one file per (engine, wave) and takes the FIRST in sorted order, which
+    # is always `__r<w>s0.cif`, so samples 1..N-1 are never read. 340 files -> 272 dropped
+    # as same-wave = 80% downloaded and discarded unread, because `diffusion_samples` does
+    # not sample the ligand (FINDING 009). Nothing else consumes them: the only other
+    # artefact is `confidence_<tag>_<engine>.csv`, which no script in the repo reads, and
+    # Protenix confidence ranks poses at chance anyway (FINDING 009). At `--samples 20`
+    # over 100 ligands that is ~5 GB fetched to keep ~250 MB, onto a D: with 12 GB free.
+    # Pass `--samples 20` explicitly if you want the confidence block back.
+    ap.add_argument("--samples", type=int, default=1)
     ap.add_argument("--batch", type=int, default=4, help="complexes per job")
+    ap.add_argument("--shuffle-seed", type=int, default=DEFAULT_SHUFFLE_SEED,
+                    help="submit: seed for the deterministic ligand shuffle applied "
+                         "before --batch packing, so one failed job spreads across "
+                         "strata instead of destroying one (FINDING 038). Recorded in "
+                         "jobs.json; the same seed reproduces the same packing.")
+    ap.add_argument("--no-shuffle", action="store_true",
+                    help="submit: pack in csv FILE order (pre-FINDING-038 behaviour). "
+                         "For debugging only - it aligns job boundaries with strata.")
     ap.add_argument("--replicates", type=int, default=1,
                     help="separate jobs per ligand - THIS is what samples the ligand")
     ap.add_argument("--single-sequence", action="store_true",
@@ -611,7 +782,8 @@ if __name__ == "__main__":
         print(json.dumps(submit(a.engine, ligand_set(a.n or None, csv=a.csv), a.samples, a.tag,
                                 batch=a.batch, replicates=a.replicates,
                                 single_sequence=a.single_sequence,
-                                sweep=parse_sweep(a.sweep) if a.sweep else None),
+                                sweep=parse_sweep(a.sweep) if a.sweep else None,
+                                shuffle_seed=None if a.no_shuffle else a.shuffle_seed),
                          indent=1)[:800])
     elif a.cmd == "refset":
         out = a.out or str(DATA_PROCESSED / ("reference_set_%s.npz" % a.tag))
