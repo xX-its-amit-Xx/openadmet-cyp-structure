@@ -282,5 +282,34 @@
   "noise_floor_95_d40": 0.01367,
   "frac_ligands_immovable": 0.507,
   "verdict": "monotone to depth 40 - no turnover; but a doubling buys +0.0027 and half the ligands cannot move"
+ },
+ {
+  "date": "2026-09-23",
+  "what": "Reference-depth VALUE on CYP3A4 (FINDING 041): does depth beyond 4 buy selection?",
+  "jobs": 80,
+  "failures": 0,
+  "complexes": 370,
+  "cost_usd": 0,
+  "wall_clock_min": 38.3,
+  "parallelism": 37.6,
+  "n_ligands": 37,
+  "achieved_ref_depth": 10,
+  "pool_held_fixed": "20-pose unsteered Boltz",
+  "oracle": 0.70182,
+  "random": 0.56094,
+  "noise_floor_95": 0.02272,
+  "selected_refdepth4": 0.59993,
+  "selected_refdepth8": 0.60756,
+  "delta_4_to_8": 0.00763,
+  "ci": [
+   -0.0021,
+   0.019
+  ],
+  "wilcoxon_p": 0.261,
+  "sd_across_draws_d4": 0.01215,
+  "sd_across_draws_d8": 0.00812,
+  "correct_sign_all_depths": 0.838,
+  "modal_picks_changed": "2 of 37",
+  "verdict": "buys variance reduction, not ranking; nearly free if submitted at t=0"
  }
 ]
