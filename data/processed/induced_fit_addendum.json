@@ -1,0 +1,65 @@
+{
+ "why": "the k=44 ensemble had been compared against a k=11 null; and the within-ligand rho sign convention was reported for raw features",
+ "k": 44,
+ "ENSEMBLE_ALL": {
+  "selected": 0.5997,
+  "gain": 0.0228,
+  "mean_within_ligand_rho": 0.153,
+  "frac_ligands_rho_positive": 0.713
+ },
+ "INCUMBENT": {
+  "selected": 0.6164,
+  "gain": 0.0395,
+  "mean_within_ligand_rho": 0.258,
+  "frac_ligands_rho_positive": 0.759
+ },
+ "N2_within_ligand_shuffle_k44": {
+  "reps": 200,
+  "mean": 0.0008,
+  "sd": 0.0089,
+  "p95": 0.0147,
+  "p99": 0.0218,
+  "max": 0.0266,
+  "p_null_ge_observed": 0.01
+ },
+ "N3_matched_dimension_gaussian_k44": {
+  "reps": 200,
+  "mean": -0.0,
+  "sd": 0.0096,
+  "p95": 0.0142,
+  "p99": 0.0217,
+  "max": 0.0264,
+  "p_null_ge_observed": 0.01
+ },
+ "BAR2_paired": {
+  "selector": "ENSEMBLE ALL (k=44)",
+  "mean_difference": -0.0167,
+  "bootstrap_ci95": [
+   -0.0375,
+   0.0024
+  ],
+  "wilcoxon_p_untied": 0.26423447380096,
+  "n_tied_value": 5,
+  "n_better": 36,
+  "n_worse": 46
+ },
+ "COMBINED_with_incumbent_rank_average": {
+  "selected": 0.5969,
+  "gain": 0.02,
+  "selector": "z(demand ensemble) + z(-xeng)",
+  "mean_difference": -0.0195,
+  "bootstrap_ci95": [
+   -0.0358,
+   -0.0065
+  ],
+  "wilcoxon_p_untied": 0.012221821198327952,
+  "n_tied_value": 24,
+  "n_better": 23,
+  "n_worse": 40
+ },
+ "BAR3_complementarity": {
+  "pearson_r": -0.078,
+  "pearson_p": 0.47421419402059156,
+  "corr_with_incumbent_outcome": 0.858
+ }
+}

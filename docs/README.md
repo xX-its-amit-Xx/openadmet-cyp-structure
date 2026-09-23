@@ -32,6 +32,7 @@ work. That is not a slogan, it is ~30 measured features:
 | 026 | splitting the shipped Chamfer into translation + orientation (R1 of 024) | orientation alone is the strongest single unfitted term (+0.0424) and still **ties the incumbent paired** (+0.0041, p = 0.61); translation alone is *not* a passenger (+0.0309) |
 | 027 | expanding the pool with 1.78 M rigid ligand rotations inside the model's own protein | oracle **+0.0108**, selection **−0.0145**; within-ligand ρ *improved* −0.258 → −0.390 while top-1 got worse. The incumbent rejected **99.83%** of the injected poses |
 | 028 | attributing 027's exclusion residue by residue | wrongness and blocking are **different residues** (ρ = +0.34, p = 0.06): Leu210 is off 100° and blocks nothing, Phe215 is off 8.7° and blocks most. Side-chain error correlates with pose error **within** a ligand (ρ = −0.31, 87% correct sign) and not **between** (−0.08) — 024's null again |
+| 029 | **induced-fit DEMAND** — repack the pocket around each pose and make the repack cost the feature, the first scoring experiment run against a receptor that is allowed to move | the probe works (90° rotation: 0→4 residues, 2.52→0.79 Å, p=3e-142) and selects nothing: best single term **+0.0012** against a +0.0140 floor, the 44-column ensemble **+0.0228** at its own null's 99th pct, **−0.0167 paired** vs the incumbent with 5 of 87 tied, complementarity r = −0.078 |
 
 **Read 007 before proposing any new feature.** It is the arithmetic that makes "promising"
 a meaningless word here.
