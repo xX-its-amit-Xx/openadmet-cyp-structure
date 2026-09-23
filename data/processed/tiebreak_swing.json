@@ -1,0 +1,54 @@
+{
+  "CFF": {
+    "top3_xeng": [
+      0.4151,
+      0.4424,
+      0.472
+    ],
+    "top3_lddt": [
+      0.9547,
+      0.9349,
+      0.4721
+    ],
+    "top3_names": [
+      "B::s101_m2",
+      "B::s101_m1",
+      "A::input_model_3"
+    ],
+    "incumbent": 0.9547,
+    "oracle_in_top3": 0.9547,
+    "picks": {
+      "xeng_2nd": 0.9349,
+      "xeng_borda": 0.4721,
+      "xeng_sd": 0.4721,
+      "xeng_votes": 0.9349,
+      "medoid": 0.9547
+    }
+  },
+  "08J": {
+    "top3_xeng": [
+      1.5159,
+      1.5604,
+      1.6254
+    ],
+    "top3_lddt": [
+      0.1364,
+      0.4806,
+      0.1579
+    ],
+    "top3_names": [
+      "B::s101_m16",
+      "A::input_model_3",
+      "A::input_model_13"
+    ],
+    "incumbent": 0.1364,
+    "oracle_in_top3": 0.4806,
+    "picks": {
+      "xeng_2nd": 0.1364,
+      "xeng_borda": 0.1364,
+      "xeng_sd": 0.4806,
+      "xeng_votes": 0.1364,
+      "medoid": 0.1579
+    }
+  }
+}

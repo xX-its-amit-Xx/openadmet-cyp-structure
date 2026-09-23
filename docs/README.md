@@ -1,6 +1,6 @@
 # Findings index
 
-Thirty-five findings, most of them negative. Read them in this order if you are arriving cold;
+Thirty-six findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
 ## Start here
@@ -41,8 +41,25 @@ work. That is not a slogan, it is ~30 measured features:
 
 | 035 | **the experiment 034 asked for: depth at MATCHED conditioning.** Boltz-2 on Explorer, staged 6,979-sequence MSA, same checkpoint, same heme bond — 14 ligands × 20 new samples, a true 20→40 doubling | **the match is real** (new arm's pool mean **−0.0019** from the pool it joins, against OpenProtein's −0.057) and **the conversion is not**. Δ oracle **+0.0097** [+0.0012, +0.0195]; Δ selected **+0.0116** [−0.0687, +0.1034], Wilcoxon **p = 0.715**, **10 of 14 unchanged**, **+0.0020** once the two swing ligands are dropped. **But the sign flipped** — the first expansion in six that did not make selection *worse*. Two methods corrections: the **selected** rate decays with depth (+0.0227 at 10→20, **+0.0095** at 20→40) while the oracle rate barely does (+0.0385 → +0.0331); and **a subsample curve's last rung is a deterministic maximum**, so its final slope over-prices new samples — which is why 034's +0.0428 predicted rate met a +0.0097 reality. Also: **one job bought 20.0 distinct poses** where 034's thirty OpenProtein jobs bought 10.79 |
 
+| 036 | **the experiment 035 asked for: break the near-tie.** Characterise the regime first, then five tie-breakers native to the shipped selector — medoid of the top-k, 2nd-nearest reference, Borda rank, within-pose sd across references, plurality vote | **the prize does not exist.** A **PERFECT** top-2 tie-break is worth **+0.0129** against a floor of **+0.0134** recomputed here; top-3 +0.0210, top-5 +0.0318. The near-tie is the *normal* case (median margin **0.0194 Å**, 70 of 87 under 0.06 Å) and the stake does **not** concentrate in it (ρ = −0.14, p = 0.18) — so it is a **variance mechanism**, not a prize. `argmin(xeng)` beats a coin flip over its own top 2 by **+0.0161** and beats **4,000 of 4,000** random tie-breaks. Fifteen of sixteen candidate configurations are negative; the best is **+0.0011, p = 0.68, 71 of 87 tied**. **60% of the 0.081 oracle gap sits outside the top 5** |
+
 **Read 007 before proposing any new feature.** It is the arithmetic that makes "promising"
 a meaningless word here.
+
+## One method correction, from 036, that changes how 030 and 032 are applied
+
+**The answer-recognition gate does not apply to within-ligand comparators.** The shipped
+selector — +0.0395 here, +0.0357 across 81 held-out P450 proteins — puts the query's own
+**crystal at the 34th percentile** of its own 20 predictions, binomial p = **0.0012**:
+`FINDING_032`'s exact kill signature, on the one feature in this repo that works. The
+co-folders share CYP3A4's 30° error (024), so the consensus is displaced from the truth
+while remaining informative about the *ordering* of the predictions.
+
+Apply R1 to a **prior** — a claim that some external record says where the ligand goes,
+which is what 030 and 032 both were; **both verdicts stand unchanged**. Do **not** apply it
+to a **comparator** — a claim that these predictions can be ranked against each other.
+`FINDING_032`'s **term oracle** rung is unaffected and is the stronger instrument: it is
+what closed 036 before a single candidate was scored.
 
 ## Engine and venue facts, all measured the hard way
 

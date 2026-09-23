@@ -147,6 +147,13 @@ the release is scoreable ground truth and part is the blind target. When the dat
   it at the **31st** — significantly *below* chance, which is a different and stronger
   verdict. Pre-register a numeric pass rule; it is a diagnostic and never enters anything
   scored.
+  **⚠️ Scope, from FINDING 036: this gate applies to PRIORS, not to within-ligand
+  COMPARATORS.** The shipped `cypstruct.xengine.select()` fails it — crystal at the **34th**
+  percentile, p = 0.0012 — because the co-folders share CYP3A4's 30° error (024), so the
+  consensus is displaced from the truth while still ordering the predictions correctly. A
+  feature claiming *"the record says where this goes"* must pass R1; a feature claiming
+  *"these predictions can be ranked against each other"* must not be killed by it. Always
+  score the incumbent on the same gate first and read the branch that gives.
 - **Then hand the answer to the feature's own scoring function and SELECT with it**
   (FINDING 032). The "term oracle" — score each pose by its distance to the *true* value
   of whatever the term measures — is the ceiling of every possible version of that feature.

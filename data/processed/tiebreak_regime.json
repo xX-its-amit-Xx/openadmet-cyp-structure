@@ -1,0 +1,266 @@
+{
+  "pool_A": {
+    "label": "pool A -- 87 ligands x 20 Boltz-2 poses",
+    "n_ligands": 87,
+    "pool_oracle": 0.6975,
+    "selected_incumbent": 0.6164,
+    "random": 0.5769,
+    "gain_incumbent": 0.0395,
+    "oracle_gap": 0.0811,
+    "margin_12": {
+      "5": 0.0013,
+      "25": 0.0097,
+      "50": 0.0194,
+      "75": 0.0493,
+      "95": 0.1473
+    },
+    "zmargin_12": {
+      "5": 0.006,
+      "25": 0.067,
+      "50": 0.146,
+      "75": 0.426,
+      "95": 1.075
+    },
+    "ligands_with_duplicate_xeng": 0,
+    "margin_below_0.06A": 70,
+    "margin_below_0.10A": 77,
+    "k2": {
+      "ORACLE_tiebreak": 0.0129,
+      "oracle_tiebreak_median": 0.0,
+      "worst_case_tiebreak": -0.0451,
+      "random_in_topk": 0.6003,
+      "incumbent_minus_random_in_topk": 0.0161,
+      "ligands_with_stake_gt_0": 33,
+      "ligands_with_stake_gt_0.05": 7,
+      "share_of_oracle_gap": 0.1592
+    },
+    "k3": {
+      "ORACLE_tiebreak": 0.021,
+      "oracle_tiebreak_median": 0.0072,
+      "worst_case_tiebreak": -0.0552,
+      "random_in_topk": 0.5973,
+      "incumbent_minus_random_in_topk": 0.0191,
+      "ligands_with_stake_gt_0": 53,
+      "ligands_with_stake_gt_0.05": 11,
+      "share_of_oracle_gap": 0.2584
+    },
+    "k5": {
+      "ORACLE_tiebreak": 0.0318,
+      "oracle_tiebreak_median": 0.0113,
+      "worst_case_tiebreak": -0.067,
+      "random_in_topk": 0.5976,
+      "incumbent_minus_random_in_topk": 0.0188,
+      "ligands_with_stake_gt_0": 60,
+      "ligands_with_stake_gt_0.05": 19,
+      "share_of_oracle_gap": 0.3923
+    },
+    "stake_2_by_margin_quartile": {
+      "Q1 tightest": {
+        "n": 22,
+        "mean_margin": 0.0045,
+        "mean_stake_2": 0.0065,
+        "mean_downside_2": 0.0243
+      },
+      "Q2": {
+        "n": 22,
+        "mean_margin": 0.0151,
+        "mean_stake_2": 0.0227,
+        "mean_downside_2": 0.0125
+      },
+      "Q3": {
+        "n": 21,
+        "mean_margin": 0.0322,
+        "mean_stake_2": 0.0076,
+        "mean_downside_2": 0.0515
+      },
+      "Q4 widest": {
+        "n": 22,
+        "mean_margin": 0.1052,
+        "mean_stake_2": 0.0146,
+        "mean_downside_2": 0.0925
+      }
+    },
+    "rho_margin_vs_stake2": {
+      "rho": -0.1436,
+      "p": 0.18446660064090875
+    }
+  },
+  "pool_B_depth40": {
+    "label": "pool B -- 14 predicted-Type-I ligands x 40 (FINDING 035)",
+    "n_ligands": 14,
+    "pool_oracle": 0.6595,
+    "selected_incumbent": 0.5386,
+    "random": 0.4587,
+    "gain_incumbent": 0.0799,
+    "oracle_gap": 0.1209,
+    "margin_12": {
+      "5": 0.0037,
+      "25": 0.0113,
+      "50": 0.0363,
+      "75": 0.0853,
+      "95": 0.1133
+    },
+    "zmargin_12": {
+      "5": 0.005,
+      "25": 0.051,
+      "50": 0.129,
+      "75": 0.422,
+      "95": 0.83
+    },
+    "ligands_with_duplicate_xeng": 0,
+    "margin_below_0.06A": 9,
+    "margin_below_0.10A": 12,
+    "k2": {
+      "ORACLE_tiebreak": 0.0447,
+      "oracle_tiebreak_median": 0.0,
+      "worst_case_tiebreak": -0.0142,
+      "random_in_topk": 0.5538,
+      "incumbent_minus_random_in_topk": -0.0153,
+      "ligands_with_stake_gt_0": 6,
+      "ligands_with_stake_gt_0.05": 3,
+      "share_of_oracle_gap": 0.3697
+    },
+    "k3": {
+      "ORACLE_tiebreak": 0.053,
+      "oracle_tiebreak_median": 0.0179,
+      "worst_case_tiebreak": -0.1,
+      "random_in_topk": 0.5233,
+      "incumbent_minus_random_in_topk": 0.0153,
+      "ligands_with_stake_gt_0": 9,
+      "ligands_with_stake_gt_0.05": 4,
+      "share_of_oracle_gap": 0.4384
+    },
+    "k5": {
+      "ORACLE_tiebreak": 0.067,
+      "oracle_tiebreak_median": 0.0353,
+      "worst_case_tiebreak": -0.1094,
+      "random_in_topk": 0.5049,
+      "incumbent_minus_random_in_topk": 0.0337,
+      "ligands_with_stake_gt_0": 10,
+      "ligands_with_stake_gt_0.05": 5,
+      "share_of_oracle_gap": 0.5542
+    },
+    "stake_2_by_margin_quartile": {
+      "Q1 tightest": {
+        "n": 4,
+        "mean_margin": 0.0064,
+        "mean_stake_2": 0.0,
+        "mean_downside_2": 0.0192
+      },
+      "Q2": {
+        "n": 3,
+        "mean_margin": 0.0238,
+        "mean_stake_2": 0.0132,
+        "mean_downside_2": 0.0066
+      },
+      "Q3": {
+        "n": 3,
+        "mean_margin": 0.0562,
+        "mean_stake_2": 0.1469,
+        "mean_downside_2": 0.0228
+      },
+      "Q4 widest": {
+        "n": 4,
+        "mean_margin": 0.1018,
+        "mean_stake_2": 0.0364,
+        "mean_downside_2": 0.0083
+      }
+    },
+    "rho_margin_vs_stake2": {
+      "rho": 0.3919,
+      "p": 0.16584177130316782
+    }
+  },
+  "pool_B_depth20": {
+    "label": "pool B ligands at depth 20 only",
+    "n_ligands": 14,
+    "pool_oracle": 0.6499,
+    "selected_incumbent": 0.527,
+    "random": 0.4597,
+    "gain_incumbent": 0.0673,
+    "oracle_gap": 0.1228,
+    "margin_12": {
+      "5": 0.0081,
+      "25": 0.0149,
+      "50": 0.0705,
+      "75": 0.1145,
+      "95": 0.158
+    },
+    "zmargin_12": {
+      "5": 0.002,
+      "25": 0.118,
+      "50": 0.443,
+      "75": 0.765,
+      "95": 1.113
+    },
+    "ligands_with_duplicate_xeng": 0,
+    "margin_below_0.06A": 6,
+    "margin_below_0.10A": 10,
+    "k2": {
+      "ORACLE_tiebreak": 0.0164,
+      "oracle_tiebreak_median": 0.0,
+      "worst_case_tiebreak": -0.0832,
+      "random_in_topk": 0.4936,
+      "incumbent_minus_random_in_topk": 0.0334,
+      "ligands_with_stake_gt_0": 4,
+      "ligands_with_stake_gt_0.05": 2,
+      "share_of_oracle_gap": 0.1336
+    },
+    "k3": {
+      "ORACLE_tiebreak": 0.023,
+      "oracle_tiebreak_median": 0.0036,
+      "worst_case_tiebreak": -0.1018,
+      "random_in_topk": 0.4787,
+      "incumbent_minus_random_in_topk": 0.0483,
+      "ligands_with_stake_gt_0": 7,
+      "ligands_with_stake_gt_0.05": 3,
+      "share_of_oracle_gap": 0.1876
+    },
+    "k5": {
+      "ORACLE_tiebreak": 0.0426,
+      "oracle_tiebreak_median": 0.0085,
+      "worst_case_tiebreak": -0.1043,
+      "random_in_topk": 0.4787,
+      "incumbent_minus_random_in_topk": 0.0483,
+      "ligands_with_stake_gt_0": 9,
+      "ligands_with_stake_gt_0.05": 5,
+      "share_of_oracle_gap": 0.3467
+    },
+    "stake_2_by_margin_quartile": {
+      "Q1 tightest": {
+        "n": 4,
+        "mean_margin": 0.0097,
+        "mean_stake_2": 0.0074,
+        "mean_downside_2": 0.0104
+      },
+      "Q2": {
+        "n": 3,
+        "mean_margin": 0.0463,
+        "mean_stake_2": 0.0023,
+        "mean_downside_2": 0.1079
+      },
+      "Q3": {
+        "n": 3,
+        "mean_margin": 0.0818,
+        "mean_stake_2": 0.0322,
+        "mean_downside_2": 0.0046
+      },
+      "Q4 widest": {
+        "n": 4,
+        "mean_margin": 0.1422,
+        "mean_stake_2": 0.0242,
+        "mean_downside_2": 0.1964
+      }
+    },
+    "rho_margin_vs_stake2": {
+      "rho": 0.0771,
+      "p": 0.7933881149912345
+    }
+  },
+  "floor_pooled_p95_quoted": 0.0137,
+  "floor_n14_p95_quoted": 0.0453,
+  "STOP_RULE": {
+    "O2_pool_A": 0.0129,
+    "verdict": "CLOSED -- a perfect top-2 tie-break is below the pooled noise floor"
+  }
+}

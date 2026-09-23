@@ -1,0 +1,50 @@
+{
+  "n_ligands": 87,
+  "pass_rule": "mean percentile >= 0.65 and p < 0.05",
+  "features": {
+    "xeng": {
+      "mean_percentile": 0.3437,
+      "median_percentile": 0.2,
+      "crystal_beats_median_pose": "28 / 87",
+      "binomial_p": 0.0011686374974383248,
+      "mean_delta_crystal_minus_poolmean": 0.1762,
+      "passes": false
+    },
+    "xeng_2nd": {
+      "mean_percentile": 0.3259,
+      "median_percentile": 0.15,
+      "crystal_beats_median_pose": "23 / 87",
+      "binomial_p": 1.2653512115621955e-05,
+      "mean_delta_crystal_minus_poolmean": 0.2004,
+      "passes": false
+    },
+    "xeng_borda": {
+      "mean_percentile": 0.3471,
+      "median_percentile": 0.25,
+      "crystal_beats_median_pose": "30 / 87",
+      "binomial_p": 0.005013598900146386,
+      "mean_delta_crystal_minus_poolmean": 2.6832,
+      "passes": false
+    },
+    "xeng_sd": {
+      "mean_percentile": 0.5615,
+      "median_percentile": 0.65,
+      "crystal_beats_median_pose": "48 / 87",
+      "binomial_p": 0.3911909653007529,
+      "mean_delta_crystal_minus_poolmean": -0.0098,
+      "passes": false
+    },
+    "xeng_votes": {
+      "mean_percentile": 0.2822,
+      "median_percentile": 0.0,
+      "crystal_beats_median_pose": "27 / 87",
+      "binomial_p": 0.0005243546737950249,
+      "mean_delta_crystal_minus_poolmean": -0.4138,
+      "passes": false
+    }
+  },
+  "CALIBRATION": {
+    "shipped_xeng_passes_R1": false,
+    "reading": "R1 is NOT a valid gate for this family -- the shipped feature, which demonstrably selects at +0.0395, also fails it. Reported as a diagnostic only; every candidate is carried to the paired bar. This branch was declared a priori in the pre-registration."
+  }
+}
