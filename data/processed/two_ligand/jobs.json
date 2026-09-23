@@ -1,0 +1,620 @@
+{
+ "protenix_v2": {
+  "engine": "protenix_v2",
+  "single_sequence": false,
+  "batches": [
+   {
+    "job_id": "4aef6463-2c87-4a9a-9dd9-fdbb778a8a17",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "single",
+    "rep": 0,
+    "submitted": 1790123644.67256,
+    "done": true
+   },
+   {
+    "job_id": "f560fea7-03ec-4276-b9f1-c7bb50691588",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "single",
+    "rep": 0,
+    "submitted": 1790123650.5771189,
+    "done": true
+   },
+   {
+    "job_id": "af8f6dad-5c47-489f-9343-3148c6972afa",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "single",
+    "rep": 0,
+    "submitted": 1790123655.3279474,
+    "done": true
+   },
+   {
+    "job_id": "c0c80a74-33cd-4a8b-a225-741cfd4469f2",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "single",
+    "rep": 0,
+    "submitted": 1790123659.5764413,
+    "done": true
+   },
+   {
+    "job_id": "877f2139-1a94-4645-adaf-933ee4f79ee6",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "double",
+    "rep": 0,
+    "submitted": 1790123664.5459206,
+    "done": true
+   },
+   {
+    "job_id": "68dc68eb-e5b1-4dfd-accd-ce1910da7223",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "double",
+    "rep": 0,
+    "submitted": 1790123669.4840453,
+    "done": true
+   },
+   {
+    "job_id": "fe34af0b-ea4d-4017-987c-bcae239ca53e",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "double",
+    "rep": 0,
+    "submitted": 1790123674.2513006,
+    "done": true
+   },
+   {
+    "job_id": "1e9f41a3-5bd5-4e21-9d21-6e6386fda193",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "double",
+    "rep": 0,
+    "submitted": 1790123679.0441074,
+    "done": true
+   },
+   {
+    "job_id": "61aa885b-d2ce-4f8e-ba20-b7d89ff39ba7",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "decoy",
+    "rep": 0,
+    "submitted": 1790123684.125423,
+    "done": true
+   },
+   {
+    "job_id": "468e60d5-eeab-4b65-a589-fb0f4c802b40",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "decoy",
+    "rep": 0,
+    "submitted": 1790123689.3410313,
+    "done": true
+   },
+   {
+    "job_id": "214b704d-7a51-44dc-9263-a8ce69d5a84f",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "decoy",
+    "rep": 0,
+    "submitted": 1790123694.684942,
+    "done": true
+   },
+   {
+    "job_id": "6d4091fe-82c3-4a83-839f-f8cc4625f9b0",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "decoy",
+    "rep": 0,
+    "submitted": 1790123698.9415915,
+    "done": true
+   },
+   {
+    "job_id": "d541bc54-decf-4524-99eb-968f32540042",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "single",
+    "rep": 1,
+    "submitted": 1790123704.6646342,
+    "done": true
+   },
+   {
+    "job_id": "ac37af49-79b1-4e62-a904-2f0c9f92bbf2",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "single",
+    "rep": 1,
+    "submitted": 1790123710.141222,
+    "done": true
+   },
+   {
+    "job_id": "3343cd82-fa04-4d83-b650-81043f5271e4",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "single",
+    "rep": 1,
+    "submitted": 1790123714.3170211,
+    "done": true
+   },
+   {
+    "job_id": "45f70461-d5bc-4bee-9201-90850e855416",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "single",
+    "rep": 1,
+    "submitted": 1790123719.3833406,
+    "done": true
+   },
+   {
+    "job_id": "93c44c3c-784b-47da-b4ae-e7051309090e",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "double",
+    "rep": 1,
+    "submitted": 1790123724.3754375,
+    "done": true
+   },
+   {
+    "job_id": "780b5039-470f-4af2-84ba-a731f6c38440",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "double",
+    "rep": 1,
+    "submitted": 1790123729.124549,
+    "done": true
+   },
+   {
+    "job_id": "ade8e58f-9999-4d23-ada7-0bc1497555e9",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "double",
+    "rep": 1,
+    "submitted": 1790123735.3519788,
+    "done": true
+   },
+   {
+    "job_id": "09b3fa0b-e1d2-45a0-9152-a1149a9f47ec",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "double",
+    "rep": 1,
+    "submitted": 1790123740.9068427,
+    "done": true
+   },
+   {
+    "job_id": "126b9ca6-1e1c-419a-9c53-31f7affa03b7",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "decoy",
+    "rep": 1,
+    "submitted": 1790123746.1647553,
+    "done": true
+   },
+   {
+    "job_id": "c37f15b2-feb4-4449-ab2e-91a9b0b709a5",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "decoy",
+    "rep": 1,
+    "submitted": 1790123750.6563966,
+    "done": true
+   },
+   {
+    "job_id": "7e231d46-0ddb-4942-87d5-a11458873304",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "decoy",
+    "rep": 1,
+    "submitted": 1790123754.9089227,
+    "done": true
+   },
+   {
+    "job_id": "55766b5e-1775-455a-979b-c610fb86e51e",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "decoy",
+    "rep": 1,
+    "submitted": 1790123760.1478486,
+    "done": true
+   },
+   {
+    "job_id": "7bf2cbab-9de3-472d-b3a8-86f958157c82",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "single",
+    "rep": 2,
+    "submitted": 1790124582.6001787,
+    "done": true
+   },
+   {
+    "job_id": "689992b9-85f2-4200-a758-684643ddbb77",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "single",
+    "rep": 2,
+    "submitted": 1790124588.0449595,
+    "done": true
+   },
+   {
+    "job_id": "2f587499-ba18-4f1b-9a19-f44b62e51839",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "single",
+    "rep": 2,
+    "submitted": 1790124592.665622,
+    "done": true
+   },
+   {
+    "job_id": "e7cd26c2-74f1-48df-93d9-e0fdcb21943c",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "single",
+    "rep": 2,
+    "submitted": 1790124598.053971,
+    "done": true
+   },
+   {
+    "job_id": "b1c23793-7b10-4774-a36b-9f047eb465b1",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "double",
+    "rep": 2,
+    "submitted": 1790124602.474992,
+    "done": true
+   },
+   {
+    "job_id": "d450dd7b-9d55-43a4-a2be-96b6685e160d",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "double",
+    "rep": 2,
+    "submitted": 1790124607.8163943,
+    "done": true
+   },
+   {
+    "job_id": "14431a2f-892e-4508-8dc6-76ec7b263c92",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "double",
+    "rep": 2,
+    "submitted": 1790124612.5222018,
+    "done": true
+   },
+   {
+    "job_id": "a3634dec-7110-448a-8dc3-ab6c1d3b860a",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "double",
+    "rep": 2,
+    "submitted": 1790124616.5358505,
+    "done": true
+   },
+   {
+    "job_id": "f96a96fd-2941-42c7-a261-d66ebdf5f241",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "decoy",
+    "rep": 2,
+    "submitted": 1790124621.164646,
+    "done": true
+   },
+   {
+    "job_id": "97c77a4d-178d-43e9-9b7b-7b651f674e3b",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "decoy",
+    "rep": 2,
+    "submitted": 1790124625.7085888,
+    "done": true
+   },
+   {
+    "job_id": "9becc50e-b6ab-4211-8fef-354943ced8b7",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "decoy",
+    "rep": 2,
+    "submitted": 1790124630.127683,
+    "done": true
+   },
+   {
+    "job_id": "981e463f-a427-4e4b-aea7-11c4ebc2406e",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "decoy",
+    "rep": 2,
+    "submitted": 1790124634.4851902,
+    "done": true
+   },
+   {
+    "job_id": "7229dfef-e7e5-4e5b-9ed6-f08975ba3f57",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "single",
+    "rep": 3,
+    "submitted": 1790124639.7715511,
+    "done": true
+   },
+   {
+    "job_id": "68208f51-d7d6-428d-95b1-042c084be786",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "single",
+    "rep": 3,
+    "submitted": 1790124645.1611042,
+    "done": true
+   },
+   {
+    "job_id": "3ec9da50-0d25-44df-840e-b8c4dd25e842",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "single",
+    "rep": 3,
+    "submitted": 1790124650.3507895,
+    "done": true
+   },
+   {
+    "job_id": "ae9788d5-8152-4e97-a9e3-1a7c425fc80e",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "single",
+    "rep": 3,
+    "submitted": 1790124654.781814,
+    "done": true
+   },
+   {
+    "job_id": "bb0e4025-34bf-4213-87be-362293b8e477",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "double",
+    "rep": 3,
+    "submitted": 1790124660.3785048,
+    "done": true
+   },
+   {
+    "job_id": "58513192-d3f3-46ab-9242-98419412cc6d",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "double",
+    "rep": 3,
+    "submitted": 1790124665.6385987,
+    "done": true
+   },
+   {
+    "job_id": "3a368e3a-f744-45f3-959a-a8657b150d98",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "double",
+    "rep": 3,
+    "submitted": 1790124670.2863812,
+    "done": true
+   },
+   {
+    "job_id": "cee9827f-614d-4307-98f4-4d6a947e4b3f",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "double",
+    "rep": 3,
+    "submitted": 1790124674.344016,
+    "done": true
+   },
+   {
+    "job_id": "4cd7019e-744d-4190-a7c2-b10994dc5b2e",
+    "ligands": [
+     "MF8",
+     "CFF",
+     "MYT",
+     "A1ASS"
+    ],
+    "arm": "decoy",
+    "rep": 3,
+    "submitted": 1790124678.9468179,
+    "done": true
+   },
+   {
+    "job_id": "57d9d810-1bac-4094-a908-ab3fca3e673f",
+    "ligands": [
+     "A1ASV",
+     "08J",
+     "PK9",
+     "TCI"
+    ],
+    "arm": "decoy",
+    "rep": 3,
+    "submitted": 1790124683.242291,
+    "done": true
+   },
+   {
+    "job_id": "5f60dad4-397e-4e5f-9f15-990d367447df",
+    "ligands": [
+     "A1ASU",
+     "CL6",
+     "A1ASP",
+     "A1ASR"
+    ],
+    "arm": "decoy",
+    "rep": 3,
+    "submitted": 1790124783.810128,
+    "done": true
+   },
+   {
+    "job_id": "43d2541d-67d9-41e9-98a0-c51a100346dc",
+    "ligands": [
+     "D7Y",
+     "MWS",
+     "A1ASQ"
+    ],
+    "arm": "decoy",
+    "rep": 3,
+    "submitted": 1790124789.8124866,
+    "done": true
+   }
+  ]
+ }
+}
