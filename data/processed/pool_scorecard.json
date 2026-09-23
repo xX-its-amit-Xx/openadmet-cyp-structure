@@ -146,5 +146,88 @@
   "median_depth": "4 -> 8",
   "pairs_at_depth4": "479 -> 490",
   "verdict": "saturated - doubling the reference is not measurably better; buy 4 settings"
+ },
+ {
+  "date": "2026-09-22",
+  "what": "Orientation expansion of the CYP3A4 pool (FINDING 027): 1,024-point SO(3) grid per pose",
+  "poses_in": 1740,
+  "candidates": 1781760,
+  "survivors": 23688,
+  "filter_pass_rate": 0.0133,
+  "pool_oracle_before": 0.6975,
+  "pool_oracle_after": 0.7083,
+  "selected_before": 0.6164,
+  "selected_after": 0.6019,
+  "delta_selected": -0.0145,
+  "wilcoxon_p": 0.08,
+  "n_tied": 82,
+  "verdict": "oracle up, selection down - the model's pocket excludes the crystal ligand on 71.2% of poses"
+ },
+ {
+  "date": "2026-09-22",
+  "what": "Two-ligand co-folding pilot (FINDING 031): protenix_v2, 3 arms, 15 ligands",
+  "jobs": 49,
+  "complexes": 181,
+  "failures": 0,
+  "cost_usd": 0,
+  "delta_lddt_pli_first_copy": -0.0664,
+  "ci": [
+   -0.1424,
+   0.0047
+  ],
+  "wilcoxon_p": 0.135,
+  "delta_rotation_deg": 4.45,
+  "second_copy_active_site": "12 of 15",
+  "decoy_arm_delta": -0.0929,
+  "verdict": "refuted - filling the cavity is not constraining it; the decoy arm perturbs harder"
+ },
+ {
+  "date": "2026-09-23",
+  "what": "Type I depth on OpenProtein (FINDING 034): degraded conditioning",
+  "jobs": 124,
+  "complexes": 424,
+  "failures": 0,
+  "cost_usd": 0,
+  "distinct_poses": 151,
+  "distinct_per_ligand": 10.79,
+  "pool_mean_gap_vs_existing": -0.057,
+  "pool_oracle_before": 0.6499,
+  "pool_oracle_after": 0.6617,
+  "selected_before": 0.527,
+  "selected_after": 0.5205,
+  "delta_selected": -0.0065,
+  "ci": [
+   -0.0276,
+   0.0135
+  ],
+  "wilcoxon_p": 0.47,
+  "verdict": "refuted as a purchase - boltz2 cannot take an uploaded MSA here, so this is expansion not depth"
+ },
+ {
+  "date": "2026-09-23",
+  "what": "Matched-conditioning depth on Explorer (FINDING 035): self-hosted Boltz-2 2.2.1",
+  "jobs": 3,
+  "poses": 280,
+  "per_ligand": 20,
+  "n_ligands": 14,
+  "failures": 0,
+  "cost_usd": 0,
+  "distinct_poses": 280,
+  "minutes_per_ligand": 6.6,
+  "pool_mean_gap_vs_existing": -0.0019,
+  "delta_selected": 0.0116,
+  "ci": [
+   -0.0687,
+   0.1034
+  ],
+  "wilcoxon_p": 0.715,
+  "n_tied": 10,
+  "delta_oracle": 0.0097,
+  "oracle_ci": [
+   0.0012,
+   0.0195
+  ],
+  "noise_floor_95_at_n14": 0.0453,
+  "verdict": "first of six pool expansions not to send selection backwards; short of the +0.0125 bar"
  }
 ]
