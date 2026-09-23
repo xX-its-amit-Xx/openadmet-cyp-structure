@@ -351,8 +351,14 @@ def augment() -> dict:
     rate_sel = (bk["selected"] - b0["selected"]) / doublings if doublings > 0 else np.nan
     rate_orc = (bk["oracle"] - b0["oracle"]) / doublings if doublings > 0 else np.nan
 
-    aug_df = pd.concat([pool_e, pool_n[pool_n["sample"].isin(
-        [s for v in keep.values() for s in v])]], ignore_index=True)
+    # filter the new arm to its DISTINCT poses PER LIGAND. A global `isin` over the union
+    # of kept sample names would be wrong: sample names ("s101_m3") repeat across ligands,
+    # so a pose deduped out of ligand B would be readmitted because ligand A kept the same
+    # index. That would quietly double-count a duplicate in rho and in the noise floor.
+    keep_pairs = {(lid, s) for lid, v in keep.items() for s in v}
+    nsel = pool_n[[(r.ligand, r.sample) in keep_pairs
+                   for r in pool_n.itertuples()]]
+    aug_df = pd.concat([pool_e, nsel], ignore_index=True)
     rho_a, sign_a = within_ligand_rho(aug_df, ligs)
 
     out = {

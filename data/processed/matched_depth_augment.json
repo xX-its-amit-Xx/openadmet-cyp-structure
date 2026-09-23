@@ -1,0 +1,100 @@
+{
+  "stratum_n": 14,
+  "ligands": [
+    "08J",
+    "08Y",
+    "A1CIW",
+    "CFF",
+    "D0R",
+    "ERY",
+    "MF8",
+    "MWS",
+    "MWV",
+    "MWY",
+    "PG0",
+    "PG4",
+    "TCI",
+    "YNV"
+  ],
+  "k_matched": 20,
+  "depth_before": 20,
+  "depth_after": 40,
+  "rungs": {
+    "0": {
+      "selected": 0.527,
+      "oracle": 0.6499,
+      "random": 0.4597
+    },
+    "1": {
+      "selected": 0.529,
+      "oracle": 0.6504,
+      "random": 0.4595
+    },
+    "2": {
+      "selected": 0.5316,
+      "oracle": 0.6509,
+      "random": 0.4595
+    },
+    "4": {
+      "selected": 0.5354,
+      "oracle": 0.6524,
+      "random": 0.4594
+    },
+    "8": {
+      "selected": 0.5393,
+      "oracle": 0.6542,
+      "random": 0.459
+    },
+    "10": {
+      "selected": 0.5411,
+      "oracle": 0.6553,
+      "random": 0.4589
+    },
+    "20": {
+      "selected": 0.5386,
+      "oracle": 0.6595,
+      "random": 0.4587
+    }
+  },
+  "primary": {
+    "delta_selected": 0.0116,
+    "delta_selected_CI95": [
+      -0.0687,
+      0.1034
+    ],
+    "delta_oracle": 0.0097,
+    "delta_oracle_CI95": [
+      0.0012,
+      0.0195
+    ],
+    "delta_random": -0.001,
+    "wilcoxon_p": 0.715,
+    "ligands_better": 2,
+    "ligands_worse": 2,
+    "ligands_tied": 10,
+    "ligands_where_selector_ever_took_a_new_pose": 4,
+    "mean_frac_draws_took_new": 0.2857
+  },
+  "rate_per_doubling": {
+    "selected": 0.0116,
+    "oracle": 0.0097,
+    "conversion_pct": 119.9,
+    "finding_034_type_I_selected": 0.0127,
+    "finding_034_type_I_oracle": 0.0428,
+    "finding_004_benchmark": 0.0125
+  },
+  "augmented_within_ligand_rho": -0.2883,
+  "augmented_correct_sign_pct": 78.57,
+  "noise_floor_in_stratum": {
+    "n": 14,
+    "draws": 4000,
+    "p95": 0.0453,
+    "p99": 0.0648
+  },
+  "noise_floor_augmented": {
+    "n": 14,
+    "draws": 4000,
+    "p95": 0.0456,
+    "p99": 0.0669
+  }
+}

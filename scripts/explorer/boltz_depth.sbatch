@@ -73,5 +73,11 @@ srun "$FT/env/bin/boltz" predict "$ROOT/yaml/$SUB" \
 
 echo "=== produced ==="
 find "$OUT" -name '*_model_*.cif' | wc -l
-find "$OUT" -name '*_model_*.cif' | head -3
+# `| head -3` under `set -o pipefail` makes the JOB report FAILED: head closes the pipe,
+# find dies of SIGPIPE, and the batch step exits 13 -- AFTER every pose has been written.
+# Job 10529025 did exactly that: 280/280 mmCIFs, "Number of failed examples: 0", srun step
+# COMPLETED 0:0, and sacct saying FAILED. The repo's standing trap is a passing check over
+# broken work; this is its mirror, and it is just as expensive. `|| true` keeps the summary.
+find "$OUT" -name '*_model_*.cif' | head -3 || true
 echo "=== done $(date) ==="
+exit 0

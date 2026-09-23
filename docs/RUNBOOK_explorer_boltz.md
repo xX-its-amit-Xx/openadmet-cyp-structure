@@ -181,6 +181,7 @@ de-risk.
 | 5 | (inherited, PXR, ~12 days) jobs hang or die on download | GPU nodes have no direct internet; `--use_msa_server` cannot work | stage the MSA on a login node; `--cache` at a local dir; set the proxy so an accidental reach-out fails fast instead of hanging |
 | 6 | `#!/bin/bash^M: bad interpreter` (anticipated) | CRLF from the Windows checkout | `push` runs `sed -i 's/\r$//'` on the far side and prints `head -1 \| cat -A` to prove it |
 | 7 | `MSA file cyp3a4.a3m not found` although it is next to the YAML | Boltz resolves a relative `msa:` against the **process** cwd, not the YAML's directory | the YAML carries the **absolute** `/scratch/...` path |
+| 8 | `collect` would have swept the smoke run's poses into the stratum set | the pull walked all of `out/`, and the flattening step keys on the ligand directory name, so it could not have noticed | scope the remote `find` to `./<sub>_s*`. Caught before it mattered; it is the same shape as `FINDING_034`'s "two input sets writing to one directory produce one result wearing two labels" |
 
 ---
 

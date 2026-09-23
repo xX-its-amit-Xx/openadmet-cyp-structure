@@ -1,6 +1,6 @@
 # Findings index
 
-Thirty-four findings, most of them negative. Read them in this order if you are arriving cold;
+Thirty-five findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
 ## Start here
@@ -39,6 +39,8 @@ work. That is not a slogan, it is ~30 measured features:
 | 033 | **is the shipped selector biased by BINDING MODE?** — the validation set is 83% Type II, so a Type I-rich blind test set would be an unmeasured exposure | **ROBUST**, on the set with the power: family-wide the raw Type II − Type I gap is +0.0318 and **vanishes to −0.0030, CI [−0.0132, +0.0075], once matched on pool headroom**; both strata clear their own nulls at p=0.0000 over 342 pairs. CYP3A4 alone is **underpowered** — n=14, CI [−0.063, +0.050], MDD 0.066. The heme-frame explanation **fails** (partial ρ −0.033). The real exposure is the POOL: Type I random 0.464 vs 0.599 and **oracle 0.649 vs 0.707**. One label was wrong: **73/14, not 72/15** |
 | 034 | **is FINDING 033's own recommendation right — buy DEPTH on the predicted-Type-I ligands?** The rate is real and the purchase is not | **the depth law holds and is steepest here**: Type I converts depth at **+0.0127 selected per doubling** (+0.0333 in the top octave) against Type II's +0.0069, because its oracle climbs **1.8× faster** (+0.0428 vs +0.0242) — while the *fraction* of depth converted is **29.6% vs 28.5%**, identical, and **22.8% vs 22.7%** across two different generators. But the only depth OpenProtein can sell is MSA-less `boltz2` (an uploaded MSA fails server-side), whose ceiling matches and whose average is 0.057 lower; mixed in it adds **+0.0118 oracle and −0.0065 score**, the fifth such case. **REFUTED** as a purchase, **MEASURED** as a law. Also: 30 replicates bought 10.8 distinct poses and replicates **16–29 bought zero** |
 
+| 035 | **the experiment 034 asked for: depth at MATCHED conditioning.** Boltz-2 on Explorer, staged 6,979-sequence MSA, same checkpoint, same heme bond — 14 ligands × 20 new samples, a true 20→40 doubling | **the match is real** (new arm's pool mean **−0.0019** from the pool it joins, against OpenProtein's −0.057) and **the conversion is not**. Δ oracle **+0.0097** [+0.0012, +0.0195]; Δ selected **+0.0116** [−0.0687, +0.1034], Wilcoxon **p = 0.715**, **10 of 14 unchanged**, **+0.0020** once the two swing ligands are dropped. **But the sign flipped** — the first expansion in six that did not make selection *worse*. Two methods corrections: the **selected** rate decays with depth (+0.0227 at 10→20, **+0.0095** at 20→40) while the oracle rate barely does (+0.0385 → +0.0331); and **a subsample curve's last rung is a deterministic maximum**, so its final slope over-prices new samples — which is why 034's +0.0428 predicted rate met a +0.0097 reality. Also: **one job bought 20.0 distinct poses** where 034's thirty OpenProtein jobs bought 10.79 |
+
 **Read 007 before proposing any new feature.** It is the arithmetic that makes "promising"
 a meaningless word here.
 
@@ -49,7 +51,8 @@ a meaningless word here.
 | 004 | sampling still pays — the oracle keeps climbing, and the selector tracks it at +0.0125 per doubling |
 | 005 | a second engine does not decorrelate: Chai ρ=+0.45, Protenix ρ=+0.60 against Boltz |
 | 008 | the P450 superfamily replicates the coordination thesis; a p5–p95 window is **not** an acceptance test and was discarding 10% of true coordination |
-| 009 | **`diffusion_samples` does not sample the ligand on OpenProtein** — for any engine. Only replicate jobs do, and replicates are not automatically distinct either |
+| 009 | **`diffusion_samples` does not sample the ligand on OpenProtein** — for any engine. Only replicate jobs do, and replicates are not automatically distinct either. **035 bounds this to OpenProtein's wrapper**: native `boltz predict --diffusion_samples 20` gives 20 of 20 distinct poses in ONE job |
+| 035 | **Explorer is a working Boltz-2 venue** — offline, MSA staged on a login node, `--no_kernels`, ~6.6 min/ligand at 20 samples on a V100. `docs/RUNBOOK_explorer_boltz.md`. A job can report **FAILED with all its work complete** (`find \| head` under `pipefail`) — the mirror of trap 2 |
 | 013 | a union pool adds **+0.0375 of oracle that selection cannot reach** — keep a second engine as *reference*, never as a pool member |
 | 016 | **the sampler sweep is a renewable REFERENCE** — `num_recycles`/`num_steps` diversify at 1.2% catastrophic; worthless as a pool expansion (−0.0038, FINDING 013 again). As a reference it is **equal** to esmfold2 in quality (a +0.0078 edge at n=80 reversed to −0.0028 at n=428) but references **59 pairs esmfold2 cannot**, and can be regenerated for any target |
 | 034 | **replicate jobs are not a purchase order for poses** — distinct poses track submission WAVES. 30 replicates -> 10.79 distinct; replicates 16-29 returned 196 of 196 complexes byte-identical to replicate 15; a later wave with the same payload returned a *new* pose shared exactly by all four of its jobs |

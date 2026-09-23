@@ -6,6 +6,21 @@ what to launch when nothing is in flight.
 
 **Deadline: interim leaderboard 2026-09-24.** Budget backwards from that.
 
+> ### ⚠️ The generation venue has moved — see `docs/RUNBOOK_explorer_boltz.md`
+>
+> The `modal_boltz.py submit` line in Step 0 below is **how the validation pool was
+> built** and is kept for provenance (`--tag val87 --samples 20 --seeds 1`). It is **not
+> what to run now**: Modal is over its spend cap, and `FINDING_034` measured that
+> OpenProtein's `boltz2` rejects an uploaded MSA, so the only depth it can sell is
+> single-sequence — poses that cost 0.0065 of selected score when mixed in.
+>
+> **Boltz-2 generation now runs on Explorer**, at conditioning matched to the pool above
+> (same boltz 2.2.1, same checkpoint, the same 6,979-sequence alignment, the same
+> Cys442→FE bond). The path is tested end to end and the procedure, sbatch templates,
+> staging steps, proxy setting and every failure hit are in
+> **`docs/RUNBOOK_explorer_boltz.md`**. Read it before launching anything on the cluster;
+> the GPU nodes have no internet and that alone cost the PXR campaign ~12 days.
+
 ---
 
 ## Step 0 — the pool that scores itself  ✅ infrastructure ready

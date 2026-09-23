@@ -1,0 +1,115 @@
+{
+  "N2_shipped_column": {
+    "selected": 0.6164,
+    "oracle": 0.6975,
+    "random": 0.5769,
+    "gain": 0.0395,
+    "within_ligand_rho": -0.2582,
+    "correct_sign_pct": 75.86,
+    "expected": {
+      "selected": 0.6164,
+      "oracle": 0.6975,
+      "random": 0.5769,
+      "gain": 0.0395,
+      "rho": -0.2582,
+      "correct_sign_pct": 75.86
+    },
+    "matches_finding_011_033": true
+  },
+  "N2b_argmin_identity": {
+    "max_abs_diff": 0.0,
+    "equal_to_1e-9": true,
+    "n": 87
+  },
+  "N5_filters": {
+    "validation_ligands": 87,
+    "pass_pred_fe_donor_median_gt_2.6": 14,
+    "excluded_predicted_type_II": 73,
+    "stratum": [
+      "08J",
+      "08Y",
+      "A1CIW",
+      "CFF",
+      "D0R",
+      "ERY",
+      "MF8",
+      "MWS",
+      "MWV",
+      "MWY",
+      "PG0",
+      "PG4",
+      "TCI",
+      "YNV"
+    ]
+  },
+  "existing_pool_diversity_in_stratum": {
+    "unique_xeng_per_ligand": [
+      20
+    ],
+    "median_within_ligand_lddt_sd": 0.0804,
+    "ligands_with_sd_zero": 0
+  },
+  "baseline_depth20_stratum": {
+    "oracle": 0.6499,
+    "selected": 0.527,
+    "random": 0.4597,
+    "gain": 0.0673
+  },
+  "baseline_rho": -0.2357,
+  "baseline_correct_sign_pct": 71.43,
+  "N1_numbering": {
+    "n_poses": 280,
+    "renumber_offsets": {
+      "0": 280
+    },
+    "min_renumber_identity": 0.9979,
+    "poses_below_0.95_identity": 0,
+    "mapped_true": 280,
+    "mapped_false": 0
+  },
+  "C7_exact_zero_lddt": {
+    "n": 2,
+    "ligands": {
+      "PG0": 1,
+      "PG4": 1
+    },
+    "bisy_rmsd_range": [
+      23.24,
+      25.94
+    ],
+    "fe_donor_range": [
+      20.93,
+      22.39
+    ],
+    "all_offset_zero": true,
+    "all_mapped": true,
+    "verdict": "ejections, not FINDING_021 numbering"
+  },
+  "N4_md5_distinct": {
+    "rows": 280,
+    "distinct_md5": 280,
+    "per_ligand_distinct_md5": {
+      "08J": 20,
+      "08Y": 20,
+      "A1CIW": 20,
+      "CFF": 20,
+      "D0R": 20,
+      "ERY": 20,
+      "MF8": 20,
+      "MWS": 20,
+      "MWV": 20,
+      "MWY": 20,
+      "PG0": 20,
+      "PG4": 20,
+      "TCI": 20,
+      "YNV": 20
+    }
+  },
+  "A0_new_arm_quality": {
+    "new_arm_pool_mean": 0.4577,
+    "existing_pool_mean_same_ligands": 0.4597,
+    "delta": -0.0019,
+    "matched_within_0.02": true,
+    "finding_034_openprotein_delta_for_reference": -0.057
+  }
+}
