@@ -409,4 +409,4 @@ subsets; it is the same six ligands at every depth.
 | per-ligand ρ at depth 4 and 8, independent seed | `data/processed/refvalue_rho_per_ligand.json` |
 | shipped-reference arm | `data/processed/refvalue_shipped_ref_arm.json` |
 | 80-job timeline, all SUCCESS | `data/processed/refvalue_job_timeline.json` |
-| the 370 mmCIFs (125 MB, **gitignored**) | `data/processed/openprotein/refvalue/` |
+| the 370 mmCIFs (125 MB, **gitignored**) | **archived** to `onedrive:rclone-offload/cyp-structure/pool/refvalue` via `cypstruct.storage.push(move=True)`; the local `data/processed/openprotein/refvalue/` is now empty. The frozen `.npz` is the reproducible artefact — pull the mmCIFs back with `storage.pull` only if the dedupe has to be re-run |
