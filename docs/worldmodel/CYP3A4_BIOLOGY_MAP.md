@@ -1406,9 +1406,9 @@ cheap: both are just extra ligand entities in a Boltz YAML, neither needs a seco
 are aimed squarely at residues 211–216 and Phe304, which `FINDING_028` measured as doing 83% of the
 pose exclusion.
 
-> ### ⚠️ Update, 2026-09: rank 1 was run and is REFUTED
+> ### ⚠️ Update, 2026-09: rank 1 was run and is REFUTED (`FINDING_031`)
 >
-> The second-ligand co-fold has been executed off the back of this list — **49 OpenProtein jobs** —
+> The second-ligand co-fold has been executed off the back of this list — **48 scored OpenProtein jobs, 49 including the feasibility probe** —
 > and it is a **negative**. The second copy landed in the **active site on 12 of 15 ligands** rather
 > than in the peripheral groove, and **the first copy got worse by −0.0664 LDDT-PLI, with rotation
 > error moving +4.45° in the wrong direction**.
@@ -1972,12 +1972,12 @@ its way in and out, and therefore the part a scorer must get right. (iv) **Heme 
 1. ⚠️ **A second copy of the query ligand — RUN AND REFUTED (2026-09).** It was the only "partner"
    with CYP3A4 structural precedent (6 of 122 entries, clash-free in every case, minimum inter-copy
    distance 2.90 Å), the only one that touches the F/G roof, and one extra ligand entity in a YAML.
-   **49 OpenProtein jobs later it is a negative:** the second copy landed in the **active site on 12
+   **48 scored OpenProtein jobs later it is a negative:** the second copy landed in the **active site on 12
    of 15 ligands** instead of the peripheral groove, and the first copy got **worse by −0.0664
    LDDT-PLI with rotation error moving +4.45° the wrong way**. What did hold was the geometry — median
    **8.81 Å from the iron**, **2V0M's second ketoconazole reproduced unprompted**, and **45 of 60
    second copies contacting the §7.2 groove residues** — but from **inside** the cavity, displacing the
-   first ligand. **Right about where, wrong about whether it helps.** See the box in §6.9.
+   first ligand. **Right about where, wrong about whether it helps.** See the box in §6.9 and `FINDING_031`.
 2. **Membrane lipid (POPC, or 1:1 POPC:POPG) — now the only untested partner, on a LOWERED prior.**
    The F′–G′ face is bilayer-embedded, 8GK3 resolves a steroid sulfate sitting on it, lipid identity
    changes measured fragment binding, and the allosteric midazolam site is located in that region in
