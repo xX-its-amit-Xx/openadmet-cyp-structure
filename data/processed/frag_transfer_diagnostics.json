@@ -1,0 +1,69 @@
+{
+  "note": "POST-HOC diagnostics; not pre-registered; not features",
+  "C5_xtal_rerun_reproduces_primary": {
+    "max_abs_delta": 0.0,
+    "pass": true,
+    "ligands": 82
+  },
+  "D5_crystal_vs_predicted": {
+    "ligands": 82,
+    "mean_percentile_of_crystal": 0.5579268292682927,
+    "median_percentile_of_crystal": 0.65,
+    "crystal_better_than_median_pose": 45,
+    "mean_delta_A": -0.07178299668681054,
+    "sign_binom_p": 0.439705429185822,
+    "reading": "1.0 would mean the crystal is the single closest thing to the donor consensus; 0.5 means the prior cannot tell the answer from a wrong guess"
+  },
+  "D4_consensus_spread": {
+    "donor_fragment_centroid_rms_spread_A": 4.482074316949992,
+    "median_A": 4.39954802364313,
+    "own_20_pose_centroid_rms_spread_A": 0.5820163863941712,
+    "mean_transfer_distance_A": 5.005348758626978,
+    "reading": "a prior whose donors scatter by several A about their own mean cannot resolve a 30 deg rotation of a 4.8 A ligand"
+  },
+  "D3_what_it_ranks_by": {
+    "mean_rho_vs_centroid_radius": 0.36260773885934344,
+    "frac_positive_radius": 0.8292682926829268,
+    "mean_rho_vs_radius_of_gyration": 0.32695763799743255,
+    "frac_positive_gyration": 0.7804878048780488
+  },
+  "D1_donor_oracle": {
+    "ligands": 82,
+    "random_baseline": 0.5827068931971282,
+    "best_single_donor": 0.6942337283441461,
+    "gain": 0.11152683514701789,
+    "matched_best_of_N_random_null_mean": 0.6998682565091099,
+    "matched_null_p95": 0.7000337831595222,
+    "reading": "with ~500 donors, best-of-500 random rankers is already this high; a donor oracle that does not clear it is a counting artifact, not chemistry"
+  },
+  "D2_similarity_ranked_donors": {
+    "1": {
+      "selected": 0.5464870421620045,
+      "gain": -0.03621985103512371
+    },
+    "3": {
+      "selected": 0.552891186554873,
+      "gain": -0.02981570664225519
+    },
+    "10": {
+      "selected": 0.5635472944726292,
+      "gain": -0.019159598724499016
+    },
+    "30": {
+      "selected": 0.5561335153752435,
+      "gain": -0.026573377821884736
+    },
+    "100": {
+      "selected": 0.5438222196354862,
+      "gain": -0.03888467356164205
+    },
+    "300": {
+      "selected": 0.5572617777132693,
+      "gain": -0.02544511548385886
+    },
+    "all": {
+      "selected": 0.5763085184040975,
+      "gain": -0.006398374793030737
+    }
+  }
+}
