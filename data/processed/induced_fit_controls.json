@@ -1,0 +1,33 @@
+{
+ "n_poses": 1740,
+ "C1_numbering_offset_vs_canonical_sequence": {
+  "offsets": {
+   "0": 1740
+  },
+  "min_residue_identity": 1.0,
+  "median_residue_identity": 1.0,
+  "all_six_blockers_match_sequence": 1740,
+  "fires": true
+ },
+ "C2_exact_zero_lddt": {
+  "n_unsteered_rows": 1740,
+  "n_lddt_pli_exactly_zero": 4,
+  "n_lddt_pli_null": 0,
+  "n_unmapped": 0
+ },
+ "C3_incumbent_reproduction": {
+  "reference_depth": {
+   "ligands": 87,
+   "min": 6,
+   "median": 7.0,
+   "max": 12,
+   "at_least_4": 87,
+   "usable": true
+  },
+  "n_compared": 1740,
+  "n_missing_reference": 0,
+  "max_abs_diff": 2.80297633992177e-08,
+  "median_abs_diff": 5.7812868936579775e-09,
+  "reproduces_below_1e-6": true
+ }
+}

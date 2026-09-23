@@ -1,0 +1,161 @@
+{
+ "n_ligands": 87,
+ "counters": {
+  "cleared": 3243,
+  "no-clearing-rotamer": 940,
+  "chi3_escalations": 269,
+  "self_clash_bound": 1795,
+  "self-clash-blocks": 150
+ },
+ "strata": {
+  "self:rot15": {
+   "n": 435,
+   "n_demand": {
+    "original_median": 0.0,
+    "rotated_median": 1.0,
+    "expected": "greater",
+    "mannwhitney_p": 4.811065864812562e-50,
+    "frac_paired_sign_correct": 0.517,
+    "passes": false
+   },
+   "clash_before": {
+    "original_median": 2.522094387501012,
+    "rotated_median": 2.122877388949341,
+    "expected": "less",
+    "mannwhitney_p": 1.412538068846378e-44,
+    "frac_paired_sign_correct": 0.846,
+    "passes": true
+   },
+   "n_uncleared": {
+    "original_median": 0.0,
+    "rotated_median": 0.0,
+    "expected": "greater",
+    "mannwhitney_p": 3.0106830219826347e-14,
+    "frac_paired_sign_correct": 0.122,
+    "passes": false
+   },
+   "skeleton_clear": {
+    "original_median": 2.8273256723801734,
+    "rotated_median": 2.3324488505238454,
+    "expected": "less",
+    "mannwhitney_p": 5.19648670287788e-59,
+    "frac_paired_sign_correct": 0.88,
+    "passes": true
+   },
+   "n_criteria_passing": 2,
+   "CONTROL_FIRES": true
+  },
+  "self:rot90": {
+   "n": 435,
+   "n_demand": {
+    "original_median": 0.0,
+    "rotated_median": 4.0,
+    "expected": "greater",
+    "mannwhitney_p": 2.5468655516179656e-142,
+    "frac_paired_sign_correct": 0.952,
+    "passes": true
+   },
+   "clash_before": {
+    "original_median": 2.522094387501012,
+    "rotated_median": 0.7907305044915464,
+    "expected": "less",
+    "mannwhitney_p": 1.144106600771393e-131,
+    "frac_paired_sign_correct": 0.998,
+    "passes": true
+   },
+   "n_uncleared": {
+    "original_median": 0.0,
+    "rotated_median": 1.0,
+    "expected": "greater",
+    "mannwhitney_p": 1.7989186159302655e-94,
+    "frac_paired_sign_correct": 0.676,
+    "passes": true
+   },
+   "skeleton_clear": {
+    "original_median": 2.8273256723801734,
+    "rotated_median": 1.3005118536207525,
+    "expected": "less",
+    "mannwhitney_p": 1.0819324081731008e-135,
+    "frac_paired_sign_correct": 0.984,
+    "passes": true
+   },
+   "n_criteria_passing": 4,
+   "CONTROL_FIRES": true
+  },
+  "sibling:rot15": {
+   "n": 435,
+   "n_demand": {
+    "original_median": 0.0,
+    "rotated_median": 1.0,
+    "expected": "greater",
+    "mannwhitney_p": 3.173587139499605e-27,
+    "frac_paired_sign_correct": 0.508,
+    "passes": false
+   },
+   "clash_before": {
+    "original_median": 2.411586408399268,
+    "rotated_median": 1.9986203583942013,
+    "expected": "less",
+    "mannwhitney_p": 6.42310557874063e-25,
+    "frac_paired_sign_correct": 0.791,
+    "passes": true
+   },
+   "n_uncleared": {
+    "original_median": 0.0,
+    "rotated_median": 0.0,
+    "expected": "greater",
+    "mannwhitney_p": 6.809317401717873e-14,
+    "frac_paired_sign_correct": 0.143,
+    "passes": false
+   },
+   "skeleton_clear": {
+    "original_median": 2.7671825514856145,
+    "rotated_median": 2.3923088276581383,
+    "expected": "less",
+    "mannwhitney_p": 1.154091469501577e-48,
+    "frac_paired_sign_correct": 0.814,
+    "passes": true
+   },
+   "n_criteria_passing": 2,
+   "CONTROL_FIRES": true
+  },
+  "sibling:rot90": {
+   "n": 435,
+   "n_demand": {
+    "original_median": 0.0,
+    "rotated_median": 4.0,
+    "expected": "greater",
+    "mannwhitney_p": 8.357708821855523e-116,
+    "frac_paired_sign_correct": 0.913,
+    "passes": true
+   },
+   "clash_before": {
+    "original_median": 2.411586408399268,
+    "rotated_median": 0.775084786178991,
+    "expected": "less",
+    "mannwhitney_p": 2.0417388880277287e-110,
+    "frac_paired_sign_correct": 0.975,
+    "passes": true
+   },
+   "n_uncleared": {
+    "original_median": 0.0,
+    "rotated_median": 1.0,
+    "expected": "greater",
+    "mannwhitney_p": 4.336890265139279e-100,
+    "frac_paired_sign_correct": 0.713,
+    "passes": true
+   },
+   "skeleton_clear": {
+    "original_median": 2.7671825514856145,
+    "rotated_median": 1.1724835722446219,
+    "expected": "less",
+    "mannwhitney_p": 1.0348728927373249e-136,
+    "frac_paired_sign_correct": 0.984,
+    "passes": true
+   },
+   "n_criteria_passing": 4,
+   "CONTROL_FIRES": true
+  }
+ },
+ "verdict": "FIRES"
+}

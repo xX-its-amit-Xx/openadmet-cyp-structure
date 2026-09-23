@@ -919,10 +919,140 @@ def cmd_evaluate(n_null: int = 200, n_rand: int = 4000, boot: int = 10000) -> No
     print(json.dumps({k: v for k, v in rep.items() if k != "prereg"}, indent=1))
 
 
+# --------------------------------------------------------------------------
+# stage: addendum — the null at the RIGHT dimensionality, and two fixes
+# --------------------------------------------------------------------------
+# Two defects in the first `evaluate` pass, both found by reading its own output:
+#
+# 1. The best ensemble (ALL, 44 terms) was compared against a null built at k = 11,
+#    because the null was run on the best single RECEPTOR SET. FINDING 025 is the whole
+#    reason this matters: 34 Gaussian features fitted the same way reached +0.0252. The
+#    matched-dimensionality null is recomputed here at k = 44.
+# 2. `summarise` reported `frac_rho_correct_sign` with the raw-feature convention
+#    (rho < 0) while the score handed to it is already signed. The incumbent therefore
+#    printed 0.241 where FINDING 011's own number is 0.759. Recomputed here as rho > 0.
+
+def cmd_addendum(n_null: int = 200, boot: int = 10000) -> None:
+    import pandas as pd
+    from scipy import stats
+
+    RNG = np.random.default_rng(291)
+    d = pd.read_csv(OUT / "induced_fit_features_val87b.csv")
+    d = d.sort_values(["ligand", "sample"]).reset_index(drop=True)
+    groups = list(d.groupby("ligand"))
+    index = {nm: g.index.to_numpy() for nm, g in groups}
+    y = d.lddt_pli.values
+    names = d.ligand.values
+    rnd_lig = np.array([g.lddt_pli.mean() for _, g in groups])
+    orc_lig = np.array([g.lddt_pli.max() for _, g in groups])
+    rnd = float(rnd_lig.mean())
+
+    def per_lig(score, draws=PREREG["tie_draws"]):
+        out = np.zeros(len(groups))
+        for _ in range(draws):
+            for i, (nm, g) in enumerate(groups):
+                v = np.where(np.isfinite(score[index[nm]]), score[index[nm]], -np.inf)
+                out[i] += g.lddt_pli.values[RNG.choice(np.flatnonzero(v == v.max()))]
+        return out / draws
+
+    def rhos(score):
+        rs = []
+        for nm, g in groups:
+            s = score[index[nm]]
+            ok = np.isfinite(s)
+            if ok.sum() < 3 or np.nanstd(s[ok]) == 0:
+                continue
+            r = stats.spearmanr(s[ok], g.lddt_pli.values[ok]).statistic
+            if r == r:
+                rs.append(r)
+        return np.array(rs)
+
+    cols_all = [f"{s}_{f}" for s in SETS for f in FEATURES if f"{s}_{f}" in d.columns]
+    Xall = d[cols_all].astype(float).values
+    pred = _loo(Xall, y, names)
+    per_all = per_lig(pred)
+    inc = -d.xeng.fillna(np.inf).values
+    inc_per = per_lig(inc)
+
+    jobs = ([("shuffle", r, Xall, y, names, index) for r in range(n_null)] +
+            [("gauss", r, Xall, y, names, index) for r in range(n_null)])
+    import multiprocessing as mp
+    with mp.Pool(12) as pool:
+        preds = pool.map(_null_pred, jobs)
+    n2 = np.array([per_lig(p, draws=8).mean() - rnd for k, p in preds if k == "shuffle"])
+    n3 = np.array([per_lig(p, draws=8).mean() - rnd for k, p in preds if k == "gauss"])
+
+    def zc(v):
+        s = pd.Series(v)
+        g = s.groupby(d.ligand)
+        return ((s - g.transform("mean")) / g.transform("std").replace(0, 1)).values
+
+    comb = per_lig(zc(pred) + zc(inc))
+    gain = per_all - rnd_lig
+
+    def paired(per, label):
+        diff = per - inc_per
+        bs = np.array([diff[RNG.integers(0, len(diff), len(diff))].mean()
+                       for _ in range(boot)])
+        nz = diff[np.abs(diff) > 1e-9]
+        return {"selector": label, "mean_difference": round(float(diff.mean()), 4),
+                "bootstrap_ci95": [round(float(np.percentile(bs, 2.5)), 4),
+                                   round(float(np.percentile(bs, 97.5)), 4)],
+                "wilcoxon_p_untied": float(stats.wilcoxon(nz).pvalue) if len(nz) > 5
+                else float("nan"),
+                "n_tied_value": int((np.abs(diff) <= 1e-9).sum()),
+                "n_better": int((diff > 1e-9).sum()),
+                "n_worse": int((diff < -1e-9).sum())}
+
+    rp = stats.pearsonr(gain, orc_lig - inc_per)
+    rep = {
+        "why": "the k=44 ensemble had been compared against a k=11 null; and the "
+               "within-ligand rho sign convention was reported for raw features",
+        "k": len(cols_all),
+        "ENSEMBLE_ALL": {"selected": round(float(per_all.mean()), 4),
+                         "gain": round(float(per_all.mean() - rnd), 4),
+                         "mean_within_ligand_rho": round(float(rhos(pred).mean()), 3),
+                         "frac_ligands_rho_positive": round(
+                             float((rhos(pred) > 0).mean()), 3)},
+        "INCUMBENT": {"selected": round(float(inc_per.mean()), 4),
+                      "gain": round(float(inc_per.mean() - rnd), 4),
+                      "mean_within_ligand_rho": round(float(rhos(inc).mean()), 3),
+                      "frac_ligands_rho_positive": round(
+                          float((rhos(inc) > 0).mean()), 3)},
+        "N2_within_ligand_shuffle_k44": {
+            "reps": n_null, "mean": round(float(n2.mean()), 4),
+            "sd": round(float(n2.std()), 4),
+            "p95": round(float(np.percentile(n2, 95)), 4),
+            "p99": round(float(np.percentile(n2, 99)), 4),
+            "max": round(float(n2.max()), 4),
+            "p_null_ge_observed": round(
+                float((n2 >= per_all.mean() - rnd).mean()), 4)},
+        "N3_matched_dimension_gaussian_k44": {
+            "reps": n_null, "mean": round(float(n3.mean()), 4),
+            "sd": round(float(n3.std()), 4),
+            "p95": round(float(np.percentile(n3, 95)), 4),
+            "p99": round(float(np.percentile(n3, 99)), 4),
+            "max": round(float(n3.max()), 4),
+            "p_null_ge_observed": round(
+                float((n3 >= per_all.mean() - rnd).mean()), 4)},
+        "BAR2_paired": paired(per_all, "ENSEMBLE ALL (k=44)"),
+        "COMBINED_with_incumbent_rank_average": {
+            "selected": round(float(comb.mean()), 4),
+            "gain": round(float(comb.mean() - rnd), 4),
+            **paired(comb, "z(demand ensemble) + z(-xeng)")},
+        "BAR3_complementarity": {
+            "pearson_r": round(float(rp.statistic), 3), "pearson_p": float(rp.pvalue),
+            "corr_with_incumbent_outcome": round(
+                float(np.corrcoef(per_all, inc_per)[0, 1]), 3)},
+    }
+    (OUT / "induced_fit_addendum.json").write_text(json.dumps(rep, indent=1))
+    print(json.dumps(rep, indent=1))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("stage", choices=["controls", "features", "cross", "rotate",
-                                      "rotate_report", "evaluate"])
+                                      "rotate_report", "evaluate", "addendum"])
     ap.add_argument("--workers", type=int, default=12)
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--null-reps", type=int, default=200)
@@ -944,8 +1074,10 @@ def main() -> None:
                              if not (SCRATCH / f"rot_{l}.json").exists()], a.workers)
     elif a.stage == "rotate_report":
         cmd_rotate_report()
-    else:
+    elif a.stage == "evaluate":
         cmd_evaluate(n_null=a.null_reps)
+    else:
+        cmd_addendum(n_null=a.null_reps)
 
 
 if __name__ == "__main__":
