@@ -325,5 +325,74 @@
    "detached": true
   },
   "ended": 1789172692.4091797
+ },
+ {
+  "run_id": "two_ligand_protenix_v2_1790123760",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 24,
+  "est_gpu_hours": 0.0,
+  "started": 1790123760.7498605,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "FINDING 031 two-ligand pilot | 180 complexes collected, 0 failed",
+  "meta": {
+   "n_jobs": 24,
+   "engine": "protenix_v2",
+   "arms": [
+    "single",
+    "double",
+    "decoy"
+   ],
+   "replicates": 2
+  },
+  "ended": 1790125210.874743
+ },
+ {
+  "run_id": "two_ligand_protenix_v2_1790124692",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 24,
+  "est_gpu_hours": 0.0,
+  "started": 1790124692.8787932,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "FINDING 031 two-ligand pilot | 180 complexes collected, 0 failed",
+  "meta": {
+   "n_jobs": 24,
+   "engine": "protenix_v2",
+   "arms": [
+    "single",
+    "double",
+    "decoy"
+   ],
+   "replicates": 4
+  },
+  "ended": 1790125210.8761303
+ },
+ {
+  "run_id": "two_ligand_protenix_v2_1790124790",
+  "venue": "openprotein",
+  "kind": "openprotein_cofold",
+  "units": 2,
+  "est_gpu_hours": 0.0,
+  "started": 1790124790.4137287,
+  "month": "2026-09",
+  "status": "done",
+  "actual_gpu_hours": null,
+  "note": "FINDING 031 two-ligand pilot | 180 complexes collected, 0 failed",
+  "meta": {
+   "n_jobs": 2,
+   "engine": "protenix_v2",
+   "arms": [
+    "single",
+    "double",
+    "decoy"
+   ],
+   "replicates": 4
+  },
+  "ended": 1790125210.8772848
  }
 ]

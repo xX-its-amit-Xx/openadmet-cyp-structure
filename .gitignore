@@ -16,3 +16,4 @@ data/processed/p450_universe/entry_meta.json
 # repo before anyone noticed. They are never worth committing.
 *.json.tmp*
 *.json.prev
+data/processed/two_ligand/protenix_v2/
