@@ -1,0 +1,45 @@
+{
+  "note": "POST-HOC diagnostics; not pre-registered; not features",
+  "D1_consensus_width": {
+    "ligands": 79,
+    "donor_torsion_circular_sd_deg": 25.03736513913093,
+    "median_deg": 24.470425640141414,
+    "own_20_pose_torsion_circular_sd_deg": 35.908292954071605,
+    "mean_pose_to_crystal_torsion_deviation_deg": 59.26477471174256,
+    "reading": "the analogue of FINDING 030's D4: if the donor spread is wide against the pose-to-crystal deviation, there is nothing to resolve with"
+  },
+  "D2_torsion_oracle": {
+    "ligands": 79,
+    "random_baseline": 0.5862598338433145,
+    "pool_oracle": 0.6993026202748553,
+    "selected_by_true_torsions": 0.607520998462292,
+    "gain_vs_random": 0.021261164618977535,
+    "incumbent": 0.6258170144585444,
+    "within_ligand_mean_rho": -0.1410953851649504,
+    "correct_sign_frac": 0.6582278481012658,
+    "reading": "LEAKY BY CONSTRUCTION - it scores each pose by how far its torsions sit from the ANSWER's torsions. It is the ceiling of every possible internal-conformer feature on this pool"
+  },
+  "D3_armA_vs_prior_free": {
+    "etkdg_tfd_min": {
+      "n": 78,
+      "mean_within_ligand_rho": 0.14191247349142083,
+      "frac_positive": 0.6794871794871795
+    },
+    "etkdg_well": {
+      "n": 78,
+      "mean_within_ligand_rho": 0.1076730287256603,
+      "frac_positive": 0.6794871794871795
+    },
+    "mmff_strain": {
+      "n": 78,
+      "mean_within_ligand_rho": 0.13221515326778482,
+      "frac_positive": 0.6923076923076923
+    }
+  },
+  "D4_resonance_exposure": {
+    "shared_torsion_keys": 1800,
+    "touching_a_resonance_group": 8,
+    "fraction": 0.0044444444444444444,
+    "reading": "C-SYM shows CanonicalRankAtoms does not merge carboxyl, nitro or sulfonyl oxygens, so those torsions are folded at 360 deg where 180 deg is physical. This is how much of the set it touches"
+  }
+}

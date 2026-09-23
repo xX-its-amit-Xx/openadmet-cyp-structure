@@ -1,0 +1,106 @@
+{
+  "note": "answer-recognition: the crystal scored as a 21st pose. DIAGNOSTIC ONLY - never enters a donor set or a selector.",
+  "pass_rule": {
+    "mean_percentile_ge": 0.65,
+    "binomial_p_lt": 0.05
+  },
+  "C5_xtal_rerun_reproduces_primary": {
+    "max_abs_delta_deg": 0.0,
+    "pass": true,
+    "ligands": 79
+  },
+  "armA": {
+    "tor_cons": {
+      "ligands": 79,
+      "mean_percentile_of_crystal": 0.3082278481012658,
+      "median_percentile_of_crystal": 0.15,
+      "crystal_better_than_median_pose": 23,
+      "mean_delta_deg": 4.17079786833774,
+      "sign_binom_p": 0.000263636776465269,
+      "PASS": false
+    },
+    "tor_best": {
+      "ligands": 79,
+      "mean_percentile_of_crystal": 0.38924050632911394,
+      "median_percentile_of_crystal": 0.35,
+      "crystal_better_than_median_pose": 26,
+      "mean_delta_deg": -0.30051090748563625,
+      "sign_binom_p": 0.003183010628835073,
+      "PASS": false
+    },
+    "tor_med": {
+      "ligands": 79,
+      "mean_percentile_of_crystal": 0.3468354430379747,
+      "median_percentile_of_crystal": 0.2,
+      "crystal_better_than_median_pose": 28,
+      "mean_delta_deg": 4.869022368177584,
+      "sign_binom_p": 0.012812402175831373,
+      "PASS": false
+    },
+    "tor_cmean": {
+      "ligands": 79,
+      "mean_percentile_of_crystal": 0.3778481012658228,
+      "median_percentile_of_crystal": 0.2,
+      "crystal_better_than_median_pose": 25,
+      "mean_delta_deg": 3.665723592641542,
+      "sign_binom_p": 0.0014660719473423367,
+      "PASS": false
+    },
+    "tor_wgt": {
+      "ligands": 79,
+      "mean_percentile_of_crystal": 0.3860759493670886,
+      "median_percentile_of_crystal": 0.25,
+      "crystal_better_than_median_pose": 28,
+      "mean_delta_deg": 4.168967669709716,
+      "sign_binom_p": 0.012812402175831373,
+      "PASS": false
+    }
+  },
+  "armB": {
+    "etkdg_tfd_min": {
+      "ligands": 82,
+      "skipped": 4,
+      "mean_percentile_of_crystal": 0.30304878048780487,
+      "median_percentile_of_crystal": 0.125,
+      "crystal_better_than_median_pose": 24,
+      "mean_delta": 0.025706282998593313,
+      "sign_binom_p": 0.00022196403499337815,
+      "PASS": false
+    },
+    "etkdg_tfd_mean": {
+      "ligands": 82,
+      "skipped": 4,
+      "mean_percentile_of_crystal": 0.2939024390243903,
+      "median_percentile_of_crystal": 0.15,
+      "crystal_better_than_median_pose": 23,
+      "mean_delta": 0.021517413469921563,
+      "sign_binom_p": 8.715478657320524e-05,
+      "PASS": false
+    },
+    "etkdg_well": {
+      "ligands": 81,
+      "skipped": 5,
+      "mean_percentile_of_crystal": 0.2580246913580247,
+      "median_percentile_of_crystal": 0.05,
+      "crystal_better_than_median_pose": 20,
+      "mean_delta": 4.770957487924286,
+      "sign_binom_p": 5.656214894965935e-06,
+      "PASS": false
+    },
+    "mmff_strain": {
+      "ligands": 82,
+      "skipped": 4,
+      "mean_percentile_of_crystal": 0.16219512195121952,
+      "median_percentile_of_crystal": 0.05,
+      "crystal_better_than_median_pose": 8,
+      "mean_delta": 21.216591709147956,
+      "sign_binom_p": 1.647020623262653e-14,
+      "PASS": false
+    }
+  },
+  "GATE": {
+    "armA_primary_pass": false,
+    "armB_primary_pass": false,
+    "any_pass": false
+  }
+}

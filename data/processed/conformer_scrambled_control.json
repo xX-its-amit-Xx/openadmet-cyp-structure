@@ -1,0 +1,44 @@
+{
+  "ligands": 79,
+  "matched_mean_percentile": 0.3082278481012658,
+  "matched_crystal_better_than_median": 23,
+  "matched_binom_p": 0.000263636776465269,
+  "scrambled_mean_percentile": 0.4099683544303797,
+  "scrambled_crystal_better_than_median_mean": 32.625,
+  "sd_over_redraws": 0.025605059880651457,
+  "per_redraw": [
+    [
+      0.4120253164556962,
+      32
+    ],
+    [
+      0.3987341772151899,
+      34
+    ],
+    [
+      0.37025316455696206,
+      32
+    ],
+    [
+      0.3968354430379747,
+      32
+    ],
+    [
+      0.4613924050632911,
+      36
+    ],
+    [
+      0.4348101265822784,
+      34
+    ],
+    [
+      0.40189873417721517,
+      30
+    ],
+    [
+      0.40379746835443037,
+      31
+    ]
+  ],
+  "reading": "if scrambled sits at 0.50 and matched does not, the crystallographic record is doing the work - in whichever direction it is doing it"
+}

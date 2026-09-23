@@ -125,6 +125,23 @@ the release is scoreable ground truth and part is the blind target. When the dat
   one unit of work can complete does not detect stalls, it causes them.
 - Every launch goes through `budget.preflight_hours` and is recorded in the ledger
   **before** it starts, so the watchdog can clean up even if the launcher dies.
+- **Hand the feature the ANSWER before you build a selector on it** (FINDING 030). Score
+  the query's own crystal ligand as a 21st pose and report where it ranks among the 20
+  predictions. 030 found the truth at the 56th percentile, p = 0.44, and that one number
+  closed a whole family of variants that bars 1 and 2 would only have wounded. 032 found
+  it at the **31st** — significantly *below* chance, which is a different and stronger
+  verdict. Pre-register a numeric pass rule; it is a diagnostic and never enters anything
+  scored.
+- **Then hand the answer to the feature's own scoring function and SELECT with it**
+  (FINDING 032). The "term oracle" — score each pose by its distance to the *true* value
+  of whatever the term measures — is the ceiling of every possible version of that feature.
+  032's torsion oracle came in at **+0.0213**, at the noise floor's p99 and below the
+  incumbent, which closes the internal conformer as a *selection* term no matter what prior
+  is used. The gate says "this prior fails"; the term oracle says "no prior can succeed".
+- **Never write results from an ordered `ProcessPoolExecutor.map`.** One macrocyclic ligand
+  (erythromycin, 300 ETKDG embeddings) blocked an ordered map for 25 minutes and every
+  finished result behind it sat unwritten in the parent, so a resumable stage looked hung
+  and had nothing to resume from. Use `submit` + `as_completed` and write on completion.
 
 ---
 

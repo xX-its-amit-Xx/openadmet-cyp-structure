@@ -1,0 +1,161 @@
+{
+  "coverage": {
+    "queries": 87,
+    "query_mol_failures": [
+      "MF8"
+    ],
+    "queries_with_zero_rotatable_bonds": 2,
+    "rigid_query_ids": [
+      "CFF",
+      "MF8"
+    ],
+    "median_rotatable_bonds": 16.0,
+    "filters_summed_over_queries": {
+      "start": 80496,
+      "L1_same_entry": 108,
+      "L2_same_ligand_code": 61,
+      "L3_tanimoto_ge_0.90": 153,
+      "L5_not_active_site": 4887,
+      "L0_unclassified_target": 258,
+      "L4_cyp3a_subfamily": 12265
+    },
+    "donor_pool": {
+      "observations": 936,
+      "codes": 354,
+      "entries": 475,
+      "targets": 183
+    },
+    "no3a": {
+      "with_ge1_donor": 83,
+      "with_ge3_donors": 81,
+      "median_donors": 143.0,
+      "mean_donors": 119.40229885057471,
+      "p90_donors": 179.20000000000005,
+      "max_donors": 257,
+      "zero_donor_queries": 4
+    },
+    "with3a": {
+      "with_ge1_donor": 83,
+      "with_ge3_donors": 82,
+      "median_donors": 229.0,
+      "mean_donors": 188.83908045977012,
+      "p90_donors": 265.2000000000001,
+      "max_donors": 348,
+      "zero_donor_queries": 4
+    },
+    "shared_torsions_per_donor": {
+      "mean": 1.7841740469772815,
+      "median": 1.0,
+      "pairs": 10388
+    },
+    "armB": {
+      "ok": 85,
+      "no_torsions": 0,
+      "other_failures": [
+        "MF8"
+      ],
+      "mean_conformers": 248.10588235294117
+    }
+  },
+  "answer_recognition_gate": {
+    "armA_primary_pass": false,
+    "armB_primary_pass": false,
+    "any_pass": false
+  },
+  "C3_nonconstant": {
+    "tor_cons": {
+      "queries": 81,
+      "nonconstant_frac": 1.0,
+      "min_within_ligand_sd": 0.8482396557789406
+    },
+    "etkdg_tfd_min": {
+      "queries": 85,
+      "nonconstant_frac": 1.0,
+      "min_within_ligand_sd": 0.0021831170607373284
+    },
+    "etkdg_well": {
+      "queries": 84,
+      "nonconstant_frac": 1.0,
+      "min_within_ligand_sd": 0.9562169512962276
+    },
+    "mmff_strain": {
+      "queries": 85,
+      "nonconstant_frac": 1.0,
+      "min_within_ligand_sd": 0.2022086820974803
+    }
+  },
+  "C4_frame_identity": {
+    "rows_checked": 1740,
+    "max_abs_delta": 2.4501171225210783e-07,
+    "pass": true
+  },
+  "C_NUM": {
+    "poses_rescored": 15,
+    "max_abs_delta": 5.551115123125783e-17,
+    "pass": true,
+    "unsteered_poses_scoring_exactly_zero": 4,
+    "exact_zero_rows": [
+      {
+        "ligand": "PG0",
+        "sample": "input_model_19",
+        "bisy_rmsd": 23.07510340659605
+      },
+      {
+        "ligand": "PG4",
+        "sample": "input_model_17",
+        "bisy_rmsd": 25.934696462094408
+      },
+      {
+        "ligand": "PG4",
+        "sample": "input_model_18",
+        "bisy_rmsd": 26.867289355047905
+      },
+      {
+        "ligand": "PG4",
+        "sample": "input_model_19",
+        "bisy_rmsd": 26.08963952810831
+      }
+    ],
+    "errors": []
+  },
+  "C_SYM": {
+    "phenyl (CCc1ccccc1)": {
+      "expected": 180.0,
+      "got": 180.0,
+      "pass": true
+    },
+    "t-butyl (CCC(C)(C)C)": {
+      "expected": 120.0,
+      "got": 120.0,
+      "pass": true
+    },
+    "carboxylate (CCC(=O)[O-])": {
+      "expected": 180.0,
+      "got": 360.0,
+      "pass": false
+    },
+    "carboxylic acid (CCC(=O)O)": {
+      "expected": 180.0,
+      "got": 360.0,
+      "pass": false
+    },
+    "nitro (CC[N+](=O)[O-])": {
+      "expected": 180.0,
+      "got": 360.0,
+      "pass": false
+    },
+    "plain sp3-sp3 (CCCO)": {
+      "expected": 360.0,
+      "got": 360.0,
+      "pass": true
+    },
+    "relabel_invariance": {
+      "period": 180.0,
+      "angle_choice_1": -89.99827848012585,
+      "angle_choice_2": 90.00070866651045,
+      "folded_difference_deg": 0.0010128533637043802,
+      "pass": false
+    }
+  },
+  "verdict": "STOPPED at the answer-recognition gate, as pre-registered. No selector was built."
+}
