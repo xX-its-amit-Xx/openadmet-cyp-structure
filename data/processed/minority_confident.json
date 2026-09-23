@@ -1,0 +1,199 @@
+{
+  "definitions": {
+    "TIGHT": "bottom tercile of mean pairwise Chamfer (<= 0.768 A)",
+    "WRONG": "incumbent-selected LDDT-PLI < 0.5",
+    "n_clusters at": "chamfer cut 1.25 A"
+  },
+  "n_ligands": 87,
+  "tight_tercile_cut_A": 0.7678,
+  "rate_wrong_overall": 0.2644,
+  "rate_wrong_given_tight": 0.2069,
+  "rate_wrong_given_wide": 0.2931,
+  "two_by_two": {
+    "TIGHT_WRONG": {
+      "n": 6,
+      "mean_selected": 0.3639,
+      "mean_oracle": 0.526,
+      "mean_spread": 0.58,
+      "ligands": [
+        "A1A4T",
+        "A1BNX",
+        "CFF",
+        "CL6",
+        "NJ0",
+        "T0K"
+      ]
+    },
+    "TIGHT_RIGHT": {
+      "n": 23,
+      "mean_selected": 0.7348,
+      "mean_oracle": 0.7899,
+      "mean_spread": 0.613,
+      "ligands": [
+        "08Y",
+        "2QH",
+        "8AW",
+        "A1A06",
+        "A1A07",
+        "A1ASP",
+        "A1ASS",
+        "DEV",
+        "G0D",
+        "G0M",
+        "G1J",
+        "NI6",
+        "NJO",
+        "NXR",
+        "NYF",
+        "QDP",
+        "RIT",
+        "X5Y",
+        "X7J",
+        "X7M",
+        "X7P",
+        "Z8Z",
+        "Z9Z"
+      ]
+    },
+    "WIDE_WRONG": {
+      "n": 17,
+      "mean_selected": 0.3732,
+      "mean_oracle": 0.4797,
+      "mean_spread": 1.15,
+      "ligands": [
+        "08J",
+        "1RD",
+        "5AW",
+        "A1A4K",
+        "A1CIW",
+        "DJ1",
+        "G0J",
+        "J9K",
+        "KLN",
+        "MWV",
+        "MWY",
+        "PG0",
+        "PK9",
+        "PKT",
+        "QDY",
+        "TCI",
+        "X6V"
+      ]
+    },
+    "WIDE_RIGHT": {
+      "n": 41,
+      "mean_selected": 0.6877,
+      "mean_oracle": 0.7611,
+      "mean_spread": 1.167,
+      "ligands": [
+        "6AW",
+        "7AW",
+        "80K",
+        "A1A08",
+        "A1A4S",
+        "A1A4U",
+        "A1A4V",
+        "A1APA",
+        "A1ASO",
+        "A1ASQ",
+        "A1ASR",
+        "A1AST",
+        "A1ASU",
+        "A1ASV",
+        "D0R",
+        "D7J",
+        "D7M",
+        "D7Y",
+        "D81",
+        "DEJ",
+        "ERY",
+        "FZV",
+        "G0V",
+        "MF8",
+        "MWS",
+        "MYT",
+        "NH0",
+        "PG4",
+        "QDJ",
+        "QDV",
+        "QE4",
+        "QEA",
+        "QEP",
+        "QES",
+        "X6J",
+        "X6S",
+        "X71",
+        "X74",
+        "X7D",
+        "Y83",
+        "YNV"
+      ]
+    }
+  },
+  "separators_tight_wrong_vs_tight_right": {
+    "spread": {
+      "n_wrong": 6,
+      "n_right": 23,
+      "median_tight_wrong": 0.5521,
+      "median_tight_right": 0.6096,
+      "p_raw": 0.4139573070607553,
+      "p_holm": 1.0,
+      "survives_holm_0.05": false
+    },
+    "n_clusters": {
+      "n_wrong": 6,
+      "n_right": 23,
+      "median_tight_wrong": 1.0,
+      "median_tight_right": 1.0,
+      "p_raw": 0.2330776684294451,
+      "p_holm": 1.0,
+      "survives_holm_0.05": false
+    },
+    "margin_12": {
+      "n_wrong": 6,
+      "n_right": 23,
+      "median_tight_wrong": 0.0281,
+      "median_tight_right": 0.0172,
+      "p_raw": 0.3841269841269841,
+      "p_holm": 1.0,
+      "survives_holm_0.05": false
+    },
+    "xeng_mean": {
+      "n_wrong": 6,
+      "n_right": 23,
+      "median_tight_wrong": 0.8498,
+      "median_tight_right": 0.8387,
+      "p_raw": 0.8134941686665824,
+      "p_holm": 1.0,
+      "survives_holm_0.05": false
+    },
+    "n_heavy": {
+      "n_wrong": 6,
+      "n_right": 23,
+      "median_tight_wrong": 36.0,
+      "median_tight_right": 38.0,
+      "p_raw": 0.244193093246584,
+      "p_holm": 1.0,
+      "survives_holm_0.05": false
+    },
+    "pred_fe_donor_median": {
+      "n_wrong": 6,
+      "n_right": 23,
+      "median_tight_wrong": 2.2459,
+      "median_tight_right": 2.2138,
+      "p_raw": 0.47738621531724973,
+      "p_holm": 1.0,
+      "survives_holm_0.05": false
+    },
+    "pred_frac_coordinated": {
+      "n_wrong": 6,
+      "n_right": 23,
+      "median_tight_wrong": 1.0,
+      "median_tight_right": 1.0,
+      "p_raw": 0.3267112970235593,
+      "p_holm": 1.0,
+      "survives_holm_0.05": false
+    }
+  },
+  "any_survives_holm": false
+}

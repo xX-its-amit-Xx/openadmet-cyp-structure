@@ -1,0 +1,74 @@
+{
+  "C_XENG": {
+    "shipped_rows": 1740,
+    "rebuilt_rows": 1740,
+    "merge_both": 1740,
+    "merge_left_only": 0,
+    "merge_right_only": 0,
+    "max_abs_diff": 2.4501171225210783e-07,
+    "passes_1e-6": true
+  },
+  "C_SEL": {
+    "n": 87,
+    "max_abs_diff": 0.0,
+    "equal_to_1e-9": true
+  },
+  "C_N2": {
+    "selected": 0.6164,
+    "oracle": 0.6975,
+    "random": 0.5769,
+    "gain": 0.0395,
+    "within_ligand_rho": -0.2582,
+    "correct_sign_pct": 75.86,
+    "expected": {
+      "selected": 0.6164,
+      "oracle": 0.6975,
+      "random": 0.5769,
+      "gain": 0.0395,
+      "rho": -0.2582,
+      "correct_sign_pct": 75.86
+    },
+    "matches": true
+  },
+  "C_NUM": {
+    "rows": 1740,
+    "mapped_true": 1740,
+    "mapped_false": 0,
+    "exact_zero_lddt": 4,
+    "zero_ligands": {
+      "PG4": 3,
+      "PG0": 1
+    },
+    "zero_bisy_rmsd": [
+      23.08,
+      25.93,
+      26.87,
+      26.09
+    ],
+    "verdict": "ejections, not FINDING_021 numbering"
+  },
+  "C_REF": {
+    "ligands": 87,
+    "min": 6,
+    "median": 7.0,
+    "max": 12,
+    "all_at_least_4": true
+  },
+  "C_ATOM": {
+    "ligands": 87,
+    "homogeneous_atom_count": 87,
+    "heterogeneous": [],
+    "passes": true
+  },
+  "C_FILT": {
+    "validation_ligands": 87,
+    "pool_A_poses": 1740,
+    "pool_A_poses_with_features": 1740,
+    "ligands_assembled": 87,
+    "poses_assembled": 1740,
+    "poses_per_ligand_min": 20,
+    "poses_per_ligand_max": 20,
+    "dropped_no_reference": 0,
+    "dropped_no_truth": 0
+  }
+}

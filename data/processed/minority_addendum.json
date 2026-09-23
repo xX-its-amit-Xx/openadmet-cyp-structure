@@ -1,0 +1,435 @@
+{
+  "A1_rho_rank_vs_stake": {
+    "all_87": {
+      "rho": 0.6013,
+      "p": 7.350878837221629e-10,
+      "n": 87
+    },
+    "stake_gt_0_only": {
+      "rho": 0.3273,
+      "p": 0.004708245935083001,
+      "n": 73,
+      "note": "rank_oracle == 1 forces stake == 0; this removes it"
+    }
+  },
+  "A2_E2a_null": {
+    "chamfer@0.5A": {
+      "observed_oracle": 0.2989,
+      "null_mean": 0.4231,
+      "null_p05": 0.3563,
+      "p_one_sided_below": 0.0025,
+      "observed_incumbent": 0.4253,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.3333,
+        "null_mean": 0.4786,
+        "p_one_sided_below": 0.0055,
+        "minority_rate_observed": 0.6667,
+        "minority_rate_chance": 0.5214
+      }
+    },
+    "chamfer@0.75A": {
+      "observed_oracle": 0.4483,
+      "null_mean": 0.6063,
+      "null_p05": 0.5287,
+      "p_one_sided_below": 0.0,
+      "observed_incumbent": 0.5632,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.3556,
+        "null_mean": 0.5822,
+        "p_one_sided_below": 0.001,
+        "minority_rate_observed": 0.6444,
+        "minority_rate_chance": 0.4178
+      }
+    },
+    "chamfer@1A": {
+      "observed_oracle": 0.6437,
+      "null_mean": 0.7728,
+      "null_p05": 0.7011,
+      "p_one_sided_below": 0.00075,
+      "observed_incumbent": 0.7701,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.5333,
+        "null_mean": 0.7687,
+        "p_one_sided_below": 0.0,
+        "minority_rate_observed": 0.4667,
+        "minority_rate_chance": 0.2313
+      }
+    },
+    "chamfer@1.25A": {
+      "observed_oracle": 0.8161,
+      "null_mean": 0.8842,
+      "null_p05": 0.8391,
+      "p_one_sided_below": 0.018,
+      "observed_incumbent": 0.8966,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.6889,
+        "null_mean": 0.8503,
+        "p_one_sided_below": 0.00025,
+        "minority_rate_observed": 0.3111,
+        "minority_rate_chance": 0.1497
+      }
+    },
+    "chamfer@1.5A": {
+      "observed_oracle": 0.954,
+      "null_mean": 0.9433,
+      "null_p05": 0.908,
+      "p_one_sided_below": 0.781,
+      "observed_incumbent": 0.9655,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.9333,
+        "null_mean": 0.9353,
+        "p_one_sided_below": 0.597,
+        "minority_rate_observed": 0.0667,
+        "minority_rate_chance": 0.0647
+      }
+    },
+    "chamfer@2A": {
+      "observed_oracle": 0.9885,
+      "null_mean": 0.9943,
+      "null_p05": 0.977,
+      "p_one_sided_below": 0.40925,
+      "observed_incumbent": 1.0,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.9778,
+        "null_mean": 0.9882,
+        "p_one_sided_below": 0.426,
+        "minority_rate_observed": 0.0222,
+        "minority_rate_chance": 0.0118
+      }
+    },
+    "chamfer@2.5A": {
+      "observed_oracle": 1.0,
+      "null_mean": 0.9971,
+      "null_p05": 0.9885,
+      "p_one_sided_below": 1.0,
+      "observed_incumbent": 1.0,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 1.0,
+        "null_mean": 0.9945,
+        "p_one_sided_below": 1.0,
+        "minority_rate_observed": 0.0,
+        "minority_rate_chance": 0.0055
+      }
+    },
+    "chamfer@3A": {
+      "observed_oracle": 1.0,
+      "null_mean": 0.9972,
+      "null_p05": 0.9885,
+      "p_one_sided_below": 1.0,
+      "observed_incumbent": 1.0,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 1.0,
+        "null_mean": 0.9946,
+        "p_one_sided_below": 1.0,
+        "minority_rate_observed": 0.0,
+        "minority_rate_chance": 0.0054
+      }
+    },
+    "rot@15deg": {
+      "observed_oracle": 0.5862,
+      "null_mean": 0.7346,
+      "null_p05": 0.6667,
+      "p_one_sided_below": 0.00025,
+      "observed_incumbent": 0.7356,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.4667,
+        "null_mean": 0.706,
+        "p_one_sided_below": 0.00025,
+        "minority_rate_observed": 0.5333,
+        "minority_rate_chance": 0.294
+      }
+    },
+    "rot@30deg": {
+      "observed_oracle": 0.7471,
+      "null_mean": 0.8345,
+      "null_p05": 0.7816,
+      "p_one_sided_below": 0.01,
+      "observed_incumbent": 0.8621,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.6444,
+        "null_mean": 0.7966,
+        "p_one_sided_below": 0.00425,
+        "minority_rate_observed": 0.3556,
+        "minority_rate_chance": 0.2034
+      }
+    },
+    "rot@45deg": {
+      "observed_oracle": 0.8621,
+      "null_mean": 0.8759,
+      "null_p05": 0.8276,
+      "p_one_sided_below": 0.3845,
+      "observed_incumbent": 0.8966,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.7778,
+        "null_mean": 0.8495,
+        "p_one_sided_below": 0.09225,
+        "minority_rate_observed": 0.2222,
+        "minority_rate_chance": 0.1505
+      }
+    },
+    "rot@60deg": {
+      "observed_oracle": 0.8736,
+      "null_mean": 0.8964,
+      "null_p05": 0.8506,
+      "p_one_sided_below": 0.26075,
+      "observed_incumbent": 0.931,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.8,
+        "null_mean": 0.8682,
+        "p_one_sided_below": 0.09575,
+        "minority_rate_observed": 0.2,
+        "minority_rate_chance": 0.1318
+      }
+    },
+    "rot@90deg": {
+      "observed_oracle": 0.908,
+      "null_mean": 0.9123,
+      "null_p05": 0.8736,
+      "p_one_sided_below": 0.5155,
+      "observed_incumbent": 0.9655,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.8444,
+        "null_mean": 0.8949,
+        "p_one_sided_below": 0.16475,
+        "minority_rate_observed": 0.1556,
+        "minority_rate_chance": 0.1051
+      }
+    },
+    "rot@120deg": {
+      "observed_oracle": 0.908,
+      "null_mean": 0.9452,
+      "null_p05": 0.908,
+      "p_one_sided_below": 0.07625,
+      "observed_incumbent": 0.9885,
+      "HIGH_stake": {
+        "n": 45,
+        "observed_oracle": 0.8444,
+        "null_mean": 0.9322,
+        "p_one_sided_below": 0.01625,
+        "minority_rate_observed": 0.1556,
+        "minority_rate_chance": 0.0678
+      }
+    }
+  },
+  "A3_orientation_specific_excess": {
+    "per_cut": {
+      "chamfer@0.5A": {
+        "O_A": 0.0745,
+        "NA_mean": 0.0631,
+        "excess": 0.0114,
+        "n_clusters_mean": 12.71
+      },
+      "chamfer@0.75A": {
+        "O_A": 0.0595,
+        "NA_mean": 0.0437,
+        "excess": 0.0158,
+        "n_clusters_mean": 6.59
+      },
+      "chamfer@1A": {
+        "O_A": 0.0427,
+        "NA_mean": 0.0292,
+        "excess": 0.0135,
+        "n_clusters_mean": 3.55
+      },
+      "chamfer@1.25A": {
+        "O_A": 0.0241,
+        "NA_mean": 0.017,
+        "excess": 0.0071,
+        "n_clusters_mean": 2.1
+      },
+      "chamfer@1.5A": {
+        "O_A": 0.004,
+        "NA_mean": 0.0081,
+        "excess": -0.0041,
+        "n_clusters_mean": 1.41
+      },
+      "chamfer@2A": {
+        "O_A": 0.0032,
+        "NA_mean": 0.0021,
+        "excess": 0.0011,
+        "n_clusters_mean": 1.07
+      },
+      "chamfer@2.5A": {
+        "O_A": 0.0,
+        "NA_mean": 0.0014,
+        "excess": -0.0014,
+        "n_clusters_mean": 1.03
+      },
+      "chamfer@3A": {
+        "O_A": 0.0,
+        "NA_mean": 0.0014,
+        "excess": -0.0014,
+        "n_clusters_mean": 1.03
+      },
+      "rot@15deg": {
+        "O_A": 0.0537,
+        "NA_mean": 0.0346,
+        "excess": 0.0191,
+        "n_clusters_mean": 4.13
+      },
+      "rot@30deg": {
+        "O_A": 0.0391,
+        "NA_mean": 0.0224,
+        "excess": 0.0167,
+        "n_clusters_mean": 2.61
+      },
+      "rot@45deg": {
+        "O_A": 0.0328,
+        "NA_mean": 0.0167,
+        "excess": 0.0161,
+        "n_clusters_mean": 2.08
+      },
+      "rot@60deg": {
+        "O_A": 0.0273,
+        "NA_mean": 0.0134,
+        "excess": 0.0139,
+        "n_clusters_mean": 1.8
+      },
+      "rot@90deg": {
+        "O_A": 0.0225,
+        "NA_mean": 0.0101,
+        "excess": 0.0124,
+        "n_clusters_mean": 1.6
+      },
+      "rot@120deg": {
+        "O_A": 0.0186,
+        "NA_mean": 0.0058,
+        "excess": 0.0128,
+        "n_clusters_mean": 1.38
+      }
+    },
+    "chamfer_median": 0.0041,
+    "chamfer_max": 0.0158,
+    "rotation_median": 0.015,
+    "rotation_max": 0.0191,
+    "F87_p95": 0.0134,
+    "reading": "O-A converges on the FULL pose oracle as clusters approach singletons, where 'take the minority cluster' carries no information at all. The excess over a size-matched shuffle is the part attributable to orientation."
+  },
+  "A4_majority_vote_pays": {
+    "chamfer@0.5A": {
+      "mean_clusters": 12.71,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5687,
+      "worst_cluster_representative": 0.4354,
+      "incumbent_minus_random_cluster": 0.0477,
+      "wilcoxon_p": 3.4889555128350283e-06
+    },
+    "chamfer@0.75A": {
+      "mean_clusters": 6.59,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5642,
+      "worst_cluster_representative": 0.4497,
+      "incumbent_minus_random_cluster": 0.0522,
+      "wilcoxon_p": 2.9120791133067017e-06
+    },
+    "chamfer@1A": {
+      "mean_clusters": 3.55,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5617,
+      "worst_cluster_representative": 0.4655,
+      "incumbent_minus_random_cluster": 0.0546,
+      "wilcoxon_p": 1.2609061458496065e-06
+    },
+    "chamfer@1.25A": {
+      "mean_clusters": 2.1,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5821,
+      "worst_cluster_representative": 0.5279,
+      "incumbent_minus_random_cluster": 0.0343,
+      "wilcoxon_p": 0.0009233516918041394
+    },
+    "chamfer@1.5A": {
+      "mean_clusters": 1.41,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5852,
+      "worst_cluster_representative": 0.5508,
+      "incumbent_minus_random_cluster": 0.0311,
+      "wilcoxon_p": 4.5743158685492934e-05
+    },
+    "chamfer@2A": {
+      "mean_clusters": 1.07,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.6114,
+      "worst_cluster_representative": 0.602,
+      "incumbent_minus_random_cluster": 0.005,
+      "wilcoxon_p": 0.13801073756865956
+    },
+    "chamfer@2.5A": {
+      "mean_clusters": 1.03,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.6098,
+      "worst_cluster_representative": 0.6032,
+      "incumbent_minus_random_cluster": 0.0066,
+      "wilcoxon_p": 0.10880943004054568
+    },
+    "chamfer@3A": {
+      "mean_clusters": 1.03,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.6098,
+      "worst_cluster_representative": 0.6032,
+      "incumbent_minus_random_cluster": 0.0066,
+      "wilcoxon_p": 0.10880943004054568
+    },
+    "rot@15deg": {
+      "mean_clusters": 4.13,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5619,
+      "worst_cluster_representative": 0.4573,
+      "incumbent_minus_random_cluster": 0.0545,
+      "wilcoxon_p": 1.0368372320855422e-06
+    },
+    "rot@30deg": {
+      "mean_clusters": 2.61,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5644,
+      "worst_cluster_representative": 0.4805,
+      "incumbent_minus_random_cluster": 0.052,
+      "wilcoxon_p": 7.610625909828224e-06
+    },
+    "rot@45deg": {
+      "mean_clusters": 2.08,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5675,
+      "worst_cluster_representative": 0.4925,
+      "incumbent_minus_random_cluster": 0.0489,
+      "wilcoxon_p": 1.8091017647158827e-05
+    },
+    "rot@60deg": {
+      "mean_clusters": 1.8,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5728,
+      "worst_cluster_representative": 0.5062,
+      "incumbent_minus_random_cluster": 0.0436,
+      "wilcoxon_p": 4.643192030166667e-05
+    },
+    "rot@90deg": {
+      "mean_clusters": 1.6,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5728,
+      "worst_cluster_representative": 0.5084,
+      "incumbent_minus_random_cluster": 0.0436,
+      "wilcoxon_p": 4.138725435993392e-05
+    },
+    "rot@120deg": {
+      "mean_clusters": 1.38,
+      "incumbent": 0.6164,
+      "random_cluster_representative": 0.5905,
+      "worst_cluster_representative": 0.5473,
+      "incumbent_minus_random_cluster": 0.0259,
+      "wilcoxon_p": 0.0014020104336958318
+    }
+  }
+}
