@@ -1,0 +1,22 @@
+{
+  "n_ligands": 37,
+  "C1_numbering": {
+    "ligands_all_zero_lddt": [],
+    "poses_exactly_zero": 4,
+    "n_poses": 740,
+    "lddt_min": 0.0,
+    "lddt_max": 0.90814,
+    "pass": true
+  },
+  "C2_reproduce_shipped_xeng": {
+    "compared": 740,
+    "max_abs_diff": 2.4501171225210783e-07,
+    "mean_abs_diff": 1.438292169110979e-08,
+    "pass": true
+  },
+  "C3_argmin_is_select": {
+    "ligands": 37,
+    "agree": 37,
+    "pass": true
+  }
+}

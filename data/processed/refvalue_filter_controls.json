@@ -1,0 +1,9 @@
+{
+  "md5_on_byte_copy_fires": true,
+  "coords_on_identical_fires": true,
+  "coords_on_1e-4_fires": true,
+  "coords_keeps_5A_apart": true,
+  "coords_keeps_two_real_poses": true,
+  "probe_ligand": "08J",
+  "all_pass": true
+}

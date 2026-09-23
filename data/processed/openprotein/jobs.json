@@ -7732,5 +7732,1191 @@
     "done": true
    }
   ]
+ },
+ "refvalue/protenix_v2": {
+  "engine": "protenix_v2",
+  "tag": "refvalue",
+  "samples": 1,
+  "batches": [
+   {
+    "job_id": "36df8796-2651-46e8-8d25-0a91af665c14",
+    "ligands": [
+     "A1CIW",
+     "A1ASP",
+     "80K",
+     "Z9Z",
+     "A1AST"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168603.6436965,
+    "done": true
+   },
+   {
+    "job_id": "c84339de-c99d-4e72-bfdb-1745dda2c037",
+    "ligands": [
+     "G0D",
+     "QDP",
+     "J9K",
+     "6AW",
+     "DJ1"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168609.3762538,
+    "done": true
+   },
+   {
+    "job_id": "0283ebda-0e9c-4557-8a2b-53359ca5c6c2",
+    "ligands": [
+     "08Y",
+     "CL6",
+     "PG0",
+     "MWY",
+     "X6S"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168614.984202,
+    "done": true
+   },
+   {
+    "job_id": "b9008fde-bd2e-477c-bd60-74e8ef481c50",
+    "ligands": [
+     "X7M",
+     "YNV",
+     "MF8",
+     "PG4",
+     "D7Y"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168621.1271393,
+    "done": true
+   },
+   {
+    "job_id": "c27bb8c4-c6e3-4ee8-8aaa-da5dcdd15060",
+    "ligands": [
+     "D0R",
+     "QDV",
+     "QDJ",
+     "A1BNX",
+     "X6J"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168626.8130696,
+    "done": true
+   },
+   {
+    "job_id": "1f5e9ad3-b45e-4e91-b2fe-90ccb428ac30",
+    "ligands": [
+     "TCI",
+     "G0V",
+     "Z8Z",
+     "X6V",
+     "ERY"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168632.0560968,
+    "done": true
+   },
+   {
+    "job_id": "809cb665-94ed-4c3b-b4ff-de53e3935ab8",
+    "ligands": [
+     "CFF",
+     "08J",
+     "D7J",
+     "G1J",
+     "NI6"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168637.1511726,
+    "done": true
+   },
+   {
+    "job_id": "62889acb-9e2b-4361-857a-cd184e1a5083",
+    "ligands": [
+     "MWS",
+     "A1A06"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168640.517743,
+    "done": true
+   },
+   {
+    "job_id": "30b786af-2274-4068-bd2b-d99d69005df6",
+    "ligands": [
+     "Z9Z",
+     "PG4",
+     "D7Y",
+     "MF8",
+     "QDP"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168645.6811547,
+    "done": true
+   },
+   {
+    "job_id": "40566bf4-fb6e-4fd3-a5e9-8fcf90a11144",
+    "ligands": [
+     "A1A06",
+     "MWY",
+     "QDJ",
+     "X7M",
+     "A1CIW"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168651.4095998,
+    "done": true
+   },
+   {
+    "job_id": "f30715cb-8da8-4d74-ac0e-32071ab31290",
+    "ligands": [
+     "D7J",
+     "G1J",
+     "A1ASP",
+     "X6V",
+     "DJ1"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168656.2354145,
+    "done": true
+   },
+   {
+    "job_id": "8694f90b-44f2-4f0a-84b0-eb33eea4a2b2",
+    "ligands": [
+     "A1AST",
+     "Z8Z",
+     "6AW",
+     "TCI",
+     "G0D"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168662.0694482,
+    "done": true
+   },
+   {
+    "job_id": "acddba7d-4426-4fd9-bede-1192b4fcb9ba",
+    "ligands": [
+     "MWS",
+     "08J",
+     "80K",
+     "QDV",
+     "CL6"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168668.2409573,
+    "done": true
+   },
+   {
+    "job_id": "e5e241a4-572b-4a14-a775-18452624940f",
+    "ligands": [
+     "ERY",
+     "YNV",
+     "NI6",
+     "J9K",
+     "D0R"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168673.564122,
+    "done": true
+   },
+   {
+    "job_id": "515e1a23-d23c-4c21-aa9d-29da773a1680",
+    "ligands": [
+     "08Y",
+     "X6J",
+     "CFF",
+     "X6S",
+     "A1BNX"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168679.2261388,
+    "done": true
+   },
+   {
+    "job_id": "cfec49d4-e878-4181-badb-a95534b3ead6",
+    "ligands": [
+     "PG0",
+     "G0V"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168682.8246927,
+    "done": true
+   },
+   {
+    "job_id": "ea1fa586-1139-49a5-ac57-aeaace406101",
+    "ligands": [
+     "PG4",
+     "CL6",
+     "G0V",
+     "X6S",
+     "YNV"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168689.2179163,
+    "done": true
+   },
+   {
+    "job_id": "852c1b3a-693d-4d7d-83a4-e26807571d58",
+    "ligands": [
+     "D7J",
+     "08J",
+     "A1ASP",
+     "X6V",
+     "CFF"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168695.366858,
+    "done": true
+   },
+   {
+    "job_id": "6fa6e4d6-313d-4146-85c7-53452f152bda",
+    "ligands": [
+     "D0R",
+     "QDV",
+     "QDP",
+     "08Y",
+     "ERY"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168703.3384962,
+    "done": true
+   },
+   {
+    "job_id": "356066f8-2aac-432d-9ddf-6087d5707cd6",
+    "ligands": [
+     "A1A06",
+     "TCI",
+     "MWS",
+     "PG0",
+     "A1AST"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168708.854913,
+    "done": true
+   },
+   {
+    "job_id": "3e506990-a07f-458e-af42-2742fc9a0571",
+    "ligands": [
+     "A1CIW",
+     "80K",
+     "6AW",
+     "QDJ",
+     "MF8"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168714.077604,
+    "done": true
+   },
+   {
+    "job_id": "4b0523e4-3355-43aa-a940-ebf07ba46eb1",
+    "ligands": [
+     "DJ1",
+     "Z8Z",
+     "MWY",
+     "Z9Z",
+     "J9K"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168718.973072,
+    "done": true
+   },
+   {
+    "job_id": "1d95f8b7-0911-47ec-8863-d7cfa553586c",
+    "ligands": [
+     "X6J",
+     "X7M",
+     "G1J",
+     "G0D",
+     "NI6"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168723.7755885,
+    "done": true
+   },
+   {
+    "job_id": "d5d63935-7eed-47e7-87f4-97b70e563507",
+    "ligands": [
+     "D7Y",
+     "A1BNX"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168727.0791337,
+    "done": true
+   },
+   {
+    "job_id": "1ba4aaac-0685-42d3-9253-1c1bbe650375",
+    "ligands": [
+     "ERY",
+     "A1ASP",
+     "G0D",
+     "PG0",
+     "A1CIW"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168732.5116642,
+    "done": true
+   },
+   {
+    "job_id": "cec2e3a5-416d-4a25-8ce5-45cf0f2e06ec",
+    "ligands": [
+     "80K",
+     "YNV",
+     "D0R",
+     "6AW",
+     "X6V"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168737.702683,
+    "done": true
+   },
+   {
+    "job_id": "d1e121b7-462a-4d48-b862-1bfeb5e901ff",
+    "ligands": [
+     "NI6",
+     "DJ1",
+     "08J",
+     "D7J",
+     "08Y"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168742.5538282,
+    "done": true
+   },
+   {
+    "job_id": "d0f1d87d-5575-4409-8dc2-4baf5624fdf8",
+    "ligands": [
+     "G1J",
+     "Z9Z",
+     "CFF",
+     "MF8",
+     "Z8Z"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168749.0669255,
+    "done": true
+   },
+   {
+    "job_id": "7727ca06-9313-405f-b649-4fa57b9bdaef",
+    "ligands": [
+     "G0V",
+     "D7Y",
+     "X6J",
+     "X7M",
+     "A1A06"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168756.7903812,
+    "done": true
+   },
+   {
+    "job_id": "e03a9f9a-5c7e-443a-a11f-dcc1d56fc9ec",
+    "ligands": [
+     "A1AST",
+     "MWS",
+     "TCI",
+     "QDV",
+     "X6S"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168761.8348842,
+    "done": true
+   },
+   {
+    "job_id": "7138e907-56fb-4108-b4c3-6cdff6a57ce2",
+    "ligands": [
+     "A1BNX",
+     "QDP",
+     "QDJ",
+     "MWY",
+     "CL6"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168769.550973,
+    "done": true
+   },
+   {
+    "job_id": "b00c2e84-f338-44c6-81f0-07816b5ead5a",
+    "ligands": [
+     "J9K",
+     "PG4"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168773.0520554,
+    "done": true
+   },
+   {
+    "job_id": "dd1934fe-7d36-4667-a013-f2bd32bbeb60",
+    "ligands": [
+     "A1A06",
+     "80K",
+     "DJ1",
+     "G1J",
+     "X6V"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168779.9680676,
+    "done": true
+   },
+   {
+    "job_id": "d32864d8-ce5f-4308-b4ef-00db2a18864b",
+    "ligands": [
+     "PG0",
+     "G0D",
+     "MF8",
+     "D7J",
+     "08J"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168786.851917,
+    "done": true
+   },
+   {
+    "job_id": "007bd9f1-9595-4b4e-9328-53f9808ea315",
+    "ligands": [
+     "A1ASP",
+     "Z8Z",
+     "A1BNX",
+     "Z9Z",
+     "CFF"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168793.958748,
+    "done": true
+   },
+   {
+    "job_id": "28a5d7bb-25fc-4fdc-9cb9-a81db026e8ea",
+    "ligands": [
+     "QDP",
+     "X7M",
+     "X6S",
+     "PG4",
+     "NI6"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168799.5358558,
+    "done": true
+   },
+   {
+    "job_id": "3081c2c3-c05e-4721-badb-1ba4607f3f26",
+    "ligands": [
+     "TCI",
+     "QDV",
+     "MWY",
+     "08Y",
+     "X6J"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168804.5799084,
+    "done": true
+   },
+   {
+    "job_id": "94c78556-012f-4398-a7a7-54db46f47319",
+    "ligands": [
+     "QDJ",
+     "ERY",
+     "A1AST",
+     "YNV",
+     "J9K"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168811.5214171,
+    "done": true
+   },
+   {
+    "job_id": "71e00ebf-00a2-446a-8ac2-477596afbb09",
+    "ligands": [
+     "D0R",
+     "MWS",
+     "A1CIW",
+     "CL6",
+     "6AW"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168818.9495134,
+    "done": true
+   },
+   {
+    "job_id": "cd8b570c-8f6d-4e1b-bd32-3a58c9f3ae20",
+    "ligands": [
+     "D7Y",
+     "G0V"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790168822.3709886,
+    "done": true
+   }
+  ],
+  "shuffle_seed": 38
+ },
+ "refvalue/protenix": {
+  "engine": "protenix",
+  "tag": "refvalue",
+  "samples": 1,
+  "batches": [
+   {
+    "job_id": "872ec5e6-255e-4ff2-b76b-cf39ccb7a553",
+    "ligands": [
+     "A1A06",
+     "D7Y",
+     "MWS",
+     "X7M",
+     "MF8"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168837.6038706,
+    "done": true
+   },
+   {
+    "job_id": "9bc0aed0-56dd-462a-a88d-e8b048bcf713",
+    "ligands": [
+     "CFF",
+     "08J",
+     "PG4",
+     "Z8Z",
+     "A1CIW"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168843.1574092,
+    "done": true
+   },
+   {
+    "job_id": "b65d0abb-eb24-4bb9-b74e-1fb04b5482eb",
+    "ligands": [
+     "A1AST",
+     "X6S",
+     "DJ1",
+     "D0R",
+     "G1J"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168849.378275,
+    "done": true
+   },
+   {
+    "job_id": "1c94d0ec-c6ae-4b05-99bc-d37ea5891594",
+    "ligands": [
+     "QDJ",
+     "PG0",
+     "YNV",
+     "08Y",
+     "J9K"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168855.8733108,
+    "done": true
+   },
+   {
+    "job_id": "fb17a6ef-cdc6-4dad-b085-085eb6fbac98",
+    "ligands": [
+     "MWY",
+     "X6V",
+     "QDV",
+     "80K",
+     "A1BNX"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168861.3463378,
+    "done": true
+   },
+   {
+    "job_id": "6464884c-f66d-4753-8fd8-402ec4b782cc",
+    "ligands": [
+     "NI6",
+     "6AW",
+     "G0D",
+     "Z9Z",
+     "A1ASP"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168868.3987277,
+    "done": true
+   },
+   {
+    "job_id": "7a5d2ca1-4ec7-427e-99a0-c9c229d5700b",
+    "ligands": [
+     "TCI",
+     "QDP",
+     "X6J",
+     "CL6",
+     "ERY"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168874.1986892,
+    "done": true
+   },
+   {
+    "job_id": "39fbe1b0-414a-41f0-b4d7-b0070996facb",
+    "ligands": [
+     "D7J",
+     "G0V"
+    ],
+    "rep": 0,
+    "setting": "3x200",
+    "samples": 1,
+    "submitted": 1790168877.6627598,
+    "done": true
+   },
+   {
+    "job_id": "a0aa050c-f5f0-4f8f-9da4-e660164fbd12",
+    "ligands": [
+     "J9K",
+     "A1AST",
+     "G1J",
+     "X6V",
+     "QDV"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168882.6470213,
+    "done": true
+   },
+   {
+    "job_id": "4495e10b-2fbd-4d1e-b4b6-2a3092d844ee",
+    "ligands": [
+     "X6S",
+     "6AW",
+     "PG0",
+     "YNV",
+     "MF8"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168887.5131536,
+    "done": true
+   },
+   {
+    "job_id": "28ccf08f-8516-4394-875e-ffae292a903b",
+    "ligands": [
+     "NI6",
+     "DJ1",
+     "PG4",
+     "80K",
+     "A1CIW"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168893.5163312,
+    "done": true
+   },
+   {
+    "job_id": "51dc99ca-df11-471b-b1a3-ceebd86cd64d",
+    "ligands": [
+     "08Y",
+     "Z9Z",
+     "QDP",
+     "CFF",
+     "G0D"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168898.6685643,
+    "done": true
+   },
+   {
+    "job_id": "748b9756-b3c6-49cf-ae76-7aaff1a40172",
+    "ligands": [
+     "MWY",
+     "08J",
+     "X6J",
+     "QDJ",
+     "D7J"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168904.1701527,
+    "done": true
+   },
+   {
+    "job_id": "133d8c57-db0a-4645-bbaa-f8713d9e9a7c",
+    "ligands": [
+     "A1ASP",
+     "CL6",
+     "G0V",
+     "MWS",
+     "ERY"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168910.6070588,
+    "done": true
+   },
+   {
+    "job_id": "f1db2841-3423-4b22-82f9-caddb48236da",
+    "ligands": [
+     "D7Y",
+     "X7M",
+     "D0R",
+     "A1A06",
+     "TCI"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168915.281859,
+    "done": true
+   },
+   {
+    "job_id": "0e835639-0260-4db1-adab-5e11442f0190",
+    "ligands": [
+     "A1BNX",
+     "Z8Z"
+    ],
+    "rep": 1,
+    "setting": "10x200",
+    "samples": 1,
+    "submitted": 1790168919.3827999,
+    "done": true
+   },
+   {
+    "job_id": "612f16b2-616f-40b6-a1c6-b6112371d5bc",
+    "ligands": [
+     "YNV",
+     "J9K",
+     "A1A06",
+     "QDP",
+     "PG4"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168924.4454236,
+    "done": true
+   },
+   {
+    "job_id": "cbccf0cb-d7b2-4da5-970a-244262e07bbe",
+    "ligands": [
+     "PG0",
+     "80K",
+     "CL6",
+     "D0R",
+     "D7J"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168929.15712,
+    "done": true
+   },
+   {
+    "job_id": "25ae5520-0266-44af-a244-e2b16dd5575a",
+    "ligands": [
+     "Z8Z",
+     "ERY",
+     "G0V",
+     "08J",
+     "6AW"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168934.5241756,
+    "done": true
+   },
+   {
+    "job_id": "1f7ebf45-9546-44c2-a8c3-32445a7bfcec",
+    "ligands": [
+     "QDV",
+     "NI6",
+     "D7Y",
+     "MWS",
+     "CFF"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168940.7050672,
+    "done": true
+   },
+   {
+    "job_id": "b93bc03c-d45d-4e0b-855c-49ce3df927a7",
+    "ligands": [
+     "X6S",
+     "X6J",
+     "MF8",
+     "DJ1",
+     "A1CIW"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168946.2157836,
+    "done": true
+   },
+   {
+    "job_id": "8a63aa73-2671-405e-aa79-9f4f9b7c7d62",
+    "ligands": [
+     "08Y",
+     "A1BNX",
+     "X6V",
+     "G1J",
+     "X7M"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168951.3157632,
+    "done": true
+   },
+   {
+    "job_id": "ca52f794-483a-4581-afeb-2d9cdc1b27fe",
+    "ligands": [
+     "QDJ",
+     "Z9Z",
+     "G0D",
+     "TCI",
+     "MWY"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168956.196793,
+    "done": true
+   },
+   {
+    "job_id": "5af2e1c6-e608-44e2-8012-665351abc6de",
+    "ligands": [
+     "A1AST",
+     "A1ASP"
+    ],
+    "rep": 2,
+    "setting": "3x50",
+    "samples": 1,
+    "submitted": 1790168959.5423946,
+    "done": true
+   },
+   {
+    "job_id": "ac92e5cb-5fac-4aca-b1ca-ef3c5c85d76f",
+    "ligands": [
+     "A1ASP",
+     "08J",
+     "Z9Z",
+     "X6S",
+     "QDP"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168964.9130862,
+    "done": true
+   },
+   {
+    "job_id": "33b7b944-0c3e-4a00-8c23-a7a9cac86fd0",
+    "ligands": [
+     "X6V",
+     "TCI",
+     "CL6",
+     "X6J",
+     "6AW"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168970.8364859,
+    "done": true
+   },
+   {
+    "job_id": "802f010b-a07f-48a8-98ab-82eb749e1331",
+    "ligands": [
+     "G0V",
+     "QDJ",
+     "DJ1",
+     "ERY",
+     "MF8"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168978.426848,
+    "done": true
+   },
+   {
+    "job_id": "7bb38d9f-70de-4204-b519-b83472c72ee6",
+    "ligands": [
+     "QDV",
+     "CFF",
+     "MWY",
+     "D7J",
+     "80K"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168984.2296388,
+    "done": true
+   },
+   {
+    "job_id": "7de32bd8-06a5-4309-8d37-b586e615316b",
+    "ligands": [
+     "X7M",
+     "G1J",
+     "A1CIW",
+     "MWS",
+     "A1AST"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168989.070198,
+    "done": true
+   },
+   {
+    "job_id": "3ac6b9da-4a60-4699-b279-34dd2cca2f1f",
+    "ligands": [
+     "PG0",
+     "NI6",
+     "D7Y",
+     "08Y",
+     "D0R"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790168995.3180406,
+    "done": true
+   },
+   {
+    "job_id": "598ca6d4-9fea-472e-a105-7de12adb1761",
+    "ligands": [
+     "A1A06",
+     "J9K",
+     "PG4",
+     "Z8Z",
+     "YNV"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790169000.5053582,
+    "done": true
+   },
+   {
+    "job_id": "2bce88fe-865c-4519-bc9c-fca6b8860f47",
+    "ligands": [
+     "G0D",
+     "A1BNX"
+    ],
+    "rep": 3,
+    "setting": "5x200",
+    "samples": 1,
+    "submitted": 1790169004.208843,
+    "done": true
+   },
+   {
+    "job_id": "445017be-c240-42ed-9e9c-1ed59d9a89ae",
+    "ligands": [
+     "A1ASP",
+     "Z8Z",
+     "QDV",
+     "MF8",
+     "D7J"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169009.8637922,
+    "done": true
+   },
+   {
+    "job_id": "ba795c35-427f-41b3-bc4f-4cd7595e6e31",
+    "ligands": [
+     "MWY",
+     "QDJ",
+     "DJ1",
+     "D0R",
+     "J9K"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169016.691539,
+    "done": true
+   },
+   {
+    "job_id": "d4e22c21-7e75-491b-8515-55aa8ae8b928",
+    "ligands": [
+     "G1J",
+     "X6S",
+     "A1A06",
+     "A1CIW",
+     "CL6"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169021.7175202,
+    "done": true
+   },
+   {
+    "job_id": "eeefde76-c7f0-43e7-b1a8-0e7a81d869fa",
+    "ligands": [
+     "G0V",
+     "80K",
+     "6AW",
+     "ERY",
+     "A1BNX"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169027.5175848,
+    "done": true
+   },
+   {
+    "job_id": "33542a84-964b-4296-b824-41d749b094ef",
+    "ligands": [
+     "NI6",
+     "08J",
+     "CFF",
+     "X7M",
+     "G0D"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169032.2131224,
+    "done": true
+   },
+   {
+    "job_id": "9bda1017-13cf-4546-804b-9f0bd1e99019",
+    "ligands": [
+     "YNV",
+     "QDP",
+     "PG0",
+     "PG4",
+     "A1AST"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169037.3821018,
+    "done": true
+   },
+   {
+    "job_id": "0a26da66-4b2c-43cb-ab29-0146040c42d5",
+    "ligands": [
+     "MWS",
+     "TCI",
+     "X6V",
+     "Z9Z",
+     "08Y"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169042.0123348,
+    "done": true
+   },
+   {
+    "job_id": "0ac27a13-6277-4515-8a89-1e83c23ad8ec",
+    "ligands": [
+     "X6J",
+     "D7Y"
+    ],
+    "rep": 4,
+    "setting": "3x150",
+    "samples": 1,
+    "submitted": 1790169045.3843455,
+    "done": true
+   }
+  ],
+  "shuffle_seed": 38
  }
 }

@@ -1,0 +1,224 @@
+{
+  "tag": "refvalue",
+  "engines": [
+    "protenix_v2",
+    "protenix"
+  ],
+  "filters": {
+    "files_seen": 370,
+    "unparseable_name": 0,
+    "not_in_csv": 0,
+    "dropped_same_wave": 0,
+    "dropped_same_md5": 0,
+    "dropped_same_coords": 0,
+    "unreadable": 0,
+    "no_heme_frame": 0
+  },
+  "ligands_with_poses": 37,
+  "reference_depth": {
+    "ligands": 37,
+    "min": 10,
+    "median": 10.0,
+    "max": 10,
+    "at_least_4": 37,
+    "usable": true,
+    "note": "below 4 independent poses the feature measured -0.0055; verify replicates are not identical (FINDING 009)"
+  },
+  "min_depth": 8,
+  "below_min_depth": [],
+  "no_poses_at_all": [],
+  "per_ligand": {
+    "08J": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "08Y": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "6AW": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "80K": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "A1A06": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "A1ASP": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "A1AST": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "A1BNX": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "A1CIW": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "CFF": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "CL6": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "D0R": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "D7J": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "D7Y": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "DJ1": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "ERY": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "G0D": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "G0V": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "G1J": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "J9K": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "MF8": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "MWS": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "MWY": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "NI6": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "PG0": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "PG4": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "QDJ": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "QDP": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "QDV": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "TCI": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "X6J": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "X6S": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "X6V": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "X7M": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "YNV": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "Z8Z": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    },
+    "Z9Z": {
+      "waves": 10,
+      "after_md5": 10,
+      "depth": 10
+    }
+  },
+  "saved": {
+    "ligands": 37,
+    "poses": 370,
+    "atoms": 12530,
+    "kb": 136
+  },
+  "out": "D:\\Users\\ashenoy00000\\.windsurf\\OpenADMET-cyp-structure\\data\\processed\\refvalue_reference_set.npz"
+}

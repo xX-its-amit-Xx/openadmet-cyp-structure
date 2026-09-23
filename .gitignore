@@ -18,3 +18,4 @@ data/processed/p450_universe/entry_meta.json
 *.json.prev
 data/processed/two_ligand/protenix_v2/
 data/processed/openprotein/refdepth/
+data/processed/openprotein/refvalue/

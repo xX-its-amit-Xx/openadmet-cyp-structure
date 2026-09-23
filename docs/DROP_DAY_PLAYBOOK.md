@@ -1,6 +1,6 @@
 # DROP-DAY PLAYBOOK — OpenADMET CYP3A4 structure track
 
-**Execute this document on release day.** It is the consolidation of thirty-seven findings
+**Execute this document on release day.** It is the consolidation of forty-one findings
 into one ordered path. Every claim carries its finding number. Where something is not
 measured, it says **not measured** — do not fill the gap under deadline pressure.
 
@@ -130,10 +130,10 @@ do not exist for new ligands — they must be generated. See §9 G6; this is the
 # and --samples now defaults to 1. Both are defaults; you do not do anything.
 python scripts/cofold/openprotein_cofold.py submit --engine protenix_v2 \
     --csv data/processed/test_ligands.csv --tag drop \
-    --sweep 3x200,10x200,3x50 --batch 5
+    --sweep 3x200,10x200,3x50,5x200 --batch 5
 python scripts/cofold/openprotein_cofold.py submit --engine protenix \
     --csv data/processed/test_ligands.csv --tag drop \
-    --sweep 3x200,10x200,3x50 --batch 5
+    --sweep 3x200,10x200,3x50,5x200 --batch 5
 python scripts/cofold/openprotein_cofold.py collect --engine protenix_v2 --tag drop
 python scripts/cofold/openprotein_cofold.py collect --engine protenix    --tag drop
 
@@ -433,9 +433,29 @@ zero sampling error:
   material.
 
 For Type I ligands specifically the doubling is worth **+0.0116** (FINDING 035, p = 0.715,
-10 of 14 unchanged) — better, still not +0.0125. **Spend spare wall clock on reference
-depth instead** (FINDING 038: 25.7 min for 9 ligands): pool depth is worth +0.0027,
-reference depth is what makes the +0.0395 gain exist at all.
+10 of 14 unchanged) — better, still not +0.0125.
+
+**Where the spare hour goes — priced on both sides (FINDING 041).** The old advice here was
+"spend spare wall clock on reference depth, which is what makes the +0.0395 gain exist at
+all." That **conflated two quantities and must not be quoted in that form**: the *first
+four* reference poses are worth the whole +0.039 (below 4 the feature is −0.0055,
+FINDING 011), and the *next four* are worth **+0.0076** (FINDING 041, n = 37 CYP3A4,
+exact, CI [−0.0021, +0.0190], drop-1 **+0.0042 — sign stable on all 37**).
+
+| | pool depth 20 → 40 | **reference depth 4 → 8** |
+|---|---|---|
+| gain | +0.0027 (p = 0.870) | **+0.0076** (p = 0.261) |
+| drop-1 | **−0.0012 — sign flips** | **+0.0042 — sign stable** |
+| oracle-to-selection gap | **widens** 0.0770 → 0.0876 | **narrows** 0.1019 → 0.0943 |
+| across-draw sd | n/a | **0.01215 → 0.00812 (−33%)** |
+| cost | GPU, ~2.7 h per 100 ligands, serial | **+32 jobs / 37 ligands, +2.9 min median** |
+
+**Reference depth wins both comparisons, and it does not need the hour.** OpenProtein waves
+run concurrently — measured at **37.6× parallelism over 80 jobs with zero queueing penalty
+and 0 failures** — so the wall clock is set by the *slowest wave*, not by the number of
+waves. Submit **four settings at t = 0** and the extra depth is nearly free. Neither number
+clears +0.0125; this is insurance, not a lever. Full reconciliation of FINDING 016 and
+FINDING 040 in `FINDING_041_reference_depth_value.md` §6.
 
 **Venue arithmetic, measured 2026-09-23 over 4 jobs / 1,460 poses / 0 failures:** an
 **H200 is 4.6× a V100** — 19 ligands × 20 samples in **30 min** on `gyorilab`'s H200
@@ -834,8 +854,13 @@ The apparent Type I deficit (7.00 vs 7.83, MWU p = 0.037) is **entirely** the on
 job — see the trap below. Type I ligands are **not** harder to reference, so this does
 *not* compound with FINDING 033's worse Type I pool.
 
-**RECOMMENDED SWEEP — 2 engines × 3 settings, `--sweep 3x200,10x200,3x50`, `--batch 5`,
-`--samples 1`.** Measured by re-deduping every sub-configuration of the poses on disk:
+**RECOMMENDED SWEEP — 2 engines × 4 settings, `--sweep 3x200,10x200,3x50,5x200`,
+`--batch 5`, `--samples 1`. Depth 8.** *(Raised from 3 settings by FINDING 041: depth 8
+selects +0.0076 better than depth 4 on 37 CYP3A4 ligands, cuts the across-draw sd by 33%,
+and survives two job failures per ligand instead of none — and because waves run
+concurrently it costs **+2.9 minutes of median wall clock**, not +33% of the schedule. The
+3-setting row below remains the fallback if concurrency degrades above ~80 jobs, which is
+unmeasured.)* Measured by re-deduping every sub-configuration of FINDING 038's poses:
 
 | sweep | jobs / 9 ligands | min depth | frac ≥4 | frac ≥6 |
 |---|---|---|---|---|
@@ -849,9 +874,14 @@ job — see the trap below. Type I ligands are **not** harder to reference, so t
 Two settings is the **arithmetic** minimum — depth exactly 4, the refusal threshold with
 **zero margin**. Three is the **viable** minimum: depth 6 survives one job failure
 (6 → 5 ≥ 4) and it drops `3×400`, the slowest setting on both engines and the only one
-that failed. The fourth setting is slack, not baseline: +33% jobs, +8 min, depth 6 → 8.
-**A single engine cannot do the job.** (Every `0.56` and every low `min depth` in the grid
-is the same four ligands from the one failed job, not a weak setting.)
+that failed. **The fourth setting is now BASELINE, not slack** — FINDING 041 measured what
+it buys (+0.0076 selected, −33% across-draw sd, two failures of margin) against what it
+costs on a concurrent venue (**+32 jobs per 37 ligands, +2.9 min median wall clock**), and
+its 80-job timeline showed **37.6× parallelism with 0 failures**: depth 4, 6, 8 and 10 all
+finished inside the same **38.3 minutes**. Drop back to three settings only if `collect`
+shows queueing at your ligand count. **A single engine cannot do the job.** (Every `0.56`
+and every low `min depth` in the grid is the same four ligands from the one failed job,
+not a weak setting.)
 
 **THE 6.25% JOB FAILURE — `submit` NOW RECOVERS FROM IT (fixed 2026-09-23).** 1 of 16 jobs
 died with an opaque `internal server error` after 24.7 min at `progress_counter=75`. At the
@@ -862,8 +892,11 @@ a measurement) and its §10 item 4 advises a fresh wave at a new setting. **Both
 superseded:** failed batches release their claims and **re-running the identical command
 IS the recovery**, retried in place at the same wave and setting. Full semantics in Step 4
 above. Do not allocate a fresh wave — that would make `refset` count one opinion as two.
-The 6.25% rate is still the reason the recommendation carries margin: recovery costs
-another ~18 min of wall clock, and depth 6 means you do not have to spend it.
+The failure rate is still the reason the recommendation carries margin: recovery costs
+another ~18–38 min of wall clock, and depth 8 means you do not have to spend it. **The rate
+is now 1 of 96 pooled** — 1 of 16 in FINDING 038 and **0 of 80** in FINDING 041 — so
+6.25% was a high point estimate on one observation, but the interval is still wide and
+depth 8 survives two failures per ligand where depth 4 survives none.
 
 **THE CSV IS SHUFFLED FOR YOU BEFORE PACKING (fixed 2026-09-23).** `--batch` packed the CSV
 in **file order**, so an ordered CSV aligned job boundaries with strata. Here the stratified
@@ -873,18 +906,25 @@ shuffles per `(tag/engine, wave)` from `--shuffle-seed` (default **38**, recorde
 `jobs.json`); on this csv that drops "one chunk holds all 3 Type I" from **4 of 4 waves** to
 **1 of 4**. `--no-shuffle` restores file order for debugging.
 
-**Cost model — `jobs = 6 × ceil(N/5)` at the recommended sweep.** Concurrency measured at
-**≥16 jobs with no queueing penalty**; above that unmeasured, so the schedule is a band
-(lower = slowest single wave, 17.4 min; upper = serialised in blocks of 16 at ~18 min).
+**Cost model — `jobs = 8 × ceil(N/5)` at the recommended 4-setting sweep.** Concurrency is
+now measured at **80 jobs with no queueing penalty** (FINDING 041: 37.6× parallelism, 1,443
+job-minutes inside a 38.3-minute wall clock, 0 of 80 failed). Above 80 it is still
+unmeasured, so the schedule stays a band (lower = slowest single wave; upper = serialised
+in blocks of 80 at ~38 min).
 
-| test set | jobs (3 settings) | jobs (4 settings) | wall clock, optimistic → conservative |
+| test set | jobs (3 settings) | **jobs (4 settings)** | wall clock, optimistic → conservative |
 |---|---|---|---|
-| 20 ligands | 24 | 32 | ~20 min → ~36 min |
-| 50 ligands | 60 | 80 | ~20 min → ~1 h 12 m |
-| 100 ligands | 120 | 160 | ~20 min → **~2 h 25 m** |
+| 20 ligands | 24 | **32** | ~38 min → ~38 min |
+| 50 ligands | 60 | **80** | ~38 min → ~38 min |
+| 100 ligands | 120 | **160** | ~38 min → **~1 h 16 m** |
+
+The 4-setting column is now the baseline (FINDING 041). Measured on 37 ligands / 80 jobs,
+**depth 4, 6, 8 and 10 all finished inside the same 38.3 minutes** because the waves run
+concurrently and the clock is set by the slowest wave; the median extra cost of going from
+2 settings to 4 was **+2.9 minutes**.
 
 Add ~5 min for `collect`, **under 1 min** for `refset` (2.9 s for 340 files). All fit the
-2,000/month cap with **610 already spent**. **Even the conservative column is far shorter
+2,000/month cap with **690 already spent** (610 + FINDING 041's 80). **Even the conservative column is far shorter
 than Step 2's pool generation (~6.6 min/ligand × 100 = 11 h), so reference depth is no
 longer the schedule risk.**
 
@@ -1091,7 +1131,7 @@ in 035, 036 and 037 independently — selected 0.6164, oracle 0.6975, random 0.5
    `openprotein_cofold.py submit --sweep 3x200,10x200,3x50 --batch 5` on **both** Protenix
    checkpoints, `collect`, then `refset`. The csv is shuffled before packing and
    `--samples` defaults to 1 — both automatic. Measured 9 of 9 at depth 6 (FINDING 038);
-   `jobs = 6 × ceil(N/5)`, ≤2 h 25 m even at 100 ligands. `refset` and `build_xeng_feature`
+   `jobs = 8 × ceil(N/5)` at 4 settings, ≤1 h 16 m even at 100 ligands (FINDING 041). `refset` and `build_xeng_feature`
    both **refuse below depth 4**; `--allow-thin`/`--skip-thin` rather than force, and
    **name the fallbacks**. **If `collect` reports `failed > 0`, re-run the IDENTICAL submit
    command** — failed batches release their claims and are retried in place at the same
