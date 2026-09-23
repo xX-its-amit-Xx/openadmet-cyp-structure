@@ -403,15 +403,16 @@
   "est_gpu_hours": 0.0,
   "started": 1790131613.8134692,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "FINDING 034 Type-I depth",
+  "status": "done",
+  "actual_gpu_hours": 0.0,
+  "note": "FINDING 034 Type-I depth | FINDING 034 completed 2026-09-23; ledger row never closed out",
   "meta": {
    "n_jobs": 6,
    "engine": "boltz2",
    "replicates": 6,
    "probe": true
-  }
+  },
+  "ended": 1790172125.8268418
  },
  {
   "run_id": "type_i_depth_boltz2_1790132132",
@@ -421,15 +422,16 @@
   "est_gpu_hours": 0.0,
   "started": 1790132132.092082,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "FINDING 034 Type-I depth",
+  "status": "done",
+  "actual_gpu_hours": 0.0,
+  "note": "FINDING 034 Type-I depth | FINDING 034 completed 2026-09-23; ledger row never closed out",
   "meta": {
    "n_jobs": 58,
    "engine": "boltz2",
    "replicates": 16,
    "probe": false
-  }
+  },
+  "ended": 1790172125.827915
  },
  {
   "run_id": "type_i_depth_boltz2_1790133218",
@@ -439,15 +441,16 @@
   "est_gpu_hours": 0.0,
   "started": 1790133218.4543948,
   "month": "2026-09",
-  "status": "launched",
-  "actual_gpu_hours": null,
-  "note": "FINDING 034 Type-I depth",
+  "status": "done",
+  "actual_gpu_hours": 0.0,
+  "note": "FINDING 034 Type-I depth | FINDING 034 completed 2026-09-23; ledger row never closed out",
   "meta": {
    "n_jobs": 56,
    "engine": "boltz2",
    "replicates": 30,
    "probe": false
-  }
+  },
+  "ended": 1790172125.8290868
  },
  {
   "run_id": "refdepth_sweep_1790188000",
