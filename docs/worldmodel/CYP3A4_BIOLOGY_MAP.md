@@ -22,6 +22,9 @@ Four status marks are used throughout and they are meant literally:
 | **[INFERENCE]** | my reasoning, not a reported result |
 | **NO EVIDENCE FOUND** | I looked and found nothing. Where the search itself was the limit, it says *(search-limited)* — that means unsearched, **not** negative |
 
+These four marks also exist as a machine-readable `status` field on **every node and every edge** of
+the companion JSON, so the grading is queryable at the point of use and not only readable here (§10).
+
 Several of the things this document was asked to cover turn out to have little or no literature —
 microproteins, lncRNAs at the locus, most PTMs, chaperones. Those are reported as gaps. A gap
 correctly reported is worth more here than a confident guess.
@@ -1383,8 +1386,8 @@ binding proteins is careful to say the mechanistic contribution is "largely unde
 
 | rank | partner | why it matters | complex structure? | co-fold verdict |
 |---|---|---|---|---|
-| 1 | **a second copy of the query ligand** | the only "partner" with CYP3A4 structures showing it (2V0M, 4K9T, 8SO1, 8SO2, 7SV2, 8SG5, 8GK3) and the only one that touches the F/G roof | yes, many | **fold it** |
-| 2 | **membrane lipid (POPC / POPG)** | the F′–G′ face is bilayer-embedded; lipid identity changes measured binding | no CYP3A4 complex; 8GK3 puts DHEA-S on that face | **worth one experiment** |
+| 1 | **a second copy of the query ligand** | the only "partner" with CYP3A4 structures showing it (2V0M, 4K9T, 8SO1, 8SO2, 7SV2, 8SG5, 8GK3) and the only one that touches the F/G roof | yes, many | ⚠️ **SPENT AND NEGATIVE — see the box below** |
+| 2 | **membrane lipid (POPC / POPG)** | the F′–G′ face is bilayer-embedded; lipid identity changes measured binding | no CYP3A4 complex; 8GK3 puts DHEA-S on that face | **test next, on a LOWERED prior** |
 | 3 | **CYB5A** | K_d 2.5–61 nM, ternary with POR, and substrate binding changes the affinity | **no** | do not spend — proximal face, 9.7 Å from Fe across the heme (`FINDING_024`) |
 | 4 | **POR / POR FMN domain** | obligatory electron donor, possible allosteric modulator | **no** | do not spend — same geometry argument |
 | 5 | **CYP3A4 itself (homodimer)** | the oligomer interface *is* the F′–G′ surface that carries the peripheral site | no | speculative; interface unvalidated |
@@ -1402,6 +1405,33 @@ ones that touch the F/G roof, and there are only two: a second ligand copy, and 
 cheap: both are just extra ligand entities in a Boltz YAML, neither needs a second chain, and both
 are aimed squarely at residues 211–216 and Phe304, which `FINDING_028` measured as doing 83% of the
 pose exclusion.
+
+> ### ⚠️ Update, 2026-09: rank 1 was run and is REFUTED
+>
+> The second-ligand co-fold has been executed off the back of this list — **49 OpenProtein jobs** —
+> and it is a **negative**. The second copy landed in the **active site on 12 of 15 ligands** rather
+> than in the peripheral groove, and **the first copy got worse by −0.0664 LDDT-PLI, with rotation
+> error moving +4.45° in the wrong direction**.
+>
+> The geometric reasoning in this section held up unusually well, which is why the result is worth
+> reading carefully rather than just discarding: the model placed the second copy at a **median
+> 8.81 Å from the iron**, **reproducing 2V0M's second ketoconazole unprompted**, and **45 of 60
+> second copies did contact the groove residue set identified in §7.2**. The prediction about *where*
+> a second ligand would go was right. The prediction that it would *help* was wrong — because it
+> engaged those residues **from inside the cavity**, displacing the first copy, rather than from the
+> surface.
+>
+> **Consequence for rank 2.** Membrane lipid is now the only untested partner on this list, and its
+> prior is **LOWERED**, not merely unchanged. The one thing that has now been measured is that
+> **adding mass on the distal side makes the pose worse**. The surviving hypothesis is narrower than
+> the one written above: that lipid restrains residues 211–216 **from outside** the cavity, where a
+> second ligand demonstrably acts from inside. It should be run as a falsification test, not as an
+> expected gain.
+>
+> **Consequence for how this document should be used.** This is the first experiment this map has
+> caused, and it went the other way. The `status` field now attached to every node and edge in the
+> JSON exists for exactly this reason: so that a CONTESTED or INFERRED claim is visible at the point
+> where someone is deciding whether to spend compute on it, not only here in the prose.
 
 ---
 
@@ -1937,18 +1967,24 @@ its way in and out, and therefore the part a scorer must get right. (iv) **Heme 
 
 ## 9. What this whole map licenses, and what it forecloses
 
-**The three partners worth co-folding, in order.**
+**The three partners worth co-folding, in order — with rank 1 now spent.**
 
-1. **A second copy of the query ligand.** It is the only "partner" with CYP3A4 structural precedent
-   (6 of 122 entries, clash-free in every case, minimum inter-copy distance 2.90 Å), the only one that
-   touches the F/G roof, and it is one extra ligand entity in a YAML — no second chain, no new
-   degrees of freedom in the protein. It aims at Phe215, Arg212 and Phe304, which `FINDING_028`
-   measured as doing **83% of the pose exclusion**.
-2. **Membrane lipid (POPC, or 1:1 POPC:POPG).** The F′–G′ face is bilayer-embedded, 8GK3 resolves a
-   steroid sulfate sitting on it, lipid identity changes measured fragment binding, and the allosteric
-   midazolam site is located in that region in nanodiscs. Also just ligand entities. The hypothesis is
-   that lipid restrains residues 211–216, which `FINDING_028` found are **rigid rather than wrongly
-   adaptive** in the co-folded model.
+1. ⚠️ **A second copy of the query ligand — RUN AND REFUTED (2026-09).** It was the only "partner"
+   with CYP3A4 structural precedent (6 of 122 entries, clash-free in every case, minimum inter-copy
+   distance 2.90 Å), the only one that touches the F/G roof, and one extra ligand entity in a YAML.
+   **49 OpenProtein jobs later it is a negative:** the second copy landed in the **active site on 12
+   of 15 ligands** instead of the peripheral groove, and the first copy got **worse by −0.0664
+   LDDT-PLI with rotation error moving +4.45° the wrong way**. What did hold was the geometry — median
+   **8.81 Å from the iron**, **2V0M's second ketoconazole reproduced unprompted**, and **45 of 60
+   second copies contacting the §7.2 groove residues** — but from **inside** the cavity, displacing the
+   first ligand. **Right about where, wrong about whether it helps.** See the box in §6.9.
+2. **Membrane lipid (POPC, or 1:1 POPC:POPG) — now the only untested partner, on a LOWERED prior.**
+   The F′–G′ face is bilayer-embedded, 8GK3 resolves a steroid sulfate sitting on it, lipid identity
+   changes measured fragment binding, and the allosteric midazolam site is located in that region in
+   nanodiscs. Also just ligand entities. ⚠️ But the one thing now measured is that **adding mass on
+   the distal side makes the pose worse**, so the surviving hypothesis is the narrower one: that lipid
+   restrains residues 211–216 **from outside** the cavity, where a second ligand demonstrably acts
+   from inside. Run it as a falsification test, not as an expected gain.
 3. **Nothing else.** CYB5A has the best biochemistry of any protein partner (K_d 2.5–61 nM, a ternary
    complex with POR, substrate-dependent affinity) and POR is obligatory — and both bind the
    **proximal face, 9.7 Å from the iron and 10.7 Å from the nearest modelled F/G residue, across the
@@ -2040,7 +2076,21 @@ protein to predict, and the challenge's multi-conformer observation — for whic
 [`data/processed/cyp3a4_biology_graph.json`](../../data/processed/cyp3a4_biology_graph.json) holds
 the same content as a node/edge graph over eight layers (gene, regulation, transcript, protein,
 complex, pathway, celltype, compound), with `meta.ranked_partners` and `meta.ranked_compounds` as the
-two lists meant to drive the next round of co-folding. Node `detail` strings are tooltip-length; the
-status marks (established / contested / inferred / no evidence found) live in this document and are
-deliberately not flattened into the graph. Every edge endpoint is asserted to exist as a node id, and
-the file is re-parsed and re-validated after writing.
+two lists meant to drive the next round of co-folding.
+
+**Every node and every edge carries an explicit `status` field** — `ESTABLISHED`, `CONTESTED`,
+`INFERRED` or `NO_EVIDENCE_FOUND` — so the grading in this document is queryable rather than only
+readable. Current distribution over **265 graded claims**: nodes 108 established / 11 contested / 1
+no-evidence-found; edges 129 established / 11 contested / 5 inferred. `meta.status_vocabulary` and
+`meta.status_note` carry the definitions. `meta.ranked_partners` entries carry a `verdict` pill from
+`{TEST_NEXT, SPENT_NEGATIVE, DO_NOT_SPEND, SPECULATIVE}` and a `prior` pill from
+`{RAISED, UNCHANGED, LOWERED, REFUTED, NOT_APPLICABLE}`, with the prose in `rationale`.
+
+The reason the `status` field exists is in the §6.9 box: this map has now caused an experiment, and
+that experiment was a negative. A CONTESTED claim needs to be visible where someone is deciding
+whether to spend compute on it, not only here in the prose.
+
+Node `detail` strings are tooltip-length (≤400 characters, asserted). The build asserts that every
+edge endpoint resolves to a node id, that **no node is left without any edge**, that every node has at
+least one citation, that every status and verdict is in its vocabulary, and that the file re-parses
+and re-validates identically after writing.

@@ -9,7 +9,8 @@
       "citations": [
         "https://rest.genenames.org/fetch/symbol/CYP3A4",
         "https://rest.ensembl.org/lookup/id/ENSG00000160868?expand=1;content-type=application/json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A_locus",
@@ -20,7 +21,8 @@
       "citations": [
         "https://rest.ensembl.org/overlap/region/human/7:99600000-99900000?feature=gene;content-type=application/json",
         "https://doi.org/10.1097/00008571-200103000-00002"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A5_gene",
@@ -31,7 +33,8 @@
       "citations": [
         "https://gtexportal.org/api/v2/expression/medianGeneExpression?datasetId=gtex_v8&gencodeId=ENSG00000160868.14&format=json",
         "https://doi.org/10.1124/mol.117.109744"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A7_gene",
@@ -42,7 +45,8 @@
       "citations": [
         "https://gtexportal.org/api/v2/expression/medianGeneExpression?datasetId=gtex_v8&gencodeId=ENSG00000160868.14&format=json",
         "https://doi.org/10.3390/ijms22115831"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A43_gene",
@@ -53,7 +57,8 @@
       "citations": [
         "https://rest.ensembl.org/lookup/id/ENSG00000160868?expand=1;content-type=application/json",
         "https://doi.org/10.1097/00008571-200103000-00002"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A4_22",
@@ -63,7 +68,8 @@
       "detail": "Intron-6 variant 191 bp upstream of exon 7 that roughly doubles a partial-intron-6-retention transcript in liver but not intestine; the product lacks the heme-binding signature.",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000183"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A4_1B",
@@ -74,7 +80,8 @@
       "citations": [
         "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=snp&id=2740574&retmode=json",
         "https://doi.org/10.1006/bbrc.1999.0752"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "CYP3A5_3",
@@ -84,7 +91,8 @@
       "detail": "Cryptic splice site causing exon 3B inclusion and a premature stop; 93% in Non-Finnish Europeans vs 30.5% in African ancestries, one of the steepest clines in the pharmacogenome.",
       "citations": [
         "https://gnomad.broadinstitute.org/variant/7-99672916-T-C?dataset=gnomad_r4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "I301T",
@@ -95,7 +103,8 @@
       "citations": [
         "https://doi.org/10.1172/JCI98680",
         "https://rest.uniprot.org/uniprotkb/P08684.txt"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "proximal_ER6",
@@ -107,7 +116,8 @@
         "https://doi.org/10.1172/JCI3703",
         "https://doi.org/10.1124/mol.60.6.1399",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "XREM",
@@ -118,7 +128,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.56.6.1329",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CLEM4",
@@ -129,7 +140,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.65.2.326",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "R4_region",
@@ -139,7 +151,8 @@
       "detail": "A 4C-identified region ~5 kb upstream of CYP3A43 whose CRISPR deletion INCREASES CYP3A4 and decreases CYP3A43 - competitive domain interaction inside the cluster. Contains rs62471956, in complete LD with CYP3A4*22.",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000402"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "NR1I2",
@@ -149,7 +162,8 @@
       "detail": "The dominant xenosensor; binds both the proximal ER6 and the XREM DR3/ER6, and cooperation between the two is required for maximal induction (3-fold alone, ~50-fold with hPXR).",
       "citations": [
         "https://doi.org/10.1124/mol.56.6.1329"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "NR1I3",
@@ -159,7 +173,8 @@
       "detail": "Two high-affinity motifs at about -7,720 and -150. Its response elements ALSO mediate PXR transactivation, so element mutagenesis cannot separate CAR from PXR.",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/12130689/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "VDR",
@@ -169,7 +184,8 @@
       "detail": "Mediates 1,25(OH)2D3 induction through the proximal ER6, prominently in intestine; PXR is explicitly excluded in that system.",
       "citations": [
         "https://doi.org/10.1124/mol.60.6.1399"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "HNF4A",
@@ -180,7 +196,8 @@
       "citations": [
         "https://doi.org/10.1038/nm815",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC1524881/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "NR3C1",
@@ -191,7 +208,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.58.2.361",
         "https://pubmed.ncbi.nlm.nih.gov/11737189/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "RXRA",
@@ -202,7 +220,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.58.2.361",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "USF1",
@@ -213,7 +232,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.65.2.326",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "HNF1A",
@@ -224,7 +244,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.65.2.326",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "NR1H4",
@@ -235,7 +256,8 @@
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC4407707/",
         "https://pubmed.ncbi.nlm.nih.gov/11706036/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "NR0B2",
@@ -245,7 +267,8 @@
       "detail": "A receptor with no DNA-binding domain that represses PXR, CAR and GR transactivation by reducing PXR's recruitment of HNF4a and SRC-1 to CYP3A4 chromatin; PXR in turn represses the SHP promoter.",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC1524881/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "NFKB_p65",
@@ -255,7 +278,8 @@
       "detail": "Represses CYP3A4 by binding RXRa's DNA-binding domain and displacing the PXR:RXRa complex from DNA - a protein-protein mechanism, not a kB site at the CYP3A4 promoter.",
       "citations": [
         "https://doi.org/10.1074/jbc.M601302200"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CEBPB_LIP",
@@ -265,7 +289,8 @@
       "detail": "The IL-6 effector: gp130-dependent and explicitly JAK/STAT-independent, LIP accumulates and competes out C/EBPalpha and C/EBPbeta-LAP, which are activators.",
       "citations": [
         "https://doi.org/10.1096/fj.02-0195fje"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "AHR",
@@ -275,7 +300,8 @@
       "detail": "A REPRESSOR here, not an inducer: TCDD lowers CYP3A4 and PXR mRNA, and AhR knockdown raises both basal and rifampicin-induced CYP3A4. No XRE has been mapped at the locus.",
       "citations": [
         "https://doi.org/10.1016/j.toxlet.2017.05.029"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "DBP_E4BP4",
@@ -286,7 +312,8 @@
       "citations": [
         "https://doi.org/10.1097/FPC.0b013e3282f12a61",
         "https://doi.org/10.1016/j.bcp.2026.118330"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "NCOA1",
@@ -296,7 +323,8 @@
       "detail": "Recruited with HNF4a to CYP3A4 chromatin by rifampicin-activated PXR; its recruitment is what SHP blocks.",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC1524881/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "EP300",
@@ -306,7 +334,8 @@
       "detail": "ChIP-measured at both PXREs after rifampicin: NCOA6 +3.1x distal and +3.2x proximal, p300 +2.2x and +1.6x, alongside H3K4me3 up and H3K27me3 down.",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC5508193/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "NCOR2",
@@ -316,7 +345,8 @@
       "detail": "Binds PXR's LBD through its ID2; overexpression inhibits and silencing enhances PXR transactivation of the CYP3A4 promoter, and rifampicin exchanges SMRT for RAC3.",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/16219912/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A4_mRNA",
@@ -326,7 +356,8 @@
       "detail": "MANE Select, 2,781 nt: 103 nt 5'UTR, 1,512 nt CDS, 1,166 nt 3'UTR over 13 exons. Ensembl annotates 35 transcripts in total, 27 coding and 7 NMD.",
       "citations": [
         "https://rest.ensembl.org/lookup/id/ENST00000651514?expand=1;content-type=application/json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A4_transcript_aSV",
@@ -336,7 +367,8 @@
       "detail": "A partial intron-6 retention carrying an in-frame stop and an internal AATAAA; the product lacks the heme-binding signature, so CYP3A4*22 gives less enzyme rather than a variant enzyme.",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000183"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "short_3UTR",
@@ -346,7 +378,8 @@
       "detail": "An alternative-polyadenylation isoform preferentially expressed in developed liver and differentiated hepatocytes, preferentially induced by rifampicin, more stable (3.7 vs 2.2 h) and giving 2.4-fold more protein.",
       "citations": [
         "https://doi.org/10.1124/mol.111.074393"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "long_3UTR",
@@ -356,7 +389,8 @@
       "detail": "The RefSeq-canonical 3' end, relatively more abundant in fetal liver and less inducible; both polyA signals are annotated inside NM_017460.6 itself.",
       "citations": [
         "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=NM_017460&rettype=gb&retmode=text"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "miR_27b",
@@ -367,7 +401,8 @@
       "citations": [
         "https://doi.org/10.1124/dmd.109.027680",
         "https://doi.org/10.1038/srep26544"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "miR_206",
@@ -377,7 +412,8 @@
       "detail": "Direct CYP3A4 3'UTR site with an MRE mutant; 5.8% of CYP3A activity variance. Single lab.",
       "citations": [
         "https://doi.org/10.1038/srep26544"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "miR_627",
@@ -388,7 +424,8 @@
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC3942699/",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC5011008/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "miR_148a",
@@ -398,7 +435,8 @@
       "detail": "Acts INDIRECTLY, on the PXR/NR1I2 3'UTR, not on CYP3A4. Contested: a later study found all the correlations null across 24 livers.",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/18268015/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "svRNAb",
@@ -408,7 +446,8 @@
       "detail": "A vault-RNA-derived small RNA, not a miRNA, that targets the CYP3A4 3'UTR; replicated in HepG2 and 19 human livers. Usually forgotten.",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/19749744/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A4_AS1",
@@ -419,7 +458,8 @@
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC8578198/",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC9775998/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "uORF_5UTR",
@@ -429,7 +469,8 @@
       "detail": "The 103 nt 5'UTR carries exactly one uAUG opening an 11-codon uORF with a weak Kozak - but it is absent from both GENCODE Ribo-seq ORF catalogues and from sORFs.org, with working positive controls. Sequence feature, no ribosome support.",
       "citations": [
         "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=NM_017460&rettype=fasta&retmode=text"
-      ]
+      ],
+      "status": "NO_EVIDENCE_FOUND"
     },
     {
       "id": "DRR",
@@ -439,7 +480,8 @@
       "detail": "A 4C-identified region ~90 kb from the CYP3A4 promoter that loops to CYP3A4, CYP3A5 and CYP3A7; CRISPR deletion drops all three. Reproducibility flag: the paper gives no chr7 coordinates and names no genome assembly.",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/36045613/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A4_protein",
@@ -450,7 +492,8 @@
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P08684.txt",
         "https://www.rcsb.org/uniprot/P08684"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "heme_b",
@@ -460,7 +503,8 @@
       "detail": "The catalytic cofactor, held by the Cys442 thiolate; resting state six-coordinate low-spin with an axial water that substrate binding displaces.",
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P08684.txt"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "Cys442",
@@ -470,7 +514,8 @@
       "detail": "The invariant heme ligand in all four CYP3A paralogs; the one residue none of them can change.",
       "citations": [
         "https://doi.org/10.1126/science.1099736"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "FG_loop",
@@ -481,7 +526,8 @@
       "citations": [
         "https://doi.org/10.1073/pnas.1616198114",
         "https://doi.org/10.1074/jbc.m114.615443"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "Phe_cluster",
@@ -492,7 +538,8 @@
       "citations": [
         "https://doi.org/10.1126/science.1099736",
         "https://doi.org/10.3390/ijms22115831"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "peripheral_site",
@@ -503,7 +550,8 @@
       "citations": [
         "https://doi.org/10.1126/science.1099736",
         "https://doi.org/10.1016/j.jbc.2023.105117"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "access_channel",
@@ -513,7 +561,8 @@
       "detail": "A third resolved locus ~12-14 A from the iron; fluorol binds here in 8DYC via Thr224 and Arg372, and caffeine occupies it in 8SO1/8SO2.",
       "citations": [
         "https://doi.org/10.3390/ijms232012591"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "active_site",
@@ -524,7 +573,8 @@
       "citations": [
         "https://doi.org/10.1073/pnas.0603236103",
         "https://doi.org/10.1073/pnas.1616198114"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "Ser119",
@@ -535,7 +585,8 @@
       "citations": [
         "https://doi.org/10.1073/pnas.1616198114",
         "https://doi.org/10.1016/j.abb.2024.110071"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "proximal_face",
@@ -545,7 +596,8 @@
       "detail": "K96, K115, K121, K127, K130, K141, K421, R422, K424, K428, K440, R446 - measured at 9.7 A from the iron and 10.7 A from the nearest modelled F/G residue, across the porphyrin from every ligand.",
       "citations": [
         "https://doi.org/10.1124/dmd.121.000475"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "POR",
@@ -556,7 +608,8 @@
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P16435.txt",
         "https://doi.org/10.1074/jbc.m609589200"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYB5A",
@@ -568,7 +621,8 @@
         "https://rest.uniprot.org/uniprotkb/P00167.txt",
         "https://doi.org/10.1124/dmd.121.000475",
         "https://doi.org/10.1074/jbc.271.44.27438"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "ternary_3A4_b5_POR",
@@ -579,7 +633,8 @@
       "citations": [
         "https://doi.org/10.1124/dmd.121.000475",
         "https://doi.org/10.1038/s41598-025-09060-5"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "PGRMC1",
@@ -591,7 +646,8 @@
         "https://rest.uniprot.org/uniprotkb/O00264.txt",
         "https://doi.org/10.1038/ncomms11030",
         "https://doi.org/10.1124/mol.110.068478"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "FABP1",
@@ -601,7 +657,8 @@
       "detail": "Binds diazepam and sulfinpyrazone at Kd < 2.5 uM and, by kinetic modelling, performs directed substrate transfer to CYP3A4 rather than simple sequestration.",
       "citations": [
         "https://doi.org/10.1021/acs.jmedchem.5c03754"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP2E1",
@@ -612,7 +669,8 @@
       "citations": [
         "https://doi.org/10.1074/jbc.m114.615443",
         "https://doi.org/10.1016/j.abb.2020.108677"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CYP3A4_oligomer",
@@ -623,7 +681,8 @@
       "citations": [
         "https://doi.org/10.1074/jbc.m114.615443",
         "https://doi.org/10.1016/j.bbabio.2009.12.008"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "ER_membrane",
@@ -634,7 +693,8 @@
       "citations": [
         "https://doi.org/10.1111/febs.14129",
         "https://doi.org/10.1111/cbdd.70080"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "gp78_AMFR",
@@ -645,7 +705,8 @@
       "citations": [
         "https://doi.org/10.1016/j.abb.2008.12.001",
         "https://doi.org/10.1016/j.bcp.2026.118330"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "CHIP_STUB1",
@@ -656,7 +717,8 @@
       "citations": [
         "https://doi.org/10.1016/j.abb.2008.12.001",
         "https://doi.org/10.4161/cbt.11.6.14834"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "second_ligand",
@@ -667,7 +729,8 @@
       "citations": [
         "https://doi.org/10.1016/j.jbc.2023.105117",
         "https://doi.org/10.1074/jbc.m609589200"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "R-HSA-211981",
@@ -677,7 +740,8 @@
       "detail": "The ONLY one of Reactome's six CYP-by-substrate-type children that contains CYP3A4; sterols, fatty acids, eicosanoids and vitamins all exclude it.",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-211981"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "R-HSA-5423646",
@@ -687,7 +751,8 @@
       "detail": "A direct child of Biological oxidations holding the three CYP3A4 aflatoxin reactions and the GST conjugation that follows them.",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-5423646"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "R-HSA-9748784",
@@ -697,7 +762,8 @@
       "detail": "A top-level pathway with eight drug-specific children; CYP3A4 appears in the aspirin, atorvastatin and prednisone ones.",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-9748784"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "R-HSA-9027307",
@@ -707,7 +773,8 @@
       "detail": "The one lipid pathway Reactome does place CYP3A4 in, via DHA 14(R)-hydroxylation - a specialised pro-resolving mediator route.",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-9027307"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "hsa00140",
@@ -717,7 +784,8 @@
       "detail": "KEGG places CYP3A4 here, where Reactome does not - the two databases genuinely disagree about whether CYP3A4 is a steroid enzyme.",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "hsa04976",
@@ -728,7 +796,8 @@
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576",
         "https://doi.org/10.1016/s1388-1981(99)00031-1"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "hsa00830",
@@ -739,7 +808,8 @@
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576",
         "https://rest.uniprot.org/uniprotkb/P08684.txt"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "hsa05204",
@@ -749,7 +819,8 @@
       "detail": "KEGG network nt06250, element N01378 'AFB1 to DNA adducts' - the bioactivation role, which sits awkwardly with calling CYP3A4 a detoxification enzyme.",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "hsa00982",
@@ -760,7 +831,8 @@
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC6773482/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "hsa00591",
@@ -771,7 +843,8 @@
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576",
         "https://rest.uniprot.org/uniprotkb/P08684.txt"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "phaseII",
@@ -782,7 +855,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/20713656/",
         "https://doi.org/10.1073/pnas.192448899"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "ABCB1",
@@ -793,7 +867,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/11297522/",
         "https://pubmed.ncbi.nlm.nih.gov/21189140/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "ABCC2",
@@ -803,7 +878,8 @@
       "detail": "Induced by FXR, PXR and CAR through an unusual ER-8 element 440 bp upstream - a third element geometry for the same receptor.",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/11706036/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "SLCO1B1",
@@ -813,7 +889,8 @@
       "detail": "The hepatic uptake step upstream of CYP3A4 for many drugs, but canonically HNF1A-driven; no evidence it is a PXR target co-regulated with CYP3A4.",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/26259716/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "pericentral_hep",
@@ -823,7 +900,8 @@
       "detail": "The main site of CYP3A4. Visium HD gives a zone3:zone1 ratio of 21.1x - steeper than CYP2E1 (11.7x) and GLUL (4.7x) - and CYP3A4 is the first-listed pericentral landmark gene.",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC13216088/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "periportal_hep",
@@ -833,7 +911,8 @@
       "detail": "Low CYP3A4 but the zone where CYP3A5 is relatively higher (1.8x periportal), so any non-isoform-specific 'CYP3A' measurement averages two oppositely zonated enzymes.",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC13216088/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "hepatoblast",
@@ -843,7 +922,8 @@
       "detail": "CYP3A7-positive in 69.88% of 11,673 cells against CYP3A4 in 0.09% (10 cells); two further fetal atlases return zero CYP3A4-positive cells.",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC7780123/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "enterocyte",
@@ -854,7 +934,8 @@
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC9043569/",
         "https://www.proteinatlas.org/ENSG00000160868-CYP3A4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "colonocyte",
@@ -864,7 +945,8 @@
       "detail": "Effectively off: 0.79% of cells, and 551-fold below enterocytes by HPA nCPM. The duodenum:colon ratio is about 250x.",
       "citations": [
         "https://www.proteinatlas.org/ENSG00000160868-CYP3A4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "nonparenchymal",
@@ -874,7 +956,8 @@
       "detail": "Cholangiocytes, stellate cells, Kupffer cells, LSECs and lymphocytes carry no pharmacologically meaningful CYP3A4; apparent signal is hepatocyte ambient RNA (Kupffer 33% by snRNA-seq vs 2.5% by CITE-seq).",
       "citations": [
         "https://www.proteinatlas.org/ENSG00000160868-CYP3A4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "liver_tissue",
@@ -885,7 +968,8 @@
       "citations": [
         "https://gtexportal.org/api/v2/expression/medianGeneExpression?gencodeId=ENSG00000160868.14&datasetId=gtex_v8",
         "https://www.proteinatlas.org/ENSG00000160868-CYP3A4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "small_intestine",
@@ -896,7 +980,8 @@
       "citations": [
         "https://gtexportal.org/api/v2/expression/medianGeneExpression?gencodeId=ENSG00000160868.14&datasetId=gtex_v8",
         "https://pubmed.ncbi.nlm.nih.gov/9400033/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "state_rifampicin",
@@ -907,7 +992,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/17639026/",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC3100903/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "state_inflammation",
@@ -918,7 +1004,8 @@
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC2171046/",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC8247903/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "state_pregnancy",
@@ -929,7 +1016,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/18288078/",
         "https://pubmed.ncbi.nlm.nih.gov/15696014/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "state_fasting",
@@ -940,7 +1028,8 @@
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC6244726/",
         "https://pubmed.ncbi.nlm.nih.gov/27482056/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "state_masld",
@@ -951,7 +1040,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/26231377/",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC2769034/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "id": "coexpression_module",
@@ -961,7 +1051,8 @@
       "detail": "ARCHS4 Pearson top neighbours are OTC 0.728, ALDOB 0.716, ABCG8 0.694, APOC3 0.685, SLC2A2 0.678, CYP2C9 0.652 - the urea-cycle/gluconeogenic/apolipoprotein/sterol-transport programme, not other CYPs.",
       "citations": [
         "https://maayanlab.cloud/archs4/gene/CYP3A4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_testosterone",
@@ -973,7 +1064,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/6013"
       ],
       "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CC[C@@H]2O)CCC4=CC(=O)CC[C@]34C",
-      "source": "pubchem:6013"
+      "source": "pubchem:6013",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_midazolam",
@@ -985,7 +1077,8 @@
         "https://www.rcsb.org/structure/5TE8"
       ],
       "smiles": "Cc1ncc2n1-c3ccc(cc3C(=NC2)c4ccccc4F)Cl",
-      "source": "PDB 5TE8 ligand 08J"
+      "source": "PDB 5TE8 ligand 08J",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_erythromycin",
@@ -997,7 +1090,8 @@
         "https://www.rcsb.org/structure/2J0D"
       ],
       "smiles": "CC[C@@H]1[C@@]([C@@H]([C@H](C(=O)[C@@H](C[C@@]([C@@H]([C@H]([C@@H]([C@H](C(=O)O1)C)O[C@H]2C[C@@]([C@H]([C@@H](O2)C)O)(C)OC)C)O[C@H]3[C@@H]([C@H](C[C@H](O3)C)N(C)C)O)(C)O)C)C)O)(C)O",
-      "source": "PDB 2J0D ligand ERY"
+      "source": "PDB 2J0D ligand ERY",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_ketoconazole",
@@ -1009,7 +1103,8 @@
         "https://www.rcsb.org/structure/2V0M"
       ],
       "smiles": "CC(=O)N1CCN(CC1)c2ccc(cc2)OC[C@@H]3CO[C@@](O3)(Cn4ccnc4)c5ccc(cc5Cl)Cl",
-      "source": "PDB 2V0M ligand KLN"
+      "source": "PDB 2V0M ligand KLN",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_ritonavir",
@@ -1021,7 +1116,8 @@
         "https://www.rcsb.org/structure/5VCE"
       ],
       "smiles": "CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](Cc2ccccc2)C[C@@H]([C@H](Cc3ccccc3)NC(=O)OCc4cncs4)O",
-      "source": "PDB 5VCE ligand RIT"
+      "source": "PDB 5VCE ligand RIT",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_cobicistat",
@@ -1033,7 +1129,8 @@
         "https://www.rcsb.org/structure/9BBB"
       ],
       "smiles": "CC(C)c1nc(cs1)CN(C)C(=O)N[C@@H](CCN2CCOCC2)C(=O)N[C@H](CC[C@H](Cc3ccccc3)NC(=O)OCc4cncs4)Cc5ccccc5",
-      "source": "PDB 9BBB ligand A1APA"
+      "source": "PDB 9BBB ligand A1APA",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_progesterone",
@@ -1045,7 +1142,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/5994"
       ],
       "smiles": "CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C",
-      "source": "pubchem:5994"
+      "source": "pubchem:5994",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_caffeine",
@@ -1057,7 +1155,8 @@
         "https://www.rcsb.org/structure/8SO2"
       ],
       "smiles": "Cn1cnc2c1C(=O)N(C(=O)N2C)C",
-      "source": "PDB 8SO2 ligand CFF"
+      "source": "PDB 8SO2 ligand CFF",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_bergamottin",
@@ -1069,7 +1168,8 @@
         "https://www.rcsb.org/structure/6OOB"
       ],
       "smiles": "C/C(=C/COc1c2ccoc2cc3c1C=CC(=O)O3)/CC[C@@H](C(C)(C)O)O",
-      "source": "PDB 6OOB ligand MWS"
+      "source": "PDB 6OOB ligand MWS",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_bromoergocryptine",
@@ -1081,7 +1181,8 @@
         "https://www.rcsb.org/structure/5VCG"
       ],
       "smiles": "CC(C)C[C@H]1C(=O)N2CCC[C@H]2[C@]3(N1C(=O)[C@](O3)(C(C)C)NC(=O)[C@H]4CN([C@@H]5Cc6c7c(cccc7[nH]c6Br)C5=C4)C)O",
-      "source": "PDB 5VCG ligand 08Y"
+      "source": "PDB 5VCG ligand 08Y",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_cholesterol",
@@ -1093,7 +1194,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/5997"
       ],
       "smiles": "C[C@H](CCCC(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C",
-      "source": "pubchem:5997"
+      "source": "pubchem:5997",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_4beta_hydroxycholesterol",
@@ -1105,7 +1207,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/3247060"
       ],
       "smiles": "C[C@H](CCCC(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H]([C@@H]4O)O)C)C",
-      "source": "pubchem:3247060"
+      "source": "pubchem:3247060",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_lithocholic_acid",
@@ -1117,7 +1220,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/9903"
       ],
       "smiles": "C[C@H](CCC(=O)O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@H]4[C@@]3(CC[C@H](C4)O)C)C",
-      "source": "pubchem:9903"
+      "source": "pubchem:9903",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_dehydroepiandrosterone_3_sulfate",
@@ -1129,7 +1233,8 @@
         "https://www.rcsb.org/structure/8GK3"
       ],
       "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CC=C4[C@@]3(CC[C@@H](C4)OS(=O)(=O)O)C",
-      "source": "PDB 8GK3 ligand ZWY"
+      "source": "PDB 8GK3 ligand ZWY",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_calcitriol",
@@ -1141,7 +1246,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/5280453"
       ],
       "smiles": "C[C@H](CCCC(C)(C)O)[C@H]1CC[C@@H]\\2[C@@]1(CCC/C2=C\\C=C/3\\C[C@H](C[C@@H](C3=C)O)O)C",
-      "source": "pubchem:5280453"
+      "source": "pubchem:5280453",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_all_trans_retinoic_acid",
@@ -1153,7 +1259,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/444795"
       ],
       "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C(=O)O)/C)/C",
-      "source": "pubchem:444795"
+      "source": "pubchem:444795",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_anandamide",
@@ -1165,7 +1272,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/5281969"
       ],
       "smiles": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)NCCO",
-      "source": "pubchem:5281969"
+      "source": "pubchem:5281969",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_arachidonic_acid",
@@ -1177,7 +1285,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/444899"
       ],
       "smiles": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O",
-      "source": "pubchem:444899"
+      "source": "pubchem:444899",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_aflatoxin_b1",
@@ -1189,7 +1298,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/186907"
       ],
       "smiles": "COC1=C2C3=C(C(=O)CC3)C(=O)OC2=C4[C@@H]5C=CO[C@@H]5OC4=C1",
-      "source": "pubchem:186907"
+      "source": "pubchem:186907",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_nifedipine",
@@ -1201,7 +1311,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/4485"
       ],
       "smiles": "CC1=C(C(C(=C(N1)C)C(=O)OC)C2=CC=CC=C2[N+](=O)[O-])C(=O)OC",
-      "source": "pubchem:4485"
+      "source": "pubchem:4485",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_alpha_naphthoflavone",
@@ -1213,7 +1324,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/11790"
       ],
       "smiles": "C1=CC=C(C=C1)C2=CC(=O)C3=C(O2)C4=CC=CC=C4C=C3",
-      "source": "pubchem:11790"
+      "source": "pubchem:11790",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_cyclosporin_a",
@@ -1225,7 +1337,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/5284373"
       ],
       "smiles": "CC[C@H]1C(=O)N(CC(=O)N([C@H](C(=O)N[C@H](C(=O)N([C@H](C(=O)N[C@H](C(=O)N[C@@H](C(=O)N([C@H](C(=O)N([C@H](C(=O)N([C@H](C(=O)N([C@H](C(=O)N1)[C@@H]([C@H](C)C/C=C/C)O)C)C(C)C)C)CC(C)C)C)CC(C)C)C)C)C)CC(C)C)C)C(C)C)CC(C)C)C)C",
-      "source": "pubchem:5284373"
+      "source": "pubchem:5284373",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_tacrolimus",
@@ -1237,7 +1350,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/445643"
       ],
       "smiles": "C[C@@H]1C[C@@H]([C@@H]2[C@H](C[C@H]([C@@](O2)(C(=O)C(=O)N3CCCC[C@H]3C(=O)O[C@@H]([C@@H]([C@H](CC(=O)[C@@H](/C=C(/C1)\\C)CC=C)O)C)/C(=C/[C@@H]4CC[C@H]([C@@H](C4)OC)O)/C)O)C)OC)OC",
-      "source": "pubchem:445643"
+      "source": "pubchem:445643",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_atorvastatin",
@@ -1249,7 +1363,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/60823"
       ],
       "smiles": "CC(C)C1=C(C(=C(N1CC[C@H](C[C@H](CC(=O)O)O)O)C2=CC=C(C=C2)F)C3=CC=CC=C3)C(=O)NC4=CC=CC=C4",
-      "source": "pubchem:60823"
+      "source": "pubchem:60823",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_delta_9_tetrahydrocannabinol",
@@ -1261,7 +1376,8 @@
         "https://www.rcsb.org/structure/9PLJ"
       ],
       "smiles": "CCCCCc1cc(c2c(c1)OC([C@H]3[C@H]2C=C(CC3)C)(C)C)O",
-      "source": "PDB 9PLJ ligand TCI"
+      "source": "PDB 9PLJ ligand TCI",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_azamulin",
@@ -1273,7 +1389,8 @@
         "https://www.rcsb.org/structure/6OOA"
       ],
       "smiles": "CC[C@@]1(C[C@H]([C@@]2([C@@H](CC[C@@]3([C@H]2C(=O)CC3)[C@H]([C@@H]1O)C)C)C)OC(=O)CSc4nc([nH]n4)N)C",
-      "source": "PDB 6OOA ligand MWY"
+      "source": "PDB 6OOA ligand MWY",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_clotrimazole",
@@ -1285,7 +1402,8 @@
         "https://www.rcsb.org/structure/8SPD"
       ],
       "smiles": "c1ccc(cc1)C(c2ccccc2)(c3ccccc3Cl)n4ccnc4",
-      "source": "PDB 8SPD (3A4) / 8SG5 (3A5) ligand CL6"
+      "source": "PDB 8SPD (3A4) / 8SG5 (3A5) ligand CL6",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_metformin",
@@ -1297,7 +1415,8 @@
         "https://www.rcsb.org/structure/5G5J"
       ],
       "smiles": "CN(C)C(=N)N=C(N)N",
-      "source": "PDB 5G5J"
+      "source": "PDB 5G5J",
+      "status": "ESTABLISHED"
     },
     {
       "id": "cmpd_18_cineole",
@@ -1309,7 +1428,8 @@
         "https://pubchem.ncbi.nlm.nih.gov/compound/2758"
       ],
       "smiles": "CC1(C2CCC(O1)(CC2)C)C",
-      "source": "pubchem:2758"
+      "source": "pubchem:2758",
+      "status": "ESTABLISHED"
     }
   ],
   "edges": [
@@ -1320,7 +1440,8 @@
       "evidence": "genome annotation",
       "citations": [
         "https://rest.ensembl.org/overlap/region/human/7:99600000-99900000?feature=gene;content-type=application/json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A_locus",
@@ -1329,7 +1450,8 @@
       "evidence": "genome annotation",
       "citations": [
         "https://rest.ensembl.org/overlap/region/human/7:99600000-99900000?feature=gene;content-type=application/json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A_locus",
@@ -1338,7 +1460,8 @@
       "evidence": "genome annotation",
       "citations": [
         "https://rest.ensembl.org/overlap/region/human/7:99600000-99900000?feature=gene;content-type=application/json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A_locus",
@@ -1347,7 +1470,8 @@
       "evidence": "genome annotation",
       "citations": [
         "https://rest.ensembl.org/overlap/region/human/7:99600000-99900000?feature=gene;content-type=application/json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -1356,7 +1480,8 @@
       "evidence": "~93% protein identity; exon 6 of CYP3A7 was overwritten by CYP3A4 by gene conversion in the hominid ancestor",
       "citations": [
         "https://doi.org/10.1097/fpc.0b013e3282f313f8"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -1365,7 +1490,8 @@
       "evidence": "~84% protein identity; co-expressed in liver at 335 vs 156 TPM",
       "citations": [
         "https://gtexportal.org/api/v2/expression/medianGeneExpression?datasetId=gtex_v8&gencodeId=ENSG00000160868.14&format=json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -1374,7 +1500,8 @@
       "evidence": "head-to-head, ~43.6 kb apart, sharing the intergenic regulatory block (inference from coordinates)",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000402"
-      ]
+      ],
+      "status": "INFERRED"
     },
     {
       "source": "CYP3A4_22",
@@ -1383,7 +1510,8 @@
       "evidence": "liver 19% vs 5% of transcripts, P=0.006; HepG2 minigene 18% vs 12%; no effect in intestinal LS-174T",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000183"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_1B",
@@ -1392,7 +1520,8 @@
       "evidence": "NFSE at -289 from the TSS; functional effect contested and probably null",
       "citations": [
         "https://doi.org/10.1006/bbrc.1999.0752"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A5_3",
@@ -1401,7 +1530,8 @@
       "evidence": "cryptic splice site, exon 3B inclusion, premature stop",
       "citations": [
         "https://gnomad.broadinstitute.org/variant/7-99672916-T-C?dataset=gnomad_r4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "I301T",
@@ -1410,7 +1540,8 @@
       "evidence": "10-fold higher calcitriol turnover, altered SRS-4, decreased activity on other substrates",
       "citations": [
         "https://doi.org/10.1172/JCI98680"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "R4_region",
@@ -1419,7 +1550,8 @@
       "evidence": "CRISPR deletion INCREASES CYP3A4 while decreasing CYP3A43",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000402"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "R4_region",
@@ -1428,7 +1560,8 @@
       "evidence": "CRISPR deletion decreases CYP3A43",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000402"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "proximal_ER6",
@@ -1438,7 +1571,8 @@
       "citations": [
         "https://doi.org/10.1172/JCI3703",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "XREM",
@@ -1448,7 +1582,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.56.6.1329",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CLEM4",
@@ -1458,7 +1593,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.65.2.326",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "XREM",
@@ -1467,7 +1603,8 @@
       "evidence": "4C contact region R2 spans both; cooperation of the PXR elements is required for maximal induction",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000402"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1I2",
@@ -1476,7 +1613,8 @@
       "evidence": "DNase footprints FP3/FP4 overlap hPXR motifs; ~50-fold rifampicin induction on hPXR co-transfection",
       "citations": [
         "https://doi.org/10.1124/mol.56.6.1329"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1I2",
@@ -1486,7 +1624,8 @@
       "citations": [
         "https://doi.org/10.1172/JCI3703",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC1524881/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1I3",
@@ -1495,7 +1634,8 @@
       "evidence": "reporter and gel shift; the same elements also mediate PXR transactivation",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/12130689/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "VDR",
@@ -1504,7 +1644,8 @@
       "evidence": "VDR-RXR binds the ER6; selective ER6 mutation abolishes 1,25-D3 activation; PXR excluded",
       "citations": [
         "https://doi.org/10.1124/mol.60.6.1399"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "HNF4A",
@@ -1514,7 +1655,8 @@
       "citations": [
         "https://doi.org/10.1038/nm815",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "HNF4A",
@@ -1524,7 +1666,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.65.2.326",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC4114763/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "USF1",
@@ -1534,7 +1677,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.65.2.326",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "HNF1A",
@@ -1544,7 +1688,8 @@
       "citations": [
         "https://doi.org/10.1124/mol.65.2.326",
         "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encRegTfbsClustered;chrom=chr7;start=99755000;end=99800000"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "RXRA",
@@ -1553,7 +1698,8 @@
       "evidence": "obligate partner at every CYP3A4 element",
       "citations": [
         "https://doi.org/10.1172/JCI3703"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR3C1",
@@ -1562,7 +1708,8 @@
       "evidence": "nanomolar dexamethasone raises PXR and RXRa mRNA, RU486-sensitive",
       "citations": [
         "https://doi.org/10.1124/mol.58.2.361"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR0B2",
@@ -1571,7 +1718,8 @@
       "evidence": "SHP reduces PXR recruitment of HNF4a and SRC-1 to CYP3A4 chromatin",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC1524881/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1H4",
@@ -1580,7 +1728,8 @@
       "evidence": "GW4064 raises SHP ~3x and cuts CYP3A4 mRNA 75% in primary human hepatocytes",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC4407707/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NFKB_p65",
@@ -1589,7 +1738,8 @@
       "evidence": "p65 binds RXRa's DNA-binding domain and displaces PXR:RXRa from DNA (EMSA and ChIP)",
       "citations": [
         "https://doi.org/10.1074/jbc.M601302200"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CEBPB_LIP",
@@ -1598,7 +1748,8 @@
       "evidence": "IL-6 raises C/EBPb-LIP translation; adenoviral LIP represses CYP3A4 mRNA dose-dependently; gp130-dependent, JAK/STAT-independent",
       "citations": [
         "https://doi.org/10.1096/fj.02-0195fje"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "AHR",
@@ -1607,7 +1758,8 @@
       "evidence": "TCDD lowers CYP3A4 and PXR mRNA; AhR knockdown raises basal and induced CYP3A4",
       "citations": [
         "https://doi.org/10.1016/j.toxlet.2017.05.029"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "DBP_E4BP4",
@@ -1616,7 +1768,8 @@
       "evidence": "serum-shocked HepG2; DBP activates and E4BP4 represses near the TSS",
       "citations": [
         "https://doi.org/10.1097/FPC.0b013e3282f12a61"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NCOA1",
@@ -1625,7 +1778,8 @@
       "evidence": "ChIP: rifampicin-activated PXR recruits HNF4a and SRC-1 to CYP3A4 chromatin",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC1524881/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "EP300",
@@ -1634,7 +1788,8 @@
       "evidence": "ChIP at both PXREs after rifampicin: NCOA6 +3.1x distal, p300 +2.2x",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC5508193/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NCOR2",
@@ -1643,7 +1798,8 @@
       "evidence": "binds PXR's LBD via ID2; overexpression inhibits, silencing enhances CYP3A4 promoter transactivation",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/16219912/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -1652,7 +1808,8 @@
       "evidence": "MANE Select NM_017460.6 / ENST00000651514, 2,781 nt",
       "citations": [
         "https://rest.ensembl.org/lookup/id/ENST00000651514?expand=1;content-type=application/json"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_mRNA",
@@ -1661,7 +1818,8 @@
       "evidence": "1,512 nt CDS, 503 aa, initiator Met removed",
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P08684.txt"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1670,7 +1828,8 @@
       "evidence": "Cys442 thiolate; crystal structures 1TQN and 1W0G",
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P08684.txt"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "Cys442",
@@ -1679,7 +1838,8 @@
       "evidence": "axial binding residue, Fe-S 2.3 A",
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P08684.txt"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1688,7 +1848,8 @@
       "evidence": "residues ~202-260, bilayer-inserted and conformationally mobile",
       "citations": [
         "https://doi.org/10.1073/pnas.1616198114"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1697,7 +1858,8 @@
       "evidence": "the ordered hydrophobic roof above the heme",
       "citations": [
         "https://doi.org/10.1126/science.1099736"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1706,7 +1868,8 @@
       "evidence": "12 basic positions measured at 9.7 A from the iron across the porphyrin",
       "citations": [
         "https://doi.org/10.1124/dmd.121.000475"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "FG_loop",
@@ -1715,7 +1878,8 @@
       "evidence": "R212/F213/D214/D217/F219/F220/I238/C239/V240 line the groove (measured over 5 structures)",
       "citations": [
         "https://doi.org/10.1016/j.jbc.2023.105117"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "FG_loop",
@@ -1724,7 +1888,8 @@
       "evidence": "MD shows the F-F' loop is a one-way gate opening on a multi-microsecond timescale",
       "citations": [
         "https://doi.org/10.1038/s42004-025-01815-5"
-      ]
+      ],
+      "status": "INFERRED"
     },
     {
       "source": "access_channel",
@@ -1733,7 +1898,8 @@
       "evidence": "fluorol at 12.3 A in 8DYC and caffeine in the same channel in 8SO1/8SO2",
       "citations": [
         "https://doi.org/10.3390/ijms232012591"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "peripheral_site",
@@ -1743,7 +1909,8 @@
       "citations": [
         "https://doi.org/10.3390/ijms232012591",
         "https://doi.org/10.1016/j.jbc.2023.104993"
-      ]
+      ],
+      "status": "INFERRED"
     },
     {
       "source": "Ser119",
@@ -1752,7 +1919,8 @@
       "evidence": "H-bonds midazolam's imidazole N at the cavity rim",
       "citations": [
         "https://doi.org/10.1073/pnas.1616198114"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "Phe_cluster",
@@ -1761,7 +1929,8 @@
       "evidence": "F108/R212/F213/F215/F241/F304 contact the third stacked caffeine in 8SO2",
       "citations": [
         "https://doi.org/10.1016/j.jbc.2023.105117"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "POR",
@@ -1770,7 +1939,8 @@
       "evidence": "1:1 Nanodisc complex fully competent; no structure of the complex exists",
       "citations": [
         "https://doi.org/10.1074/jbc.m609589200"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "POR",
@@ -1779,7 +1949,8 @@
       "evidence": "inferred from P450 homologues and from the nitration mapping of Y99/Y347/Y430 as CPR contacts",
       "citations": [
         "https://doi.org/10.1021/tx3002753"
-      ]
+      ],
+      "status": "INFERRED"
     },
     {
       "source": "CYB5A",
@@ -1788,7 +1959,8 @@
       "evidence": "fluorescent b5 titration, Kd in the 2.5-61 nM band; affinity decreased by a bound substrate or inhibitor",
       "citations": [
         "https://doi.org/10.1124/dmd.121.000475"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYB5A",
@@ -1798,7 +1970,8 @@
       "citations": [
         "https://doi.org/10.1074/jbc.271.44.27438",
         "https://doi.org/10.1074/jbc.M105011200"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "ternary_3A4_b5_POR",
@@ -1808,7 +1981,8 @@
       "citations": [
         "https://doi.org/10.1124/dmd.121.000475",
         "https://doi.org/10.1038/s41598-025-09060-5"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "PGRMC1",
@@ -1818,7 +1992,8 @@
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P08684.txt",
         "https://doi.org/10.1038/ncomms11030"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "PGRMC1",
@@ -1827,7 +2002,8 @@
       "evidence": "concentration-dependent inhibition in transfected cells, partially reversed by extra POR - so it may act by sequestering POR",
       "citations": [
         "https://doi.org/10.1124/mol.110.068478"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "PGRMC1",
@@ -1836,7 +2012,8 @@
       "evidence": "co-IP; the basis for the POR-sequestration reading",
       "citations": [
         "https://doi.org/10.1124/mol.110.068478"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "FABP1",
@@ -1845,7 +2022,8 @@
       "evidence": "kinetic modelling across varying FABP1 and substrate favours directed transfer; Kd < 2.5 uM for diazepam and sulfinpyrazone",
       "citations": [
         "https://doi.org/10.1021/acs.jmedchem.5c03754"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP2E1",
@@ -1855,7 +2033,8 @@
       "citations": [
         "https://doi.org/10.1074/jbc.m114.615443",
         "https://doi.org/10.1016/j.abb.2020.108677"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_oligomer",
@@ -1865,7 +2044,8 @@
       "citations": [
         "https://doi.org/10.1074/jbc.m114.615443",
         "https://doi.org/10.1016/j.bbabio.2009.12.008"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_oligomer",
@@ -1874,7 +2054,8 @@
       "evidence": "crosslinking and LRET distances match the crystallographic dimer interface, which is the F'-G' surface carrying the peripheral site",
       "citations": [
         "https://doi.org/10.1074/jbc.m114.615443"
-      ]
+      ],
+      "status": "INFERRED"
     },
     {
       "source": "ER_membrane",
@@ -1884,7 +2065,8 @@
       "citations": [
         "https://rest.uniprot.org/uniprotkb/P08684.txt",
         "https://doi.org/10.1111/cbdd.70080"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "ER_membrane",
@@ -1894,7 +2076,8 @@
       "citations": [
         "https://doi.org/10.1016/j.jbc.2023.104993",
         "https://doi.org/10.1021/acs.biochem.9b01001"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "gp78_AMFR",
@@ -1904,7 +2087,8 @@
       "citations": [
         "https://doi.org/10.1016/j.abb.2008.12.001",
         "https://doi.org/10.1074/mcp.M111.010132"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CHIP_STUB1",
@@ -1914,7 +2098,8 @@
       "citations": [
         "https://doi.org/10.1016/j.abb.2008.12.001",
         "https://doi.org/10.1074/mcp.M111.010132"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "second_ligand",
@@ -1923,7 +2108,8 @@
       "evidence": "measured clash-free multi-occupancy in 2V0M, 4K9T, 4K9U, 8SO1, 8SO2 (and CYP3A5 7SV2/8SG5); min inter-copy distance 2.90 A",
       "citations": [
         "https://doi.org/10.1016/j.jbc.2023.105117"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "second_ligand",
@@ -1932,7 +2118,8 @@
       "evidence": "the second midazolam shifts 1'-OH:4-OH to 1:2 with NO increase in catalytic rate",
       "citations": [
         "https://doi.org/10.1021/acs.biochem.1c00161"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "second_ligand",
@@ -1942,7 +2129,8 @@
       "citations": [
         "https://doi.org/10.1016/j.jbc.2023.105117",
         "https://doi.org/10.1021/acs.biochem.5b00510"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1951,7 +2139,8 @@
       "evidence": "Reactome mapping by UniProt accession",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-211981"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1960,7 +2149,8 @@
       "evidence": "Reactome mapping",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-5423646"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1969,7 +2159,8 @@
       "evidence": "via the aspirin, atorvastatin and prednisone ADME children",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-9748784"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1978,7 +2169,8 @@
       "evidence": "DHA 14(R)-hydroxylation",
       "citations": [
         "https://reactome.org/content/detail/R-HSA-9027307"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1987,7 +2179,8 @@
       "evidence": "KEGG hsa:1576 PATHWAY block",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -1996,7 +2189,8 @@
       "evidence": "KEGG; EC 1.14.14.57 taurochenodeoxycholate 6alpha-hydroxylase",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2005,7 +2199,8 @@
       "evidence": "KEGG",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2014,7 +2209,8 @@
       "evidence": "KEGG network nt06250 AFB1 to DNA adducts",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2023,7 +2219,8 @@
       "evidence": "KEGG",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2032,7 +2229,8 @@
       "evidence": "KEGG; linoleate 11-hydroxylation RHEA:52284",
       "citations": [
         "https://rest.kegg.jp/get/hsa:1576"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2042,7 +2240,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/20713656/",
         "https://pubmed.ncbi.nlm.nih.gov/30918069/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1I2",
@@ -2052,7 +2251,8 @@
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC5869567/",
         "https://doi.org/10.1073/pnas.192448899"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1I2",
@@ -2061,7 +2261,8 @@
       "evidence": "a DR4 in a regulatory cluster about -8 kb from the ABCB1 TSS",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/11297522/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1I2",
@@ -2070,7 +2271,8 @@
       "evidence": "an ER-8 element 440 bp upstream, shared with CAR and FXR",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/11706036/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "SLCO1B1",
@@ -2079,7 +2281,8 @@
       "evidence": "hepatic uptake upstream of metabolism; canonically HNF1A-driven, not a PXR target",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/26259716/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "ABCB1",
@@ -2089,7 +2292,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/9400028/",
         "https://pubmed.ncbi.nlm.nih.gov/21189140/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "CYP3A4_gene",
@@ -2098,7 +2302,8 @@
       "evidence": "Visium HD zone3:zone1 = 21.1x, n=3 live healthy donors, 8 lobular layers",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC13216088/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -2107,7 +2312,8 @@
       "evidence": "HPA 2039.8 nCPM; ~40-60x jump from crypt to mature enterocyte",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC9043569/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -2116,7 +2322,8 @@
       "evidence": "GTEx median 335.3 TPM, n=226 donors",
       "citations": [
         "https://gtexportal.org/api/v2/expression/medianGeneExpression?gencodeId=ENSG00000160868.14&datasetId=gtex_v8"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -2126,7 +2333,8 @@
       "citations": [
         "https://gtexportal.org/api/v2/expression/medianGeneExpression?gencodeId=ENSG00000160868.14&datasetId=gtex_v8",
         "https://pubmed.ncbi.nlm.nih.gov/9400033/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -2135,7 +2343,61 @@
       "evidence": "HPA single-cell nCPM 0.3-32 vs hepatocytes 3988.6; the residual is ambient RNA",
       "citations": [
         "https://www.proteinatlas.org/ENSG00000160868-CYP3A4"
-      ]
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "source": "CYP3A4_gene",
+      "target": "periportal_hep",
+      "relation": "depleted_in",
+      "evidence": "Visium HD zone3:zone1 = 21.1x, so zone 1 is the depleted end; protein staining is confined to zone 3 extending into zone 2",
+      "citations": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13216088/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11137285/"
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "source": "CYP3A5_gene",
+      "target": "periportal_hep",
+      "relation": "expressed_in",
+      "evidence": "CYP3A5 is zonated 1.8x PERIPORTAL, i.e. opposite to CYP3A4 - so any non-isoform-specific CYP3A measurement averages two oppositely zonated enzymes",
+      "citations": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13216088/"
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "source": "periportal_hep",
+      "target": "pericentral_hep",
+      "relation": "zonation_axis_with",
+      "evidence": "the porto-central axis along which CYP3A4 varies 21.1-fold and CYP3A5 varies 1.8-fold the other way",
+      "citations": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13216088/"
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "source": "CYP3A4_gene",
+      "target": "colonocyte",
+      "relation": "absent_from",
+      "evidence": "0.79% of colonocytes express CYP3A4 and HPA puts colon 551-fold below enterocytes; duodenum:colon is about 250x",
+      "citations": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9043569/",
+        "https://www.proteinatlas.org/ENSG00000160868-CYP3A4"
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "source": "colonocyte",
+      "target": "enterocyte",
+      "relation": "depleted_relative_to",
+      "evidence": "the distal end of the gut gradient that makes CYP3A4 a proximal small-intestinal first-pass enzyme: enterocyte 51.28% vs colonocyte 0.79% of cells, 2039.8 vs 3.7 nCPM",
+      "citations": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9043569/",
+        "https://www.proteinatlas.org/ENSG00000160868-CYP3A4"
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A7_gene",
@@ -2144,7 +2406,8 @@
       "evidence": "69.88% of 11,673 hepatoblasts vs CYP3A4's 0.09%",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC7780123/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_gene",
@@ -2153,7 +2416,8 @@
       "evidence": "ARCHS4 Pearson over the human RNA-seq matrix, verified deterministic on re-query",
       "citations": [
         "https://maayanlab.cloud/archs4/gene/CYP3A4"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "state_rifampicin",
@@ -2162,7 +2426,8 @@
       "evidence": "PHH mRNA 23x; clinical oral midazolam AUC -91%, IV -52%",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/17639026/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "NR1I2",
@@ -2171,7 +2436,8 @@
       "evidence": "rifampicin is a PXR ligand; XREM deletion cuts induction 4.6x -> 1.3x without changing basal expression",
       "citations": [
         "https://doi.org/10.1097/FPC.0000000000000402"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "state_inflammation",
@@ -2180,7 +2446,8 @@
       "evidence": "PHH mRNA below 5% of control at 10 ng/mL IL-6; -61% metabolic ratio after surgery",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC2171046/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "state_inflammation",
@@ -2189,7 +2456,8 @@
       "evidence": "IL-6 rapidly and markedly decreases PXR and CAR mRNA while leaving AhR and GR untouched",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/10924340/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "state_pregnancy",
@@ -2198,7 +2466,8 @@
       "evidence": "third-trimester midazolam CL/F(unbound) +72%, paired, n=13; probes disagree ~2x",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/18288078/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "state_fasting",
@@ -2207,7 +2476,8 @@
       "evidence": "36 h fasting raises midazolam clearance 12% (p<0.01) - opposite in sign to the FGF21-PXR mechanism",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC6244726/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "state_masld",
@@ -2217,7 +2487,8 @@
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/26231377/",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC2769034/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "miR_27b",
@@ -2226,7 +2497,8 @@
       "evidence": "3'UTR luciferase + seed mutant + western + activity, three labs; protein down >30%",
       "citations": [
         "https://doi.org/10.1124/dmd.109.027680"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "miR_27b",
@@ -2235,7 +2507,8 @@
       "evidence": "VDR 3'UTR luciferase in the same paper - miR-27b is both direct and indirect",
       "citations": [
         "https://doi.org/10.1124/dmd.109.027680"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "miR_206",
@@ -2244,7 +2517,8 @@
       "evidence": "3'UTR reporter with MRE mutant; 5.8% of CYP3A activity variance",
       "citations": [
         "https://doi.org/10.1038/srep26544"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "miR_627",
@@ -2253,7 +2527,8 @@
       "evidence": "GFP-3'UTR reporter + mutant + western, two independent groups",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC3942699/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "svRNAb",
@@ -2262,7 +2537,8 @@
       "evidence": "vault-RNA-derived small RNA targeting the 3'UTR; replicated in HepG2 and 19 livers",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/19749744/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "miR_148a",
@@ -2271,7 +2547,8 @@
       "evidence": "PXR 3'UTR luciferase; contested - correlations null in a later 24-liver study",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/18268015/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "CYP3A4_AS1",
@@ -2280,7 +2557,8 @@
       "evidence": "knockdown raises CYP3A4 ~3x in Huh7, overexpression lowers it 89%; contested by abundance and by a failed independent WGCNA",
       "citations": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC8578198/"
-      ]
+      ],
+      "status": "CONTESTED"
     },
     {
       "source": "CYP3A4_mRNA",
@@ -2289,7 +2567,8 @@
       "evidence": "two polyA signals annotated inside NM_017460.6 itself",
       "citations": [
         "https://doi.org/10.1124/mol.111.074393"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_mRNA",
@@ -2298,7 +2577,8 @@
       "evidence": "the RefSeq-canonical 3' end",
       "citations": [
         "https://doi.org/10.1124/mol.111.074393"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "uORF_5UTR",
@@ -2307,7 +2587,8 @@
       "evidence": "single uAUG at nt 27 of the 103 nt 5'UTR; no Ribo-seq support in either GENCODE catalogue",
       "citations": [
         "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=NM_017460&rettype=fasta&retmode=text"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "DRR",
@@ -2316,7 +2597,8 @@
       "evidence": "4C contact plus CRISPR deletion; p300 ChIP fold-enrichment 68-130 across three donors",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/36045613/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "DRR",
@@ -2325,7 +2607,8 @@
       "evidence": "same CRISPR deletion reduces CYP3A5",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/36045613/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "DRR",
@@ -2334,7 +2617,8 @@
       "evidence": "same CRISPR deletion reduces CYP3A7",
       "citations": [
         "https://pubmed.ncbi.nlm.nih.gov/36045613/"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2343,7 +2627,8 @@
       "evidence": "pubchem:6013",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/6013"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2352,7 +2637,8 @@
       "evidence": "PDB 5TE8 ligand 08J",
       "citations": [
         "https://www.rcsb.org/structure/5TE8"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2361,7 +2647,8 @@
       "evidence": "PDB 2J0D ligand ERY",
       "citations": [
         "https://www.rcsb.org/structure/2J0D"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2370,7 +2657,8 @@
       "evidence": "PDB 2V0M ligand KLN",
       "citations": [
         "https://www.rcsb.org/structure/2V0M"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2379,7 +2667,8 @@
       "evidence": "PDB 5VCE ligand RIT",
       "citations": [
         "https://www.rcsb.org/structure/5VCE"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2388,7 +2677,8 @@
       "evidence": "PDB 9BBB ligand A1APA",
       "citations": [
         "https://www.rcsb.org/structure/9BBB"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2397,7 +2687,8 @@
       "evidence": "pubchem:5994",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/5994"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2406,7 +2697,8 @@
       "evidence": "PDB 8SO2 ligand CFF",
       "citations": [
         "https://www.rcsb.org/structure/8SO2"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2415,7 +2707,8 @@
       "evidence": "PDB 6OOB ligand MWS",
       "citations": [
         "https://www.rcsb.org/structure/6OOB"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2424,7 +2717,8 @@
       "evidence": "PDB 5VCG ligand 08Y",
       "citations": [
         "https://www.rcsb.org/structure/5VCG"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2433,7 +2727,8 @@
       "evidence": "pubchem:5997",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/5997"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2442,7 +2737,8 @@
       "evidence": "pubchem:3247060",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/3247060"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2451,7 +2747,8 @@
       "evidence": "pubchem:9903",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/9903"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2460,7 +2757,8 @@
       "evidence": "PDB 8GK3 ligand ZWY",
       "citations": [
         "https://www.rcsb.org/structure/8GK3"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2469,7 +2767,8 @@
       "evidence": "pubchem:5280453",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/5280453"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2478,7 +2777,8 @@
       "evidence": "pubchem:444795",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/444795"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2487,7 +2787,8 @@
       "evidence": "pubchem:5281969",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/5281969"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2496,7 +2797,8 @@
       "evidence": "pubchem:444899",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/444899"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2505,7 +2807,8 @@
       "evidence": "pubchem:186907",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/186907"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2514,7 +2817,8 @@
       "evidence": "pubchem:4485",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/4485"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2523,7 +2827,8 @@
       "evidence": "pubchem:11790",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/11790"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2532,7 +2837,8 @@
       "evidence": "pubchem:5284373",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/5284373"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2541,7 +2847,8 @@
       "evidence": "pubchem:445643",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/445643"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2550,7 +2857,8 @@
       "evidence": "pubchem:60823",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/60823"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2559,7 +2867,8 @@
       "evidence": "PDB 9PLJ ligand TCI",
       "citations": [
         "https://www.rcsb.org/structure/9PLJ"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2568,7 +2877,8 @@
       "evidence": "PDB 6OOA ligand MWY",
       "citations": [
         "https://www.rcsb.org/structure/6OOA"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2577,7 +2887,8 @@
       "evidence": "PDB 8SPD (3A4) / 8SG5 (3A5) ligand CL6",
       "citations": [
         "https://www.rcsb.org/structure/8SPD"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2586,7 +2897,8 @@
       "evidence": "PDB 5G5J",
       "citations": [
         "https://www.rcsb.org/structure/5G5J"
-      ]
+      ],
+      "status": "ESTABLISHED"
     },
     {
       "source": "CYP3A4_protein",
@@ -2595,7 +2907,8 @@
       "evidence": "pubchem:2758",
       "citations": [
         "https://pubchem.ncbi.nlm.nih.gov/compound/2758"
-      ]
+      ],
+      "status": "ESTABLISHED"
     }
   ],
   "meta": {
@@ -2619,27 +2932,44 @@
       "celltype",
       "compound"
     ],
-    "status_marks": [
-      "ESTABLISHED",
+    "status_vocabulary": [
       "CONTESTED",
+      "ESTABLISHED",
       "INFERRED",
-      "NO EVIDENCE FOUND"
+      "NO_EVIDENCE_FOUND"
     ],
-    "caveat": "Node 'detail' strings are tooltip-length summaries. Read the companion document for the status mark (established / contested / inferred / no evidence found) attached to each claim; the graph deliberately does not encode that nuance.",
+    "status_note": "Every node and every edge carries `status`, the machine-readable form of the companion document's evidence marks. ESTABLISHED = multiple independent sources or one primary measurement with a named method; CONTESTED = the literature genuinely disagrees and the document gives both sides; INFERRED = reasoning, not a reported result; NO_EVIDENCE_FOUND = looked for and not found, which is not the same as refuted.",
+    "partner_verdict_vocabulary": [
+      "DO_NOT_SPEND",
+      "SPECULATIVE",
+      "SPENT_NEGATIVE",
+      "TEST_NEXT"
+    ],
+    "partner_prior_vocabulary": [
+      "LOWERED",
+      "NOT_APPLICABLE",
+      "RAISED",
+      "REFUTED",
+      "UNCHANGED"
+    ],
     "ranked_partners": [
       {
         "name": "A second copy of the query ligand",
-        "why": "The only partner with CYP3A4 structures showing it (2V0M, 4K9T, 4K9U, 8SO1, 8SO2, plus CYP3A5 7SV2/8SG5 and CYP3A7 8GK3), clash-free in every case, and the only one that touches the F/G roof. Kinetically, one testosterone is uncoupled, two give the maximal rate.",
-        "verdict": "FOLD IT FIRST. Costs one extra ligand entity in the YAML, no second chain, and it aims directly at Phe215/Arg212/Phe304, which FINDING 028 measured as doing 83% of the pose exclusion.",
+        "verdict": "SPENT_NEGATIVE",
+        "prior": "REFUTED",
+        "why": "The only 'partner' with CYP3A4 structural precedent - measured multi-occupancy in 6 of 122 entries, clash-free in every case (min inter-copy distance 2.90 A) - and the only one that touches the F/G roof. Kinetically, one testosterone is uncoupled, two give the maximal rate.",
+        "rationale": "RUN AND REFUTED, 2026-09. 49 OpenProtein jobs. The second copy landed in the ACTIVE SITE on 12 of 15 ligands rather than in the peripheral groove, and the first copy got WORSE by -0.0664 LDDT-PLI with rotation error moving +4.45 degrees in the wrong direction. The geometric reasoning held up: the model placed the second copy at a median 8.81 A from the iron, reproducing 2V0M's second ketoconazole unprompted, and 45 of 60 second copies did contact the groove residue set - but from inside the cavity. The prediction about WHERE it would go was right; the prediction that it would help was wrong.",
         "citations": [
           "https://doi.org/10.1016/j.jbc.2023.105117",
           "https://doi.org/10.1074/jbc.m609589200"
         ]
       },
       {
-        "name": "Membrane lipid (POPC, POPC:POPG 1:1)",
-        "why": "The F'-G' face is bilayer-embedded and 8GK3 resolves a steroid sulfate sitting on it; lipid identity measurably changes ligand binding (POPC gives much higher fragment binding than DMPC or DPhPC) and native liver lipid beats synthetic PC for POR-CYP3A4 coupling.",
-        "verdict": "WORTH ONE EXPERIMENT. Also just extra ligand entities. The hypothesis is that lipid restrains residues 211-216 in the co-folded model, which FINDING 028 found is rigid rather than wrongly adaptive.",
+        "name": "Membrane lipid (POPC, or 1:1 POPC:POPG)",
+        "verdict": "TEST_NEXT",
+        "prior": "LOWERED",
+        "why": "The F'-G' face is bilayer-embedded and 8GK3 resolves a steroid sulfate sitting on it; lipid identity measurably changes ligand binding (POPC gives much higher fragment binding than DMPC or DPhPC) and native liver lipid beats synthetic PC for POR-CYP3A4 coupling. Also just extra ligand entities - no second chain.",
+        "rationale": "Now the ONLY untested partner on this list, but its prior is LOWERED by the second-ligand result: the one thing that has actually been measured is that adding mass on the distal side makes the pose worse. The hypothesis that survives is narrower than it was - that lipid restrains residues 211-216 from OUTSIDE the cavity, where a second ligand demonstrably acts from inside. Run it as a falsification test, not as an expected gain.",
         "citations": [
           "https://doi.org/10.1111/cbdd.70080",
           "https://doi.org/10.1016/j.jbc.2023.104993"
@@ -2647,8 +2977,10 @@
       },
       {
         "name": "CYB5A (cytochrome b5)",
+        "verdict": "DO_NOT_SPEND",
+        "prior": "NOT_APPLICABLE",
         "why": "The tightest-binding protein partner, Kd in the 2.5-61 nM band, and the only one whose affinity for CYP3A4 measurably changes when a ligand is bound. Required for maximal bile-acid 6alpha-hydroxylation.",
-        "verdict": "DO NOT SPEND on pose accuracy. FINDING 024 measured the proximal interface at 9.7 A from the iron and 10.7 A from the nearest modelled F/G residue, across the porphyrin, with protein accuracy uncorrelated with ligand error (rho=+0.03). No CYP3A4-b5 complex exists to validate against.",
+        "rationale": "FINDING 024 measured the proximal interface at 9.7 A from the iron and 10.7 A from the nearest modelled F/G residue, ACROSS the porphyrin, with protein accuracy uncorrelated with ligand error (rho=+0.03). No CYP3A4-b5 complex exists to validate against.",
         "citations": [
           "https://doi.org/10.1124/dmd.121.000475",
           "https://doi.org/10.1016/s1388-1981(99)00031-1"
@@ -2656,8 +2988,10 @@
       },
       {
         "name": "POR / the POR FMN domain",
-        "why": "The obligatory electron donor, competent as a 1:1 complex, and possibly an allosteric modulator (MS footprinting on CYP2A6 found increased surface exposure, and POR mutations change CYP1A2 regioselectivity).",
-        "verdict": "DO NOT SPEND, same geometry argument as b5. Nine POR structures exist but none in complex with any P450, so the interface would itself be an unvalidated prediction.",
+        "verdict": "DO_NOT_SPEND",
+        "prior": "NOT_APPLICABLE",
+        "why": "The obligatory electron donor, competent as a 1:1 complex, and possibly an allosteric modulator - MS footprinting on CYP2A6 found increased surface exposure, and POR mutations change CYP1A2 regioselectivity.",
+        "rationale": "Same geometry argument as b5. Nine POR structures exist and none is in complex with any P450, so the interface would itself be an unvalidated prediction.",
         "citations": [
           "https://doi.org/10.1074/jbc.m609589200",
           "https://doi.org/10.1016/j.dmd.2025.100210"
@@ -2665,8 +2999,10 @@
       },
       {
         "name": "CYP3A4 itself (homodimer)",
+        "verdict": "SPECULATIVE",
+        "prior": "UNCHANGED",
         "why": "The oligomer interface, by crosslinking and LRET, resembles the crystallographic dimer - i.e. it IS the F'-G' surface that carries the peripheral site. Oligomerisation halves the fraction of enzyme a flavin domain can reduce and is required for alpha-naphthoflavone activation.",
-        "verdict": "SPECULATIVE. The interface is unvalidated and an extra chain adds degrees of freedom, not opinions (FINDING 009). Interesting only if the F/G rigidity problem survives everything else.",
+        "rationale": "The interface is unvalidated and an extra chain adds degrees of freedom, not opinions (FINDING 009). Distinct from the refuted second-ligand test in that it acts from outside the cavity, but there is no structure to fold against.",
         "citations": [
           "https://doi.org/10.1074/jbc.m114.615443",
           "https://doi.org/10.1042/bj20130398"
@@ -2674,16 +3010,20 @@
       },
       {
         "name": "CYP2E1",
+        "verdict": "SPECULATIVE",
+        "prior": "UNCHANGED",
         "why": "Forms mixed oligomers with CYP3A4; alcohol-induced CYP2E1 in human liver microsomes raises CYP3A4's rate and abolishes its homotropic cooperativity - a physiological perturbation changing a CYP3A4 kinetic signature.",
-        "verdict": "SPECULATIVE, and lower priority than the homodimer because the interface is the same one.",
+        "rationale": "Lower priority than the homodimer because the interface is the same one.",
         "citations": [
           "https://doi.org/10.1016/j.abb.2020.108677"
         ]
       },
       {
         "name": "PGRMC1",
+        "verdict": "DO_NOT_SPEND",
+        "prior": "NOT_APPLICABLE",
         "why": "The only protein UniProt annotates as a CYP3A4 interactor, with a 1.95 A structure of its own heme-stacked dimer (4X8Y) and a requirement for that dimerisation.",
-        "verdict": "NO. The sign is disputed - the one quantitative study reports INHIBITION partially rescued by extra POR, i.e. it may act on POR rather than on CYP3A4 - and no complex structure exists.",
+        "rationale": "The sign is disputed - the one quantitative study reports INHIBITION partially rescued by extra POR, i.e. it may act on POR rather than on CYP3A4 - and no complex structure exists.",
         "citations": [
           "https://doi.org/10.1038/ncomms11030",
           "https://doi.org/10.1124/mol.110.068478"
@@ -2691,8 +3031,10 @@
       },
       {
         "name": "FABP1",
-        "why": "The 2026 result that a soluble protein performs directed substrate transfer to CYP3A4, with Kd < 2.5 uM for diazepam and sulfinpyrazone.",
-        "verdict": "NO for pose prediction - it is cytosolic and does not shape the pocket - but it is the reason a free-substrate assumption may be wrong in kinetic modelling.",
+        "verdict": "DO_NOT_SPEND",
+        "prior": "NOT_APPLICABLE",
+        "why": "The 2026 result that a soluble protein performs directed substrate transfer to CYP3A4, with Kd < 2.5 uM for diazepam and sulfinpyrazone. Independently, FABP1 is the 13th ARCHS4 co-expression neighbour at r = 0.634.",
+        "rationale": "No use for pose prediction - it is cytosolic and does not shape the pocket - but it is the reason a free-substrate assumption may be wrong in kinetic modelling.",
         "citations": [
           "https://doi.org/10.1021/acs.jmedchem.5c03754"
         ]
@@ -2873,6 +3215,31 @@
         "source": "pubchem:2758",
         "reason": "A 154 Da plant monoterpene ether on the curated UniProt reaction list: the small-molecule floor of the substrate envelope."
       }
-    ]
+    ],
+    "counts": {
+      "n_nodes": 120,
+      "n_edges": 145,
+      "layers": {
+        "celltype": 14,
+        "complex": 11,
+        "compound": 29,
+        "gene": 9,
+        "pathway": 14,
+        "protein": 10,
+        "regulation": 22,
+        "transcript": 11
+      },
+      "node_status": {
+        "ESTABLISHED": 108,
+        "CONTESTED": 11,
+        "NO_EVIDENCE_FOUND": 1
+      },
+      "edge_status": {
+        "ESTABLISHED": 129,
+        "INFERRED": 5,
+        "CONTESTED": 11
+      },
+      "graded_claims": 265
+    }
   }
 }
