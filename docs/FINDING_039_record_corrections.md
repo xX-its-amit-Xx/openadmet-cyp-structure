@@ -299,10 +299,15 @@ cannot be acted on by a reader who stops before line 514.
 
 - **Why `fe_centroid_dist` selects on the arm4 holdout at all.** Not catastrophes, not pool
   uncertainty. Unexplained, and flagged as such in 025.
-- **Whether the pool-33 peak generalises.** It cannot be answered on this stratum. What would
-  settle it: the same exact closed-form curve on a second matched-depth stratum of ≥ 30
-  ligands, which needs a depth purchase that 035 already priced as not worth making. Until
-  then it is a curiosity about 08J.
+- ~~**Whether the pool-33 peak generalises.**~~ **ANSWERED, 2026-09-23, by `FINDING_040`:
+  it does not.** The same exact closed-form curve was run on the second matched-depth
+  stratum this section asked for — the **73** prediction-side Type II ligands, the exact
+  complement of 035's 14, 1,460 new Explorer poses at A0 = +0.0005 — and the selected curve
+  is **strictly increasing at all 39 steps**, argmax at depth 40. The combined 87-ligand
+  curve is monotone too. **The pool-33 peak is 08J, it is a property of n = 14, and this
+  section's "curiosity about 08J" reading was the right one.** The adversarial-pose
+  mechanism is real and reappears (X71 costs 0.252 LDDT-PLI on one ligand) — it is simply
+  outvoted at n = 73.
 - **Playbook §10 C4, C6, C7, C9** — not touched here. C6 and C9 are reconciliations the text
   already contains; C4 and C7 are supersessions, not conflicts.
 - **The 4,000-draw convention itself.** Every null in FINDINGs 033–037 carries ±0.0009 of

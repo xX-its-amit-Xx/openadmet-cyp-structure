@@ -51,9 +51,18 @@ PY
 
 echo "=== yaml sanity: does Boltz's own schema parser accept them? ==="
 "$FT/env/bin/python" - <<'PY'
-import glob, sys, yaml
-for sub in ("smoke", "stratum"):
+import glob, os, sys, yaml
+# EVERY staged subdirectory, not a hardcoded pair. The list used to read
+# ("smoke", "stratum"), which silently verified nothing at all for any later tag --
+# a check that passes because it looked at no files is the repo's standing trap.
+ROOT = "/scratch/shenoy.am/cyp-depth/yaml"
+subs = sorted(d for d in os.listdir(ROOT) if os.path.isdir(os.path.join(ROOT, d)))
+print("subdirectories found:", subs)
+for sub in subs:
     fs = sorted(glob.glob(f"/scratch/shenoy.am/cyp-depth/yaml/{sub}/*.yaml"))
+    if not fs:
+        print(f"{sub}: 0 files -- NOTHING VERIFIED")
+        continue
     ok = bad = 0
     for f in fs:
         try:

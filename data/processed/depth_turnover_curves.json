@@ -1,0 +1,428 @@
+{
+  "stratum_n": 73,
+  "stratum_n_planned": 73,
+  "ligands": [
+    "1RD",
+    "2QH",
+    "5AW",
+    "6AW",
+    "7AW",
+    "80K",
+    "8AW",
+    "A1A06",
+    "A1A07",
+    "A1A08",
+    "A1A4K",
+    "A1A4S",
+    "A1A4T",
+    "A1A4U",
+    "A1A4V",
+    "A1APA",
+    "A1ASO",
+    "A1ASP",
+    "A1ASQ",
+    "A1ASR",
+    "A1ASS",
+    "A1AST",
+    "A1ASU",
+    "A1ASV",
+    "A1BNX",
+    "CL6",
+    "D7J",
+    "D7M",
+    "D7Y",
+    "D81",
+    "DEJ",
+    "DEV",
+    "DJ1",
+    "FZV",
+    "G0D",
+    "G0J",
+    "G0M",
+    "G0V",
+    "G1J",
+    "J9K",
+    "KLN",
+    "MYT",
+    "NH0",
+    "NI6",
+    "NJ0",
+    "NJO",
+    "NXR",
+    "NYF",
+    "PK9",
+    "PKT",
+    "QDJ",
+    "QDP",
+    "QDV",
+    "QDY",
+    "QE4",
+    "QEA",
+    "QEP",
+    "QES",
+    "RIT",
+    "T0K",
+    "X5Y",
+    "X6J",
+    "X6S",
+    "X6V",
+    "X71",
+    "X74",
+    "X7D",
+    "X7J",
+    "X7M",
+    "X7P",
+    "Y83",
+    "Z8Z",
+    "Z9Z"
+  ],
+  "dropped_for_yield": {},
+  "movable": {
+    "n_with_any_new_pose_beating_incumbent_xeng": 36,
+    "fraction": 0.4932,
+    "n_cannot_move": 37,
+    "median_new_poses_beating_incumbent": 0.0,
+    "finding_039_comparison": "10 of 14 could not move (28.6% movable)"
+  },
+  "union_curve_exact": {
+    "5": {
+      "oracle": 0.66186,
+      "selected": 0.61965,
+      "random": 0.59962
+    },
+    "10": {
+      "oracle": 0.68256,
+      "selected": 0.62353,
+      "random": 0.59962
+    },
+    "15": {
+      "oracle": 0.69443,
+      "selected": 0.62621,
+      "random": 0.59962
+    },
+    "20": {
+      "oracle": 0.70279,
+      "selected": 0.62852,
+      "random": 0.59962
+    },
+    "25": {
+      "oracle": 0.70933,
+      "selected": 0.63062,
+      "random": 0.59962
+    },
+    "28": {
+      "oracle": 0.7127,
+      "selected": 0.6318,
+      "random": 0.59962
+    },
+    "30": {
+      "oracle": 0.71478,
+      "selected": 0.63256,
+      "random": 0.59962
+    },
+    "33": {
+      "oracle": 0.7177,
+      "selected": 0.63367,
+      "random": 0.59962
+    },
+    "35": {
+      "oracle": 0.71953,
+      "selected": 0.6344,
+      "random": 0.59962
+    },
+    "38": {
+      "oracle": 0.72215,
+      "selected": 0.63549,
+      "random": 0.59962
+    },
+    "40": {
+      "oracle": 0.72382,
+      "selected": 0.63622,
+      "random": 0.59962
+    }
+  },
+  "union_curve_full_selected": {
+    "1": 0.59962,
+    "2": 0.61263,
+    "3": 0.61641,
+    "4": 0.61834,
+    "5": 0.61965,
+    "6": 0.62066,
+    "7": 0.62151,
+    "8": 0.62225,
+    "9": 0.62291,
+    "10": 0.62353,
+    "11": 0.62411,
+    "12": 0.62467,
+    "13": 0.6252,
+    "14": 0.62571,
+    "15": 0.62621,
+    "16": 0.62669,
+    "17": 0.62717,
+    "18": 0.62763,
+    "19": 0.62808,
+    "20": 0.62852,
+    "21": 0.62896,
+    "22": 0.62939,
+    "23": 0.6298,
+    "24": 0.63021,
+    "25": 0.63062,
+    "26": 0.63102,
+    "27": 0.63141,
+    "28": 0.6318,
+    "29": 0.63218,
+    "30": 0.63256,
+    "31": 0.63293,
+    "32": 0.6333,
+    "33": 0.63367,
+    "34": 0.63404,
+    "35": 0.6344,
+    "36": 0.63476,
+    "37": 0.63513,
+    "38": 0.63549,
+    "39": 0.63585,
+    "40": 0.63622
+  },
+  "union_curve_full_oracle": {
+    "1": 0.59962,
+    "2": 0.63155,
+    "3": 0.64581,
+    "4": 0.655,
+    "5": 0.66186,
+    "6": 0.66737,
+    "7": 0.67199,
+    "8": 0.67596,
+    "9": 0.67945,
+    "10": 0.68256,
+    "11": 0.68537,
+    "12": 0.68792,
+    "13": 0.69026,
+    "14": 0.69242,
+    "15": 0.69443,
+    "16": 0.6963,
+    "17": 0.69807,
+    "18": 0.69973,
+    "19": 0.7013,
+    "20": 0.70279,
+    "21": 0.70421,
+    "22": 0.70557,
+    "23": 0.70687,
+    "24": 0.70812,
+    "25": 0.70933,
+    "26": 0.71049,
+    "27": 0.71161,
+    "28": 0.7127,
+    "29": 0.71375,
+    "30": 0.71478,
+    "31": 0.71578,
+    "32": 0.71675,
+    "33": 0.7177,
+    "34": 0.71862,
+    "35": 0.71953,
+    "36": 0.72042,
+    "37": 0.72129,
+    "38": 0.72215,
+    "39": 0.72299,
+    "40": 0.72382
+  },
+  "union_selected_argmax_depth": 40,
+  "union_selected_monotone": true,
+  "union_oracle_monotone": true,
+  "turnover": {
+    "d_star": 40,
+    "selected_at_d_star": 0.63622,
+    "selected_at_40": 0.63622,
+    "delta_peak": 0.0,
+    "delta_peak_CI95": [
+      0.0,
+      0.0
+    ],
+    "wilcoxon_p": null,
+    "n_ligands_moving": 0,
+    "loo_min_delta": 0.0,
+    "loo_max_delta": 0.0,
+    "loo_all_positive": false,
+    "T1_interior_peak": false,
+    "T2_magnitude_ge_0.0050": false,
+    "T3_survives_leave_one_ligand_out": false,
+    "T4_CI_excludes_0_and_p<0.05": false,
+    "VERDICT": "NO TURNOVER (monotone)"
+  },
+  "augment_curve_exact": {
+    "20": {
+      "oracle": 0.70663,
+      "selected": 0.63353,
+      "random": 0.59938
+    },
+    "21": {
+      "oracle": 0.70798,
+      "selected": 0.63356,
+      "random": 0.5994
+    },
+    "22": {
+      "oracle": 0.70922,
+      "selected": 0.6336,
+      "random": 0.59942
+    },
+    "23": {
+      "oracle": 0.71037,
+      "selected": 0.63364,
+      "random": 0.59944
+    },
+    "24": {
+      "oracle": 0.71145,
+      "selected": 0.6337,
+      "random": 0.59946
+    },
+    "25": {
+      "oracle": 0.71246,
+      "selected": 0.63376,
+      "random": 0.59948
+    },
+    "26": {
+      "oracle": 0.71341,
+      "selected": 0.63384,
+      "random": 0.59949
+    },
+    "27": {
+      "oracle": 0.71432,
+      "selected": 0.63394,
+      "random": 0.59951
+    },
+    "28": {
+      "oracle": 0.71519,
+      "selected": 0.63405,
+      "random": 0.59952
+    },
+    "29": {
+      "oracle": 0.71602,
+      "selected": 0.63417,
+      "random": 0.59953
+    },
+    "30": {
+      "oracle": 0.71682,
+      "selected": 0.6343,
+      "random": 0.59954
+    },
+    "31": {
+      "oracle": 0.7176,
+      "selected": 0.63444,
+      "random": 0.59955
+    },
+    "32": {
+      "oracle": 0.71836,
+      "selected": 0.6346,
+      "random": 0.59956
+    },
+    "33": {
+      "oracle": 0.7191,
+      "selected": 0.63477,
+      "random": 0.59957
+    },
+    "34": {
+      "oracle": 0.71981,
+      "selected": 0.63495,
+      "random": 0.59958
+    },
+    "35": {
+      "oracle": 0.72051,
+      "selected": 0.63514,
+      "random": 0.59959
+    },
+    "36": {
+      "oracle": 0.7212,
+      "selected": 0.63533,
+      "random": 0.5996
+    },
+    "37": {
+      "oracle": 0.72187,
+      "selected": 0.63554,
+      "random": 0.5996
+    },
+    "38": {
+      "oracle": 0.72253,
+      "selected": 0.63576,
+      "random": 0.59961
+    },
+    "39": {
+      "oracle": 0.72318,
+      "selected": 0.63598,
+      "random": 0.59962
+    },
+    "40": {
+      "oracle": 0.72382,
+      "selected": 0.63622,
+      "random": 0.59962
+    }
+  },
+  "augment_selected_argmax_pool": 40,
+  "augment_primary_20_to_40": {
+    "delta_selected": 0.00269,
+    "delta_selected_CI95": [
+      -0.013,
+      0.0182
+    ],
+    "delta_oracle": 0.01719,
+    "delta_oracle_CI95": [
+      0.0102,
+      0.0251
+    ],
+    "wilcoxon_p": 0.869895,
+    "ligands_better": 19,
+    "ligands_worse": 16,
+    "ligands_tied": 38,
+    "finding_035_delta_selected": 0.0116,
+    "finding_035_ligands_tied": "10 of 14"
+  },
+  "rate_per_doubling_union": {
+    "2->5": {
+      "selected": 0.007,
+      "oracle": 0.0303
+    },
+    "5->10": {
+      "selected": 0.0039,
+      "oracle": 0.0207
+    },
+    "10->20": {
+      "selected": 0.005,
+      "oracle": 0.0202
+    },
+    "20->40": {
+      "selected": 0.0077,
+      "oracle": 0.021
+    }
+  },
+  "depth_at_which_selected_rate_falls_below_0.0125": 5,
+  "noise_floor_depth20_this_population": {
+    "n_ligands": 73,
+    "depth": 20,
+    "draws": 2000000,
+    "p95": 0.01383,
+    "p99": 0.01935,
+    "se_of_p95": 1.3e-05,
+    "sd_of_gain": 0.00858
+  },
+  "noise_floor_depth40_this_population": {
+    "n_ligands": 73,
+    "depth": 40,
+    "draws": 2000000,
+    "p95": 0.01367,
+    "p99": 0.01909,
+    "se_of_p95": 1.2e-05,
+    "sd_of_gain": 0.00852
+  },
+  "gain_vs_floor": {
+    "gain_depth20": 0.03415,
+    "floor20_p95": 0.01383,
+    "clears20": true,
+    "gain_depth40": 0.03659,
+    "floor40_p95": 0.01367,
+    "clears40": true
+  },
+  "within_ligand_rho": {
+    "depth20": -0.2625,
+    "depth20_correct_sign_pct": 76.71,
+    "depth40": -0.2698,
+    "depth40_correct_sign_pct": 75.34
+  }
+}

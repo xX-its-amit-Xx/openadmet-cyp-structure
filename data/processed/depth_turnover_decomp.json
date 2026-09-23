@@ -1,0 +1,196 @@
+{
+  "top5_pushing_toward_a_turnover_30_minus_40": [
+    {
+      "ligand": "X71",
+      "union_sel_30": 0.60238,
+      "union_sel_40": 0.54197,
+      "d_30_minus_40": 0.06042,
+      "aug_sel_20": 0.79422,
+      "aug_sel_40": 0.54197,
+      "aug_delta": -0.25226,
+      "n_new_beating_incumbent": 1
+    },
+    {
+      "ligand": "X6J",
+      "union_sel_30": 0.60802,
+      "union_sel_40": 0.58114,
+      "d_30_minus_40": 0.02688,
+      "aug_sel_20": 0.58114,
+      "aug_sel_40": 0.58114,
+      "aug_delta": 0.0,
+      "n_new_beating_incumbent": 0
+    },
+    {
+      "ligand": "D7J",
+      "union_sel_30": 0.75678,
+      "union_sel_40": 0.73004,
+      "d_30_minus_40": 0.02674,
+      "aug_sel_20": 0.88024,
+      "aug_sel_40": 0.73004,
+      "aug_delta": -0.1502,
+      "n_new_beating_incumbent": 2
+    },
+    {
+      "ligand": "8AW",
+      "union_sel_30": 0.72592,
+      "union_sel_40": 0.70968,
+      "d_30_minus_40": 0.01624,
+      "aug_sel_20": 0.70968,
+      "aug_sel_40": 0.70968,
+      "aug_delta": 0.0,
+      "n_new_beating_incumbent": 0
+    },
+    {
+      "ligand": "A1AST",
+      "union_sel_30": 0.53612,
+      "union_sel_40": 0.52034,
+      "d_30_minus_40": 0.01577,
+      "aug_sel_20": 0.59121,
+      "aug_sel_40": 0.52034,
+      "aug_delta": -0.07087,
+      "n_new_beating_incumbent": 1
+    }
+  ],
+  "top5_pushing_against_30_minus_40": [
+    {
+      "ligand": "D81",
+      "union_sel_30": 0.6333,
+      "union_sel_40": 0.66667,
+      "d_30_minus_40": -0.03337,
+      "aug_sel_20": 0.66667,
+      "aug_sel_40": 0.66667,
+      "aug_delta": 0.0,
+      "n_new_beating_incumbent": 0
+    },
+    {
+      "ligand": "X5Y",
+      "union_sel_30": 0.86918,
+      "union_sel_40": 0.90661,
+      "d_30_minus_40": -0.03743,
+      "aug_sel_20": 0.75287,
+      "aug_sel_40": 0.90661,
+      "aug_delta": 0.15374,
+      "n_new_beating_incumbent": 1
+    },
+    {
+      "ligand": "MYT",
+      "union_sel_30": 0.9145,
+      "union_sel_40": 0.9595,
+      "d_30_minus_40": -0.045,
+      "aug_sel_20": 0.9595,
+      "aug_sel_40": 0.9595,
+      "aug_delta": 0.0,
+      "n_new_beating_incumbent": 0
+    },
+    {
+      "ligand": "A1ASQ",
+      "union_sel_30": 0.76553,
+      "union_sel_40": 0.81549,
+      "d_30_minus_40": -0.04995,
+      "aug_sel_20": 0.59738,
+      "aug_sel_40": 0.81549,
+      "aug_delta": 0.21811,
+      "n_new_beating_incumbent": 1
+    },
+    {
+      "ligand": "A1A4V",
+      "union_sel_30": 0.73856,
+      "union_sel_40": 0.80877,
+      "d_30_minus_40": -0.07021,
+      "aug_sel_20": 0.52752,
+      "aug_sel_40": 0.80877,
+      "aug_delta": 0.28125,
+      "n_new_beating_incumbent": 1
+    }
+  ],
+  "n_ligands_with_nonzero_30_minus_40": 73,
+  "mean_30_minus_40": -0.00366,
+  "largest_single_ligand_30_minus_40": 0.06042,
+  "finding_039_largest_was_08J": 0.1721,
+  "leverage_on_the_20_to_40_purchase": {
+    "drop_top_0": {
+      "n": 73,
+      "delta_selected_20_to_40": 0.00269,
+      "union_sel_20": 0.62852,
+      "union_sel_40": 0.63622,
+      "union_delta": 0.00769,
+      "dropped": []
+    },
+    "drop_top_1": {
+      "n": 72,
+      "delta_selected_20_to_40": -0.00118,
+      "union_sel_20": 0.62796,
+      "union_sel_40": 0.63382,
+      "union_delta": 0.00586,
+      "dropped": [
+        "A1A4V"
+      ]
+    },
+    "drop_top_2": {
+      "n": 71,
+      "delta_selected_20_to_40": 0.00235,
+      "union_sel_20": 0.62755,
+      "union_sel_40": 0.63512,
+      "union_delta": 0.00757,
+      "dropped": [
+        "A1A4V",
+        "X71"
+      ]
+    },
+    "drop_top_3": {
+      "n": 70,
+      "delta_selected_20_to_40": 0.00561,
+      "union_sel_20": 0.6284,
+      "union_sel_40": 0.63644,
+      "union_delta": 0.00805,
+      "dropped": [
+        "A1A4V",
+        "X71",
+        "DEJ"
+      ]
+    },
+    "drop_top_5": {
+      "n": 68,
+      "delta_selected_20_to_40": 0.00031,
+      "union_sel_20": 0.62393,
+      "union_sel_40": 0.62984,
+      "union_delta": 0.00591,
+      "dropped": [
+        "A1A4V",
+        "X71",
+        "DEJ",
+        "A1ASQ",
+        "X5Y"
+      ]
+    }
+  },
+  "combined_87_union_selected": {
+    "5": 0.59919,
+    "10": 0.6048,
+    "15": 0.60905,
+    "20": 0.61256,
+    "25": 0.61543,
+    "28": 0.61686,
+    "30": 0.61769,
+    "33": 0.61877,
+    "35": 0.61938,
+    "38": 0.62012,
+    "40": 0.62051
+  },
+  "combined_87_oracle": {
+    "5": 0.64405,
+    "10": 0.66743,
+    "15": 0.68103,
+    "20": 0.69062,
+    "25": 0.69799,
+    "28": 0.70172,
+    "30": 0.70398,
+    "33": 0.70711,
+    "35": 0.70904,
+    "38": 0.71176,
+    "40": 0.71347
+  },
+  "combined_87_argmax_depth": 40,
+  "combined_87_monotone": true,
+  "combined_87_note": "NOT pre-registered -- a descriptive aggregation of this stratum with FINDING 035's, at matched depth 40 on all 87"
+}

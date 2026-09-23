@@ -387,3 +387,26 @@ pool 30 it is drawn half the time, at pool 40 always.
 the oracle rises. That is this finding's own thesis at its smallest instance. It does **not**
 establish a turning point in depth, and it is **not** a reason to stop buying depth — it is
 one more reason the depth question cannot be settled on this stratum.
+
+---
+
+# Correction, 2026-09-23 — there is no turning point, and the conversion-rate decay is Type-I-only
+
+Appended by `FINDING_040`. The body and the first correction are unchanged.
+
+1. **The pool-33 peak does not generalise.** On the second matched-depth stratum — the
+   **73** prediction-side Type II ligands, the exact complement of this one, 1,460 new
+   Explorer poses at **A0 = +0.0005** — the exact union selected curve is **strictly
+   increasing at all 39 steps**, minimum increment +0.00036, argmax at depth **40**. The
+   combined 87-ligand curve is monotone too. **The peak here was 08J.**
+2. **§2's "the SELECTION rate decays with depth" is Type-I-specific and must not be quoted
+   as a law.** This stratum: +0.0227 (10→20) → +0.0095 (20→40). The Type II majority does
+   the opposite: **+0.0050 → +0.0077**, *rising*. Both are small; the direction is not
+   general.
+3. **Item 3 of "What to do at submission time" is confirmed and sharpened.** On the Type II
+   majority a full doubling is worth **+0.0027** [−0.0130, +0.0182], p = 0.870, **38 of 73
+   unchanged**, −0.0012 dropping the single biggest mover — and **no octave of that curve
+   clears `FINDING_004`'s +0.0125**. Depth is *safe* (monotone) and *not worth buying*.
+4. **Item 5 — "the near-tie is the target"** — was closed negative by `FINDING_036`, and 040
+   explains why the near-tie looked like a prize here: at n = 14 the coin flips do not
+   cancel. At n = 73 they do.

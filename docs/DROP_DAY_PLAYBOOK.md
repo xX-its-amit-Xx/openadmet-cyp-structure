@@ -84,10 +84,18 @@ python scripts/explorer/boltz_depth.py poll
   2. boltz's own failure count,
   3. the file count,
   4. 20 poses per ligand on every ligand.
-* **Budget:** ~6.6 min/ligand at 20 samples on a V100; 14 ligands × 20 = **1 h 34 m**,
-  0 failures, **$0**, 280/280 written, **280 distinct** md5 and 280 distinct at 0.05 Å in
-  the heme frame — 20.0 per ligand (FINDING 035). Scale linearly; split into several
-  independently resumable jobs if the set is large.
+* **Depth: `--samples 20`. Do not buy more** — see §2 *How much depth to buy*
+  (FINDING 040: the curve is monotone so more never hurts, and a doubling is worth
+  +0.0027 at p = 0.87).
+* **Budget:** ~6.6–8.8 min/ligand at 20 samples on a **V100**, **~1.6 min/ligand on an
+  H200** (measured 4.6× faster). 14 × 20 = **1 h 34 m** (FINDING 035); **73 × 20 = 1,460
+  poses over 4 jobs, 0 failures, $0** (FINDING 040), 20.0 distinct per ligand in both.
+  **Split into jobs of ~18 ligands** — a bigger batch on the `gpu` partition's V100 can
+  run past the 7-hour walltime, and each job is independently resumable.
+* **Packing: round-robin, not contiguous.** Assign ligands to batches by `i % n_jobs` over
+  the sorted ids. FINDING 038 lost all three of its Type I picks to one failed job because
+  an ordered csv put them together; FINDING 040 used round-robin and its four batches'
+  pool means land within 0.0026 of the pools they join.
 * `stage` re-hashes the alignment on the far side and reports `msa_md5_matches_local`.
   Do not proceed on a transfer that only claims to have worked (RUNBOOK_explorer_boltz §2).
 
@@ -395,12 +403,45 @@ use `${PIPESTATUS[0]}` and **count files on the far side** after every push.
 
 ### How much depth to buy
 
-**Very little, and only at matched conditioning.** FINDING 035 ran the true 20→40 doubling
-on Explorer: Δ oracle **+0.0097 [+0.0012, +0.0195]**; Δ selected **+0.0116 [−0.0687,
-+0.1034]**, **Wilcoxon p = 0.715**, **10 of 14 unchanged**, and **+0.0020** once the two
-swing ligands are dropped. The selected rate decays with depth (**+0.0227** at 10→20,
-**+0.0095** at 20→40) while the oracle rate barely does (+0.0385 → +0.0331). Twenty samples
-per ligand is the right default; a second seed is cheap insurance, not a lever.
+> ## **`--samples 20`, one job per ~18 ligands, and stop.**
+>
+> The selected-score curve is **monotone to depth 40** — more never hurts — and a full
+> 20→40 doubling buys **+0.0027** on the Type II majority (p = 0.87) against the **+0.0125**
+> per doubling that would make it worth the wall clock. **FINDING 040.**
+
+**Depth is never harmful, and it is barely worth anything.** FINDING 040 settled both
+halves on a second matched-depth stratum of **73** ligands — the prediction-side Type II
+majority, the exact complement of 035's 14 — with the curve computed in **closed form**,
+zero sampling error:
+
+* **No turnover.** The exact union selected curve is **strictly increasing at all 39 steps**
+  (min increment +0.00036, argmax depth 40), and so is the combined 87-ligand curve.
+  **FINDING 039's pool-33 peak was 08J and does not generalise.** There is no "bought too
+  much depth" failure mode to avoid — this worry is retired, do not re-open it.
+* **No conversion either.** Δ oracle **+0.0172 [+0.0102, +0.0251]**; Δ selected **+0.0027
+  [−0.0130, +0.0182]**, **p = 0.870**, **38 of 73 unchanged**, and **−0.0012** once the
+  single biggest mover is dropped. **No octave clears +0.0125**: +0.0070 (2→5), +0.0039
+  (5→10), +0.0050 (10→20), +0.0077 (20→40).
+* **Half the set cannot move at all** — **37 of 73** have no new pose that beats their
+  incumbent on `xeng`. Measure that fraction before buying depth; it bounds the purchase.
+* **The gap widens.** Oracle-minus-selected on that stratum goes **0.0770 at depth 20 →
+  0.0876 at depth 40**. Depth adds ceiling the selector does not reach.
+* **FINDING 035's "the selected rate decays with depth" is Type-I-specific** (+0.0227 →
+  +0.0095 there; +0.0050 → +0.0077 here, *rising*). Do not quote it as a law.
+* **Conditioning matching is now routine**: A0 gap **+0.0005** on 1,460 poses, against
+  035's −0.0019 and FINDING 034's −0.057. `--no_kernels`, a V100/H200 and cu121 are not
+  material.
+
+For Type I ligands specifically the doubling is worth **+0.0116** (FINDING 035, p = 0.715,
+10 of 14 unchanged) — better, still not +0.0125. **Spend spare wall clock on reference
+depth instead** (FINDING 038: 25.7 min for 9 ligands): pool depth is worth +0.0027,
+reference depth is what makes the +0.0395 gain exist at all.
+
+**Venue arithmetic, measured 2026-09-23 over 4 jobs / 1,460 poses / 0 failures:** an
+**H200 is 4.6× a V100** — 19 ligands × 20 samples in **30 min** on `gyorilab`'s H200
+against 18 in **2 h 38 m** on the `gpu` partition's V100. Budget ~1.6 min/ligand on an
+H200, ~8.8 min/ligand on a V100, and split into jobs of ~18 so the 7-hour `gpu` walltime
+is never the binding constraint.
 
 ---
 
@@ -556,6 +597,12 @@ Measured floors (random-feature selection, 4,000 draws):
 |---|---|---|---|
 | CYP3A4 full | 87 | **+0.0134** | +0.0193 |
 | CYP3A4 Type-I stratum | 14 | **+0.0435** | +0.0623 |
+| **CYP3A4 Type-II stratum, depth 20** | **73** | **+0.01383** | +0.01935 |
+| **CYP3A4 Type-II stratum, depth 40** | **73** | **+0.01367** | +0.01909 |
+
+The last two rows are **2 × 10⁶ draws, SE ±0.000013** (FINDING 040). Use them for anything
+computed on the Type II majority; do **not** reach for the n=14 numbers there — a floor is
+a number *about a population* (FINDING 039), and five times the ligands lowers it threefold.
 
 The n=87 floor has now been re-derived from scratch four times and lands on **+0.0134 to
 +0.0141** every time (007, 025, 026, 029, 036). **Anything under +0.020 at n=87 is noise.**

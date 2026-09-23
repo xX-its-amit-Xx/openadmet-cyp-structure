@@ -1,0 +1,201 @@
+{
+  "N2_shipped_column": {
+    "selected": 0.6164,
+    "oracle": 0.6975,
+    "random": 0.5769,
+    "gain": 0.0395,
+    "within_ligand_rho": -0.2582,
+    "correct_sign_pct": 75.86,
+    "expected": {
+      "selected": 0.6164,
+      "oracle": 0.6975,
+      "random": 0.5769,
+      "gain": 0.0395,
+      "rho": -0.2582,
+      "correct_sign_pct": 75.86
+    },
+    "matches_finding_011_033": true
+  },
+  "N2b_argmin_identity": {
+    "max_abs_diff": 0.0,
+    "equal_to_1e-9": true,
+    "n": 87
+  },
+  "N5_filters": {
+    "validation_ligands": 87,
+    "pass_pred_fe_donor_median_le_2.6": 73,
+    "excluded_as_finding_035_type_I_stratum": 14,
+    "overlap_with_finding_035_stratum": [],
+    "stratum": [
+      "1RD",
+      "2QH",
+      "5AW",
+      "6AW",
+      "7AW",
+      "80K",
+      "8AW",
+      "A1A06",
+      "A1A07",
+      "A1A08",
+      "A1A4K",
+      "A1A4S",
+      "A1A4T",
+      "A1A4U",
+      "A1A4V",
+      "A1APA",
+      "A1ASO",
+      "A1ASP",
+      "A1ASQ",
+      "A1ASR",
+      "A1ASS",
+      "A1AST",
+      "A1ASU",
+      "A1ASV",
+      "A1BNX",
+      "CL6",
+      "D7J",
+      "D7M",
+      "D7Y",
+      "D81",
+      "DEJ",
+      "DEV",
+      "DJ1",
+      "FZV",
+      "G0D",
+      "G0J",
+      "G0M",
+      "G0V",
+      "G1J",
+      "J9K",
+      "KLN",
+      "MYT",
+      "NH0",
+      "NI6",
+      "NJ0",
+      "NJO",
+      "NXR",
+      "NYF",
+      "PK9",
+      "PKT",
+      "QDJ",
+      "QDP",
+      "QDV",
+      "QDY",
+      "QE4",
+      "QEA",
+      "QEP",
+      "QES",
+      "RIT",
+      "T0K",
+      "X5Y",
+      "X6J",
+      "X6S",
+      "X6V",
+      "X71",
+      "X74",
+      "X7D",
+      "X7J",
+      "X7M",
+      "X7P",
+      "Y83",
+      "Z8Z",
+      "Z9Z"
+    ]
+  },
+  "REF_reference_depth": {
+    "min": 6,
+    "median": 7.0,
+    "below_4": [],
+    "histogram": {
+      "6": 18,
+      "7": 43,
+      "8": 5,
+      "9": 2,
+      "10": 1,
+      "11": 1,
+      "12": 3
+    }
+  },
+  "existing_pool_diversity_in_stratum": {
+    "unique_xeng_per_ligand": [
+      20
+    ],
+    "median_within_ligand_lddt_sd": 0.0577,
+    "ligands_with_sd_zero": 0
+  },
+  "baseline_depth20_stratum": {
+    "oracle": 0.7066,
+    "selected": 0.6335,
+    "random": 0.5994,
+    "gain": 0.0342
+  },
+  "baseline_rho": -0.2625,
+  "baseline_correct_sign_pct": 76.71,
+  "N1_numbering": {
+    "n_poses": 1460,
+    "renumber_offsets": {
+      "0": 1460
+    },
+    "min_renumber_identity": 0.9956,
+    "poses_below_0.95_identity": 0,
+    "mapped_true": 1460,
+    "mapped_false": 0
+  },
+  "C7_exact_zero_lddt": {
+    "n": 0,
+    "ligands": {},
+    "bisy_rmsd_range": null,
+    "fe_donor_range": null,
+    "all_offset_zero": null,
+    "all_mapped": null
+  },
+  "N4_md5_distinct": {
+    "rows": 1460,
+    "distinct_md5": 1460,
+    "min_per_ligand_distinct_md5": 20,
+    "ligands": 73,
+    "poses_per_ligand": [
+      20
+    ]
+  },
+  "A0_conditioning_match": {
+    "new_arm_pool_mean": 0.5999,
+    "existing_pool_mean_same_ligands": 0.5994,
+    "delta": 0.0005,
+    "matched_within_0.02": true,
+    "finding_035_delta_for_reference": -0.0019,
+    "finding_034_openprotein_delta_for_reference": -0.057
+  },
+  "A0_secondary_binding_character": {
+    "new_frac_coordinated": 1.0,
+    "existing_frac_coordinated": 0.9993,
+    "new_median_fe_donor": 2.219,
+    "existing_median_fe_donor": 2.219
+  },
+  "K6_per_batch": {
+    "dt2a": {
+      "ligands": 19,
+      "poses": 380,
+      "pool_mean": 0.5525,
+      "existing_mean_same_ligands": 0.5538
+    },
+    "dt2b": {
+      "ligands": 18,
+      "poses": 360,
+      "pool_mean": 0.6042,
+      "existing_mean_same_ligands": 0.6053
+    },
+    "dt2c": {
+      "ligands": 18,
+      "poses": 360,
+      "pool_mean": 0.6327,
+      "existing_mean_same_ligands": 0.6308
+    },
+    "dt2d": {
+      "ligands": 18,
+      "poses": 360,
+      "pool_mean": 0.6128,
+      "existing_mean_same_ligands": 0.6102
+    }
+  }
+}

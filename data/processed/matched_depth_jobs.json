@@ -19,6 +19,46 @@
    "submitted_at": 1790135624.4072516,
    "stdout": "10529025\n",
    "stderr": ""
+  },
+  {
+   "job": "10539925",
+   "sub": "dt2a",
+   "seed": 202,
+   "samples": 20,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790157456.9799387,
+   "stdout": "10539925\n",
+   "stderr": ""
+  },
+  {
+   "job": "10539927",
+   "sub": "dt2b",
+   "seed": 202,
+   "samples": 20,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790157460.1709812,
+   "stdout": "10539927\n",
+   "stderr": ""
+  },
+  {
+   "job": "10539928",
+   "sub": "dt2c",
+   "seed": 202,
+   "samples": 20,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790157463.4605048,
+   "stdout": "10539928\n",
+   "stderr": ""
+  },
+  {
+   "job": "10539929",
+   "sub": "dt2d",
+   "seed": 202,
+   "samples": 20,
+   "partition": "gyorilab,gpu",
+   "submitted_at": 1790157466.8443387,
+   "stdout": "10539929\n",
+   "stderr": ""
   }
  ]
 }

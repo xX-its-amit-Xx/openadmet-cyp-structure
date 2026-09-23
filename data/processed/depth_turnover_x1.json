@@ -1,0 +1,38 @@
+{
+  "finding_039_augment_rungs_published": {
+    "20": 0.527,
+    "24": 0.5349,
+    "28": 0.54,
+    "30": 0.5415,
+    "33": 0.5424,
+    "36": 0.5418,
+    "38": 0.5406,
+    "40": 0.5386
+  },
+  "reproduced_here": {
+    "20": 0.527,
+    "24": 0.5349,
+    "28": 0.54,
+    "30": 0.5415,
+    "33": 0.5424,
+    "36": 0.5418,
+    "38": 0.5406,
+    "40": 0.5386
+  },
+  "max_abs_deviation": 0.0,
+  "union_argmax_depth": 34,
+  "union_peak": 0.5411,
+  "union_depth40": 0.5386,
+  "finding_039_union": {
+    "argmax_depth": 34,
+    "peak": 0.541,
+    "depth40": 0.5386
+  },
+  "oracle_augment_k0": 0.6499,
+  "oracle_augment_k20": 0.6595,
+  "finding_035_oracle": {
+    "pool20": 0.6499,
+    "pool40": 0.6595
+  },
+  "PASSES": true
+}
