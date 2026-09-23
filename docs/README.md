@@ -3,6 +3,21 @@
 Thirty-seven findings, most of them negative. Read them in this order if you are arriving cold;
 the numbering is chronological, not logical.
 
+> # ▶ ON RELEASE DAY, READ `DROP_DAY_PLAYBOOK.md` FIRST — AND ONLY THAT
+>
+> **`docs/DROP_DAY_PLAYBOOK.md`** is the single document someone executes when the
+> structure-track test set lands. It carries the executable sequence with real commands
+> and a *done* condition per step, the generation venue decision (Explorer only, with the
+> MSA-staging requirement, the sbatch template and all five documented failure modes),
+> what to do about the test set's binding-mode composition, **the DEAD LIST** of every
+> refuted lever with its mechanism and finding number, the two diagnostic rungs and their
+> scope, the statistical bar, the one thing still live, the traps that have each cost real
+> time, and **§9 — five pieces of the shipped path that are stale or blind-incompatible**.
+>
+> Everything below is the *why*. The playbook is the *what*. Under deadline pressure the
+> expensive mistake is re-deriving or re-trying something already refuted — that is what
+> the DEAD LIST exists to prevent.
+
 ## Start here
 
 | # | one line | status |
@@ -14,6 +29,7 @@ the numbering is chronological, not logical.
 | **027** | **The model's pocket excludes the true pose** — the crystal ligand clashes below 2.2 Å inside the co-folded protein on **71%** of poses, while **0 of 87** crystals violate that cutoff in their own protein. Only 2% of orientations fit; 31 of 41 failures are unreachable by any rigid rotation | stands |
 | **028** | **Three residues do 83% of the exclusion — Phe215, Arg212, Phe304** — and the model's pocket is **rigid, not wrongly adaptive**: 0.077 Å of ligand-to-ligand side-chain motion against the crystals' 0.723 Å. Where a repack works it is **one residue turning 30°**; where it fails it is **CB or main chain at 211–216**, in the F/G loop | stands |
 | **RUNBOOK** | what to run, in order, with each step's trap attached | live |
+| **PLAYBOOK** | **`DROP_DAY_PLAYBOOK.md` — the release-day path, the DEAD LIST, and the gaps in the shipped pipeline** | **live** |
 
 ## The shape of the whole problem
 

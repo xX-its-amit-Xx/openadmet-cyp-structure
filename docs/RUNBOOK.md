@@ -1,5 +1,9 @@
 # Runbook — what to launch next, and what each step has to prove
 
+> **On release day this file is superseded by `docs/DROP_DAY_PLAYBOOK.md`.** This runbook
+> is for the pre-release campaign. The playbook carries the drop-day sequence, the DEAD
+> LIST, and §9 — the pieces of the path below that cannot run on a blind test set.
+
 Ordered so that each step's gate decides whether the next one is worth its runway.
 `scripts/ops/watchdog.py` runs every two hours; the ops tick reads this file to decide
 what to launch when nothing is in flight.
