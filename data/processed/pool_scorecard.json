@@ -229,5 +229,28 @@
   ],
   "noise_floor_95_at_n14": 0.0453,
   "verdict": "first of six pool expansions not to send selection backwards; short of the +0.0125 bar"
+ },
+ {
+  "date": "2026-09-23",
+  "what": "Reference-pose depth yield (FINDING 038): 4 sampler settings x 2 Protenix checkpoints",
+  "jobs": 16,
+  "failures": 1,
+  "complexes": 340,
+  "cost_usd": 0,
+  "n_ligands": 9,
+  "wall_clock_min": 25.7,
+  "parallelism": 6.2,
+  "distinct_after_dedupe": 68,
+  "dropped_same_wave": 272,
+  "dropped_same_md5": 0,
+  "dropped_same_coords": 0,
+  "depth_min": 7,
+  "depth_median": 8,
+  "depth_max": 8,
+  "frac_clearing_depth_4": 1.0,
+  "frac_clearing_depth_6": 1.0,
+  "rho_depth_heavy_atoms": -0.087,
+  "rho_depth_rot_bonds": 0.088,
+  "verdict": "reference depth is not the release risk; min viable sweep is 2 engines x 3 settings"
  }
 ]
