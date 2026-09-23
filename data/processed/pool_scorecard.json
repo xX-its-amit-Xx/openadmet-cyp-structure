@@ -252,5 +252,35 @@
   "rho_depth_heavy_atoms": -0.087,
   "rho_depth_rot_bonds": 0.088,
   "verdict": "reference depth is not the release risk; min viable sweep is 2 engines x 3 settings"
+ },
+ {
+  "date": "2026-09-23",
+  "what": "Matched-conditioning depth, Type II majority (FINDING 040): does the selected curve turn over?",
+  "jobs": 4,
+  "failures": 0,
+  "poses": 1460,
+  "per_ligand": 20,
+  "n_ligands": 73,
+  "gpu_hours": 7.9,
+  "cost_usd": 0,
+  "distinct_poses": 1460,
+  "pool_mean_gap_vs_existing": 0.0005,
+  "oracle_d20": 0.70279,
+  "oracle_d40": 0.72382,
+  "selected_d20": 0.62852,
+  "selected_d40": 0.63622,
+  "delta_selected": 0.0027,
+  "wilcoxon_p": 0.87,
+  "n_unchanged": 38,
+  "delta_selected_drop1": -0.0012,
+  "delta_oracle": 0.0172,
+  "oracle_ci": [
+   0.0102,
+   0.0251
+  ],
+  "noise_floor_95_d20": 0.01383,
+  "noise_floor_95_d40": 0.01367,
+  "frac_ligands_immovable": 0.507,
+  "verdict": "monotone to depth 40 - no turnover; but a doubling buys +0.0027 and half the ligands cannot move"
  }
 ]
