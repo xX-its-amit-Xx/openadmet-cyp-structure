@@ -1,0 +1,569 @@
+{
+ "OCNT-2313038": {
+  "n_poses": 20,
+  "n_pass": 19,
+  "shipped_rank1_status": "ZEROED",
+  "best_passing_rank": 2,
+  "best_passing_sample": "OCNT-2313038__s101_m1",
+  "records": [
+   {
+    "rank": 1,
+    "sample": "OCNT-2313038__s101_m2",
+    "xeng": 0.7420802970565558,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 2,
+    "sample": "OCNT-2313038__s101_m1",
+    "xeng": 0.7724610272451011,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 3,
+    "sample": "OCNT-2313038__s101_m4",
+    "xeng": 0.8021377002691946,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 4,
+    "sample": "OCNT-2313038__s101_m3",
+    "xeng": 0.8025235139501652,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 5,
+    "sample": "OCNT-2313038__s101_m0",
+    "xeng": 0.8493019014245815,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 6,
+    "sample": "OCNT-2313038__s101_m5",
+    "xeng": 0.9562380166254056,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 7,
+    "sample": "OCNT-2313038__s101_m8",
+    "xeng": 1.1487930649886913,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 8,
+    "sample": "OCNT-2313038__s101_m6",
+    "xeng": 1.1985565192871594,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 9,
+    "sample": "OCNT-2313038__s101_m7",
+    "xeng": 1.3523984921819676,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 10,
+    "sample": "OCNT-2313038__s101_m9",
+    "xeng": 1.5560177805386064,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 11,
+    "sample": "OCNT-2313038__s101_m13",
+    "xeng": 1.5958398041121522,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 12,
+    "sample": "OCNT-2313038__s101_m11",
+    "xeng": 1.6529873895349545,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 13,
+    "sample": "OCNT-2313038__s101_m15",
+    "xeng": 1.6627096130635914,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 14,
+    "sample": "OCNT-2313038__s101_m10",
+    "xeng": 1.6686485762231915,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 15,
+    "sample": "OCNT-2313038__s101_m14",
+    "xeng": 1.7028200532653617,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 16,
+    "sample": "OCNT-2313038__s101_m17",
+    "xeng": 1.768514463152164,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 17,
+    "sample": "OCNT-2313038__s101_m12",
+    "xeng": 1.7854529063018454,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 18,
+    "sample": "OCNT-2313038__s101_m16",
+    "xeng": 1.83158573900266,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 19,
+    "sample": "OCNT-2313038__s101_m18",
+    "xeng": 1.8475766663101212,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 20,
+    "sample": "OCNT-2313038__s101_m19",
+    "xeng": 2.005221066169627,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   }
+  ]
+ },
+ "OCNT-2313429": {
+  "n_poses": 20,
+  "n_pass": 11,
+  "shipped_rank1_status": "ZEROED",
+  "best_passing_rank": 4,
+  "best_passing_sample": "OCNT-2313429__s101_m19",
+  "records": [
+   {
+    "rank": 1,
+    "sample": "OCNT-2313429__s101_m3",
+    "xeng": 1.8305858775693824,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 2,
+    "sample": "OCNT-2313429__s101_m17",
+    "xeng": 1.8865928759077268,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 3,
+    "sample": "OCNT-2313429__s101_m14",
+    "xeng": 1.914303113005888,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 4,
+    "sample": "OCNT-2313429__s101_m19",
+    "xeng": 1.980754471625303,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 5,
+    "sample": "OCNT-2313429__s101_m16",
+    "xeng": 1.9996989980438968,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 6,
+    "sample": "OCNT-2313429__s101_m18",
+    "xeng": 2.022145119134919,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 7,
+    "sample": "OCNT-2313429__s101_m15",
+    "xeng": 2.05339425962876,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 8,
+    "sample": "OCNT-2313429__s101_m8",
+    "xeng": 2.0624173357231204,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 9,
+    "sample": "OCNT-2313429__s101_m12",
+    "xeng": 2.090709078833948,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 10,
+    "sample": "OCNT-2313429__s101_m7",
+    "xeng": 2.103923146534218,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 11,
+    "sample": "OCNT-2313429__s101_m10",
+    "xeng": 2.130084433327597,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 12,
+    "sample": "OCNT-2313429__s101_m5",
+    "xeng": 2.1973392078955243,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 13,
+    "sample": "OCNT-2313429__s101_m4",
+    "xeng": 2.2684702019684586,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 14,
+    "sample": "OCNT-2313429__s101_m1",
+    "xeng": 2.2785066138002428,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 15,
+    "sample": "OCNT-2313429__s101_m0",
+    "xeng": 2.2829246642796357,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 16,
+    "sample": "OCNT-2313429__s101_m6",
+    "xeng": 2.335752302344756,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 17,
+    "sample": "OCNT-2313429__s101_m13",
+    "xeng": 2.35168533439642,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 18,
+    "sample": "OCNT-2313429__s101_m11",
+    "xeng": 2.3582191706372333,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 19,
+    "sample": "OCNT-2313429__s101_m2",
+    "xeng": 2.5579293399543808,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 20,
+    "sample": "OCNT-2313429__s101_m9",
+    "xeng": 2.6134140992615364,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   }
+  ]
+ },
+ "OCNT-2395342": {
+  "n_poses": 20,
+  "n_pass": 13,
+  "shipped_rank1_status": "ZEROED",
+  "best_passing_rank": 2,
+  "best_passing_sample": "OCNT-2395342__s101_m7",
+  "records": [
+   {
+    "rank": 1,
+    "sample": "OCNT-2395342__s101_m3",
+    "xeng": 1.2776818438462811,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 2,
+    "sample": "OCNT-2395342__s101_m7",
+    "xeng": 1.4387627262751157,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 3,
+    "sample": "OCNT-2395342__s101_m18",
+    "xeng": 1.5002505001911592,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 4,
+    "sample": "OCNT-2395342__s101_m13",
+    "xeng": 1.504758694778359,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 5,
+    "sample": "OCNT-2395342__s101_m9",
+    "xeng": 1.5200905087493757,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 6,
+    "sample": "OCNT-2395342__s101_m15",
+    "xeng": 1.5295616902032148,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 7,
+    "sample": "OCNT-2395342__s101_m5",
+    "xeng": 1.5347125451817143,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 8,
+    "sample": "OCNT-2395342__s101_m1",
+    "xeng": 1.5361826736993942,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 9,
+    "sample": "OCNT-2395342__s101_m2",
+    "xeng": 1.548485325440767,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 10,
+    "sample": "OCNT-2395342__s101_m0",
+    "xeng": 1.5495269067780273,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 11,
+    "sample": "OCNT-2395342__s101_m19",
+    "xeng": 1.5719768176264186,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 12,
+    "sample": "OCNT-2395342__s101_m17",
+    "xeng": 1.5764082415763574,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 13,
+    "sample": "OCNT-2395342__s101_m6",
+    "xeng": 1.6214970925347894,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 14,
+    "sample": "OCNT-2395342__s101_m16",
+    "xeng": 1.6466908626421766,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 15,
+    "sample": "OCNT-2395342__s101_m4",
+    "xeng": 1.6483397180832595,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 16,
+    "sample": "OCNT-2395342__s101_m11",
+    "xeng": 1.7370657772108495,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 17,
+    "sample": "OCNT-2395342__s101_m8",
+    "xeng": 1.7432014565428098,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 18,
+    "sample": "OCNT-2395342__s101_m12",
+    "xeng": 1.7798690976037177,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   },
+   {
+    "rank": 19,
+    "sample": "OCNT-2395342__s101_m10",
+    "xeng": 1.795288393673558,
+    "status": "ZEROED",
+    "n_checks": 22,
+    "n_failed": 1,
+    "failed": "minimum_distance_to_protein"
+   },
+   {
+    "rank": 20,
+    "sample": "OCNT-2395342__s101_m14",
+    "xeng": 1.8361485146301335,
+    "status": "pass",
+    "n_checks": 22,
+    "n_failed": 0,
+    "failed": ""
+   }
+  ]
+ }
+}

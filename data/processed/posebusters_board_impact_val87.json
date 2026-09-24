@@ -1,0 +1,25 @@
+{
+ "source": [
+  "data/processed/numbering_penalty_val87.csv",
+  "data/processed/posebusters_gate_val87.csv"
+ ],
+ "note": "join of the two; lddt_0 is our residue-number scorer at the as-shipped numbering",
+ "n": 87,
+ "val87_board_ours_no_gate": 0.6164268963474233,
+ "val87_board_with_organisers_posebusters_gate": 0.5480153551292827,
+ "delta": -0.06841154121814064,
+ "n_zeroed": 10,
+ "zeroed_true_lddt_mean": 0.5951804085978243,
+ "zeroed": {
+  "A1ASU": 0.7302631578947368,
+  "DEJ": 0.7679533213644525,
+  "G0V": 0.5279187817258884,
+  "MWY": 0.352112676056338,
+  "PK9": 0.3966836734693877,
+  "QDP": 0.7288557213930348,
+  "QDV": 0.5410014513788098,
+  "QEA": 0.5276360544217688,
+  "X6J": 0.5811403508771931,
+  "X6S": 0.7982388973966308
+ }
+}

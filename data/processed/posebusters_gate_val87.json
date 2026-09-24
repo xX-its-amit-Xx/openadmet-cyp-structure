@@ -1,0 +1,622 @@
+{
+ "zip": "submissions\\02_blind_rehearsal_val87b.zip",
+ "n": 87,
+ "n_zeroed": 10,
+ "n_pass": 77,
+ "max_pb_failures_upstream": 0,
+ "check_frequency": {
+  "minimum_distance_to_protein": 10
+ },
+ "per_file": [
+  {
+   "id": "08J",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "08Y",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "1RD",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "2QH",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "5AW",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "6AW",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "7AW",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "80K",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "8AW",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A06",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A07",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A08",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A4K",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A4S",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A4T",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A4U",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1A4V",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1APA",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1ASO",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1ASP",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1ASQ",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1ASR",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1ASS",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1AST",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1ASU",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "A1ASV",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1BNX",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "A1CIW",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "CFF",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "CL6",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "D0R",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "D7J",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "D7M",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "D7Y",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "D81",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "DEJ",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "DEV",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "DJ1",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "ERY",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "FZV",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "G0D",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "G0J",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "G0M",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "G0V",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "G1J",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "J9K",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "KLN",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "MF8",
+   "bond_orders": "FAILED_single_bonds",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "MWS",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "MWV",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "MWY",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "MYT",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "NH0",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "NI6",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "NJ0",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "NJO",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "NXR",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "NYF",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "PG0",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "PG4",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "PK9",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "PKT",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "QDJ",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "QDP",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "QDV",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "QDY",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "QE4",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "QEA",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "QEP",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "QES",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "RIT",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "T0K",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "TCI",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X5Y",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X6J",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "X6S",
+   "status": "ZEROED",
+   "n_checks": 22,
+   "n_failed": 1,
+   "failed": "minimum_distance_to_protein"
+  },
+  {
+   "id": "X6V",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X71",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X74",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X7D",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X7J",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X7M",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "X7P",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "Y83",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "YNV",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "Z8Z",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "Z9Z",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  }
+ ]
+}

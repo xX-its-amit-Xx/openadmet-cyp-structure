@@ -1,0 +1,49 @@
+{
+ "zip": "submissions\\02_blind_rehearsal_val87b.zip",
+ "n_scored": 87,
+ "n_skipped": 0,
+ "skipped": {},
+ "offsets": [
+  0,
+  24,
+  27,
+  43
+ ],
+ "arms": {
+  "0": {
+   "mean": 0.6164268963474233,
+   "median": 0.6388349514563106,
+   "n_nan": 0,
+   "n_exactly_zero": 0,
+   "n_below_0.1": 0,
+   "mean_shared_protein_atoms": 3603.8045977011493
+  },
+  "24": {
+   "mean": 6.846641875832584e-05,
+   "median": 0.0,
+   "n_nan": 0,
+   "n_exactly_zero": 84,
+   "n_below_0.1": 87,
+   "mean_shared_protein_atoms": 2576.0919540229884,
+   "delta_vs_first_arm": -0.616358429928665
+  },
+  "27": {
+   "mean": 0.002830796977628971,
+   "median": 0.0,
+   "n_nan": 0,
+   "n_exactly_zero": 59,
+   "n_below_0.1": 87,
+   "mean_shared_protein_atoms": 2557.3793103448274,
+   "delta_vs_first_arm": -0.6135960993697943
+  },
+  "43": {
+   "mean": 0.0001327975503158183,
+   "median": 0.0,
+   "n_nan": 0,
+   "n_exactly_zero": 83,
+   "n_below_0.1": 87,
+   "mean_shared_protein_atoms": 2485.287356321839,
+   "delta_vs_first_arm": -0.6162940987971075
+  }
+ }
+}
