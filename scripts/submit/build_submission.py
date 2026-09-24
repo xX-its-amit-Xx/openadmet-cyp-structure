@@ -215,6 +215,96 @@ def choose_poses_blind(tag: str, ligands_csv: Path | None = None,
     return picks, report
 
 
+def _pb_filter_picks(picks: dict, xeng_csv: Path, pool_dir: Path, pool_flat: bool,
+                     arm: str, ligands_csv: Path, heme: str,
+                     max_walk: int = 20) -> tuple[dict, dict]:
+    """Restrict `argmin(xeng)` to poses that pass the ORGANISERS' PoseBusters gate.
+
+    The organisers' backend runs `PoseBusters(config="dock")` on the PREDICTED complex
+    with `POSEBUSTERS_MAX_FAILURES = 0`, so one failed check of 22 overrides LDDT-PLI
+    and LDDT-LP to **0.0** and BiSyRMSD to 20 A
+    (`blind-challenge-template/backend/evaluate_predictions.py::score_single_structure`).
+    A pose that fails it is not a worse pose, it is a zero.
+
+    This walks each ligand's poses in xeng order and takes the first that passes, so it
+    is `argmin(xeng)` with an infeasible region removed - not a new selector and not a
+    retune. It is prediction-side: no crystal, no score, nothing that is unavailable on
+    a blind set. Ligands with no passing pose keep the shipped `argmin(xeng)` pose,
+    because a zero is a zero either way and silently substituting something else would
+    change the rule for the cases it cannot help.
+
+    Measured on the 87 validation ligands before it was used here - see
+    `submission_audit.py pbselect` and `docs/DROP_RUN_2026-09-23.md`.
+    """
+    import sys as _sys
+
+    _sys.path.insert(0, str(REPO / "scripts" / "submit"))
+    from posebusters import PoseBusters
+    from rdkit import RDLogger
+
+    from submission_audit import _pb_one, _pose_cif
+    RDLogger.DisableLog("rdApp.*")
+
+    d = pd.read_csv(ligands_csv)
+    idc = "structure" if "structure" in d.columns and "id" not in d.columns else "id"
+    smi = dict(zip(d[idc].astype(str), d["smiles"].astype(str)))
+    xe = pd.read_csv(xeng_csv).dropna(subset=["xeng"])
+    xe["ligand"] = xe.ligand.astype(str)
+
+    guard_scratch(0.5)
+    tmp = SCRATCH / "pbfilter_build"
+    tmp.mkdir(parents=True, exist_ok=True)
+    pb = PoseBusters(config="dock")
+    new, rep = dict(picks), {"rule": "argmin(xeng) restricted to PoseBusters-passing "
+                                     "poses (organisers' dock gate, MAX_FAILURES=0)",
+                             "max_walk": max_walk, "per_ligand": {}}
+    for ligid in sorted(picks):
+        sub = xe[xe.ligand == ligid].sort_values("xeng").reset_index(drop=True)
+        chosen, chosen_rank, statuses = None, None, []
+        for rank in range(min(max_walk, len(sub))):
+            sample = str(sub.loc[rank, "sample"])
+            cif = _pose_cif(Path(pool_dir), ligid, sample, arm, pool_flat)
+            if cif is None:
+                statuses.append((sample, "cif_missing", ""))
+                continue
+            out = tmp / f"{ligid}_{sample}.pdb"
+            to_submission_pdb(cif, out, heme)
+            r = _pb_one(pb, out, smi.get(ligid))
+            out.unlink(missing_ok=True)
+            statuses.append((sample, r.get("status", "?"), r.get("failed", "")))
+            if r.get("status") == "pass":
+                chosen, chosen_rank = sample, rank + 1
+                break
+        shipped = str(picks[ligid])
+        rep["per_ligand"][ligid] = {
+            "shipped_sample": shipped,
+            "shipped_status": statuses[0][1] if statuses else "unknown",
+            "shipped_failed": statuses[0][2] if statuses else "",
+            "n_gated": len(statuses),
+            "chosen_sample": chosen if chosen else shipped,
+            "chosen_xeng_rank": chosen_rank if chosen_rank else 1,
+            "has_passing_pose": chosen is not None,
+            "changed": bool(chosen is not None and chosen != shipped),
+        }
+        if chosen is not None:
+            new[ligid] = chosen
+        print(f"  pb-filter {ligid}: shipped="
+              f"{rep['per_ligand'][ligid]['shipped_status']} -> rank "
+              f"{rep['per_ligand'][ligid]['chosen_xeng_rank']} "
+              f"({'CHANGED' if rep['per_ligand'][ligid]['changed'] else 'same'})",
+              flush=True)
+    rep["n_changed"] = sum(1 for v in rep["per_ligand"].values() if v["changed"])
+    rep["changed"] = sorted(k for k, v in rep["per_ligand"].items() if v["changed"])
+    rep["n_no_passing_pose"] = sum(
+        1 for v in rep["per_ligand"].values() if not v["has_passing_pose"])
+    rep["no_passing_pose"] = sorted(
+        k for k, v in rep["per_ligand"].items() if not v["has_passing_pose"])
+    print(f"pb-filter: {rep['n_changed']} of {len(picks)} ligands changed pose "
+          f"({rep['changed']}); {rep['n_no_passing_pose']} have no passing pose",
+          flush=True)
+    return new, rep
+
+
 def to_submission_pdb(cif_path: Path, out_pdb: Path, heme: str = "keep") -> dict:
     """Write a single-model PDB with the query ligand renamed to `LIG`.
 
@@ -260,14 +350,17 @@ def to_submission_pdb(cif_path: Path, out_pdb: Path, heme: str = "keep") -> dict
 
 def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
           profile: str | None, blind: bool = False,
-          ligands_csv: Path | None = None, pool_flat: bool = False) -> None:
+          ligands_csv: Path | None = None, pool_flat: bool = False,
+          xeng_csv: Path | None = None,
+          pb_filter: bool = False) -> None:
     import os
     import shutil
     import tempfile
 
     blind_report = None
     if blind:
-        picks, blind_report = choose_poses_blind(tag, ligands_csv, arm)
+        picks, blind_report = choose_poses_blind(tag, ligands_csv, arm,
+                                                 xeng_csv=xeng_csv)
         print(f"selector: {blind_report['rule']}", flush=True)
         if pool_dir is None:
             raise SystemExit("--blind needs --pool-dir: there is no Modal volume for a "
@@ -275,6 +368,17 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
     else:
         picks = choose_poses(tag, arm)
     print(f"{len(picks)} ligands selected", flush=True)
+
+    pb_report = None
+    if pb_filter:
+        if pool_dir is None or ligands_csv is None:
+            raise SystemExit("--pb-filter needs --pool-dir and --ligands")
+        picks, pb_report = _pb_filter_picks(
+            picks, Path(xeng_csv) if xeng_csv
+            else DATA_PROCESSED / f"xeng_{tag}.csv", Path(pool_dir), pool_flat,
+            arm, Path(ligands_csv), heme)
+        if blind_report is not None:
+            blind_report["pb_filter"] = pb_report
 
     # A LOCAL pool must work without Modal. `pool_dir` was a dead parameter - build()
     # always read from the Modal volume and was always called with None - so with Modal
@@ -352,6 +456,7 @@ def build(tag: str, arm: str, out_zip: Path, heme: str, pool_dir: Path | None,
         (DATA_PROCESSED / f"submission_report_{tag}.json").write_text(
             json.dumps({"tag": tag, "heme": heme, "n": len(pdbs),
                         "blind": bool(blind), "selection": blind_report,
+                        "pb_filter": pb_report,
                         "picks": picks, "reports": reports}, indent=1))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
@@ -453,11 +558,22 @@ if __name__ == "__main__":
                          "the drop-day path (playbook G5).")
     ap.add_argument("--pool-flat", action="store_true",
                     help="--pool-dir is a flat directory of <LIG>__<sample>.cif")
+    ap.add_argument("--xeng", default=None,
+                    help="cross-engine feature csv; defaults to xeng_<tag>.csv. Pass it "
+                         "to build a SECOND submission from the same pool under a new "
+                         "tag without overwriting the first one's report.")
+    ap.add_argument("--pb-filter", action="store_true",
+                    help="restrict argmin(xeng) to poses that pass the organisers' "
+                         "PoseBusters dock gate (POSEBUSTERS_MAX_FAILURES=0). "
+                         "Prediction-side; see docs/DROP_RUN_2026-09-23.md 12.")
     a = ap.parse_args()
     if a.cmd == "build":
         build(a.tag, a.arm, Path(a.out), a.heme,
               Path(a.pool_dir) if a.pool_dir else None, a.profile,
-              blind=a.blind, ligands_csv=Path(a.ligands) if a.blind else None,
-              pool_flat=a.pool_flat)
+              blind=a.blind,
+              ligands_csv=Path(a.ligands) if (a.blind or a.pb_filter) else None,
+              pool_flat=a.pool_flat,
+              xeng_csv=Path(a.xeng) if a.xeng else None,
+              pb_filter=a.pb_filter)
     else:
         raise SystemExit(validate(Path(a.zip or a.out), Path(a.ligands), a.expect_n))

@@ -1,0 +1,150 @@
+{
+ "zip": "submissions\\03_drop_pbfilter.zip",
+ "n": 20,
+ "n_zeroed": 0,
+ "n_pass": 20,
+ "max_pb_failures_upstream": 0,
+ "check_frequency": {},
+ "per_file": [
+  {
+   "id": "OCNT-2312554",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2312966",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2313038",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2313300",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2313397",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2313429",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2315379",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395328",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395342",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395415",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395436",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395457",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395460",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395464",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395503",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395645",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395712",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2395789",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2535422",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  },
+  {
+   "id": "OCNT-2535519",
+   "status": "pass",
+   "n_checks": 22,
+   "n_failed": 0,
+   "failed": ""
+  }
+ ]
+}

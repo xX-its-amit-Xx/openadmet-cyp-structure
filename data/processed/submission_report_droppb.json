@@ -1,0 +1,591 @@
+{
+ "tag": "droppb",
+ "heme": "keep",
+ "n": 20,
+ "blind": true,
+ "selection": {
+  "tag": "droppb",
+  "xeng_csv": "data\\processed\\xeng_drop.csv",
+  "rule": "FINDING 011/012 cross-engine agreement (+0.0395) via cypstruct.xengine.select()",
+  "argmin_equals_select": true,
+  "n_xeng_ligands": 20,
+  "n_xeng_poses": 400,
+  "selected_by_xeng": [
+   "OCNT-2312554",
+   "OCNT-2312966",
+   "OCNT-2313038",
+   "OCNT-2313300",
+   "OCNT-2313397",
+   "OCNT-2313429",
+   "OCNT-2315379",
+   "OCNT-2395328",
+   "OCNT-2395342",
+   "OCNT-2395415",
+   "OCNT-2395436",
+   "OCNT-2395457",
+   "OCNT-2395460",
+   "OCNT-2395464",
+   "OCNT-2395503",
+   "OCNT-2395645",
+   "OCNT-2395712",
+   "OCNT-2395789",
+   "OCNT-2535422",
+   "OCNT-2535519"
+  ],
+  "fell_back": [],
+  "uncovered": [],
+  "requested": 20,
+  "pb_filter": {
+   "rule": "argmin(xeng) restricted to PoseBusters-passing poses (organisers' dock gate, MAX_FAILURES=0)",
+   "max_walk": 20,
+   "per_ligand": {
+    "OCNT-2312554": {
+     "shipped_sample": "OCNT-2312554__s101_m15",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2312554__s101_m15",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2312966": {
+     "shipped_sample": "OCNT-2312966__s101_m5",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2312966__s101_m5",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2313038": {
+     "shipped_sample": "OCNT-2313038__s101_m2",
+     "shipped_status": "ZEROED",
+     "shipped_failed": "minimum_distance_to_protein",
+     "n_gated": 2,
+     "chosen_sample": "OCNT-2313038__s101_m1",
+     "chosen_xeng_rank": 2,
+     "has_passing_pose": true,
+     "changed": true
+    },
+    "OCNT-2313300": {
+     "shipped_sample": "OCNT-2313300__s101_m10",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2313300__s101_m10",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2313397": {
+     "shipped_sample": "OCNT-2313397__s101_m16",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2313397__s101_m16",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2313429": {
+     "shipped_sample": "OCNT-2313429__s101_m3",
+     "shipped_status": "ZEROED",
+     "shipped_failed": "minimum_distance_to_protein",
+     "n_gated": 4,
+     "chosen_sample": "OCNT-2313429__s101_m19",
+     "chosen_xeng_rank": 4,
+     "has_passing_pose": true,
+     "changed": true
+    },
+    "OCNT-2315379": {
+     "shipped_sample": "OCNT-2315379__s101_m1",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2315379__s101_m1",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395328": {
+     "shipped_sample": "OCNT-2395328__s101_m17",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395328__s101_m17",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395342": {
+     "shipped_sample": "OCNT-2395342__s101_m3",
+     "shipped_status": "ZEROED",
+     "shipped_failed": "minimum_distance_to_protein",
+     "n_gated": 2,
+     "chosen_sample": "OCNT-2395342__s101_m7",
+     "chosen_xeng_rank": 2,
+     "has_passing_pose": true,
+     "changed": true
+    },
+    "OCNT-2395415": {
+     "shipped_sample": "OCNT-2395415__s101_m2",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395415__s101_m2",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395436": {
+     "shipped_sample": "OCNT-2395436__s101_m0",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395436__s101_m0",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395457": {
+     "shipped_sample": "OCNT-2395457__s101_m1",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395457__s101_m1",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395460": {
+     "shipped_sample": "OCNT-2395460__s101_m3",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395460__s101_m3",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395464": {
+     "shipped_sample": "OCNT-2395464__s101_m18",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395464__s101_m18",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395503": {
+     "shipped_sample": "OCNT-2395503__s101_m14",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395503__s101_m14",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395645": {
+     "shipped_sample": "OCNT-2395645__s101_m0",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395645__s101_m0",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395712": {
+     "shipped_sample": "OCNT-2395712__s101_m11",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395712__s101_m11",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2395789": {
+     "shipped_sample": "OCNT-2395789__s101_m15",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2395789__s101_m15",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2535422": {
+     "shipped_sample": "OCNT-2535422__s101_m7",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2535422__s101_m7",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    },
+    "OCNT-2535519": {
+     "shipped_sample": "OCNT-2535519__s101_m11",
+     "shipped_status": "pass",
+     "shipped_failed": "",
+     "n_gated": 1,
+     "chosen_sample": "OCNT-2535519__s101_m11",
+     "chosen_xeng_rank": 1,
+     "has_passing_pose": true,
+     "changed": false
+    }
+   },
+   "n_changed": 3,
+   "changed": [
+    "OCNT-2313038",
+    "OCNT-2313429",
+    "OCNT-2395342"
+   ],
+   "n_no_passing_pose": 0,
+   "no_passing_pose": []
+  }
+ },
+ "pb_filter": {
+  "rule": "argmin(xeng) restricted to PoseBusters-passing poses (organisers' dock gate, MAX_FAILURES=0)",
+  "max_walk": 20,
+  "per_ligand": {
+   "OCNT-2312554": {
+    "shipped_sample": "OCNT-2312554__s101_m15",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2312554__s101_m15",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2312966": {
+    "shipped_sample": "OCNT-2312966__s101_m5",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2312966__s101_m5",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2313038": {
+    "shipped_sample": "OCNT-2313038__s101_m2",
+    "shipped_status": "ZEROED",
+    "shipped_failed": "minimum_distance_to_protein",
+    "n_gated": 2,
+    "chosen_sample": "OCNT-2313038__s101_m1",
+    "chosen_xeng_rank": 2,
+    "has_passing_pose": true,
+    "changed": true
+   },
+   "OCNT-2313300": {
+    "shipped_sample": "OCNT-2313300__s101_m10",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2313300__s101_m10",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2313397": {
+    "shipped_sample": "OCNT-2313397__s101_m16",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2313397__s101_m16",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2313429": {
+    "shipped_sample": "OCNT-2313429__s101_m3",
+    "shipped_status": "ZEROED",
+    "shipped_failed": "minimum_distance_to_protein",
+    "n_gated": 4,
+    "chosen_sample": "OCNT-2313429__s101_m19",
+    "chosen_xeng_rank": 4,
+    "has_passing_pose": true,
+    "changed": true
+   },
+   "OCNT-2315379": {
+    "shipped_sample": "OCNT-2315379__s101_m1",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2315379__s101_m1",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395328": {
+    "shipped_sample": "OCNT-2395328__s101_m17",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395328__s101_m17",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395342": {
+    "shipped_sample": "OCNT-2395342__s101_m3",
+    "shipped_status": "ZEROED",
+    "shipped_failed": "minimum_distance_to_protein",
+    "n_gated": 2,
+    "chosen_sample": "OCNT-2395342__s101_m7",
+    "chosen_xeng_rank": 2,
+    "has_passing_pose": true,
+    "changed": true
+   },
+   "OCNT-2395415": {
+    "shipped_sample": "OCNT-2395415__s101_m2",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395415__s101_m2",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395436": {
+    "shipped_sample": "OCNT-2395436__s101_m0",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395436__s101_m0",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395457": {
+    "shipped_sample": "OCNT-2395457__s101_m1",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395457__s101_m1",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395460": {
+    "shipped_sample": "OCNT-2395460__s101_m3",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395460__s101_m3",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395464": {
+    "shipped_sample": "OCNT-2395464__s101_m18",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395464__s101_m18",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395503": {
+    "shipped_sample": "OCNT-2395503__s101_m14",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395503__s101_m14",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395645": {
+    "shipped_sample": "OCNT-2395645__s101_m0",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395645__s101_m0",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395712": {
+    "shipped_sample": "OCNT-2395712__s101_m11",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395712__s101_m11",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2395789": {
+    "shipped_sample": "OCNT-2395789__s101_m15",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2395789__s101_m15",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2535422": {
+    "shipped_sample": "OCNT-2535422__s101_m7",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2535422__s101_m7",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   },
+   "OCNT-2535519": {
+    "shipped_sample": "OCNT-2535519__s101_m11",
+    "shipped_status": "pass",
+    "shipped_failed": "",
+    "n_gated": 1,
+    "chosen_sample": "OCNT-2535519__s101_m11",
+    "chosen_xeng_rank": 1,
+    "has_passing_pose": true,
+    "changed": false
+   }
+  },
+  "n_changed": 3,
+  "changed": [
+   "OCNT-2313038",
+   "OCNT-2313429",
+   "OCNT-2395342"
+  ],
+  "n_no_passing_pose": 0,
+  "no_passing_pose": []
+ },
+ "picks": {
+  "OCNT-2312554": "OCNT-2312554__s101_m15",
+  "OCNT-2312966": "OCNT-2312966__s101_m5",
+  "OCNT-2313038": "OCNT-2313038__s101_m1",
+  "OCNT-2313300": "OCNT-2313300__s101_m10",
+  "OCNT-2313397": "OCNT-2313397__s101_m16",
+  "OCNT-2313429": "OCNT-2313429__s101_m19",
+  "OCNT-2315379": "OCNT-2315379__s101_m1",
+  "OCNT-2395328": "OCNT-2395328__s101_m17",
+  "OCNT-2395342": "OCNT-2395342__s101_m7",
+  "OCNT-2395415": "OCNT-2395415__s101_m2",
+  "OCNT-2395436": "OCNT-2395436__s101_m0",
+  "OCNT-2395457": "OCNT-2395457__s101_m1",
+  "OCNT-2395460": "OCNT-2395460__s101_m3",
+  "OCNT-2395464": "OCNT-2395464__s101_m18",
+  "OCNT-2395503": "OCNT-2395503__s101_m14",
+  "OCNT-2395645": "OCNT-2395645__s101_m0",
+  "OCNT-2395712": "OCNT-2395712__s101_m11",
+  "OCNT-2395789": "OCNT-2395789__s101_m15",
+  "OCNT-2535422": "OCNT-2535422__s101_m7",
+  "OCNT-2535519": "OCNT-2535519__s101_m11"
+ },
+ "reports": {
+  "OCNT-2312554": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2312554.pdb"
+  },
+  "OCNT-2312966": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2312966.pdb"
+  },
+  "OCNT-2313038": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2313038.pdb"
+  },
+  "OCNT-2313300": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2313300.pdb"
+  },
+  "OCNT-2313397": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2313397.pdb"
+  },
+  "OCNT-2313429": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2313429.pdb"
+  },
+  "OCNT-2315379": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2315379.pdb"
+  },
+  "OCNT-2395328": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395328.pdb"
+  },
+  "OCNT-2395342": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395342.pdb"
+  },
+  "OCNT-2395415": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395415.pdb"
+  },
+  "OCNT-2395436": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395436.pdb"
+  },
+  "OCNT-2395457": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395457.pdb"
+  },
+  "OCNT-2395460": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395460.pdb"
+  },
+  "OCNT-2395464": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395464.pdb"
+  },
+  "OCNT-2395503": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395503.pdb"
+  },
+  "OCNT-2395645": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395645.pdb"
+  },
+  "OCNT-2395712": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395712.pdb"
+  },
+  "OCNT-2395789": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2395789.pdb"
+  },
+  "OCNT-2535422": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2535422.pdb"
+  },
+  "OCNT-2535519": {
+   "n_lig_residues": 1,
+   "n_heme": 1,
+   "out": "C:\\cyp_struct\\cypsub_y1ldmtid\\pdb\\OCNT-2535519.pdb"
+  }
+ }
+}

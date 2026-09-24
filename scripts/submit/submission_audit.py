@@ -302,9 +302,202 @@ def pbrescue(pool: Path, ligands_csv: Path, xeng_csv: Path, tag: str,
         json.dumps(out, indent=1))
 
 
+# --------------------------------------------------------------------------
+# 4. does gating the SELECTOR on PoseBusters beat the shipped selector?
+# --------------------------------------------------------------------------
+def _pose_cif(pool: Path, lig: str, sample: str, arm: str, flat: bool):
+    cands = [pool / f"{lig}__{arm}__s1" / f"{sample}.cif",
+             pool / f"{sample}.cif",
+             pool / lig / f"{sample}.cif",
+             pool / f"{lig}__{sample}.cif"]
+    if flat:
+        cands = [c for c in cands if c.parent == pool]
+    return next((c for c in cands if c.exists()), None)
+
+
+def pbselect(pool: Path, ligands_csv: Path, xeng_csv: Path, scored_csv: Path,
+             tag: str, arm: str, pool_flat: bool, boot: int, max_walk: int,
+             recheck: int) -> None:
+    """Rule A (argmin xeng) against rule B (argmin xeng among PB-passing poses).
+
+    Scored the way the ORGANISERS score: a pose that fails one PoseBusters `dock`
+    check contributes **0.0**, not its true LDDT-PLI. `lddt_pli` for every pose comes
+    from `poses_scored_<tag>.csv`, i.e. from crystals - legitimate here because this is
+    the *measurement*, not the rule. Both rules themselves are prediction-side.
+
+    Poses are gated lazily in xeng order and the walk stops at the first pass, so a
+    ligand whose shipped pose already passes costs one gate call. A ligand that never
+    passes is walked to the end, which is how `no_passing_pose` is counted.
+    """
+    from posebusters import PoseBusters
+    from rdkit import RDLogger
+
+    from build_submission import to_submission_pdb
+    RDLogger.DisableLog("rdApp.*")
+
+    lig = pd.read_csv(ligands_csv)
+    idc = _id_col(lig)
+    smi = dict(zip(lig[idc].astype(str), lig["smiles"].astype(str)))
+    xe = pd.read_csv(xeng_csv).dropna(subset=["xeng"])
+    xe["ligand"] = xe.ligand.astype(str)
+    sc = pd.read_csv(scored_csv)
+    sc = sc[sc.arm == arm]
+    truth = {(str(r.ligand), str(r.sample)): float(r.lddt_pli) for r in sc.itertuples()}
+
+    guard_scratch(0.5)
+    tmp = SCRATCH / f"pbselect_{tag}"
+    tmp.mkdir(parents=True, exist_ok=True)
+    cache_path = DATA_PROCESSED / f"posebusters_pose_gate_{tag}.csv"
+    cache: dict = {}
+    if cache_path.exists():
+        for r in pd.read_csv(cache_path).itertuples():
+            cache[(str(r.ligand), str(r.sample))] = {
+                "status": str(r.status),
+                "failed": "" if pd.isna(r.failed) else str(r.failed),
+                "n_checks": int(r.n_checks) if not pd.isna(r.n_checks) else -1}
+        print(f"resuming: {len(cache)} poses already gated", flush=True)
+    pb = PoseBusters(config="dock")
+
+    def gate(ligid: str, sample: str) -> dict:
+        key = (ligid, sample)
+        if key in cache:
+            return cache[key]
+        cif = _pose_cif(pool, ligid, sample, arm, pool_flat)
+        if cif is None:
+            rec = {"status": "cif_missing", "failed": "", "n_checks": -1}
+        else:
+            p = tmp / f"{ligid}_{sample}.pdb"
+            to_submission_pdb(cif, p, heme="keep")
+            r = _pb_one(pb, p, smi.get(ligid))
+            rec = {"status": r.get("status", "?"), "failed": r.get("failed", ""),
+                   "n_checks": int(r.get("n_checks", -1))}
+            p.unlink(missing_ok=True)
+        cache[key] = rec
+        return rec
+
+    rows, fails = [], Counter()
+    ligs = sorted(xe.ligand.unique())
+    for i, ligid in enumerate(ligs, 1):
+        sub = xe[xe.ligand == ligid].sort_values("xeng").reset_index(drop=True)
+        n_poses = len(sub)
+        walk = min(max_walk, n_poses)
+        rank1 = str(sub.loc[0, "sample"])
+        first_pass, first_rank, n_gated = None, None, 0
+        for rank in range(walk):
+            s = str(sub.loc[rank, "sample"])
+            rec = gate(ligid, s)
+            n_gated += 1
+            for f in filter(None, rec["failed"].split(";")):
+                fails[f] += 1
+            if rec["status"] == "pass":
+                first_pass, first_rank = s, rank + 1
+                break
+        r1 = cache[(ligid, rank1)]
+        pick_b = first_pass if first_pass is not None else rank1
+        t1 = truth.get((ligid, rank1), float("nan"))
+        tb = truth.get((ligid, pick_b), float("nan"))
+        rows.append({
+            "ligand": ligid, "n_poses": n_poses, "n_gated": n_gated,
+            "rank1_sample": rank1, "rank1_status": r1["status"],
+            "rank1_failed": r1["failed"],
+            "b_sample": pick_b, "b_rank": first_rank if first_rank else 1,
+            "b_has_passing_pose": first_pass is not None,
+            "changed": pick_b != rank1,
+            "true_A": t1, "true_B": tb,
+            "gated_A": t1 if r1["status"] == "pass" else 0.0,
+            "gated_B": tb if first_pass is not None else 0.0,
+        })
+        print(f"  {i}/{len(ligs)} {ligid}: rank1={r1['status']} gated={n_gated} "
+              f"B_rank={first_rank} changed={pick_b != rank1}", flush=True)
+        pd.DataFrame([{"ligand": k[0], "sample": k[1], **v}
+                      for k, v in cache.items()]).to_csv(cache_path, index=False)
+
+    df = pd.DataFrame(rows)
+    df.to_csv(DATA_PROCESSED / f"pbselect_{tag}.csv", index=False)
+
+    a, b = df.gated_A.to_numpy(float), df.gated_B.to_numpy(float)
+    d = b - a
+    rng = np.random.default_rng(0)
+    idx = rng.integers(0, len(d), size=(boot, len(d)))
+    bs = d[idx].mean(axis=1)
+    lo, hi = float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))
+    p = stat = float("nan")
+    try:
+        from scipy.stats import wilcoxon
+        nz = d[d != 0]
+        if len(nz):
+            w = wilcoxon(nz)
+            p, stat = float(w.pvalue), float(w.statistic)
+    except Exception as exc:                              # noqa: BLE001
+        print("wilcoxon failed:", exc)
+
+    changed = df[df.changed]
+    no_pass = df[~df.b_has_passing_pose]
+    out = {
+        "tag": tag, "arm": arm, "n_ligands": int(len(df)),
+        "pool": str(pool), "xeng": str(xeng_csv), "scored": str(scored_csv),
+        "max_walk": max_walk, "n_poses_gated": int(df.n_gated.sum()),
+        "board_A_gated": float(a.mean()), "board_B_gated": float(b.mean()),
+        "board_A_ungated": float(df.true_A.mean()),
+        "board_B_ungated": float(df.true_B.mean()),
+        "delta_gated": float(d.mean()),
+        "delta_gated_ci95": [lo, hi],
+        "delta_ungated": float((df.true_B - df.true_A).mean()),
+        "wilcoxon_stat": stat, "wilcoxon_p": p,
+        "n_nonzero_pairs": int((d != 0).sum()),
+        "n_changed_pick": int(len(changed)),
+        "n_rank1_zeroed": int((df.rank1_status != "pass").sum()),
+        "n_no_passing_pose": int(len(no_pass)),
+        "no_passing_pose": sorted(no_pass.ligand.tolist()),
+        "changed": [{"ligand": r.ligand, "b_rank": int(r.b_rank),
+                     "rank1_status": r.rank1_status,
+                     "true_A": r.true_A, "true_B": r.true_B,
+                     "gated_A": r.gated_A, "gated_B": r.gated_B}
+                    for r in changed.itertuples()],
+        "check_frequency_over_gated_poses": dict(fails.most_common()),
+        "b_rank_histogram": {str(k): int(v) for k, v in
+                             sorted(Counter(df.b_rank.tolist()).items())},
+    }
+
+    # determinism: re-gate a spread of already-gated files and compare verdicts
+    if recheck:
+        keys = [k for k in cache if cache[k]["status"] in ("pass", "ZEROED")]
+        pick = keys if len(keys) <= recheck else [
+            keys[i] for i in np.linspace(0, len(keys) - 1, recheck).astype(int)]
+        same = 0
+        for ligid, s in pick:
+            before = cache[(ligid, s)]
+            cif = _pose_cif(pool, ligid, s, arm, pool_flat)
+            pp = tmp / f"recheck_{ligid}_{s}.pdb"
+            to_submission_pdb(cif, pp, heme="keep")
+            r = _pb_one(pb, pp, smi.get(ligid))
+            pp.unlink(missing_ok=True)
+            same += int(r.get("status") == before["status"]
+                        and r.get("failed", "") == before["failed"])
+        out["determinism_rechecked"] = len(pick)
+        out["determinism_identical"] = same
+        print(f"\ndeterminism: {same}/{len(pick)} re-runs identical")
+
+    print(f"\n{tag}: {len(df)} ligands, {out['n_poses_gated']} poses gated")
+    print(f"  A (shipped argmin(xeng))       gated {out['board_A_gated']:.4f}   "
+          f"ungated {out['board_A_ungated']:.4f}")
+    print(f"  B (argmin(xeng) | PB-passing)  gated {out['board_B_gated']:.4f}   "
+          f"ungated {out['board_B_ungated']:.4f}")
+    print(f"  paired delta (gated) {out['delta_gated']:+.4f}  "
+          f"95% CI [{lo:+.4f}, {hi:+.4f}]  wilcoxon p={p:.3g} "
+          f"(n non-zero {out['n_nonzero_pairs']})")
+    print(f"  delta (ungated, cost of moving off rank 1) {out['delta_ungated']:+.4f}")
+    print(f"  ligands changing pick {out['n_changed_pick']}; "
+          f"rank-1 zeroed {out['n_rank1_zeroed']}; "
+          f"no passing pose at all {out['n_no_passing_pose']}")
+    print("  checks fired over gated poses:", out["check_frequency_over_gated_poses"])
+    print("  B rank histogram:", out["b_rank_histogram"])
+    (DATA_PROCESSED / f"pbselect_{tag}.json").write_text(json.dumps(out, indent=1))
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["numbering", "pbgate", "pbrescue"])
+    ap.add_argument("cmd", choices=["numbering", "pbgate", "pbrescue", "pbselect"])
     ap.add_argument("--zip", default=None)
     ap.add_argument("--ligands", required=True)
     ap.add_argument("--tag", required=True)
@@ -313,12 +506,23 @@ if __name__ == "__main__":
     ap.add_argument("--pool", default=None)
     ap.add_argument("--xeng", default=None)
     ap.add_argument("--ids", nargs="+", default=[])
+    ap.add_argument("--scored", default=None)
+    ap.add_argument("--arm", default="unsteered")
+    ap.add_argument("--pool-flat", action="store_true")
+    ap.add_argument("--boot", type=int, default=10000)
+    ap.add_argument("--max-walk", type=int, default=20)
+    ap.add_argument("--recheck", type=int, default=20)
     a = ap.parse_args()
     if a.cmd == "numbering":
         numbering(Path(a.zip), Path(a.ligands), a.tag, a.offsets)
     elif a.cmd == "pbgate":
         pbgate(Path(a.zip), Path(a.ligands), a.tag)
-    else:
+    elif a.cmd == "pbrescue":
         if not (a.pool and a.xeng and a.ids):
             raise SystemExit("pbrescue needs --pool, --xeng and --ids")
         pbrescue(Path(a.pool), Path(a.ligands), Path(a.xeng), a.tag, a.ids)
+    else:
+        if not (a.pool and a.xeng and a.scored):
+            raise SystemExit("pbselect needs --pool, --xeng and --scored")
+        pbselect(Path(a.pool), Path(a.ligands), Path(a.xeng), Path(a.scored),
+                 a.tag, a.arm, a.pool_flat, a.boot, a.max_walk, a.recheck)

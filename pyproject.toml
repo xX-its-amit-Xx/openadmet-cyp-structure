@@ -6,6 +6,11 @@ requires-python = ">=3.11"
 dependencies = [
   "numpy", "pandas", "pyarrow", "requests", "rdkit", "gemmi", "scipy",
   "modal", "spyrmsd", "lightgbm",
+  # The organisers' scorer runs PoseBusters(config="dock") on the PREDICTED complex with
+  # POSEBUSTERS_MAX_FAILURES = 0, so one failed check zeroes LDDT-PLI. Replicating that
+  # gate locally (scripts/submit/submission_audit.py) is not optional any more, and the
+  # package was pip-installed by hand on 2026-09-24 before it was declared here.
+  "posebusters>=0.6.5",
 ]
 
 [tool.setuptools.packages.find]

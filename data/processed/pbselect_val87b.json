@@ -1,0 +1,131 @@
+{
+ "tag": "val87b",
+ "arm": "unsteered",
+ "n_ligands": 87,
+ "pool": "C:\\cyp_struct\\val87b_pull",
+ "xeng": "data\\processed\\xeng_val87b.csv",
+ "scored": "data\\processed\\poses_scored_val87b.csv",
+ "max_walk": 20,
+ "n_poses_gated": 107,
+ "board_A_gated": 0.5479836806275606,
+ "board_B_gated": 0.6130036244111793,
+ "board_A_ungated": 0.616390821289471,
+ "board_B_ungated": 0.6130036244111793,
+ "delta_gated": 0.0650199437836186,
+ "delta_gated_ci95": [
+  0.028353600092143865,
+  0.10865729011981705
+ ],
+ "delta_ungated": -0.0033871968782918,
+ "wilcoxon_stat": 0.0,
+ "wilcoxon_p": 0.001953125,
+ "n_nonzero_pairs": 10,
+ "n_changed_pick": 10,
+ "n_rank1_zeroed": 10,
+ "n_no_passing_pose": 0,
+ "no_passing_pose": [],
+ "changed": [
+  {
+   "ligand": "A1ASU",
+   "b_rank": 4,
+   "rank1_status": "ZEROED",
+   "true_A": 0.7302631578947368,
+   "true_B": 0.6672149122807017,
+   "gated_A": 0.0,
+   "gated_B": 0.6672149122807017
+  },
+  {
+   "ligand": "DEJ",
+   "b_rank": 2,
+   "rank1_status": "ZEROED",
+   "true_A": 0.7679533213644525,
+   "true_B": 0.52737881508079,
+   "gated_A": 0.0,
+   "gated_B": 0.52737881508079
+  },
+  {
+   "ligand": "G0V",
+   "b_rank": 2,
+   "rank1_status": "ZEROED",
+   "true_A": 0.5279187817258884,
+   "true_B": 0.5342639593908629,
+   "gated_A": 0.0,
+   "gated_B": 0.5342639593908629
+  },
+  {
+   "ligand": "MWY",
+   "b_rank": 2,
+   "rank1_status": "ZEROED",
+   "true_A": 0.352112676056338,
+   "true_B": 0.3352112676056338,
+   "gated_A": 0.0,
+   "gated_B": 0.3352112676056338
+  },
+  {
+   "ligand": "PK9",
+   "b_rank": 3,
+   "rank1_status": "ZEROED",
+   "true_A": 0.3966836734693877,
+   "true_B": 0.1677295918367347,
+   "gated_A": 0.0,
+   "gated_B": 0.1677295918367347
+  },
+  {
+   "ligand": "QDP",
+   "b_rank": 7,
+   "rank1_status": "ZEROED",
+   "true_A": 0.7288557213930348,
+   "true_B": 0.7056384742951907,
+   "gated_A": 0.0,
+   "gated_B": 0.7056384742951907
+  },
+  {
+   "ligand": "QDV",
+   "b_rank": 4,
+   "rank1_status": "ZEROED",
+   "true_A": 0.5410014513788098,
+   "true_B": 0.706821480406386,
+   "gated_A": 0.0,
+   "gated_B": 0.706821480406386
+  },
+  {
+   "ligand": "QEA",
+   "b_rank": 2,
+   "rank1_status": "ZEROED",
+   "true_A": 0.5276360544217688,
+   "true_B": 0.528061224489796,
+   "gated_A": 0.0,
+   "gated_B": 0.528061224489796
+  },
+  {
+   "ligand": "X6J",
+   "b_rank": 2,
+   "rank1_status": "ZEROED",
+   "true_A": 0.5811403508771931,
+   "true_B": 0.7057017543859649,
+   "gated_A": 0.0,
+   "gated_B": 0.7057017543859649
+  },
+  {
+   "ligand": "X6S",
+   "b_rank": 2,
+   "rank1_status": "ZEROED",
+   "true_A": 0.7978560490045941,
+   "true_B": 0.7787136294027566,
+   "gated_A": 0.0,
+   "gated_B": 0.7787136294027566
+  }
+ ],
+ "check_frequency_over_gated_poses": {
+  "minimum_distance_to_protein": 20
+ },
+ "b_rank_histogram": {
+  "1": 77,
+  "2": 6,
+  "3": 1,
+  "4": 2,
+  "7": 1
+ },
+ "determinism_rechecked": 20,
+ "determinism_identical": 20
+}
