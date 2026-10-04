@@ -165,13 +165,36 @@ class Batch:
         return False
 
 
+def _size_on_disk(f: Path) -> int:
+    """Bytes actually allocated, not the logical length.
+
+    rclone's `--vfs-cache-mode full` stores partially-read files as SPARSE files, so
+    `stat().st_size` reports the full remote length. Measured 2026-10-04: health()
+    said 6.96 GB while rclone's own log and `du` said 546 MiB - a 13x overstatement
+    that points a low-disk alarm at the wrong culprit. Windows reports the allocated
+    size through GetCompressedFileSizeW; fall back to the logical size elsewhere.
+    """
+    try:
+        import ctypes
+        from ctypes import wintypes
+        hi = wintypes.DWORD(0)
+        fn = ctypes.windll.kernel32.GetCompressedFileSizeW
+        fn.restype = wintypes.DWORD
+        lo = fn(wintypes.LPCWSTR(str(f)), ctypes.byref(hi))
+        if lo == 0xFFFFFFFF and ctypes.GetLastError() != 0:
+            return f.stat().st_size
+        return (hi.value << 32) + lo
+    except Exception:
+        return f.stat().st_size
+
+
 def health() -> dict:
     """Disk + cachestatus. Print this before any bulk step."""
     cache = Path("C:/Temp/rclone-cache/vfs")
     cache_gb = 0.0
     if cache.exists():
         try:
-            cache_gb = sum(f.stat().st_size for f in cache.rglob("*") if f.is_file()) / 1024**3
+            cache_gb = sum(_size_on_disk(f) for f in cache.rglob("*") if f.is_file()) / 1024**3
         except OSError:
             cache_gb = float("nan")
     return {
