@@ -193,10 +193,17 @@ def health() -> dict:
     cache = Path("C:/Temp/rclone-cache/vfs")
     cache_gb = 0.0
     if cache.exists():
-        try:
-            cache_gb = sum(_size_on_disk(f) for f in cache.rglob("*") if f.is_file()) / 1024**3
-        except OSError:
-            cache_gb = float("nan")
+        # A live cache is being evicted while we walk it, so any single file can vanish
+        # between rglob() and stat(). One missing file must not poison the whole figure
+        # (it returned NaN exactly when rclone was busiest); count what is there.
+        total = 0
+        for f in cache.rglob("*"):
+            try:
+                if f.is_file():
+                    total += _size_on_disk(f)
+            except OSError:
+                continue
+        cache_gb = total / 1024**3
     return {
         "free_C_gb": round(free_gb("C:/"), 2),
         "free_D_gb": round(free_gb("D:/"), 2),
