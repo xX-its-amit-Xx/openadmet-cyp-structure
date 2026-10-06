@@ -20,3 +20,18 @@ data/processed/two_ligand/protenix_v2/
 data/processed/openprotein/refdepth/
 data/processed/openprotein/refvalue/
 data/processed/openprotein/drop/
+
+# credentials and local config: never commit (added before making the repo public)
+.env.*
+!.env.example
+.vercel/
+rclone.conf
+kaggle.json
+modal.toml
+*.pem
+*.key
+credentials*
+.netrc
+id_rsa*
+id_ed25519*
+*.token
