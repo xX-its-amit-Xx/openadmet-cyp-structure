@@ -57,7 +57,7 @@ OUT_ROOT = DATA_PROCESSED / "two_ligand"
 JOBS = OUT_ROOT / "jobs.json"
 
 USER = os.environ.get("OPENPROTEIN_USER", "shenoy.am@northeastern.edu")
-PASS = os.environ.get("OPENPROTEIN_PASS", "REDACTED")
+PASS = os.environ.get("OPENPROTEIN_PASS", "")
 
 # ---------------------------------------------------------------------------
 # everything below this line is fixed by the pre-registration

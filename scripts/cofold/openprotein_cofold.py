@@ -53,7 +53,7 @@ from cypstruct.paths import DATA_PROCESSED  # noqa: E402
 
 OUT_ROOT = DATA_PROCESSED / "openprotein"
 USER = os.environ.get("OPENPROTEIN_USER", "shenoy.am@northeastern.edu")
-PASS = os.environ.get("OPENPROTEIN_PASS", "REDACTED")
+PASS = os.environ.get("OPENPROTEIN_PASS", "")
 
 # Engines worth trying, in order of how architecturally DIFFERENT they are from Boltz-2 —
 # which is the only property that matters per FINDING 005. boltz2 is included last purely

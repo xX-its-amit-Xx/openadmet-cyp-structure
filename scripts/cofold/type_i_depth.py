@@ -58,7 +58,7 @@ JOBS = DATA_PROCESSED / "type_i_depth_jobs.json"
 POSES_CSV = DATA_PROCESSED / "type_i_depth_poses.csv"
 
 USER = os.environ.get("OPENPROTEIN_USER", "shenoy.am@northeastern.edu")
-PASS = os.environ.get("OPENPROTEIN_PASS", "REDACTED")
+PASS = os.environ.get("OPENPROTEIN_PASS", "")
 
 # ---------------------------------------------------------------------------
 # fixed by the pre-registration
